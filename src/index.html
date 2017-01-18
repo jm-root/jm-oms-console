@@ -10,13 +10,15 @@
   <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-  
+  <link rel="stylesheet" href="../libs/angular/angularjs-toaster/toaster.css" type="text/css" />
+
   <!-- build:css css/app.min.css -->
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
   <!-- endbuild -->
 </head>
 <body ng-controller="AppCtrl">
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
   <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 
 <!-- build:js js/app.angular.js -->
@@ -50,6 +52,8 @@
   <script src="../libs/angular/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
   <script src="../libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
   <script src="../libs/angular/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+  <!-- toaster -->
+  <script src="../libs/angular/angularjs-toaster/toaster.js"></script>
   <!-- jm -->
   <script src="../libs/jm/jm-core/dist/js/jm-core.js"></script>
   <script src="../libs/jm/jm-ajax/dist/js/jm-ajax.js"></script>

@@ -2,8 +2,6 @@
 
 (function () {
     angular.module('app')
-        .service('common', ['JQ_CONFIG', 'MODULE_CONFIG', function (JQ_CONFIG, MODULE_CONFIG) {
-        }])
         .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {
             var self = this;
             jm.enableEvent(self);
@@ -31,6 +29,12 @@
                     "monthNames": ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]
                 }
             };
+
+            if(!sso.getToken){
+                sso.getToken = function(){
+                    return jm.sdk.storage.getItem('token');
+                }
+            }
 
             self.getUser = function(){
                 var deferred = $q.defer();

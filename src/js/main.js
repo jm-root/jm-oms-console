@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster',
+    function(              $scope,   $translate,   $localStorage,   $window, toaster ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       if(isIE){ angular.element($window.document.body).addClass('ie');}
@@ -36,7 +36,7 @@ angular.module('app')
           asideDock: false,
           container: false
         }
-      }
+      };
 
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
@@ -74,5 +74,34 @@ angular.module('app')
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
+
+        //toaster全局定义
+        $scope.error = function(title, body){
+            toaster.pop('error', title, body);
+        };
+
+        $scope.info = function(title, body){
+            toaster.pop('info', title, body);
+        };
+
+        $scope.success = function(title, body){
+            toaster.pop('success', title, body);
+        };
+
+        $scope.warning = function(title, body){
+            toaster.pop('warning', title, body);
+        };
+
+        $scope.errorTips = function(code){
+            if(code==401){
+                $scope.error('未登录');
+            }else if(code==403){
+                $scope.error('没有操作权限');
+            }else if(code==404){
+                $scope.error('请求路径失败');
+            }else{
+                $scope.error('网络故障');
+            }
+        };
 
   }]);
