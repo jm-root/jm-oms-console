@@ -20,6 +20,7 @@ module.exports = {
                     'angular-smart-table/dist/**',
                     'angular-translate/angular-translate.js',
                     'angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+                    'angular-translate-loader-partial/angular-translate-loader-partial.js',
                     'angular-translate-storage-cookie/angular-translate-storage-cookie.js',
                     'angular-translate-storage-local/angular-translate-storage-local.js',
                     'angular-ui-grid/ui-grid.*',
