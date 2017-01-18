@@ -181,6 +181,13 @@ angular.module('app')
               '../libs/angular/ag-grid/dist/ag-grid.js',
               '../libs/angular/ag-grid/dist/styles/ag-grid.css'
           ]
+      },
+      {
+          name: 'ng-tags-input',
+          files: [
+              '../libs/angular/ng-tags-input/ng-tags-input.js',
+              '../libs/angular/ng-tags-input/ng-tags-input.css'
+          ]
       }
 
       ]

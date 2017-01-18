@@ -49,6 +49,8 @@ module.exports = {
                     'videogular-ima-ads/ima-ads.min.js',
                     'ag-grid/dist/ag-grid.js',
                     'ag-grid/dist/styles/**',
+                    'ng-tags-input/ng-tags-input.js',
+                    'ng-tags-input/ng-tags-input.css'
                 ],
                 dest: 'libs/angular',
                 cwd:  'bower_components',
