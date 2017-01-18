@@ -33,6 +33,8 @@ var configUri = sdkHost + "/config";
 var uploadUri = sdkHost + "/upload";
 var staticUri = staticHost + "/static";
 
+jm.sdk.init({uri: sdkHost});
+
 var domain = '';
 var host = document.domain;
 if(domain&&host.indexOf(domain)>=0){
