@@ -12,10 +12,12 @@
       "NOTIFICATIONS": "Notifications"
     }
   },
+  "nav": {
+    "HEADER": "Navigation",
+    "MAIN": "Home"
+  },
   "aside": {
     "nav": {
-      "HEADER": "Navigation",
-      "DASHBOARD": "Dashboard",
       "CALENDAR": "Calendar",
       "EMAIL": "Email",
       "WIDGETS": "Widgets",

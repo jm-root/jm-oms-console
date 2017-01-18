@@ -12,10 +12,12 @@
       "NOTIFICATIONS": "Notifications"
     }
   },
+  "nav": {
+    "HEADER": "导航",
+    "MAIN": "概况"
+  },
   "aside": {
     "nav": {
-      "HEADER": "导航",
-      "DASHBOARD": "概况",
       "CALENDAR": "Calendar",
       "EMAIL": "Email",
       "WIDGETS": "Widgets",
