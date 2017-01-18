@@ -18,7 +18,7 @@ var app = angular.module('app')
         .config(['$translateProvider', function ($translateProvider) {
             $translateProvider
                 .useLoader('$translatePartialLoader', {
-                    urlTemplate: '/src/apps/{part}/l10n/{lang}.json'
+                    urlTemplate: 'apps/{part}/l10n/{lang}.json'
                 })
                 .preferredLanguage('zh_CN')
                 .fallbackLanguage('zh_CN')
