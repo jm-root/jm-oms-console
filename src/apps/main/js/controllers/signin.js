@@ -21,7 +21,7 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', function ($scope, $ht
                 localStorage.setItem('id',result.id);
                 localStorage.setItem('visImgCode', false);
                 $scope.visImgCode = false;
-                $state.go('app');
+                $state.go('app.dashboard');
             }else{
                 $scope.authError = '账号或密码错误';
                 if(result.err===2006||result.err===2007){
