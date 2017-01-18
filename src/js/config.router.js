@@ -18,33 +18,15 @@ angular.module('app')
           var layout = "tpl/app.html";
           if(window.location.href.indexOf("material") > 0){
             layout = "tpl/blocks/material.layout.html";
-            $urlRouterProvider
-              .otherwise('/app/dashboard-v3');
-          }else{
-            $urlRouterProvider
-              .otherwise('/app/dashboard-v1');
           }
+          $urlRouterProvider
+              .otherwise('/app/dashboard');
 
           $stateProvider
               .state('app', {
                   abstract: true,
                   url: '/app',
                   templateUrl: layout
-              })
-              .state('app.dashboard-v1', {
-                  url: '/dashboard-v1',
-                  templateUrl: 'tpl/app_dashboard_v1.html',
-                  resolve: load(['js/controllers/chart.js'])
-              })
-              .state('app.dashboard-v2', {
-                  url: '/dashboard-v2',
-                  templateUrl: 'tpl/app_dashboard_v2.html',
-                  resolve: load(['js/controllers/chart.js'])
-              })
-              .state('app.dashboard-v3', {
-                  url: '/dashboard-v3',
-                  templateUrl: 'tpl/app_dashboard_v3.html',
-                  resolve: load(['js/controllers/chart.js'])
               })
               .state('access', {
                   url: '/access',
