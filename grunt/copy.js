@@ -46,10 +46,25 @@ module.exports = {
                     'videogular-buffering/buffering.min.js',
                     'videogular-overlay-play/overlay-play.min.js',
                     'videogular-poster/poster.min.js',
-                    'videogular-ima-ads/ima-ads.min.js'
+                    'videogular-ima-ads/ima-ads.min.js',
+                    'ag-grid/dist/ag-grid.js',
+                    'ag-grid/dist/styles/**',
                 ],
                 dest: 'libs/angular',
                 cwd:  'bower_components',
+                expand: true
+            },
+            {
+                src:  [
+                    'jm-core/dist/js/jm-core.js',
+                    'jm-ajax/dist/js/jm-ajax.js',
+                    'jm-sdk-core/dist/js/jm-sdk-core.js',
+                    'jm-ms/dist/js/jm-ms.js',
+                    'jm-sso/dist/js/jm-sdk-sso.js',
+                    'jm-config/dist/js/jm-sdk-config.js'
+                ],
+                dest: 'libs/jm',
+                cwd:  'node_modules',
                 expand: true
             },
             {

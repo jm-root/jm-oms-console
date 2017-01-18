@@ -174,8 +174,16 @@ angular.module('app')
           files: [
               '../libs/angular/angular-skycons/angular-skycons.js'
           ]
+      },
+      {
+          name: 'ag-grid',
+          files: [
+              '../libs/angular/ag-grid/dist/ag-grid.js',
+              '../libs/angular/ag-grid/dist/styles/ag-grid.css'
+          ]
       }
-    ]
+
+      ]
   )
   // oclazyload config
   .config(['$ocLazyLoadProvider', 'MODULE_CONFIG', function($ocLazyLoadProvider, MODULE_CONFIG) {
