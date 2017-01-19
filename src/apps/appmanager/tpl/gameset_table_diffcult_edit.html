@@ -1,0 +1,41 @@
+<div ng-controller="GameSetTableDiffcultEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-100}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="baseConfigs">
+            <strong>桌子{{id}}</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">桌子难度:</label>
+                    <div class="col-sm-3">
+                        <select class="form-control m-b" ng-model="diff2" ng-options="item.name for item in showData.diffs">
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveDiff(diff2.value)">保存</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="line line-dashed b-b line-lg pull-in" id="gameConfigs"></div>
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <!--<label class="col-sm-2 control-label">桌子炒场难度(0-{{showData.options.length}}):</label>-->
+                    <label class="col-sm-2 control-label">桌子炒场难度</label>
+                    <!--<div class="col-sm-3">-->
+                        <!--<input type="number" class="form-control" placeholder="桌子炒场难度" ng-model="room.rejustDiffs">-->
+                    <!--</div>-->
+                    <div class="col-sm-3">
+                        <select class="form-control m-b" ng-model="diff3" ng-options="item.name for item in showData.rejustDiffs">
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

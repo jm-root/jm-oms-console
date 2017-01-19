@@ -1,0 +1,134 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.home.activitys.edit')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="名称" ng-model="topic.title" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">显示顺序</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" style="max-width: 320px" placeholder="顺序号(正整数)" ng-model="topic.rank" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">推荐指数</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" style="max-width: 320px" placeholder="推荐指数(正整数)" ng-model="topic.recommends" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标签</label>
+
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" style="max-width: 320px" ng-model="topic.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">跳转地址</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="跳转地址" ng-model="topic.url">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">配置</label>
+                    <div class="col-sm-10">
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="topic.highlight">
+                            <i></i>
+                            是否高亮
+                        </label>
+
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="topic.digest">
+                            <i></i>
+                            是否精华
+                        </label>
+
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="topic.stickReply">
+                            <i></i>
+                            是否置顶
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">内容</label>
+                    <div class="col-sm-10">
+                        <div class="radio checkbox-inline">
+                            <label class="i-checks">
+                                <input type="radio" name="type" value="doc" ng-model="topic.type" ng-change="chooseType('doc')" checked>
+                                <i></i>
+                                编辑内容
+                            </label>
+                        </div>
+                        <div class="radio checkbox-inline">
+                            <label class="i-checks">
+                                <input type="radio" name="type" value="url" ng-model="topic.type" ng-change="chooseType('url')">
+                                <i></i>
+                                连接地址
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        <div ng-if="topic.type=='doc'">
+                            <div class="m-b-xs">
+                                <div class="radio checkbox-inline">
+                                    <label class="i-checks i-checks-sm">
+                                        <input type="radio" name="branch" value="1" ng-model="topic.branch" checked>
+                                        <i></i>
+                                        html
+                                    </label>
+                                </div>
+                                <div class="radio checkbox-inline">
+                                    <label class="i-checks i-checks-sm">
+                                        <input type="radio" name="branch" value="2" ng-model="topic.branch">
+                                        <i></i>
+                                        纯文本
+                                    </label>
+                                </div>
+                                <div class="radio checkbox-inline">
+                                    <label class="i-checks i-checks-sm">
+                                        <input type="radio" name="branch" value="3" ng-model="topic.branch">
+                                        <i></i>
+                                        带格式纯文本
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="ueditor" ng-model="topic.content" config="ueditor_config" ready="onUeditor"></div>
+                        </div>
+                        <input ng-if="topic.type=='url'" type="text" class="form-control" placeholder="连接地址" ng-model="topic.content">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

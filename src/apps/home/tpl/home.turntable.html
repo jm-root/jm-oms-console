@@ -1,0 +1,22 @@
+<div class="bg-light lter b-b wrapper">
+    <div class="pull-right">
+        <button type="button" class="btn btn-sm btn-success btn-addon" ng-click="refresh()">
+            <i class="fa fa-refresh"></i>刷新
+        </button>
+    </div>
+    <div class="pull-right">
+        <label class="i-switch bg-info i-switch-md m-t-xs m-r">
+            <input type="checkbox" ng-model="onoff">
+            <i></i>
+        </label>
+    </div>
+    <h1 class="m-n font-thin h3">转盘配置</h1>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <div ng-style="{height:app.navHeight-145+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>

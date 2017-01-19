@@ -1,0 +1,154 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <form name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>渠道编辑</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">渠道级别</label>
+                    <div class="col-lg-10 w-auto">
+                        <p class="form-control-static">{{agent.level}}级</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">账号</label>
+
+                    <div class="col-lg-10 w-auto">
+                        <p class="form-control-static">{{agent.userInfo.account||agent.userInfo.mobile}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">渠道名</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control w-sm" placeholder="名称" ng-model="agent.name">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">合作方式</label>
+                    <div class="col-lg-10 w-auto">
+                        <p class="form-control-static">{{agent.type==1?'合作':'买断'}}</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" placeholder="手机号" maxlength="11" ng-pattern="/([0-9]{11})$/" ng-model="agent.mobile">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="super">
+                    <label class="col-sm-2 control-label">推广上限</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" placeholder="数量" min="0" ng-pattern="/([0-9])$/" ng-model="agent.limit">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">QQ号</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" placeholder="QQ号" ng-model="agent.userInfo.qq">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">邮箱</label>
+
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control w-sm" placeholder="邮箱" ng-model="agent.email">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">银行账号名</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control w-sm" placeholder="银行账号名" ng-model="agent.userInfo.bankInfo.account">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">银行</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control w-sm" ng-model="agent.userInfo.bankInfo.bank">
+                            <option value="">请选银行</option>
+                            <option value="中国银行">中国银行</option>
+                            <option value="中国工商银行">中国工商银行</option>
+                            <option value="中国建设银行">中国建设银行</option>
+                            <option value="中国农业银行">中国农业银行</option>
+                            <option value="中国交通银行">中国交通银行</option>
+                            <option value="中国邮政银行">中国邮政银行</option>
+                            <option value="中国招商银行">中国招商银行</option>
+                            <option value="中国兴业银行">中国兴业银行</option>
+                            <option value="中国中信银行">中国中信银行</option>
+                            <option value="中国光大银行">中国光大银行</option>
+                            <option value="中国民生银行">中国民生银行</option>
+                            <option value="中国广发银行">中国广发银行</option>
+                            <option value="中国华夏银行">中国华夏银行</option>
+                            <option value="中国浦发银行">中国浦发银行</option>
+                            <option value="深圳发展银行">深圳发展银行</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">开户支行</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control w-sm" placeholder="开户支行" ng-model="agent.userInfo.bankInfo.subbranch">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">银行卡号</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control w-sm" placeholder="银行卡号" ng-model="agent.userInfo.bankInfo.card">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标签</label>
+                    <div class="col-sm-9 w-xl">
+                        <tags-input ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注</label>
+
+                    <div class="col-sm-9">
+                        <textarea class="form-control w-xl" rows="4" style="resize: none;" placeholder="" ng-model="agent.memo"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </div>
+            <footer class="panel-footer text-right bg-light lter">
+                <div style="max-width: 750px">
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&update()" ng-if="super||per['编辑']">更新</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>

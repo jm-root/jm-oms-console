@@ -1,0 +1,90 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+
+    <!-- column -->
+    <div class="col w-md b-r">
+        <div class="wrapper-sm b-b">
+            <div class="h4">组织</div>
+        </div>
+        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-91}}+'px', size:'8px'}">
+            <div style="padding: 10px 0px">
+                <treecontrol class="tree-custom"
+                             tree-model="treedata"
+                             options="opts"
+                             on-selection="selectedNode(node,$parentNode)"
+                             expanded-nodes="expandedNodes"
+                             selected-node="selected">
+                    {{node.title}}
+                </treecontrol>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+
+    <div class="col w-md bg-light b-r bg-auto">
+        <div class="wrapper-sm b-b">
+            <div class="h4">角色</div>
+        </div>
+        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-95}}+'px', size:'8px'}">
+            <p ng-show="!roles.length" style="text-align: center">无角色</p>
+            <a ng-repeat="role in roles" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': role.selected}" ng-click="selectRole(role)">
+                <span class="block m-l" popover-placement="{{$index!=0&&$index==roles.length-1?'top':'bottom'}}" uib-popover="{{role.code+':'+role.description}}" popover-trigger="mouseenter">{{ role.title}}</span>
+            </a>
+        </div>
+    </div>
+    <div class="col bg-light b-r bg-auto" style="width: 400px">
+        <div class="wrapper-sm b-b">
+            <div class="h4">用户</div>
+        </div>
+        <div class="wrapper-sm b-t" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-95}}+'px', size:'8px'}">
+            <ul class="nav nav-pills nav-stacked nav-sm">
+                <li ng-repeat="item in users" ui-sref-active="active">
+                    <a ng-click="clickName(item)">{{item.nick}}({{item._id}})</a>
+                </li>
+            </ul>
+            <form name="user">
+                <div class="input-group w-xxl m-t-sm">
+                    <input type="text" class="form-control input-sm" placeholder="用户ID" ng-model="newuser">
+
+                    <div class="input-group-btn dropdown" drop-down-table>
+                        <div type="button" class="btn btn-sm btn-default">搜索 <span class="caret"></span></div>
+                        <ul class="dropdown-menu pull-right w-xxl" style="right: -90px">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                            <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>用户ObjectID</th>
+                                    <th>用户ID</th>
+                                    <th>用户名</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">
+                                    <td>{{row._id}}</td>
+                                    <td>{{row.uid}}</td>
+                                    <td>{{row.nick}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </ul>
+                    </div><!-- /btn-group -->
+                    <span class="input-group-btn">
+                          <button class="btn btn-sm btn-default" type="button" ng-click="addUser()" ng-disabled="user.$invalid">
+                              添加
+                          </button>
+                          <button class="btn btn-sm btn-default" type="button" ng-click="delUser()" ng-disabled="user.$invalid">
+                              删除
+                          </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col">
+        <div ui-view></div>
+    </div>
+</div>

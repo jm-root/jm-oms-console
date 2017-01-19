@@ -1,0 +1,90 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" style="min-height:700px;overflow-y:auto;max-height:710px;">
+    <div class="col w-lg lter b-r">
+        <div class="vbox" style="overflow-y:auto;max-height:510px;">
+            <div class="wrapper-sm b-b">
+                <div class="pull-right">
+                    <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)">
+                        {{ebtnname}}
+                    </a>
+                </div>
+                <div class="h4">币种</div>
+            </div>
+            <div ng-if="!isCollapsed" class="panel-body bg-white-only">
+                <form name="formValidate" class="form-horizontal form-validation">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">编码</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="currency.code" ng-pattern="/^[a-z|A-Z]*$/" ng-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="名称" ng-model="currency.title"  ng-required="true">
+                        </div>
+                    </div>
+                    <footer class="text-right">
+                        <button class="btn btn-info" ng-click="!formValidate.$invalid&&enter()">确认</button>
+                    </footer>
+                </form>
+            </div>
+            <div class="row-row">
+                <div class="cell">
+                    <div class="cell-inner">
+                        <div class="list-group no-radius no-border no-bg m-b-none">
+                            <p ng-show="!currencys.length&&isCollapsed" style="text-align: center">无数据</p>
+                            <a ng-repeat="currency in currencys" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': currency.selected}" ng-click="selectCurrency(currency)">
+                                <span ng-click="deleteCurrency(currency)" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                                <span class="block m-l">{{ currency.code+' : ' }}{{ currency.title }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col w-lg lter b-r">
+        <div class="vbox" style="min-height: 800px">
+                <div class="wrapper-sm b-b">
+                    <div class="h4">兑率</div>
+                </div>
+                <div class="panel-body bg-white-only">
+                    <form name="formValidate" class="form-horizontal form-validation">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">兑币</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" ng-model="curRate.to" ng-options="option.code as option.title for option in currencys" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">比例</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" placeholder="比例" ng-model="curRate.rate">
+                            </div>
+                        </div>
+                        <footer class="text-right">
+                            <button class="btn btn-info" ng-click="!formValidate.$invalid&&add()">保存&添加</button>
+                        </footer>
+                    </form>
+                </div>
+            <div class="row-row">
+                <div class="cell">
+                    <div class="cell-inner">
+                        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-111}}+'px', size:'8px'}">
+                            <a ng-repeat="rate in rates" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': rate.selected}" ng-click="selectRate(rate)">
+                                <span ng-click="deleteRate(rate)" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                                <span class="block m-l">{{ rate.fromName+'兑'+rate.toName+'(1:'+rate.rate+')' }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col">
+            <div ui-view></div>
+        </div>
+</div>

@@ -1,0 +1,39 @@
+<div ng-controller="CheckinEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.home.checkin.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑登录奖励</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>天数</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 240px" placeholder="天数" ng-model="reward.day" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>奖励类型</label>
+                    <div class="col-sm-6">
+                        <select class="form-control w-sm" ng-model="reward.rewards[0].ctCode">
+                            <option value="tb">元宝</option>
+                            <option value="jb">金币</option>
+                            <option value="dbj">夺宝卷</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>奖励数量</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" style="max-width: 240px" placeholder="奖励" ng-model="reward.rewards[0].amount" required>
+                    </div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

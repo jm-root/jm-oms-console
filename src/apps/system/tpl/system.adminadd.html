@@ -1,0 +1,100 @@
+<div ng-controller="SystemAdminAddCtrl">
+    <div class="panel-heading m-l-lg">
+        <strong>新建用户</strong>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="line b-b"></div>
+        <form class="panel-body">
+            <div ng-style="{height:app.navHeight-145+'px'}" ag-grid="gridOptions">
+                <div class="container text-center">
+                    <label class="col-sm-1 control-label">用户名：</label><input type="text" class="col-sm-3"/><br/><br/>
+                    <label class="col-sm-1 control-label">密码：</label><input type="text" class="col-sm-3"/><br/><br/>
+                    <label class="col-sm-1 control-label">姓名：</label><input type="text" class="col-sm-3"/><br/><br/>
+                    <label class="col-sm-1 control-label">地区：</label>
+                    <select class="col-sm-1">
+                        <option>番禺</option>
+                        <option>天河</option>
+                        <option>海珠</option>
+                        <option>白云</option>
+                        <option>荔湾</option>
+                    </select><br/><br/>
+                    <div class="col-sm-2"><div class="checkbox">
+                            <label class="i-checks"><input type="checkbox" value="1" ng-model="a" checked><i></i>是否激活</label>
+                        </div></div>
+                    <div class="col-sm-2"><div class="checkbox">
+                            <label class="i-checks"><input type="checkbox" value="2" ng-model="b" checked><i></i>是否系统管理员</label>
+                        </div></div><br/><br/><br/>
+                </div>
+                <hr/>
+                <div>
+                    <div class="col-ms-12 container text-center" style="height: 50px">
+                        <label class="col-sm-10">权限设置</label>
+                        <div class="col-sm-2"><div class="checkbox">
+                                <label class="i-checks"><input type="checkbox" value="1" ng-model="c" checked><i></i>全选</label>
+                            </div></div>
+                    </div>
+                    <div style="height: 100px">
+                        <label class="col-sm-12" style="margin-left: 70px;">玩家管理</label>
+                        <div class="text-center">
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="1" ng-model="d" checked><i></i>玩家信息</label>
+                                </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="2" ng-model="e" checked><i></i>在线状态</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="3" ng-model="f" checked><i></i>游戏记录</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="4" ng-model="g" checked><i></i>账户封停</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="5" ng-model="h" checked><i></i>赠送记录</label>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div style="height: 100px">
+                        <label class="col-sm-12" style="margin-left: 70px;">充值管理</label>
+                        <div class="text-center">
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="1" ng-model="i" checked><i></i>官方点卡</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="2" ng-model="j" checked><i></i>第三方充值</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="3" ng-model="k" checked><i></i>点卡充值记录</label>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div style="height: 100px">
+                        <label class="col-sm-12" style="margin-left: 70px;">代理推广</label>
+                        <div class="text-center">
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="1" ng-model="l" checked><i></i>数据分析</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="2" ng-model="m" checked><i></i>推广商</label>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div style="height: 80px">
+                        <label class="col-sm-12" style="margin-left: 70px;">系统管理</label>
+                        <div class="text-center">
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="1" ng-model="n" checked><i></i>管理员列表</label>
+                            </div></div>
+                            <div class="col-sm-2"><div class="checkbox"><label class="i-checks">
+                                <input type="checkbox" value="2" ng-model="o" checked><i></i>系统日志</label>
+                            </div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right" style="margin-right: 80px;">
+                    <button type="submit" class="btn btn-success">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

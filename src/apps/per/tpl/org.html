@@ -1,0 +1,90 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light ">
+
+    <!-- column -->
+    <div class="col w b-r">
+        <div class="wrapper-sm b-b">
+            <a href class="pull-right btn btn-sm btn-info m-t-n-xs"  ng-click="addNode()">
+                新增
+            </a>
+            <div class="h4">编辑组织</div>
+        </div>
+        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-91}}+'px', size:'8px'}">
+            <div class="panel-body bg-white-only">
+                <form name="formValidate" class="form-horizontal form-validation">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">上级节点</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="上级节点" ng-model="org.ptitle" ng-disabled="org._id" required>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">编码</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="org.code" ng-pattern="/^[a-z|A-Z]*$/" ng-disabled="org._id" required>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="名称" ng-model="org.title" required>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">描述</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="描述" ng-model="org.description">
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">顺序</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" placeholder="顺序" ng-model="org.sort">
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否显示</label>
+                        <div class="col-sm-9">
+                            <label class="i-checks checkbox-inline">
+                                <input type="checkbox" ng-model="org.status" ng-true-value="1" ng-false-value="0"><i></i>
+                            </label>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <footer class="text-right">
+                        <button ng-show="org._id" class="btn btn-info" ng-click="updateNode()">更新</button>
+                        <button ng-show="org._id" class="btn btn-danger" ng-click="deleteNode()">删除</button>
+                        <button ng-hide="org._id" class="btn btn-success" ng-click="!formValidate.$invalid&&createNode()">创建</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+
+    <!-- column -->
+    <div class="col w-lg lter b-r">
+        <div class="wrapper-sm b-b">
+            <div class="h4">组织树</div>
+        </div>
+        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-91}}+'px', size:'8px'}">
+            <div draggable class="panel-body">
+                <treecontrol class="tree-custom"
+                             tree-model="treedata"
+                             options="opts"
+                             on-selection="selectedNode(node,$parentNode)"
+                             expanded-nodes="expandedNodes"
+                             selected-node="selected">
+                    {{node.title}}
+                </treecontrol>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+
+</div>

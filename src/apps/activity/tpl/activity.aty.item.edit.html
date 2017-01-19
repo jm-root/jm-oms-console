@@ -1,0 +1,190 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-default" style="border-color: transparent; background-color: transparent; box-shadow: none; display: inline;padding:6px" ui-sref="app.activity.aty.item.list({pid:'{{pid}}'})"><i class="glyphicon glyphicon-chevron-left"></i></a><strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属活动</label>
+                    <div class="col-sm-9 w-auto">
+                        <p class="form-control-static" ng-bind="activity.title"></p>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="名称" ng-model="atyitem.title" ng-required="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>条件类型</label>
+
+                    <div class="col-sm-9 w-auto">
+                        <select class="form-control w-sm" ng-change="selectChangeType()" ng-model="atyitem.type" ng-required="true">
+                            <option value="">请选择</option>
+                            <option value="0">签到</option>
+                            <option value="1">登录</option>
+                            <option value="2">充值</option>
+                            <option value="3">消费</option>
+                            <option value="4">转盘</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>条件种类</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control w-auto" ng-change="selectChangeCategory()" ng-model="atyitem.category"  ng-options="option.code as option.name for option in types[atyitem.type]" ng-required="true">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="visCode[atyitem.type+':'+atyitem.category]">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{visCode[atyitem.type+':'+atyitem.category]}}</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control w-auto" ng-model="atyitem.code"  ng-options="option.code as option.name for option in codes[atyitem.type]" ng-required="true">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="visAmount[atyitem.type+':'+atyitem.category]">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{visAmount[atyitem.type+':'+atyitem.category]}}</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" placeholder="{{visAmount[atyitem.type+':'+atyitem.category]+'(正整数)'}}" ng-model="atyitem.amount" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="visDate[atyitem.type+':'+atyitem.category]==0">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>有效起止时间</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-4 w">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{atyitem.startDate | date:'yyyy-MM-dd HH:mm'}}" onfocus="this.blur()" ng-required="true">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <datetimepicker ng-required="true" ng-model="atyitem.startDate" before-render="onBeforeRenderStartDate($view,$dates)" on-set-time="endDateOnSetTimeStartDate()" datetimepicker-config="{ startView:'day', minView:'minute', dropdownSelector:'#dropdown1', renderOn:'valid-startDate' }"> </datetimepicker>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 w">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" value="{{atyitem.endDate | date:'yyyy-MM-dd HH:mm'}}" onfocus="this.blur()" ng-disabled="!atyitem.startDate" ng-required="true">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" ng-if="atyitem.startDate">
+                                        <datetimepicker ng-model="atyitem.endDate" before-render="onBeforeRenderEndDate($view,$dates)" datetimepicker-config="{ startView:'day', minView:'minute', dropdownSelector:'#dropdown2', renderOn:'valid-endDate' }"> </datetimepicker>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="visDate[atyitem.type+':'+atyitem.category]==1">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>有效起止时间</label>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-md-4 w-sm">
+                                <uib-timepicker ng-model="atyitem.startDate" hour-step="1" minute-step="1" show-meridian="false" ng-required="true"></uib-timepicker>
+                            </div>
+                            <div class="col-md-4 w-sm">
+                                <uib-timepicker ng-model="atyitem.endDate" hour-step="1" minute-step="1" show-meridian="false" ng-required="true"></uib-timepicker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">道具往哪存</label>
+
+                    <div class="col-sm-9 w-auto">
+                        <select class="form-control w-sm" ng-model="atyitem.hold">
+                            <option value="0">背包</option>
+                            <option value="1">邮件</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">显示顺序</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="顺序号(正整数,数越大越往后)" ng-model="atyitem.order" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">跳转地址</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="地址" ng-model="atyitem.url">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>附加道具</label>
+                    <div class="col-sm-9">
+                        <table class="table table-bordered table-hover table-condensed bg-white-only">
+                            <span class="btn btn-default" ng-click="addItem()">添加道具</span>
+                            <tr style="font-weight: bold">
+                                <td style="width:40%">道具</td>
+                                <td style="width:30%">数量</td>
+                                <td style="width:30%">过期时间</td>
+                                <td style="width:40px">编辑</td>
+                            </tr>
+                            <tr ng-repeat="item in atyitem.props">
+                                <td class="v-middle">
+                                    <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
+                                        <option value="">无道具</option>
+                                    </select>
+                                </td>
+                                <td class="v-middle">
+                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                </td>
+                                <td class="v-middle">
+                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+
+
+            <footer class="panel-footer text-right bg-light lter">
+                <!--<div style="max-width: 750px">-->
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <!--</div>-->
+            </footer>
+        </div>
+    </form>
+
+</div>

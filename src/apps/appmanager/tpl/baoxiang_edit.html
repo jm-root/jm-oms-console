@@ -1,0 +1,75 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.rooms.manage.baoxiang.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">房间类型</label>
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="boxType" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">宝箱消耗</label>
+                    <button type="button" class="btn btn-info col-sm-1" ng-click="addCost()">添加</button>
+                </div>
+                <div class="form-group" ng-repeat="boxIn in box.in">
+                    <label class="col-sm-1 control-label">类型</label>
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control" placeholder="类型" ng-model="boxIn.ctCode">
+                    </div>
+                    <label class="col-sm-1 control-label">数量</label>
+                    <div class="col-sm-1">
+                        <input type="number" class="form-control" placeholder="数量" ng-model="boxIn.amount">
+                    </div>
+                    <button type="button" class="btn btn-info col-sm-1" ng-click="delCost($index)">删除</button>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">宝箱奖励</label>
+                    <button type="button" class="btn btn-info col-sm-1" ng-click="addAward()">添加</button>
+                </div>
+                <div class="form-group" ng-repeat="boxOut in box.out">
+                    <label class="col-sm-1 control-label">类型</label>
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control" placeholder="类型" ng-model="boxOut.ctCode">
+                    </div>
+                    <label class="col-sm-1 control-label">最大</label>
+                    <div class="col-sm-1">
+                        <input type="number" class="form-control" placeholder="最大" ng-model="boxOut.max">
+                    </div>
+                    <label class="col-sm-1 control-label">最小</label>
+                    <div class="col-sm-1">
+                        <input type="number" class="form-control" placeholder="最小" ng-model="boxOut.min">
+                    </div>
+                    <label class="col-sm-1 control-label">中间</label>
+                    <div class="col-sm-1">
+                        <input type="number" class="form-control" placeholder="中间" ng-model="boxOut.mid">
+                    </div>
+                    <label class="col-sm-1 control-label">概率</label>
+                    <div class="col-sm-1">
+                        <input type="number" class="form-control" placeholder="概率" ng-model="boxOut.odds">
+                    </div>
+                    <button type="button" class="btn btn-info col-sm-1" ng-click="delAward($index)">删除</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">宝箱说明</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" ng-model="box.introduce" placeholder="宝箱说明"></textarea>
+                </div>
+            </div>
+
+
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>
+

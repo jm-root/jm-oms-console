@@ -1,0 +1,39 @@
+<div class="bg-light lter b-b wrapper">
+    <div class="pull-right m-r-sm">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+    <h1 class="m-n font-thin h3">批量分发</h1>
+</div>
+<div class="panel-body">
+    <div class="col-lg-12 m-b-xs">
+        <strong style="vertical-align:middle">T币余额：{{(tbAmount||0)+' T币'}}</strong>
+    </div>
+    <div class="col-lg-12 m-b-sm">
+        <div class="pull-left m-t-xs">
+            <span>用户名称&nbsp;&nbsp;</span>
+        </div>
+        <div class="input-group m-r-sm">
+            <input type="text" ng-model="search.user" class="form-control input-sm no-border rounded padder" placeholder="搜索 账号/昵称/手机号">
+              <span class="input-group-btn" style="width: auto">
+                <span type="submit" class="btn btn-sm rounded" ng-click="onPageSizeChanged()" style="background-color: #e3e3e3"><i class="fa fa-search"></i></span>
+              </span>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="pull-left">
+            <span>分发金币&nbsp;&nbsp;</span>
+            <input class="w-sm" type="number" min="1" placeholder="分发金币数量" ng-model="jbAmount">
+            <input class="w-xs" type="number" min="1" max="10" placeholder="折扣" ng-model="rebate">
+            <input class="w-xs" type="text" placeholder="消耗T币数量" ng-value="tbUseAmount=(jbAmount*(rebate*0.1/rate))" ng-model="tbUseAmount" disabled>
+            <span class="btn btn-sm btn-default" ng-disabled="!tbUseAmount" ng-click="tbUseAmount&&recharge()" style="margin-top:-3px;">确定充值</span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="line b-b" style="margin: 0"></div>
+    <div class="panel-body">
+        <div ng-style="{height:app.navHeight-273+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+    </div>
+</div>

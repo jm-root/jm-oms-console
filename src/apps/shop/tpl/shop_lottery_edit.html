@@ -1,0 +1,127 @@
+<div ng-controller="LotteryEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.shop.lottery.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">夺宝产品id<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="产品名称id" ng-model="lottery.product" required disabled="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">夺宝活动id<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="夺宝活动id" ng-model="lottery.id"  required ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">每期夺宝产品的数量<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="每期夺宝产品的数量" ng-model="lottery.prodNum"  required ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">夺宝产品标题<code style="background-color: transparent"></code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="夺宝产品标题" ng-model="lottery.title">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">夺宝产品简介<code style="background-color: transparent"></code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="夺宝产品简介" ng-model="lottery.summary">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">期数<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="期数" ng-model="lottery.period"  required  disabled="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最大期数<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="最大期数" ng-model="lottery.maxPeriod"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">排序<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="排序" ng-model="lottery.sort"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标价(大于等于35)<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="标价" ng-model="lottery.totalPrice" min="35" required ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">单价<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="单价" ng-model="lottery.unitPrice"  required ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">币种<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="lottery.currency" ng-disabled="id">
+                            <option value="dbj">夺宝卷</option>
+                            <option value="jb">金币</option>
+                            <option value="tb">T币</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">夺宝类型<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="lottery.type" ng-disabled="id">
+                            <option value="1">连续开奖</option>
+                            <option value="2">限时开奖</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="lottery.type =='2'">
+                    <label class="col-sm-2 control-label">限时开奖时间<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="限时开奖时间" ng-model="lottery.lotteryTime"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="lottery.status >= 3">
+                    <label class="col-sm-2 control-label">状态<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="lottery.status">
+                            <option value="3">开奖公布</option>
+                            <option value="4">未发货</option>
+                            <option value="5">已发货</option>
+                            <option value="6">已完成</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

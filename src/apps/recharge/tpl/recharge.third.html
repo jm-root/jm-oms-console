@@ -1,0 +1,42 @@
+<div class="bg-light lter b-b wrapper">
+    <div class="pull-right">
+        <form>
+            <div class="input-group w-lg">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 订单号/用户ID/昵称/手机号">
+            <span class="input-group-btn" style="width: auto">
+                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+                  </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="pull-right">
+        <div class="input-group m-r-sm" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
+    </div>
+
+    <div class="pull-right m-r-sm" >
+        <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
+            <option value="">充值状态</option>
+            <option value="0">不成功</option>
+            <option value="1">成功</option>
+        </select>
+    </div>
+
+    <div class="pull-right m-r-sm">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+    <h1 class="m-n font-thin h3">第三方充值</h1>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <span style="font-size: larger">充值总人数:{{stat.recharge_people_total||0}}&emsp;昨天充值人数:{{stat.recharge_people_yesterday||0}}&emsp;今天充值人数:{{stat.recharge_people_today||0}}&emsp;总充值金额:{{stat.recharge_total||0}}&emsp;昨天充值金额:{{stat.recharge_yesterday||0}}&emsp;今天充值金额:{{stat.recharge_today||0}}&emsp;有效订单数:{{stat.recharge_order_valid||0}}&emsp;无效订单数:{{stat.recharge_order_invalid||0}}</span>
+            <div ng-style="{height:app.navHeight-155+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>

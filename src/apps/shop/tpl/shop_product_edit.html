@@ -1,0 +1,163 @@
+<div ng-controller="ProdEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.shop.product.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-if="id">
+                    <label class="col-sm-2 control-label">产品id<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="产品id" ng-model="id"  required readonly>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品名称<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="产品名称" ng-model="product.name"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品图片<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <a ui-sref=".pic"><img width="200" height="200" src="{{product.picture}}" onerror="this.src='../common/images/logo.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品分类<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="cate" ng-options="(c.name) group by c.pid.name for c in categories" >
+                        <!--<select class="form-control" ng-model="cate" ng-options="c._id as c.name for c in categories" >-->
+                            <option value="">---请选择分类---</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品标签<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="产品标签" ng-model="product.tags"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品描述<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="产品描述" ng-model="product.description"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">进货价格<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="进货价格" ng-model="product.price" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品库存<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="产品库存" ng-model="product.inventory"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">购买币种<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="product.currency">
+                            <option value="dbj">夺宝卷</option>
+                            <option value="jb">金币</option>
+                            <option value="tb">T币</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">购买价格<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="购买价格" ng-model="product.unitPrice" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品类型<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="实物" value="1" ng-model="product.type" ng-checked="true">
+                                <i></i>
+                                实物
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="虚拟" value="2" ng-model="product.type">
+                                <i></i>
+                                虚拟
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="product.type == 2">
+                    <label class="col-sm-2 control-label">虚拟物品<code style="background-color: transparent" ng-disabled="id"></code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="product.attach" ng-options="prop._id as prop.name for prop in props" >
+                            <option>---请选择物品---</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">产品状态<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="禁用" value="0" ng-model="product.status" >
+                                <i></i>
+                                禁用
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="启用" value="1" ng-model="product.status" ng-checked="true">
+                                <i></i>
+                                启用
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">前端是否可见<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="否" value="0" ng-model="product.visible" >
+                                <i></i>
+                                否
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="i-checks">
+                                <input type="radio" name="是" value="1" ng-model="product.visible" ng-checked="true">
+                                <i></i>
+                                是
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

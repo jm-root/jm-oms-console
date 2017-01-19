@@ -1,0 +1,112 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <form name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>转账</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">选择币种</label>
+                    <div class="col-sm-9">
+                        <select class="form-control w-sm" ng-model="bank.ctCode" ng-required="true">
+                            <option value="">请选币种</option>
+                            <option value="tb">T币</option>
+                            <option value="jb">金币</option>
+                            <option value="dbj">夺宝卷</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">转入用户</label>
+                    <div class="col-sm-9">
+                        <div class="input-group" style="max-width: 360px;">
+                            <input type="text" class="form-control" placeholder="用户ID" ng-model="bank.toUserId" ng-required="true">
+                            <div class="input-group-btn dropdown" drop-down-table>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">搜索 <span class="caret"></span></div>
+                                <ul class="dropdown-menu pull-right w-xxl">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
+                                            <span class="input-group-btn">
+                                              <span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>
+                                            </span>
+                                    </div>
+                                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>用户ObjectID</th>
+                                            <th>用户ID</th>
+                                            <th>用户名</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">
+                                            <td>{{row._id}}</td>
+                                            <td>{{row.uid}}</td>
+                                            <td>{{row.nick}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </ul>
+                            </div><!-- /btn-group -->
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">转入账户</label>
+                    <div class="col-lg-9 w-auto">
+                        <input type="number" class="form-control input-sm pull-left" style="width: 150px;" min="1" placeholder="不填为默认账户" ng-pattern="/^[0-9]*$/" ng-model="bank.toAccountId">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="!isCP">
+                    <label class="col-sm-2 control-label">转出账户</label>
+                    <div class="col-lg-9 w-auto">
+                        <p class="form-control-static" ng-if="accounts.length<=1">{{bank.fromAccountId||''}}</p>
+                        <select class="form-control w-sm" ng-if="accounts.length>1" ng-model="bank.fromAccountId" ng-options="option.id as option.id for option in accounts" ng-change="changeAcount()" ng-required="true">
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="!isCP">
+                    <label class="col-sm-2 control-label">余额</label>
+                    <div class="col-lg-9 w-auto">
+                        <p class="form-control-static">{{sum=defAccount.holds[bank.ctCode]&&(defAccount.holds[bank.ctCode].amount||0)||0}}</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">转账金额</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control input-sm pull-left" style="width: 150px;" ng-model="bank.amount" min="1" placeholder="数量" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注</label>
+
+                    <div class="col-sm-9">
+                        <textarea class="form-control" style="max-width: 320px;" rows="4" style="resize: none;" placeholder="" ng-model="bank.memo"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </div>
+            <footer class="panel-footer text-right bg-light lter">
+                <div style="max-width: 700px">
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&transfer()">转账</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>

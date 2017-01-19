@@ -1,0 +1,262 @@
+<div ng-controller="FishEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-150}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.rooms.manage.gameset.edit') && tabPageShow" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="baseConfigs">
+                <strong>房间配置</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间类型</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="room.roomType" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间名字</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="房间名字" ng-model="room.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间简介</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="房间简介" ng-model="room.intro">
+                    </div>
+                </div>
+                <div ng-show="isFromAppManager" class="form-group">
+                    <label class="col-sm-2 control-label">算法起始桌子编号</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="起始桌子编号" ng-model="room.startAreaId" min="0" required>
+                    </div>
+                </div>
+                <div ng-show="isFromAppManager" class="form-group">
+                    <label class="col-sm-2 control-label">桌子数量</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="桌子数量" ng-model="room.maxAreas" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间所有桌子难度(0-4)</label>
+                    <!--<div class="col-sm-2">-->
+                    <!--<select class="form-control m-b" ng-model="room.diff">-->
+                    <!--<option value="0">炒场</option>-->
+                    <!--<option value="1">最容易</option>-->
+                    <!--<option value="2">容易</option>-->
+                    <!--<option value="3">难</option>-->
+                    <!--<option value="4">最难</option>-->
+                    <!--<option value="5">死难</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="房间所有桌子难度" ng-model="room.diff" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间倍率</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="房间倍率" ng-model="room.areaRate" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">桌子玩家上限</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="桌子玩家上限" ng-model="room.maxPlayers" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最大携带</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="最大携带" ng-model="room.maxAmount" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最小携带</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="最小携带" ng-model="room.minAmount" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上分设置(游戏币)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="上分设置(游戏币)" ng-model="room.exchangeAmount" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">一币分值(游戏分值)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="一币分值(游戏分值)" ng-model="room.exchangeRate" min="0" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">虚拟在线人数</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="虚拟在线人数" ng-model="room.virtualOnlineCount" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">倍率档位</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="倍率档位" ng-model="room.rates" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间模式</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.mode">
+                            <option value="0">金币</option>
+                            <option value="1">金币+夺宝卷</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="room.mode == 1">
+                    <label class="col-sm-2 control-label">彩票模式出金币几率</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="彩票模式出金币几率" ng-model="room.oddsCredit" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="room.mode == 1">
+                    <label class="col-sm-2 control-label">彩票模式货币种类</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.ctCodeTicket">
+                            <option value="dbj">夺宝卷</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房间货币种类</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.ctCode">
+                            <option value="jb">金币</option>
+                            <option value="tb">T币</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否按一级渠道隔离玩家，限制不同渠道的玩家不能在一张桌子上玩</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.agentIsolate">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否自动选座</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.autoSeat">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否免费场</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.free">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否开启</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.status">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否可见</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.visible">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in" id="gameConfigs"></div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">桌子最少鱼数</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="桌子最少鱼数" ng-model="room.minFishes" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">切换场景时间</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="切换场景时间" ng-model="room.intervalChangeScene" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">暴击分数</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="暴击分数" ng-model="room.baoji" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">每秒发射数量</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="每秒发射数量" ng-model="room.fireSpeed" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">每秒速射发射数量</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="每秒速射发射数量" ng-model="room.maxfireSpeed" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">子弹移动速度(像素/秒)</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="子弹移动速度(像素/秒)" ng-model="room.bulletSpeed" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否自动瞄准</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.autoAim">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否开启双炮</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.doubleFire">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否固定炮值</label>
+                    <div class="col-sm-2">
+                        <select class="form-control m-b" ng-model="room.fixedRate">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer bg-light lter">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-1">
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-info" ng-click="recovery()">恢复</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>
+

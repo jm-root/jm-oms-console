@@ -1,0 +1,78 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <form name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>VIP编辑</strong>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">等级</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" min="1" placeholder="等级" ng-model="vip.level" ng-disabled="key" ng-pattern="/^[0-9]*$/" ng-required="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">配置优惠</label>
+
+                    <div class="col-sm-9 w-lg">
+                        <select chosen placeholder-text-multiple="'请选择'" multiple class="w-full" ng-model="items" ng-options="option.name for option in propertys">
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-repeat="item in items">
+                    <label class="col-sm-2 control-label">{{item.name}}</label>
+
+                    <div class="col-sm-9 w-lg">
+                        <select style="height: 34px;min-width: 100px" ng-model="vip[item.key]" ng-options="option for option in vals[item.key]">
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-9">
+                        <div class="m-b-xs">
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="0" ng-model="vip.pattern" ng-click="onck()" checked>
+                                    <i></i>
+                                    纯文本
+                                </label>
+                            </div>
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="1" ng-model="vip.pattern" ng-click="onck()">
+                                    <i></i>
+                                    带格式文本
+                                </label>
+                            </div>
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="2" ng-model="vip.pattern" ng-click="onck()">
+                                    <i></i>
+                                    html
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ueditor" ng-model="vip.content" config="ueditor_config" ready="onUeditor"></div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </div>
+            <footer class="panel-footer text-right bg-light lter">
+                <div style="max-width: 750px">
+                    <button type="submit" class="btn btn-success" ng-click="save()">保存</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>

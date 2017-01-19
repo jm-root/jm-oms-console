@@ -1,0 +1,54 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.recharge.card.add')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="m-n font-thin h3">点卡编辑</h1>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">面值</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="面值" ng-model="card.parValue">
+                    </div>
+                    <div class="col-sm-1">
+                        <select class="form-control w-sm" ng-model="card.type" ng-options="x.type as x.name for x in typedata">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发放商品卡号</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="发放商品卡号" ng-model="card.code" ng-disabled="isEdit">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">生成数量</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="生成数量" ng-model="card.number" ng-disabled="isEdit">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">地区</label>
+                    <div class="col-sm-9 w-auto">
+                        <select class="form-control w-sm" ng-model="card.channel" ng-disabled="isEdit" ng-options="x.code as x.name for x in channelData">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="savecard()">确定</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

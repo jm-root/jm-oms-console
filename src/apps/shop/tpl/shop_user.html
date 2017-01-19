@@ -1,0 +1,73 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.shop.lottery.user') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户id<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="用户id" ng-model="id" required readonly>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户昵称<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="用户昵称" ng-model="winUser.nick" readonly >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户姓名<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="用户姓名" ng-model="winUser.name" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户电话<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="用户电话" ng-model="winUser.mobile"  >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">地址省份<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="地址省份" ng-model="winUser.province" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">地址城市<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="地址城市" ng-model="winUser.city" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">地址地区<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="地址地区" ng-model="winUser.area" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">详细地址<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="详细地址" ng-model="winUser.address" >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

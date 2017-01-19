@@ -1,0 +1,59 @@
+<div ng-controller="BetEditCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.shop.bet.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户Id<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="用户Id" ng-model="address.userId"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">名字<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="名字" ng-model="address.name"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">电话<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="电话" ng-model="address.phone"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">省<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="省" ng-model="address.province"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">市<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="市" ng-model="address.city"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">详细地址<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="详细地址" ng-model="address.detail"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

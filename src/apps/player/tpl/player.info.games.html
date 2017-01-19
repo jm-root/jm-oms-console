@@ -1,0 +1,16 @@
+<div class="bg-light lter b-b wrapper">
+    <div class="pull-right m-r-sm">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+
+    <h1 class="m-n font-thin h3"><a style="text-decoration:underline;color:#0000CC" ui-sref="app.player.info.list">{{playerName+'玩家'}}</a>>>游戏数据</h1>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <div ng-style="{height:app.navHeight-145+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>

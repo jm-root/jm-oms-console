@@ -1,0 +1,168 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.activity.prop.edit')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">logo</label>
+
+                    <div class="col-sm-9">
+                        <a ui-sref=".logo"><img width="200" height="200" ng-src="{{prop.logo}}" onerror="this.src='../common/images/logo.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>编码</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="唯一编码" ng-model="prop.code" ng-required="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="名称" ng-model="prop.name" ng-required="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>描述</label>
+
+                    <div class="col-sm-9">
+                        <textarea class="form-control" style="max-width: 320px;" rows="4" style="resize: none;" placeholder="" ng-model="prop.description" ng-required="true"></textarea>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" style="margin-top: 3px">标签</label>
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" style="max-width: 320px;" ng-model="prop.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标记</label>
+                    <div class="col-sm-9">
+                        <input type="text" style="max-width: 150px;" class="form-control" placeholder="标记" ng-model="prop.sign">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否可赠送</label>
+                    <div class="col-sm-9">
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="prop.isGive"><i></i>
+                        </label>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属应用</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" style="max-width: 150px;" ng-model="prop.app" ng-options="option._id as option.name for option in apps">
+                            <option value="">无应用</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>道具类型</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control" style="max-width: 150px;" ng-model="prop.type" ng-change="changeType()">
+                            <option value="">请选择</option>
+                            <option value="0">礼包</option>
+                            <option value="1">虚拟币</option>
+                            <option value="2">常规道具</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="prop.type=='2'">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>使用方式</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control w-sm" ng-model="prop.useMode" ng-change="changeUseMode()">
+                            <option value="">请选择</option>
+                            <option value="0">驻留品</option>
+                            <option value="1">消耗品</option>
+                            <option value="2">收集品</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="prop.type=='2'&&(prop.useMode=='1'||prop.useMode=='2')">
+                    <label class="col-sm-2 control-label">{{amountName||'数量'}}</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="prop.amount">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <!--<div class="form-group" ng-if="prop.type=='2'">-->
+                    <!--<label class="col-sm-2 control-label">是否堆叠</label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<label class="i-checks checkbox-inline">-->
+                            <!--<input type="checkbox" ng-model="prop.isStack"><i></i>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+
+                <div class="form-group" ng-if="prop.type=='0'||prop.useMode=='2'">
+                    <label class="col-sm-2 control-label">附加道具</label>
+                    <div class="col-sm-9">
+                        <table class="table table-bordered table-hover table-condensed bg-white-only">
+                            <span class="btn btn-default" ng-click="addItem()">添加道具</span>
+                            <tr style="font-weight: bold">
+                                <td style="width:40%">道具</td>
+                                <td style="width:30%">数量</td>
+                                <td style="width:30%">过期时间</td>
+                                <td style="width:40px">编辑</td>
+                            </tr>
+                            <tr ng-repeat="item in prop.props">
+                                <td class="v-middle">
+                                    <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
+                                        <option value="">无道具</option>
+                                    </select>
+                                </td>
+                                <td class="v-middle">
+                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                </td>
+                                <td class="v-middle">
+                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                </td>
+                                <td style="white-space: nowrap">
+                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+
+
+            <footer class="panel-footer text-right bg-light lter">
+                <!--<div style="max-width: 750px">-->
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <!--</div>-->
+            </footer>
+        </div>
+    </form>
+
+</div>

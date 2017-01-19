@@ -1,0 +1,66 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.home.bbs.forum.edit')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">封面</label>
+
+                    <div class="col-sm-9">
+                        <a ui-sref=".logo"><img width="320" height="200" ng-src="{{forum.logo}}" onerror="this.src='../common/images/logo.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="名称" ng-model="forum.name" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">类型</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="版块类型" ng-model="forum.type" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">显示顺序</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="forum.rank" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标签</label>
+
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-9">
+                        <div class="ueditor" ng-model="forum.content" config="ueditor_config" ready="onUeditor"></div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

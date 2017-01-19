@@ -1,0 +1,134 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.bbs.forum.edit')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">封面</label>
+
+                    <div class="col-sm-9">
+                        <div>
+                            截取比例：<input type="number" style="width: 80px" min="1" ng-model="cropper.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" min="1" ng-model="cropper.cropHeight">
+                        </div>
+                        <a ui-sref=".logo"><img width="{{cropper.cropWidth}}" height="{{cropper.cropHeight}}" ng-src="{{forum.logo}}" img-Load="loadImg($event)" onerror="this.src='../common/images/logo.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属应用</label>
+                    <div class="col-sm-9 w-auto">
+                        <select class="form-control w-sm" ng-model="forum.app" ng-options="option._id as option.name for option in apps">
+                            <option value="">无</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">编码</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="编码" ng-model="forum.code">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="标题" ng-model="forum.title" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">副标题</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="副标题" ng-model="forum.subtitle">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">顺序</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="forum.order" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">热门度</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="热门度(最小值为0)" ng-model="forum.hot" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">推荐度</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="推荐度(最小值为0)" ng-model="forum.recommend" min="0" ng-pattern="/^[0-9]*$/">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标签</label>
+
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">跳转地址</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="跳转地址" ng-model="topic.url">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">详情</label>
+                    <div class="col-sm-9">
+                        <div class="m-b-xs">
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="0" ng-model="forum.pattern" ng-click="onck()" checked>
+                                    <i></i>
+                                    纯文本
+                                </label>
+                            </div>
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="1" ng-model="forum.pattern" ng-click="onck()">
+                                    <i></i>
+                                    带格式文本
+                                </label>
+                            </div>
+                            <div class="radio checkbox-inline">
+                                <label class="i-checks i-checks-sm">
+                                    <input type="radio" name="pattern" value="2" ng-model="forum.pattern" ng-click="onck()">
+                                    <i></i>
+                                    html
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ueditor" ng-model="forum.content" config="ueditor_config" ready="onUeditor"></div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

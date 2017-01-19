@@ -1,0 +1,30 @@
+<div class="bg-light lter b-b wrapper">
+    <div class="pull-right m-r-sm">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+    <h1 class="m-n font-thin h3">库存列表</h1>
+</div>
+<div class="panel-body">
+    <div class="col-lg-12 m-b-xs">
+        <strong style="vertical-align:middle">T币余额：{{(tbAmount||0)+' T币'}}</strong>
+    </div>
+    <div class="col-lg-12 m-b-xs">
+        <div class="pull-left">
+            <span>渠道ID/名称&nbsp;&nbsp;</span>
+            <input type="text" placeholder="渠道ID/名称" ng-model="search.agent">
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <button class="btn btn-default" ng-click="searchFun()">搜索</button>
+        <button class="btn btn-default" ng-click="resetFun()">重置</button>
+        <button class="btn btn-default" ng-click="onExportExcel()">导出excel</button>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="line b-b" style="margin: 0"></div>
+    <div class="panel-body">
+        <div ng-style="{height:app.navHeight-273+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+    </div>
+</div>

@@ -1,0 +1,324 @@
+<div ng-controller="AppManageCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.apps.manage.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-if="id">
+                    <label class="col-sm-2 control-label">应用id<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用id" ng-model="id" required readOnly="true">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用密码<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="{{showPwd? 'password' : 'text'}}" class="form-control" placeholder="应用密码" ng-model="appgame.password" readonly="true">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="showPassword()">{{pwdText}}</button>
+                                <button class="btn btn-default" type="button" ng-click="createPassword()">生成密码</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用名称<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用名称" ng-model="appgame.name" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用排序<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="应用排序" ng-model="appgame.sort" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用类型<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <select class ="form-control" ng-model="appgame.type" required>
+                            <option value="">--请选择类型--</option>
+                            <option value="0">自家产品</option>
+                            <option value="1">外部url</option>
+                            <option value="2">外部包名</option>
+                            <option value="3">第三方</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用分类<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <select class ="form-control" ng-model="appgame.category" required>
+                            <option value="">--请选择分类--</option>
+                            <option ng-repeat="cate in appCategories" value={{cate.value}}>{{cate.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="appgame.type != '2'">
+                    <label class="col-sm-2 control-label">应用访问地址<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="复制URL的id" ng-model="appgame.path" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="appgame.type == '2'">
+                    <label class="col-sm-2 control-label">应用andriod打开包名<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用andriod打开包名" ng-model="appgame.path" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="appgame.type == '2'">
+                    <label class="col-sm-2 control-label">应用ios打开URLSchemes<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用ios打开URLSchemes" ng-model="appgame.URLSchemes" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="appgame.type == '2'">
+                    <label class="col-sm-2 control-label">外部包下载地址<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="外部包下载地址" ng-model="appgame.download" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">logo名字<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="logo名字" ng-model="appgame.logo" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">游戏参数(json)<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="游戏参数" ng-model="appgame.params" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">游戏参数模版<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-model="appgame.tmpl" required>
+                            <option value="">--请选择配置模版--</option>
+                            <option value="empty">不需要配置模版</option>
+                            <option value="fish">捕鱼配置模版</option>
+                            <option value="gamble">压分配置模版</option>
+                            <option value="baoxiang">宝箱配置模版</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">分成比例<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="分成比例" ng-model="appgame.splitRatio" min="0" step="0.001" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">渠道费用<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="渠道费用" ng-model="appgame.channelCost" min="0" step="0.001" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用可控制的货币</label>
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" ng-model="appgame.currencies" add-on-space="true" add-on-paste="true" placeholder="应用可控制的货币(tb,jb,dbj)" min-length="1"></tags-input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用状态<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="0" ng-model="appgame.status" checked>
+                                <i></i>
+                                禁用
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="1" ng-model="appgame.status">
+                                <i></i>
+                                启用
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="2" ng-model="appgame.status">
+                                <i></i>
+                                接入中
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="3" ng-model="appgame.status">
+                                <i></i>
+                                审核中
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用是否显示<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="checkbox" value="true" ng-model="appgame.visible">
+                                <i></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用网络<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="1" ng-model="appgame.network">
+                                <i></i>
+                                单机
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="2" ng-model="appgame.network" checked>
+                                <i></i>
+                                弱联网
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="radio" value="3" ng-model="appgame.network">
+                                <i></i>
+                                网游
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用平台<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="checkbox" value="1" ng-model="appgame.platform.android" checked>
+                                <i></i>
+                                android
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="checkbox" value="2" ng-model="appgame.platform.ios" checked>
+                                <i></i>
+                                ios
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="checkbox" value="3" ng-model="appgame.platform.web" checked>
+                                <i></i>
+                                web
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label class="i-checks">
+                                <input type="checkbox" value="4" ng-model="appgame.platform.windows" checked>
+                                <i></i>
+                                windows
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用标签</label>
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" ng-model="appgame.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用简介</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用简介" ng-model="appgame.introduction">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用一句话简介</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用一句话简介" ng-model="appgame.summary">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用图标</label>
+                    <div class="col-sm-9">
+                        <a ui-sref=".icon"><img width="200" height="200" src="{{appgame.icon}}" onerror="this.src='img/header.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用包</label>
+                    <div class="col-sm-9">
+                        <div class="fileUpload btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-folder"></i>
+                            <span>上传游戏包</span>
+                            <input type="file" class="upload" nv-file-select="" ui-filereader uploader="uploader"/>
+                        </div>
+                        <span>{{uploaderStatus}}</span>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">应用版本</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="应用版本" ng-model="appgame.version">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="备注" ng-model="appgame.remark">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

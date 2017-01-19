@@ -1,0 +1,54 @@
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <form name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>包设置</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">渠道</label>
+                    <div class="col-sm-9 w-auto">
+                        <select class="form-control w-sm" ng-model="agentCode" ng-options="option.code as option.name for option in agents" ng-change="changeAgent()">
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">渠道ID</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{agent.code}}</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">合作类型</label>
+
+                    <div class="col-sm-9">
+                        <p class="form-control-static">{{agent.type==1?'合作':'买断'}}</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">授权应用</label>
+
+                    <div class="col-sm-9 w-lg">
+                        <select chosen placeholder-text-multiple="'请选择'" multiple class="w-full" ng-model="agent.apps" ng-options="option._id as option.name for option in apps">
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+            </div>
+            <footer class="panel-footer text-right bg-light lter">
+                <div style="max-width: 700px">
+                    <button type="submit" class="btn btn-success" ng-click="save()">保存</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>
