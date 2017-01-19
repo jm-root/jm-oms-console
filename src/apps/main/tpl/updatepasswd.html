@@ -1,0 +1,40 @@
+<uib-tabset class="tab-container">
+    <uib-tab heading="重置登录密码">
+        <div style="max-width: 700px">
+            <form name="formValidate" class="form-horizontal form-validation">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">原密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" placeholder="原密码" name="passwd" ng-model="data.passwd" required>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">新密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" placeholder="新密码" name="newPasswd" ng-model="data.newPasswd" required>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">确认新密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" placeholder="确认新密码" name="confirm_password" ng-model="data.confirm_password" ui-validate=" '$value==data.newPasswd' " ui-validate-watch=" 'data.newPasswd' " required>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                    </div>
+                    <footer class="panel-footer text-right bg-light lter">
+                        <button type="submit" class="btn btn-sm btn-primary" ng-disabled="formValidate.$invalid" ng-click="update()">更新</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+
+    </uib-tab>
+    <uib-tab heading="重置支付密码">
+
+    </uib-tab>
+</uib-tabset>

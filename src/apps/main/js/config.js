@@ -23,6 +23,30 @@
                             controller: 'MainCtrl',
                             resolve: load([path + 'js/controllers/index.js'])
                         })
+                        .state('app.main', {
+                            url: '/main',
+                            templateUrl: path + "tpl/main.html",
+                            controller: 'MainCtrl',
+                            resolve: load([path + 'js/controllers/index.js'])
+                        })
+                        .state('app.profile', {
+                            url: '/profile',
+                            templateUrl: path + 'tpl/profile.html',
+                            controller: 'ProfileCtrl',
+                            resolve: load([path + 'js/controllers/profile.js'])
+                        })
+                        .state('app.updatepasswd', {
+                            url: '/updatepasswd',
+                            templateUrl: path + 'tpl/updatepasswd.html',
+                            controller: 'UpdatePasswdCtrl',
+                            resolve: load([path + 'js/controllers/updatepasswd.js'])
+                        })
+                        .state('app.security', {
+                            url: '/security/{successUri}',
+                            templateUrl: path + 'tpl/security.html',
+                            controller: 'SecurityCtrl',
+                            resolve: load([path + 'js/controllers/security.js'])
+                        })
                         .state('access', {
                             url: '/access',
                             template: '<div ui-view class="fade-in-right-big smooth"></div>'

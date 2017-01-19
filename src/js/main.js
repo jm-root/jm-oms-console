@@ -9,7 +9,30 @@ angular.module('app')
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       if(isIE){ angular.element($window.document.body).addClass('ie');}
       if(isSmartDevice( $window ) ){ angular.element($window.document.body).addClass('smart')};
+        $scope.defaultRows = '20';
+        $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
 
+        $scope.navs = [{url:'app.main',title:'首页'}];
+        $scope.navsPush = function(obj,reset){
+            if(reset==undefined) reset = true;
+            if(reset) $scope.navs.splice(1);
+            $scope.navs.push(obj);
+        };
+        //angular-Grid全局定义
+        $scope.angGridFormatDateS = function (params) {
+            var date = params.data[params.colDef.field];
+            if(!date) return '';
+            return moment(date).format('YYYY-MM-DD HH:mm:ss');
+        };
+        $scope.angGridFormatDate = function (params) {
+            var date = params.data[params.colDef.field];
+            if(!date) return '';
+            return moment(date).format('YYYY-MM-DD');
+        };
+
+        $scope.angGridFormatStatus = function (params) {
+            return params.data[params.colDef.field] ? "启用" : "禁用";
+        };
       // config
       $scope.app = {
         name: 'Angulr',
@@ -103,5 +126,52 @@ angular.module('app')
                 $scope.error('网络故障');
             }
         };
+        window.onresize=function(){
+            $scope.app.navHeight = window.innerHeight-50;
+        };
 
+        $scope.openTips = function (opts) {
+            opts = opts || {};
+            opts.title = opts.title || '提示';
+            opts.content = opts.content || '';
+            opts.cancelTitle = opts.cancelTitle || '取消';
+            opts.cancelCallback = opts.cancelCallback || function(){};
+            opts.okTitle = opts.okTitle || '确定';
+            opts.okCallback = opts.okCallback || function(){};
+            opts.singleButton = opts.singleButton || false;
+
+            var modalInstance = $modal.open({
+                template: '<div class="modal-header">'+
+                '<h3 class="modal-title">'+opts.title+'</h3>'+
+                '</div>'+
+                '<div class="modal-body">'+opts.content+'</div>'+
+                '<div class="modal-footer">'+
+                '<button class="btn btn-default" ng-click="cancel()">'+opts.cancelTitle+'</button>'+
+                '<button class="btn btn-primary" ng-click="ok()" ng-hide="'+opts.singleButton+'">'+opts.okTitle+'</button>'+
+                '</div>',
+                controller: 'ModalInstanceCtrl',
+                size: opts.size,
+                resolve: {
+                    tipsOpts: function () {
+                        return opts;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function ($s) {
+                opts.okCallback($s);
+            }, function () {
+                opts.cancelCallback();
+            });
+        };
+
+    }])
+    .controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function($scope, $modalInstance) {
+        $scope.ok = function () {
+            $modalInstance.close($scope);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
   }]);

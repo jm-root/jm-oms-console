@@ -1,0 +1,9 @@
+{
+  "app": {
+    "acl": "Permission",
+    "acl.user": "User",
+    "acl.role": "Role",
+    "acl.resource": "Resource"
+
+  }
+}

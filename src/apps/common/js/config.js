@@ -45,6 +45,7 @@
                         deferred.reject({err:-1,msg:'用户无效'});
                     }else{
                         self.userInfo = user;
+                        self.user=user;
                         deferred.resolve(user);
                     }
                 });

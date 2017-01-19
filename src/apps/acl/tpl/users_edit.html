@@ -1,0 +1,85 @@
+<div ng-controller="UsersCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.acl.users.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" placeholder="用户" ng-model="user._id" ng-disabled="id" required>
+                            <div class="input-group-btn dropdown " drop-down-table>
+                                 <div type="button" class="btn btn-sm btn-default" >搜索 <span class="caret"></span></div>
+                                    <ul class="dropdown-menu pull-right w-auto" >
+                                        <div class="input-group">
+                                            <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
+                                            <span class="input-group-btn">
+                                              <button class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                        <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>用户ObjectID</th>
+                                                <th>用户ID</th>
+                                                <th>用户名</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">
+                                                <td>{{row._id}}</td>
+                                                <td>{{row.uid}}</td>
+                                                <td>{{row.nick}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" style="padding-top: 13px">标签</label>
+
+                    <div class="col-sm-3">
+                        <tags-input class="bootstrap" ng-model="user.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">昵称</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="昵称" ng-model="user.nick" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">角色</label>
+                    <div class="col-sm-3">
+                        <select ui-jq="chosen" multiple class="w-full" ui-options="{placeholder_text_multiple:'请选择'}" ng-model="user.roles" ng-options=" option.code as option.title for option in allRoles" required>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">激活状态</label>
+                    <div class="col-sm-3">
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="user.status" ng-true-value="1" ng-false-value="0"><i></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter row">
+                <div class="col-sm-5">
+                    <button ng-if="!id"type="submit" class="btn btn-success text-right" ng-click="!formValidate.$invalid&&save()">保存</button>
+                    <button ng-if="id" type="submit" class="btn btn-success text-right" ng-click="!formValidate.$invalid&&update()">修改</button>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+</div>

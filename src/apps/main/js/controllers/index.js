@@ -17,13 +17,11 @@ angular.module('app')
                     acl_user: sso.user.id
                 }
             }).success(function (result) {
-                console.log(result);
                 var obj = result;
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
                     $scope.nav = obj.ret;
-                    console.log($scope.nav);
                 }
             }).error(function (msg, code) {
                 console.log(msg);

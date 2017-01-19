@@ -27,6 +27,7 @@ var staticHost = gConfig.staticHost;
 var ssoUri = sdkHost+"/sso";
 var aclUri = sdkHost+"/acl";
 var adminUri = sdkHost+"/oms";
+adminUri="http://localhost:20170/oms"
 var appMgrUri = sdkHost + "/appManager";
 var agentUri = sdkHost + "/agent";
 var configUri = sdkHost + "/config";
