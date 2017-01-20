@@ -15,12 +15,7 @@
                         .state('app.' + name, {
                             url: '/activity',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['uiLoad',
-                                    function(uiLoad ){
-                                        return uiLoad.load( [path + 'js/controllers/activity.js'] );
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/activity.js'] )
                         })
                         .state('app.'+ name + '.prop', {
                             url: '/prop',
@@ -36,22 +31,12 @@
                             params: {pid: null},
                             templateUrl: path + 'tpl/activity.prop.edit.html',
                             controller: 'ActivityPropEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function ($ocLazyLoad) {
-                                        // return $ocLazyLoad.load(['ng-tags-input']);
-                                    }]
-                            }
+                            resolve: load(['ng-tags-input'])
                         })
                         .state('app.' + name + '.prop.edit.logo', {
                             url: '/logo',
                             templateUrl: path + 'tpl/imgcrop2.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function( $ocLazyLoad ){
-                                        // return $ocLazyLoad.load('angular-img-cropper');
-                                    }]
-                            }
+                            resolve: load(['angular-img-cropper'])
                         })
                         .state('app.' + name + '.gaveprop', {
                             url: '/gaveprop',
@@ -72,7 +57,7 @@
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/activity.forum.edit.html',
                             controller: 'ActivityForumEditCtrl',
-                            // resolve: {
+                            resolve: load(['ng-tags-input',JQ_CONFIG.ueditor])
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function( $ocLazyLoad, uiLoad ){
                             //             // return $ocLazyLoad.load(['ng-tags-input'])
@@ -85,12 +70,7 @@
                         .state('app.' + name + '.forum.edit.logo', {
                             url: '/logo',
                             templateUrl: 'tpl/imgcrop2.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function( $ocLazyLoad ){
-                                        // return $ocLazyLoad.load('angular-img-cropper');
-                                    }]
-                            }
+                            resolve: load('angular-img-cropper')
                         })
 
                         .state('app.' + name + '.aty', {
@@ -106,25 +86,12 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.edit.html',
                             controller: 'ActivityAtyEditCtrl',
-                            // resolve: {
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function( $ocLazyLoad, uiLoad ){
-                            //             return $ocLazyLoad.load(['ui.bootstrap.datetimepicker','ng-tags-input'])
-                            //                 .then(function () {
-                            //                     return uiLoad.load(JQ_CONFIG.ueditor);
-                            //                 });
-                            //         }]
-                            // }
+                            resolve: load(['ui.bootstrap.datetimepicker','ng-tags-input',JQ_CONFIG.ueditor])
                         })
                         .state('app.' + name + '.aty.edit.logo', {
                             url: '/logo',
                             templateUrl: 'tpl/imgcrop2.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function( $ocLazyLoad ){
-                                        // return $ocLazyLoad.load('angular-img-cropper');
-                                    }]
-                            }
+                            resolve: load('angular-img-cropper')
                         })
 
                         .state('app.' + name + '.aty.item', {
@@ -140,16 +107,10 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.item.edit.html',
                             controller: 'ActivityAtyItemEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function( $ocLazyLoad, uiLoad ){
-                                        return $ocLazyLoad.load(['ui.bootstrap.datetimepicker','ng-tags-input']);
-                                    }]
-                            }
+                            resolve: load(['ui.bootstrap.datetimepicker','ng-tags-input'])
                         });
 
                     function load(srcs, callback) {
-                        console.info(srcs);
                         return {
                             deps: ['$ocLazyLoad', '$q',
                                 function( $ocLazyLoad, $q ){

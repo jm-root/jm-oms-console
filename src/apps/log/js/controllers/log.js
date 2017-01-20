@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.GuestBookHistory||(global.GuestBookHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -112,7 +113,8 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', '
 }]);
 
 
-app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.WordFilterLogHistory||(global.WordFilterLogHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -228,7 +230,8 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID
 }]);
 
 
-app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state,$stateParams, $http, sso, AGGRID, global) {
+app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http','AGGRID', 'global', function ($scope, $state,$stateParams, $http,AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.WordFilterHistory||(global.WordFilterHistory={});
     $scope.pageSize=history.pageSize||'50';
     $scope.search = history.search||{};
@@ -378,7 +381,8 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 's
     };
 
 }]);
-app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+    var sso = jm.sdk.sso;
     $scope.$state = $state;
     var url= wordfilterUri+'/words';
     var id = $stateParams.id;

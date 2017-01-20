@@ -35,6 +35,9 @@ var staticUri = staticHost + "/static";
 var activityUri = sdkHost + "/activity";
 var propUri = sdkHost + "/prop";
 var depotUri = sdkHost + "/depot";
+var payUri = sdkHost + "/pay";
+var bbsUri = sdkHost + "/bbs";
+var wordfilterUri = sdkHost + "/wordfilter";
 
 jm.sdk.init({uri: sdkHost});
 

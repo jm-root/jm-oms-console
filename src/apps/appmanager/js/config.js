@@ -15,12 +15,7 @@
                         .state('app.apps', {
                             url: '/apps',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['uiLoad',
-                                    function(uiLoad ){
-                                        return uiLoad.load( [path + 'js/controllers/appManage.js'] );
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/appManage.js'] )
                         })
                         .state('app.apps.manage', {
                             url: '/manage',
@@ -29,46 +24,22 @@
                         .state('app.apps.manage.edit', {
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/app_edit.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return $ocLazyLoad.load(['ng-tags-input', 'angularFileUpload']);
-                                    }]
-                            }
+                            resolve: load(['ng-tags-input', 'angularFileUpload'])
                         })
                         .state('app.apps.manage.edit.icon', {
                             url: '/icon',
                             templateUrl: path + 'tpl/imgcrop.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function( $ocLazyLoad ){
-                                        return $ocLazyLoad.load('ngImgCrop');
-                                    }]
-                            }
+                            resolve: load(['ngImgCrop'])
                         })
                         .state('app.apps.upload', {
                             url: '/upload',
                             templateUrl: path + 'tpl/apps_upload.html',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function( $ocLazyLoad, uiLoad){
-                                        return $ocLazyLoad.load('angularFileUpload').then(
-                                            function(){
-                                                return uiLoad.load(path + 'js/controllers/appUpload.js');
-                                            }
-                                        );
-                                    }]
-                            }
+                            resolve: load(['angularFileUpload',path + 'js/controllers/appUpload.js'])
                         })
                         .state('app.rooms', {
                             url: '/rooms',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['uiLoad',
-                                    function(uiLoad ){
-                                        return uiLoad.load( [path + 'js/controllers/roomManage.js'] );
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/roomManage.js'] )
                         })
                         .state('app.rooms.manage', {
                             url: '/manage',
@@ -77,12 +48,7 @@
                         .state('app.rooms.manage.gameset', {
                             url: '/gameset',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/gameset.js'] );
-                                    }]
-                            }
+                            resolve: load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/gameset.js'] )
                         })
                         .state('app.rooms.manage.gameset.list', {
                             url: '/list/{appId}/{type}',
@@ -91,65 +57,39 @@
                         })
                         .state('app.rooms.manage.gameset.edit', {
                             url: '/edit/{appId}/{type}/{id}',
-                            templateUrl: 'tpl/appmanager/gameset_edit.html',
+                            templateUrl: path + 'tpl/gameset_edit.html',
                             controller: 'GameSetEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load( ['js/controllers/appmanager/gameset_edit.js']).then(function () {
-                                            return uiLoad.load(JQ_CONFIG.jmGameDiffcult);
-                                        });
-
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/gameset_edit.js',JQ_CONFIG.jmGameDiffcult])
                         })
                         .state('app.rooms.manage.gameset.table', {
                             url: '/table',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load( ['../common/js/jm-play-sdk.min.js', 'js/controllers/appmanager/gameset_table.js'] );
-                                    }]
-                            }
+                            resolve: load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/gameset_table.js'] )
                         })
                         .state('app.rooms.manage.gameset.table.list', {
                             url: '/list/{appId}/{type}/{roomId}',
-                            templateUrl: 'tpl/appmanager/gameset_list.html',
+                            templateUrl: path + 'tpl/gameset_list.html',
                             controller: 'GameSetTableListCtrl'
                         })
                         .state('app.rooms.manage.gameset.table.edit', {
                             url: '/edit/{appId}/{type}/{roomId}/{id}',
-                            templateUrl: 'tpl/appmanager/gameset_table_edit.html',
+                            templateUrl: path + 'tpl/gameset_table_edit.html',
                             controller: 'GameSetTableEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load( ['js/controllers/appmanager/gameset_table_edit.js']).then(function () {
-                                            return uiLoad.load(JQ_CONFIG.jmGameDiffcult);
-                                        });
-
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/gameset_table_edit.js',JQ_CONFIG.jmGameDiffcult])
                         })
                         .state('app.rooms.manage.baoxiang', {
                             url: '/baoxiang',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load( ['../common/js/jm-play-sdk.min.js', 'js/controllers/appmanager/baoxiang.js'] );
-                                    }]
-                            }
+                            resolve: load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/baoxiang.js'] )
                         })
                         .state('app.rooms.manage.baoxiang.list', {
                             url: '/list/{appId}',
-                            templateUrl: 'tpl/appmanager/baoxiang_list.html',
+                            templateUrl: path + 'tpl/baoxiang_list.html',
                             controller: 'BaoXiangListCtrl'
                         })
                         .state('app.rooms.manage.baoxiang.edit', {
                             url: '/edit/{appId}/{id}',
-                            templateUrl: 'tpl/appmanager/baoxiang_edit.html',
+                            templateUrl: path + 'tpl/baoxiang_edit.html',
                             controller: 'BaoXiangEditCtrl'
                         })
                         .state('app.rooms.manage.baoxiang.record', {
@@ -158,7 +98,7 @@
                         })
                         .state('app.rooms.manage.baoxiang.record.list', {
                             url: '/list/:typeId',
-                            templateUrl: 'tpl/appmanager/baoxiang_record_list.html',
+                            templateUrl: path + 'tpl/baoxiang_record_list.html',
                             controller: 'BaoXiangRecordListCtrl'
                         })
 

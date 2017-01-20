@@ -125,8 +125,8 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID',
     });
 }]);
 
-app.controller('BankTransferCtrl', ['$scope', '$state', '$http', 'sso', 'global', '$timeout', function ($scope, $state, $http, sso, global, $timeout) {
-
+app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$timeout', function ($scope, $state, $http,  global, $timeout) {
+    var sso = jm.sdk.sso;
     $scope.bank = {};
     $scope.accounts = [];
     $scope.defAccount = {user:{},holds:{}};

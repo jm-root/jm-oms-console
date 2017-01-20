@@ -1,5 +1,6 @@
 
-app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
+app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, common, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.agentListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.status = history.status||'';
@@ -374,7 +375,8 @@ app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 's
 
 }]);
 
-app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'global', function($scope, $http, $state, $stateParams, sso, global) {
+app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams,global) {
+    var sso = jm.sdk.sso;
     $scope.checkInput = {};
     var viewPath = 'view.agent.list';
     $scope.super = false;

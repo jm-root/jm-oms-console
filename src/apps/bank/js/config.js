@@ -16,15 +16,8 @@
                         .state('app.bank', {
                             url: '/bank',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad, uiLoad) {
-                                        return uiLoad.load([path + 'controllers/bank.js']);
-                                    }]
-                            }
+                            resolve: load([path + 'js/controllers/bank.js'])
                         })
-
-
                         //财务管理
                         .state('app.bank.currencyrate', {
                             url: '/currencyrate',
@@ -39,108 +32,50 @@
                             url: '/list',
                             templateUrl: path + 'tpl/account.pay.list.html',
                             controller: 'AccountPayListCtrl',
-                            resolve: {
-                                deps: ['uiLoad','$ocLazyLoad',
-                                    function (uiLoad,$ocLazyLoad) {
-                                        return uiLoad.load( JQ_CONFIG.daterangepicker).then(function(){
-                                            return $ocLazyLoad.load(['dateRangePicker']);
-                                        });
-                                    }
-                                ]
-                            }
+                            resolve: load(['dateRangePicker'])
                         })
 
                         .state('app.bank.account', {
                             url: '/account',
-                            templateUrl: 'tpl/bank.account.html',
+                            templateUrl: path + 'tpl/bank.account.html',
                             controller: 'BankAccountCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return uiLoad.load('../libs/jm/jm-play/jm-play-sdk.min.js');
-                                    }
-                                ]
-                            }
+                            resolve: load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.preauth', {
                             url: '/preauth',
                             templateUrl: path + 'tpl/bank.preauth.html',
                             controller: 'BankPreauthCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return uiLoad.load('../libs/jm/jm-play/jm-play-sdk.min.js');
-                                    }
-                                ]
-                            }
+                            resolve: load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.transfer', {
                             url: '/transfer',
                             templateUrl: path  + 'tpl/bank.transfer.html',
                             controller: 'BankTransferCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return $ocLazyLoad.load('smart-table')
-                                            .then(function () {
-                                                return uiLoad.load('../libs/jm/jm-play/jm-play-sdk.min.js');
-                                            });
-
-                                    }
-                                ]
-                            }
+                            resolve:load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.exchange', {
                             url: '/exchange',
                             templateUrl: path + 'tpl/bank.exchange.html',
                             controller: 'BankExchangeCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return uiLoad.load('../libs/jm/jm-play/jm-play-sdk.min.js');
-                                    }
-                                ]
-                            }
+                            resolve: load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.deal', {
                             url: '/deal',
-                            templateUrl: 'tpl/bank/bank.deal.html',
+                            templateUrl: path + 'tpl/bank.deal.html',
                             controller: 'BankDealCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return uiLoad.load('../common/js/jm-play-sdk.min.js');
-                                    }
-                                ]
-                            }
+                            resolve: load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.npreauth', {
                             url: '/npreauth',
-                            templateUrl: 'tpl/bank/bank.npreauth.html',
+                            templateUrl: path + 'tpl/bank.npreauth.html',
                             controller: 'BankNPreauthCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return $ocLazyLoad.load('smart-table')
-                                            .then(function () {
-                                                return uiLoad.load('../common/js/jm-play-sdk.min.js');
-                                            });
-
-                                    }
-                                ]
-                            }
+                            resolve: load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
                         })
                         .state('app.bank.overdraw', {
                             url: '/overdraw',
-                            templateUrl: 'tpl/bank/bank.overdraw.html',
+                            templateUrl: path + 'tpl/bank.overdraw.html',
                             controller: 'BankOverdrawCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return $ocLazyLoad.load('smart-table');
-                                    }
-                                ]
-                            }
+                            resolve: load(['smart-table'])
                         })
 
                     function load(srcs, callback) {

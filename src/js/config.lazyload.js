@@ -47,8 +47,8 @@ angular.module('app')
                           '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
                           '../libs/jquery/bootstrap-daterangepicker/daterangepicker-bs3.css'],
       tagsinput:      [   '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
-                          '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css']
-                      
+                          '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
+      ueditor:         ['../src/js/directives/ui-ueditor.js']
     }
   )
     .constant('AGGRID', {
@@ -225,9 +225,14 @@ angular.module('app')
               '../libs/angular/ng-tags-input/ng-tags-input.js',
               '../libs/angular/ng-tags-input/ng-tags-input.css'
           ]
+      },
+      {
+          name: 'dateRangePicker',
+          files: [
+              '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js'
+          ]
       }
-
-      ]
+]
   )
   // oclazyload config
   .config(['$ocLazyLoadProvider', 'MODULE_CONFIG', function($ocLazyLoadProvider, MODULE_CONFIG) {

@@ -15,12 +15,7 @@
                         .state('app.' + name, {
                             url: '/agent',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: {
-                                deps: ['uiLoad',
-                                    function(uiLoad ){
-                                        return uiLoad.load( [path + 'js/controllers/agent.js'] );
-                                    }]
-                            }
+                            resolve: load( [path + 'js/controllers/agent.js'] )
                         })
                         .state('app.' + name + '.list', {
                             url: '/list',
@@ -31,23 +26,13 @@
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/agent.edit.html',
                             controller: 'AgentEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load(['smart-table','ng-tags-input']);
-                                    }]
-                            }
+                            resolve: load(['smart-table','ng-tags-input'])
                         })
                         .state('app.' + name + '.create', {
                             url: '/create',
                             templateUrl: path + 'tpl/agent.create.html',
                             controller: 'AgentCreateCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad',
-                                    function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load(['smart-table','ng-tags-input']);
-                                    }]
-                            }
+                            resolve: load(['smart-table','ng-tags-input'])
                         })
 
 

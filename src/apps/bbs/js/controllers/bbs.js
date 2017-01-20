@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso', 'global',function($scope, $http, $state, AGGRID, sso, global) {
+app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID,global) {
+    var sso = jm.sdk.sso;
     var history = global.BBSForumListHistory||(global.BBSForumListHistory={});
     var url = bbsUri+'/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -303,7 +304,8 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
 
 }]);
 
-app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso', 'global',function($scope, $http, $state, AGGRID, sso, global) {
+app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID,global) {
+    var sso = jm.sdk.sso;
     var history = global.BBSTopicListHistory||(global.BBSTopicListHistory={});
     var url = bbsUri+'/topics';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -486,7 +488,8 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso'
     });
 }]);
 
-app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+    var sso = jm.sdk.sso;
     var url = bbsUri+'/topics';
     var furl = bbsUri+'/forums';
     var id = $stateParams.id;
