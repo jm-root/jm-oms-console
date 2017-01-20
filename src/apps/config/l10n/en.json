@@ -1,5 +1,10 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "config": {
+    "CONFIG_MANAGE": "Config Manage",
+    "CONFIG_LIST": "Config List",
+    "CONFIG_MENUS": "Set Menu",
+    "CONFIG_SYSTEMINIT": "System Init",
+    "CONFIG_SYSTEMCONFIG": "System Config",
+    "CONFIG_UNIFIED": "Unified Config"
   }
 }

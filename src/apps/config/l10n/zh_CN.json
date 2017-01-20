@@ -1,5 +1,10 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "config": {
+    "CONFIG_MANAGE": "配置管理",
+    "CONFIG_LIST": "管理配置信息",
+    "CONFIG_MENUS": "菜单配置",
+    "CONFIG_SYSTEMINIT": "系统初始化",
+    "CONFIG_SYSTEMCONFIG": "系统配置",
+    "CONFIG_UNIFIED": "统一配置"
   }
 }
