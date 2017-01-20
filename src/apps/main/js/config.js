@@ -26,6 +26,11 @@
                             controller: 'ProfileCtrl',
                             resolve: load([path + 'js/controllers/profile.js'])
                         })
+                        .state('app.profile.avatar', {
+                            url: '/avatar',
+                            templateUrl: path +'tpl/imgcrop.html',
+                            resolve:load([ 'ngImgCrop'])
+                        })
                         .state('app.updatepasswd', {
                             url: '/updatepasswd',
                             templateUrl: path + 'tpl/updatepasswd.html',

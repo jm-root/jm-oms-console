@@ -232,6 +232,20 @@ angular.module('app')
               '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js'
           ]
       }
+          ,
+          {
+              name: 'uiTree',
+              files: [
+
+                  'js/directives/angular-ui-tree.js'
+              ]
+          },
+          {
+              name: 'localytics.directives',
+              files: [
+                  '../libs/angular/angular-chosen-localytics/dist/angular-chosen.min.js'
+              ]
+          }
 ]
   )
   // oclazyload config

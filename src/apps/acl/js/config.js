@@ -12,8 +12,8 @@
      */
     angular.module('app')
         .config(
-            [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
-                function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
+            [ '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
+                function ($stateProvider, $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
                     $stateProvider
                         .state('app.acl', {
                             url: '/acl',
@@ -27,7 +27,7 @@
                         .state('app.acl.users.list', {
                             url: '/list',
                             templateUrl: path +'tpl/users_list.html',
-                            resolve: load(['dateRangePicker'])
+                            resolve: load(['moment'£¬'daterangepicker'])
                         })
                         .state('app.acl.users.edit', {
                             url: '/edit/{id}',

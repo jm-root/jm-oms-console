@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ResourceCtrl', ['$scope', '$state', '$http', 'sso', function ($scope, $state, $http, sso) {
-
+app.controller('ResourceCtrl', ['$scope', '$state', '$http',  function ($scope, $state, $http) {
+    var sso=jm.sdk.sso;
     $scope.opts = {
         injectClasses: {
             "ul": "tree-font-size",

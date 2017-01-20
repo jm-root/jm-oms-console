@@ -1,16 +1,9 @@
 {
-  "header": {
-    "navbar": {
-      "UPLOAD": "Upload",
-      "new": {
-        "NEW": "New",
-        "PROJECT": "Projects",
-        "TASK": "Task",
-        "USER": "User",
-        "EMAIL": "Email"
-      },
-      "NOTIFICATIONS": "Notifications"
-    }
+  "COPYRIGHT": "有限公司<br>&copy; 2015",
+  "login": {
+    "LOGIN": "登录",
+    "FORGOT_PASSWORD": "忘记密码?",
+    "ENTER_LOGIN_INFO": "请输入登录信息"
   },
   "nav": {
     "HEADER": "导航",

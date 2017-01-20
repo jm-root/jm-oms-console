@@ -1,5 +1,6 @@
 
-app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
+app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID',   'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var sso=jm.sdk.sso;
     var history = global.usersListHistory;
     $scope.pageSize = history.pageSize||'10';
     $scope.search = history.search||{};

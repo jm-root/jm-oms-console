@@ -35,7 +35,7 @@ angular.module('app')
         };
       // config
       $scope.app = {
-        name: 'Angulr',
+        name: '总后台',
         version: '2.2.0',
         // for chart colors
         color: {
