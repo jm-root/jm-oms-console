@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.rechargeCardHistory||(global.rechargeCardHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search || {};
@@ -211,7 +212,8 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID'
     });
 }]);
 
-app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http', 'sso', 'AGGRID', 'global', function ($scope, $state,$stateParams, $http, sso, AGGRID, global) {
+app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http', 'AGGRID', 'global', function ($scope, $state,$stateParams, $http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.rechargeCardLogHistory||(global.rechargeCardLogHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -373,7 +375,8 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
 }]);
 
 
-app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     global.rechargeListHistory || (global.rechargeListHistory = {});
     var history = global.rechargeListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -553,7 +556,8 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID
 }]);
 
 
-app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams,$http, sso, AGGRID, global) {
+app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams,$http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     $scope.card = {};
     $scope.$state = $state;
 
@@ -663,7 +667,8 @@ app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$htt
 
 }]);
 
-app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.rechargeCardTypeHistory||(global.rechargeCardTypeHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search || {};
@@ -796,7 +801,8 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'sso', 'AGG
 }]);
 
 
-app.controller('RechargeCardTypeAddCtrl', ['$scope', '$state','$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state,$stateParams, $http, sso, AGGRID, global) {
+app.controller('RechargeCardTypeAddCtrl', ['$scope', '$state','$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state,$stateParams, $http, AGGRID, global) {
+    var sso = jm.sdk.sso;
     $scope.cardType = {};
     $scope.isEdit = false;
     var data = $stateParams.data;

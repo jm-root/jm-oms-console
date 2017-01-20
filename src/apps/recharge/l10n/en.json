@@ -1,5 +1,9 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "recharge": {
+    "RECHARGE_MANAGE": "Recharge",
+    "RECHARGE_CARDTYPE": "Card Type",
+    "RECHARGE_CARD": "Card",
+    "RECHARGE_THIRD": "Third",
+    "RECHARGE_CARDLOG": "Log"
   }
 }

@@ -1,16 +1,16 @@
 
-app.controller('ConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-
-
-}]);
-
-app.controller('ConfigCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'global', function($scope, $http, $state, $stateParams, sso, global) {
-
+app.controller('ConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, common, AGGRID, global) {
+    var sso = jm.sdk.sso;
 
 }]);
 
-app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, global) {
+app.controller('ConfigCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
+    var sso = jm.sdk.sso;
 
+}]);
+
+app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
+    var sso = jm.sdk.sso;
     $scope.val = '';
 
     $http.get(adminUri+'/navconfig', {
@@ -61,8 +61,8 @@ app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', 
 }]);
 
 
-app.controller('ConfigSystemInitCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'global', function($scope, $http, $state, $stateParams, sso, global) {
-
+app.controller('ConfigSystemInitCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
+    var sso = jm.sdk.sso;
     var getItems = function(){
         $http.get(adminUri+'/systeminit', {
             params:{
@@ -161,8 +161,8 @@ app.controller('ConfigSystemInitCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('ConfigSystemConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, global) {
-
+app.controller('ConfigSystemConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
+    var sso = jm.sdk.sso;
     jm.sdk.init({uri: gConfig.sdkHost});
     var config = jm.sdk.config;
 
@@ -294,10 +294,11 @@ app.controller('ConfigSystemConfigCtrl', ['$scope', '$http', '$state', '$statePa
 
 
 
-app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, global) {
+app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
 
     jm.sdk.init({uri: gConfig.sdkHost});
     var config = jm.sdk.config;
+    var sso = jm.sdk.sso;
     // var ajax = jm.ajax;
 
     var hkey = 'root:config:roots';

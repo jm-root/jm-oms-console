@@ -1,5 +1,9 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "recharge": {
+    "RECHARGE_MANAGE": "充值管理",
+    "RECHARGE_CARDTYPE": "点卡类型",
+    "RECHARGE_CARD": "官方点卡",
+    "RECHARGE_THIRD": "第三方充值",
+    "RECHARGE_CARDLOG": "点卡充值记录"
   }
 }

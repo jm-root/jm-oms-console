@@ -38,6 +38,10 @@
             self.playerGamesListHistory = {};
             self.playerGiveLogHistory = {};
             self.playerOnlineHistory = {};
+            self.rechargeCardHistory = {};
+            self.rechargeCardLogHistory = {};
+            self.rechargeListHistory = {};
+            self.rechargeCardTypeHistory = {};
 
             self.dateRangeOptions = {
                 "autoApply": true,
