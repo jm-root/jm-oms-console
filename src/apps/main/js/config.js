@@ -9,9 +9,6 @@
             ['$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
                 function ($stateProvider, $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
                     var layout = "tpl/app.html";
-                    if (window.location.href.indexOf("material") > 0) {
-                        layout = "tpl/blocks/material.layout.html";
-                    }
                     $urlRouterProvider
                         .otherwise('/app/dashboard');
 
@@ -20,12 +17,6 @@
                             abstract: true,
                             url: '/app',
                             templateUrl: path + layout,
-                            controller: 'MainCtrl',
-                            resolve: load([path + 'js/controllers/index.js'])
-                        })
-                        .state('app.main', {
-                            url: '/main',
-                            templateUrl: path + "tpl/main.html",
                             controller: 'MainCtrl',
                             resolve: load([path + 'js/controllers/index.js'])
                         })
