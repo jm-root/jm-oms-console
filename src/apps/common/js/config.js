@@ -13,6 +13,31 @@
             self.usersListHistory = {};
             self.agentListHistory = {};
             self.configListHistory = {};
+            self.coinStockOrderHistory = {};
+            self.coinStockListHistory = {};
+            self.coinDistributeBatchHistory = {};
+            self.agentDataRegisterHistory = {};
+            self.agentDataRechargeHistory = {};
+            self.bankAccountHistory = {};
+            self.bankPreauthHistory = {};
+            self.bankDealHistory = {};
+            self.appsListHistory = {};
+            self.homeActivityHistory = {};
+            self.homeBBSForumListHistory = {};
+            self.homeBBSTopicListHistory = {};
+            self.packageAgentHistory = {};
+            self.coinAccountListHistory = {};
+            self.coinRecordAgentStatHistory = {};
+            self.coinRecordLogsHistory = {};
+            self.activityPropHistory = {};
+            self.activityForumListHistory = {};
+            self.activityAtyListHistory = {};
+            self.activityAtyItemListHistory = {};
+            self.accountPayListHistory = {};
+            self.playerListHistory = {};
+            self.playerGamesListHistory = {};
+            self.playerGiveLogHistory = {};
+            self.playerOnlineHistory = {};
 
             self.dateRangeOptions = {
                 "autoApply": true,

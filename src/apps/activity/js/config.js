@@ -39,7 +39,7 @@
                             resolve: {
                                 deps: ['$ocLazyLoad',
                                     function ($ocLazyLoad) {
-                                        // return $ocLazyLoad.load(['../libs/angular/ng-tags-input/ng-tags-input.js']);
+                                        // return $ocLazyLoad.load(['ng-tags-input']);
                                     }]
                             }
                         })
@@ -72,15 +72,15 @@
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/activity.forum.edit.html',
                             controller: 'ActivityForumEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function( $ocLazyLoad, uiLoad ){
-                                        // return $ocLazyLoad.load(['ng-tags-input'])
-                                        //     .then(function () {
-                                        //         return uiLoad.load(JQ_CONFIG.ueditor);
-                                        //     });
-                                    }]
-                            }
+                            // resolve: {
+                            //     deps: ['$ocLazyLoad', 'uiLoad',
+                            //         function( $ocLazyLoad, uiLoad ){
+                            //             // return $ocLazyLoad.load(['ng-tags-input'])
+                            //             //     .then(function () {
+                            //             //         return uiLoad.load(JQ_CONFIG.ueditor);
+                            //             //     });
+                            //         }]
+                            // }
                         })
                         .state('app.' + name + '.forum.edit.logo', {
                             url: '/logo',
@@ -88,7 +88,7 @@
                             resolve: {
                                 deps: ['$ocLazyLoad',
                                     function( $ocLazyLoad ){
-                                        return $ocLazyLoad.load('angular-img-cropper');
+                                        // return $ocLazyLoad.load('angular-img-cropper');
                                     }]
                             }
                         })
@@ -106,15 +106,15 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.edit.html',
                             controller: 'ActivityAtyEditCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function( $ocLazyLoad, uiLoad ){
-                                        return $ocLazyLoad.load(['ui.bootstrap.datetimepicker','ng-tags-input'])
-                                            .then(function () {
-                                                return uiLoad.load(JQ_CONFIG.ueditor);
-                                            });
-                                    }]
-                            }
+                            // resolve: {
+                            //     deps: ['$ocLazyLoad', 'uiLoad',
+                            //         function( $ocLazyLoad, uiLoad ){
+                            //             return $ocLazyLoad.load(['ui.bootstrap.datetimepicker','ng-tags-input'])
+                            //                 .then(function () {
+                            //                     return uiLoad.load(JQ_CONFIG.ueditor);
+                            //                 });
+                            //         }]
+                            // }
                         })
                         .state('app.' + name + '.aty.edit.logo', {
                             url: '/logo',
@@ -122,7 +122,7 @@
                             resolve: {
                                 deps: ['$ocLazyLoad',
                                     function( $ocLazyLoad ){
-                                        return $ocLazyLoad.load('angular-img-cropper');
+                                        // return $ocLazyLoad.load('angular-img-cropper');
                                     }]
                             }
                         })

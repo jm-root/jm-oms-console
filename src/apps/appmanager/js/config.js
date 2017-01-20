@@ -9,7 +9,7 @@
      */
     angular.module('app')
         .config(
-            [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
+            ['$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
                 function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
                     $stateProvider
                         .state('app.apps', {

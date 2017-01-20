@@ -32,6 +32,9 @@ var agentUri = sdkHost + "/agent";
 var configUri = sdkHost + "/config";
 var uploadUri = sdkHost + "/upload";
 var staticUri = staticHost + "/static";
+var activityUri = sdkHost + "/activity";
+var propUri = sdkHost + "/prop";
+var depotUri = sdkHost + "/depot";
 
 jm.sdk.init({uri: sdkHost});
 

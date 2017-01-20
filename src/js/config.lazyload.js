@@ -51,6 +51,43 @@ angular.module('app')
                       
     }
   )
+    .constant('AGGRID', {
+        zh_CN: {
+            // for filter panel
+            page: ' ',
+            more: ' ',
+            to: '-',
+            of: '/',
+            next: '下一页',
+            last: '未尾页',
+            first: '首页',
+            previous: '上一页',
+            loadingOoo: '加载中...',
+            // for set filter
+            selectAll: '全选',
+            searchOoo: '搜索...',
+            blanks: '空白',
+            // for number filter and string filter
+            filterOoo: '过滤...',
+            applyFilter: '应用过滤...',
+            // for number filter
+            equals: '等于',
+            lessThan: '小于',
+            greaterThan: '大于',
+            // for text filter
+            contains: '包含',
+            startsWith: '开始',
+            endsWith: '结束',
+            // tool panel
+            columns: '列',
+            pivotedColumns: '主列',
+            pivotedColumnsEmptyMessage: '请将列拖到这里',
+            valueColumns: '列值',
+            valueColumnsEmptyMessage: '请将列拖到这里',
+            //
+            noRowsToShow: '无数据'
+        }
+    })
   .constant('MODULE_CONFIG', [
       {
           name: 'ngGrid',

@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso', 'global',function($scope, $http, $state, AGGRID, sso, global) {
+app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODULE_CONFIG', 'global',function($scope, $http, $state, AGGRID,MODULE_CONFIG, global) {
+    var sso = jm.sdk.sso;
     var history = global.activityPropHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -135,7 +136,8 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso'
     });
 }]);
 
-app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+    var sso = jm.sdk.sso;
     var id = $stateParams.id;
     $scope.id = id;
     $scope.prop = {};
@@ -289,8 +291,9 @@ app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
     $scope.depot = {isSelf:true};
+    var sso = jm.sdk.sso;
 
     $http.get(propUri+'/props', {
         params:{
@@ -357,7 +360,8 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
     });
 }]);
 
-app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso', 'global',function($scope, $http, $state, AGGRID, sso, global) {
+app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.activityForumListHistory;
     var url = activityUri+'/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -506,7 +510,8 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 
     };
 }]);
 
-app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+    var sso = jm.sdk.sso;
     var url = activityUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -630,7 +635,8 @@ app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'sso', 'global',function($scope, $http, $state, AGGRID, sso, global) {
+app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+    var sso = jm.sdk.sso;
     var history = global.activityAtyListHistory;
     var url = activityUri+'/activities';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -835,7 +841,8 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 's
     });
 }]);
 
-app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+    var sso = jm.sdk.sso;
     var url = activityUri+'/activities';
     var furl = activityUri+'/forums';
     var id = $stateParams.id;
@@ -1123,7 +1130,8 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
 
 }]);
 
-app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateParams', 'AGGRID', 'sso', 'global',function($scope, $http, $state, $stateParams, AGGRID, sso, global) {
+app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateParams', 'AGGRID', 'global',function($scope, $http, $state, $stateParams, AGGRID,global) {
+    var sso = jm.sdk.sso;
     var history = global.activityAtyItemListHistory;
     var url = activityUri+'/items';
     var purl = activityUri+'/activities';
@@ -1269,7 +1277,7 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
     });
 }]);
 
-app.controller('ActivityAtyItemEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('ActivityAtyItemEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
     var url = activityUri+'/items';
     var purl = activityUri+'/activities';
     var id = $stateParams.id;
