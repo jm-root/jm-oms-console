@@ -1,5 +1,6 @@
 
-app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID',   'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'common', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID,common, global) {
+
     var sso=jm.sdk.sso;
     var history = global.usersListHistory;
     $scope.pageSize = history.pageSize||'10';
@@ -82,7 +83,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
-            $state.go('app.per.users.edit' , {id: cell.data._id});
+            $state.go('app.acl.users.edit' , {id: cell.data._id});
         },
         localeText: AGGRID.zh_CN,
         datasource: dataSource
@@ -160,7 +161,8 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
 }]);
 
-app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+    var sso=jm.sdk.sso;
     $scope.$state = $state;
 
     var id = $stateParams.id;

@@ -48,7 +48,11 @@ angular.module('app')
                           '../libs/jquery/bootstrap-daterangepicker/daterangepicker-bs3.css'],
       tagsinput:      [   '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                           '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
-      ueditor:         ['../src/js/directives/ui-ueditor.js']
+      ueditor:         ['../src/js/directives/ui-ueditor.js'],
+      ngTagsInput: [
+          '../libs/angular/ng-tags-input/ng-tags-input.js',
+          '../libs/angular/ng-tags-input/ng-tags-input.css'
+      ]
     }
   )
     .constant('AGGRID', {

@@ -26,13 +26,12 @@
                         })
                         .state('app.acl.users.list', {
                             url: '/list',
-                            templateUrl: path +'tpl/users_list.html',
-                            resolve: load(['moment'£¬'daterangepicker'])
+                            templateUrl: path +'tpl/users_list.html'
                         })
                         .state('app.acl.users.edit', {
                             url: '/edit/{id}',
                             templateUrl: path +'tpl/users_edit.html',
-                            resolve: load(['ng-tags-input'])
+                            resolve: load(['ngTagsInput'])
                         })
                         .state('app.acl.role', {
                             url: '/role',
@@ -72,6 +71,7 @@
                                             return $ocLazyLoad.load(name);
                                         } );
                                     });
+
                                     deferred.resolve();
                                     return callback ? promise.then(function(){ return callback(); }) : promise;
                                 }]

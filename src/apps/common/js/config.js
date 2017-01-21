@@ -62,7 +62,6 @@
                     return jm.sdk.storage.getItem('token');
                 }
             }
-
             self.getUser = function(){
                 var deferred = $q.defer();
                 sso.getUser({}, function(err, user){
@@ -72,7 +71,6 @@
                         deferred.reject({err:-1,msg:'用户无效'});
                     }else{
                         self.userInfo = user;
-                        self.user=user;
                         deferred.resolve(user);
                     }
                 });
@@ -84,7 +82,7 @@
                 if(sso.user){
                     deferred.resolve(sso.user);
                 }else{
-                    sso.on('getUser', function(user){
+                    self.on('getUser', function(user){
                         deferred.resolve(user);
                     });
                 }

@@ -1,16 +1,14 @@
 'use strict';
 
-app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoader',  '$state', '$http', '$interval',  'global', function ( $state, $http, $interval,  global , $scope, $translate, $translatePartialLoader) {
-    $translatePartialLoader.addPart('Dashboard');
+app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoader',  '$state', '$http', '$interval', 'global', function ( $scope, $translate, $translatePartialLoader,$state, $http, $interval,  global ) {
         var sso=jm.sdk.sso;
         $scope.search = {};
         $scope.search.date || ($scope.search.date = {});
 
-    /*    $scope.search.date = {
+        $scope.search.date = {
             startDate: moment().subtract(7, 'days'),
             endDate: moment()
         };
-*/
         $scope.stat = {};
 
         $scope.dateOptions = angular.copy(global.dateRangeOptions);
@@ -31,6 +29,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 $scope.android_Path = staticHost + result.androidPath
             }
         }).error(function (msg, code) {
+
             $scope.errorTips(code);
         });
 
@@ -75,15 +74,16 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                     $scope.stat = obj||{};
                 }
             }).error(function(msg, code){
+
                 $scope.errorTips(code);
             });
         };
 
-        reqStat();
-        data.t = $interval(function(){
+         reqStat();
+    /*     data.t = $interval(function(){
             reqStat();
         }, 5000);
-
+*/
         var orders = [
             {key:'register',name:'注册人数'},
             {key:'login',name:'登录人数'},
