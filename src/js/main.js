@@ -70,7 +70,8 @@ angular.module('app')
           asideFolded: false,
           asideDock: false,
           container: false
-        }
+        },
+          navHeight:window.innerHeight-50
       };
 
       // save settings to local storage
