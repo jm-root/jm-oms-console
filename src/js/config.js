@@ -38,6 +38,8 @@ var depotUri = sdkHost + "/depot";
 var payUri = sdkHost + "/pay";
 var bbsUri = sdkHost + "/bbs";
 var wordfilterUri = sdkHost + "/wordfilter";
+var packUri = sdkHost + "/pack";
+var statUri = sdkHost + "/stat";
 
 jm.sdk.init({uri: sdkHost});
 

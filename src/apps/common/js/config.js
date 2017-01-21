@@ -1,7 +1,5 @@
 'use strict';
-
-(function () {
-    angular.module('app')
+ angular.module('app.global', [])
         .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {
             var self = this;
             jm.enableEvent(self);
@@ -150,5 +148,3 @@
 
         }])
     ;
-
-}());

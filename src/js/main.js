@@ -8,6 +8,18 @@ angular.module('app')
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       if(isIE){ angular.element($window.document.body).addClass('ie');}
+        $scope.sdkHost = sdkHost;
+        $scope.staticHost = staticHost;
+
+        $scope.ssoUri = ssoUri;
+        $scope.aclUri = aclUri;
+        $scope.adminUri = adminUri;
+        $scope.appMgrUri = appMgrUri;
+        $scope.statUri = statUri;
+        $scope.agentUri = agentUri;
+        $scope.packUri = packUri;
+        $scope.configUri = configUri;
+        $scope.staticUri = staticUri;
       if(isSmartDevice( $window ) ){ angular.element($window.document.body).addClass('smart')};
         $scope.defaultRows = '20';
         $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
