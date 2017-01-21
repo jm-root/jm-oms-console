@@ -32,7 +32,7 @@
                             url: '/list',
                             templateUrl: path + 'tpl/account.pay.list.html',
                             controller: 'AccountPayListCtrl',
-                            resolve: load(['dateRangePicker'])
+                            resolve: load('daterangepicker')
                         })
 
                         .state('app.bank.account', {
@@ -108,8 +108,10 @@
                                 }]
                         }
                     }
+
                 }
             ]
         );
 }());
+
 

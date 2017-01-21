@@ -1,6 +1,5 @@
 'use strict';
-
-app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history = global.bankAccountHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -126,7 +125,6 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID',
 }]);
 
 app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$timeout', function ($scope, $state, $http,  global, $timeout) {
-    var sso = jm.sdk.sso;
     $scope.bank = {};
     $scope.accounts = [];
     $scope.defAccount = {user:{},holds:{}};
@@ -210,7 +208,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
     });
 }]);
 
-app.controller('BankExchangeCtrl', ['$scope', '$state', '$http', 'sso', 'global', function ($scope, $state, $http, sso, global) {
+app.controller('BankExchangeCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     jm.sdk.init({uri: gConfig.sdkHost});
     var bank = jm.sdk.bank;
 
@@ -219,7 +217,7 @@ app.controller('BankExchangeCtrl', ['$scope', '$state', '$http', 'sso', 'global'
     }
 }]);
 
-app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history = global.bankDealHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -324,7 +322,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'g
     });
 }]);
 
-app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, $timeout, sso, AGGRID, global) {
+app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout','AGGRID', 'global', function ($scope, $state, $http, $timeout,AGGRID, global) {
     var history = global.bankPreauthHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -446,8 +444,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'sso'
     });
 }]);
 
-app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http', 'sso', 'global', '$timeout', function ($scope, $state, $http, sso, global, $timeout) {
-
+app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$timeout', function ($scope, $state, $http,global, $timeout) {
     $scope.bank = {};
     $scope.defAccount = {user:{},holds:{}};
     $scope.lock = '';
@@ -546,8 +543,7 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http', 'sso', 'global'
     });
 }]);
 
-app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'sso', 'global', '$timeout', function ($scope, $state, $http, sso, global, $timeout) {
-
+app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
     $scope.bank = {};
 
     $scope.overdraw = function(){
@@ -599,7 +595,7 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'sso', 'global'
     });
 }]);
 
-app.controller('CurrencyCtrl', ['$scope', '$state', '$http', 'sso', function ($scope, $state, $http, sso) {
+app.controller('CurrencyCtrl', ['$scope', '$state', '$http','global',function ($scope, $state, $http,global) {
     $scope.currency = {};
     $http.get(adminUri+'/currencys', {
         params:{
@@ -747,7 +743,7 @@ app.controller('CurrencyCtrl', ['$scope', '$state', '$http', 'sso', function ($s
     };
 }]);
 
-app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history = global.accountPayListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
