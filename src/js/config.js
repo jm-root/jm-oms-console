@@ -40,6 +40,8 @@ var bbsUri = sdkHost + "/bbs";
 var wordfilterUri = sdkHost + "/wordfilter";
 var packUri = sdkHost + "/pack";
 var statUri = sdkHost + "/stat";
+var cardUri = sdkHost + "/card";
+var homeUri = sdkHost + "/home";
 
 jm.sdk.init({uri: sdkHost});
 

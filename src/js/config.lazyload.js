@@ -226,13 +226,6 @@ angular.module('app')
               '../libs/angular/ng-tags-input/ng-tags-input.css'
           ]
       },
-      {
-          name: 'dateRangePicker',
-          files: [
-              '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js'
-          ]
-      }
-          ,
           {
               name: 'uiTree',
               files: [
