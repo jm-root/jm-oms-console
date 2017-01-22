@@ -224,10 +224,11 @@ angular.module('app')
           ]
       },
       {
-          name: 'ng-tags-input',
+          name: 'ngTagsInput',
           files: [
               '../libs/angular/ng-tags-input/ng-tags-input.js',
-              '../libs/angular/ng-tags-input/ng-tags-input.css'
+              '../libs/angular/ng-tags-input/ng-tags-input.css',
+              '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
           ]
       },
           {

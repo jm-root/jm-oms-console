@@ -50,7 +50,8 @@ module.exports = {
                     'ag-grid/dist/ag-grid.js',
                     'ag-grid/dist/styles/**',
                     'ng-tags-input/ng-tags-input.js',
-                    'ng-tags-input/ng-tags-input.css'
+                    'ng-tags-input/ng-tags-input.css',
+                    'ng-tags-input/ng-tags-input.bootstrap.css'
                 ],
                 dest: 'libs/angular',
                 cwd:  'bower_components',
