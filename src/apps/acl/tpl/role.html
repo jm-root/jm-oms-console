@@ -62,7 +62,7 @@
             <p ng-show="!roles.length&&isCollapsed" style="text-align: center">无数据</p>
             <a ng-repeat="role in roles" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': role.selected}" ng-click="selectRole(role)" ng-dblclick="change(1)">
                 <span ng-if="!userRoles[role.code]" ng-click="deleteRole(role)" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
-                <span class="block m-l" popover-placement="{{$index!=0&&$index==roles.length-1?'top':'bottom'}}" uib-popover="{{role.code+':'+role.description}}" popover-trigger="mouseenter">{{ role.title}}</span>
+                <span class="block m-l" popover-placement="{{$index!=0&&$index==roles.length-1?'top':'bottom'}}" popover="{{role.code+':'+role.description}}" popover-trigger="mouseenter">{{ role.title||"asd"}}</span>
             </a>
         </div>
     </div>

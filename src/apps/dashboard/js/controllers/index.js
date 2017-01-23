@@ -29,7 +29,6 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 $scope.android_Path = staticHost + result.androidPath
             }
         }).error(function (msg, code) {
-
             $scope.errorTips(code);
         });
 

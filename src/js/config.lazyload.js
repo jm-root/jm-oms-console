@@ -48,7 +48,11 @@ angular.module('app')
                           '../libs/jquery/bootstrap-daterangepicker/daterangepicker-bs3.css'],
       tagsinput:      [   '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                           '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
-      ueditor:         ['../src/js/directives/ui-ueditor.js']
+      ueditor:         ['../src/js/directives/ui-ueditor.js'],
+      ngTagsInput:     [ '../libs/angular/ng-tags-input/ng-tags-input.js',
+                             '../libs/angular/ng-tags-input/ng-tags-input.css'],
+      tree: [ '../libs/angular/angular-ui-tree/angular-ui-tree.js' ]
+
     }
   )
     .constant('AGGRID', {
@@ -227,19 +231,21 @@ angular.module('app')
               '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
           ]
       },
-          {
-              name: 'uiTree',
-              files: [
 
-                  'js/directives/angular-ui-tree.js'
-              ]
-          },
-          {
-              name: 'localytics.directives',
-              files: [
-                  '../libs/angular/angular-chosen-localytics/dist/angular-chosen.min.js'
-              ]
-          }
+      {
+          name: 'localytics.directives',
+          files: [
+              '../libs/angular/angular-chosen-localytics/dist/angular-chosen.min.js'
+          ]
+      },
+      {
+          name: 'treeControl',
+          files: [
+              '../libs/angular/angular-tree-control/angular-tree-control.js',
+              '../libs/angular/angular-tree-control/tree-control.css',
+              '../libs/angular/angular-tree-control/tree-control-attribute.css'
+          ]
+      }
 ]
   )
   // oclazyload config

@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster',
-    function(              $scope,   $translate,   $localStorage,   $window, toaster ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal',
+    function(              $scope,   $translate,   $localStorage,   $window, toaster, $modal ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       if(isIE){ angular.element($window.document.body).addClass('ie');}
@@ -24,7 +24,7 @@ angular.module('app')
         $scope.defaultRows = '20';
         $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
 
-        $scope.navs = [{url:'app.main',title:'首页'}];
+        $scope.navs = [{url:'app.dashboard',title:'首页'}];
         $scope.navsPush = function(obj,reset){
             if(reset==undefined) reset = true;
             if(reset) $scope.navs.splice(1);
@@ -179,7 +179,7 @@ angular.module('app')
         };
 
     }])
-    .controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function($scope, $modalInstance) {
+    .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function($scope, $modalInstance) {
         $scope.ok = function () {
             $modalInstance.close($scope);
         };

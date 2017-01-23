@@ -37,13 +37,13 @@
                             url: '/role',
                             templateUrl: path +'tpl/role.html',
                             controller: 'RoleCtrl',
-                            resolve: load([path + 'js/controllers/role.js','uiTree','ng-tags-input','localytics.directives'])
+                            resolve: load([path + 'js/controllers/role.js','ngTagsInput','tree','localytics.directives','chosen','ueditor'])
                         })
                         .state('app.acl.resource', {
                             url: '/resource',
                             templateUrl: path +'tpl/resource.html',
                             controller: 'ResourceCtrl',
-                            resolve:load([path + 'js/controllers/resource.js','uiTree','ng-tags-input','localytics.directives'])
+                            resolve:load([path + 'js/controllers/resource.js','treeControl','ngTagsInput','localytics.directives','chosen','ueditor'])
                         });
 
                     function load(srcs, callback) {

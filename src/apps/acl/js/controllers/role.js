@@ -207,9 +207,9 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
         });
     };
 
-    function init(){
+
         //获取用户资源树及其权限
-        $http.get(aclUri+'/users/'+ sso.user.id+'/resources/tree', {
+        $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/resources/tree', {
             params: {
                 token: sso.getToken()
             }
@@ -223,12 +223,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
-    }
 
-    sso.on('getUser', function(user){
-        init();
-    });
-    if(sso.user) init();
     //获取用户所属角色
     $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/roles', {
         params: {
@@ -240,8 +235,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
             $scope.error(result.msg);
         }else{
             $scope.userRoles =result;
-            console.log(result);
-            getRoles(result)
+            getRoles(result);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -254,8 +248,10 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
                 creator: localStorage.getItem('id')
             }
         }).success(function(result){
+            console.log(result)
             var obj = result;
             if(obj.err){
+                console.log("a")
                 $scope.error(obj.msg);
             }else{
                 var ary=[];
@@ -272,6 +268,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
                 $scope.curRole = null;
             }
         }).error(function(msg, code){
+            console.log("b")
             $scope.errorTips(code);
         });
     }
