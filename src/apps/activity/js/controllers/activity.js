@@ -1,5 +1,5 @@
 'use strict';
-
+var sso =jm.sdk.sso;
 app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODULE_CONFIG', 'global',function($scope, $http, $state, AGGRID,MODULE_CONFIG, global) {
     var history = global.activityPropHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -154,15 +154,14 @@ app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$statePara
                 $scope.prop = obj;
                 if($scope.prop.type!=undefined) $scope.prop.type = $scope.prop.type.toString();
                 if($scope.prop.useMode!=undefined) $scope.prop.useMode = $scope.prop.useMode.toString();
-                if(!$scope.prop.logo){
-                    $scope.prop.logo = '../common/images/logo.jpg';
+                if(!$scope.prop.logo){'img/logo.jpg';
                 }
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     }else{
-        $scope.prop.logo = '../common/images/logo.jpg';
+        $scope.prop.logo = 'img/logo.jpg';
     }
 
     $http.get(appMgrUri+'/apps', {
@@ -852,7 +851,7 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'img/logo.jpg';
     };
 
     var getTitleUri = function(id, bTimestamp){
@@ -863,7 +862,7 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'img/logo.jpg';
     };
 
     var ueditor;

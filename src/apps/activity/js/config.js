@@ -31,7 +31,7 @@
                             params: {pid: null},
                             templateUrl: path + 'tpl/activity.prop.edit.html',
                             controller: 'ActivityPropEditCtrl',
-                            resolve: load(['ng-tags-input'])
+                            resolve: load(['ngTagsInput'])
                         })
                         .state('app.' + name + '.prop.edit.logo', {
                             url: '/logo',
@@ -57,10 +57,10 @@
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/activity.forum.edit.html',
                             controller: 'ActivityForumEditCtrl',
-                            resolve: load(['ng-tags-input',JQ_CONFIG.ueditor])
+                            resolve: load(['ngTagsInput',JQ_CONFIG.ueditor])
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function( $ocLazyLoad, uiLoad ){
-                            //             // return $ocLazyLoad.load(['ng-tags-input'])
+                            //             // return $ocLazyLoad.load(['ngTagsInput'])
                             //             //     .then(function () {
                             //             //         return uiLoad.load(JQ_CONFIG.ueditor);
                             //             //     });
@@ -86,7 +86,7 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.edit.html',
                             controller: 'ActivityAtyEditCtrl',
-                            resolve: load(['ui.bootstrap.datetimepicker','ng-tags-input',JQ_CONFIG.ueditor])
+                            resolve: load(['ui.bootstrap.datetimepicker','ngTagsInput','ueditor'])
                         })
                         .state('app.' + name + '.aty.edit.logo', {
                             url: '/logo',
@@ -107,7 +107,7 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.item.edit.html',
                             controller: 'ActivityAtyItemEditCtrl',
-                            resolve: load(['ui.bootstrap.datetimepicker','ng-tags-input'])
+                            resolve: load(['ui.bootstrap.datetimepicker','ngTagsInput'])
                         });
 
                     function load(srcs, callback) {

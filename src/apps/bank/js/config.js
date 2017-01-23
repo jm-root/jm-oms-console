@@ -32,7 +32,7 @@
                             url: '/list',
                             templateUrl: path + 'tpl/account.pay.list.html',
                             controller: 'AccountPayListCtrl',
-                            resolve: load('daterangepicker')
+                            resolve: load(['daterangepicker','dateRangePicker'])
                         })
 
                         .state('app.bank.account', {

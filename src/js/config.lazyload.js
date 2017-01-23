@@ -45,12 +45,10 @@ angular.module('app')
                           '../libs/jquery/fullcalendar/dist/fullcalendar.theme.css'],
       daterangepicker:[   '../libs/jquery/moment/moment.js',
                           '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
-                          '../libs/jquery/bootstrap-daterangepicker/daterangepicker-bs3.css'],
+                          '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css'],
       tagsinput:      [   '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                           '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
       ueditor:         ['../src/js/directives/ui-ueditor.js'],
-      ngTagsInput:     [ '../libs/angular/ng-tags-input/ng-tags-input.js',
-                             '../libs/angular/ng-tags-input/ng-tags-input.css'],
       tree: [ '../libs/angular/angular-ui-tree/angular-ui-tree.js' ]
 
     }
@@ -231,7 +229,6 @@ angular.module('app')
               '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
           ]
       },
-
       {
           name: 'localytics.directives',
           files: [
@@ -245,7 +242,21 @@ angular.module('app')
               '../libs/angular/angular-tree-control/tree-control.css',
               '../libs/angular/angular-tree-control/tree-control-attribute.css'
           ]
-      }
+      },
+       {
+              name: 'ui.bootstrap.datetimepicker',
+              files: [
+                  '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.css',
+                  '../libs/angular/angular-bootstrap-datetimepicker/css/datetimepicker.css',
+                  '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.js'
+              ]
+        },
+          {
+              name: 'dateRangePicker',
+              files: [
+                  '../libs/angular/angular-daterangepicker/angular-daterangepicker.js'
+              ]
+        }
 ]
   )
   // oclazyload config

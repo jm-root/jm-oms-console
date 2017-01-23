@@ -51,7 +51,11 @@ module.exports = {
                     'ag-grid/dist/styles/**',
                     'ng-tags-input/ng-tags-input.js',
                     'ng-tags-input/ng-tags-input.css',
-                    'ng-tags-input/ng-tags-input.bootstrap.css'
+                    'ng-tags-input/ng-tags-input.bootstrap.css',
+                    'angular-bootstrap-datetimepicker/datetimepicker.js',
+                    'angular-bootstrap-datetimepicker/datetimepicker.css',
+                    'angular-bootstrap-datetimepicker/css/datetimepicker.css',
+                    'angular-daterangepicker/angular-daterangepicker.js'
                 ],
                 dest: 'libs/angular',
                 cwd:  'bower_components',
@@ -64,7 +68,8 @@ module.exports = {
                     'jm-sdk-core/dist/js/jm-sdk-core.js',
                     'jm-ms/dist/js/jm-ms.js',
                     'jm-sso/dist/js/jm-sdk-sso.js',
-                    'jm-config/dist/js/jm-sdk-config.js'
+                    'jm-config/dist/js/jm-sdk-config.js',
+                    'jm-play/jm-play-sdk.min.js'
                 ],
                 dest: 'libs/jm',
                 cwd:  'node_modules',
@@ -148,5 +153,4 @@ module.exports = {
             {src:'html/css/app.min.css', dest: 'landing/css/app.min.css'}
         ]
     }
-
 };

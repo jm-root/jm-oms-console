@@ -1,4 +1,5 @@
 'use strict';
+var sso = jm.sdk.sso;
 app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history = global.bankAccountHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
