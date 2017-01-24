@@ -40,7 +40,7 @@ angular.module('app')
     .config(['lazyLoadProvider', function (lazyLoadProvider) {
         lazyLoadProvider.configJQ({
             'lodash': ['../libs/jquery/lodash/dist/lodash.js'],
-            'ueditor': ['../lib/ueditor/ueditor.config.js', '../lib/ueditor/ueditor.all.min.js']
+            'ueditor': ['../lib/jquery/ueditor/ueditor.config.js', '../lib/jquery/ueditor/ueditor.all.min.js']
         });
         lazyLoadProvider.configModule({
             'ngTagsInput': [
@@ -60,9 +60,6 @@ angular.module('app')
                 '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.css',
                 '../libs/angular/angular-bootstrap-datetimepicker/css/datetimepicker.css',
                 '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.js'
-            ],
-            'dateRangePicker': [
-                '../libs/angular/angular-daterangepicker/angular-daterangepicker.js'
             ],
             'tree': ['../libs/angular/angular-ui-tree/angular-ui-tree.js']
         });

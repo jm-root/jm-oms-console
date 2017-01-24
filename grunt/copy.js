@@ -56,7 +56,7 @@ module.exports = {
                     'angular-bootstrap-datetimepicker/datetimepicker.js',
                     'angular-bootstrap-datetimepicker/datetimepicker.css',
                     'angular-bootstrap-datetimepicker/css/datetimepicker.css',
-                    'angular-daterangepicker/angular-daterangepicker.js'
+                    'angular-daterangepicker/js/angular-daterangepicker.js'
                 ],
                 dest: 'libs/angular',
                 cwd:  'bower_components',
@@ -96,6 +96,7 @@ module.exports = {
                     'flot-spline/js/jquery.flot.spline.min.js',
                     'flot.orderbars/js/jquery.flot.orderBars.js',
                     'moment/moment.js',
+                    'moment/locale/*.js',
                     'screenfull/dist/screenfull.min.js',
                     'slimscroll/jquery.slimscroll.min.js',
                     'html5sortable/jquery.sortable.js',

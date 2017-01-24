@@ -38,9 +38,6 @@ angular.module('app')
                 '../libs/jquery/fullcalendar/dist/fullcalendar.min.js',
                 '../libs/jquery/fullcalendar/dist/fullcalendar.css',
                 '../libs/jquery/fullcalendar/dist/fullcalendar.theme.css'],
-            daterangepicker: ['../libs/jquery/moment/moment.js',
-                '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
-                '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css'],
             tagsinput: ['../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                 '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css']
         }
@@ -111,6 +108,12 @@ angular.module('app')
             ],
             'angular-skycons': [
                 '../libs/angular/angular-skycons/angular-skycons.js'
+            ],
+            'daterangepicker': [
+                '../libs/jquery/moment/moment.js',
+                '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
+                '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css',
+                '../libs/angular/angular-daterangepicker/js/angular-daterangepicker.js'
             ]
         }
     )

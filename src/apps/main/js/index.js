@@ -18,7 +18,7 @@
                             url: '/app',
                             templateUrl: path + layout,
                             controller: 'MainCtrl',
-                            resolve: lazyLoadProvider.load(['moment', 'lodash', path + 'js/controllers/index.js'])
+                            resolve: lazyLoadProvider.load(['lodash', path + 'js/controllers/index.js'])
                         })
                         .state('app.profile', {
                             url: '/profile',

@@ -13,13 +13,12 @@
                             abstract: true,
                             url: '/test',
                             template: '<div ui-view class="fade-in-right-big smooth"></div>',
-                            controller: 'TestCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
                         })
                         .state('test.form', {
                             url: '/form',
                             templateUrl: path +'tpl/form.html',
-                            resolve: lazyLoadProvider.load(['ngTagsInput'])
+                            resolve: lazyLoadProvider.load(['ngTagsInput', 'daterangepicker'])
                         })
                     ;
 
