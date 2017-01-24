@@ -38,21 +38,34 @@ angular.module('app')
         }
     })
     .config(['lazyLoadProvider', function (lazyLoadProvider) {
-        lazyLoadProvider.configModule(
-            {
-                'ngTagsInput': [
-                    '../libs/angular/ng-tags-input/ng-tags-input.js',
-                    '../libs/angular/ng-tags-input/ng-tags-input.css',
-                    '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
-                ],
-                'treeControl': [
-                    '../libs/angular/angular-tree-control/angular-tree-control.js',
-                    '../libs/angular/angular-tree-control/tree-control.css',
-                    '../libs/angular/angular-tree-control/tree-control-attribute.css'
-                ]
-            }
-        );
-
+        lazyLoadProvider.configJQ({
+            'lodash': ['../libs/jquery/lodash/dist/lodash.js'],
+            'ueditor': ['../src/js/directives/ui-ueditor.js']
+        });
+        lazyLoadProvider.configModule({
+            'ngTagsInput': [
+                '../libs/angular/ng-tags-input/ng-tags-input.js',
+                '../libs/angular/ng-tags-input/ng-tags-input.css',
+                '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
+            ],
+            'localytics.directives': [
+                '../libs/angular/angular-chosen-localytics/dist/angular-chosen.min.js'
+            ],
+            'treeControl': [
+                '../libs/angular/angular-tree-control/angular-tree-control.js',
+                '../libs/angular/angular-tree-control/tree-control.css',
+                '../libs/angular/angular-tree-control/tree-control-attribute.css'
+            ],
+            'ui.bootstrap.datetimepicker': [
+                '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.css',
+                '../libs/angular/angular-bootstrap-datetimepicker/css/datetimepicker.css',
+                '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.js'
+            ],
+            'dateRangePicker': [
+                '../libs/angular/angular-daterangepicker/angular-daterangepicker.js'
+            ],
+            'tree': ['../libs/angular/angular-ui-tree/angular-ui-tree.js']
+        });
     }])
     .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {
         var self = this;
@@ -252,4 +265,3 @@ angular.module('app')
 
     }])
 ;
-//agGrid.initialiseAgGridWithAngular1(angular);

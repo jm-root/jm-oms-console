@@ -42,10 +42,7 @@ angular.module('app')
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css'],
             tagsinput: ['../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
-                '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
-
-            lodash: ['../libs/jquery/lodash/dist/lodash.js'],
-            ueditor: ['../src/js/directives/ui-ueditor.js']
+                '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css']
         }
     )
     .constant('MODULE_CONFIG', {
@@ -114,33 +111,7 @@ angular.module('app')
             ],
             'angular-skycons': [
                 '../libs/angular/angular-skycons/angular-skycons.js'
-            ],
-            'ngTagsInput': [
-                '../libs/angular/ng-tags-input/ng-tags-input.js',
-                '../libs/angular/ng-tags-input/ng-tags-input.css',
-                '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
-            ],
-            'ag-grid': [
-                '../libs/angular/ag-grid/dist/ag-grid.js',
-                '../libs/angular/ag-grid/dist/styles/ag-grid.css'
-            ],
-            'localytics.directives': [
-                '../libs/angular/angular-chosen-localytics/dist/angular-chosen.min.js'
-            ],
-            'treeControl': [
-                '../libs/angular/angular-tree-control/angular-tree-control.js',
-                '../libs/angular/angular-tree-control/tree-control.css',
-                '../libs/angular/angular-tree-control/tree-control-attribute.css'
-            ],
-            'ui.bootstrap.datetimepicker': [
-                '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.css',
-                '../libs/angular/angular-bootstrap-datetimepicker/css/datetimepicker.css',
-                '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.js'
-            ],
-            'dateRangePicker': [
-                '../libs/angular/angular-daterangepicker/angular-daterangepicker.js'
-            ],
-            'tree': ['../libs/angular/angular-ui-tree/angular-ui-tree.js']
+            ]
         }
     )
     .provider('lazyLoad', ['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {

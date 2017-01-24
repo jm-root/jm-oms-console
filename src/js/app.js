@@ -1,4 +1,5 @@
 'use strict';
+agGrid.initialiseAgGridWithAngular1(angular);
 angular.module('app', [
     'ngAnimate',
     'ngAria',
@@ -15,7 +16,8 @@ angular.module('app', [
     'ui.jq',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'toaster'
+    'toaster',
+    'agGrid'
 ])
     .run(
         ['$rootScope', '$state', '$stateParams', '$translate',
