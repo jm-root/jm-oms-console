@@ -214,19 +214,19 @@ angular.module('app')
               '../libs/angular/angular-skycons/angular-skycons.js'
           ]
       },
+          {
+              name: 'ngTagsInput',
+              files: [
+                  '../libs/angular/ng-tags-input/ng-tags-input.js',
+                  '../libs/angular/ng-tags-input/ng-tags-input.css',
+                  '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
+              ]
+          },
       {
           name: 'ag-grid',
           files: [
               '../libs/angular/ag-grid/dist/ag-grid.js',
               '../libs/angular/ag-grid/dist/styles/ag-grid.css'
-          ]
-      },
-      {
-          name: 'ngTagsInput',
-          files: [
-              '../libs/angular/ng-tags-input/ng-tags-input.js',
-              '../libs/angular/ng-tags-input/ng-tags-input.css',
-              '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
           ]
       },
       {
@@ -259,13 +259,85 @@ angular.module('app')
         }
 ]
   )
-  // oclazyload config
-  .config(['$ocLazyLoadProvider', 'MODULE_CONFIG', function($ocLazyLoadProvider, MODULE_CONFIG) {
-      // We configure ocLazyLoad to use the lib script.js as the async loader
-      $ocLazyLoadProvider.config({
-          debug:  false,
-          events: true,
-          modules: MODULE_CONFIG
-      });
-  }])
+    .provider('lazyLoad', ['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
+        var JQ_CONFIG = {};
+        var MODULE_CONFIG = {};
+        var load = function(srcs, callback) {
+            return {
+                deps: ['$ocLazyLoad', '$q',
+                    function( $ocLazyLoad, $q ){
+                        var deferred = $q.defer();
+                        var promise  = false;
+                        srcs = angular.isArray(srcs) ? srcs : srcs.split(/\s+/);
+                        if(!promise){
+                            promise = deferred.promise;
+                        }
+                        angular.forEach(srcs, function(src) {
+                            promise = promise.then( function(){
+                                if(JQ_CONFIG[src]){
+                                    return $ocLazyLoad.load(JQ_CONFIG[src]);
+                                }
+                                name = src;
+                                return $ocLazyLoad.load(name);
+                            } );
+                        });
+
+                        deferred.resolve();
+                        return callback ? promise.then(function(){ return callback(); }) : promise;
+                    }]
+            }
+        };
+        return {
+            configJQ: function(opts) {
+                opts || (opts={});
+                for(var key in opts) {
+                    JQ_CONFIG[key] = opts[key];
+                }
+            },
+
+            configModule: function(opts) {
+                opts || (opts={});
+                var v = [];
+                for(var key in opts) {
+                    MODULE_CONFIG[key] = opts[key];
+                    v.push({
+                        name: key,
+                        files: opts[key]
+                    });
+                }
+                $ocLazyLoadProvider.config({
+                    debug:  false,
+                    events: true,
+                    modules: v
+                });
+            },
+
+            load: load,
+
+            $get: function () {
+                return {
+                    load: load
+                }
+            }
+        }
+    }])
+    .config(['lazyLoadProvider', 'JQ_CONFIG', 'MODULE_CONFIG', function (lazyLoadProvider, JQ_CONFIG, MODULE_CONFIG) {
+        lazyLoadProvider.configJQ(JQ_CONFIG);
+        //lazyLoadProvider.configModule(MODULE_CONFIG);
+        lazyLoadProvider.configModule(
+            {
+                'ngTagsInput': [
+                    '../libs/angular/ng-tags-input/ng-tags-input.js',
+                    '../libs/angular/ng-tags-input/ng-tags-input.css',
+                    '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
+                ],
+                'treeControl': [
+                    '../libs/angular/angular-tree-control/angular-tree-control.js',
+                    '../libs/angular/angular-tree-control/tree-control.css',
+                    '../libs/angular/angular-tree-control/tree-control-attribute.css'
+                ]
+            }
+        );
+
+    }])
 ;
