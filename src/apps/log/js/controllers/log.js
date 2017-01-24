@@ -147,7 +147,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
             }).success(function (result) {
                 var data=result;
                 if(data.err){
-                    $scope(data.msg)
+                    $scope.error(data.msg);
                 }else{
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;

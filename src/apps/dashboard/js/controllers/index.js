@@ -176,7 +176,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         var colors = ['#5793f3', '#d14a61', '#675bba'];
 
         var getLineOption = function(otps){
-            otps || (opts={});
+            otps || (otps={});
             otps.max || (otps.max=100);
             if(otps.max<10) otps.max = 10;
             var max = Math.round(otps.max*1.2);

@@ -2,7 +2,8 @@
  * Created by Admin on 2016/6/13.
  */
 'use strict'
-app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('CheckinCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     console.log("CheckinCtrl");
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -118,7 +119,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'gl
 
 }]);
 
-app.controller('CheckinEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('CheckinEditCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
 
     $scope.$state = $state;
 

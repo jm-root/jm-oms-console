@@ -208,10 +208,11 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $stat
     };
 
 
+    var token = sso.getToken();
         //获取用户资源树及其权限
         $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/resources/tree', {
             params: {
-                token: sso.getToken()
+                token: token
             }
         }).success(function (result) {
             if(result.err){

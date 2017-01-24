@@ -42,6 +42,10 @@ var packUri = sdkHost + "/pack";
 var statUri = sdkHost + "/stat";
 var cardUri = sdkHost + "/card";
 var homeUri = sdkHost + "/home";
+var recordUri = sdkHost + "/record";
+var guestbookUri = sdkHost + "/guestbook";
+var shopUri = sdkHost + "/shop";
+var logUri = sdkHost + "/log";
 
 jm.sdk.init({uri: sdkHost});
 

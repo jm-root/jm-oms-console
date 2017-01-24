@@ -2,7 +2,8 @@
  * Created by Admin on 2016/5/19.
  */
 'use strict';
-app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -160,7 +161,7 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'g
 
 }]);
 
-app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     $scope.$state = $state;
 
     var id = $stateParams.id;

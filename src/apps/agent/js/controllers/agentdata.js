@@ -1,5 +1,6 @@
-
-app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
+'use strict';
+var sso = jm.sdk.sso;
+app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout,common, AGGRID, global) {
     var history = global.agentDataRegisterHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -114,7 +115,7 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
+app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout,common, AGGRID, global) {
     var history = global.agentDataRechargeHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -229,7 +230,7 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     global.agentDataAnalysisHistory || (global.agentDataAnalysisHistory = {});
     var history = global.agentDataAnalysisHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;

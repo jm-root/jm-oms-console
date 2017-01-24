@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', '$timeout', function ($scope, $state, $http, sso, AGGRID, global, $timeout) {
+var sso = jm.sdk.sso;
+app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', '$timeout', function ($scope, $state, $http,AGGRID, global, $timeout) {
     var history = global.playerListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -324,7 +324,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 
 
 }]);
 
-app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
     var history = global.playerGamesListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var id = $stateParams.id;
@@ -395,7 +395,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     });
 }]);
 
-app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'sso', 'AGGRID', 'global','data', function ($scope, $state, $http, $interval, sso, AGGRID, global, data) {
+app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'AGGRID', 'global','data', function ($scope, $state, $http, $interval, AGGRID, global, data) {
     var history = global.playerOnlineHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -508,7 +508,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 's
     });
 }]);
 
-app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     global.playerRecordHistory || (global.playerRecordHistory = {});
     var history = global.playerRecordHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -646,7 +646,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID'
     });
 }]);
 
-app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history = global.playerGiveLogHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};

@@ -50,8 +50,7 @@ angular.module('app')
                 '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
             ueditor: ['../src/js/directives/ui-ueditor.js'],
             jmGameDiffcult: ['../libs/jm/jm-ajax/dist/js/jm-ajax.js', '../libs/jm/jm-core/dist/js/jm-core.js',
-                '../libs/jm/jm-ms/dist/js/jm-ms.js'],
-            chosen: ['../libs/jquery/chosen/chosen.jquery.min.js', '../libs/jquery/chosen/bootstrap-chosen.css']
+                '../libs/jm/jm-ms/dist/js/jm-ms.js']
         }
     )
     .constant('AGGRID', {
@@ -252,24 +251,6 @@ angular.module('app')
     }])
     .config(['lazyLoadProvider', 'JQ_CONFIG', 'MODULE_CONFIG', function (lazyLoadProvider, JQ_CONFIG, MODULE_CONFIG) {
         lazyLoadProvider.configJQ(JQ_CONFIG);
-        //lazyLoadProvider.configModule(MODULE_CONFIG);
-        lazyLoadProvider.configModule(
-            {
-                'smart-table': [
-                    '../libs/angular/angular-smart-table/dist/smart-table.min.js'
-                ],
-                'ngTagsInput': [
-                    '../libs/angular/ng-tags-input/ng-tags-input.js',
-                    '../libs/angular/ng-tags-input/ng-tags-input.css',
-                    '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
-                ],
-                'treeControl': [
-                    '../libs/angular/angular-tree-control/angular-tree-control.js',
-                    '../libs/angular/angular-tree-control/tree-control.css',
-                    '../libs/angular/angular-tree-control/tree-control-attribute.css'
-                ]
-            }
-        );
-
+        lazyLoadProvider.configModule(MODULE_CONFIG);
     }])
 ;

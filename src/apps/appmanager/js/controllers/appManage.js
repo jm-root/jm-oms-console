@@ -1,5 +1,6 @@
 'use strict';
-app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', "$stateParams", function ($scope, $state, $http, sso, AGGRID, global, $stateParams) {
+var sso = jm.sdk.sso;
+app.controller('AppsListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', "$stateParams", function ($scope, $state, $http,AGGRID, global, $stateParams) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -180,7 +181,7 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'g
 
 }]);
 
-app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'FileUploader', function($scope, $http, $state, $stateParams, sso, FileUploader) {
+app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','FileUploader', function($scope, $http, $state, $stateParams, FileUploader) {
     $scope.$state = $state;
 
     var id = $stateParams.id;

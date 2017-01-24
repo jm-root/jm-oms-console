@@ -2,7 +2,8 @@
  * Created by Admin on 2016/5/19.
  */
 'use strict';
-app.controller('AddrListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('AddrListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -121,7 +122,7 @@ app.controller('AddrListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'g
 
 }]);
 
-app.controller('AddrEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('AddrEditCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     $scope.$state = $state;
 
     var id = $stateParams.id;

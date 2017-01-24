@@ -2,8 +2,8 @@
  * Created by ZL on 2016/8/23.
  */
 "use strict";
-
-app.controller('AppsUploadCtrl', ['$scope', '$http', 'sso','FileUploader', function ($scope, $http, sso, FileUploader) {
+var sso = jm.sdk.sso;
+app.controller('AppsUploadCtrl', ['$scope', '$http', 'FileUploader', function ($scope, $http,FileUploader) {
 
     var platform = "";
 

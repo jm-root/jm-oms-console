@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', function ($scope, $state, $http, $timeout, sso) {
+var sso = jm.sdk.sso;
+app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', function ($scope, $state, $http, $timeout) {
     jm.sdk.init({uri: gConfig.sdkHost});
     var config = jm.sdk.config;
 
@@ -41,7 +41,7 @@ app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', f
 
 }]);
 
-app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', function ($scope, $state, $http, $timeout, sso) {
+app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout',function ($scope, $state, $http, $timeout) {
     $scope.item = {};
 
     jm.sdk.init({uri: gConfig.sdkHost});
@@ -84,7 +84,7 @@ app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', f
 
 }]);
 
-app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', 'AGGRID', function ($scope, $state, $http, $timeout, sso, AGGRID) {
+app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout','AGGRID', function ($scope, $state, $http, $timeout, AGGRID) {
     $scope.vips = [];
 
     jm.sdk.init({uri: gConfig.sdkHost});
@@ -162,7 +162,7 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'sso', 'A
     };
 }]);
 
-app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '$timeout', 'sso', function ($scope, $state, $stateParams, $http, $timeout, sso) {
+app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '$timeout',function ($scope, $state, $stateParams, $http, $timeout) {
     jm.sdk.init({uri: gConfig.sdkHost});
     var config = jm.sdk.config;
     $scope.vip = {pattern:0};

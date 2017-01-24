@@ -2,8 +2,8 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-
-app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
+var sso = jm.sdk.sso;
+app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q', 'global', function($scope, $http, $state, $stateParams,$q, global) {
 
     var roomDefault = {
         name: "新手港湾",
@@ -341,7 +341,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'ss
 
 }]);
 
-app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
+app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
 
     var roomDefault = {
         name: "新手港湾",

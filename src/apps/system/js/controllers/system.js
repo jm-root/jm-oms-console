@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('SystemAdminCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
     var history=global.SystemAdminHitory || (global.SystemAdminHitory={});
     $scope.pageSize = history.pageSize || $scope.defaultRows;
     $scope.search = history.search || {};
@@ -73,7 +73,7 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID',
 
 }]);
 
-app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     var history=global.SystemLogHistory||(global.SystemLogHitory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
 
@@ -128,7 +128,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', '
          }).success(function (result) {
                 var data=result;
                 if(data.err){
-                    $scope.err(data.msg)
+                    $scope.error(data.msg)
                 }else{
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;
@@ -172,6 +172,6 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', '
 
 }]);
 //新建用户
-app.controller('SystemAdminAddCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+app.controller('SystemAdminAddCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
 
 }]);

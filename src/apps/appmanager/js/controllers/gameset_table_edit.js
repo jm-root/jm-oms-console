@@ -2,8 +2,8 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-
-app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', function($scope, $http, $state, $stateParams, sso, $q) {
+var sso = jm.sdk.sso;
+app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', function($scope, $http, $state, $stateParams, $q) {
 
     var tableDefault = {
         name: "桌子",
@@ -224,7 +224,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
 }]);
 
-app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', function($scope, $http, $state, $stateParams, sso, $q) {
+app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', function($scope, $http, $state, $stateParams,$q) {
 
     var tableDefault = {
         name: "新手港湾",

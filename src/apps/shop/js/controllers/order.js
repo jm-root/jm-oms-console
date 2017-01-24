@@ -2,8 +2,8 @@
  * Created by ZL on 2016/9/27.
  */
 "use strict";
-
-app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -203,7 +203,7 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 's
 
 }]);
 
-app.controller('OrderEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('OrderEditCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     $scope.$state = $state;
 
     var id = $stateParams.id;

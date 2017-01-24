@@ -14,6 +14,7 @@ module.exports = {
                     'angular-bootstrap/ui-bootstrap-tpls.js',
                     'angular-bootstrap-nav-tree/dist/**',
                     'angular-file-upload/angular-file-upload.js',
+                    'angular-img-cropper/angular-img-cropper.min.js',
                     'angular-loading-bar/build/**',
                     'angular-material/angular-material.js',
                     'angular-material/angular-material.css',
@@ -107,7 +108,7 @@ module.exports = {
                     'bootstrap-wysiwyg/external/jquery.hotkeys.js',
                     'fullcalendar/dist/fullcalendar.min.js',
                     'bootstrap-daterangepicker/daterangepicker.js',
-                    'bootstrap-daterangepicker/daterangepicker-bs3.css',
+                    'bootstrap-daterangepicker/daterangepicker.css',
                     'bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                     'bootstrap-tagsinput/dist/bootstrap-tagsinput.css',
                     'jquery_appear/jquery.appear.js'

@@ -18,6 +18,5 @@ angular.module('app', [
     'pascalprecht.translate',
     'toaster',
     'common',
-    'app.global',
     'agGrid'
 ]);

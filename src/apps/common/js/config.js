@@ -1,5 +1,22 @@
 'use strict';
- angular.module('app.global', [])
+ angular.module('app')
+     .config(['lazyLoadProvider', function (lazyLoadProvider) {
+         lazyLoadProvider.configModule(
+             {
+                 'ngTagsInput': [
+                     '../libs/angular/ng-tags-input/ng-tags-input.js',
+                     '../libs/angular/ng-tags-input/ng-tags-input.css',
+                     '../libs/angular/ng-tags-input/ng-tags-input.bootstrap.css'
+                 ],
+                 'treeControl': [
+                     '../libs/angular/angular-tree-control/angular-tree-control.js',
+                     '../libs/angular/angular-tree-control/tree-control.css',
+                     '../libs/angular/angular-tree-control/tree-control-attribute.css'
+                 ]
+             }
+         );
+
+     }])
         .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {
             var self = this;
             jm.enableEvent(self);

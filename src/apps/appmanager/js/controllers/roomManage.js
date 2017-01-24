@@ -2,8 +2,8 @@
  * Created by ZL on 2016/12/16.
  */
 "use strict";
-
-app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', "$stateParams", function ($scope, $state, $http, sso, AGGRID, global, $stateParams) {
+var sso = jm.sdk.sso;
+app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', "$stateParams", function ($scope, $state, $http,AGGRID, global, $stateParams) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';

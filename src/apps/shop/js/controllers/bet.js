@@ -2,7 +2,8 @@
  * Created by Admin on 2016/5/20.
  */
 "use strict";
-app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -143,7 +144,7 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso
 
 }]);
 
-app.controller('BetEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('BetEditCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     // $scope.$state = $state;
     //
     // var id = $stateParams.id;

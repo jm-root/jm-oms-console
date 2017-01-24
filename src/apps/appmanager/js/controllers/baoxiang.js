@@ -2,8 +2,8 @@
  * Created by ZL on 2016/9/17.
  */
 "use strict";
-
-app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http, AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -195,7 +195,7 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
 }]);
 
 
-app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', function($scope, $http, $state, $stateParams, $timeout, sso) {
+app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
 
     // jm.sdk.init({uri: gConfig.sdkHost});
     // var config = jm.sdk.config;
@@ -315,7 +315,7 @@ app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams',
 }]);
 
 
-app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';

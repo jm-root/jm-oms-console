@@ -1,6 +1,6 @@
 'use strict';
-
-app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     global.reportAccountHistory || (global.reportAccountHistory = {});
     var history = global.reportAccountHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;

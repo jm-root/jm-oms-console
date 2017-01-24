@@ -2,7 +2,8 @@
  * Created by ZL on 2016/8/13.
  */
 "use strict";
-app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http, AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -226,7 +227,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
 
 }]);
 
-app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout, sso, global, $location, $anchorScroll) {
+app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout,global, $location, $anchorScroll) {
 
     $scope.gameset_config_tmpl = "tpl/appmanager/gameset_" + $stateParams.type + "_edit.html";
     $scope.gameset_config_alg_tmpl = "tpl/appmanager/gameset_alg_edit.html";
@@ -241,7 +242,7 @@ app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', 
     }
 }]);
 
-app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', '$q', function($scope, $http, $state, $stateParams, $timeout, sso, $q) {
+app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','$q', function($scope, $http, $state, $stateParams, $timeout,$q) {
 
     var baseUrl = algUri + '/' + $stateParams.type;
 
@@ -381,7 +382,7 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
     }
 }]);
 
-app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, $q, global) {
+app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', '$q', 'global', function($scope, $http, $state, $stateParams, $timeout, $q, global) {
 
     var tmpl_type = $stateParams.type;
     var appId = $stateParams.appId;

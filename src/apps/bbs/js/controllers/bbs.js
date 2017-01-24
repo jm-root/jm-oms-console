@@ -1,5 +1,5 @@
 'use strict';
-
+var sso = jm.sdk.sso;
 app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID,global) {
     var sso = jm.sdk.sso;
     var history = global.BBSForumListHistory||(global.BBSForumListHistory={});
@@ -158,7 +158,7 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
     };
 }]);
 
-app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$timeout', 'common',function($scope, $http, $state, $stateParams, sso, $timeout, common) {
+app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
     var url = bbsUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -173,7 +173,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'img/logo.jpg';
     };
 
     var ueditor;
@@ -506,7 +506,7 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'img/logo.jpg';
     };
     var getTitleUri = function(id, bTimestamp){
         if (id){
@@ -516,7 +516,7 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'img/logo.jpg';
     };
 
     var ueditor;

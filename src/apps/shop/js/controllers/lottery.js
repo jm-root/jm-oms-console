@@ -2,7 +2,8 @@
  * Created by Admin on 2016/5/19.
  */
 'use strict';
-app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, sso, AGGRID, global) {
+var sso = jm.sdk.sso;
+app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -220,7 +221,7 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     }
 }]);
 
-app.controller('LotteryEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('LotteryEditCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     $scope.$state = $state;
 
     var id = $stateParams.id;
@@ -290,7 +291,7 @@ app.controller('LotteryEditCtrl', ['$scope', '$http', '$state', '$stateParams', 
 
 }]);
 
-app.controller('winUserInfoCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('winUserInfoCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
     $scope.$state = $state;
 
     var id = $stateParams.id;
@@ -340,7 +341,7 @@ app.controller('winUserInfoCtrl', ['$scope', '$http', '$state', '$stateParams', 
 
 }]);
 
-app.controller('LotteryFormulaCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', function($scope, $http, $state, $stateParams, sso) {
+app.controller('LotteryFormulaCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
 
     $http.get(shopUri+'/formula', {
         params:{

@@ -2,7 +2,8 @@
  * Created by ZL on 2016/8/13.
  */
 "use strict";
-app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$http', 'sso', 'AGGRID', 'global', '$q', function ($scope, $state, $stateParams, $http, sso, AGGRID, global, $q) {
+var sso = jm.sdk.sso;
+app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', '$q', function ($scope, $state, $stateParams, $http, AGGRID, global, $q) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -393,7 +394,7 @@ app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$ht
 
 }]);
 
-app.controller('GameSetTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout, sso, global, $location, $anchorScroll) {
+app.controller('GameSetTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout, global, $location, $anchorScroll) {
 
     var tmpl_type = $stateParams.type;
     $scope.gameset_config_tmpl = "tpl/appmanager/gameset_" + $stateParams.type + "_table_edit.html";
@@ -406,7 +407,7 @@ app.controller('GameSetTableEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('GameSetTableDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, $q, global) {
+app.controller('GameSetTableDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', '$q', 'global', function($scope, $http, $state, $stateParams, $timeout, $q, global) {
 
     var tmpl_type = $stateParams.type;
     var appId = $stateParams.appId;
