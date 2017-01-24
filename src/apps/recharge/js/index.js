@@ -9,14 +9,13 @@
      */
     angular.module('app')
         .config(
-            [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
-                function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
+            [          '$stateProvider', '$urlRouterProvider', 'lazyLoadProvider',
+                function ($stateProvider,   $urlRouterProvider, lazyLoadProvider) {
                     $stateProvider
-                    // resolve: load([path + 'js/controllers/index.js'])
                         .state('app.recharge', {
                             url: '/recharge',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: load([path + 'js/controllers/recharge.js'])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/recharge.js'])
                         })
                         .state('app.recharge.cardtype', {
                             url: '/cardtype',
@@ -43,7 +42,7 @@
                             url: '/list',
                             templateUrl:path +  'tpl/recharge.card.html',
                             controller: 'RechargeCardCtrl',
-                            resolve:load(['daterangepicker'])
+                            resolve:lazyLoadProvider.load(['daterangepicker'])
                             // resolve: {
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function ($ocLazyLoad,uiLoad) {
@@ -62,7 +61,7 @@
                             },
                             templateUrl:path + 'tpl/recharge.cardadd.html',
                             controller: 'RechargeCardAddCtrl',
-                            resolve:load(['daterangepicker'])
+                            resolve:lazyLoadProvider.load(['daterangepicker'])
                             // resolve: {
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function ($ocLazyLoad,uiLoad) {
@@ -81,7 +80,7 @@
                             },
                             templateUrl: path + 'tpl/recharge.cardlog.html',
                             controller: 'RechargeCardLogCtrl',
-                            resolve:load(['daterangepicker'])
+                            resolve:lazyLoadProvider.load(['daterangepicker'])
                             // resolve: {
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function ($ocLazyLoad,uiLoad) {
@@ -97,7 +96,7 @@
                             url: '/third',
                             templateUrl: path + 'tpl/recharge.third.html',
                             controller: 'RechargeThirdCtrl',
-                            resolve:load(['daterangepicker'])
+                            resolve:lazyLoadProvider.load(['daterangepicker'])
                             // resolve: {
                             //     deps: ['$ocLazyLoad', 'uiLoad',
                             //         function ($ocLazyLoad,uiLoad) {
@@ -109,40 +108,6 @@
                             // }
                         })
                     ;
-
-                    function load(srcs, callback) {
-                        return {
-                            deps: ['$ocLazyLoad', '$q',
-                                function( $ocLazyLoad, $q ){
-                                    var deferred = $q.defer();
-                                    var promise  = false;
-                                    srcs = angular.isArray(srcs) ? srcs : srcs.split(/\s+/);
-                                    if(!promise){
-                                        promise = deferred.promise;
-                                    }
-                                    angular.forEach(srcs, function(src) {
-                                        console.log(src);
-                                        promise = promise.then( function(){
-                                            if(JQ_CONFIG[src]){
-                                                return $ocLazyLoad.load(JQ_CONFIG[src]);
-                                            }
-                                            console.log(src);
-                                            angular.forEach(MODULE_CONFIG, function(module) {
-                                                if( module.name == src){
-                                                    name = module.name;
-                                                }else{
-                                                    name = src;
-                                                }
-                                            });
-                                            console.log(name);
-                                            return $ocLazyLoad.load(name);
-                                        } );
-                                    });
-                                    deferred.resolve();
-                                    return callback ? promise.then(function(){ return callback(); }) : promise;
-                                }]
-                        }
-                    }
                 }
             ]
         );

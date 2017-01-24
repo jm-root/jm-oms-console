@@ -9,13 +9,13 @@
      */
     angular.module('app')
         .config(
-            [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG',
-                function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
+            [          '$stateProvider', '$urlRouterProvider', 'lazyLoadProvider',
+                function ($stateProvider,   $urlRouterProvider, lazyLoadProvider) {
                     $stateProvider
                         .state('app.' + name, {
                             url: '/activity',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: load( [path + 'js/controllers/activity.js'] )
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/activity.js'] )
                         })
                         .state('app.'+ name + '.prop', {
                             url: '/prop',
@@ -31,12 +31,12 @@
                             params: {pid: null},
                             templateUrl: path + 'tpl/activity.prop.edit.html',
                             controller: 'ActivityPropEditCtrl',
-                            resolve: load(['ngTagsInput'])
+                            resolve: lazyLoadProvider.load(['ngTagsInput'])
                         })
                         .state('app.' + name + '.prop.edit.logo', {
                             url: '/logo',
                             templateUrl: path + 'tpl/imgcrop2.html',
-                            resolve: load(['angular-img-cropper'])
+                            resolve: lazyLoadProvider.load(['angular-img-cropper'])
                         })
                         .state('app.' + name + '.gaveprop', {
                             url: '/gaveprop',
@@ -57,20 +57,12 @@
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/activity.forum.edit.html',
                             controller: 'ActivityForumEditCtrl',
-                            resolve: load(['ngTagsInput',JQ_CONFIG.ueditor])
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function( $ocLazyLoad, uiLoad ){
-                            //             // return $ocLazyLoad.load(['ngTagsInput'])
-                            //             //     .then(function () {
-                            //             //         return uiLoad.load(JQ_CONFIG.ueditor);
-                            //             //     });
-                            //         }]
-                            // }
+                            resolve: lazyLoadProvider.load(['ngTagsInput','ueditor'])
                         })
                         .state('app.' + name + '.forum.edit.logo', {
                             url: '/logo',
                             templateUrl: 'tpl/imgcrop2.html',
-                            resolve: load('angular-img-cropper')
+                            resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
                         .state('app.' + name + '.aty', {
@@ -86,12 +78,12 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.edit.html',
                             controller: 'ActivityAtyEditCtrl',
-                            resolve: load(['ui.bootstrap.datetimepicker','ngTagsInput','ueditor'])
+                            resolve: lazyLoadProvider.load(['ui.bootstrap.datetimepicker','ngTagsInput','ueditor'])
                         })
                         .state('app.' + name + '.aty.edit.logo', {
                             url: '/logo',
                             templateUrl: 'tpl/imgcrop2.html',
-                            resolve: load('angular-img-cropper')
+                            resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
                         .state('app.' + name + '.aty.item', {
@@ -107,39 +99,8 @@
                             url: '/edit/{id}?pid',
                             templateUrl: path + 'tpl/activity.aty.item.edit.html',
                             controller: 'ActivityAtyItemEditCtrl',
-                            resolve: load(['ui.bootstrap.datetimepicker','ngTagsInput'])
+                            resolve: lazyLoadProvider.load(['ui.bootstrap.datetimepicker','ngTagsInput'])
                         });
-
-                    function load(srcs, callback) {
-                        return {
-                            deps: ['$ocLazyLoad', '$q',
-                                function( $ocLazyLoad, $q ){
-                                    var deferred = $q.defer();
-                                    var promise  = false;
-                                    srcs = angular.isArray(srcs) ? srcs : srcs.split(/\s+/);
-                                    if(!promise){
-                                        promise = deferred.promise;
-                                    }
-                                    angular.forEach(srcs, function(src) {
-                                        promise = promise.then( function(){
-                                            if(JQ_CONFIG[src]){
-                                                return $ocLazyLoad.load(JQ_CONFIG[src]);
-                                            }
-                                            angular.forEach(MODULE_CONFIG, function(module) {
-                                                if( module.name == src){
-                                                    name = module.name;
-                                                }else{
-                                                    name = src;
-                                                }
-                                            });
-                                            return $ocLazyLoad.load(name);
-                                        } );
-                                    });
-                                    deferred.resolve();
-                                    return callback ? promise.then(function(){ return callback(); }) : promise;
-                                }]
-                        }
-                    }
                 }
             ]
         );
