@@ -48,7 +48,7 @@
                         .state('app.rooms.manage.gameset', {
                             url: '/gameset',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/gameset.js'] )
+                            resolve: lazyLoadProvider.load( [ path + 'js/controllers/gameset.js'] )
                         })
                         .state('app.rooms.manage.gameset.list', {
                             url: '/list/{appId}/{type}',
@@ -64,7 +64,7 @@
                         .state('app.rooms.manage.gameset.table', {
                             url: '/table',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/gameset_table.js'] )
+                            resolve: lazyLoadProvider.load( [ path + 'js/controllers/gameset_table.js'] )
                         })
                         .state('app.rooms.manage.gameset.table.list', {
                             url: '/list/{appId}/{type}/{roomId}',
@@ -80,7 +80,7 @@
                         .state('app.rooms.manage.baoxiang', {
                             url: '/baoxiang',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js', path + 'js/controllers/baoxiang.js'] )
+                            resolve: lazyLoadProvider.load( [ path + 'js/controllers/baoxiang.js'] )
                         })
                         .state('app.rooms.manage.baoxiang.list', {
                             url: '/list/{appId}',

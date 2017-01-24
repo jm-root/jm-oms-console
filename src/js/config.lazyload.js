@@ -1,11 +1,6 @@
 // lazyload config
 
 angular.module('app')
-/**
- * jQuery plugin config use ui-jq directive , config the js and css files that required
- * key: function name of the jQuery plugin
- * value: array of the css js file located
- */
     .constant('JQ_CONFIG', {
             easyPieChart: ['../libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js'],
             sparkline: ['../libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js'],
@@ -48,48 +43,11 @@ angular.module('app')
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css'],
             tagsinput: ['../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                 '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
-            ueditor: ['../src/js/directives/ui-ueditor.js'],
-            jmGameDiffcult: ['../libs/jm/jm-ajax/dist/js/jm-ajax.js', '../libs/jm/jm-core/dist/js/jm-core.js',
-                '../libs/jm/jm-ms/dist/js/jm-ms.js']
+
+            lodash: ['../libs/jquery/lodash/dist/lodash.js'],
+            ueditor: ['../src/js/directives/ui-ueditor.js']
         }
     )
-    .constant('AGGRID', {
-        zh_CN: {
-            // for filter panel
-            page: ' ',
-            more: ' ',
-            to: '-',
-            of: '/',
-            next: '下一页',
-            last: '未尾页',
-            first: '首页',
-            previous: '上一页',
-            loadingOoo: '加载中...',
-            // for set filter
-            selectAll: '全选',
-            searchOoo: '搜索...',
-            blanks: '空白',
-            // for number filter and string filter
-            filterOoo: '过滤...',
-            applyFilter: '应用过滤...',
-            // for number filter
-            equals: '等于',
-            lessThan: '小于',
-            greaterThan: '大于',
-            // for text filter
-            contains: '包含',
-            startsWith: '开始',
-            endsWith: '结束',
-            // tool panel
-            columns: '列',
-            pivotedColumns: '主列',
-            pivotedColumnsEmptyMessage: '请将列拖到这里',
-            valueColumns: '列值',
-            valueColumnsEmptyMessage: '请将列拖到这里',
-            //
-            noRowsToShow: '无数据'
-        }
-    })
     .constant('MODULE_CONFIG', {
             'ngGrid': [
                 '../libs/angular/ng-grid/build/ng-grid.min.js',
@@ -216,6 +174,9 @@ angular.module('app')
             }
         };
         return {
+            JQ_CONFIG: JQ_CONFIG,
+            MODULE_CONFIG: MODULE_CONFIG,
+
             configJQ: function (opts) {
                 opts || (opts = {});
                 for (var key in opts) {

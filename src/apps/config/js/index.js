@@ -15,7 +15,7 @@
                         .state('app.config', {
                             url: '/config',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js',path + 'js/controllers/config.js'] )
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/config.js'] )
                         })
                         .state('app.config.create', {
                             url: '/config_create/{id}',
@@ -42,14 +42,14 @@
                             url: '/systemconfig',
                             templateUrl:path +  'tpl/config.systemconfig.html',
                             controller: 'ConfigSystemConfigCtrl',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js'] )
+                            resolve: lazyLoadProvider.load( [] )
                         })
 
                         .state('app.config.unified', {
                             url: '/unified',
                             templateUrl:path +  'tpl/config.unified.html',
                             controller: 'ConfigUnifiedCtrl',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js'] )
+                            resolve: lazyLoadProvider.load( [] )
                         })
                         .state('app.config.unified.view', {
                             url: '/view',

@@ -21,7 +21,7 @@
                         .state('app.home.vip', {
                             url: '/vip',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-play/jm-play-sdk.min.js',path + 'js/controllers/vip.js'] )
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/vip.js'] )
                         })
                         .state('app.home.vip.cond', {
                             url: '/cond',

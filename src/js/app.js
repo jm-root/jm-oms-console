@@ -1,5 +1,4 @@
 'use strict';
-agGrid.initialiseAgGridWithAngular1(angular);
 angular.module('app', [
     'ngAnimate',
     'ngAria',
@@ -16,7 +15,17 @@ angular.module('app', [
     'ui.jq',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'toaster',
-    'common',
-    'agGrid'
-]);
+    'toaster'
+])
+    .run(
+        ['$rootScope', '$state', '$stateParams', '$translate',
+            function ($rootScope, $state, $stateParams, $translate) {
+                $rootScope.$state = $state;
+                $rootScope.$stateParams = $stateParams;
+                $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
+                    $translate.refresh();
+                });
+            }
+        ]
+    )
+;

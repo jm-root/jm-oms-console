@@ -14,6 +14,8 @@
     "jm-sdk-core": "*",
     "jm-sso": "*",
     "jm-config": "*",
+    "jm-acl": "*",
+    "jm-oms": "*",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-usemin": "^3.1.1"

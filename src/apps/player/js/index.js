@@ -25,7 +25,7 @@
                             url: '/list',
                             templateUrl: path + 'tpl/player.info.list.html',
                             controller: 'PlayerListCtrl',
-                            // resolve: lazyLoadProvider.load('daterangepicker','../libs/jm/jm-play/jm-play-sdk.min.js','dateRangePicker')
+                            // resolve: lazyLoadProvider.load('daterangepicker',,'dateRangePicker')
                         })
                         .state('app.player.online', {
                             url: '/online',

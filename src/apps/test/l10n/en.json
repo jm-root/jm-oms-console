@@ -1,0 +1,13 @@
+{
+  "COPYRIGHT": "有限公司<br>&copy; 2015",
+  "login": {
+    "LOGIN": "Log in",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "ENTER_LOGIN_INFO": "Please enter the login information"
+  },
+  "nav": {
+    "HEADER": "Navigation",
+    "MAIN": "Home"
+  }
+
+}

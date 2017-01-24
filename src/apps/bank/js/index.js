@@ -39,37 +39,37 @@
                             url: '/account',
                             templateUrl: path + 'tpl/bank.account.html',
                             controller: 'BankAccountCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.preauth', {
                             url: '/preauth',
                             templateUrl: path + 'tpl/bank.preauth.html',
                             controller: 'BankPreauthCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.transfer', {
                             url: '/transfer',
                             templateUrl: path  + 'tpl/bank.transfer.html',
                             controller: 'BankTransferCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.exchange', {
                             url: '/exchange',
                             templateUrl: path + 'tpl/bank.exchange.html',
                             controller: 'BankExchangeCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.deal', {
                             url: '/deal',
                             templateUrl: path + 'tpl/bank.deal.html',
                             controller: 'BankDealCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.npreauth', {
                             url: '/npreauth',
                             templateUrl: path + 'tpl/bank.npreauth.html',
                             controller: 'BankNPreauthCtrl',
-                            resolve: lazyLoadProvider.load(['../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load([])
                         })
                         .state('app.bank.overdraw', {
                             url: '/overdraw',

@@ -70,7 +70,9 @@ module.exports = {
                     'jm-ms/dist/js/jm-ms.js',
                     'jm-sso/dist/js/jm-sdk-sso.js',
                     'jm-config/dist/js/jm-sdk-config.js',
-                    'jm-play/jm-play-sdk.min.js'
+                    'jm-acl/dist/js/jm-sdk-acl.js',
+                    'jm-oms/dist/js/jm-sdk-oms.js',
+                    'jm-playsdk/dist/js/jm-play-sdk.js'
                 ],
                 dest: 'libs/jm',
                 cwd:  'node_modules',
@@ -115,6 +117,14 @@ module.exports = {
                 ],
                 dest: 'libs/jquery',
                 cwd:  'bower_components',
+                expand: true
+            },
+            {
+                src:  [
+                    'lodash/dist/lodash.js'
+                ],
+                dest: 'libs/jquery',
+                cwd:  'node_modules',
                 expand: true
             },
             {
