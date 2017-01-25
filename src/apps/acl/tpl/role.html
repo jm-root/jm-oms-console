@@ -1,51 +1,49 @@
 <!-- hbox layout -->
 <div class="hbox hbox-auto-xs hbox-auto-sm bg-light ">
 
-
-
     <!-- column -->
     <div class="col w-xs  b-r">
         <div class="wrapper-sm b-b">
             <div class="pull-right">
-                <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)">
+                <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)" translate="role.add">
                     {{ebtnname}}
                 </a>
-                <a href ng-if="!userRoles[curRole.code]" class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='修改'" ng-click="change(1)">
+                <a href ng-if="!userRoles[curRole.code]" class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='修改'" ng-click="change(1)" translate="role.modify">
                     {{ubtnname}}
                 </a>
             </div>
 
-            <div class="h4">角色</div>
+            <div class="h4" translate="role.role">角色</div>
         </div>
         <div ng-if="!isCollapsed" class="panel-body bg-white-only">
             <form name="formValidate" class="form-horizontal form-validation">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">上级角色</label>
+                    <label class="col-sm-3 control-label" translate="role.lastrole">上级角色</label>
                     <div class="col-sm-9">
-                        <select multiple chosen class="w-full" data-placeholder-text-multiple="'上级角色'" ng-model="role.parents"  ng-options="option.code as option.title for option in roles">
+                        <select multiple chosen class="w-full" data-placeholder-text-multiple="'上级角色'" ng-model="role.parents"  ng-options="option.code as option.title for option in roles" translate="role.lastrole">
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">编码</label>
+                    <label class="col-sm-3 control-label" translate="role.coding">编码</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="编码(a-z|A-Z|0-9字符)" ng-model="role.code" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="role._id" ng-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">名称</label>
+                    <label class="col-sm-3 control-label" translate="role.name">名称</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="名称" ng-model="role.title"  ng-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">描述</label>
+                    <label class="col-sm-3 control-label" translate="role.describe">描述</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="描述" ng-model="role.description"  ng-required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">开/关</label>
+                    <label class="col-sm-3 control-label" translate="role.switch">开/关</label>
                     <div class="col-sm-9">
                         <label class="i-checks checkbox-inline">
                             <input type="checkbox" ng-model="role.status" ng-true-value="1" ng-false-value="0"><i></i>
@@ -53,7 +51,7 @@
                     </div>
                 </div>
                 <footer class="text-right">
-                    <button ng-hide="role._id" class="btn btn-info" ng-click="!formValidate.$invalid&&enter()">确认</button>
+                    <button ng-hide="role._id" class="btn btn-info" ng-click="!formValidate.$invalid&&enter()" translate="role.submit">确认</button>
                     <button ng-show="role._id" class="btn btn-success" ng-click="!formValidate.$invalid&&update()">保存</button>
                 </footer>
             </form>
@@ -109,11 +107,11 @@
     </script>
     <div class="col w-lg lter b-r">
         <div class="wrapper-sm b-b"style="height: 41px">
-                <label class="control-label" style="height: 30px">角色名称</label>
+                <label class="control-label" style="height: 30px" translate="role.rolename">角色名称</label>
                 <input style="display: inline-block;width: auto;margin-right: 10%;height: 30px" type="text" class="form-control input-sm text-md" placeholder="角色名称" ng-model="curRole.title"  disabled>
-                <label class=control-label" style="height: 30px">描述</label>
+                <label class=control-label" style="height: 30px" translate="role.describe">描述</label>
                 <input  style="display: inline-block;width: 30%;height: 30px" type="text" class="form-control input-sm text-md" placeholder="描述" ng-model="curRole.description" disabled>
-                <button style="display: inline-block;height: 30px" class="btn btn-info pull-right btn-sm" ng-click="changePermission()" ng-if="!userRoles[curRole.code]">保存</button>
+                <button style="display: inline-block;height: 30px" class="btn btn-info pull-right btn-sm" ng-click="changePermission()" ng-if="!userRoles[curRole.code]" translate="role.save">保存</button>
         </div>
         <div  ng-show="curRole._id" class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-91}}+'px', size:'8px'}">
             <div ui-tree="treeOptions" id="tree-root">

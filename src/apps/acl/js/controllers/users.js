@@ -1,8 +1,9 @@
 
-app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'common', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID,common, global) {
-
+'use strict';
+app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global',
+    function($scope, $http, $state, $stateParams, $timeout, AGGRID,global) {
     var sso=jm.sdk.sso;
-    var history = global.usersListHistory;
+    var history = global.usersListHistory||(global.usersListHistory={});
     $scope.pageSize = history.pageSize||'10';
     $scope.search = history.search||{};
     var format_status = function(params) {
@@ -161,7 +162,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
 }]);
 
-app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     var sso=jm.sdk.sso;
     $scope.$state = $state;
 

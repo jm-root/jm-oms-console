@@ -40,7 +40,7 @@ angular.module('app')
     .config(['lazyLoadProvider', function (lazyLoadProvider) {
         lazyLoadProvider.configJQ({
             'lodash': ['../libs/jquery/lodash/dist/lodash.js'],
-            'ueditor': ['../lib/jquery/ueditor/ueditor.config.js', '../lib/jquery/ueditor/ueditor.all.min.js']
+            'ueditor': ['../libs/jquery/ueditor/ueditor.config.js', '../libs/jquery/ueditor/ueditor.all.min.js']
         });
         lazyLoadProvider.configModule({
             'ngTagsInput': [

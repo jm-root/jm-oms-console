@@ -17,7 +17,9 @@
                     $stateProvider
                         .state('app.acl', {
                             url: '/acl',
-                            template: '<div ui-view class="fade-in-down"></div>'
+                            controller: 'aclCtrl',
+                            template: '<div ui-view class="fade-in-down"></div>',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/aclCtrl.js'])
                         })
                         .state('app.acl.users', {
                             url: '/users',
@@ -37,7 +39,7 @@
                             url: '/role',
                             templateUrl: path +'tpl/role.html',
                             controller: 'RoleCtrl',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/role.js','ngTagsInput','tree','localytics.directives','chosen','ueditor'])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/role.js','ngTagsInput','treeControl','localytics.directives','ueditor'])
                         })
                         .state('app.acl.resource', {
                             url: '/resource',

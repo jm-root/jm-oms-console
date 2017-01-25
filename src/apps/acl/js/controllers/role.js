@@ -1,6 +1,5 @@
 'use strict';
-
-app.controller('RoleCtrl', ['$scope', '$state', '$http', function ($scope, $state, $http) {
+app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
     var sso=jm.sdk.sso;
     $scope.opts = {
         injectClasses: {
