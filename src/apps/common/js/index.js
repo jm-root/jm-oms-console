@@ -72,39 +72,6 @@ angular.module('app')
         self.userInfo = {};
         self.roles = [];
 
-        self.usersListHistory = {};
-        self.agentListHistory = {};
-        self.configListHistory = {};
-        self.coinStockOrderHistory = {};
-        self.coinStockListHistory = {};
-        self.coinDistributeBatchHistory = {};
-        self.agentDataRegisterHistory = {};
-        self.agentDataRechargeHistory = {};
-        self.bankAccountHistory = {};
-        self.bankPreauthHistory = {};
-        self.bankDealHistory = {};
-        self.appsListHistory = {};
-        self.homeActivityHistory = {};
-        self.homeBBSForumListHistory = {};
-        self.homeBBSTopicListHistory = {};
-        self.packageAgentHistory = {};
-        self.coinAccountListHistory = {};
-        self.coinRecordAgentStatHistory = {};
-        self.coinRecordLogsHistory = {};
-        self.activityPropHistory = {};
-        self.activityForumListHistory = {};
-        self.activityAtyListHistory = {};
-        self.activityAtyItemListHistory = {};
-        self.accountPayListHistory = {};
-        self.playerListHistory = {};
-        self.playerGamesListHistory = {};
-        self.playerGiveLogHistory = {};
-        self.playerOnlineHistory = {};
-        self.rechargeCardHistory = {};
-        self.rechargeCardLogHistory = {};
-        self.rechargeListHistory = {};
-        self.rechargeCardTypeHistory = {};
-
         self.dateRangeOptions = {
             "autoApply": true,
             "showDropdowns": true,
@@ -208,10 +175,6 @@ angular.module('app')
             return deferred.promise;
         };
 
-    }])
-    .service('common', ['$rootScope', '$http', '$window', function ($rootScope, $http, $window) {
-        var self = this;
-        jm.enableEvent(self);
 
         self.isIE = function () {
             return !!navigator.userAgent.match(/MSIE/i);
@@ -259,6 +222,5 @@ angular.module('app')
                 return;
             }
         };
-
     }])
 ;
