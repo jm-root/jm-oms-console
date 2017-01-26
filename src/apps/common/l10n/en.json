@@ -1,0 +1,11 @@
+{
+  "common": {
+    "get": "get",
+    "put": "put",
+    "post": "post",
+    "delete": "delete",
+    "add": "add",
+    "modify": "modify",
+    "cancel": "cancel"
+  }
+}

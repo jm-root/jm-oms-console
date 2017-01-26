@@ -2,6 +2,7 @@
 
 angular.module('app')
     .controller('MainCtrl', ['$scope', '$state', '$translatePartialLoader', '$http', 'global', function ($scope, $state, $translatePartialLoader, $http, global) {
+        $translatePartialLoader.addPart('common');
         $translatePartialLoader.addPart('main');
 
         var sso = jm.sdk.sso;

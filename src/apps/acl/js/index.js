@@ -17,7 +17,7 @@
                     $stateProvider
                         .state('app.acl', {
                             url: '/acl',
-                            controller: 'aclCtrl',
+                            controller: 'AclCtrl',
                             template: '<div ui-view class="fade-in-down"></div>',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
                         })
