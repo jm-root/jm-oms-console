@@ -1,7 +1,7 @@
 'use strict';
 var sso = jm.sdk.sso;
 app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', '$timeout', function ($scope, $state, $http,AGGRID, global, $timeout) {
-    var history = global.playerListHistory;
+    var history = global.playerListHistory||(global.playerListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
@@ -325,7 +325,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global
 }]);
 
 app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
-    var history = global.playerGamesListHistory;
+    var history = global.playerGamesListHistory||(global.playerGamesListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var id = $stateParams.id;
     $scope.playerName = $stateParams.name;
@@ -396,7 +396,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
 }]);
 
 app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'AGGRID', 'global','data', function ($scope, $state, $http, $interval, AGGRID, global, data) {
-    var history = global.playerOnlineHistory;
+    var history = global.playerOnlineHistory||(global.playerOnlineHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
     var url = recordUri+'/onlines';
@@ -647,7 +647,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glob
 }]);
 
 app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
-    var history = global.playerGiveLogHistory;
+    var history = global.playerGiveLogHistory||(global.playerGiveLogHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};

@@ -19,7 +19,7 @@
                             url: '/acl',
                             controller: 'aclCtrl',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/aclCtrl.js'])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
                         })
                         .state('app.acl.users', {
                             url: '/users',

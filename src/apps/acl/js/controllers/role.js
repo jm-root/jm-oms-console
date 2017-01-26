@@ -268,7 +268,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
                 $scope.curRole = null;
             }
         }).error(function(msg, code){
-            console.log("b")
             $scope.errorTips(code);
         });
     }

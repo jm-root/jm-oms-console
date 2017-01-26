@@ -25,7 +25,7 @@
                             url: '/list',
                             templateUrl: path + 'tpl/player.info.list.html',
                             controller: 'PlayerListCtrl',
-                            // resolve: lazyLoadProvider.load('daterangepicker',,'dateRangePicker')
+                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.online', {
                             url: '/online',
@@ -64,13 +64,13 @@
                             url: '/record',
                             templateUrl: path + 'tpl/player.record.html',
                             controller: 'PlayerRecordCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.givelog', {
                             url: '/givelog',
                             templateUrl: path + 'tpl/player.givelog.html',
                             controller: 'PlayerGiveLogCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                 }
             ]
