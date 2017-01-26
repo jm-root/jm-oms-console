@@ -51,7 +51,6 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                     token: sso.getToken(),
                     page: page,
                     rows: $scope.pageSize,
-                    creator: localStorage.getItem('id'),
                     keyword: keyword,
                     status:status
                 }
