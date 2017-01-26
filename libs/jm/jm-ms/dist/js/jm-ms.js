@@ -1286,6 +1286,7 @@ var WebSocket = WebSocket || null;
 
 (function () {
     'use strict';
+    var MAXID = 999999;
     var defaultPort = 3100;
     var createClientImpl = null;
     if (typeof module !== 'undefined' && module.exports) {
@@ -1329,6 +1330,7 @@ var WebSocket = WebSocket || null;
                 if(!connected) return cb(new Error(jm.ERR.FA_NETWORK.msg), jm.ERR.FA_NETWORK);
                 opts.uri = prefix + (opts.uri || '');
                 if (cb) {
+                    if(id >= MAXID) id = 0;
                     id++;
                     cbs[id] = cb;
                     opts.id = id;
@@ -1375,7 +1377,7 @@ var WebSocket = WebSocket || null;
         var reconncetTimer = null;
         var reconnectAttempts = 0;
         var reconnectionDelay = opts.reconnectionDelay || 5000;
-        var DEFAULT_MAX_RECONNECT_ATTEMPTS = 10;
+        var DEFAULT_MAX_RECONNECT_ATTEMPTS = 0; //默认重试次数0 表示无限制
         var maxReconnectAttempts = opts.maxReconnectAttempts || DEFAULT_MAX_RECONNECT_ATTEMPTS;
         client.connect = function() {
             if(connected) return;
@@ -1403,7 +1405,7 @@ var WebSocket = WebSocket || null;
             var onclose = function(event) {
                 connected = false;
                 self.emit('close');
-                if(!!autoReconnect && reconnectAttempts < maxReconnectAttempts) {
+                if(!!autoReconnect && (!maxReconnectAttempts || reconnectAttempts < maxReconnectAttempts)) {
                     reconnect = true;
                     reconnectAttempts++;
                     reconncetTimer = setTimeout(function() {
