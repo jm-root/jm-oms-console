@@ -3,6 +3,7 @@
 app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global',
     function($scope, $http, $state, $stateParams, $timeout, AGGRID,global) {
     var sso=jm.sdk.sso;
+    var acl = jm.sdk.acl;
     var history = global.usersListHistory||(global.usersListHistory={});
     $scope.pageSize = history.pageSize||'10';
     $scope.search = history.search||{};
@@ -46,16 +47,18 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             var keyword = search.keyword;
             var status=search.status;
             var page = params.startRow / $scope.pageSize + 1;
-            $http.get(aclUri + '/users', {
-                params: {
-                    token: sso.getToken(),
-                    page: page,
-                    rows: $scope.pageSize,
-                    keyword: keyword,
-                    status:status
+            acl.user.list({
+                token: sso.getToken(),
+                page: page,
+                rows: $scope.pageSize,
+                keyword: keyword,
+                status:status
+            }, function(err, doc){
+                if(doc.err){
+                    $scope.errorTips(doc.err);
+                    return;
                 }
-            }).success(function (result) {
-                var data = result;
+                var data = doc;
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
@@ -63,8 +66,6 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                     var lastRow = data.total;
                     params.successCallback(rowsThisPage, lastRow);
                 }
-            }).error(function (msg, code) {
-                $scope.errorTips(code);
             });
         }
     };

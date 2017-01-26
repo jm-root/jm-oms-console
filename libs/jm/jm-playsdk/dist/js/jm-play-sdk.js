@@ -1,287 +1,272 @@
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
+    var acl = sdk.acl;
 
-    sdk.on('init', function (opts) {
-        var model = 'acl';
-        opts[model] = opts[model] || {};
-        opts[model].uri = opts[model].uri || opts.uri;
-        opts[model].timeout = opts[model].timeout || opts.timeout;
-        sdk[model].init(opts[model]);
-    });
 
     /**
-     * acl对象
-     * @class  acl
-     * @param {Object} opts 配置属性
-     * 格式:{uri:'网络地址'}
-     */
-    sdk.acl = {
-        init: function(opts) {
-            opts = opts || {};
-            var uri = opts.uri;
-            var prefix = opts.prefix || '/acl';
-            this.uri = uri + prefix;
-            jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
-        },
-
-        /**
-         * 过滤效验
-         * @method acl#filter
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+     * 过滤效验
+     * @method acl#filter
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(可选)
          *  path: 请求路径(可选, 默认'')
          *  method: 请求类型(可选, 默认'')
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          *  id: '用户id',
          *  token: '经验证后的token',
          *  userRoles: '(数组)该用户拥有的角色',
          *  permissions: '(数组)该用户拥有的权限',
          *  resource: '对应的资源'
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        filter: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            // opts.token = opts.token || storage.getItem("token");
-            //if (!opts.token) return cb(new Error('过滤效验失败'), ERR.FA_NOAUTH);
-            this.get({
-                url: this.uri + '/filter',
-                data: opts
-            }, cb);
-        },
+     */
+    acl.filter = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        // opts.token = opts.token || storage.getItem("token");
+        //if (!opts.token) return cb(new Error('过滤效验失败'), ERR.FA_NOAUTH);
+        this.get({
+            url: this.uri + '/filter',
+            data: opts
+        }, cb);
+    };
 
-        /**
-         * 初始化资源
-         * @method acl#initResources
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+    /**
+     * 初始化资源
+     * @method acl#initResources
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(可选)
          *  json: 资源配置(可选)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        initResources: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            if (!opts.token) return cb(new Error('初始资源失败'), ERR.FA_NOAUTH);
-            this.get({
-                url: this.uri + '/initresources',
-                data: opts
-            }, cb);
-        },
+     */
+    acl.initResources = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        if (!opts.token) return cb(new Error('初始资源失败'), ERR.FA_NOAUTH);
+        this.get({
+            url: this.uri + '/initresources',
+            data: opts
+        }, cb);
+    };
 
-        /**
-         * 初始化权限
-         * @method acl#initPermissions
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+    /**
+     * 初始化权限
+     * @method acl#initPermissions
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(可选)
          *  json: 资源配置(可选)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        initPermissions: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            if (!opts.token) return cb(new Error('初始权限失败'), ERR.FA_NOAUTH);
-            this.get({
-                url: this.uri + '/initpermissions',
-                data: opts
-            }, cb);
-        },
-        /**
-         * 获取用户拥有的角色
-         * @method acl#userRoles
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+     */
+    acl.initPermissions = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        if (!opts.token) return cb(new Error('初始权限失败'), ERR.FA_NOAUTH);
+        this.get({
+            url: this.uri + '/initpermissions',
+            data: opts
+        }, cb);
+    };
+
+    /**
+     * 获取用户拥有的角色
+     * @method acl#userRoles
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(可选)
          *  id: 用户ObjectId(必填)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          *  roles: ['角色']
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        userRoles: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            this.get({
-                url: this.uri + '/user/roles',
-                data: opts
-            }, cb);
-        },
+     */
+    acl.userRoles = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        this.get({
+            url: this.uri + '/user/roles',
+            data: opts
+        }, cb);
+    };
 
-        /**
-         * 获取用户权限
-         * @method acl#userPermissions
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+    /**
+     * 获取用户权限
+     * @method acl#userPermissions
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(可选)
          *  userId: 用户ObjectId(可选)
          *  resource: 资源数组(可选)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          *  '对应的资源': ['权限']
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        userPermissions: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            this.get({
-                url: this.uri + '/user/permissions',
-                data: opts
-            }, cb);
-        },
+     */
+    acl.userPermissions = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        this.get({
+            url: this.uri + '/user/permissions',
+            data: opts
+        }, cb);
+    };
 
-        /**
-         * 添加用户角色
-         * @method acl#addUserRoles
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+    /**
+     * 添加用户角色
+     * @method acl#addUserRoles
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(必填)
          *  id: 用户ObjectId(必填)
          *  role: 角色数组(必填)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        addUserRoles: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            if (!opts.token||!opts.id||!opts.role) return cb(new Error('添加用户角色失败'), ERR.FA_NOAUTH);
-            var userId = opts.id;
-            this.post({
-                url: this.uri + '/roles/'+userId+'/roles',
-                data: opts
-            }, cb);
-        },
+     */
+    acl.addUserRoles = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        if (!opts.token || !opts.id || !opts.role) return cb(new Error('添加用户角色失败'), ERR.FA_NOAUTH);
+        var userId = opts.id;
+        this.post({
+            url: this.uri + '/roles/' + userId + '/roles',
+            data: opts
+        }, cb);
+    };
 
-        /**
-         * 删除用户角色
-         * @method acl#removeUserRoles
-         * @param {Object} [opts={}] 参数
-         * @example
-         * opts参数:{
+    /**
+     * 删除用户角色
+     * @method acl#removeUserRoles
+     * @param {Object} [opts={}] 参数
+     * @example
+     * opts参数:{
          *  token: 用户令牌(必填)
          *  id: 用户ObjectId(必填)
          *  role: 角色数组(必填)
          * }
-         * @param {callback} [cb=function(err,doc){}] 回调
-         * @example
-         * cb参数格式:
-         * 成功响应:
-         * doc: {
+     * @param {callback} [cb=function(err,doc){}] 回调
+     * @example
+     * cb参数格式:
+     * 成功响应:
+     * doc: {
          * }
-         * 错误响应:
-         * doc: {
+     * 错误响应:
+     * doc: {
          *  err: 错误码,
          *  msg: 错误信息
          * }
-         */
-        removeUserRoles: function(opts, cb) {
-            var self = this;
-            opts = opts || {};
-            cb = cb || function () {};
-            opts.token = opts.token || storage.getItem("token");
-            if (!opts.token||!opts.id||!opts.role) return cb(new Error('删除用户角色失败'), ERR.FA_NOAUTH);
-            var userId = opts.id;
-            this.delete({
-                url: this.uri + '/roles/'+userId+'/roles',
-                data: opts
-            }, cb);
-        }
+     */
+    acl.removeUserRoles = function (opts, cb) {
+        var self = this;
+        opts = opts || {};
+        cb = cb || function () {
+            };
+        opts.token = opts.token || storage.getItem("token");
+        if (!opts.token || !opts.id || !opts.role) return cb(new Error('删除用户角色失败'), ERR.FA_NOAUTH);
+        var userId = opts.id;
+        this.delete({
+            url: this.uri + '/roles/' + userId + '/roles',
+            data: opts
+        }, cb);
     };
 
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -301,13 +286,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.activity = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/activity';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -337,10 +322,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        list: function(opts, cb) {
+        list: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             // if (!opts.token) return cb(new Error('获取发布活动列表失败'), ERR.FA_NOAUTH);
             this.get({
@@ -369,10 +355,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        info: function(opts, cb) {
+        info: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             // if (!opts.token) return cb(new Error('获取活动详情失败'), ERR.FA_NOAUTH);
             this.get({
@@ -406,10 +393,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        take: function(opts, cb) {
+        take: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('领取奖励失败'), ERR.FA_NOAUTH);
             this.post({
@@ -437,10 +425,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        unread: function(opts, cb) {
+        unread: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取未读活动失败'), ERR.FA_NOAUTH);
             this.get({
@@ -454,11 +443,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -478,13 +467,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.agent = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/agent';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -509,10 +498,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        userAgent: function(opts, cb) {
+        userAgent: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取用户渠道失败'), ERR.FA_NOAUTH);
             this.get({
@@ -525,7 +515,7 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
@@ -555,7 +545,7 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
             var prefix = opts.prefix || '/bank';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -590,7 +580,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         query: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取账户信息失败'), ERR.FA_NOAUTH);
             this.get({
@@ -649,7 +640,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         accounts: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取账户信息失败'), ERR.FA_NOAUTH);
             this.get({
@@ -679,7 +671,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         status: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('更新状态失败'), ERR.FA_NOAUTH);
             this.post({
@@ -717,7 +710,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         preauth: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('预授权失败'), ERR.FA_NOAUTH);
             this.post({
@@ -755,7 +749,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         preauthCancel: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('取消预授权失败'), ERR.FA_NOAUTH);
             this.delete({
@@ -785,7 +780,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         preauthList: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取预授权列表失败'), ERR.FA_NOAUTH);
             this.get({
@@ -827,7 +823,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         transfer: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('转账失败'), ERR.FA_NOAUTH);
             this.post({
@@ -872,7 +869,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         exchange: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('兑换失败'), ERR.FA_NOAUTH);
             this.post({
@@ -902,7 +900,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         updatePasswd: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('更新密码失败'), ERR.FA_NOAUTH);
             this.post({
@@ -933,7 +932,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         resetPasswd: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('重置密码失败'), ERR.FA_NOAUTH);
             this.post({
@@ -968,7 +968,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         history: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取交易历史失败'), ERR.FA_NOAUTH);
             this.get({
@@ -999,7 +1000,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         isVaildPasswd: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             //if (!opts.token) return cb(new Error('判断cp失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1029,7 +1031,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         isCP: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             //if (!opts.token) return cb(new Error('判断cp失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1060,7 +1063,8 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          */
         exchangeRate: function (opts, cb) {
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             //opts.token = opts.token || storage.getItem("token");
             //if (!opts.token) return cb(new Error('获取币种兑率失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1079,11 +1083,11 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
 }
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -1103,13 +1107,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.dak = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/dak';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -1135,10 +1139,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        listDaks: function(opts, cb) {
+        listDaks: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取邮件列表失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1165,15 +1170,16 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        getDak: function(opts, cb) {
+        getDak: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取邮件失败'), ERR.FA_NOAUTH);
-            if(!opts.id) return cb(new Error('获取邮件失败'), ERR.FAIL);
+            if (!opts.id) return cb(new Error('获取邮件失败'), ERR.FAIL);
             this.get({
-                url: this.uri + '/daks/'+opts.id,
+                url: this.uri + '/daks/' + opts.id,
                 data: opts
             }, cb);
         },
@@ -1207,10 +1213,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        send: function(opts, cb) {
+        send: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('发送邮件失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1245,10 +1252,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        take: function(opts, cb) {
+        take: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('领取附件失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1281,10 +1289,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        del: function(opts, cb) {
+        del: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('删除邮件失败'), ERR.FA_NOAUTH);
             this.delete({
@@ -1313,10 +1322,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        unread: function(opts, cb) {
+        unread: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取未读邮件失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1330,11 +1340,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -1354,13 +1364,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.depot = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/depot';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -1402,10 +1412,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        listProps: function(opts, cb) {
+        listProps: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取用户道具信息失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1451,10 +1462,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        getProp: function(opts, cb) {
+        getProp: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('获取指定道具信息失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1486,10 +1498,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        giveProp: function(opts, cb) {
+        giveProp: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('给予某用户道具失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1520,10 +1533,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        useProp: function(opts, cb) {
+        useProp: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('使用道具失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1552,10 +1566,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        delProp: function(opts, cb) {
+        delProp: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('销毁道具失败'), ERR.FA_NOAUTH);
             this.delete({
@@ -1586,10 +1601,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        takeProp: function(opts, cb) {
+        takeProp: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('提取用户道具失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1602,11 +1618,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -1626,13 +1642,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.pay = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/pay';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -1657,10 +1673,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          * }
          * @param {callback} [cb=function(err,result){}] 回调
          */
-        prepay: function(opts, cb) {
+        prepay: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('预请求支付失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1680,10 +1697,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          * }
          * @param {callback} [cb=function(err,result){}] 回调
          */
-        refund: function(opts, cb) {
+        refund: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             if (!opts.token) return cb(new Error('请求退款失败'), ERR.FA_NOAUTH);
             this.post({
@@ -1697,11 +1715,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
 })();
 
 var jm = jm || {};
-if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
+if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
     jm = require('jm-sdk-core');
 }
 
-(function(){
+(function () {
     var sdk = jm.sdk;
     var storage = sdk.storage;
     var ERR = sdk.consts.ERR;
@@ -1721,13 +1739,13 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
      * 格式:{uri:'网络地址'}
      */
     sdk.record = {
-        init: function(opts) {
+        init: function (opts) {
             opts = opts || {};
             var uri = opts.uri;
             var prefix = opts.prefix || '/record';
             this.uri = uri + prefix;
             jm.enableEvent(this);
-            sdk.enableAjax(this,{timeout:opts.timeout||0});
+            sdk.enableAjax(this, {timeout: opts.timeout || 0});
         },
 
         /**
@@ -1757,10 +1775,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        stat: function(opts, cb) {
+        stat: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             // if (!opts.token) return cb(new Error('统计失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1792,10 +1811,11 @@ if((typeof exports !== 'undefined' && typeof module !== 'undefined')){
          *  msg: 错误信息
          * }
          */
-        most: function(opts, cb) {
+        most: function (opts, cb) {
             var self = this;
             opts = opts || {};
-            cb = cb || function () {};
+            cb = cb || function () {
+                };
             opts.token = opts.token || storage.getItem("token");
             // if (!opts.token) return cb(new Error('获取失败'), ERR.FA_NOAUTH);
             this.get({
@@ -1840,7 +1860,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      * }
      */
     sso.verifyCode = function (opts, cb) {
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         this.get({
                 url: this.uri + '/verifycode',
                 data: opts
@@ -1870,7 +1891,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      * }
      */
     sso.resetPasswd = function (opts, cb) {
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         var self = this;
         this.post({
             url: this.uri + '/resetPasswd',
@@ -1900,7 +1922,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.bindMobile = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         if (!opts.token) return cb(new Error('绑定手机号失败'), ERR.FA_NOAUTH);
         this.post({
@@ -1935,7 +1958,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.getUsers = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         if (!opts.token) return cb(new Error('获取用户列表失败'), ERR.FA_NOAUTH);
         this.get({
@@ -1968,7 +1992,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.findUser = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         //if (!opts.token) return cb(new Error('查找用户失败'), ERR.FA_NOAUTH);
         this.get({
@@ -2000,7 +2025,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.isSignon = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         this.get({
                 url: this.uri + '/isSignon',
@@ -2031,7 +2057,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.isCheckCode = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         this.get({
                 url: this.uri + '/isCheckCode',
@@ -2062,7 +2089,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.isGuest = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         // opts.token = opts.token || storage.getItem("token");
         this.get({
                 url: this.uri + '/isGuest',
@@ -2092,7 +2120,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.removeUsers = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         if (!opts.token) return cb(new Error('删除用户失败'), ERR.FA_NOAUTH);
         this.delete({
@@ -2136,7 +2165,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.createUser = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         if (!opts.token) return cb(new Error('创建用户失败'), ERR.FA_NOAUTH);
         this.post({
@@ -2180,14 +2210,15 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.updateUser = function (opts, cb) {
         var self = this;
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts = opts || {};
         var token = opts.token || storage.getItem('token');
         if (!token) return cb(new Error('更新用户信息失败'), ERR.FA_NOAUTH);
         opts.token = token;
         var p = '/user';
-        if(opts.userId){
-            p = '/users/'+opts.userId;
+        if (opts.userId) {
+            p = '/users/' + opts.userId;
         }
         this.post({
                 url: this.uri + p,
@@ -2228,7 +2259,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.ranking = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts.token = opts.token || storage.getItem("token");
         this.get({
                 url: this.uri + '/ranking',
@@ -2263,9 +2295,10 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      *    'msg': '错误信息'
      * }
      */
-    sso.getUser= function (opts, cb) {
+    sso.getUser = function (opts, cb) {
         var self = this;
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         opts = opts || {};
         var token = opts.token || storage.getItem('token');
         if (!token) return cb(new Error('获取用户信息失败'), ERR.FA_NOAUTH);
@@ -2274,7 +2307,7 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
                 data: {token: token}
             },
             function (err, doc) {
-                if(!err && doc && doc.id){
+                if (!err && doc && doc.id) {
                     self.user = {
                         token: token
                     };
@@ -2283,7 +2316,7 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
                     }
                     self.user.nick = self.user.nick || '楼主很懒连名字都不起一下';
                     doc = self.user;
-                }else{
+                } else {
                     err = new Error('获取用户信息失败');
                 }
                 cb(err, doc);
@@ -2313,7 +2346,8 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
      */
     sso.checkUser = function (opts, cb) {
         opts = opts || {};
-        cb = cb || function () {};
+        cb = cb || function () {
+            };
         // opts.token = opts.token || storage.getItem("token");
         this.get({
                 url: this.uri + '/checkUser',
