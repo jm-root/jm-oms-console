@@ -10,11 +10,6 @@ jm-oms-console是基于angularJS的适用于制作管理系统的前端框架，
 1、对与具体功能无关的样式及配置文件做了很好的封装，实现了低耦合；
 2、内置大量常用插件，轻松实现常用效果
 
-#模块说明：
-grunt:存放一些用于管理代码的文件
-libs:存放项目公共的依赖包
-src:存放用户独有的功能模块
-
 #用法：
 1、从https://github.com/jm-root/jm-oms-console.git将项目下载下来
 2、接下来安装项目的依赖库，先安装grunt:
@@ -25,8 +20,11 @@ grunt copy：libs
 在package.json的同级目录下执行命令：
 npm install
 grunt copy：libs
-3、在src/apps文件夹中增加自己的子模块，每一个子模块都必须要有自己的路由文件。公用的html、img、js以及库文件放在common中，
-各功能特有的文件放在自己对应的文件下。
+3、在src/apps文件夹中增加自己的子模块，每一个子模块至少应该包含tpl,js和l10n三个文件夹，分别存放模板、js文件和翻译文件，
+js文件中必须包含自己的路由文件。公用的模板、图片、js以及库文件放在common中，各功能特有的文件建立libs文件夹放在自己对应的
+文件夹下。
 
-下载路径：
-https://github.com/jm-root/jm-oms-console.git
+#模块说明：
+grunt:存放一些用于管理代码的文件
+libs:存放项目公共的依赖包
+src:存放用户独有的功能模块
