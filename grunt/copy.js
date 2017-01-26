@@ -95,8 +95,6 @@ module.exports = {
                     'flot.tooltip/js/jquery.flot.tooltip.min.js',
                     'flot-spline/js/jquery.flot.spline.min.js',
                     'flot.orderbars/js/jquery.flot.orderBars.js',
-                    'moment/moment.js',
-                    'moment/locale/*.js',
                     'screenfull/dist/screenfull.min.js',
                     'slimscroll/jquery.slimscroll.min.js',
                     'html5sortable/jquery.sortable.js',
@@ -122,6 +120,8 @@ module.exports = {
             },
             {
                 src:  [
+                    'moment/moment.js',
+                    'moment/locale/*.js',
                     'lodash/dist/lodash.js'
                 ],
                 dest: 'libs/jquery',

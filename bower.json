@@ -67,7 +67,6 @@
     "jquery.easy-pie-chart": "~2.1.6",
     "jquery.sparkline": "~2.1.2",
     "jquery_appear": "~0.3.3",
-    "moment": "~2.8.3",
     "nestable": "*",
     "ng-grid": "~2.0.13",
     "ngImgCrop": "~0.2.0",
@@ -96,7 +95,6 @@
     "angular-cookies": "1.5.8",
     "angular-sanitize": "1.5.8",
     "fullcalendar": "~2.7.1",
-    "moment": ">=2.5.0",
     "angular-touch": "1.5.8"
   }
 }

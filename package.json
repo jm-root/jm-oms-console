@@ -10,6 +10,8 @@
   "author": "Flatfull",
   "license": "Envato REGULAR LICENSE",
   "dependencies": {
+    "lodash": "*",
+    "moment": "*",
     "jm-ms": "*",
     "jm-sdk-core": "*",
     "jm-sso": "*",
