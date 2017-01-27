@@ -22,7 +22,7 @@
                             url: '/account',
                             templateUrl: path + 'tpl/report.account.html',
                             controller: 'ReportAccountCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                 }
             ]

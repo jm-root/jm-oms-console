@@ -61,19 +61,19 @@
                             url: '/register',
                             templateUrl: path + 'tpl/agentdata.register.html',
                             controller: 'AgentDataRegisterCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.agentdata.recharge', {
                             url: '/recharge',
                             templateUrl: path + 'tpl/agentdata.recharge.html',
                             controller: 'AgentDataRechargeCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.agentdata.analysis', {
                             url: '/analysis',
                             templateUrl: path + 'tpl/agentdata.analysis.html',
                             controller: 'AgentDataAnalysisCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                     //推广地址
                         .state('app.promote', {
@@ -81,6 +81,100 @@
                             templateUrl: path + 'tpl/promote.html',
                             controller: 'PromoteCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/promote.js'])
+                        })
+                    //T币
+                        .state('app.coin', {
+                            url: '/coin',
+                            template: '<div ui-view class="fade-in-down"></div>',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/coin.js'])
+                        })
+                        .state('app.coin.stock', {
+                            url: '/stock',
+                            template: '<div ui-view class="fade-in-down"></div>'
+                        })
+                        .state('app.coin.stock.recharge', {
+                            url: '/recharge',
+                            templateUrl: path + 'tpl/coin.stock.recharge.html',
+                            controller: 'CoinStockRechargeCtrl',
+                            // resolve:lazyLoadProvider.load(['../common/js/pingpp-pc.js'])
+                        })
+                        .state('app.coin.stock.recharge.pay', {
+                            url: '/pay',
+                            templateUrl: path + 'tpl/pay.html',
+                            controller: 'CoinStockRechargeCtrl'
+                        })
+                        .state('app.coin.stock.order', {
+                            url: '/order',
+                            templateUrl: path + 'tpl/coin.stock.order.html',
+                            controller: 'CoinStockOrderCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                        })
+                        .state('app.coin.stock.list', {
+                            url: '/list',
+                            templateUrl: path + 'tpl/coin.stock.list.html',
+                            controller: 'CoinStockListCtrl',
+                            resolve: lazyLoadProvider.load([])
+                        })
+                        //生成首充号
+                        .state('app.coin.distribute', {
+                            url: '/distribute',
+                            template: '<div ui-view class="fade-in-down"></div>'
+                        })
+                        .state('app.coin.distribute.make', {
+                            url: '/make',
+                            templateUrl: path + 'tpl/coin.distribute.make.html',
+                            controller: 'CoinDistributeMakeCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                        })
+                        .state('app.coin.distribute.makeinfo', {
+                            url: '/makeinfo/{id}',
+                            templateUrl: path + 'tpl/coin.distribute.makeinfo.html',
+                            controller: 'CoinDistributeMakeInfoCtrl',
+                            resolve:  lazyLoadProvider.load(['smart-table'])
+                        })
+                        .state('app.coin.distribute.batch', {
+                            url: '/batch',
+                            templateUrl: path + 'tpl/coin.distribute.batch.html',
+                            controller: 'CoinDistributeBatchCtrl',
+                            resolve: lazyLoadProvider.load([])
+                        })
+
+                        //帐号列表
+                        .state('app.coin.account', {
+                            url: '/account',
+                            template: '<div ui-view class="fade-in-down"></div>'
+                        })
+                        .state('app.coin.account.list', {
+                            url: '/list',
+                            templateUrl: path + 'tpl/coin.account.list.html',
+                            controller:'CoinAccountListCtrl',
+                            resolve: lazyLoadProvider.load([])
+                        })
+
+                        //玩家账号统计
+                        .state('app.coin.record', {
+                            url: '/record',
+                            template: '<div ui-view class="fade-in-down"></div>'
+                        })
+                        .state('app.coin.record.playerStat', {
+                            url: '/playerStat',
+                            templateUrl: path + 'tpl/coin.record.playerStat.html',
+                            controller:'CoinRecordPlayerStatCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                        })
+                        //渠道玩家统计
+                        .state('app.coin.record.agentStat',{
+                            url:'/agentStat',
+                            templateUrl:path +'tpl/coin.record.agentStat.html',
+                            controller:'CoinRecordAgentStatCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                        })
+                        //日志查询
+                        .state('app.coin.record.logs',{
+                            url:'/logs',
+                            templateUrl: path + 'tpl/coin.record.logs.html',
+                            controller:'CoinRecordLogsCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                 }
             ]

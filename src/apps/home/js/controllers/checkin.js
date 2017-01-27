@@ -5,7 +5,7 @@
 var sso = jm.sdk.sso;
 app.controller('CheckinCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
     console.log("CheckinCtrl");
-    var history = global.appsListHistory;
+    var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 

@@ -1,7 +1,7 @@
 'use strict';
 var sso =jm.sdk.sso;
 app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODULE_CONFIG', 'global',function($scope, $http, $state, AGGRID,MODULE_CONFIG, global) {
-    var history = global.activityPropHistory;
+    var history = global.activityPropHistory||(global.activityPropHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
@@ -135,7 +135,7 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODUL
     });
 }]);
 
-app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     var id = $stateParams.id;
     $scope.id = id;
     $scope.prop = {};
@@ -154,14 +154,14 @@ app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$statePara
                 $scope.prop = obj;
                 if($scope.prop.type!=undefined) $scope.prop.type = $scope.prop.type.toString();
                 if($scope.prop.useMode!=undefined) $scope.prop.useMode = $scope.prop.useMode.toString();
-                if(!$scope.prop.logo){'img/logo.jpg';
+                if(!$scope.prop.logo){'apps/common/img/logo.jpg';
                 }
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     }else{
-        $scope.prop.logo = 'img/logo.jpg';
+        $scope.prop.logo = 'apps/common/img/logo.jpg';
     }
 
     $http.get(appMgrUri+'/apps', {
@@ -288,7 +288,7 @@ app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     $scope.depot = {isSelf:true};
 
     $http.get(propUri+'/props', {
@@ -357,7 +357,7 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
 }]);
 
 app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
-    var history = global.activityForumListHistory;
+    var history = global.activityForumListHistory||(global.activityForumListHistory={});
     var url = activityUri+'/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
 
@@ -505,7 +505,7 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 
     };
 }]);
 
-app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
     var url = activityUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -520,7 +520,7 @@ app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$statePar
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'apps/common/img/logo.jpg';
     };
 
     var ueditor;
@@ -630,7 +630,7 @@ app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$statePar
 }]);
 
 app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
-    var history = global.activityAtyListHistory;
+    var history = global.activityAtyListHistory||(global.activityAtyListHistory={});
     var url = activityUri+'/activities';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -834,7 +834,7 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'g
     });
 }]);
 
-app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
     var url = activityUri+'/activities';
     var furl = activityUri+'/forums';
     var id = $stateParams.id;
@@ -1123,7 +1123,7 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
 }]);
 
 app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateParams', 'AGGRID', 'global',function($scope, $http, $state, $stateParams, AGGRID,global) {
-    var history = global.activityAtyItemListHistory;
+    var history = global.activityAtyItemListHistory||(global.activityAtyItemListHistory={});
     var url = activityUri+'/items';
     var purl = activityUri+'/activities';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -1268,7 +1268,7 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
     });
 }]);
 
-app.controller('ActivityAtyItemEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('ActivityAtyItemEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     var url = activityUri+'/items';
     var purl = activityUri+'/activities';
     var id = $stateParams.id;

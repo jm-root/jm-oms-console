@@ -1,7 +1,7 @@
-
-app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, common, AGGRID, global) {
+'use strict';
+app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
     var sso = jm.sdk.sso;
-    var history = global.agentListHistory;
+    var history = global.agentListHistory||(global.agentListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.status = history.status||'';
     $scope.audit = history.audit||'';
@@ -299,7 +299,8 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     });
 }]);
 
-app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'global', function($scope, $http, $state, $stateParams, sso, global) {
+app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
+    var sso = jm.sdk.sso;
     var viewPath = 'view.agent.list';
     $scope.per = {};
     global.getUserPermission(viewPath).then(function(obj){

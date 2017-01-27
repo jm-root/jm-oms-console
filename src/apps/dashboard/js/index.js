@@ -16,7 +16,7 @@
                             url: '/' + name,
                             templateUrl: path + 'tpl/index.html',
                             controller: 'DashboardCtrl',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js','daterangepicker'])
                         })
                     ;
                 }

@@ -139,7 +139,7 @@
                             url: '/sendnotice',
                             templateUrl: path + 'tpl/home.sendnotice.html',
                             controller: "HomeSendNoticeCtrl",
-                            resolve: lazyLoadProvider.load(['ui.bootstrap.datetimepicker','ngTagsInput','../libs/jm/jm-play/jm-play-sdk.min.js'])
+                            resolve: lazyLoadProvider.load(['ui.bootstrap.datetimepicker','ngTagsInput'])
                         })
                         .state('app.home.senddak', {
                             url: '/senddak',

@@ -1,7 +1,7 @@
 'use strict';
 var sso = jm.sdk.sso;
 app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
-    var history = global.homeBBSForumListHistory;
+    var history = global.homeBBSForumListHistory||(global.homeBBSForumListHistoryhomeBBSForumListHistory={});
     var url = homeUri+'/bbs/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
 
@@ -136,7 +136,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
     };
 }]);
 
-app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     var url = homeUri+'/bbs/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -150,7 +150,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'apps/common/img/logo.jpg';
     };
 
     var ueditor;
@@ -244,7 +244,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
 }]);
 
 app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
-    var history = global.homeBBSTopicListHistory;
+    var history = global.homeBBSTopicListHistory||(global.homeBBSTopicListHistory={});
     var url = homeUri+'/bbs/topics';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -416,7 +416,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
     });
 }]);
 
-app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     var url = homeUri+'/bbs/topics';
     var furl = homeUri+'/bbs/forums';
     var id = $stateParams.id;
@@ -432,7 +432,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
             }
             return uri;
         }
-        return '/../common/images/logo.jpg';
+        return 'apps/common/img/logo.jpg';
     };
 
     var ueditor;
@@ -585,7 +585,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
 }]);
 
 app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
-    var history = global.homeActivityHistory;
+    var history = global.homeActivityHistory||(global.homeActivityHistory={});
     var url = homeUri+'/bbs/topics';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -736,7 +736,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
 
 }]);
 
-app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams, $timeout, common) {
+app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
     var url = homeUri+'/bbs/topics';
     var id = $stateParams.id;
     $scope.id = id;
@@ -1047,7 +1047,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
 
 }]);
 
-app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams,$timeout) {
     $scope.user = {};
 
     $scope.save = function(){

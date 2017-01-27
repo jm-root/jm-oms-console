@@ -1,7 +1,7 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout,common, AGGRID, global) {
-    var history = global.agentDataRegisterHistory;
+app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.agentDataRegisterHistory||(global.agentDataRegisterHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.agent = $scope.search.agent || '';
@@ -115,8 +115,8 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout,common, AGGRID, global) {
-    var history = global.agentDataRechargeHistory;
+app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.agentDataRechargeHistory||(global.agentDataRechargeHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.agent = $scope.search.agent || '';

@@ -1,7 +1,7 @@
 'use strict';
 var sso = jm.sdk.sso;
 app.controller('PackageTakeCtrl', ['$scope', '$state', '$http', '$q','global', function ($scope, $state, $http, $q,global) {
-    var history = global.agentListHistory;
+    var history = global.agentListHistory||(global.agentListHistory={});
     $scope.downloadUrl = history.downloadUrl;
     $scope.downloadTip = history.downloadTip;
 

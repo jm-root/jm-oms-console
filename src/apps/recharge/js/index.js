@@ -43,16 +43,6 @@
                             templateUrl:path +  'tpl/recharge.card.html',
                             controller: 'RechargeCardCtrl',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
-                            // resolve: {
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function ($ocLazyLoad,uiLoad) {
-                            //             return uiLoad.load( JQ_CONFIG.daterangepicker).then(function(){
-                            //                 return $ocLazyLoad.load(['dateRangePicker']);
-                            //             });
-                            //
-                            //         }
-                            //     ]
-                            // }
                         })
                         .state('app.recharge.card.add', {
                             url: '/add',
@@ -62,16 +52,6 @@
                             templateUrl:path + 'tpl/recharge.cardadd.html',
                             controller: 'RechargeCardAddCtrl',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
-                            // resolve: {
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function ($ocLazyLoad,uiLoad) {
-                            //             return uiLoad.load( JQ_CONFIG.daterangepicker).then(function(){
-                            //                 return $ocLazyLoad.load(['dateRangePicker']);
-                            //             });
-                            //
-                            //         }
-                            //     ]
-                            // }
                         })
                         .state('app.recharge.cardlog', {
                             url: '/cardlog',
@@ -81,31 +61,12 @@
                             templateUrl: path + 'tpl/recharge.cardlog.html',
                             controller: 'RechargeCardLogCtrl',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
-                            // resolve: {
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function ($ocLazyLoad,uiLoad) {
-                            //             return uiLoad.load( JQ_CONFIG.daterangepicker).then(function(){
-                            //                 return $ocLazyLoad.load(['dateRangePicker']);
-                            //             });
-                            //
-                            //         }
-                            //     ]
-                            // }
                         })
                         .state('app.recharge.third', {
                             url: '/third',
                             templateUrl: path + 'tpl/recharge.third.html',
                             controller: 'RechargeThirdCtrl',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
-                            // resolve: {
-                            //     deps: ['$ocLazyLoad', 'uiLoad',
-                            //         function ($ocLazyLoad,uiLoad) {
-                            //             return uiLoad.load( JQ_CONFIG.daterangepicker).then(function(){
-                            //                 return $ocLazyLoad.load(['dateRangePicker']);
-                            //             });
-                            //         }
-                            //     ]
-                            // }
                         })
                     ;
                 }

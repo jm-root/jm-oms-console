@@ -1,5 +1,9 @@
+
+
+'use strict';
+var sso = jm.sdk.sso;
 //充值
-app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', 'global', function($scope, $http, $state, $stateParams, sso, global) {
+app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
     jm.sdk.init({uri: gConfig.sdkHost});
     var bank = jm.sdk.bank;
 
@@ -78,8 +82,8 @@ app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$statePar
 }]);
 
 //订单管理
-app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinStockOrderHistory;
+app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinStockOrderHistory||(global.coinStockOrderHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
@@ -327,8 +331,8 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
 }]);
 
 //库存列表
-app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinStockListHistory;
+app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinStockListHistory||(global.coinStockListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -627,8 +631,8 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
 }]);
 
 //批量分发
-app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', '$uibModal', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global,$modal) {
-    var history = global.coinDistributeBatchHistory;
+app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinDistributeBatchHistory||(global.coinDistributeBatchHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -831,8 +835,8 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
 }]);
 
 //生成首充号
-app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinDistributeBatchHistory;
+app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinDistributeBatchHistory||(global.coinDistributeBatchHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -1026,7 +1030,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
 }]);
 
 //生成首充号详情
-app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
+app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
     var id = $stateParams.id;
     $scope.users = [];
     if(id){
@@ -1048,8 +1052,8 @@ app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$sta
 }]);
 
 //帐号列表
-app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinAccountListHistory;
+app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinAccountListHistory||(global.coinAccountListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -1256,8 +1260,8 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
 }]);
 
 //玩家账号统计
-app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinStockListHistory;
+app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinStockListHistory||(global.coinStockListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -1407,8 +1411,8 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
 }]);
 
 //渠道账号统计
-app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinRecordAgentStatHistory;
+app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinRecordAgentStatHistory||(global.coinRecordAgentStatHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -1547,8 +1551,8 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
 }]);
 
 //日志查询
-app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'sso', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, sso, common, AGGRID, global) {
-    var history = global.coinRecordLogsHistory;
+app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+    var history = global.coinRecordLogsHistory||(global.coinRecordLogsHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.type = history.type||'0';
