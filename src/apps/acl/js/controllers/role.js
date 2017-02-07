@@ -14,7 +14,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     $scope.style={
         visibility: 'hidden'
     };
-    $scope.curRole=null;
     $scope.selectRole = function(role){
         angular.forEach($scope.roles, function(role) {
             role.selected = false;
@@ -124,7 +123,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             }
         }).success(function(result){
             var obj = result;
-           
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
@@ -227,7 +225,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     //获取用户所属角色
     $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/roles', {
         params: {
-            token: sso.getToken(),
+            token: token,
             creator: localStorage.getItem('id')
         }
     }).success(function (result) {
@@ -244,14 +242,12 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     function getRoles(userRoles) {
         $http.get(aclUri+'/roles/', {
             params:{
-                token: sso.getToken(),
+                token: token,
                 creator: localStorage.getItem('id')
             }
         }).success(function(result){
-            console.log(result)
             var obj = result;
             if(obj.err){
-                console.log("a")
                 $scope.error(obj.msg);
             }else{
                 var ary=[];

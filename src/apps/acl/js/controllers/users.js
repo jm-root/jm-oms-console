@@ -57,11 +57,9 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                 if(doc.err){
                     $scope.errorTips(doc.err);
                     return;
-                }
-                var data = doc;
-                if (data.err) {
-                    $scope.error(data.msg);
-                } else {
+                } else
+                {
+                    var data = doc;
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;
                     params.successCallback(rowsThisPage, lastRow);
@@ -147,8 +145,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
     $http.get(aclUri+'/roles', {
         params: {
-            token: sso.getToken(),
-            creator: localStorage.getItem('id')
+            token: sso.getToken()
         }
     }).success(function (result) {
         if(result.err){

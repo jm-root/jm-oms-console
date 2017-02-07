@@ -8,7 +8,7 @@
                 <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)" translate="acl.role.add">
                     {{ebtnname}}
                 </a>
-                <a href ng-if="!userRoles[curRole.code]" class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='修改'" ng-click="change(1)" translate="acl.role.modify">
+                <a href ng-if="!userRoles[curRole.code]&&curRole" class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='修改'" ng-click="change(1)" >
                     {{ubtnname}}
                 </a>
             </div>
@@ -60,7 +60,7 @@
             <p ng-show="!roles.length&&isCollapsed" style="text-align: center">无数据</p>
             <a ng-repeat="role in roles" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': role.selected}" ng-click="selectRole(role)" ng-dblclick="change(1)">
                 <span ng-if="!userRoles[role.code]" ng-click="deleteRole(role)" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
-                <span class="block m-l" popover-placement="{{$index!=0&&$index==roles.length-1?'top':'bottom'}}" popover="{{role.code+':'+role.description}}" popover-trigger="mouseenter">{{ role.title||"asd"}}</span>
+                <span class="block m-l" popover-placement="{{$index!=0&&$index==roles.length-1?'top':'bottom'}}" popover="{{role.code+':'+role.description}}" popover-trigger="mouseenter">{{ role.title}}</span>
             </a>
         </div>
     </div>

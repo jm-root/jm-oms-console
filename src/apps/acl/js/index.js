@@ -33,13 +33,13 @@
                         .state('app.acl.users.edit', {
                             url: '/edit/{id}',
                             templateUrl: path +'tpl/users_edit.html',
-                            resolve: lazyLoadProvider.load(['ngTagsInput'])
+                            resolve: lazyLoadProvider.load(['ngTagsInput','localytics.directives','chosen'])
                         })
                         .state('app.acl.role', {
                             url: '/role',
                             templateUrl: path +'tpl/role.html',
                             controller: 'RoleCtrl',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/role.js','ngTagsInput','treeControl','localytics.directives','ueditor'])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/role.js','ngTagsInput','treeControl','localytics.directives','chosen','ueditor'])
                         })
                         .state('app.acl.resource', {
                             url: '/resource',
