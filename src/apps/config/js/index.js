@@ -42,14 +42,14 @@
                             url: '/systemconfig',
                             templateUrl:path +  'tpl/config.systemconfig.html',
                             controller: 'ConfigSystemConfigCtrl',
-                            resolve: lazyLoadProvider.load( [] )
+                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-config/dist/js/jm-sdk-config.js'] )
                         })
 
                         .state('app.config.unified', {
                             url: '/unified',
                             templateUrl:path +  'tpl/config.unified.html',
                             controller: 'ConfigUnifiedCtrl',
-                            resolve: lazyLoadProvider.load( [] )
+                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-config/dist/js/jm-sdk-config.js'] )
                         })
                         .state('app.config.unified.view', {
                             url: '/view',
