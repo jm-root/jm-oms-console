@@ -12,10 +12,11 @@
             [          '$stateProvider', '$urlRouterProvider', 'lazyLoadProvider',
                 function ($stateProvider,   $urlRouterProvider, lazyLoadProvider) {
                     $stateProvider
-                        .state('app.' + name, {
+                        .state('app.activity', {
                             url: '/activity',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/activity.js'] )
+                            controller: "ActivityCtrl",
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js',path + 'js/controllers/activity.js'] )
                         })
                         .state('app.'+ name + '.prop', {
                             url: '/prop',

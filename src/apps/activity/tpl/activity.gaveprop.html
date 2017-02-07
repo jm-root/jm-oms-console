@@ -2,17 +2,17 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>分配道具</strong>
+                <strong translate="activity.gaveprop.AssignProps">分配道具</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>用户ID</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.gaveprop.UserId">用户ID</label></label>
 
                     <div class="col-sm-9">
                         <div class="input-group" style="max-width: 360px;">
                             <input type="text" class="form-control" placeholder="用户ID" ng-model="depot.userId" ng-required="true">
                             <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">搜索 <span class="caret"></span></div>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default"><label translate="activity.gaveprop.search">搜索</label> <span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
                                     <div class="input-group">
                                         <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
@@ -23,9 +23,9 @@
                                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                            <th>用户ObjectID</th>
-                                            <th>用户ID</th>
-                                            <th>用户名</th>
+                                            <th translate="activity.gaveprop.UserObjectID">用户ObjectID</th>
+                                            <th translate="activity.gaveprop.UserID">用户ID</th>
+                                            <th translate="activity.gaveprop.UserName">用户名</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -44,17 +44,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">道具</label>
+                    <label class="col-sm-2 control-label" translate="activity.gaveprop.prop">道具</label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control" style="min-width: 200px; width: auto" ng-model="depot.prop" ng-options="option._id as option.name for option in props" ng-required="true">
-                            <option value="">请选择道具</option>
+                            <option value="" translate="activity.gaveprop.SelectProps">请选择道具</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">数量</label>
+                    <label class="col-sm-2 control-label" translate="activity.gaveprop.quantity">数量</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="depot.amount">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">有效时间</label>
+                    <label class="col-sm-2 control-label" translate="activity.gaveprop.EffectiveTime">有效时间</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="过期时间(单位:毫秒)" min="0" ng-pattern="/^[0-9]*$/" ng-model="depot.expire">
@@ -76,7 +76,7 @@
 
             <footer class="panel-footer text-right bg-light lter">
                 <div style="max-width: 750px">
-                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">分配道具</button>
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()" translate="activity.gaveprop.AssignProps">分配道具</button>
                 </div>
             </footer>
         </div>

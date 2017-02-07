@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
         <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="createAty()">
-            <i class="fa fa-plus"></i>创建
+            <i class="fa fa-plus"></i><label translate="activity.atylist.create">创建</label>
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-            <i class="fa fa-trash-o"></i>删除
+            <i class="fa fa-trash-o"></i><label translate="activity.atylist.delete">删除</label>
         </button>
     </div>
     <div class="pull-right">
@@ -19,7 +19,7 @@
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" style="min-width: 120px; width: auto" ng-model="search.forum" ng-options="option._id as option.title for option in forums" ng-change="onPageSizeChanged()">
-            <option value="">选择版块</option>
+            <option value="" translate="activity.atylist.SelectSection">选择版块</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
@@ -27,7 +27,7 @@
         </select>
     </div>
 
-    <h1 class="m-n font-thin h3">活动列表</h1>
+    <h1 class="m-n font-thin h3" translate="activity.atylist.ActivityList">活动列表</h1>
 </div>
 <div>
     <div class="panel panel-default">
