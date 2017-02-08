@@ -15,7 +15,8 @@
                         .state('app.config', {
                             url: '/config',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( ['../libs/jm/jm-config/dist/js/jm-sdk-config.js', path + 'js/controllers/config.js'])
+                            controller: "configCtrl",
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js', path + 'js/controllers/config.js'])
                         })
                         .state('app.config.create', {
                             url: '/config_create/{id}',

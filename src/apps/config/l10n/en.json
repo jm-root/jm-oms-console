@@ -1,10 +1,38 @@
 {
-  "config": {
-    "CONFIG_MANAGE": "Config Manage",
-    "CONFIG_LIST": "Config List",
-    "CONFIG_MENUS": "Set Menu",
-    "CONFIG_SYSTEMINIT": "System Init",
-    "CONFIG_SYSTEMCONFIG": "System Config",
-    "CONFIG_UNIFIED": "Unified Config"
+  "app": {
+    "config_manage": "Config Manage",
+    "config_list": "Config List",
+    "config_menus": "Set Menu",
+    "config_systeminit": "System Init",
+    "config_systemconfig": "System Config",
+    "config_unified": "Unified Config"
+  },
+  "config_manage":{
+    "menus":{
+      "save":"Save"
+    },
+    "systeminit":{
+      "init":"Init"
+    },
+    "systemconfig":{
+      "add":"Add",
+      "save":"Save",
+      "refresh":"Refresh"
+    },
+    "systemunified":{
+      "add":"Add",
+      "edit":"Edit",
+      "kname":"Kname",
+      "title":"Title",
+      "addkItem":"AddkItem",
+      "addItem":"AddItem",
+      "deleteAll":"DeleteAll",
+      "save":"Save",
+      "refresh":"Refresh"
+    },
+    "view":{
+      "saveall":"Saveall",
+      "refresh":"Refresh"
+    }
   }
 }

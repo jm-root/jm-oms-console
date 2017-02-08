@@ -1,10 +1,38 @@
 {
-  "config": {
-    "CONFIG_MANAGE": "配置管理",
-    "CONFIG_LIST": "管理配置信息",
-    "CONFIG_MENUS": "菜单配置",
-    "CONFIG_SYSTEMINIT": "系统初始化",
-    "CONFIG_SYSTEMCONFIG": "系统配置",
-    "CONFIG_UNIFIED": "统一配置"
-  }
+  "app": {
+    "config_manage": "配置管理",
+    "config_list": "管理配置信息",
+    "config_menus": "菜单配置",
+    "config_systeminit": "系统初始化",
+    "config_systemconfig": "系统配置",
+    "config_unified": "统一配置"
+  },
+  "config_manage":{
+      "menus":{
+        "save":"保存"
+      },
+      "systeminit":{
+        "init":"执行初始化"
+      },
+      "systemconfig":{
+        "add":"新增",
+        "save":"保存",
+        "refresh":"刷新配置"
+      },
+      "systemunified":{
+        "add":"新增",
+        "edit":"编辑",
+        "kname":"配置项",
+        "title":"名称",
+        "addkItem":"确认",
+        "addItem":"新增",
+        "deleteAll":"清空",
+        "save":"保存",
+        "refresh":"刷新配置"
+      },
+      "view":{
+        "saveall":"整体保存",
+        "refresh":"刷新配置"
+      }
+    }
 }
