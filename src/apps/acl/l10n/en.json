@@ -20,7 +20,8 @@
       "switch":"Switch",
       "submit":"Submit",
       "rolename":"Rolename",
-      "save":"Save"
+      "save":"Save",
+      "cancel":"Cancel"
     },
     "user":{
       "create":"Create",

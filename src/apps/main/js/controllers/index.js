@@ -4,7 +4,7 @@ angular.module('app')
     .controller('MainCtrl', ['$scope', '$state', '$translatePartialLoader', '$http', 'global', function ($scope, $state, $translatePartialLoader, $http, global) {
         $translatePartialLoader.addPart('common');
         $translatePartialLoader.addPart('main');
-
+        $translatePartialLoader.addPart('acl');
         var sso = jm.sdk.sso;
         global.getUser().then(function (user) {
             $scope.userInfo = user;

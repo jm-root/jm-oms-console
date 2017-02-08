@@ -16,14 +16,14 @@
                 <i class="fa fa-fw fa-angle-down text-active"></i>
             </span>
       <i class="icon {{item.icon}} text-info-dker"></i>
-      <span class="font-bold" translate="{{item.code}}">{{item.title}}</span>
+      <span class="font-bold" translate>{{item.code}}</span>
     </a>
 
     <ul ng-if="item.children.length" class="nav nav-sub dk" ng-include="'navs'"  ng-init="nav=item.children"></ul>
 
     <a ng-if="!item.children.length" ui-sref="{{item.uisref}}">
       <i class="icon {{item.icon}} text-info-dker"></i>
-      <span class="font-bold" translate="{{item.code}}">{{item.title}}</span>
+      <span class="font-bold" translate>{{item.code}}</span>
     </a>
   </li>
 </ul>
@@ -36,14 +36,14 @@
                 <i class="fa fa-fw fa-angle-down text-active"></i>
             </span>
       <i class="icon {{item.icon}} text-info-dker"></i>
-      <span class="font-bold" translate="{{item.code}}">{{item.title}}</span>
+      <span class="font-bold" translate>{{item.code}}</span>
     </a>
 
     <ul ng-if="item.children.length" class="nav nav-sub dk" ng-include="'navs'" ng-init="nav=item.children"></ul>
 
     <a ng-if="!item.children.length" ui-sref="{{item.uisref}}" style="padding-left: 55px">
       <i class="icon {{item.icon}} text-info-dker"></i>
-      <span class="font-bold" translate="{{item.code}}">{{item.title}}</span>
+      <span class="font-bold" translate>{{item.code}}</span>
     </a>
   </li>
 </script>

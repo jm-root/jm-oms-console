@@ -1,6 +1,7 @@
 'use strict';
 app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
     var sso=jm.sdk.sso;
+    $scope.isCollapsed = true;
     $scope.opts = {
         injectClasses: {
             "ul": "tree-font-size",
@@ -23,6 +24,9 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
         $scope.curPermission= null;
         $scope.addPermission={};
         $scope.removePermission={};
+        if( $scope.userRoles[role.code]){
+            $scope.isCollapsed=true;
+        }
         if(!$scope.isCollapsed){
             $scope.role = $scope.curRole;
             $scope.ebtnname='新增';
@@ -30,17 +34,15 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
         }
         $scope.getResource(role);
     };
-    $scope.isCollapsed = true;
-    $scope.change = function(id){
-        if(id==1&&!$scope.curRole) return;
 
+    $scope.change = function($event,id){
+        if(id==1&&!$scope.curRole) return;
         $scope.isCollapsed = !$scope.isCollapsed;
         if($scope.isCollapsed){
             $scope.ebtnname='新增';
-            $scope.ubtnname='更新';
+            $scope.ubtnname='修改';
         }else{
             if(id==0){
-                $scope.role = {status:1};
                 $scope.ebtnname='取消';
             }
             if(id==1){
@@ -73,7 +75,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
 
     $scope.update = function(){
         $scope.isCollapsed = true;
-        $scope.ubtnname='更新';
+        $scope.ubtnname='修改';
         var id = $scope.role._id;
         $http.post(aclUri+'/roles'+id, $scope.role, {
             params:{
@@ -137,7 +139,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     $scope.removePermission={};
     $scope.setPermisssion=function ($event,code) {
         var checkbox = $event.target;
-       
         if(checkbox.checked){
             if(!$scope.removePermission[code]||$scope.removePermission[code].indexOf(checkbox.value)==-1){
                 if (!$scope.addPermission[code]) {

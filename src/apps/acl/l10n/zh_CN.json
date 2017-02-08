@@ -20,7 +20,8 @@
       "switch":"开、关",
       "submit":"确认",
       "rolename":"角色名称",
-      "save":"保存"
+      "save":"保存",
+      "cancel":"取消"
     },
     "user":{
       "create":"创建",
