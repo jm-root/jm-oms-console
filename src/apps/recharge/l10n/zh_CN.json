@@ -1,9 +1,62 @@
 {
-  "recharge": {
-    "RECHARGE_MANAGE": "充值管理",
-    "RECHARGE_CARDTYPE": "点卡类型",
-    "RECHARGE_CARD": "官方点卡",
-    "RECHARGE_THIRD": "第三方充值",
-    "RECHARGE_CARDLOG": "点卡充值记录"
+  "app": {
+    "recharge_manage": "充值管理",
+    "recharge_cardtype": "点卡类型",
+    "recharge_card": "官方点卡",
+    "recharge_third": "第三方充值",
+    "recharge_cardlog": "点卡充值记录"
+  },
+  "recharge_manage":{
+      "card":{
+        "state":"使用状态",
+        "disable":"禁用",
+        "unused":"未用",
+        "used":"已使用",
+        "type":"类型",
+        "cardadd":"点卡添加"
+      },
+      "cardadd":{
+        "cardedit":"点卡编辑",
+        "denomination":"面值",
+        "select":"请选择",
+        "cardcode":"发放商品卡号",
+        "cardnumber":"生成数量",
+        "region":"地区",
+        "confirm":"确定"
+      },
+      "log":{
+        "type":"类型"
+      },
+      "cardtype":{
+        "cardtypeadd":"点卡类型添加"
+      },
+      "cardtypeadd":{
+        "cardtypeedit":"点卡类型编辑",
+        "cardtype":"点卡类型",
+        "cardtypename":"点卡类型名称",
+        "attachprops":"附加道具",
+        "addprops":"添加道具",
+        "props":"道具",
+        "number":"数量",
+        "deadline":"过期时间",
+        "edit":"编辑",
+        "noprops":"无道具",
+        "delete":"删除",
+        "submit":"提交"
+      },
+      "third":{
+        "state":"充值状态",
+        "success":"成功",
+        "fail":"失败",
+        "totalrecharge":"充值总人数",
+        "rechargenumberyesterday":"昨天充值人数",
+        "rechargenumbertoday":"今天充值人数",
+        "totalrechargeamount":"总充值金额",
+        "rechargeyesterday":"昨天充值金额",
+        "rechargetoday":"今天充值金额",
+        "effectiveorder":"有效订单数",
+        "invalidorder":"无效订单数"
+
+      }
   }
 }

@@ -21,7 +21,7 @@
 
         <div class="pull-right m-r-sm">
             <select class="form-control input-sm distance" ng-model="type"  ng-options="x.type as x.name for x in typedata" ng-change="onPageSizeChanged()">
-                <option value="">类型</option>
+                <option value="" translate="recharge_manage.log.type">类型</option>
             </select>
         </div>
 
@@ -29,7 +29,7 @@
             <select class="m-r-sm input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
             </select>
         </div>
-        <h1 class="m-n font-thin h3">点卡充值记录</h1>
+        <h1 class="m-n font-thin h3" translate="app.recharge_cardlog">点卡充值记录</h1>
     </div>
 
     <div class="panel panel-default">

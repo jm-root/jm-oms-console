@@ -24,16 +24,16 @@
         </div>
         <div class="pull-right m-r-sm" >
             <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
-                <option value="">使用状态</option>
-                <option value="0">禁用</option>
-                <option value="1">未用</option>
-                <option value="2">已使用</option>
+                <option value="" translate="recharge_manage.card.state">使用状态</option>
+                <option value="0" translate="recharge_manage.card.disable">禁用</option>
+                <option value="1" translate="recharge_manage.card.unused">未用</option>
+                <option value="2" translate="recharge_manage.card.used">已使用</option>
             </select>
         </div>
 
         <div class="pull-right m-r-sm">
             <select class="form-control input-sm distance" ng-model="type"  ng-options="x.type as x.name for x in typedata" ng-change="onPageSizeChanged()">
-                <option value="">类型</option>
+                <option value="" translate="recharge_manage.card.type">类型</option>
             </select>
         </div>
         <!--<div class="pull-right m-r-sm">-->
@@ -48,7 +48,7 @@
             <input type="text" class="form-control input-sm distance" placeholder="面值" ng-model="parValue" ng-change="onPageSizeChanged()" >
         </div>
 
-        <h1 class="m-n font-thin h3">官方点卡</h1>
+        <h1 class="m-n font-thin h3" translate="app.recharge_card">官方点卡</h1>
     </div>
 
     <div class="panel panel-default">
@@ -56,7 +56,7 @@
 
         <div class="panel-body" style="position: relative;">
             <div style="float: right;margin-bottom: 15px;">
-                <button ui-sref="app.recharge.card.add" type="button" class="btn btn-sm btn-primary btn-addon">点卡添加</button>
+                <button ui-sref="app.recharge.card.add" type="button" class="btn btn-sm btn-primary btn-addon" translate="recharge_manage.card.cardadd">点卡添加</button>
             </div>
             <div style="clear: both;"></div>
             <div ng-style="{height:app.navHeight-225+'px'}" ag-grid="gridOptions" class="ag-fresh" ></div>

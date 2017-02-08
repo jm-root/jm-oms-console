@@ -1,9 +1,61 @@
 {
   "recharge": {
-    "RECHARGE_MANAGE": "Recharge",
-    "RECHARGE_CARDTYPE": "Card Type",
-    "RECHARGE_CARD": "Card",
-    "RECHARGE_THIRD": "Third",
-    "RECHARGE_CARDLOG": "Log"
+    "recharge_manage": "Recharge",
+    "recharge_cardtype": "Card Type",
+    "recharge_card": "Card List",
+    "recharge_third": "Recharge Third",
+    "recharge_cardlog": "Card Log"
+  },
+  "recharge_manage":{
+      "card":{
+        "state":"State",
+        "disable":"Disable",
+        "unused":"Unused",
+        "used":"Used",
+        "type":"Type",
+        "cardadd":"Add Card"
+      },
+    "cardadd":{
+      "cardedit":"Card Edit",
+      "denomination":"Denomination",
+      "select":"Select",
+      "cardcode":"Card Code",
+      "cardnumber":"Card Number",
+      "region":"Region",
+      "confirm":"Confirm"
+    },
+    "log":{
+      "type":"Type"
+    },
+    "cardtype":{
+      "cardtypeadd":"Add Card Type"
+    },
+    "cardtypeadd":{
+      "cardtypeedit":"Edit Card Type",
+      "cardtype":"Card Type",
+      "cardtypename":"Card Type Name",
+      "attachprops":"Attach Props",
+      "addprops":"Add Props",
+      "props":"Props",
+      "number":"Number",
+      "deadline":"Deadline",
+      "edit":"Edit",
+      "noprops":"No Props",
+      "delete":"Delete",
+      "submit":"Submit"
+    },
+    "third":{
+      "state":"State",
+      "success":"Success",
+      "fail":"Fail",
+      "totalrecharge":"Total Recharge",
+      "rechargenumberyesterday":"Recharge Number Yesterday",
+      "rechargenumbertoday":"Recharge Number Today",
+      "totalrechargeamount":"Total Recharge Amount",
+      "rechargeyesterday":"Recharge Yesterday",
+      "rechargetoday":"Recharge Today",
+      "effectiveorder":"Effective Order",
+      "invalidorder":"Invalid Order"
+    }
   }
 }

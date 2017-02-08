@@ -15,7 +15,8 @@
                         .state('app.recharge', {
                             url: '/recharge',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/recharge.js'])
+                            controller:'RechargeCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/recharge.js',path + 'js/controllers/index.js'])
                         })
                         .state('app.recharge.cardtype', {
                             url: '/cardtype',
