@@ -9,30 +9,38 @@
   },
   "config_manage":{
     "menus":{
-      "save":"Save"
+      "save":"Save",
+      "editInformation":"Edit Information"
     },
     "systeminit":{
-      "init":"Init"
+      "init":"Init",
+      "configuration system":"Configuration System"
     },
     "systemconfig":{
       "add":"Add",
       "save":"Save",
-      "refresh":"Refresh"
+      "refresh":"Refresh",
+      "system":"System",
+      "configure":"Configure"
     },
     "systemunified":{
       "add":"Add",
       "edit":"Edit",
-      "kname":"Kname",
+      "kname":"Configuration Item",
       "title":"Title",
-      "addkItem":"AddkItem",
-      "addItem":"AddItem",
-      "deleteAll":"DeleteAll",
+      "addkItem":"Confirm",
+      "addItem":"Add",
+      "deleteAll":"Delete All",
       "save":"Save",
-      "refresh":"Refresh"
+      "refresh":"Refresh",
+      "item":"Item",
+      "key":"Key",
+      "value":"Value"
     },
     "view":{
-      "saveall":"Saveall",
-      "refresh":"Refresh"
+      "saveall":"Save All",
+      "refresh":"Refresh",
+      "value":"Value"
     }
   }
 }
