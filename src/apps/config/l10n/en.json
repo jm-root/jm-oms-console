@@ -1,13 +1,13 @@
 {
   "app": {
-    "config_manage": "Config Manage",
-    "config_list": "Config List",
-    "config_menus": "Set Menu",
-    "config_systeminit": "System Init",
-    "config_systemconfig": "System Config",
-    "config_unified": "Unified Config"
+    "config.manage": "Config Manage",
+    "config.list": "Config List",
+    "config.menus": "Set Menu",
+    "config.systeminit": "System Init",
+    "config.systemconfig": "System Config",
+    "config.unified": "Unified Config"
   },
-  "config_manage":{
+  "config.manage":{
     "menus":{
       "save":"Save",
       "editInformation":"Edit Information"

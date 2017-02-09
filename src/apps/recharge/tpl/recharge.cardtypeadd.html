@@ -2,11 +2,11 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong translate="recharge_manage.cardtypeadd.cardtypeedit">点卡类型编辑</strong>
+                <strong translate="recharge.manage.cardtypeadd.cardtypeedit">点卡类型编辑</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="recharge_manage.cardtypeadd.cardtype"><code style="background-color: transparent">*</code>点卡类型</label>
+                    <label class="col-sm-2 control-label" translate="recharge.manage.cardtypeadd.cardtype"><code style="background-color: transparent">*</code>点卡类型</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control" style="max-width: 320px;" ng-model="cardType.type" ng-required="true" ng-disabled="isEdit">
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="recharge_manage.cardtypeadd.cardtypename"><code style="background-color: transparent">*</code>点卡类型名称</label>
+                    <label class="col-sm-2 control-label" translate="recharge.manage.cardtypeadd.cardtypename"><code style="background-color: transparent">*</code>点卡类型名称</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control" style="max-width: 320px;" ng-model="cardType.name" ng-required="true">
@@ -25,20 +25,20 @@
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="recharge_manage.cardtypeadd.attachprops"><code style="background-color: transparent">*</code>附加道具</label>
+                    <label class="col-sm-2 control-label" translate="recharge.manage.cardtypeadd.attachprops"><code style="background-color: transparent">*</code>附加道具</label>
                     <div class="col-sm-9">
                         <table class="table table-bordered table-hover table-condensed bg-white-only">
-                            <span class="btn btn-default" ng-click="addItem()" translate="recharge_manage.cardtypeadd.addprops">添加道具</span>
+                            <span class="btn btn-default" ng-click="addItem()" translate="recharge.manage.cardtypeadd.addprops">添加道具</span>
                             <tr style="font-weight: bold">
-                                <td style="width:30%" translate="recharge_manage.cardtypeadd.props">道具</td>
-                                <td style="width:30%" translate="recharge_manage.cardtypeadd.number">数量</td>
-                                <td style="width:30%" translate="recharge_manage.cardtypeadd.deadline">过期时间</td>
-                                <td style="width:10%" translate="recharge_manage.cardtypeadd.edit">编辑</td>
+                                <td style="width:30%" translate="recharge.manage.cardtypeadd.props">道具</td>
+                                <td style="width:30%" translate="recharge.manage.cardtypeadd.number">数量</td>
+                                <td style="width:30%" translate="recharge.manage.cardtypeadd.deadline">过期时间</td>
+                                <td style="width:10%" translate="recharge.manage.cardtypeadd.edit">编辑</td>
                             </tr>
                             <tr ng-repeat="item in cardType.attach">
                                 <td class="v-middle">
                                     <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
-                                        <option value="" translate="recharge_manage.cardtypeadd.noprops">无道具</option>
+                                        <option value="" translate="recharge.manage.cardtypeadd.noprops">无道具</option>
                                     </select>
                                 </td>
                                 <td class="v-middle">
@@ -48,7 +48,7 @@
                                     <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
                                 </td>
                                 <td style="white-space: nowrap">
-                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" translate="recharge_manage.cardtypeadd.delete">删除</a>
+                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" translate="recharge.manage.cardtypeadd.delete">删除</a>
                                 </td>
                             </tr>
                         </table>
@@ -61,7 +61,7 @@
 
             <footer class="panel-footer text-right bg-light lter">
                 <!--<div style="max-width: 750px">-->
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&send()" translate="recharge_manage.cardtypeadd.submit">提交</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&send()" translate="recharge.manage.cardtypeadd.submit">提交</button>
                 <!--</div>-->
             </footer>
         </div>
