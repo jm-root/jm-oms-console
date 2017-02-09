@@ -8,5 +8,11 @@
   "nav": {
     "HEADER": "导航",
     "MAIN": "概况"
+  },
+  "app": {
+    "acl": "权限管理",
+    "acl.user": "用户管理",
+    "acl.role": "角色管理",
+    "acl.resource": "资源管理"
   }
 }
