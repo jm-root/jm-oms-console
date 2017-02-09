@@ -29,27 +29,25 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
         }
         if(!$scope.isCollapsed){
             $scope.role = $scope.curRole;
-            $scope.ebtnname='新增';
-            $scope.ubtnname='取消';
         }
         $scope.getResource(role);
     };
 
-    $scope.change = function($event,id){
-        if(id==1&&!$scope.curRole) return;
-        $scope.isCollapsed = !$scope.isCollapsed;
-        if($scope.isCollapsed){
-            $scope.ebtnname='新增';
-            $scope.ubtnname='修改';
-        }else{
+    $scope.change = function(id){
+
             if(id==0){
-                $scope.ebtnname='取消';
+                $scope.role ={};
+                $scope.isCollapsed =false;
             }
             if(id==1){
                 $scope.role = $scope.curRole;
-                $scope.ubtnname='取消';
+                $scope.isCollapsed =false;
+
             }
-        }
+            if(id==2){
+                $scope.isCollapsed =true;
+            }
+
     };
 
     $scope.enter = function(){
@@ -234,6 +232,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             $scope.error(result.msg);
         }else{
             $scope.userRoles =result;
+            console.log(result)
             getRoles(result);
         }
     }).error(function(msg, code){
@@ -253,12 +252,14 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             }else{
                 var ary=[];
                 result.rows.forEach(function (item) {
-                    if(!userRoles[item.code]){
+                   if(!userRoles[item.code]){
                         ary.push(item);
                     }
                 });
                 for(var key in userRoles){
-                    ary.unshift(userRoles[key]);
+                    if(key!="root"){
+                        ary.unshift(userRoles[key]);
+                    }
                 }
                 $scope.roles =ary ;//获取用户创建的角色
                 $scope.role = null;

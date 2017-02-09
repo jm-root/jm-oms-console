@@ -11,13 +11,14 @@ app.controller('ResourceCtrl', ['$scope', '$state', '$http',  function ($scope, 
         }
     };
 
-    $scope.getTree = function(org){
+    $scope.getTree = function(){
         $http.get(aclUri+'/resources/tree', {
             params:{
                 token: sso.getToken()
             }
         }).success(function(result){
-                if(result.err){
+            console.log(result.ret);
+            if(result.err){
                     $scope.error(result.msg);
                 }else{
                     $scope.resourceTreedata = [{title:'默认'}].concat(result.ret);
@@ -83,8 +84,13 @@ app.controller('ResourceCtrl', ['$scope', '$state', '$http',  function ($scope, 
                 return $scope.error(result.msg);
             }
             $scope.resource._id = result._id;
-            $scope.parent.children = $scope.parent.children || [];
-            $scope.parent.children.push($scope.resource);
+            if($scope.resource.parent){
+                $scope.parent.children = $scope.parent.children || [];
+                $scope.parent.children.push($scope.resource);
+
+            }else{
+                $scope.resourceTreedata = $scope.resourceTreedata.concat($scope.resource);
+            }
             $scope.selected = $scope.resource;
             $scope.expandedNodes = $scope.expandResourceNodes($scope.resourceTreedata[0]);
             $scope.success('操作成功');
@@ -127,7 +133,7 @@ app.controller('ResourceCtrl', ['$scope', '$state', '$http',  function ($scope, 
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.getResource();
+                        $scope.getTree();
                         $scope.resource = null;
                         $scope.parent = null;
                         $scope.success('操作成功');

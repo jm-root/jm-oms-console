@@ -5,11 +5,14 @@
     <div class="col w-xs  b-r">
         <div class="wrapper-sm b-b">
             <div class="pull-right">
-                <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change($event,0)" translate="acl.role.add">
+                <a href class="btn btn-sm btn-info m-t-n-xs"  ng-click="change(0)" translate="acl.role.add">
                     {{ebtnname}}
                 </a>
-                <a href ng-if="!userRoles[curRole.code]&&curRole" class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='修改'" ng-click="change($event,1)" translate="acl.role.modify">
-                    {{ubtnname}}
+                <a href ng-if="!userRoles[curRole.code]&&curRole" class="btn btn-sm btn-success m-t-n-xs" ng-click="change(1)" translate="acl.role.modify">
+
+                </a>
+                <a href ng-if="!isCollapsed" class="btn btn-sm btn-success m-t-n-xs" ng-click="change(2)" translate="acl.role.cancel">
+
                 </a>
             </div>
 
@@ -52,7 +55,7 @@
                 </div>
                 <footer class="text-right">
                     <button ng-hide="role._id" class="btn btn-info" ng-click="!formValidate.$invalid&&enter()" translate="acl.role.submit">确认</button>
-                    <button ng-show="role._id" class="btn btn-success" ng-click="!formValidate.$invalid&&update()">保存</button>
+                    <button ng-show="role._id" class="btn btn-success" ng-click="!formValidate.$invalid&&update()" translate="acl.role.save">保存</button>
                 </footer>
             </form>
         </div>
