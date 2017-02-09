@@ -17,14 +17,14 @@
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
-            <option value="">类型</option>
-            <option value="0">系统</option>
-            <option value="1">玩家</option>
+            <option value="" translate="player.givelog.type">类型</option>
+            <option value="0" translate="player.givelog.system">系统</option>
+            <option value="1" translate="player.givelog.player">玩家</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" style="min-width: 120px; width: auto" ng-model="search.prop" ng-options="option._id as option.name for option in props" ng-change="onPageSizeChanged()">
-            <option value="">选择道具类型</option>
+            <option value="" translate="player.givelog.chooseprops">选择道具类型</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
@@ -33,7 +33,7 @@
     </div>
 
 
-    <h1 class="m-n font-thin h3">赠送记录</h1>
+    <h1 class="m-n font-thin h3" translate="app.player.givelog">赠送记录</h1>
 </div>
 <div>
     <div class="panel panel-default">

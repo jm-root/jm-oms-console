@@ -6,10 +6,10 @@
             <!--<div class="row-row">-->
             <div class="wrapper-sm b-b">
                 <div class="pull-right">
-                    <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)" translate="config.manage.systemunified.add">
+                    <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="change(0)" translate="config.systemunified.add">
                         {{ebtnname}}
                     </a>
-                    <a href class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='编辑'" ng-click="edit()" translate="config.manage.systemunified.edit">
+                    <a href class="btn btn-sm btn-success m-t-n-xs" ng-init="ubtnname='编辑'" ng-click="edit()" translate="config.systemunified.edit">
                         {{ubtnname}}
                     </a>
                     <!--<a href class="btn btn-sm btn-warning m-t-n-xs" ng-click="edit(id)">编辑</a>-->
@@ -20,24 +20,24 @@
                     <input type="text" class="form-control input-sm no-border no-bg text-md" style="width: 110px" placeholder="搜索资源" ng-model="query">
                 </div>
 
-                <div class="h4" translate="config.manage.systemunified.item">配置项</div>
+                <div class="h4" translate="config.systemunified.item">配置项</div>
             </div>
             <div ng-if="!isCollapsed" class="panel-body bg-white-only">
             <form name="formValidate" class="form-horizontal form-validation">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" translate="config.manage.systemunified.kname">配置项</label>
+                    <label class="col-sm-3 control-label" translate="config.systemunified.kname">配置项</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="配置项" ng-model="kname">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" translate="config.manage.systemunified.title">名称</label>
+                    <label class="col-sm-3 control-label" translate="config.systemunified.title">名称</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="名称" ng-model="title">
                     </div>
                 </div>
                 <footer class="text-right">
-                    <button class="btn btn-info" ng-click="!formValidate.$invalid&&addkItem(kname,title)" translate="config.manage.systemunified.addkItem">确认</button>
+                    <button class="btn btn-info" ng-click="!formValidate.$invalid&&addkItem(kname,title)" translate="config.systemunified.addkItem">确认</button>
                 </footer>
             </form>
         </div>
@@ -64,13 +64,13 @@
                 <!--<div class="row-row">-->
                     <div class="wrapper-sm b-b">
                         <div class="pull-right">
-                            <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="addItem(name)" translate="config.manage.systemunified.addItem">新增</a>
-                            <a href class="btn btn-sm bg-danger m-t-n-xs" ng-click="deleteAll()" translate="config.manage.systemunified.deleteAll">清空</a>
+                            <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="addItem(name)" translate="config.systemunified.addItem">新增</a>
+                            <a href class="btn btn-sm bg-danger m-t-n-xs" ng-click="deleteAll()" translate="config.systemunified.deleteAll">清空</a>
                         </div>
                         <div class="pull-right">
                             <input type="text" class="no-border no-bg" placeholder="输入配置键" ng-model="name">
                         </div>
-                        <div class="h4" translate="config.manage.systemunified.key">配置键</div>
+                        <div class="h4" translate="config.systemunified.key">配置键</div>
                     </div>
                 <div class="row-row">
                     <div class="cell scrollable hover">
@@ -95,12 +95,12 @@
                         <!--<a href class="btn btn-sm btn-primary m-t-n-xs" ng-click="saveall()">整体保存</a>-->
                     <!--</div>-->
                     <div class="pull-right" style="margin-right: 10px">
-                        <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="save()" translate="config.manage.systemunified.save">保存</a>
+                        <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="save()" translate="config.systemunified.save">保存</a>
                     </div>
                     <div class="pull-right" style="margin-right: 10px">
-                        <a href class="btn btn-sm btn-success m-t-n-xs" ng-click="refresh()" translate="config.manage.systemunified.refresh">刷新配置</a>
+                        <a href class="btn btn-sm btn-success m-t-n-xs" ng-click="refresh()" translate="config.systemunified.refresh">刷新配置</a>
                     </div>
-                    <div class="h4" translate="config.manage.systemunified.value">配置值</div>
+                    <div class="h4" translate="config.systemunified.value">配置值</div>
                 </div>
                 <div class="row-row">
                     <div class="cell">

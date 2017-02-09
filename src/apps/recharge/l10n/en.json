@@ -1,12 +1,5 @@
 {
-  "recharge": {
-    "recharge.manage": "Recharge",
-    "recharge.cardtype": "Card Type",
-    "recharge.card": "Card List",
-    "recharge.third": "Recharge Third",
-    "recharge.cardlog": "Card Log"
-  },
-  "recharge.manage":{
+  "recharge":{
       "card":{
         "state":"State",
         "disable":"Disable",

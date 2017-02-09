@@ -17,23 +17,23 @@
     </div>
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
-            <option value="">类别</option>
-            <option value="0">游客</option>
-            <option value="1">手机</option>
-            <option value="2">微信</option>
-            <option value="3">QQ</option>
+            <option value="" translate="player.info.type">类别</option>
+            <option value="0" translate="player.info.tourist">游客</option>
+            <option value="1" translate="player.info.phone">手机</option>
+            <option value="2" translate="player.info.wechat">微信</option>
+            <option value="3" translate="player.info.qq">QQ</option>
         </select>
     </div>
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.active" ng-change="onPageSizeChanged()">
-            <option value="">状态</option>
-            <option value="0">封停</option>
-            <option value="1">正常</option>
+            <option value="" translate="player.info.state">状态</option>
+            <option value="0" translate="player.info.stop">封停</option>
+            <option value="1" translate="player.info.normal">正常</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="">所属渠道</option>
+            <option value="" translate="player.info.agents">所属渠道</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
@@ -41,7 +41,7 @@
         </select>
     </div>
 
-    <h1 class="m-n font-thin h3">玩家信息</h1>
+    <h1 class="m-n font-thin h3" translate="app.player.info">玩家信息</h1>
 </div>
 <div>
     <div class="panel panel-default">

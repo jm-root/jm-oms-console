@@ -13,6 +13,22 @@
     "acl": "Permission",
     "acl.user": "User",
     "acl.role": "Role",
-    "acl.resource": "Resource"
+    "acl.resource": "Resource",
+    "config.manage": "Config Manage",
+    "config.list": "Config List",
+    "config.menus": "Set Menu",
+    "config.systeminit": "System Init",
+    "config.systemconfig": "System Config",
+    "config.unified": "Unified Config",
+    "recharge.manage": "Recharge",
+    "recharge.cardtype": "Card Type",
+    "recharge.card": "Card List",
+    "recharge.third": "Recharge Third",
+    "recharge.cardlog": "Card Log",
+    "player.manage": "Player Manage",
+    "player.info": "Info",
+    "player.online": "Online",
+    "player.record": "Record",
+    "player.givelog": "Give Log"
   }
 }

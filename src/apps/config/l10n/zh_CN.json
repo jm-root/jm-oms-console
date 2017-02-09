@@ -1,13 +1,5 @@
 {
-  "app": {
-    "config.manage": "配置管理",
-    "config.list": "管理配置信息",
-    "config.menus": "菜单配置",
-    "config.systeminit": "系统初始化",
-    "config.systemconfig": "系统配置",
-    "config.unified": "统一配置"
-  },
-  "config.manage":{
+  "config":{
       "menus":{
         "save":"保存",
         "editInformation":"编辑信息"

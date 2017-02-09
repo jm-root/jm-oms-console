@@ -1,5 +1,21 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "player":{
+    "info":{
+      "type":"Type",
+      "tourist":"Tourist",
+      "phone":"Phone",
+      "wechat":"WeChat",
+      "qq":"QQ",
+      "state":"State",
+      "stop":"Stop",
+      "normal":"Normal",
+      "agents":"Agents"
+    },
+    "givelog":{
+      "type":"Type",
+      "system":"System",
+      "player":"Player",
+      "chooseprops":"Choose Props"
+    }
   }
 }

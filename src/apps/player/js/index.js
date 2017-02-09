@@ -15,7 +15,8 @@
                         .state('app.player', {
                             url: '/player',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/player.js'] )
+                            controller:'PlayerCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/player.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.player.info', {
                             url: '/info',

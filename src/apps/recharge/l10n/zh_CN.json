@@ -1,12 +1,5 @@
 {
-  "app": {
-    "recharge.manage": "充值管理",
-    "recharge.cardtype": "点卡类型",
-    "recharge.card": "官方点卡",
-    "recharge.third": "第三方充值",
-    "recharge.cardlog": "点卡充值记录"
-  },
-  "recharge.manage":{
+  "recharge":{
       "card":{
         "state":"使用状态",
         "disable":"禁用",

@@ -1,5 +1,21 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "player":{
+      "info":{
+          "type":"类别",
+          "tourist":"游客",
+          "phone":"手机",
+          "wechat":"微信",
+          "qq":"QQ",
+          "state":"状态",
+          "stop":"封停",
+          "normal":"正常",
+          "agents":"渠道"
+      },
+      "givelog":{
+          "type":"类型",
+          "system":"系统",
+          "player":"玩家",
+          "chooseprops":"选择道具类型"
+      }
   }
 }

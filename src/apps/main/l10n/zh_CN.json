@@ -13,6 +13,22 @@
     "acl": "权限管理",
     "acl.user": "用户管理",
     "acl.role": "角色管理",
-    "acl.resource": "资源管理"
+    "acl.resource": "资源管理",
+    "config.manage": "配置管理",
+    "config.list": "管理配置信息",
+    "config.menus": "菜单配置",
+    "config.systeminit": "系统初始化",
+    "config.systemconfig": "系统配置",
+    "config.unified": "统一配置",
+    "recharge.manage": "充值管理",
+    "recharge.cardtype": "点卡类型",
+    "recharge.card": "官方点卡",
+    "recharge.third": "第三方充值",
+    "recharge.cardlog": "点卡充值记录",
+    "player.manage": "玩家管理",
+    "player.info": "玩家信息",
+    "player.online": "在线状态",
+    "player.record": "游戏记录",
+    "player.givelog": "赠送记录"
   }
 }

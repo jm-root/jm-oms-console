@@ -1,13 +1,5 @@
 {
-  "app": {
-    "config.manage": "Config Manage",
-    "config.list": "Config List",
-    "config.menus": "Set Menu",
-    "config.systeminit": "System Init",
-    "config.systemconfig": "System Config",
-    "config.unified": "Unified Config"
-  },
-  "config.manage":{
+  "config":{
     "menus":{
       "save":"Save",
       "editInformation":"Edit Information"

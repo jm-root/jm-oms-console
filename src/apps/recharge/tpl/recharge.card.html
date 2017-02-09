@@ -24,16 +24,16 @@
         </div>
         <div class="pull-right m-r-sm" >
             <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
-                <option value="" translate="recharge.manage.card.state">使用状态</option>
-                <option value="0" translate="recharge.manage.card.disable">禁用</option>
-                <option value="1" translate="recharge.manage.card.unused">未用</option>
-                <option value="2" translate="recharge.manage.card.used">已使用</option>
+                <option value="" translate="recharge.card.state">使用状态</option>
+                <option value="0" translate="recharge.card.disable">禁用</option>
+                <option value="1" translate="recharge.card.unused">未用</option>
+                <option value="2" translate="recharge.card.used">已使用</option>
             </select>
         </div>
 
         <div class="pull-right m-r-sm">
             <select class="form-control input-sm distance" ng-model="type"  ng-options="x.type as x.name for x in typedata" ng-change="onPageSizeChanged()">
-                <option value="" translate="recharge.manage.card.type">类型</option>
+                <option value="" translate="recharge.card.type">类型</option>
             </select>
         </div>
         <!--<div class="pull-right m-r-sm">-->
@@ -56,7 +56,7 @@
 
         <div class="panel-body" style="position: relative;">
             <div style="float: right;margin-bottom: 15px;">
-                <button ui-sref="app.recharge.card.add" type="button" class="btn btn-sm btn-primary btn-addon" translate="recharge.manage.card.cardadd">点卡添加</button>
+                <button ui-sref="app.recharge.card.add" type="button" class="btn btn-sm btn-primary btn-addon" translate="recharge.card.cardadd">点卡添加</button>
             </div>
             <div style="clear: both;"></div>
             <div ng-style="{height:app.navHeight-225+'px'}" ag-grid="gridOptions" class="ag-fresh" ></div>
