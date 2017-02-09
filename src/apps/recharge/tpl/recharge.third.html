@@ -20,9 +20,9 @@
 
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
-            <option value="" translate="recharge_manage.third.state">充值状态</option>
-            <option value="0" translate="recharge_manage.third.success">不成功</option>
-            <option value="1" translate="recharge_manage.third.fail">成功</option>
+            <option value="" translate="recharge.manage.third.state">充值状态</option>
+            <option value="0" translate="recharge.manage.third.success">不成功</option>
+            <option value="1" translate="recharge.manage.third.fail">成功</option>
         </select>
     </div>
 
@@ -30,7 +30,7 @@
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3" translate="app.recharge_third">第三方充值</h1>
+    <h1 class="m-n font-thin h3" translate="app.recharge.third">第三方充值</h1>
 </div>
 <div>
     <div class="panel panel-default">
