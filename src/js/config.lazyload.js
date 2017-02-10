@@ -115,7 +115,7 @@ angular.module('app')
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css',
                 '../libs/angular/angular-daterangepicker/js/angular-daterangepicker.js'
             ]
-        }
+            }
     )
     .provider('lazyLoad', ['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
         var JQ_CONFIG = {};

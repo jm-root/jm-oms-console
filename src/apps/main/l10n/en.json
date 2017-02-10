@@ -10,25 +10,33 @@
     "MAIN": "Home"
   },
   "app": {
-    "acl": "Permission",
-    "acl.user": "User",
-    "acl.role": "Role",
-    "acl.resource": "Resource",
-    "config.manage": "Config Manage",
-    "config.list": "Config List",
-    "config.menus": "Set Menu",
-    "config.systeminit": "System Init",
-    "config.systemconfig": "System Config",
-    "config.unified": "Unified Config",
-    "recharge.manage": "Recharge",
-    "recharge.cardtype": "Card Type",
-    "recharge.card": "Card List",
-    "recharge.third": "Recharge Third",
-    "recharge.cardlog": "Card Log",
-    "player.manage": "Player Manage",
-    "player.info": "Info",
-    "player.online": "Online",
-    "player.record": "Record",
-    "player.givelog": "Give Log"
+    "acl": {
+      "manage":"Permission",
+      "user": "User",
+      "role": "Role",
+      "resource": "Resource"
+    },
+    "config":{
+      "manage": "Config Manage",
+      "list": "Config List",
+      "menus": "Set Menu",
+      "systeminit": "System Init",
+      "systemconfig": "System Config",
+      "unified": "Unified Config"
+    },
+    "recharge":{
+      "manage": "Recharge",
+      "cardtype": "Card Type",
+      "card": "Card List",
+      "third": "Recharge Third",
+      "cardlog": "Card Log"
+    },
+    "player":{
+      "manage": "Player Manage",
+      "info": "Info",
+      "online": "Online",
+      "record": "Record",
+      "givelog": "Give Log"
+    }
   }
 }
