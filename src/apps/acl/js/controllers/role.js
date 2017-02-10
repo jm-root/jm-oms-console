@@ -246,6 +246,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
                 creator: localStorage.getItem('id')
             }
         }).success(function(result){
+            console.log(result)
             var obj = result;
             if(obj.err){
                 $scope.error(obj.msg);

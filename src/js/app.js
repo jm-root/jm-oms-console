@@ -14,6 +14,7 @@ angular.module('app', [
     'ui.utils',
     'ui.load',
     'ui.jq',
+    'ui.tree',
     'oc.lazyLoad',
     'pascalprecht.translate',
     'toaster',

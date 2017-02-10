@@ -30,6 +30,7 @@ module.exports = {
                     'angular-ui-router/release/**',
                     'angular-ui-select/dist/**',
                     'angular-ui-utils/ui-utils.js',
+                    'angular-ui-utils/angular-ui-tree.js',
                     'angular-xeditable/dist/**',
                     'angularjs-toaster/toaster.js',
                     'angularjs-toaster/toaster.css',

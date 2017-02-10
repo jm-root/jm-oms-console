@@ -74,7 +74,7 @@
     <script type="text/ng-template" id="angularTreeTemplate">
         <div class="tree-node tree-node-content "  >
             <a ng-if="item.children.length > 0" data-nodrag ng-click="toggle(this)">
-                <span ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span>
+                <span class="glyphicon" ng-class="{'glyphicon-plus': collapsed, 'glyphicon-minus': !collapsed }"></span>
             </a>
 
                  <span style="width: 250px" >
