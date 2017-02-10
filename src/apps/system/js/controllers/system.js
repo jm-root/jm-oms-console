@@ -74,16 +74,17 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global
 }]);
 
 app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
-    var history=global.SystemLogHistory||(global.SystemLogHitory={});
+    var sso = jm.sdk.sso;
+    var history=global.SystemLogHistory||(global.SystemLogHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
 
     $scope.search = history.search || {};
     $scope.search.keyword =   $scope.search.keyword || "";
-    $scope.search.date || ($scope.search.date = {});
+    $scope.search.date = $scope.search.date||{};
     $scope.search.isSearchUser = $scope.search.isSearchUser || 0;
-
-    $scope.dateOptions = angular.copy(global.dateRangeOptions);
-    $scope.dateOptions.opens = 'left';
+    $scope.dateOptions=global.dateRangeOptions;
+    // $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    // $scope.dateOptions.opens = 'left';
 
     var url= logUri + '/logs';
 
@@ -109,10 +110,11 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
     var dataSource={
         getRows:function (params) {
             var page = params.startRow / $scope.pageSize + 1;
-            var search = $scope.search.keyword;
+            var search = $scope.search;
             var date = $scope.search.date;
             var startDate = date.startDate || '';
             var endDate = date.endDate || '';
+            var keyword = search.keyword;
             var isSearchUer = $scope.search.isSearchUser ? 1 : 0;
 
             $http.get(url,{
@@ -120,13 +122,14 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
                     token: sso.getToken(),
                     page: page,
                     rows: $scope.pageSize,
-                    search: search,
+                    search: keyword,
                     startDate:startDate.toString(),
                     endDate:endDate.toString(),
                     isSearchUser: isSearchUer
                 }
          }).success(function (result) {
                 var data=result;
+                console.log(result);
                 if(data.err){
                     $scope.error(data.msg)
                 }else{

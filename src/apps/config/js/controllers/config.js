@@ -466,7 +466,7 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
                     err = result && result.msg || err.message;
                     return $scope.error(err);
                 }
-
+                console.log(result);
                 var v = [];
                 for (var key in result) {
                     var value = result[key];
@@ -612,14 +612,17 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
         }catch (e){
             return $scope.warning('请输入正确的JSON格式数据');
         }
+
         config.setConfig({token: sso.getToken(),root:$scope.secondselected,key:$scope.item,value:value},function(err,result){
             if(err){
                 err = result&&result.msg || err.message;
                 return $scope.error(err);
             }
+            console.log(result);
             $timeout(function(){
                 $scope.configVal.val = JSON.stringify(value, null, "\t");
                 $scope.success('配置成功');
+                console.log(value);
             });
         });
     };

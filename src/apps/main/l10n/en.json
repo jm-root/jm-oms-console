@@ -37,6 +37,11 @@
       "online": "Online",
       "record": "Record",
       "givelog": "Give Log"
+    },
+    "system":{
+      "manage": "System Manage",
+      "admin": "System Admin",
+      "log": "System Log"
     }
   }
 }

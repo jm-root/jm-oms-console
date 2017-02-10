@@ -1,5 +1,10 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "system": {
+    "admin": {
+      "add":"Add"
+    },
+    "log":{
+      "searchuser":"Search User"
+    }
   }
 }

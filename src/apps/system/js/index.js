@@ -12,7 +12,8 @@
                         .state('app.system', {
                             url: '/system',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/system.js'] )
+                            controller: 'SystemCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/system.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.system.admin', {
                             url: '/data',
@@ -28,7 +29,7 @@
                             url: '/log',
                             templateUrl: path + 'tpl/system.log.html',
                             controller: 'SystemLogCtrl',
-                            // resolve: lazyLoadProvider.load(['daterangepicker','dateRangePicker'])
+                            resolve:lazyLoadProvider.load(['daterangepicker'])
                         })
                 }
             ]

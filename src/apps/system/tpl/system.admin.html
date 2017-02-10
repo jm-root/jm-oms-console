@@ -1,14 +1,14 @@
 <div ng-controller="SystemAdminCtrl">
     <div class="bg-light lter wrapper">
         <div class="pull-right">
-            <button ui-sref="app.system.adminadd" class="btn btn-sm btn-primary btn-addon">
+            <button ui-sref="app.system.adminadd" class="btn btn-sm btn-primary btn-addon" translate="system.admin.add">
                 <i class="fa fa-plus"></i>添加</button>
         </div>
         <div class="pull-right" style="margin-right: 15px">
             <select class="m-r-sm input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
             </select>
         </div>
-        <h1 class="m-n font-thin h3">管理员列表</h1>
+        <h1 class="m-n font-thin h3" translate="app.system.admin">管理员列表</h1>
     </div>
 
     <div class="panel panel-default">

@@ -37,6 +37,11 @@
       "online": "在线状态",
       "record": "游戏记录",
       "givelog": "赠送记录"
+    },
+    "system":{
+      "manage": "系统管理",
+      "admin": "管理员列表",
+      "log": "系统日志"
     }
   }
 }

@@ -1,5 +1,10 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "system": {
+    "admin": {
+      "add":"添加"
+    },
+    "log":{
+      "searchuser":"是否搜索用户"
+    }
   }
 }
