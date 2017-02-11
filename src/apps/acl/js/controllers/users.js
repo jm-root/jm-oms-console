@@ -142,32 +142,28 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     $scope.$watch('search', function () {
         history.search = $scope.search;
     });
-
-    $http.get(aclUri+'/roles', {
-        params: {
+    //获取用户拥有的角色列表
+    acl.role.list({
             token: sso.getToken()
-        }
-    }).success(function (result) {
+     },function (err,result) {
         if(result.err){
             $scope.error(result.msg);
+            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }
-    }).error(function(msg, code){
-        $scope.errorTips(code);
     });
-
 }]);
 
 app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     var sso=jm.sdk.sso;
+    var acl=jm.sdk.acl;
     $scope.$state = $state;
 
     var id = $stateParams.id;
     $scope.id = id;
     $scope.user = {
     };
-
     if(id){
         $http.get(aclUri+'/users/' + id, {
             params:{
@@ -179,12 +175,33 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
                 $scope.error(obj.msg);
             }else{
                 $scope.user = obj;
+                if(id==localStorage.getItem('id')){
+                    $scope.roleDisable = true;
+                    $scope.user.rolesformat=format_roles($scope.user.roles)
+                }
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     }
-
+    //格式化
+     function format_roles(roles) {
+        var rolesAry=[];
+        if(roles){
+            roles.forEach(function (item) {
+                $scope.allRoles.forEach(function (role) {
+                    if(role.code==item){
+                        if(role.title){
+                            rolesAry.push(role.title);
+                        }else{
+                            rolesAry.push(item);
+                        }
+                    }
+                });
+            });
+        }
+        return rolesAry;
+    }
     $scope.save = function(){
         var tags = [];
         $scope.user.tags = $scope.user.tags || [];
@@ -241,6 +258,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
                 keyword: keyword
             }
         }).success(function(result){
+            console.log(result)
             var data = result;
             if(data.err){
                 $scope.error(data.msg);
@@ -258,22 +276,17 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
             $scope.user.nick = $scope.selectRow.nick;
         }
     };
-    $http.get(aclUri+'/roles', {
-        params: {
-            token: sso.getToken(),
-            creator: localStorage.getItem('id')
-        }
-    }).success(function (result) {
+    //获取用户拥有的角色列表
+    acl.role.list({
+        token: sso.getToken()
+    },function (err,result) {
         if(result.err){
             $scope.error(result.msg);
+            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }
-    }).error(function(msg, code){
-        $scope.errorTips(code);
     });
-
-
 }]);
 
 

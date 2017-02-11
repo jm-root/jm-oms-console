@@ -8,10 +8,10 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" translate="acl.user.user">用户</label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" ng-if="!roleDisable">
                         <div class="input-group">
-                            <input type="text" class="form-control input-sm" placeholder="用户" ng-model="user._id" ng-disabled="id" disabled>
-                            <div class="input-group-btn dropdown " drop-down-table>
+                            <input type="text" class="form-control input-sm" placeholder="用户" ng-model="user._id" ng-disabled="id" disabled/>
+                            <div  class="input-group-btn dropdown " drop-down-table >
                                  <div type="button" class="btn btn-sm btn-default" translate="acl.user.search">搜索 <span class="caret"></span></div>
                                     <ul class="dropdown-menu pull-right w-auto" >
                                         <div class="input-group">
@@ -40,14 +40,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-3" ng-if="roleDisable">
+                        <input type="text" class="form-control input-sm" ng-model="user._id" disabled/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" style="padding-top: 13px" translate="acl.user.label">标签</label>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-3"ng-if="!roleDisable">
                         <tags-input class="bootstrap" ng-model="user.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-sm-3" ng-if="roleDisable">
+                        <input type="text" class="form-control input-sm" ng-model="user.tags" disabled/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" translate="acl.user.nick">昵称</label>
@@ -56,11 +61,14 @@
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" >
                     <label class="col-sm-2 control-label" translate="acl.user.role">角色</label>
-                    <div class="col-sm-3">
-                        <select chosen multiple class="w-full" data-placeholder-text-multiple="'选择角色'" ng-model="user.roles" ng-options=" option.code as option.title for option in allRoles" >
+                    <div class="col-sm-3" ng-if="!roleDisable">
+                        <select chosen multiple class="w-full" data-placeholder-text-multiple="'选择角色'" ng-model="user.roles" ng-options=" option.code as option.title for option in allRoles"  >
                         </select>
+                    </div>
+                    <div class="col-sm-3" ng-if="roleDisable">
+                        <input  type="text" class="form-control input-sm" ng-model="user.rolesformat"   disabled/>
                     </div>
                 </div>
                 <div class="form-group">

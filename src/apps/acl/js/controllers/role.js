@@ -1,6 +1,7 @@
 'use strict';
 app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
     var sso=jm.sdk.sso;
+    var acl=jm.sdk.acl;
     $scope.isCollapsed = true;
     $scope.opts = {
         injectClasses: {
@@ -224,15 +225,14 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     //获取用户所属角色
     $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/roles', {
         params: {
-            token: token,
-            creator: localStorage.getItem('id')
+            token: token
         }
     }).success(function (result) {
         if(result.err){
             $scope.error(result.msg);
         }else{
             $scope.userRoles =result;
-            console.log(result)
+            console.log(result);
             getRoles(result);
         }
     }).error(function(msg, code){
@@ -240,20 +240,16 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     });
     //获取用户创建的角色
     function getRoles(userRoles) {
-        $http.get(aclUri+'/roles/', {
-            params:{
-                token: token,
-                creator: localStorage.getItem('id')
-            }
-        }).success(function(result){
-            console.log(result)
-            var obj = result;
-            if(obj.err){
-                $scope.error(obj.msg);
+        acl.role.list({
+            token: token
+        },function (err,result) {
+            if(result.err){
+                $scope.error(result.msg);
+                $scope.errorTips(result.msg);
             }else{
                 var ary=[];
                 result.rows.forEach(function (item) {
-                   if(!userRoles[item.code]){
+                    if(!userRoles[item.code]){
                         ary.push(item);
                     }
                 });
@@ -262,12 +258,10 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
                         ary.unshift(userRoles[key]);
                     }
                 }
-                $scope.roles =ary ;//获取用户创建的角色
+                $scope.roles =ary ;//获取用户相关角色
                 $scope.role = null;
                 $scope.curRole = null;
             }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
         });
     }
 
