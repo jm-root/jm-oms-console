@@ -496,6 +496,7 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
                 $scope.configVal.val = result.ret || {};
                 $scope.configVal.val = JSON.stringify($scope.configVal.val, null, "\t");
                 $scope.defaultVal = angular.copy($scope.configVal.val);
+                console.log(result);
             });
         });
     };
@@ -589,16 +590,53 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
         }catch (e){
             return $scope.warning('请输入正确的JSON格式数据');
         }
-        config.setConfigs({token: sso.getToken(),root:$scope.secondselected,value:value},function(err,result){
-            if(err){
-                err = result&&result.msg || err.message;
-                return $scope.error(err);
-            }
-            $timeout(function(){
-                $scope.allVal.val = JSON.stringify(value, null, "\t");
-                $scope.success('配置成功');
+        console.log(value);
+        var s = [];
+        for (var key in value) {
+            var val = value[key];
+            s.push(key);
+        }
+        console.log(s);
+        console.log($scope.items);
+        if (s.sort().toString() == $scope.items.sort().toString()){
+            config.setConfigs({token: sso.getToken(),root:$scope.secondselected,value:value},function(err,result){
+                if(err){
+                    err = result&&result.msg || err.message;
+                    return $scope.error(err);
+                }
+                $timeout(function(){
+                    $scope.allVal.val = JSON.stringify(value, null, "\t");
+                    $scope.success('配置成功');
+                });
             });
-        });
+        }else {
+            config.delRoot({token: sso.getToken(),root:$scope.secondselected},function(err,result){
+                if(err){
+                    err = result&&result.msg || err.message;
+                    return $scope.error(err);
+                }
+                config.setConfigs({token: sso.getToken(),root:$scope.secondselected,value:value},function(err,result){
+                    if(err){
+                        err = result&&result.msg || err.message;
+                        return $scope.error(err);
+                    }
+                    $timeout(function(){
+                        $scope.allVal.val = JSON.stringify(value, null, "\t");
+                        $scope.success('配置成功');
+                    });
+                });
+            });
+        }
+        // config.setConfigs({token: sso.getToken(),root:$scope.secondselected,value:value},function(err,result){
+        //     if(err){
+        //         err = result&&result.msg || err.message;
+        //         return $scope.error(err);
+        //     }
+        //     $timeout(function(){
+        //         $scope.allVal.val = JSON.stringify(value, null, "\t");
+        //         $scope.success('配置成功');
+        //     });
+        // });
     };
 
 
@@ -612,7 +650,14 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
         }catch (e){
             return $scope.warning('请输入正确的JSON格式数据');
         }
-
+        // console.log($scope.configVal.val);
+        // console.log(value);
+        // var s = [];
+        // for (var key in value) {
+        //     var val = value[key];
+        //     s.push(key);
+        // }
+        // console.log(s);
         config.setConfig({token: sso.getToken(),root:$scope.secondselected,key:$scope.item,value:value},function(err,result){
             if(err){
                 err = result&&result.msg || err.message;
@@ -622,7 +667,7 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
             $timeout(function(){
                 $scope.configVal.val = JSON.stringify(value, null, "\t");
                 $scope.success('配置成功');
-                console.log(value);
+
             });
         });
     };
