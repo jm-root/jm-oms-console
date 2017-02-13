@@ -27,9 +27,9 @@
     "recharge":{
       "manage": "Recharge",
       "cardtype": "Card Type",
-      "card": "Card List",
-      "third": "Recharge Third",
-      "cardlog": "Card Log"
+      "card": "Card",
+      "third": "Third",
+      "cardlog": "Log"
     },
     "player":{
       "manage": "Player Manage",
@@ -42,6 +42,118 @@
       "manage": "System Manage",
       "admin": "System Admin",
       "log": "System Log"
-    }
+    },
+    "activity":{
+      "manage":"Activity Manage",
+      "prop":"Prop List",
+      "gaveprop":"Gave Prop",
+      "forum":"Forum List",
+      "list":"Activity List"
+    },
+    "agent":{
+      "manage":"Agent Manage",
+      "create":"Agent Create",
+      "list":"Agent List",
+      "data":"Agent Data"
+    },
+    "agentdata":{
+      "register":"Register",
+      "recharge":"Recharge",
+      "analysis":"Analysis"
+    },
+    "coin":{
+      "sys":"Coin System",
+      "stock":{
+        "manage":"Coin Stock",
+        "recharge":"Stock Recharge",
+        "list":"Stock List",
+        "order":"Stock Order"
+      },
+      "distribute":{
+        "manage":"Distribute",
+        "make":"Distribute Make",
+        "batch":"Distribute Batch"
+      },
+      "account":{
+        "manage":"Account Manager",
+        "list":"Account List"
+      },
+      "record":{
+        "manage":"Usage Log",
+        "playerStat":"Player Stat",
+        "agentStat":"Agent Stat",
+        "logs":"Log Query"
+      }
+    },
+    "package":{
+      "manage":"Package Manage",
+      "take":"Take",
+      "set":"Set"
+    },
+    "bank":{
+      "manage":"Bank Manage",
+      "account":"Account",
+      "preauth":"Preauth List",
+      "transfer":"Transfer",
+      "deal":"Deal",
+      "npreauth":"Preauth Cancel",
+      "overdraw":"Set Overdraw",
+      "rate":"Currency Rate",
+      "pay":{"list":"Pay List"}
+    },
+    "bbs":{
+      "manage":"Forum Manage",
+      "forum":"Forum List",
+      "topic":"Post List"
+    },
+    "app":{
+      "manage":"App Manage",
+      "create":"App Create",
+      "upload":"App Upload"
+    },
+    "shop":{
+      "manage":"Shop Manage",
+      "category":"Shop Category",
+      "product":"Shop Product",
+      "order":"Shop Order",
+      "lottery":"Shop Lottery",
+      "bet":"Shop Bet"
+    },
+    "home":{
+      "manage":"Hall Manage",
+      "vip":{
+        "config":"VIP Config",
+        "cond":"VIP CON",
+        "item":"VIP Item",
+        "set":"VIP Set"
+      },
+      "bbs":{
+        "manage":"BBS Manage",
+        "forum":"Forum List",
+        "topic":"Topic List"
+      },
+      "activitys":"Activitys",
+      "checkin":"Checkin",
+      "sendnotice":"Send Notice",
+      "senddak":"Send Mail",
+      "rank":"Rank Set"
+    },
+    "room":{
+      "manage":"Room Manage"
+    },
+    "wordfilter":{
+      "manage":"Wordfilter",
+      "list":"List",
+      "log":"Log"
+    },
+    "guestbook":{
+      "manage":"Guest book",
+      "list":"List"
+    },
+    "report":{
+      "manage":"Report",
+      "account":"Account"
+    },
+    "promote":"Promote"
   }
 }
