@@ -130,6 +130,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
          }).success(function (result) {
                 var data=result;
                 console.log(result);
+                console.log(123);
                 if(data.err){
                     $scope.error(data.msg)
                 }else{

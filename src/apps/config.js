@@ -40,12 +40,13 @@ var bbsUri = sdkHost + "/bbs";
 var wordfilterUri = sdkHost + "/wordfilter";
 var packUri = sdkHost + "/pack";
 var statUri = sdkHost + "/stat";
-var cardUri = sdkHost + "/card";
+var cardUri = "http://jamma.3322.org:20200" + "/card";
 var homeUri = sdkHost + "/home";
 var recordUri = sdkHost + "/record";
 var guestbookUri = sdkHost + "/guestbook";
 var shopUri = sdkHost + "/shop";
-var logUri = sdkHost + "/log";
+var logUri = "http://jamma.3322.org:20200" + "/log";
+
 
 jm.sdk.init({uri: sdkHost});
 
