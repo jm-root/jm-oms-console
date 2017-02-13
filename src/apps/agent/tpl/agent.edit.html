@@ -2,18 +2,18 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>渠道编辑</strong>
+                <strong translate="agent.agent.edit.AgentEdit">渠道编辑</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">渠道级别</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.AgentLevel">渠道级别</label>
                     <div class="col-lg-10 w-auto">
                         <p class="form-control-static">{{agent.level}}级</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">账号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.AccountNumber">账号</label>
 
                     <div class="col-lg-10 w-auto">
                         <p class="form-control-static">{{agent.userInfo.account||agent.userInfo.mobile}}</p>
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">渠道名</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.AgentName">渠道名</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="名称" ng-model="agent.name">
@@ -30,14 +30,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">合作方式</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.CooperationMode">合作方式</label>
                     <div class="col-lg-10 w-auto">
                         <p class="form-control-static">{{agent.type==1?'合作':'买断'}}</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">手机号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.tel">手机号</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="手机号" maxlength="11" ng-pattern="/([0-9]{11})$/" ng-model="agent.mobile">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group" ng-if="super">
-                    <label class="col-sm-2 control-label">推广上限</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.PromotionCap">推广上限</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="数量" min="0" ng-pattern="/([0-9])$/" ng-model="agent.limit">
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">QQ号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.QQ">QQ号</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="QQ号" ng-model="agent.userInfo.qq">
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">邮箱</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.mail">邮箱</label>
 
                     <div class="col-sm-9">
                         <input type="email" class="form-control w-sm" placeholder="邮箱" ng-model="agent.email">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行账号名</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.BankAccountName">银行账号名</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="银行账号名" ng-model="agent.userInfo.bankInfo.account">
@@ -82,11 +82,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.bank">银行</label>
 
                     <div class="col-sm-9">
                         <select class="form-control w-sm" ng-model="agent.userInfo.bankInfo.bank">
-                            <option value="">请选银行</option>
+                            <option value="" translate="agent.agent.edit.PleaseChooseTheBank">请选择银行</option>
                             <option value="中国银行">中国银行</option>
                             <option value="中国工商银行">中国工商银行</option>
                             <option value="中国建设银行">中国建设银行</option>
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">开户支行</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.BranchAccount">开户支行</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="开户支行" ng-model="agent.userInfo.bankInfo.subbranch">
@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行卡号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.BankCardNumber">银行卡号</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="银行卡号" ng-model="agent.userInfo.bankInfo.card">
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">标签</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.label">标签</label>
                     <div class="col-sm-9 w-xl">
                         <tags-input ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
                     </div>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">备注</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.edit.remarks">备注</label>
 
                     <div class="col-sm-9">
                         <textarea class="form-control w-xl" rows="4" style="resize: none;" placeholder="" ng-model="agent.memo"></textarea>
@@ -145,7 +145,7 @@
             </div>
             <footer class="panel-footer text-right bg-light lter">
                 <div style="max-width: 750px">
-                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&update()" ng-if="super||per['编辑']">更新</button>
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&update()" ng-if="super||per['编辑']" translate="agent.agent.edit.update">更新</button>
                 </div>
             </footer>
         </div>

@@ -1,5 +1,122 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "agent": {
+    "agent":{
+      "create":{
+        "AgentCreate":"Agent Create",
+        "RemainingCreationQuantity":"Remaining Creation Quantity",
+        "AgentLevel":"Agent Level",
+        "AccountNumber":"Account Number",
+        "AccountAlreadyExists":"Account already exists",
+        "password":"Password",
+        "AgentName":"Agent Name",
+        "CooperationMode":"Cooperation Mode",
+        "PleaseChooseCooperationMode":"Please choose cooperation mode",
+        "cooperation":"Cooperation",
+        "buyout":"Buyout",
+        "ApplicantName":"Applicant Name",
+        "tel":"Tel",
+        "PromotionCap":"Promotion Cap",
+        "QQ":"QQ",
+        "mail":"Mail",
+        "BankAccountName":"Bank Account Name",
+        "bank":"Bank",
+        "PleaseChooseTheBank":"Please Choose The Bank",
+        "BranchAccount":"Branch Account",
+        "BankCardNumber":"Bank Card Number",
+        "label":"Label",
+        "remarks":"Remarks",
+        "SubmitAudit":"Submit Audit"
+      },
+      "edit":{
+        "AgentEdit":"Agent Edit",
+        "AgentLevel":"Agent Level",
+        "AccountNumber":"Account Number",
+        "AgentName":"Agent Name",
+        "CooperationMode":"Cooperation Mode",
+        "tel":"Tel",
+        "PromotionCap":"Promotion Cap",
+        "QQ":"QQ",
+        "mail":"Mail",
+        "BankAccountName":"Bank Account Name",
+        "bank":"Bank",
+        "PleaseChooseTheBank":"Please Choose The Bank",
+        "BranchAccount":"Branch Account",
+        "BankCardNumber":"Bank Card Number",
+        "label":"Label",
+        "remarks":"Remarks",
+        "update":"Update"
+      },
+      "list":{
+        "AgentList":"Agent List",
+        "create":"Create",
+        "delete":"Delete",
+        "AuditStatus":"Audit Status",
+        "unaudited":"Unaudited",
+        "AuditThrough":"Audit Through",
+        "AuditNotApproved":"Audit Not Approved",
+        "AccountStatus":"Account Status",
+        "pause":"Pause",
+        "normal":"Normal"
+      }
+    },
+    "agentdata":{
+      "analysis":{
+
+      },
+      "recharge":{
+
+      },
+      "register":{
+
+      }
+    },
+    "coin":{
+      "account":{
+        "list":{
+
+        }
+      },
+      "distribute":{
+        "batch":{
+
+        },
+        "make":{
+
+        },
+        "makeinfo":{
+
+        }
+      },
+     "record":{
+       "agentStat":{
+
+       },
+       "logs":{
+
+       },
+       "playerStat":{
+
+       }
+     },
+      "stock":{
+        "list":{
+
+        },
+        "order":{
+
+        },
+        "recharge":{
+
+        }
+      }
+    },
+    "package":{
+      "set":{
+
+      },
+      "take":{
+
+      }
+    }
   }
 }

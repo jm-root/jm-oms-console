@@ -12,33 +12,35 @@
             [          '$stateProvider', '$urlRouterProvider', 'lazyLoadProvider',
                 function ($stateProvider,   $urlRouterProvider, lazyLoadProvider) {
                     $stateProvider
-                        .state('app.' + name, {
+                        .state('app.agent', {
                             url: '/agent',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/agent.js'] )
+                            controller:'AgentCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js' ,path + 'js/controllers/agent.js'] )
                         })
-                        .state('app.' + name + '.list', {
+                        .state('app.agent.list', {
                             url: '/list',
                             templateUrl: path + 'tpl/agent.list.html',
                             controller: 'AgentListCtrl'
                         })
-                        .state('app.' + name + '.edit', {
+                        .state('app.agent.edit', {
                             url: '/edit/{id}',
                             templateUrl: path + 'tpl/agent.edit.html',
                             controller: 'AgentEditCtrl',
                             resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
                         })
-                        .state('app.' + name + '.create', {
+                        .state('app.agent.create', {
                             url: '/create',
                             templateUrl: path + 'tpl/agent.create.html',
                             controller: 'AgentCreateCtrl',
                             resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
                         })
-                    //package
+                    //包
                         .state('app.package', {
                             url: '/package',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/package.js'] )
+                            controller:'AgentCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js' ,path + 'js/controllers/package.js'] )
                         })
                         .state('app.package.take', {
                             url: '/agent',
@@ -55,7 +57,8 @@
                         .state('app.agentdata', {
                             url: '/agentdata',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/agentdata.js'] )
+                            controller:'AgentCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js' ,path + 'js/controllers/agentdata.js'] )
                         })
                         .state('app.agentdata.register', {
                             url: '/register',
@@ -86,7 +89,8 @@
                         .state('app.coin', {
                             url: '/coin',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/coin.js'])
+                            controller:'AgentCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js' ,path + 'js/controllers/coin.js'])
                         })
                         .state('app.coin.stock', {
                             url: '/stock',

@@ -2,34 +2,34 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>渠道创建</strong>
+                <strong translate="agent.agent.create.AgentCreate">渠道创建</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group" ng-if="!super">
-                    <label class="col-sm-2 control-label">剩余创建数量</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.RemainingCreationQuantity">剩余创建数量</label>
                     <div class="col-lg-10 w-auto">
                         <p class="form-control-static">{{limit?limit:'无限制'}}</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">渠道级别</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.AgentLevel">渠道级别</label>
                     <div class="col-lg-10 w-auto">
                         <p class="form-control-static">{{agentLevel}}级</p>
                     </div>
                 </div>
 
                 <div class="form-group" ng-if="!agent.userId">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>账号</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.AccountNumber">账号</label></label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="账号" ng-model="agent.account" ng-blur="onBlur('account')" ng-required="true">
-                        <span style="color: red" ng-if="checkInput.account">账号已在</span>
+                        <span style="color: red" ng-if="checkInput.account" translate="agent.agent.create.AccountAlreadyExists">账号已在</span>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group" ng-if="!agent.userId">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>密码</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.password">密码</label></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="密码" ng-model="agent.passwd" ng-required="true">
                     </div>
@@ -37,45 +37,45 @@
                 </div>
 
                 <!--<div class="form-group" ng-if="!agent.account&&!agent.passwd">-->
-                    <!--<label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>用户ID</label>-->
+                <!--<label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>用户ID</label>-->
 
-                    <!--<div class="col-sm-5">-->
-                        <!--<div class="input-group">-->
-                            <!--<input type="text" class="form-control" placeholder="用户ID" ng-model="agent.userId" ng-required="true">-->
-                            <!--<div class="input-group-btn dropdown" drop-down-table>-->
-                                <!--<div type="button" class="btn btn-default" ng-bind="agent.nick||'用户名'"></div><div type="button" class="btn btn-default">搜索 <span class="caret"></span></div>-->
-                                <!--<ul class="dropdown-menu pull-right w-xxl">-->
-                                    <!--<div class="input-group">-->
-                                        <!--<input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">-->
-                                            <!--<span class="input-group-btn">-->
-                                              <!--<span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>-->
-                                            <!--</span>-->
-                                    <!--</div>-->
-                                    <!--<table st-table="rowCollectionBasic" class="table table-bordered table-striped">-->
-                                        <!--<thead>-->
-                                        <!--<tr>-->
-                                            <!--<th>用户ObjectID</th>-->
-                                            <!--<th>用户ID</th>-->
-                                            <!--<th>用户名</th>-->
-                                        <!--</tr>-->
-                                        <!--</thead>-->
-                                        <!--<tbody>-->
-                                        <!--<tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">-->
-                                            <!--<td>{{row._id}}</td>-->
-                                            <!--<td>{{row.uid}}</td>-->
-                                            <!--<td>{{row.nick}}</td>-->
-                                        <!--</tr>-->
-                                        <!--</tbody>-->
-                                    <!--</table>-->
-                                <!--</ul>-->
-                            <!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-sm-1"></div>-->
+                <!--<div class="col-sm-5">-->
+                <!--<div class="input-group">-->
+                <!--<input type="text" class="form-control" placeholder="用户ID" ng-model="agent.userId" ng-required="true">-->
+                <!--<div class="input-group-btn dropdown" drop-down-table>-->
+                <!--<div type="button" class="btn btn-default" ng-bind="agent.nick||'用户名'"></div><div type="button" class="btn btn-default">搜索 <span class="caret"></span></div>-->
+                <!--<ul class="dropdown-menu pull-right w-xxl">-->
+                <!--<div class="input-group">-->
+                <!--<input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">-->
+                <!--<span class="input-group-btn">-->
+                <!--<span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--<table st-table="rowCollectionBasic" class="table table-bordered table-striped">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                <!--<th>用户ObjectID</th>-->
+                <!--<th>用户ID</th>-->
+                <!--<th>用户名</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">-->
+                <!--<td>{{row._id}}</td>-->
+                <!--<td>{{row.uid}}</td>-->
+                <!--<td>{{row.nick}}</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+                <!--</table>-->
+                <!--</ul>-->
+                <!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-sm-1"></div>-->
                 <!--</div>-->
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>渠道名</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.AgentName">渠道名</label></label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="名称" ng-model="agent.name" ng-required="true">
@@ -84,19 +84,19 @@
                 </div>
 
                 <div class="form-group" ng-if="super||per.edit1">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>合作方式</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.CooperationMode">合作方式</label></label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="agent.type" ng-required="super||per.edit1">
-                            <option value="">请选合作方式</option>
-                            <option value="1">合作</option>
-                            <option value="2">买断</option>
+                            <option value="" translate="agent.agent.create.PleaseChooseCooperationMode">请选合作方式</option>
+                            <option value="1" translate="agent.agent.create.cooperation">合作</option>
+                            <option value="2" translate="agent.agent.create.buyout">买断</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">申请人姓名</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.ApplicantName">申请人姓名</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="姓名" ng-model="agent.realName">
@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">手机号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.tel">手机号</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="手机号" maxlength="11" ng-pattern="/([0-9]{11})$/" ng-model="agent.mobile">
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="form-group" ng-if="super">
-                    <label class="col-sm-2 control-label">推广上限</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.PromotionCap">推广上限</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="数量" min="0" ng-pattern="/([0-9])$/" ng-model="agent.limit">
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">QQ号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.">QQ号</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w-sm" placeholder="QQ号" ng-model="agent.qq">
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">邮箱</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.mail">邮箱</label>
 
                     <div class="col-sm-9">
                         <input type="email" class="form-control w-sm" placeholder="邮箱" ng-model="agent.email">
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行账号名</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.BankAccountName">银行账号名</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="银行账号名" ng-model="agent.bankInfo.account">
@@ -151,11 +151,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.bank">银行</label>
 
                     <div class="col-sm-9">
                         <select class="form-control w-sm" ng-model="agent.bankInfo.bank">
-                            <option value="">请选银行</option>
+                            <option value="" translate="agent.agent.create.PleaseChooseTheBank">请选银行</option>
                             <option value="中国银行">中国银行</option>
                             <option value="中国工商银行">中国工商银行</option>
                             <option value="中国建设银行">中国建设银行</option>
@@ -177,7 +177,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">开户支行</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.BranchAccount">开户支行</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="开户支行" ng-model="agent.bankInfo.subbranch">
@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">银行卡号</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.BankCardNumber">银行卡号</label>
 
                     <div class="col-sm-9">
                         <input type="text" class="form-control w-sm" placeholder="银行卡号" ng-model="agent.bankInfo.card">
@@ -195,7 +195,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">标签</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.label">标签</label>
                     <div class="col-sm-4">
                         <tags-input class="bootstrap" ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
                     </div>
@@ -203,7 +203,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">备注</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.remarks">备注</label>
 
                     <div class="col-sm-5">
                         <textarea class="form-control" rows="4" style="resize: none;" placeholder="" ng-model="agent.memo"></textarea>
@@ -214,7 +214,7 @@
             </div>
             <footer class="panel-footer text-right bg-light lter">
                 <div style="max-width: 750px">
-                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&create()" ng-if="super||per['创建']">提交审核</button>
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&create()" ng-if="super||per['创建']" translate="agent.agent.create.SubmitAudit">提交审核</button>
                 </div>
             </footer>
         </div>

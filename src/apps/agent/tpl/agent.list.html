@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
         <button ui-sref="app.agent.create" type="button" class="btn btn-sm btn-primary btn-addon" ng-if="super">
-            <i class="fa fa-plus"></i>创建
+            <i class="fa fa-plus"></i><label translate="agent.agent.list.create">创建</label>
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-if="super" ng-click="delete()">
-            <i class="fa fa-trash-o"></i>删除
+            <i class="fa fa-trash-o"></i><label translate="agent.agent.list.delete">删除</label>
         </button>
     </div>
     <div class="pull-right">
@@ -19,24 +19,24 @@
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="audit" ng-change="onPageSizeChanged()">
-            <option value="">审核状态</option>
-            <option value="0">未审核</option>
-            <option value="1">审核通过</option>
-            <option value="2">审核不通过</option>
+            <option value="" translate="agent.agent.list.AuditStatus">审核状态</option>
+            <option value="0" translate="agent.agent.list.unaudited">未审核</option>
+            <option value="1" translate="agent.agent.list.AuditThrough">审核通过</option>
+            <option value="2" translate="agent.agent.list.AuditNotApproved">审核不通过</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="status" ng-change="onPageSizeChanged()">
-            <option value="">账号状态</option>
-            <option value="0">暂停</option>
-            <option value="1">正常</option>
+            <option value="" translate="agent.agent.list.AccountStatus">账号状态</option>
+            <option value="0" translate="agent.agent.list.pause">暂停</option>
+            <option value="1" translate="agent.agent.list.normal">正常</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3">渠道列表</h1>
+    <h1 class="m-n font-thin h3" translate="agent.agent.list.AgentList">渠道列表</h1>
 </div>
 
 <div class="panel panel-default">

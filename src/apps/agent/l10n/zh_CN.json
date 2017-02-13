@@ -1,5 +1,122 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "agent": {
+    "agent":{
+      "create":{
+        "AgentCreate":"渠道创建",
+        "RemainingCreationQuantity":"剩余创建数量",
+        "AgentLevel":"渠道级别",
+        "AccountNumber":"账号",
+        "AccountAlreadyExists":"账号已在",
+        "password":"密码",
+        "AgentName":"渠道名",
+        "CooperationMode":"合作方式",
+        "PleaseChooseCooperationMode":"请选合作方式",
+        "cooperation":"合作",
+        "buyout":"买断",
+        "ApplicantName":"申请人姓名",
+        "tel":"手机号",
+        "PromotionCap":"推广上限",
+        "QQ":"QQ号",
+        "mail":"邮箱",
+        "BankAccountName":"银行账号名",
+        "bank":"银行",
+        "PleaseChooseTheBank":"请选银行",
+        "BranchAccount":"开户支行",
+        "BankCardNumber":"银行卡号",
+        "label":"标签",
+        "remarks":"备注",
+        "SubmitAudit":"提交审核"
+      },
+      "edit":{
+        "AgentEdit":"渠道编辑",
+        "AgentLevel":"渠道级别",
+        "AccountNumber":"账号",
+        "AgentName":"渠道名",
+        "CooperationMode":"合作方式",
+        "tel":"手机号",
+        "PromotionCap":"推广上限",
+        "QQ":"QQ号",
+        "mail":"邮箱",
+        "BankAccountName":"银行账号名",
+        "bank":"银行",
+        "PleaseChooseTheBank":"请选择银行",
+        "BranchAccount":"开户支行",
+        "BankCardNumber":"银行卡号",
+        "label":"标签",
+        "remarks":"备注",
+        "update":"更新"
+      },
+      "list":{
+        "AgentList":"渠道列表",
+        "create":"创建",
+        "delete":"删除",
+        "AuditStatus":"审核状态",
+        "unaudited":"未审核",
+        "AuditThrough":"审核通过",
+        "AuditNotApproved":"审核不通过",
+        "AccountStatus":"账号状态",
+        "pause":"暂停",
+        "normal":"正常"
+      }
+    },
+    "agentdata":{
+      "analysis":{
+
+      },
+      "recharge":{
+
+      },
+      "register":{
+
+      }
+    },
+    "coin":{
+      "account":{
+        "list":{
+
+        }
+      },
+      "distribute":{
+        "batch":{
+
+        },
+        "make":{
+
+        },
+        "makeinfo":{
+
+        }
+      },
+      "record":{
+        "agentStat":{
+
+        },
+        "logs":{
+
+        },
+        "playerStat":{
+
+        }
+      },
+      "stock":{
+        "list":{
+
+        },
+        "order":{
+
+        },
+        "recharge":{
+
+        }
+      }
+    },
+    "package":{
+      "set":{
+
+      },
+      "take":{
+
+      }
+    }
   }
 }
