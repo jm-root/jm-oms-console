@@ -11,18 +11,33 @@ angular.module('app')
         }).then(function (roles) {
             global.ready = true;
             global.emit('ready', global);
-            $http.get(adminUri + '/nav', {
+            $http.get(adminUri + '/navs', {
                 params: {
                     token: sso.getToken(),
                     acl_user: sso.user.id
                 }
             }).success(function (result) {
-                console.log(result)
+                console.log(result);
                 var obj = result;
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
-                    $scope.nav = obj.ret;
+                    var b=[];
+                    var a=obj.ret;
+                    a.forEach(function (item) {
+                          if(item.code=="app.acl.manage" ){
+                              b.unshift(item);
+                          }else if( item.code=="app.config.manage"){
+                              if(b[0]&&b[0].code=="app.acl.manage"){
+                                  b.splice(1,0,item);
+                              }else{
+                                  b.unshift(item);
+                              }
+                          } else {
+                              b.push(item);
+                          }
+                    });
+                    $scope.nav = b;
                 }
             }).error(function (msg, code) {
                 console.log(msg);
