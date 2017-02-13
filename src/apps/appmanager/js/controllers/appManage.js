@@ -1,7 +1,7 @@
 'use strict';
 var sso = jm.sdk.sso;
 app.controller('AppsListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', "$stateParams", function ($scope, $state, $http,AGGRID, global, $stateParams) {
-    var history = global.appsListHistory;
+    var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 

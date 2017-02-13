@@ -4,7 +4,7 @@
 "use strict";
 var sso = jm.sdk.sso;
 app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', '$q', function ($scope, $state, $stateParams, $http, AGGRID, global, $q) {
-    var history = global.appsListHistory;
+    var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
