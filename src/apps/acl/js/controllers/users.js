@@ -38,7 +38,10 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         {headerName: "标签", field: "tags", width: 80},
         {headerName: "创建者", field: "creator.nick", width: 80},
         {headerName: "激活状态", field: "status", width: 100, valueGetter:format_status,cellStyle:{'text-align':'center'}},
-        {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS,cellStyle:{'text-align':'center'}}
+        {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS,cellStyle:{'text-align':'center'}},
+        {headerName: "最后登录IP", field: "creator.nick", width: 80},
+        {headerName: "最后登录时间", field: "creator.nick", width: 80},
+        {headerName: "登录次数", field: "creator.nick", width: 80}
     ];
 
     var dataSource = {
@@ -158,16 +161,28 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     var sso=jm.sdk.sso;
     var acl=jm.sdk.acl;
+    var token=sso.getToken();
     $scope.$state = $state;
-
     var id = $stateParams.id;
     $scope.id = id;
     $scope.user = {
     };
+    //获取用户拥有的角色列表
+    acl.role.list({
+        token: token
+    },function (err,result) {
+        console.log(result);
+        if(result.err){
+            $scope.error(result.msg);
+            $scope.errorTips(result.msg);
+        }else{
+            $scope.allRoles = result.rows;
+        }
+    });
     if(id){
         $http.get(aclUri+'/users/' + id, {
             params:{
-                token: sso.getToken()
+                token: token
             }
         }).success(function(result){
             var obj = result;
@@ -212,7 +227,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
         $scope.user.creator=sso.user.id;
         $http.post(aclUri+'/users', $scope.user, {
             params:{
-                token: sso.getToken()
+                token: token
             }
         }).success(function(result){
             var obj = result;
@@ -235,7 +250,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
         $scope.user.tags = tags;
         $http.post(aclUri+'/users/'+id, $scope.user, {
             params:{
-                token: sso.getToken()
+                token: token
             }
         }).success(function(result){
             var obj = result;
@@ -253,7 +268,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
-                token: sso.getToken(),
+                token: token,
                 page: 1,
                 keyword: keyword
             }
@@ -276,17 +291,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
             $scope.user.nick = $scope.selectRow.nick;
         }
     };
-    //获取用户拥有的角色列表
-    acl.role.list({
-        token: sso.getToken()
-    },function (err,result) {
-        if(result.err){
-            $scope.error(result.msg);
-            $scope.errorTips(result.msg);
-        }else{
-            $scope.allRoles = result.rows;
-        }
-    });
+
 }]);
 
 

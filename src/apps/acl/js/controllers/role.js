@@ -35,7 +35,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     };
 
     $scope.change = function(id){
-
             if(id==0){
                 $scope.role ={};
                 $scope.isCollapsed =false;
@@ -43,7 +42,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             if(id==1){
                 $scope.role = $scope.curRole;
                 $scope.isCollapsed =false;
-
             }
             if(id==2){
                 $scope.isCollapsed =true;
@@ -107,6 +105,9 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
                     }
                     $scope.roles.splice($scope.roles.indexOf(role), 1);
                     $scope.resources = [];
+                    $scope.curPermission= null;
+                    $scope.addPermission={};
+                    $scope.removePermission={};
                     $scope.success('操作成功');
                 }).error(function(msg, code){
                     $scope.errorTips(code);
@@ -116,7 +117,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
     };
     //角色资源权限
     $scope.getResource = function(role){
-       
         $http.get(aclUri+'/roles/'+role._id +'/resources', {
             params:{
                 code:role.code,
