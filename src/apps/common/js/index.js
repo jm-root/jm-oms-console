@@ -60,7 +60,10 @@ angular.module('app')
                 '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.css',
                 '../libs/angular/angular-bootstrap-datetimepicker/css/datetimepicker.css',
                 '../libs/angular/angular-bootstrap-datetimepicker/datetimepicker.js'
-            ]
+            ],
+            'angular-img-cropper': [
+                '../libs/angular/angular-img-cropper/dist/angular-img-cropper.min.js'
+            ],
         });
     }])
     .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {

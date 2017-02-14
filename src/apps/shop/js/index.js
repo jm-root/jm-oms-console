@@ -50,7 +50,7 @@
                         })
                         .state('app.shop.product.edit.pic', {
                             url: '/pic',
-                            templateUrl: path + 'tpl/imgcrop.html',
+                            templateUrl: 'apps/common/tpl/imgcrop.html',
                             resolve: lazyLoadProvider.load('ngImgCrop')
                         })
                         .state('app.shop.order', {

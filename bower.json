@@ -42,6 +42,7 @@
     "angular-ui-utils": "~0.2.1",
     "angular-xeditable": "~0.1.8",
     "angularjs-toaster": "~0.4.8",
+    "angular-img-cropper": "1.0.0",
     "animate.css": "~3.2.0",
     "bootstrap": "~3.3.0",
     "bootstrap-chosen": "~1.0.0",

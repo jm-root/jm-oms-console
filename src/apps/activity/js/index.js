@@ -36,7 +36,7 @@
                         })
                         .state('app.' + name + '.prop.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load(['angular-img-cropper'])
                         })
                         .state('app.' + name + '.gaveprop', {
@@ -62,7 +62,7 @@
                         })
                         .state('app.' + name + '.forum.edit.logo', {
                             url: '/logo',
-                            templateUrl: 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
@@ -83,7 +83,7 @@
                         })
                         .state('app.' + name + '.aty.edit.logo', {
                             url: '/logo',
-                            templateUrl: 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
