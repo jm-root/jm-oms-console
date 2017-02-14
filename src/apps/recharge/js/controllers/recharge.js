@@ -291,7 +291,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
             getRows: function (params) {
                 var search = $scope.search;
                 var date = search.date;
-                var starDate = date.startDate || '';
+                var startDate = date.startDate || '';
                 var endDate = date.endDate || '';
                 var type = search.type;
                 var state = search.state;
@@ -311,7 +311,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
                             token: sso.getToken(),
                             page: page,
                             rows: $scope.pageSize,
-                            startDate: starDate.toString(),
+                            startDate: startDate.toString(),
                             endDate: endDate.toString(),
                             type: type,
                             state: state,
@@ -366,12 +366,15 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
     $scope.$watch('search', function () {
         history.search = $scope.search;
     });
-    $scope.$watch('startDate', function () {
-        history.startDate = $scope.startDate;
+    $scope.$watch('search.date', function () {
+        $scope.onPageSizeChanged();
     });
-    $scope.$watch('endDate', function () {
-        history.endDate = $scope.endDate;
-    });
+    // $scope.$watch('startDate', function () {
+    //     history.startDate = $scope.startDate;
+    // });
+    // $scope.$watch('endDate', function () {
+    //     history.endDate = $scope.endDate;
+    // });
 }]);
 
 

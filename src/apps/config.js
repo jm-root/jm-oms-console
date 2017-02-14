@@ -28,7 +28,7 @@ var ssoUri = sdkHost+"/sso";
 var aclUri = sdkHost+"/acl";
 var adminUri = sdkHost+"/oms";
 var appMgrUri = sdkHost + "/appManager";
-var agentUri = sdkHost + "/agent";
+var agentUri = "http://jamma.3322.org:20200" + "/agent";
 var configUri = sdkHost + "/config";
 var uploadUri = sdkHost + "/upload";
 var staticUri = staticHost + "/static";
@@ -41,10 +41,10 @@ var wordfilterUri = sdkHost + "/wordfilter";
 var packUri = sdkHost + "/pack";
 var statUri = sdkHost + "/stat";
 var cardUri = "http://jamma.3322.org:20200" + "/card";
-var homeUri = sdkHost + "/home";
+var homeUri = "http://jamma.3322.org:20200" + "/home";
 var recordUri = sdkHost + "/record";
 var guestbookUri = sdkHost + "/guestbook";
-var shopUri = sdkHost + "/shop";
+var shopUri = "http://jamma.3322.org:20200" + "/shop";
 var logUri = "http://jamma.3322.org:20200" + "/log";
 
 

@@ -5,7 +5,7 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global
     $scope.pageSize = history.pageSize || $scope.defaultRows;
     $scope.search = history.search || {};
     $scope.search.keyword = $scope.search.keyword || '';
-    var url='http://192.168.0.249:21000/getadmin';
+    var url=adminUri + '/getadmin';
 
     var columnDefs=[
         {headerName:"管理员ID",field:"adminid",width:100},
@@ -111,7 +111,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
         getRows:function (params) {
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
-            var date = $scope.search.date;
+            var date =search.date;
             var startDate = date.startDate || '';
             var endDate = date.endDate || '';
             var keyword = search.keyword;
@@ -136,6 +136,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
                 }else{
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;
+                    console.log(rowsThisPage);
                     params.successCallback(rowsThisPage,lastRow);
                 }
             }).error(function (msg,code) {
@@ -143,14 +144,14 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
             })
         }
     };
-    $scope.gridOptions={
+    $scope.gridOptions = {
         paginationPageSize: Number($scope.pageSize),
         rowModelType:'pagination',
         enableSorting: true,
         enableFilter: true,
         enableColResize: true,
-        rowSelection: 'multiple',
         angularCompileRows: true,
+        rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
@@ -163,16 +164,18 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
         $scope.gridOptions.api.setDatasource(dataSource);
     };
+    //监听函数变化
     $scope.$watch('pageSize', function () {
         history.pageSize = $scope.pageSize;
     });
+
     $scope.$watch('search', function () {
         history.search = $scope.search;
     });
 
-    // $scope.$watch('search.date', function () {
-    //     $scope.onPageSizeChanged();
-    // });
+    $scope.$watch('search.date', function () {
+        $scope.onPageSizeChanged();
+    });
 
 }]);
 //新建用户
