@@ -22,9 +22,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
         });
         $scope.curRole = role;
         $scope.curRole.selected = true;
-        $scope.curPermission= null;
-        $scope.addPermission={};
-        $scope.removePermission={};
+        reset();
         if( $scope.userRoles[role.code]){
             $scope.isCollapsed=true;
         }
@@ -105,6 +103,7 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
                     }
                     $scope.roles.splice($scope.roles.indexOf(role), 1);
                     $scope.resources = [];
+                    $scope.curRole=null;
                     $scope.curPermission= null;
                     $scope.addPermission={};
                     $scope.removePermission={};
@@ -165,20 +164,6 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             }
         }
     };
-    //格式化参数
-    function formatPermission(ary) {
-        var allow=[];
-        for (var key in ary) {
-            if (ary.hasOwnProperty(key)){
-                var per={
-                    permissions:ary[key],
-                    resources:key
-                };
-                allow.push(per);
-            }
-        }
-        return allow;
-    }
     //更新角色资源的权限
     $scope.changePermission=function () {
         $http.post(aclUri+'/roles/'+$scope.curRole._id+'/resource',{
@@ -264,6 +249,31 @@ app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state
             }
         });
     }
-
+    //格式化参数
+    function formatPermission(ary) {
+        var allow=[];
+        for (var key in ary) {
+            if (ary.hasOwnProperty(key)){
+                var per={
+                    permissions:ary[key],
+                    resources:key
+                };
+                allow.push(per);
+            }
+        }
+        return allow;
+    }
+    //重置
+    function reset() {
+        $scope.curPermission= null;
+        $scope.addPermission={};
+        $scope.removePermission={};
+        var checkboxs=document.getElementsByClassName("resetValue");
+        for(var key in checkboxs ){
+            if(checkboxs[key].checked){
+                checkboxs[key].checked=false;
+            }
+        }
+    }
 }]);
 

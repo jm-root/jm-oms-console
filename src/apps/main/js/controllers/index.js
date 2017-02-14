@@ -14,7 +14,7 @@ angular.module('app')
             $http.get(adminUri + '/nav', {
                 params: {
                     token: sso.getToken(),
-                    acl_user: sso.user.id
+                    acl_user: $scope.userInfo.id
                 }
             }).success(function (result) {
                 console.log(result);

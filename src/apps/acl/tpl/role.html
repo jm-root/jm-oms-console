@@ -83,21 +83,21 @@
                  </span>
 
                 <label   ng-style="item.permissions.indexOf('get')==-1?style:''" ng-class="" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
-                    <input  type="checkbox" value="get"   ng-checked="curPermission[item.code].indexOf('get')>-1" ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
+                    <input class="resetValue" type="checkbox" value="get"   ng-checked="curPermission[item.code].indexOf('get')>-1" ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
                 </label>
 
                 <label   ng-style="item.permissions.indexOf('delete')==-1?style:''" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;"  >
-                    <input  type="checkbox" value="delete"   ng-checked="curPermission[item.code].indexOf('delete')>-1"  ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
+                    <input  class="resetValue" type="checkbox" value="delete"   ng-checked="curPermission[item.code].indexOf('delete')>-1"  ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
                 </label>
 
 
                 <label   ng-style="item.permissions.indexOf('put')==-1?style:''"class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
-                    <input type="checkbox" value="put"   ng-checked="curPermission[item.code].indexOf('put')>-1"    ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
+                    <input class="resetValue" type="checkbox" value="put"   ng-checked="curPermission[item.code].indexOf('put')>-1"    ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
                 </label>
 
 
                 <label  ng-style="item.permissions.indexOf('post')==-1?style:''" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;">
-                    <input   type="checkbox"  value="post"  ng-checked="curPermission[item.code].indexOf('post')>-1"   ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]"><i></i>
+                    <input   class="resetValue" type="checkbox"  value="post"  ng-checked="curPermission[item.code].indexOf('post')>-1"   ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]"><i></i>
                 </label>
 
         </div>

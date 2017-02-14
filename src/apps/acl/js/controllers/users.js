@@ -235,7 +235,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
                 $scope.error(obj.msg);
             }else{
                 $scope.success('操作成功');
-                $state.go('app.per.users.list');
+                $state.go('app.acl.users.list');
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -258,7 +258,7 @@ app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',functio
                 $scope.error(obj.msg);
             }else{
                 $scope.success('操作成功');
-                $state.go('app.per.users.list');
+                $state.go('app.acl.users.list');
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
