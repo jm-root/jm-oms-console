@@ -40,7 +40,7 @@
       "third":{
         "state":"充值状态",
         "success":"成功",
-        "fail":"失败",
+        "fail":"不成功",
         "totalrecharge":"充值总人数",
         "rechargenumberyesterday":"昨天充值人数",
         "rechargenumbertoday":"今天充值人数",

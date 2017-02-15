@@ -315,7 +315,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
                             endDate: endDate.toString(),
                             type: type,
                             state: state,
-                            keyword: keyword
+                            search: keyword
                         }
                     }).success(function (result) {
                         console.log(result);
@@ -634,7 +634,7 @@ app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$htt
                     $scope.error(obj.msg);
                 }else{
                     $scope.success(obj.ret || '操作成功');
-                    $scope.$state.go('app.recharge.card');
+                    $scope.$state.go('app.recharge.card.list');
                 }
             }).error(function (msg,code) {
                 $scope.errorTips(code);
@@ -675,7 +675,7 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'AGGRID', '
     var history = global.rechargeCardTypeHistory||(global.rechargeCardTypeHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search || {};
-    $scope.search.type =   $scope.search.type || "";
+    // $scope.search.type =   $scope.search.type || "";
     $scope.dateOptions=global.dateRangeOptions;
 
 
@@ -714,15 +714,17 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'AGGRID', '
         getRows: function (params) {
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
+            var type = search.type;
 
             $http.get(cardUri+'/cardTypes', {
                 params:{
                     token: sso.getToken(),
-                    page: page,
+                    search:type,
                     rows: $scope.pageSize
                 }
             }).success(function(result){
                 var data = result;
+                console.log(result);
                 if(data.err){
                     $scope.error(data.msg);
                 }else{
