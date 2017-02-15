@@ -4,6 +4,10 @@ angular.module('app')
     .controller('MainCtrl', ['$scope', '$state', '$translatePartialLoader', '$http', 'global', function ($scope, $state, $translatePartialLoader, $http, global) {
         $translatePartialLoader.addPart('common');
         $translatePartialLoader.addPart('main');
+
+        $scope.defaultRows = '20';
+        $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
+
         var sso = jm.sdk.sso;
         global.getUser().then(function (user) {
             $scope.userInfo = user;
