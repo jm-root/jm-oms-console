@@ -1,121 +1,186 @@
 {
   "agent": {
-    "agent":{
-      "create":{
-        "AgentCreate":"渠道创建",
-        "RemainingCreationQuantity":"剩余创建数量",
-        "AgentLevel":"渠道级别",
-        "AccountNumber":"账号",
-        "AccountAlreadyExists":"账号已在",
-        "password":"密码",
-        "AgentName":"渠道名",
-        "CooperationMode":"合作方式",
-        "PleaseChooseCooperationMode":"请选合作方式",
-        "cooperation":"合作",
-        "buyout":"买断",
-        "ApplicantName":"申请人姓名",
-        "tel":"手机号",
-        "PromotionCap":"推广上限",
-        "QQ":"QQ号",
-        "mail":"邮箱",
-        "BankAccountName":"银行账号名",
-        "bank":"银行",
-        "PleaseChooseTheBank":"请选银行",
-        "BranchAccount":"开户支行",
-        "BankCardNumber":"银行卡号",
-        "label":"标签",
-        "remarks":"备注",
-        "SubmitAudit":"提交审核"
+    "agent": {
+      "create": {
+        "AgentCreate": "渠道创建",
+        "RemainingCreationQuantity": "剩余创建数量",
+        "AgentLevel": "渠道级别",
+        "AccountNumber": "账号",
+        "AccountAlreadyExists": "账号已在",
+        "password": "密码",
+        "AgentName": "渠道名",
+        "CooperationMode": "合作方式",
+        "PleaseChooseCooperationMode": "请选合作方式",
+        "cooperation": "合作",
+        "buyout": "买断",
+        "ApplicantName": "申请人姓名",
+        "tel": "手机号",
+        "PromotionCap": "推广上限",
+        "QQ": "QQ号",
+        "mail": "邮箱",
+        "BankAccountName": "银行账号名",
+        "bank": "银行",
+        "PleaseChooseTheBank": "请选银行",
+        "BranchAccount": "开户支行",
+        "BankCardNumber": "银行卡号",
+        "label": "标签",
+        "remarks": "备注",
+        "SubmitAudit": "提交审核"
       },
-      "edit":{
-        "AgentEdit":"渠道编辑",
-        "AgentLevel":"渠道级别",
-        "AccountNumber":"账号",
-        "AgentName":"渠道名",
-        "CooperationMode":"合作方式",
-        "tel":"手机号",
-        "PromotionCap":"推广上限",
-        "QQ":"QQ号",
-        "mail":"邮箱",
-        "BankAccountName":"银行账号名",
-        "bank":"银行",
-        "PleaseChooseTheBank":"请选择银行",
-        "BranchAccount":"开户支行",
-        "BankCardNumber":"银行卡号",
-        "label":"标签",
-        "remarks":"备注",
-        "update":"更新"
+      "edit": {
+        "AgentEdit": "渠道编辑",
+        "AgentLevel": "渠道级别",
+        "AccountNumber": "账号",
+        "AgentName": "渠道名",
+        "CooperationMode": "合作方式",
+        "tel": "手机号",
+        "PromotionCap": "推广上限",
+        "QQ": "QQ号",
+        "mail": "邮箱",
+        "BankAccountName": "银行账号名",
+        "bank": "银行",
+        "PleaseChooseTheBank": "请选择银行",
+        "BranchAccount": "开户支行",
+        "BankCardNumber": "银行卡号",
+        "label": "标签",
+        "remarks": "备注",
+        "update": "更新"
       },
-      "list":{
-        "AgentList":"渠道列表",
-        "create":"创建",
-        "delete":"删除",
-        "AuditStatus":"审核状态",
-        "unaudited":"未审核",
-        "AuditThrough":"审核通过",
-        "AuditNotApproved":"审核不通过",
-        "AccountStatus":"账号状态",
-        "pause":"暂停",
-        "normal":"正常"
+      "list": {
+        "AgentList": "渠道列表",
+        "create": "创建",
+        "delete": "删除",
+        "AuditStatus": "审核状态",
+        "unaudited": "未审核",
+        "AuditThrough": "审核通过",
+        "AuditNotApproved": "审核不通过",
+        "AccountStatus": "账号状态",
+        "pause": "暂停",
+        "normal": "正常"
       }
     },
-    "agentdata":{
-      "analysis":{
-
-      },
-      "recharge":{
-
-      },
-      "register":{
-
-      }
-    },
-    "coin":{
-      "account":{
-        "list":{
-
+    "agentdata": {
+      "analysis": {
+        "title": "数据分析",
+        "header": {
+          "code": "渠道ID",
+          "name": "渠道名称",
+          "regCount": "注册人数",
+          "online": "在线人数",
+          "chargeSum": "充值人数",
+          "chargeAmount": "充值金额",
+          "cardAmount": "点卡充值",
+          "sysAmount": "系统奖励",
+          "totalAmount": "总营收",
+          "crtime": "注册时间"
         }
       },
-      "distribute":{
-        "batch":{
-
+      "recharge": {
+        "title": "充值数",
+        "levelOpts": {
+          "opts1": "未知",
+          "opts2": "一级",
+          "opts3": "二级"
         },
-        "make":{
-
-        },
-        "makeinfo":{
-
+        "header": {
+          "date": "日期",
+          "code": "渠道ID",
+          "name": "渠道名",
+          "level": "渠道层级",
+          "pcode": "上级渠道ID",
+          "pname": "上级渠道名",
+          "amount": "充值数"
         }
       },
-      "record":{
-        "agentStat":{
-
-        },
-        "logs":{
-
-        },
-        "playerStat":{
-
+      "register": {
+        "title": "注册数",
+        "header": {
+          "date": "日期",
+          "code": "渠道ID",
+          "name": "渠道名",
+          "level": "渠道层级",
+          "pcode": "上级渠道ID",
+          "pname": "上级渠道名",
+          "count": "注册人数"
         }
       },
-      "stock":{
-        "list":{
-
+      "coin": {
+        "account": {
+          "list": {
+          }
         },
-        "order":{
-
+        "distribute": {
+          "batch": {
+            "balance":"T币余额",
+            "userName":"用户名称",
+            "distributeCoin":"分发金币",
+            "determineRecharge":"确定充值"
+          },
+          "make": {
+          },
+          "makeinfo": {
+          }
         },
-        "recharge":{
-
+        "record": {
+          "agentStat": {
+          },
+          "logs": {
+          },
+          "playerStat": {
+          }
+        },
+        "stock": {
+          "list": {
+            "balance":"T币余额",
+            "code": "渠道ID",
+            "search":"搜索",
+            "reset":"重置",
+            "export":"导出excel"
+          },
+          "order": {
+            "code": "渠道ID",
+            "time":"时间段",
+            "orderNumber":"单号",
+            "status":"状态",
+            "selectStatus":"请选状态",
+            "unpaid":"未付款",
+            "paid":"已付款",
+            "arrivalAccount":"已到账",
+            "alreadyShipped":"已发货",
+            "applyRefund":"申请退款",
+            "agreeRefund":"同意退款",
+            "refunded":"已退款",
+            "canceled":"已取消",
+            "obsolete":"已作废",
+            "search":"搜索",
+            "reset":"重置",
+            "export":"导出excel",
+            "refund":"退款",
+            "invalid ":"作废",
+            "approvedPayment":"批准发放",
+            "approvedRefund":"批准退款"
+          },
+          "recharge": {
+            "recharge":"充值",
+            "balance":"T币余额",
+            "rechargeTb":"充值T币",
+            "amountRequired":"所需金额"
+          }
         }
-      }
-    },
-    "package":{
-      "set":{
-
       },
-      "take":{
-
+      "package": {
+        "set": {
+          "title": "包设置",
+          "cooperationType": "合作类型",
+          "authApp": "授权应用",
+          "select": "请选择"
+        },
+        "take": {
+          "title": "打包生成",
+          "tip1": "请先成为代理",
+          "tip2": "正在打包中请等待",
+          "tip3": "打包完成请下载"
+        }
       }
     }
   }

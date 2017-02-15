@@ -61,13 +61,48 @@
     },
     "agentdata":{
       "analysis":{
-
+        "title": "Data analysis",
+        "header":{
+          "code": "Channel ID",
+          "name": "Channel name",
+          "regCount": "Register amount",
+          "online": "Online amount",
+          "chargeSum": "Recharge count",
+          "chargeAmount": "Recharge amount",
+          "cardAmount": "Card recharge",
+          "sysAmount": "System reward",
+          "totalAmount": "Total revenue",
+          "crtime": "Register time"
+        }
       },
       "recharge":{
-
+        "title": "Recharge statistics",
+        "levelOpts":{
+          "opts1":"Unknown",
+          "opts2":"1 level",
+          "opts3":"2 level"
+        },
+        "header":{
+          "date": "Date",
+          "code": "Channel ID",
+          "name": "Channel name",
+          "level": "Channel level",
+          "pcode": "Superior channel ID",
+          "pname": "Superior channel name",
+          "amount": "Recharge amount"
+        }
       },
       "register":{
-
+        "title": "Registration statistics",
+        "header":{
+          "date": "Date",
+          "code": "Channel ID",
+          "name": "Channel name",
+          "level": "Channel level",
+          "pcode": "Superior channel ID",
+          "pname": "Superior channel name",
+          "count": "Register amount"
+        }
       }
     },
     "coin":{
@@ -78,7 +113,10 @@
       },
       "distribute":{
         "batch":{
-
+          "balance":"Coin Balance",
+          "userName":"User Name",
+          "distributeCoin":"Distribute Coin",
+          "determineRecharge":"Determine Recharge"
         },
         "make":{
 
@@ -100,22 +138,55 @@
      },
       "stock":{
         "list":{
-
+          "balance":"Coin Balance",
+          "code": "Channel ID",
+          "search":"Search",
+          "reset":"Reset",
+          "export":"Export Excel"
         },
         "order":{
-
+          "code": "Channel ID",
+          "time":"Time Slot",
+          "orderNumber":"Order Number",
+          "status":"Status",
+          "selectStatus":"Please Select Status",
+          "unpaid":"Unpaid",
+          "paid":"Paid",
+          "arrivalAccount":"Arrival Account",
+          "alreadyShipped":"Already Shipped",
+          "applyRefund":"Apply for Refund",
+          "agreeRefund":"Agree Refund",
+          "refunded":"Refunded",
+          "canceled":"Canceled",
+          "obsolete":"Obsolete",
+          "search":"Search",
+          "reset":"Reset",
+          "export":"Export Excel",
+          "refund":"Refund",
+          "invalid ":"Invalid",
+          "approvedPayment":"Approved Payment",
+          "approvedRefund":"Approved Refund"
         },
         "recharge":{
-
+          "recharge":"Recharge",
+          "balance":"Coin Balance",
+          "rechargeTb":"Recharge Coin",
+          "amountRequired":"Amount Required"
         }
       }
     },
     "package":{
       "set":{
-
+        "title": "Package set",
+        "cooperationType": "Cooperation type",
+        "authApp": "Authorization application",
+        "select": "Please select"
       },
       "take":{
-
+        "title": "Package generation",
+        "tip1": "Please become a proxy",
+        "tip2": "Please wait while packing",
+        "tip3": "Please download the package"
       }
     }
   }
