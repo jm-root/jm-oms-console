@@ -26,22 +26,7 @@ angular.module('app')
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
-                    var b=[];
-                    var a=obj.ret;
-                    a.forEach(function (item) {
-                          if(item.code=="app.acl.manage" ){
-                              b.unshift(item);
-                          }else if( item.code=="app.config.manage"){
-                              if(b[0]&&b[0].code=="app.acl.manage"){
-                                  b.splice(1,0,item);
-                              }else{
-                                  b.unshift(item);
-                              }
-                          } else {
-                              b.push(item);
-                          }
-                    });
-                    $scope.nav = b;
+                    $scope.nav = sort(obj.ret);
                 }
             }).error(function (msg, code) {
                 console.log(msg);
@@ -75,6 +60,22 @@ angular.module('app')
                 };
             }
         );
+        //菜单排序
+        function sort(navs) {
+            var navSort=[];
+            var model=["app.promote","app.player.manage","app.recharge.manage", "app.wordfilter.manage","app.guestbook.manage",
+                "app.home.manage", "app.activity.manage", "app.bbs.manage","app.shop.manage","app.app.manage",
+                "app.room.manage","app.package.manage","app.agent.manage","app.agent.data","app.coin.sys",
+                "app.report.manage","app.bank.manage","app.acl.manage","app.system.manage","app.config.manage"];
+            model.forEach(function (item) {
+                navs.forEach(function (nav) {
+                    if(nav.code==item){
+                        navSort.push(nav);
+                    }
+                });
+            });
+            return navSort;
+        }
     }])
 ;
 

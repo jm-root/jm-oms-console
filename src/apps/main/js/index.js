@@ -59,7 +59,9 @@
                         })
                         .state('access.forgotpwd', {
                             url: '/forgotpwd',
-                            templateUrl: path + 'tpl/page_forgotpwd.html'
+                            templateUrl: path + 'tpl/page_forgotpwd.html',
+                            controller: 'ResetPasswdCtrl',
+                            resolve: lazyLoadProvider.load([path +'js/controllers/resetpasswd.js'])
                         })
                         .state('access.404', {
                             url: '/404',
