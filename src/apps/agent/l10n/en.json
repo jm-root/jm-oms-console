@@ -77,6 +77,9 @@
       },
       "recharge":{
         "title": "Recharge statistics",
+        "search":"Search",
+        "time":"Time Slot",
+        "code": "Channel ID",
         "levelOpts":{
           "opts1":"Unknown",
           "opts2":"1 level",
@@ -84,7 +87,6 @@
         },
         "header":{
           "date": "Date",
-          "code": "Channel ID",
           "name": "Channel name",
           "level": "Channel level",
           "pcode": "Superior channel ID",
@@ -94,9 +96,11 @@
       },
       "register":{
         "title": "Registration statistics",
+        "code": "Channel ID",
+        "search":"Search",
+        "time":"Time Slot",
         "header":{
           "date": "Date",
-          "code": "Channel ID",
           "name": "Channel name",
           "level": "Channel level",
           "pcode": "Superior channel ID",
@@ -119,21 +123,53 @@
           "determineRecharge":"Determine Recharge"
         },
         "make":{
-
+          "balance":"Coin Balance",
+          "createTime":"Select Create Time",
+          "create":"Create"
         },
         "makeinfo":{
-
+          "information":"Account Information",
+          "account":"Account Number",
+          "password":"Initial Password",
+          "state":"Active State"
         }
       },
      "record":{
        "agentStat":{
-
+         "type":"Statistical Type",
+         "day":"Dayly Statistics",
+         "month":"Monthly Statistics",
+         "year":"Yearly Statistics",
+         "time":"Operating Time",
+         "code": "Channel ID",
+         "search":"Search",
+         "reset":"Reset",
+         "export":"Export Excel"
        },
        "logs":{
-
+         "playerlog":"Player Log",
+         "agentlog":"Channel Log",
+         "orderlog":"Order Log",
+         "account":"Account Log",
+         "type":"Operation Type",
+         "time":"Operation Time",
+         "player": "Player",
+         "code": "Channel ID",
+         "orderNumber":"Order Number",
+         "search":"Search",
+         "reset":"Reset",
+         "export":"Export Excel"
        },
        "playerStat":{
-
+         "type":"Statistical Type",
+         "day":"Dayly Statistics",
+         "month":"Monthly Statistics",
+         "year":"Yearly Statistics",
+         "time":"Operating Time",
+         "player": "Player",
+         "search":"Search",
+         "reset":"Reset",
+         "export":"Export Excel"
        }
      },
       "stock":{
@@ -180,7 +216,10 @@
         "title": "Package set",
         "cooperationType": "Cooperation type",
         "authApp": "Authorization application",
-        "select": "Please select"
+        "select": "Please select",
+        "code": "Channel ID",
+        "agent":"Channel",
+        "save":"Save"
       },
       "take":{
         "title": "Package generation",

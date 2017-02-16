@@ -3,20 +3,20 @@
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3">日志查询</h1>
+    <h1 class="m-n font-thin h3" translate="app.coin.record.logs">日志查询</h1>
 </div>
 <div class="panel-body">
     <div class="col-lg-12 m-b-xs">
         <select class="pull-left" style="height: 28px;" ng-model="type">
-            <option value="0">玩家日志</option>
-            <option value="1">渠道日志</option>
-            <option value="2">订单日志</option>
-            <option value="3">账户日志</option>
+            <option value="0" translate="agent.coin.record.logs.playerlog">玩家日志</option>
+            <option value="1" translate="agent.coin.record.logs.agentlog">渠道日志</option>
+            <option value="2" translate="agent.coin.record.logs.orderlog">订单日志</option>
+            <option value="3" translate="agent.coin.record.logs.accountlog">账户日志</option>
         </select>
         <select class="pull-left" style="height: 28px;" ng-model="search.type" ng-options="option.code as option.name for option in ctrltype[type]">
-            <option value="">操作类型</option>
+            <option value="" translate="agent.coin.record.logs.type">操作类型</option>
         </select>
-        <span class="pull-left" style="margin-top: 3px;margin-left: 10px">操作时间&nbsp;&nbsp;</span>
+        <span class="pull-left" style="margin-top: 3px;margin-left: 10px" translate="agent.coin.record.logs.time">操作时间&nbsp;&nbsp;</span>
         <div class="input-group" style="width: 205px;">
             <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="height: 28px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
@@ -24,22 +24,22 @@
     </div>
     <div class="col-lg-12">
         <span ng-if="type=='0'||type=='3'">
-            <span>玩家&nbsp;&nbsp;</span>
+            <span translate="agent.coin.record.logs.player">玩家&nbsp;&nbsp;</span>
             <input type="text" ng-model="search.user" style="margin-left:4px;" placeholder="账号/昵称/手机号">
         </span>
         <span ng-if="type=='1'||type=='2'">
-            <span>渠道ID&nbsp;&nbsp;</span>
+            <span translate="agent.coin.record.logs.code">渠道ID&nbsp;&nbsp;</span>
             <input type="text" ng-model="search.agent" style="margin-left:4px;" placeholder="渠道ID">
         </span>
         <span ng-if="type=='2'">
-            <span>单号&nbsp;&nbsp;</span>
+            <span translate="agent.coin.record.logs.orderNumber">单号&nbsp;&nbsp;</span>
             <input type="text" ng-model="search.order" style="margin-left:4px;" placeholder="单号">
         </span>
     </div>
     <div class="col-lg-12 marl">
-        <button class="btn btn-default" ng-click="searchFun()">搜索</button>
-        <button class="btn btn-default" ng-click="resetFun()">重置</button>
-        <button class="btn btn-default" ng-click="onExportExcel()">导出excel</button>
+        <button class="btn btn-default" ng-click="searchFun()" translate="agent.coin.record.logs.search">搜索</button>
+        <button class="btn btn-default" ng-click="resetFun()" translate="agent.coin.record.logs.reset">重置</button>
+        <button class="btn btn-default" ng-click="onExportExcel()" translate="agent.coin.record.logs.export">导出excel</button>
     </div>
 </div>
 

@@ -3,14 +3,14 @@
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3">生成首充号</h1>
+    <h1 class="m-n font-thin h3" translate="app.coin.distribute.make">生成首充号</h1>
 </div>
 <div class="panel-body">
     <div class="col-lg-12 m-b-xs">
-        <strong style="vertical-align:middle">T币余额：{{(tbAmount||0)+' T币'}}</strong>
+        <strong style="vertical-align:middle" translate="agent.coin.distribute.make.balance">T币余额：{{(tbAmount||0)+' T币'}}</strong>
     </div>
     <div class="col-lg-12 m-b-sm">
-        <span class="pull-left" style="margin-top: 3px">选择创建时间段&nbsp;&nbsp;</span>
+        <span class="pull-left" style="margin-top: 3px" translate="agent.coin.distribute.make.createTime">选择创建时间段&nbsp;&nbsp;</span>
         <div class="pull-left">
             <div class="input-group" style="width: 205px;">
                 <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="height: 28px"/>
@@ -18,18 +18,18 @@
             </div>
         </div>
         <div class="pull-left m-l-xs">
-            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">搜索</span>
+            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;" translate="agent.coin.distribute.make.search">搜索</span>
         </div>
 
     </div>
     <div class="col-lg-12">
         <div class="pull-left">
-            <span>生成首充号&nbsp;&nbsp;</span>
+            <span translate="app.coin.distribute.make">生成首充号&nbsp;&nbsp;</span>
             <input class="w-sm" type="number" min="1" placeholder="生成账号数量" ng-model="count">
             <input class="w-sm" type="number" min="1" placeholder="生成金币数量" ng-model="jbAmount">
             <input class="w-xs" type="number" min="1" max="10" placeholder="折扣" ng-model="rebate">
             <input class="w-xs" type="text" placeholder="消耗T币数量" ng-value="tbUseAmount=(jbAmount*(rebate*0.1/rate))" ng-model="tbUseAmount" disabled>
-            <span class="btn btn-sm btn-default" ng-disabled="!tbUseAmount" ng-click="tbUseAmount&&makeFun()" style="margin-top:-3px;">生成</span>
+            <span class="btn btn-sm btn-default" ng-disabled="!tbUseAmount" ng-click="tbUseAmount&&makeFun()" style="margin-top:-3px;" translate="agent.coin.distribute.make.create">生成</span>
         </div>
     </div>
 </div>

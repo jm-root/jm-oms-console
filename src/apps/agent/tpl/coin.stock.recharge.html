@@ -2,26 +2,26 @@
     <div ui-view class="fade-in-down"></div>
     <div class="panel panel-default" ng-show="$state.is('app.coin.stock.recharge')">
         <div class="panel-heading">
-            <strong>充值</strong>
+            <strong translate="agent.coin.stock.recharge.recharge">充值</strong>
         </div>
         <div class="panel-body">
             <div style="max-width: 600px">
                 <div class="form-group" style="height: 25px;">
-                    <strong style="vertical-align:middle">T币余额：{{(tbAmount||0)+' T币'}}</strong>
+                    <strong style="vertical-align:middle" translate="agent.coin.stock.recharge.balance">T币余额：{{(tbAmount||0)+' T币'}}</strong>
                 </div>
                 <div class="form-group" style="height: 25px">
                     <form name="formValidate" class="form-validation">
-                        <span class="pull-left" style="padding-top: 3px">充值T币：</span>
+                        <span class="pull-left" style="padding-top: 3px" translate="agent.coin.stock.recharge.rechargeTb">充值T币：</span>
                     <span class="input-group-btn">
                       <input type="number" class="form-control input-sm pull-left" style="width: 100px;" ng-model="amount" min="1" placeholder="T币" ng-pattern="/^[0-9]*$/">
-                      <button class="btn btn-sm btn-primary" type="button" ng-click="!formValidate.$invalid&&recharge()">
+                      <button class="btn btn-sm btn-primary" type="button" ng-click="!formValidate.$invalid&&recharge()" translate="agent.coin.stock.recharge.recharge">
                           充值
                       </button>
                     </span>
                     </form>
                 </div>
                 <div class="form-group">
-                    <span>所需金额：{{(amount/rate||0)+'元'}}</span>
+                    <span translate="agent.coin.stock.recharge.amountRequired">所需金额：{{(amount/rate||0)+'元'}}</span>
                 </div>
 
             </div>

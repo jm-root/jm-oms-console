@@ -77,6 +77,9 @@
       },
       "recharge": {
         "title": "充值数",
+        "search": "搜索",
+        "time": "时间段",
+        "code": "渠道ID",
         "levelOpts": {
           "opts1": "未知",
           "opts2": "一级",
@@ -84,7 +87,6 @@
         },
         "header": {
           "date": "日期",
-          "code": "渠道ID",
           "name": "渠道名",
           "level": "渠道层级",
           "pcode": "上级渠道ID",
@@ -94,94 +96,138 @@
       },
       "register": {
         "title": "注册数",
+        "code": "渠道ID",
+        "search": "搜索",
+        "time": "时间段",
         "header": {
           "date": "日期",
-          "code": "渠道ID",
           "name": "渠道名",
           "level": "渠道层级",
           "pcode": "上级渠道ID",
           "pname": "上级渠道名",
           "count": "注册人数"
         }
-      },
-      "coin": {
-        "account": {
-          "list": {
-          }
-        },
-        "distribute": {
-          "batch": {
-            "balance":"T币余额",
-            "userName":"用户名称",
-            "distributeCoin":"分发金币",
-            "determineRecharge":"确定充值"
-          },
-          "make": {
-          },
-          "makeinfo": {
-          }
-        },
-        "record": {
-          "agentStat": {
-          },
-          "logs": {
-          },
-          "playerStat": {
-          }
-        },
-        "stock": {
-          "list": {
-            "balance":"T币余额",
-            "code": "渠道ID",
-            "search":"搜索",
-            "reset":"重置",
-            "export":"导出excel"
-          },
-          "order": {
-            "code": "渠道ID",
-            "time":"时间段",
-            "orderNumber":"单号",
-            "status":"状态",
-            "selectStatus":"请选状态",
-            "unpaid":"未付款",
-            "paid":"已付款",
-            "arrivalAccount":"已到账",
-            "alreadyShipped":"已发货",
-            "applyRefund":"申请退款",
-            "agreeRefund":"同意退款",
-            "refunded":"已退款",
-            "canceled":"已取消",
-            "obsolete":"已作废",
-            "search":"搜索",
-            "reset":"重置",
-            "export":"导出excel",
-            "refund":"退款",
-            "invalid ":"作废",
-            "approvedPayment":"批准发放",
-            "approvedRefund":"批准退款"
-          },
-          "recharge": {
-            "recharge":"充值",
-            "balance":"T币余额",
-            "rechargeTb":"充值T币",
-            "amountRequired":"所需金额"
-          }
+      }
+    },
+    "coin": {
+      "account": {
+        "list": {
         }
       },
-      "package": {
-        "set": {
-          "title": "包设置",
-          "cooperationType": "合作类型",
-          "authApp": "授权应用",
-          "select": "请选择"
+      "distribute": {
+        "batch": {
+          "balance":"T币余额",
+          "userName":"用户名称",
+          "distributeCoin":"分发金币",
+          "determineRecharge":"确定充值"
         },
-        "take": {
-          "title": "打包生成",
-          "tip1": "请先成为代理",
-          "tip2": "正在打包中请等待",
-          "tip3": "打包完成请下载"
+        "make": {
+          "balance":"T币余额",
+          "createTime":"选择创建时间段",
+          "search":"搜索",
+          "create":"生成"
+        },
+        "makeinfo": {
+          "information":"账号信息",
+          "account":"账号",
+          "password":"初始密码",
+          "state":"激活状态"
+        }
+      },
+      "record": {
+        "agentStat": {
+          "type":"统计类型",
+          "day":"按天统计",
+          "month":"按月统计",
+          "year":"按年统计",
+          "time":"操作时间",
+          "code": "渠道ID",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel"
+        },
+        "logs": {
+          "playerlog":"玩家日志",
+          "agentlog":"渠道日志",
+          "orderlog":"订单日志",
+          "account":"账户日志",
+          "type":"操作类型",
+          "time":"操作时间",
+          "player": "玩家",
+          "code": "渠道ID",
+          "orderNumber":"单号",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel"
+        },
+        "playerStat": {
+          "type":"统计类型",
+          "day":"按天统计",
+          "month":"按月统计",
+          "year":"按年统计",
+          "time":"操作时间",
+          "player": "玩家",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel"
+        }
+      },
+      "stock": {
+        "list": {
+          "balance":"T币余额",
+          "code": "渠道ID",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel"
+        },
+        "order": {
+          "code": "渠道ID",
+          "time":"时间段",
+          "orderNumber":"单号",
+          "status":"状态",
+          "selectStatus":"请选状态",
+          "unpaid":"未付款",
+          "paid":"已付款",
+          "arrivalAccount":"已到账",
+          "alreadyShipped":"已发货",
+          "applyRefund":"申请退款",
+          "agreeRefund":"同意退款",
+          "refunded":"已退款",
+          "canceled":"已取消",
+          "obsolete":"已作废",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "refund":"退款",
+          "invalid ":"作废",
+          "approvedPayment":"批准发放",
+          "approvedRefund":"批准退款"
+        },
+        "recharge": {
+          "recharge":"充值",
+          "balance":"T币余额",
+          "rechargeTb":"充值T币",
+          "amountRequired":"所需金额"
         }
       }
+    },
+    "package": {
+      "set": {
+        "title": "包设置",
+        "cooperationType": "合作类型",
+        "authApp": "授权应用",
+        "select": "请选择",
+        "code": "渠道ID",
+        "agent":"渠道",
+        "save":"保存"
+      },
+      "take": {
+        "title": "打包生成",
+        "tip1": "请先成为代理",
+        "tip2": "正在打包中请等待",
+        "tip3": "打包完成请下载"
+      }
     }
-  }
+    }
+
 }

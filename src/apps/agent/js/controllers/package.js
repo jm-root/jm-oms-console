@@ -23,6 +23,7 @@ app.controller('PackageTakeCtrl', ['$scope', '$state', '$http', '$q','global', f
     });
 
     $scope.generate = function(){
+        console.log($scope.agentCode);
         if(!$scope.agentCode){
             return $scope.error('请先成为代理');
         }

@@ -410,6 +410,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
         });
     });
 
+
     function formatTags(tags){
         tags = tags || [];
         var ary = [];

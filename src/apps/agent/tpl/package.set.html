@@ -2,11 +2,11 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>包设置</strong>
+                <strong translate="agent.package.set.title">包设置</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">渠道</label>
+                    <label class="col-sm-2 control-label" translate="agent.package.set.agent">渠道</label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="agentCode" ng-options="option.code as option.name for option in agents" ng-change="changeAgent()">
                         </select>
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">渠道ID</label>
+                    <label class="col-sm-2 control-label" translate="agent.package.set.code">渠道ID</label>
 
                     <div class="col-sm-9">
                         <p class="form-control-static">{{agent.code}}</p>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">合作类型</label>
+                    <label class="col-sm-2 control-label" translate="agent.package.set.cooperationType">合作类型</label>
 
                     <div class="col-sm-9">
                         <p class="form-control-static">{{agent.type==1?'合作':'买断'}}</p>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">授权应用</label>
+                    <label class="col-sm-2 control-label" translate="agent.package.set.authApp">授权应用</label>
 
                     <div class="col-sm-9 w-lg">
                         <select chosen placeholder-text-multiple="'请选择'" multiple class="w-full" ng-model="agent.apps" ng-options="option._id as option.name for option in apps">
@@ -45,7 +45,7 @@
             </div>
             <footer class="panel-footer text-right bg-light lter">
                 <div style="max-width: 700px">
-                    <button type="submit" class="btn btn-success" ng-click="save()">保存</button>
+                    <button type="submit" class="btn btn-success" ng-click="save()" translate="agent.package.set.save">保存</button>
                 </div>
             </footer>
         </div>
