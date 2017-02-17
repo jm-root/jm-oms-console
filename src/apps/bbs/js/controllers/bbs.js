@@ -158,7 +158,7 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
     };
 }]);
 
-app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
     var url = bbsUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -252,7 +252,6 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             })
         }
     };
-
     $http.get(appMgrUri+'/apps', {
         params:{
             token: sso.getToken(),
@@ -264,6 +263,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             $scope.error(obj.msg);
         }else{
             $scope.apps = _.concat($scope.apps,obj.rows||[]);
+            console.info(_.concat);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -488,7 +488,7 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
     });
 }]);
 
-app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common',function($scope, $http, $state, $stateParams,$timeout, common) {
+app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
     var sso = jm.sdk.sso;
     var url = bbsUri+'/topics';
     var furl = bbsUri+'/forums';
@@ -635,7 +635,7 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
         }
     };
 
-    $http.get(appMgrUri+'/apps', {
+    $http.get("http://jamma.3322.org:20200"+'/apps', {
         params:{
             token: sso.getToken(),
             type: 'all'

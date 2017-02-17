@@ -16,7 +16,8 @@
                         .state('app.bbs', {
                             url:'/bbs',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/bbs.js'])
+                            controller:'BbsCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/bbs.js',path + 'js/controllers/index.js'])
                         })
 
                         .state('app.bbs.forum', {
@@ -36,7 +37,7 @@
                         })
                         .state('app.bbs.forum.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load(['angular-img-cropper'])
                         })
 
@@ -57,7 +58,7 @@
                         })
                         .state('app.bbs.topic.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load(['angular-img-cropper'])
                         })
                 }

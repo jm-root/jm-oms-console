@@ -1,5 +1,25 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "bbs":{
+    "forum":{
+      "list":{
+        "create":"创建",
+        "delete":"删除",
+        "forumList":"板块列表"
+      },
+      "edit":{
+        "editInformation":"编辑信息",
+        "cover":"封面"
+      }
+    },
+    "topic":{
+      "list":{
+        "create":"创建",
+        "delete":"删除",
+        "topicList":"帖子列表"
+      },
+      "edit":{
+
+      }
+    }
   }
 }

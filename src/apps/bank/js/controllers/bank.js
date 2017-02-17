@@ -5,7 +5,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
-    jm.sdk.init({uri: gConfig.sdkHost});
+    jm.sdk.init({uri: "http://jamma.3322.org:20200"});
     var bank = jm.sdk.bank;
 
     var format_user = function(params) {
@@ -80,6 +80,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global
                 search: $scope.search
             },function(err,result){
                 var data = result;
+                console.info(result);
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
@@ -130,7 +131,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
     $scope.accounts = [];
     $scope.defAccount = {user:{},holds:{}};
 
-    jm.sdk.init({uri: gConfig.sdkHost});
+    jm.sdk.init({uri: "http://jamma.3322.org:20200"});
     var bank = jm.sdk.bank;
 
     global.getLocalUser().then(function(user){
@@ -224,7 +225,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global',
     $scope.search = history.search||{};
     $scope.search.user = $scope.search.user || '';
 
-    jm.sdk.init({uri: gConfig.sdkHost});
+    jm.sdk.init({uri: "http://jamma.3322.org:20200"});
     var bank = jm.sdk.bank;
 
     var format_ctName = function(params) {
@@ -328,7 +329,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout','AGGRI
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
-    jm.sdk.init({uri: gConfig.sdkHost});
+    jm.sdk.init({uri: "http://jamma.3322.org:20200"});
     var bank = jm.sdk.bank;
 
     var format_user = function(params) {
@@ -450,7 +451,7 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
     $scope.defAccount = {user:{},holds:{}};
     $scope.lock = '';
 
-    jm.sdk.init({uri: gConfig.sdkHost});
+    jm.sdk.init({uri: "http://jamma.3322.org:20200"});
     var bank = jm.sdk.bank;
 
     var ct = {

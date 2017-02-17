@@ -1,5 +1,25 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "bbs":{
+    "forum":{
+      "list":{
+        "create":"create",
+        "delete":"delete",
+        "forumList":"Forum List"
+      },
+      "edit":{
+        "editInformation":"Edit Information",
+        "cover":"Cover"
+      }
+    },
+    "topic":{
+      "list":{
+        "create":"create",
+        "delete":"delete",
+        "topicList":"Post List"
+      },
+      "edit":{
+
+      }
+    }
   }
 }

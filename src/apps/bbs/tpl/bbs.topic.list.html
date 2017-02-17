@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
         <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="create()">
-            <i class="fa fa-plus"></i>创建
+            <i class="fa fa-plus"></i>{{'bbs.topic.list.create'|translate}}
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-            <i class="fa fa-trash-o"></i>删除
+            <i class="fa fa-trash-o"></i>{{'bbs.topic.list.delete'|translate}}
         </button>
     </div>
     <div class="pull-right">
@@ -26,7 +26,7 @@
         <select class="input-sm form-control" ng-model="forum" ng-options="option._id as option.title for option in forums" ng-change="onPageSizeChanged()"></select>
     </div>
 
-    <h1 class="m-n font-thin h3">帖子列表</h1>
+    <h1 class="m-n font-thin h3">{{'bbs.topic.list.topicList'|translate}}</h1>
 </div>
 <div>
     <div class="panel panel-default">

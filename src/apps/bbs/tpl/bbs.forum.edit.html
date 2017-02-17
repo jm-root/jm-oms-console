@@ -3,17 +3,17 @@
     <form ng-show="$state.is('app.bbs.forum.edit')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>编辑信息</strong>
+                <strong>{{'bbs.forum.edit.editInformation'|translate}}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">封面</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.cover'|translate}}</label>
 
                     <div class="col-sm-9">
                         <div>
                             截取比例：<input type="number" style="width: 80px" min="1" ng-model="cropper.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" min="1" ng-model="cropper.cropHeight">
                         </div>
-                        <a ui-sref=".logo"><img width="{{cropper.cropWidth}}" height="{{cropper.cropHeight}}" ng-src="{{forum.logo}}" img-Load="loadImg($event)" onerror="this.src='img/logo.jpg'"/></a>
+                        <a ui-sref=".logo"><img width="{{cropper.cropWidth}}" height="{{cropper.cropHeight}}" ng-src="{{forum.logo}}" img-Load="loadImg($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

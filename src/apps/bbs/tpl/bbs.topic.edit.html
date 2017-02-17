@@ -13,7 +13,7 @@
                         <div>
                             截取比例：<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropHeight">
                         </div>
-                        <a ui-sref=".logo" ng-click="goLogo('logo')"><img width="{{cropperObj.logo.cropWidth}}" height="{{cropperObj.logo.cropHeight}}" ng-src="{{topic.logo}}" img-Load="loadImg($event)" onerror="this.src='img/logo.jpg'"/></a>
+                        <a ui-sref=".logo" ng-click="goLogo('logo')"><img width="{{cropperObj.logo.cropWidth}}" height="{{cropperObj.logo.cropHeight}}" ng-src="{{topic.logo}}" img-Load="loadImg($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -25,7 +25,7 @@
                         <div>
                             截取比例：<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropHeight">
                         </div>
-                        <a ui-sref=".logo" ng-click="goLogo('imgtitle')"><img width="{{cropperObj.imgtitle.cropWidth}}" height="{{cropperObj.imgtitle.cropHeight}}" ng-src="{{topic.imgtitle}}" img-Load="loadImg2($event)" onerror="this.src='img/logo.jpg'"/></a>
+                        <a ui-sref=".logo" ng-click="goLogo('imgtitle')"><img width="{{cropperObj.imgtitle.cropWidth}}" height="{{cropperObj.imgtitle.cropHeight}}" ng-src="{{topic.imgtitle}}" img-Load="loadImg2($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

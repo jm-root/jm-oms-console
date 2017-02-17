@@ -15,7 +15,7 @@ angular.module('app')
         }).then(function (roles) {
             global.ready = true;
             global.emit('ready', global);
-            $http.get(adminUri + '/nav', {
+            $http.get(omsUri + '/nav', {
                 params: {
                     token: sso.getToken(),
                     acl_user: $scope.userInfo.id
