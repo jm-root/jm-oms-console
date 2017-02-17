@@ -26,7 +26,8 @@ var staticHost = gConfig.staticHost;
 
 var ssoUri = sdkHost+"/sso";
 var aclUri = sdkHost+"/acl";
-var adminUri = sdkHost+"/oms";
+var adminUri = sdkHost+"/admin";
+var omsUri = sdkHost+"/oms";
 var appMgrUri = "http://jamma.3322.org:20200" + "/appManager";
 var agentUri = "http://jamma.3322.org:20200" + "/agent";
 var configUri = sdkHost + "/config";
