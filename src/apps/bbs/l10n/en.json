@@ -2,13 +2,27 @@
   "bbs":{
     "forum":{
       "list":{
-        "create":"create",
-        "delete":"delete",
+        "create":"Create",
+        "delete":"Delete",
         "forumList":"Forum List"
       },
       "edit":{
         "editInformation":"Edit Information",
-        "cover":"Cover"
+        "cover":"Cover",
+        "cutOut":"Cut Out",
+        "subordinateApplication":"Subordinate Application",
+        "code":"Code",
+        "title":"Title",
+        "subtitle":"Subtitle",
+        "order":"Order",
+        "popularityDegree":"Popularity Degree",
+        "recommendationDegree":"Recommendation Degree",
+        "label":"Label",
+        "jumpAddress":"Jump Address",
+        "details":"Details",
+        "pureText":"Pure Text",
+        "formattedText":"Formatted Text",
+        "save":"Save"
       }
     },
     "topic":{

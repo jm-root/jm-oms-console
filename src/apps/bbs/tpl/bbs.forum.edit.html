@@ -11,7 +11,7 @@
 
                     <div class="col-sm-9">
                         <div>
-                            截取比例：<input type="number" style="width: 80px" min="1" ng-model="cropper.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" min="1" ng-model="cropper.cropHeight">
+                            {{'bbs.forum.edit.cutOut'|translate}}：<input type="number" style="width: 80px" min="1" ng-model="cropper.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" min="1" ng-model="cropper.cropHeight">
                         </div>
                         <a ui-sref=".logo"><img width="{{cropper.cropWidth}}" height="{{cropper.cropHeight}}" ng-src="{{forum.logo}}" img-Load="loadImg($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">所属应用</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.subordinateApplication'|translate}}</label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="forum.app" ng-options="option._id as option.name for option in apps">
                             <option value="">无</option>
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">编码</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.code'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="编码" ng-model="forum.code">
                     </div>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>标题</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'bbs.forum.edit.title'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="标题" ng-model="forum.title" required>
                     </div>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">副标题</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.subtitle'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="副标题" ng-model="forum.subtitle">
                     </div>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">顺序</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.order'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="forum.order" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">热门度</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.popularityDegree'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" placeholder="热门度(最小值为0)" ng-model="forum.hot" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">推荐度</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.recommendationDegree'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" placeholder="推荐度(最小值为0)" ng-model="forum.recommend" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">标签</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.label'|translate}}</label>
 
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">跳转地址</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.jumpAddress'|translate}}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="跳转地址" ng-model="topic.url">
                     </div>
@@ -94,21 +94,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">详情</label>
+                    <label class="col-sm-2 control-label">{{'bbs.forum.edit.details'|translate}}</label>
                     <div class="col-sm-9">
                         <div class="m-b-xs">
                             <div class="radio checkbox-inline">
                                 <label class="i-checks i-checks-sm">
                                     <input type="radio" name="pattern" value="0" ng-model="forum.pattern" ng-click="onck()" checked>
                                     <i></i>
-                                    纯文本
+                                    {{'bbs.forum.edit.pureText'|translate}}
                                 </label>
                             </div>
                             <div class="radio checkbox-inline">
                                 <label class="i-checks i-checks-sm">
                                     <input type="radio" name="pattern" value="1" ng-model="forum.pattern" ng-click="onck()">
                                     <i></i>
-                                    带格式文本
+                                    {{'bbs.forum.edit.formattedText'|translate}}
                                 </label>
                             </div>
                             <div class="radio checkbox-inline">
@@ -126,7 +126,7 @@
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'bbs.forum.edit.save'|translate}}</button>
             </footer>
         </div>
     </form>

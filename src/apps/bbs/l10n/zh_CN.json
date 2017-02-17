@@ -8,7 +8,21 @@
       },
       "edit":{
         "editInformation":"编辑信息",
-        "cover":"封面"
+        "cover":"封面",
+        "cutOut":"截取比例",
+        "subordinateApplication":"所属应用",
+        "code":"编码",
+        "title":"标题",
+        "subtitle":"副标题",
+        "order":"顺序",
+        "popularityDegree":"热门度",
+        "recommendationDegree":"推荐度",
+        "label":"标签",
+        "jumpAddress":"跳转路径",
+        "details":"详情",
+        "pureText":"纯文本",
+        "formattedText":"带格式文本",
+        "save":"保存"
       }
     },
     "topic":{
