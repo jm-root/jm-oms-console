@@ -3,10 +3,10 @@
         <div class="bg-light lter b-b wrapper">
             <div class="pull-right">
                 <button ui-sref="app.apps.manage.edit" type="button" class="btn btn-sm btn-primary btn-addon">
-                    <i class="fa fa-plus"></i>创建
+                    <i class="fa fa-plus"></i>{{ 'appmanager.appmgr.create' | translate }}
                 </button>
                 <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-                    <i class="fa fa-trash-o"></i>删除
+                    <i class="fa fa-trash-o"></i>{{ 'appmanager.appmgr.delete' | translate }}
                 </button>
             </div>
             <div class="pull-right">
@@ -23,7 +23,7 @@
                 <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
                 </select>
             </div>
-            <h1 class="m-n font-thin h3">应用列表</h1>
+            <h1 class="m-n font-thin h3" translate="appmanager.appmgr.appList">应用列表</h1>
         </div>
 
         <div class="panel panel-default">

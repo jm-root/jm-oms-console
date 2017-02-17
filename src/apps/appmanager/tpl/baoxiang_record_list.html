@@ -19,7 +19,7 @@
         <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3">配置列表</h1>
+    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmanager.appmgr.appList" | translate }}>></a><a ng-click="goBaoxiangList()">{{ "appmanager.appmgr.baoxiangList" | translate }}>></a>{{ "appmanager.appmgr.baoxiangJoinList" | translate }}</h1>
 </div>
 
 <div class="panel panel-default">

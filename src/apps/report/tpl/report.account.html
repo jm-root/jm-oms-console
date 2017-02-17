@@ -7,14 +7,14 @@
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
-            <option value="0">按天统计</option>
-            <option value="1">按月统计</option>
-            <option value="2">按年统计</option>
+            <option value="0" translate="report.account.timeType.opts1">按天统计</option>
+            <option value="1" translate="report.account.timeType.opts2">按月统计</option>
+            <option value="2" translate="report.account.timeType.opts3">按年统计</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="">所属渠道</option>
+            <option value="" translate="report.account.TheChannel">所属渠道</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
@@ -23,7 +23,7 @@
     </div>
 
 
-    <h1 class="m-n font-thin h3">账目统计</h1>
+    <h1 class="m-n font-thin h3" translate="app.report.account">账目统计</h1>
 </div>
 <div>
     <div class="panel panel-default">

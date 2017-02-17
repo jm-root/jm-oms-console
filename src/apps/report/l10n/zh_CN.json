@@ -1,5 +1,12 @@
 {
-  "dashboard": {
-    "Dashboard": "概况"
+  "report": {
+    "account": {
+      "TheChannel": "所属渠道",
+      "timeType": {
+        "opts1": "按天统计",
+        "opts2": "按月统计",
+        "opts3": "按年统计"
+      }
+    }
   }
 }

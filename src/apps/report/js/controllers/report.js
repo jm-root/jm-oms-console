@@ -60,6 +60,7 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
                 }
             }).success(function (result) {
                 var data = result;
+                console.log(result);
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
