@@ -13,7 +13,6 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODUL
         if(type==2) info = '常规道具';
         return info;
     };
-
     var format_useMode = function(params) {
         var useMode = params.data.useMode;
         var info = '未知';

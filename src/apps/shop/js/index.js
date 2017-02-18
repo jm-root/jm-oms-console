@@ -14,6 +14,7 @@
                     $stateProvider
                         .state('app.shop', {
                             url: '/shop',
+                            controller:'ShopCtrl',
                             template: '<div ui-view class="fade-in-down"></div>',
                         })
                         .state('app.shop.category', {

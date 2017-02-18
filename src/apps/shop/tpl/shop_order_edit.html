@@ -3,58 +3,58 @@
     <form ng-show="$state.is('app.shop.order.edit') " name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>编辑信息</strong>
+                <strong>{{'shop.order.edit.editInformation'|translate}}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">订单id<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.orderID'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="订单id" ng-model="order._id" required disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">产品id<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.productID'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="产品id" ng-model="order.product._id" disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">支付id<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.paymentID'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="产品id" ng-model="order.payId" disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">产品标题<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.productTitle'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="产品标题" ng-model="order.product.name">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">产品数量<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.productNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" placeholder="产品数量" ng-model="order.buyNum"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">购买用户<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.purchaseUser'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="购买用户" ng-model="order.userNick">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">状态<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.order.edit.state'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
                         <select class="form-control" ng-model="order.status">
-                            <option value="1">已下单</option>
-                            <option value="2">已支付</option>
-                            <option value="3">已完成</option>
+                            <option value="1">{{'shop.order.edit.underOrders'|translate}}</option>
+                            <option value="2">{{'shop.order.edit.alreadyPaid'|translate}}</option>
+                            <option value="3">{{'shop.order.edit.alreadyCompleted'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
@@ -62,7 +62,7 @@
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'shop.order.edit.save'|translate}}保存</button>
             </footer>
         </div>
     </form>

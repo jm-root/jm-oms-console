@@ -262,8 +262,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
         if(obj.err){
             $scope.error(obj.msg);
         }else{
-            $scope.apps = _.concat($scope.apps,obj.rows||[]);
-            console.info(_.concat);
+            $scope.apps = $scope.apps.concat(obj.rows||[]);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -635,7 +634,7 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
         }
     };
 
-    $http.get("http://jamma.3322.org:20200"+'/apps', {
+    $http.get(appMgrUri+'/apps', {
         params:{
             token: sso.getToken(),
             type: 'all'
@@ -645,7 +644,7 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
         if(obj.err){
             $scope.error(obj.msg);
         }else{
-            $scope.apps = _.concat($scope.apps,obj.rows||[]);
+            $scope.apps = $scope.apps.concat(obj.rows||[]);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);

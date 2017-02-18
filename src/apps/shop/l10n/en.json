@@ -1,5 +1,108 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "shop":{
+    "address":{
+      "create":"Create",
+      "delete":"Delete",
+      "addressList":"Address List",
+      "edit":{
+        "editInformation":"Edit Information",
+        "userID":"UserID",
+        "name":"Name",
+        "tel":"Tel",
+        "province":"Province",
+        "city":"City",
+        "detailedAddress":"Detailed Address",
+        "save":"Save"
+      }
+    },
+    "bet":{
+      "betList":"Bet List",
+      "edit":{
+        "editInformation":"Edit Information",
+        "userID":"UserID",
+        "name":"Name",
+        "tel":"Tel",
+        "province":"Province",
+        "city":"City",
+        "detailedAddress":"Detailed Address",
+        "save":"Save"
+      }
+    },
+    "category":{
+      "create":"Create",
+      "delete":"Delete",
+      "categoryList":"Category List",
+      "edit":{
+        "editInformation":"Edit Information",
+        "categoryNmae":"Category Name",
+        "parentClass":"Parent Class",
+        "save":"save"
+      }
+    },
+    "formula":{
+      "editInformation":"Edit Information",
+      "calculationFormula":"calculationFormula",
+      "numericalA":"Numerical A",
+      "numericalB":"Numerical B",
+      "save":"Save"
+    },
+    "lottery":{
+      "delete":"delete",
+      "editFormula":"Edit rob wealth formula",
+      "robWealthList":"RobWealthList",
+      "edit":{
+        "editInformation":"Edit Information",
+        "robProductsID":"Rob Wealth Products ID",
+        "robActivityID":"Rob Wealth Activity ID",
+        "theQuantity":"The Quantity Of Each product to rob wealth",
+        "robProductsTitle":"Rob Wealth Products Title",
+        "robProductsSummary":"Rob Wealth Products Summary",
+        "periodsNumber":"Periods Number",
+        "maxPeriodsNumber":"Max Periods Number",
+        "sorting":"Sorting",
+        "markedPrice":"Marked Price(>=35)",
+        "unitPrice":"Unit Price",
+        "currencyType":"Currency Type",
+        "robWealthVoucher":"Rob Wealth Voucher",
+        "gold":"Gold",
+        "tCurrency":"T Currency",
+        "robWealthType":"Rob Wealth Type",
+        "continuousDrawing":"Continuous Drawing",
+        "limitTheLottery":"Limit The Lottery",
+        "limitTheLotterytime":"Limit The Lottery Time",
+        "state":"State",
+        "theLotteryAnnounced":"The Lottery Announced",
+        "notYetShipped":"Not yet shipped",
+        "alreadyShipped":"Already Shipped",
+        "alreadyCompleted":"Already Completed",
+        "save":"Save"
+      }
+    },
+    "order":{
+      "delete":"Delete",
+      "commoditiesList":"Commodities List",
+      "edit":{
+        "editInformation":"Edit Information",
+        "orderID":"Order id",
+        "productID":"Product id",
+        "paymentID":"Payment id",
+        "productTitle":"Product Title",
+        "productNumber":"Product Number",
+        "purchaseUser":"Purchase User",
+        "state":"state",
+        "underOrders":"Under Orders",
+        "alreadyPaid":"Already Paid",
+        "alreadyCompleted":"Already Completed",
+        "save":"Save"
+      }
+    },
+    "product":{
+      "edit":{
+
+      }
+    },
+    "user":{
+
+    }
   }
 }

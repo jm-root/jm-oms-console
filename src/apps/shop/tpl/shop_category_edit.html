@@ -3,18 +3,18 @@
     <form ng-show="$state.is('app.shop.category.edit') " name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>编辑信息</strong>
+                <strong>{{'shop.category.edit.editInformation'|translate}}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">分类名称<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.category.edit.categoryNmae'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="分类名称" ng-model="category.name"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">父级分类<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.category.edit.parentClass'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
                         <select class="form-control" ng-model="category.parent" ng-options="(parentCate.name) for parentCate in parentCates" >
                             <option value="">-- 选择父类（不选创建为父类） --</option>
@@ -25,7 +25,7 @@
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'shop.category.edit.save'|translate}}</button>
             </footer>
         </div>
     </form>

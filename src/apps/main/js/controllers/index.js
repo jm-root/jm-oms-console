@@ -36,7 +36,7 @@ angular.module('app')
             if (err.err) {
                 $scope.error(err.msg);
             } else if (err.code) {
-                $scope.errorTips(code);
+                $scope.errorTips(err.code);
             }
             $state.go('access.signin');
         });
