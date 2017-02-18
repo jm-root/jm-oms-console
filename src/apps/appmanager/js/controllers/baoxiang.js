@@ -8,7 +8,7 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
-    $scope.isFromAppManager = false;
+    $scope.isFromAppManager = true;
     var viewPath = 'view.appmanager.gameset.config';
     $scope.per = {};
     global.getUserPermission(viewPath).then(function(obj){

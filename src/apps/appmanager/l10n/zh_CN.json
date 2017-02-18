@@ -1,6 +1,8 @@
 {
   "appmanager": {
     "appmgr": {
+      "save":"保存",
+      "recovery":"恢复",
       "create":"创建",
       "delete":"删除",
       "searchPlaceholder": "搜索 应用名称",
@@ -50,6 +52,8 @@
       "userId": "用户id",
       "userName": "用户呢称",
       "cost": "消耗",
+      "add":"添加",
+      "delete":"删除",
       "award": "奖励",
       "payId": "支付id",
       "status": "状态",
@@ -65,6 +69,13 @@
       "config": "配置",
       "latest": "当前最新",
       "room": {
+        "jb": "金币",
+        "tb": "元宝",
+        "dbj": "夺宝卷",
+        "yes": "是",
+        "no": "否",
+        "enable": "启用",
+        "visible": "显示",
         "roomConfig": "房间配置",
         "roomType": "房间类型",
         "roomName": "房间名字",

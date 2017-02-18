@@ -1,6 +1,8 @@
 {
   "appmanager": {
     "appmgr": {
+      "save":"Save",
+      "recovery":"Recovery",
       "create":"Create",
       "delete":"Delete",
       "searchPlaceholder": "Search app name",
@@ -50,6 +52,8 @@
       "userId": "User id",
       "userName": "User name",
       "cost": "Cost",
+      "add":"Add",
+      "delete":"Delete",
       "award": "Award",
       "payId": "Pay id",
       "status": "Status",
@@ -65,6 +69,13 @@
       "config": "Configure",
       "latest": "Latest",
       "room": {
+        "jb": "Gold",
+        "tb": "Ingot",
+        "dbj": "DuoBaoJuan",
+        "yes": "Yes",
+        "no": "No",
+        "enable": "Enable",
+        "visible": "Visible",
         "roomConfig": "Room Configuration",
         "roomType": "Room type",
         "roomName": "Room name",
