@@ -2,18 +2,18 @@
     <div ui-view class="fade-in-down"></div>
     <div class="panel panel-default">
         <div class="panel-heading" id="baseConfigs">
-            <strong>房间配置</strong>
+            <strong>{{'appmanager.appmgr.room.roomConfig' | translate}}</strong>
         </div>
         <div class="panel-body">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">房间所有桌子难度:</label>
+                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomDiff' | translate}}:</label>
                     <div class="col-sm-3">
                         <select class="form-control m-b" ng-model="diff2" ng-options="item.name for item in showData.diffs">
                         </select>
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveDiff(diff2.value)">保存</button>
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveDiff(diff2.value)">{{'appmanager.appmgr.save' | translate}}</button>
                     </div>
                 </div>
             </form>
@@ -22,13 +22,13 @@
 
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">房间所有桌子炒场难度</label>
+                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomCCDiff' | translate}}</label>
                     <div class="col-sm-3">
                         <select class="form-control m-b" ng-model="diff3" ng-options="item.name for item in showData.rejustDiffs">
                         </select>
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">保存</button>
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">{{'appmanager.appmgr.save' | translate}}</button>
                     </div>
                 </div>
             </form>

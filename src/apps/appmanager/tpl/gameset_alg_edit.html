@@ -9,7 +9,7 @@
             <div class="">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">桌子号:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
                         <div class="col-sm-1">
                             <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table1.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                         </div>
@@ -22,7 +22,7 @@
                             <input type="number" class="form-control" placeholder="alg统计out" ng-model="table1.algOut" >
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="saveInOut()">更改进出数据</button>
+                            <button class="btn btn-success" ng-click="saveInOut()">{{'appmanager.appmgr.room.syncAlgData' | translate}}</button>
                         </div>
                     </div>
                 </form>
@@ -31,24 +31,24 @@
             <div>
                 <form class="form-horizontal form-validation">
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">桌子号:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
                         <div class="col-sm-1">
                             <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table2.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                         </div>
-                        <label class="col-sm-1 control-label">一币分值:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.coinRate' | translate}}:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="一币分值" ng-model="table2.coin_rate" required>
+                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.coinRate' | translate}}" ng-model="table2.coin_rate" required>
                         </div>
-                        <label class="col-sm-1 control-label">难度:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.difficulty' | translate}}:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="难度" ng-model="table2.diff" required>
+                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.difficulty' | translate}}" ng-model="table2.diff" required>
                         </div>
-                        <label class="col-sm-1 control-label">玩家人数:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.playerNum' | translate}}:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="玩家人数" ng-model="table2.totalPlayerNum" required>
+                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.playerNum' | translate}}" ng-model="table2.totalPlayerNum" required>
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="execInit()">初始化桌子</button>
+                            <button class="btn btn-success" ng-click="execInit()">{{'appmanager.appmgr.room.initTable' | translate}}</button>
                         </div>
                     </div>
                 </form>
@@ -57,16 +57,16 @@
             <div>
                 <form class="form-horizontal form-validation">
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">桌子号:</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
                         <div class="col-sm-1">
                             <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table3.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                         </div>
-                        <label class="col-sm-1 control-label">难度</label>
+                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.difficulty' | translate}}</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="难度" ng-model="table3.diff" required>
+                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.difficulty' | translate}}" ng-model="table3.diff" required>
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="changeDiff()">更改桌子难度</button>
+                            <button class="btn btn-success" ng-click="changeDiff()">{{'appmanager.appmgr.room.changeTableDiff' | translate}}</button>
                         </div>
                     </div>
                 </form>
@@ -76,12 +76,12 @@
                 <div style="margin-bottom: 10px;">
                     <form class="form-horizontal form-validation">
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">桌子号:</label>
+                            <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
                             <div class="col-sm-1">
                                 <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table4.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                             </div>
                             <div class="col-sm-1">
-                                <button class="btn btn-info" ng-click="getAlgData()">刷新</button>
+                                <button class="btn btn-info" ng-click="getAlgData()">{{'appmanager.appmgr.room.refresh' | translate}}</button>
                             </div>
                         </div>
                     </form>
@@ -90,15 +90,15 @@
                     <table class="table table-striped table-hover table-condensed table-bordered">
                         <thead>
                         <tr>
-                            <th>桌子号</th>
-                            <th>一币分值(coin_rate)</th>
-                            <th>难度(diff)</th>
-                            <th>算法投币(gin)</th>
-                            <th>算法吐币(gout)</th>
-                            <th>算法盈利率(gin-gout)/gin</th>
-                            <th>统计投币(in)</th>
-                            <th>统计出币(out)</th>
-                            <th>统计盈利率(in-out)/in</th>
+                            <th>{{'appmanager.appmgr.room.tableNumber' | translate}}</th>
+                            <th>{{'appmanager.appmgr.room.coinRate' | translate}}(coin_rate)</th>
+                            <th>{{'appmanager.appmgr.room.difficulty' | translate}}(diff)</th>
+                            <th>{{'appmanager.appmgr.room.algGin' | translate}}(gin)</th>
+                            <th>{{'appmanager.appmgr.room.algGout' | translate}}(gout)</th>
+                            <th>{{'appmanager.appmgr.room.algGwinRate' | translate}}(gin-gout)/gin</th>
+                            <th>{{'appmanager.appmgr.room.serverIn' | translate}}(in)</th>
+                            <th>{{'appmanager.appmgr.room.serverOut' | translate}}(out)</th>
+                            <th>{{'appmanager.appmgr.room.serverWinRate' | translate}}(in-out)/in</th>
                         </tr>
                         </thead>
 
