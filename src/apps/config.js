@@ -26,11 +26,12 @@ var staticHost = gConfig.staticHost;
 
 var ssoUri = sdkHost+"/sso";
 var aclUri = sdkHost+"/acl";
-var adminUri = sdkHost+"/oms";
-var appMgrUri = sdkHost + "/appManager";
+var adminUri = sdkHost+"/admin";
+var omsUri = sdkHost+"/oms";
+var appMgrUri = "http://jamma.3322.org:20200" + "/appManager";
 var agentUri = "http://jamma.3322.org:20200" + "/agent";
 var configUri = sdkHost + "/config";
-var uploadUri = sdkHost + "/upload";
+var uploadUri = "http://jamma.3322.org:20200" + "/upload";
 var staticUri = staticHost + "/static";
 var activityUri = "http://jamma.3322.org:20200" + "/activity";
 var propUri = "http://jamma.3322.org:20200" + "/prop";
@@ -39,13 +40,15 @@ var payUri = sdkHost + "/pay";
 var bbsUri = sdkHost + "/bbs";
 var wordfilterUri = sdkHost + "/wordfilter";
 var packUri = sdkHost + "/pack";
-var statUri = sdkHost + "/stat";
+var statUri = "http://jamma.3322.org:20200" + "/stat";
 var cardUri = "http://jamma.3322.org:20200" + "/card";
 var homeUri = "http://jamma.3322.org:20200" + "/home";
 var recordUri = sdkHost + "/record";
 var guestbookUri = sdkHost + "/guestbook";
 var shopUri = "http://jamma.3322.org:20200" + "/shop";
 var logUri = "http://jamma.3322.org:20200" + "/log";
+var baoxiangUri = "http://jamma.3322.org:20200" + "/baoxiang";
+var algUri = "http://jamma.3322.org:20200" + "/alg";
 
 
 jm.sdk.init({uri: sdkHost});

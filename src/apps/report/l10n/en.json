@@ -1,5 +1,12 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "report": {
+    "account": {
+      "TheChannel": "The Channel",
+      "timeType": {
+        "opts1": "Statistics by day",
+        "opts2": "Statistics by month",
+        "opts3": "Statistics by year"
+      }
+    }
   }
 }

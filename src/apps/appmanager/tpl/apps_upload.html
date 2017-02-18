@@ -1,16 +1,16 @@
 <div ng-controller="AppsUploadCtrl">
     <div class="bg-light lter b-b wrapper">
-        <h1 class="m-n font-thin h3">应用上传</h1>
+        <h1 class="m-n font-thin h3" translate="app.app.upload">应用上传</h1>
     </div>
 
     <form ng-show="$state.is('app.apps.upload') " name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>编辑信息</strong>
+                <strong translate="appmanager.appmgr.edit">编辑信息</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">应用包<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label" translate="appmanager.appmgr.package">应用包<code style="background-color: transparent">*</code></label>
                     <div class="fileUpload btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-folder"></i>
                         <span>浏览...</span>
                         <input type="file" class="upload" nv-file-select="" ui-filereader uploader="uploader"/>

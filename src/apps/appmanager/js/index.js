@@ -15,7 +15,8 @@
                         .state('app.apps', {
                             url: '/apps',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/appManage.js'] )
+                            controller: 'AppManagerCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/appManage.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.apps.manage', {
                             url: '/manage',
@@ -39,7 +40,8 @@
                         .state('app.rooms', {
                             url: '/rooms',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/roomManage.js'] )
+                            controller: 'AppManagerCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/roomManage.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.rooms.manage', {
                             url: '/manage',
