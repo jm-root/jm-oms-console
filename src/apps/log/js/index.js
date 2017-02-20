@@ -16,7 +16,8 @@
                         .state('app.wordfilter', {
                             url: '/wordfilter',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/log.js'] )
+                            controller: 'LogCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/log.js',path + 'js/controllers/index.js'] )
                         })
                         //敏感词列表
                         .state('app.wordfilter.list',{
@@ -40,7 +41,8 @@
                         .state('app.guestbook', {
                             url: '/guestbook',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/log.js'] )
+                            controller: 'LogCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/log.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.guestbook.list',{
                             url: '/list',

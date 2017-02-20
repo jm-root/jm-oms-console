@@ -2,11 +2,11 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>VIP条件设置</strong>
+                <strong>{{ 'home.vip.cond.setting' | translate }}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">充值</label>
+                    <label class="col-sm-2 control-label">{{ 'home.vip.cond.recharge' | translate }}</label>
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="tags" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加达成不同等级的充值数(添加顺序对应相应等级)" min-length="1"></tags-input>
                     </div>
@@ -15,7 +15,7 @@
             </div>
             <footer class="panel-footer text-right bg-light lter">
                 <div>
-                    <button type="submit" class="btn btn-success" ng-click="save()">保存</button>
+                    <button type="submit" class="btn btn-success" ng-click="save()">{{ 'home.save' | translate }}</button>
                 </div>
             </footer>
         </div>

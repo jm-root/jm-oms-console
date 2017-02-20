@@ -2,39 +2,39 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>VIP优惠种类设置</strong>
+                <strong>{{ 'home.vip.item.setting' | translate }}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" style="padding-top: 11px">每日登录赠送</label>
+                    <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.give' | translate }}</label>
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="item.login" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9|\.]+$" placeholder="添加倍数(100*1.2)" min-length="1"></tags-input>
                     </div>
-                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('login')">保存</button></div>
+                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('login')">{{ 'home.save' | translate }}</button></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" style="padding-top: 11px">充值额外返利(金币)</label>
+                    <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.rebatejb' | translate }}</label>
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="item.recharge_jb" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加百分数(100*3%)" min-length="1"></tags-input>
                     </div>
-                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_jb')">保存</button></div>
+                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_jb')">{{ 'home.save' | translate }}</button></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" style="padding-top: 11px">充值额外返利(夺宝卷)</label>
+                    <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.rebatedbj' | translate }}</label>
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="item.recharge_dbj" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加百分数(100*3%)" min-length="1"></tags-input>
                     </div>
-                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_dbj')">保存</button></div>
+                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_dbj')">{{ 'home.save' | translate }}</button></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" style="padding-top: 11px">大厅每日转盘次数</label>
+                    <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.turntable' | translate }}</label>
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="item.turntable" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加次数" min-length="1"></tags-input>
                     </div>
-                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('turntable')">保存</button></div>
+                    <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('turntable')">{{ 'home.save' | translate }}</button></div>
                 </div>
 
             </div>

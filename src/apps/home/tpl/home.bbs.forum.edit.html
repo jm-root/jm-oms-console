@@ -3,11 +3,11 @@
     <form ng-show="$state.is('app.home.bbs.forum.edit')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>编辑信息</strong>
+                <strong>{{ 'home.bbs.forum.edit.editInformation' | translate }}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">封面</label>
+                    <label class="col-sm-2 control-label">{{ 'home.bbs.forum.edit.cover' | translate }}</label>
 
                     <div class="col-sm-9">
                         <a ui-sref=".logo"><img width="320" height="200" ng-src="{{forum.logo}}" onerror="this.src='apps/common/img/logo.jpg'"/></a>
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>名称</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.bbs.forum.edit.name' | translate }}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="名称" ng-model="forum.name" required>
                     </div>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">类型</label>
+                    <label class="col-sm-2 control-label">{{ 'home.bbs.forum.edit.type' | translate }}</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" placeholder="版块类型" ng-model="forum.type" required>
                     </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">显示顺序</label>
+                    <label class="col-sm-2 control-label">{{ 'home.bbs.forum.edit.displayOrder' | translate }}</label>
                     <div class="col-sm-9">
                         <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="forum.rank" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">标签</label>
+                    <label class="col-sm-2 control-label">{{ 'home.bbs.forum.edit.label' | translate }}</label>
 
                     <div class="col-sm-9">
                         <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">描述</label>
+                    <label class="col-sm-2 control-label">{{ 'home.bbs.forum.edit.describe' | translate }}</label>
                     <div class="col-sm-9">
                         <div class="ueditor" ng-model="forum.content" config="ueditor_config" ready="onUeditor"></div>
                     </div>
@@ -58,7 +58,7 @@
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{ 'home.save' | translate }}</button>
             </footer>
         </div>
     </form>

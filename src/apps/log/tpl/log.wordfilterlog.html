@@ -2,7 +2,7 @@
     <div class="bg-light lter wrapper">
         <div class="pull-right ">
             <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-                <i class="fa fa-trash-o"></i>删除
+                <i class="fa fa-trash-o"></i>{{ 'log.delete' | translate }}
             </button>
         </div>
 
@@ -20,7 +20,7 @@
             <select class="m-r-sm input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
             </select>
         </div>
-        <h1 class="m-n font-thin h3">拦截日志</h1>
+        <h1 class="m-n font-thin h3">{{ 'app.wordfilter.log' | translate }}</h1>
     </div>
     <div class="panel panel-default">
         <div class="line b-b"></div>

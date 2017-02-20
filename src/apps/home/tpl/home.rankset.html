@@ -2,17 +2,17 @@
     <form name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong>排行设置</strong>
+                <strong>{{ 'home.rankset.setting' | translate }}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>用户ID</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.rankset.userID' | translate }}</label>
 
                     <div class="col-sm-9">
                         <div class="input-group" style="max-width: 360px;">
                             <input type="text" class="form-control" placeholder="用户ID" ng-model="user.userId" ng-required="true">
                             <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">搜索 <span class="caret"></span></div>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">{{ 'home.rankset.search' | translate }} <span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
                                     <div class="input-group">
                                         <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
@@ -23,9 +23,9 @@
                                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                            <th>用户ObjectID</th>
-                                            <th>用户ID</th>
-                                            <th>用户名</th>
+                                            <th>{{ 'home.rankset.userObjectID' | translate }}</th>
+                                            <th>{{ 'home.rankset.userID' | translate }}</th>
+                                            <th>{{ 'home.rankset.userName' | translate }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">VIP等级</label>
+                    <label class="col-sm-2 control-label">{{ 'home.rankset.VIPLevel' | translate }}</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="等级" min="0" ng-pattern="/^[0-9]*$/" ng-model="user.member.level">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">历史最高元宝</label>
+                    <label class="col-sm-2 control-label">{{ 'home.rankset.highestIngot' | translate }}</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="元宝数" min="0" ng-pattern="/^[0-9]*$/" ng-model="user.record.win_tb">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">历史最高金币</label>
+                    <label class="col-sm-2 control-label">{{ 'home.rankset.highestGold' | translate }}</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="金币数" min="0" ng-pattern="/^[0-9]*$/" ng-model="user.record.win_jb">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">历史最高夺宝卷</label>
+                    <label class="col-sm-2 control-label">{{ 'home.rankset.highestDuoBaoJuan' | translate }}</label>
 
                     <div class="col-sm-9">
                         <input type="number" class="form-control w" placeholder="夺宝卷数" min="0" ng-pattern="/^[0-9]*$/" ng-model="user.record.win_dbj">
@@ -85,7 +85,7 @@
 
             <footer class="panel-footer text-right bg-light lter">
                 <div style="max-width: 750px">
-                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">设置</button>
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{ 'home.setting' | translate }}</button>
                 </div>
             </footer>
         </div>

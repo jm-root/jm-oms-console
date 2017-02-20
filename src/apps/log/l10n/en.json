@@ -1,5 +1,9 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "log": {
+    "delete":"Delete",
+    "revise":"Revise Wordfilter",
+    "wordfilter":"Wordfilter",
+    "createTime":"Create Time",
+    "save":"Save"
   }
 }

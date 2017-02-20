@@ -16,7 +16,8 @@
                         .state('app.home', {
                             url: '/home',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/home.js'])
+                            controller: 'HomeCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/home.js',path + 'js/controllers/index.js'])
                         })
                         .state('app.home.vip', {
                             url: '/vip',

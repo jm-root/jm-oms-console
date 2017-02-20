@@ -1,5 +1,153 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "home": {
+    "create":"Create",
+    "delete":"Delete",
+    "save":"Save",
+    "send":"Send",
+    "setting":"Setting",
+    "refresh":"Refresh",
+    "turntable":"Turntable Config",
+    "activity": {
+      "edit":"Edit Information",
+      "title":"Title",
+      "displayOrder":"Display Order",
+      "index":"Recommendation Index",
+      "label":"Label",
+      "jump":"Jump Address",
+      "config":"Config",
+      "highLight":"Highlight",
+      "essence":"Essence",
+      "top":"Top",
+      "content":"Content",
+      "editContent":"Edit Content",
+      "link":"Link Address",
+      "pureText":"Pure Text",
+      "formattedPlainText":"Formatted Plain Text"
+    },
+    "bbs":{
+      "forum":{
+        "edit":{
+          "editInformation":"Edit Information",
+          "cover":"Cover",
+          "name":"Name",
+          "type":"Type",
+          "displayOrder":"Display Order",
+          "label":"Label",
+          "describe":"Describe"
+        }
+      },
+      "topic":{
+        "edit":{
+          "editInformation":"Edit Information",
+          "cover":"Cover",
+          "section":"Section",
+          "code":"Code",
+          "title":"Title",
+          "displayOrder":"Display Order",
+          "recommendationDegree":"Recommendation Degree",
+          "label":"Label",
+          "config":"Config",
+          "highLight":"Highlight",
+          "essence":"Essence",
+          "top":"Top",
+          "content":"Content",
+          "editContent":"Edit Content",
+          "link":"Link Address",
+          "pureText":"Pure Text",
+          "formattedPlainText":"Formatted Plain Text"
+        }
+      }
+    },
+    "checkin": {
+      "list":"Checkin List",
+      "edit":"Edit Login Reward",
+      "number":"Number of Days",
+      "rewardType":"Reward Type",
+      "jb": "Gold",
+      "tb": "Ingot",
+      "dbj": "DuoBaoJuan",
+      "rewardQuantity":"Reward Quantity"
+    },
+    "sendnotice": {
+      "title": "Send notice",
+      "sendNotice": "Send notice",
+      "refresh": "Refresh",
+      "message": "Message",
+      "times": "Times",
+      "times_p": "Times(positive integer)",
+      "seconds": "Seconds",
+      "seconds_p": "Seconds(positive integer)",
+      "addTimes": "Add time",
+      "timesList": "Time list",
+      "lackOfTimes": "Lack of time allocation",
+      "msgType": {
+        "type": "Message type",
+        "opts1": "One message",
+        "opts2": "Interval message",
+        "opts3": "Timing message"
+      },
+      "list": {
+        "header": {
+          "message": "Message",
+          "type": "Type",
+          "count": "Times",
+          "step": "Send",
+          "ctrl": "Operation"
+        }
+      }
+    },
+    "sendDak":{
+      "send": "Send mail",
+      "isUserMail": "Is user mail",
+      "title":"Title",
+      "content":"Content",
+      "userEmail":"User Email",
+      "userID":"User ID",
+      "search":"Search",
+      "userObjectID":"User ObjectID",
+      "userName":"User Name",
+      "attachProp":"Attach Prop",
+      "addProp":"Add Prop",
+      "prop":"Prop",
+      "number":"Number",
+      "dueTime":"Due Time",
+      "edit":"Edit",
+      "noProp":"No Prop"
+    },
+    "rankset":{
+      "setting":"Ranking Settings",
+      "userID":"UserID",
+      "search":"Search",
+      "userObjectID":"User ObjectID",
+      "userName":"User Name",
+      "VIPLevel":"VIP Level",
+      "highestIngot":"The Highest Ingot",
+      "highestGold":"The Highest Gold",
+      "highestDuoBaoJuan":"The Highest DuoBaoJuan"
+    },
+    "vip":{
+      "cond":{
+        "setting":"VIP Condition Setting",
+        "recharge":"Recharge"
+      },
+      "item":{
+        "setting":"VIP Preferences Category Setting",
+        "give":"Daily Login Give",
+        "rebatejb":"Additional Recharge Rebate(Gold)",
+        "rebatedbj":"Additional Recharge Rebate(DuoBaoJuan)",
+        "turntable":"Daily Turntable"
+      },
+      "set":{
+        "configList":"VIP Config List"
+      },
+      "setedit":{
+        "vipEdit":"VIP Edit",
+        "level":"Level",
+        "config":"Config Preferences",
+        "describe":"Describe",
+        "pureText":"Pure Text",
+        "formattedPlainText":"Formatted Plain Text"
+      }
+    }
   }
 }

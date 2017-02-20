@@ -2,34 +2,34 @@
     <div class="bg-light lter b-b wrapper">
         <div class="pull-right">
             <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="send()">
-                <i class="fa fa-plus"></i>发送公告
+                <i class="fa fa-plus"></i>{{ 'home.sendnotice.title' | translate }}
             </button>
             <button type="button" class="btn btn-sm btn-success btn-addon" ng-click="refresh()">
-                <i class="fa fa-refresh"></i>刷新
+                <i class="fa fa-refresh"></i>{{ 'home.sendnotice.refresh' | translate }}
             </button>
         </div>
 
-        <h1 class="m-n font-thin h3">发送公告</h1>
+        <h1 class="m-n font-thin h3">{{ 'home.sendnotice.sendnotice' | translate }}</h1>
     </div>
     <div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-100}}+'px', size:'8px'}">
         <div class="panel panel-default">
             <div style="margin-top: 20px">
                 <form name="formValidate" class="form-horizontal form-validation">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">消息类型</label>
+                        <label class="col-sm-2 control-label">{{ 'home.sendnotice.msgType.type' | translate }}</label>
 
                         <div class="col-sm-9">
                             <select class="form-control w-sm" ng-model="notice.type" ng-change="changeType()">
-                                <option value="">一条消息</option>
-                                <option value="0">间隔消息</option>
-                                <option value="1">定时消息</option>
+                                <option value="">{{ 'home.sendnotice.msgType.opts1' | translate }}</option>
+                                <option value="0">{{ 'home.sendnotice.msgType.opts2' | translate }}</option>
+                                <option value="1">{{ 'home.sendnotice.msgType.opts3' | translate }}</option>
                             </select>
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
 
                     <div class="form-group" ng-if="notice.type=='0'">
-                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>次数</label>
+                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.list.header.count' | translate }}</label>
                         <div class="col-sm-9">
                             <input type="number" class="form-control w-sm" placeholder="次数(正整数)" ng-model="selt.count" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
                         </div>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group" ng-if="notice.type=='0'">
-                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>相隔秒数</label>
+                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.seconds' | translate }}</label>
                         <div class="col-sm-9">
                             <input type="number" class="form-control w-sm" placeholder="秒数(正整数)" ng-model="selt.times" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
                         </div>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="form-group" ng-if="notice.type=='1'">
-                        <label class="col-sm-2 control-label">添加时间</label>
+                        <label class="col-sm-2 control-label">{{ 'home.sendnotice.addTimes' | translate }}</label>
                         <div class="col-sm-9">
                             <div class="dropdown w">
                                 <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown">
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="form-group" ng-if="notice.type=='1'">
-                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>时间列表</label>
+                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.timesList' | translate }}</label>
 
                         <div class="col-sm-9">
                             <tags-input class="bootstrap" ng-model="notice.times" placeholder="时间" min-length="1" on-tag-added="onAddDate()"></tags-input>
@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>消息</label>
+                        <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.message' | translate }}</label>
 
                         <div class="col-sm-9">
                             <textarea class="form-control" style="max-width: 360px;" rows="4" style="resize: none;" placeholder="" ng-model="notice.message" ng-required="true"></textarea>
