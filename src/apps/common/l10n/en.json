@@ -6,6 +6,18 @@
     "delete": "delete",
     "add": "add",
     "modify": "modify",
-    "cancel": "cancel"
+    "cancel": "cancel",
+    "times": "Start time and end time",
+    "searchUser": "Account/Nickname/Phone",
+    "search": "Search",
+    "userName": "User name",
+    "userId": "User ID",
+    "userObjectId": "User ObjectID",
+    "amount": "Amount",
+    "transfer": "Transfer",
+    "balance": "Balance",
+    "memo": "Memo",
+    "confirm": "confirm",
+    "name":"Name"
   }
 }

@@ -1,21 +1,40 @@
 {
   "player":{
-    "info":{
-      "type":"Type",
-      "tourist":"Tourist",
-      "phone":"Phone",
-      "wechat":"WeChat",
-      "qq":"QQ",
-      "state":"State",
-      "stop":"Stop",
-      "normal":"Normal",
-      "agents":"Agents"
-    },
     "givelog":{
+      "search": "Search account/nick/mobile",
       "type":"Type",
       "system":"System",
       "player":"Player",
-      "chooseprops":"Choose Props"
+      "chooseProps":"Choose Props",
+      "giveLog":"give Log"
+    },
+    "info":{
+      "list":{"info": "Player Info",
+        "type":"Type",
+        "tourist":"Tourist",
+        "phone":"Phone",
+        "wechat":"WeChat",
+        "qq":"QQ",
+        "state":"State",
+        "stop":"Stop",
+        "normal":"Normal",
+        "agents":"Agents",
+        "playerTotal": "Player Total",
+        "mobileTotal": "Mobile Total",
+        "registeredYesterday": "Registered Yesterday",
+        "registerToday": "Register Today"
+      },
+      "games":{
+        "gameData": "Game Data"
+      },
+      "online":{
+        "title": "Player online status",
+        "search": "Search player id / nick"
+      }
+    },
+    "record":{
+      "title": "Game record",
+      "search": "Search account/nick/mobile"
     }
   }
 }

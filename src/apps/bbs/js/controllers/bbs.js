@@ -64,7 +64,6 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
                     rows: $scope.pageSize
                 }
             }).success(function (result) {
-                console.log(result);
                 var data = result;
                 if (data.err) {
                     $scope.error(data.msg);
@@ -371,7 +370,6 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
                     forum: $scope.forum
                 }
             }).success(function (result) {
-                console.log(result);
                 var data = result;
                 if (data.err) {
                     $scope.error(data.msg);

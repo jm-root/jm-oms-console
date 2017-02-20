@@ -1,5 +1,112 @@
 {
-  "dashboard": {
-    "Dashboard": "Dashboard"
+  "bank": {
+    "account": {
+      "dealquery": {
+      },
+      "paylist": {
+        "title": "Payment List",
+        "search": "Search  Order Number/User ID",
+        "currencyType": "Currency Type",
+        "cny": "RMB",
+        "tb": "Ingot",
+        "jb": "Gold",
+        "dbj": "Treasure",
+        "opts": "Payment Status",
+        "opt0": "Unpaid",
+        "opt1": "Paid"
+      }
+    },
+    "bank": {
+      "account": {
+        "title": "Account list",
+        "statusOpts": {
+          "opts1": "Frozen",
+          "opts2": "Normal",
+          "opts3": "Logout"
+        }
+      },
+      "deal": {
+        "title": "Deal flow",
+        "income": "Income",
+        "expenditure": "Expenditure",
+        "header": {
+          "userId": "User ID",
+          "user": "User name",
+          "ctName": "Currency",
+          "flag": "Flag",
+          "amount": "Amount",
+          "createdAt": "Create time"
+        }
+      },
+      "exchange": {
+      },
+      "npreauth": {
+        "title": "Cancel authorization",
+        "label1": "Target user",
+        "label2": "Cancel amount",
+        "label3": "Choose a currency",
+        "label4": "Is all",
+        "label5": "Cancel amount",
+        "cancelAuthorization": "Cancel authorization",
+        "ctOpts": {
+          "opts": "Choose currency",
+          "opts1": "Ingot",
+          "opts2": "Gold",
+          "opts3": "Treasure"
+        }
+      },
+      "overdraw": {
+        "title":"Set overdraft limit",
+        "label1":"Target User",
+        "label2":"Choose a currency",
+        "label3":"Quota",
+        "label4":"Set Up",
+        "odOpts": {
+          "opts": "Choose currency",
+          "opts1": "Ingot",
+          "opts2": "Gold",
+          "opts3": "Treasure"
+        }
+      },
+      "preauth": {
+        "title": "Pre authorization list",
+        "cancelSuccess": "Cancel success",
+        "cancelAuthorization": "Cancel authorization",
+        "header": {
+          "user": "Authorized person",
+          "control": "Operator",
+          "ct": "Currency",
+          "amount": "Amount",
+          "createdAt": "Create time"
+        }
+      },
+      "transfer": {
+        "title": "Transfer",
+        "label1": "Choose currency",
+        "label2": "Into user",
+        "label3": "Into account",
+        "label4": "Roll account",
+        "label5": "Transfer sum",
+        "defaultAccount": "Default account",
+        "ctOpts": {
+          "opts": "Choose currency",
+          "opts1": "Ingot",
+          "opts2": "Gold",
+          "opts3": "Treasure"
+        }
+      }
+    },
+    "currency": {
+      "rate": {
+        "currency":"Currency",
+        "coding":"Coding",
+        "name":"Name",
+        "noData":"No Data",
+        "exchangeRate":"exchangeRate",
+        "moneyExchange":"Money Exchange",
+        "proportion":"Proportion",
+        "saveAdd":"Save&Add"
+      }
+    }
   }
 }

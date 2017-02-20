@@ -1,21 +1,42 @@
 {
   "player":{
-      "info":{
-          "type":"类别",
-          "tourist":"游客",
-          "phone":"手机",
-          "wechat":"微信",
-          "qq":"QQ",
-          "state":"状态",
-          "stop":"封停",
-          "normal":"正常",
-          "agents":"渠道"
-      },
       "givelog":{
+          "search": "搜索 账号/昵称/手机号",
           "type":"类型",
           "system":"系统",
           "player":"玩家",
-          "chooseprops":"选择道具类型"
+          "chooseProps":"选择道具类型",
+          "giveLog":"赠送记录"
+      },
+      "info":{
+          "list":{
+              "search": "搜索 账号/昵称/手机号",
+              "info": "玩家信息",
+              "type":"类别",
+              "tourist":"游客",
+              "phone":"手机",
+              "wechat":"微信",
+              "qq":"QQ",
+              "state":"状态",
+              "stop":"封停",
+              "normal":"正常",
+              "agents":"渠道",
+              "playerTotal": "玩家总人数",
+              "mobileTotal": "手机用户数",
+              "registeredYesterday": "昨天注册人数",
+              "registerToday": "今天注册人数"
+          },
+          "games":{
+              "gameData": "游戏数据"
+          },
+          "online":{
+              "title": "玩家在线状态",
+              "search": "搜索 玩家ID/昵称"
+          }
+      },
+      "record":{
+          "title":"游戏记录",
+          "search": "搜索 账号/昵称/手机号"
       }
   }
 }

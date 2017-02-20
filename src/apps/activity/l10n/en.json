@@ -47,6 +47,7 @@
       "deadline":"Deadline",
       "edit":"Edit",
       "NoProps":"No Props",
+      "deadline":"deadline",
       "delete":"Delete",
       "save":"Save"
     },
@@ -56,6 +57,7 @@
       "ActivityItem":"Activity Item"
     },
     "atylist":{
+      "search":"Search Title",
       "create":"Create",
       "delete":"Delete",
       "SelectSection":"Select Section",

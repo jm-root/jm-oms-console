@@ -3,7 +3,7 @@
     <form ng-show="$state.is('app.activity.prop.edit')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong translate="activity.propedit.EditInformation">编辑信息</strong>
+                <strong>{{'activity.propedit.EditInformation'|translate}}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -16,23 +16,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.propedit.code">编码</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.propedit.code'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="唯一编码" ng-model="prop.code" ng-required="true">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="{{'activity.propedit.code'|translate}}" ng-model="prop.code" ng-required="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.propedit.name">名称</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.propedit.name'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="名称" ng-model="prop.name" ng-required="true">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="{{'activity.propedit.name'|translate}}" ng-model="prop.name" ng-required="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.propedit.describe">描述</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.propedit.describe'|translate}}</label>
 
                     <div class="col-sm-9">
                         <textarea class="form-control" style="max-width: 320px;" rows="4" style="resize: none;" placeholder="" ng-model="prop.description" ng-required="true"></textarea>
@@ -41,23 +41,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" style="margin-top: 3px" translate="activity.propedit.label">标签</label>
+                    <label class="col-sm-2 control-label" style="margin-top: 3px">{{'activity.propedit.label'|translate}}</label>
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" style="max-width: 320px;" ng-model="prop.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" style="max-width: 320px;" ng-model="prop.tags" add-on-space="true" add-on-paste="true" placeholder="{{'activity.propedit.label'|translate}}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.propedit.tab">标记</label>
+                    <label class="col-sm-2 control-label">{{'activity.propedit.tab'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" style="max-width: 150px;" class="form-control" placeholder="标记" ng-model="prop.sign">
+                        <input type="text" style="max-width: 150px;" class="form-control" placeholder="{{'activity.propedit.tab'|translate}}" ng-model="prop.sign">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.propedit.WhetherGift">是否可赠送</label>
+                    <label class="col-sm-2 control-label">{{'activity.propedit.WhetherGift'|translate}}</label>
                     <div class="col-sm-9">
                         <label class="i-checks checkbox-inline">
                             <input type="checkbox" ng-model="prop.isGive"><i></i>
@@ -67,38 +67,38 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.propedit.SubordinateApplication">所属应用</label>
+                    <label class="col-sm-2 control-label" >{{'activity.propedit.SubordinateApplication'|translate}}</label>
                     <div class="col-sm-9">
                         <select class="form-control" style="max-width: 150px;" ng-model="prop.app" ng-options="option._id as option.name for option in apps">
-                            <option value="" translate="activity.propedit.NoApplication">无应用</option>
+                            <option value="">{{'activity.propedit.NoApplication'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.propedit.PropType">道具类型</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="">{{'activity.propedit.PropType'|translate}}</label></label>
 
                     <div class="col-sm-9">
                         <select class="form-control" style="max-width: 150px;" ng-model="prop.type" ng-change="changeType()">
-                            <option value="" translate="activity.propedit.PleaseSelect">请选择</option>
-                            <option value="0" translate="activity.propedit.package">礼包</option>
-                            <option value="1" translate="activity.propedit.VirtualCurrency">虚拟币</option>
-                            <option value="2" translate="activity.propedit.ConventionalProps">常规道具</option>
+                            <option value="">{{'activity.propedit.PleaseSelect'|translate}}</option>
+                            <option value="0">{{'activity.propedit.package'|translate}}</option>
+                            <option value="1" >{{'activity.propedit.VirtualCurrency'|translate}}</option>
+                            <option value="2">{{'activity.propedit.ConventionalProps'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group" ng-if="prop.type=='2'">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.propedit.UsageMode">使用方式</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.propedit.UsageMode'|translate}}</label>
 
                     <div class="col-sm-9">
                         <select class="form-control w-sm" ng-model="prop.useMode" ng-change="changeUseMode()">
-                            <option value="" translate="activity.propedit.PleaseSelect">请选择</option>
-                            <option value="0" translate="activity.propedit.ResidentProduct">驻留品</option>
-                            <option value="1" translate="activity.propedit.consumables">消耗品</option>
-                            <option value="2" translate="activity.propedit.collection">收集品</option>
+                            <option value="" >{{'activity.propedit.PleaseSelect'|translate}}</option>
+                            <option value="0" >{{'activity.propedit.ResidentProduct'|translate}}</option>
+                            <option value="1">{{'activity.propedit.consumables'|translate}}</option>
+                            <option value="2" >{{'activity.propedit.collection'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
@@ -108,7 +108,7 @@
                     <label class="col-sm-2 control-label">{{amountName||'数量'}}</label>
 
                     <div class="col-sm-9">
-                        <input type="number" class="form-control w-sm" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="prop.amount">
+                        <input type="number" class="form-control w-sm" placeholder="{{'common.amount'|translate}}" min="1" ng-pattern="/^[0-9]*$/" ng-model="prop.amount">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -124,30 +124,30 @@
                 <!--</div>-->
 
                 <div class="form-group" ng-if="prop.type=='0'||prop.useMode=='2'">
-                    <label class="col-sm-2 control-label" translate="activity.propedit.AdditionalProps">附加道具</label>
+                    <label class="col-sm-2 control-label" >{{'activity.propedit.AdditionalProps'|translate}}</label>
                     <div class="col-sm-9">
                         <table class="table table-bordered table-hover table-condensed bg-white-only">
-                            <span class="btn btn-default" ng-click="addItem()" translate="activity.propedit.AddProps">添加道具</span>
+                            <span class="btn btn-default" ng-click="addItem()">{{'activity.propedit.AddProps'|translate}}</span>
                             <tr style="font-weight: bold">
-                                <td style="width:40%" translate="activity.propedit.prop">道具</td>
-                                <td style="width:30%" translate="activity.propedit.quantity">数量</td>
-                                <td style="width:30%" translate="activity.propedit.deadline">过期时间</td>
-                                <td style="width:40px" translate="activity.propedit.edit">编辑</td>
+                                <td style="width:40%" >{{'activity.propedit.prop'|translate}}</td>
+                                <td style="width:30%" >{{'activity.propedit.quantity'|translate}}</td>
+                                <td style="width:30%" >{{'activity.propedit.deadline'|translate}}</td>
+                                <td style="width:40px" >{{'activity.propedit.edit'|translate}}</td>
                             </tr>
                             <tr ng-repeat="item in prop.props">
                                 <td class="v-middle">
                                     <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
-                                        <option value="" translate="activity.propedit.NoProps">无道具</option>
+                                        <option value="">{{'activity.propedit.NoProps'|translate}}</option>
                                     </select>
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                    <input type="number" class="form-control" placeholder="{{'common.amount'|translate}}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                    <input type="number" class="form-control" placeholder="{{'activity.propedit.deadline'|translate}}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
                                 </td>
                                 <td style="white-space: nowrap">
-                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" translate="activity.propedit.delete">删除</a>
+                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">{{'activity.propedit.delete'|translate}}</a>
                                 </td>
                             </tr>
                         </table>
@@ -159,7 +159,7 @@
 
             <footer class="panel-footer text-right bg-light lter">
                 <!--<div style="max-width: 750px">-->
-                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()" translate="activity.propedit.save">保存</button>
+                    <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'activity.propedit.save'|translate}}</button>
                 <!--</div>-->
             </footer>
         </div>

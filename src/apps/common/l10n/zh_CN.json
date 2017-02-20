@@ -6,6 +6,18 @@
     "delete": "删除",
     "add": "新增",
     "modify": "修改",
-    "cancel": "取消"
+    "cancel": "取消",
+    "times": "起始时间和结束时间",
+    "searchUser": "搜索 账号/昵称/手机",
+    "search": "搜索",
+    "userName": "用户名",
+    "userId": "用户ID",
+    "userObjectId": "用户ObjectID",
+    "amount": "数量",
+    "transfer": "转账",
+    "balance": "余额",
+    "memo": "备注",
+    "confirm": "确认",
+    "name":"名称"
   }
 }

@@ -3,15 +3,15 @@
     <form ng-show="$state.is('app.activity.aty.edit')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a class="btn btn-default" style="border-color: transparent; background-color: transparent; box-shadow: none; display: inline;padding:6px" ui-sref="app.activity.aty.list" ><i class="glyphicon glyphicon-chevron-left"></i></a><strong translate="activity.atyedit.EditInformation">编辑信息</strong>
+                <a class="btn btn-default" style="border-color: transparent; background-color: transparent; box-shadow: none; display: inline;padding:6px" ui-sref="app.activity.aty.list" ><i class="glyphicon glyphicon-chevron-left"></i></a><strong>{{'activity.atyedit.EditInformation'|translate}}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.cover">封面</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.cover'|translate}}</label>
 
                     <div class="col-sm-9">
                         <div >
-                            <label translate="activity.atyedit.cutout">截取比例</label>：<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropHeight">
+                            <label>{{'activity.atyedit.cutout'|translate}}</label>：<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.logo.cropHeight">
                         </div>
                         <a ui-sref=".logo" ng-click="goLogo('logo')"><img width="{{cropperObj.logo.cropWidth}}" height="{{cropperObj.logo.cropHeight}}" ng-src="{{activity.logo}}" img-Load="loadImg($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
@@ -19,11 +19,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.picturetitle">图片标题</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.picturetitle'|translate}}</label>
 
                     <div class="col-sm-9">
                         <div>
-                            <label translate="activity.atyedit.cutout">截取比例</label>：<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropHeight">
+                            <label >{{'activity.atyedit.cutout'|translate}}</label>：<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropWidth">&nbsp：&nbsp<input type="number" style="width: 80px" ng-model="cropperObj.imgtitle.cropHeight">
                         </div>
                         <a ui-sref=".logo" ng-click="goLogo('imgtitle')"><img width="{{cropperObj.imgtitle.cropWidth}}" height="{{cropperObj.imgtitle.cropHeight}}" ng-src="{{activity.imgtitle}}" img-Load="loadImg2($event)" onerror="this.src='apps/common/img/logo.jpg'"/></a>
                     </div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.section">版块</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.section'|translate}}</label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="activity.forum" ng-options="option._id as option.title for option in forums" ng-change="onChanged()">
                             <option value=""></option>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyedit.SubordinateApplication">所属应用</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyedit.SubordinateApplication'|translate}}</label>
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="activity.app" ng-options="option._id as option.name for option in apps" ng-required="true">
                             <option value=""></option>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.ActivityDisplayTime">活动展示时间</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.ActivityDisplayTime'|translate}}</label>
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-md-4 w">
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.ActivityStartStopTime">活动起止时间</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.ActivityStartStopTime'|translate}}</label>
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-md-4 w">
@@ -119,86 +119,86 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.code">编码</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.code'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="编码" ng-model="activity.code">
+                        <input type="text" class="form-control" placeholder="{{'activity.atyedit.code'|translate}}" ng-model="activity.code">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyedit.title">标题</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyedit.title'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="标题" ng-model="activity.title" required>
+                        <input type="text" class="form-control" placeholder="{{'activity.atyedit.title'|translate}}" ng-model="activity.title" required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.subtitle">副标题</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.subtitle'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="副标题" ng-model="activity.subhead">
+                        <input type="text" class="form-control" placeholder="{{'activity.atyedit.subtitle'|translate}}" ng-model="activity.subhead">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.DisplayOrder">显示顺序</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.DisplayOrder'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="activity.order" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'activity.atyedit.DisplayOrder'|translate}}" ng-model="activity.order" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.PopularityDegree">热门度</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.PopularityDegree'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="热门度(正整数)" ng-model="activity.hot" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'activity.atyedit.PopularityDegree'|translate}}" ng-model="activity.hot" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.RecommendationDegree">推荐度</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.RecommendationDegree'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="推荐度(正整数)" ng-model="activity.recommend" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'activity.atyedit.RecommendationDegree'|translate}}" ng-model="activity.recommend" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.label">标签</label>
+                    <label class="col-sm-2 control-label" >{{'activity.atyedit.label'|translate}}</label>
 
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="activity.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="activity.tags" add-on-space="true" add-on-paste="true" placeholder="{{'activity.atyedit.label'|translate}}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.JumpAddress">跳转地址</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.JumpAddress'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="地址" ng-model="activity.url">
+                        <input type="text" class="form-control" placeholder="{{'activity.atyedit.JumpAddress'|translate}}" ng-model="activity.url">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyedit.describe">描述</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyedit.describe'|translate}}</label>
                     <div class="col-sm-9">
                         <div class="m-b-xs">
                             <div class="radio checkbox-inline">
                                 <label class="i-checks i-checks-sm" >
                                     <input type="radio" name="pattern" value="0" ng-model="activity.pattern" ng-click="onck()" checked>
                                     <i></i>
-                                    <label translate="activity.atyedit.PureText">纯文本</label>
+                                    {{'activity.atyedit.PureText'|translate}}
                                 </label>
                             </div>
                             <div class="radio checkbox-inline">
                                 <label class="i-checks i-checks-sm" >
                                     <input type="radio" name="pattern" value="1" ng-model="activity.pattern" ng-click="onck()">
                                     <i></i>
-                                    <label translate="activity.atyedit.FormattedText">带格式文本</label>
+                                    {{'activity.atyedit.FormattedText'|translate}}
                                 </label>
                             </div>
                             <div class="radio checkbox-inline">
@@ -217,7 +217,7 @@
             </div>
 
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()" translate="activity.atyedit.save">保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()" >{{'activity.atyedit.save'|translate}}</button>
             </footer>
         </div>
     </form>

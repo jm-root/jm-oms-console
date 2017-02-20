@@ -16,7 +16,8 @@
                         .state('app.bank', {
                             url: '/bank',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/bank.js'])
+                            controller:'BankCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/bank.js',path + 'js/controllers/index.js'])
                         })
                         //财务管理
                         .state('app.bank.currencyrate', {
