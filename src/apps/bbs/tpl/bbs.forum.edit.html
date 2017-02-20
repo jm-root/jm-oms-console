@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.code'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="编码" ng-model="forum.code">
+                        <input type="text" class="form-control" placeholder="{{'bbs.forum.edit.code'|translate}}" ng-model="forum.code">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'bbs.forum.edit.title'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="标题" ng-model="forum.title" required>
+                        <input type="text" class="form-control" placeholder="{{'bbs.forum.edit.title'|translate}}" ng-model="forum.title" required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.subtitle'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="副标题" ng-model="forum.subtitle">
+                        <input type="text" class="form-control" placeholder="{{'bbs.forum.edit.subtitle'|translate}}" ng-model="forum.subtitle">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.order'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="顺序号(正整数)" ng-model="forum.order" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'bbs.forum.edit.order'|translate}}(正整数)" ng-model="forum.order" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.popularityDegree'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="热门度(最小值为0)" ng-model="forum.hot" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'bbs.forum.edit.popularityDegree'|translate}}(>=0)" ng-model="forum.hot" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.recommendationDegree'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="推荐度(最小值为0)" ng-model="forum.recommend" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'bbs.forum.edit.recommendationDegree'|translate}}(>=0)" ng-model="forum.recommend" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -80,7 +80,7 @@
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.label'|translate}}</label>
 
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="forum.tags" add-on-space="true" add-on-paste="true" placeholder="{{'bbs.forum.edit.label'|translate}}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bbs.forum.edit.jumpAddress'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="跳转地址" ng-model="topic.url">
+                        <input type="text" class="form-control" placeholder="{{'bbs.forum.edit.jumpAddress'|translate}}" ng-model="topic.url">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

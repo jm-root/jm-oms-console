@@ -27,6 +27,7 @@
     },
     "topic":{
       "list":{
+        "search":"Search title/author",
         "create":"create",
         "delete":"delete",
         "topicList":"Post List"

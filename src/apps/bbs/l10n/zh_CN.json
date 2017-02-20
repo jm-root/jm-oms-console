@@ -27,6 +27,7 @@
     },
     "topic":{
       "list":{
+        "search":"搜索 标题/作者",
         "create":"创建",
         "delete":"删除",
         "topicList":"帖子列表"
