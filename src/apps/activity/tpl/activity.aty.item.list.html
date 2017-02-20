@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
         <button ui-sref="app.activity.aty.item.edit({pid:'{{pid}}'})" type="button" class="btn btn-sm btn-primary btn-addon">
-            <i class="fa fa-plus"></i><label translate="activity.atyitemlist.create">创建</label>
+            <i class="fa fa-plus"></i>{{'activity.atyitemlist.create'|translate}}
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-            <i class="fa fa-trash-o"></i><label translate="activity.atyitemlist.delete">删除</label>
+            <i class="fa fa-trash-o"></i>{{'activity.atyitemlist.delete'|translate}}
         </button>
     </div>
     <div class="pull-right">
@@ -13,7 +13,7 @@
 
     </div>
 
-    <h1 class="m-n font-thin h3"><a ng-if="activity.title" ui-sref="app.activity.aty.list">{{activity.title+'>>'}}</a><label translate="activity.atyitemlist.ActivityItem">活动项</label></h1>
+    <h1 class="m-n font-thin h3"><a ng-if="activity.title" ui-sref="app.activity.aty.list">{{activity.title+'>>'}}</a>{{'activity.atyitemlist.ActivityItem'|translate}}</h1>
 </div>
 <div>
     <div class="panel panel-default">

@@ -2,7 +2,7 @@
     <div class="pull-right">
         <form>
             <div class="input-group m-r-sm w-lg">
-                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 账号/昵称/手机号">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'player.info.list.search'|translate}}">
                   <span class="input-group-btn" style="width: auto">
                     <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
                   </span>
@@ -11,29 +11,29 @@
     </div>
     <div class="pull-right">
         <div class="input-group m-r-sm" style="width: 185px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="position: relative;height: 30px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
-            <option value="" translate="player.info.type">类别</option>
-            <option value="0" translate="player.info.tourist">游客</option>
-            <option value="1" translate="player.info.phone">手机</option>
-            <option value="2" translate="player.info.wechat">微信</option>
-            <option value="3" translate="player.info.qq">QQ</option>
+            <option value="" >{{'player.info.list.type'|translate}}</option>
+            <option value="0">{{'player.info.list.tourist'|translate}}</option>
+            <option value="1">{{'player.info.list.phone'|translate}}</option>
+            <option value="2">{{'player.info.list.wechat'|translate}}</option>
+            <option value="3">{{'player.info.list.qq'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.active" ng-change="onPageSizeChanged()">
-            <option value="" translate="player.info.state">状态</option>
-            <option value="0" translate="player.info.stop">封停</option>
-            <option value="1" translate="player.info.normal">正常</option>
+            <option value="">{{'player.info.list.state'|translate}}</option>
+            <option value="0">{{'player.info.list.stop'|translate}}</option>
+            <option value="1">{{'player.info.list.normal'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="" translate="player.info.agents">所属渠道</option>
+            <option value="">{{'player.info.list.agents'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
@@ -41,13 +41,13 @@
         </select>
     </div>
 
-    <h1 class="m-n font-thin h3" translate="app.player.info">玩家信息</h1>
+    <h1 class="m-n font-thin h3">{{'player.info.list.info'|translate}}</h1>
 </div>
 <div>
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>
         <div class="panel-body">
-            <span style="font-size: larger">玩家总人数:{{stat.user_total||0}}&emsp;手机用户数:{{stat.user_mobile||0}}&emsp;昨天注册人数:{{stat.user_yesterday||0}}&emsp;今天注册人数:{{stat.user_today||0}}</span>
+            <span style="font-size: larger">{{'player.info.list.playerTotal'|translate}}:{{stat.user_total||0}}&emsp;{{'player.info.list.mobileTotal'|translate}}:{{stat.user_mobile||0}}&emsp;{{'player.info.list.registeredYesterday'|translate}}:{{stat.user_yesterday||0}}&emsp;{{'player.info.list.registerToday'|translate}}:{{stat.user_today||0}}</span>
             <div ng-style="{height:app.navHeight-155+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
         </div>
     </div>

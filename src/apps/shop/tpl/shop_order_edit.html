@@ -9,42 +9,42 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.orderID'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="订单id" ng-model="order._id" required disabled="true">
+                        <input type="text" class="form-control" placeholder="{{'shop.order.edit.orderID'|translate}}" ng-model="order._id" required disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.productID'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="产品id" ng-model="order.product._id" disabled="true">
+                        <input type="text" class="form-control" placeholder="{{'shop.order.edit.productID'|translate}}" ng-model="order.product._id" disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.paymentID'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="产品id" ng-model="order.payId" disabled="true">
+                        <input type="text" class="form-control" placeholder="{{'shop.order.edit.paymentID'|translate}}" ng-model="order.payId" disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.productTitle'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="产品标题" ng-model="order.product.name">
+                        <input type="text" class="form-control" placeholder="{{'shop.order.edit.productTitle'|translate}}" ng-model="order.product.name">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.productNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="产品数量" ng-model="order.buyNum"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.order.edit.productNumber'|translate}}" ng-model="order.buyNum"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.order.edit.purchaseUser'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="购买用户" ng-model="order.userNick">
+                        <input type="text" class="form-control" placeholder="{{'shop.order.edit.purchaseUser'|translate}}" ng-model="order.userNick">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -62,7 +62,7 @@
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'shop.order.edit.save'|translate}}保存</button>
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'shop.order.edit.save'|translate}}</button>
             </footer>
         </div>
     </form>

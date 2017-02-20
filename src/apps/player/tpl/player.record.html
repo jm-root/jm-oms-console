@@ -2,7 +2,7 @@
     <div class="pull-right">
         <form>
             <div class="input-group m-r-sm w-lg">
-                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 账号/昵称/手机号">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'player.record.search'|translate}}">
               <span class="input-group-btn" style="width: auto">
                 <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
               </span>
@@ -11,7 +11,7 @@
     </div>
     <div class="pull-right">
         <div class="input-group m-r-sm" style="width: 185px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="position: relative;height: 30px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
@@ -20,7 +20,7 @@
         </select>
     </div>
 
-    <h1 class="m-n font-thin h3" translate="app.player.record">游戏记录</h1>
+    <h1 class="m-n font-thin h3">{{'player.record.title'|translate}}</h1>
 </div>
 <div>
     <div class="panel panel-default">

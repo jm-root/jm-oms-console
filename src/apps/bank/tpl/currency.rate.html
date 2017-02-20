@@ -7,24 +7,24 @@
                         {{ebtnname}}
                     </a>
                 </div>
-                <div class="h4">币种</div>
+                <div class="h4">{{'bank.currency.rate.currency'|translate}}</div>
             </div>
             <div ng-if="!isCollapsed" class="panel-body bg-white-only">
                 <form name="formValidate" class="form-horizontal form-validation">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">编码</label>
+                        <label class="col-sm-3 control-label">{{'bank.currency.rate.coding'|translate}}</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="currency.code" ng-pattern="/^[a-z|A-Z]*$/" ng-required="true">
+                            <input type="text" class="form-control" placeholder="{{'bank.currency.rate.coding'|translate}}(a-z|A-Z字符)" ng-model="currency.code" ng-pattern="/^[a-z|A-Z]*$/" ng-required="true">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">名称</label>
+                        <label class="col-sm-3 control-label">{{'bank.currency.rate.name'|translate}}</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="名称" ng-model="currency.title"  ng-required="true">
+                            <input type="text" class="form-control" placeholder="{{'bank.currency.rate.name'|translate}}" ng-model="currency.title"  ng-required="true">
                         </div>
                     </div>
                     <footer class="text-right">
-                        <button class="btn btn-info" ng-click="!formValidate.$invalid&&enter()">确认</button>
+                        <button class="btn btn-info" ng-click="!formValidate.$invalid&&enter()">{{'common.confirm'|translate}}</button>
                     </footer>
                 </form>
             </div>
@@ -32,7 +32,7 @@
                 <div class="cell">
                     <div class="cell-inner">
                         <div class="list-group no-radius no-border no-bg m-b-none">
-                            <p ng-show="!currencys.length&&isCollapsed" style="text-align: center">无数据</p>
+                            <p ng-show="!currencys.length&&isCollapsed" style="text-align: center">{{'bank.currency.rate.noData'|translate}}</p>
                             <a ng-repeat="currency in currencys" class="list-group-item m-l-none hover-anchor b-a no-select" ng-class="{'focus': currency.selected}" ng-click="selectCurrency(currency)">
                                 <span ng-click="deleteCurrency(currency)" class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
                                 <span class="block m-l">{{ currency.code+' : ' }}{{ currency.title }}</span>
@@ -47,25 +47,25 @@
     <div class="col w-lg lter b-r">
         <div class="vbox" style="min-height: 800px">
                 <div class="wrapper-sm b-b">
-                    <div class="h4">兑率</div>
+                    <div class="h4">{{'bank.currency.rate.exchangeRate'|translate}}</div>
                 </div>
                 <div class="panel-body bg-white-only">
                     <form name="formValidate" class="form-horizontal form-validation">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">兑币</label>
+                            <label class="col-sm-3 control-label">{{'bank.currency.rate.moneyExchange'|translate}}</label>
                             <div class="col-sm-9">
                                 <select class="form-control" ng-model="curRate.to" ng-options="option.code as option.title for option in currencys" required>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">比例</label>
+                            <label class="col-sm-3 control-label">{{'bank.currency.rate.proportion'|translate}}</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" placeholder="比例" ng-model="curRate.rate">
+                                <input type="number" class="form-control" placeholder="{{'bank.currency.rate.proportion'|translate}}" ng-model="curRate.rate">
                             </div>
                         </div>
                         <footer class="text-right">
-                            <button class="btn btn-info" ng-click="!formValidate.$invalid&&add()">保存&添加</button>
+                            <button class="btn btn-info" ng-click="!formValidate.$invalid&&add()">{{'bank.currency.rate.saveAdd'|translate}}</button>
                         </footer>
                     </form>
                 </div>

@@ -16,6 +16,7 @@
                             url: '/shop',
                             controller:'ShopCtrl',
                             template: '<div ui-view class="fade-in-down"></div>',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
                         })
                         .state('app.shop.category', {
                             url: '/category',

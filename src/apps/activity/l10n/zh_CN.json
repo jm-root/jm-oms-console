@@ -47,6 +47,7 @@
       "deadline":"过期时间",
       "edit":"编辑",
       "NoProps":"无道具",
+      "deadline":"过期时间",
       "delete":"删除",
       "save":"保存"
     },
@@ -56,6 +57,7 @@
       "ActivityItem":"活动项"
     },
     "atylist":{
+      "search":"搜索 标题",
       "create":"创建",
       "delete":"删除",
       "SelectSection":"选择版块",

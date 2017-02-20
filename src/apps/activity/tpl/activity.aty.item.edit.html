@@ -7,7 +7,7 @@
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyitemedit.SubordinateActivities">所属活动</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyitemedit.SubordinateActivities'|translate}}</label>
                     <div class="col-sm-9 w-auto">
                         <p class="form-control-static" ng-bind="activity.title"></p>
                     </div>
@@ -15,35 +15,35 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.title">标题</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.title'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="名称" ng-model="atyitem.title" ng-required="true">
+                        <input type="text" class="form-control" style="max-width: 320px;" placeholder="{{'common.name'|translate}}" ng-model="atyitem.title" ng-required="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.ConditionType">条件类型</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.ConditionType'|translate}}</label>
 
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-change="selectChangeType()" ng-model="atyitem.type" ng-required="true">
-                            <option value="" translate="activity.atyitemedit.PleaseSelect">请选择</option>
-                            <option value="0" translate="activity.atyitemedit.sign">签到</option>
-                            <option value="1" translate="activity.atyitemedit.SignIn">登录</option>
-                            <option value="2" translate="activity.atyitemedit.recharge">充值</option>
-                            <option value="3" translate="activity.atyitemedit.consumption">消费</option>
-                            <option value="4" translate="activity.atyitemedit.turntable">转盘</option>
+                            <option value="" >{{'activity.atyitemedit.PleaseSelect'|translate}}</option>
+                            <option value="0" >{{'activity.atyitemedit.sign'|translate}}</option>
+                            <option value="1" >{{'activity.atyitemedit.SignIn'|translate}}</option>
+                            <option value="2" >{{'activity.atyitemedit.recharge'|translate}}</option>
+                            <option value="3">{{'activity.atyitemedit.consumption'|translate}}</option>
+                            <option value="4">{{'activity.atyitemedit.turntable'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.ConditionType">条件种类</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.ConditionType'|translate}}</label>
 
                     <div class="col-sm-9">
                         <select class="form-control w-auto" ng-change="selectChangeCategory()" ng-model="atyitem.category"  ng-options="option.code as option.name for option in types[atyitem.type]" ng-required="true">
-                            <option value="" translate="activity.atyitemedit.PleaseSelect">请选择</option>
+                            <option value="">{{'activity.atyitemedit.PleaseSelect'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
@@ -54,7 +54,7 @@
 
                     <div class="col-sm-9">
                         <select class="form-control w-auto" ng-model="atyitem.code"  ng-options="option.code as option.name for option in codes[atyitem.type]" ng-required="true">
-                            <option value="" translate="activity.atyitemedit.PleaseSelect">请选择</option>
+                            <option value="">{{'activity.atyitemedit.PleaseSelect'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form-group" ng-if="visDate[atyitem.type+':'+atyitem.category]==0">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.EffectiveStartStopTime">有效起止时间</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.EffectiveStartStopTime'|translate}}</label>
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-md-4 w">
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="form-group" ng-if="visDate[atyitem.type+':'+atyitem.category]==1">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.EffectiveStartStopTime">有效起止时间</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.EffectiveStartStopTime'|translate}}</label>
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-md-4 w-sm">
@@ -118,58 +118,58 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyitemedit.PropsToWhereToSave">道具往哪存</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyitemedit.PropsToWhereToSave'|translate}}</label>
 
                     <div class="col-sm-9 w-auto">
                         <select class="form-control w-sm" ng-model="atyitem.hold">
-                            <option value="0" translate="activity.atyitemedit.knapsack">背包</option>
-                            <option value="1" translate="activity.atyitemedit.mail">邮件</option>
+                            <option value="0">{{'activity.atyitemedit.knapsack'|translate}}</option>
+                            <option value="1">{{'activity.atyitemedit.mail'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyitemedit.DisplayOrder">显示顺序</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyitemedit.DisplayOrder'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="顺序号(正整数,数越大越往后)" ng-model="atyitem.order" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" placeholder="{{'activity.atyitemedit.DisplayOrder'|translate}}(正整数,数越大越往后)" ng-model="atyitem.order" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="activity.atyitemedit.JumpAddress">跳转地址</label>
+                    <label class="col-sm-2 control-label">{{'activity.atyitemedit.JumpAddress'|translate}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="地址" ng-model="atyitem.url">
+                        <input type="text" class="form-control" placeholder="{{'activity.atyitemedit.JumpAddress'|translate}}" ng-model="atyitem.url">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="activity.atyitemedit.AdditionalProps">附加道具</label></label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{'activity.atyitemedit.AdditionalProps'|translate}}</label>
                     <div class="col-sm-9">
                         <table class="table table-bordered table-hover table-condensed bg-white-only">
-                            <span class="btn btn-default" ng-click="addItem()" translate="activity.atyitemedit.AddProps">添加道具</span>
+                            <span class="btn btn-default" ng-click="addItem()">{{'activity.atyitemedit.AddProps'|translate}}</span>
                             <tr style="font-weight: bold">
-                                <td style="width:40%" translate="activity.atyitemedit.prop">道具</td>
-                                <td style="width:30%" translate="activity.atyitemedit.quantity">数量</td>
-                                <td style="width:30%" translate="activity.atyitemedit.deadline">过期时间</td>
-                                <td style="width:40px" translate="activity.atyitemedit.edit">编辑</td>
+                                <td style="width:40%">{{'activity.atyitemedit.prop'|translate}}</td>
+                                <td style="width:30%" >{{'activity.atyitemedit.quantity'|translate}}</td>
+                                <td style="width:30%">{{'activity.atyitemedit.deadline'|translate}}</td>
+                                <td style="width:40px">{{'activity.atyitemedit.edit'|translate}}</td>
                             </tr>
                             <tr ng-repeat="item in atyitem.props">
                                 <td class="v-middle">
                                     <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
-                                        <option value="" translate="activity.atyitemedit.NoProps">无道具</option>
+                                        <option value="">{{'activity.atyitemedit.NoProps'|translate}}</option>
                                     </select>
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                    <input type="number" class="form-control" placeholder="{{'common.amount'|translate}}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                    <input type="number" class="form-control" placeholder="{{'activity.atyitemedit.deadline'|translate}}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
                                 </td>
                                 <td style="white-space: nowrap">
-                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" translate="activity.atyitemedit.delete">删除</a>
+                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">{{'activity.atyitemedit.delete'|translate}}</a>
                                 </td>
                             </tr>
                         </table>
