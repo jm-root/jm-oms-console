@@ -28,8 +28,8 @@
     "topic":{
       "list":{
         "search":"Search title/author",
-        "create":"create",
-        "delete":"delete",
+        "create":"Create",
+        "delete":"Delete",
         "topicList":"Post List"
       },
       "edit":{

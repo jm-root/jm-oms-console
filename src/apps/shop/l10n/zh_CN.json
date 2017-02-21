@@ -100,6 +100,7 @@
       "create":"创建",
       "delete":"删除",
       "productList":"产品列表",
+      "search":"名字/描述",
       "edit":{
         "editInformation":"编辑信息",
         "productID":"产品id",
