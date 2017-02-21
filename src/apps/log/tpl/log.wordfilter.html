@@ -1,7 +1,7 @@
 <div ng-controller="WordFilterCtrl">
     <div class="bg-light lter wrapper">
         <div class="pull-right ">
-            <button class="btn btn-primary btn-sm btn-addon" ng-click="!formValidate.$invalid&&add()"><i class="fa fa-plus"></i>添加</button>
+            <button class="btn btn-primary btn-sm btn-addon" ng-click="!formValidate.$invalid&&add()"><i class="fa fa-plus"></i>{{ 'log.add' | translate }}</button>
         </div>
         <div class="pull-right m-r-xs">
             <input type="text" class="form-control input-sm" ng-model="wordfilter" placeholder="敏感词"/>

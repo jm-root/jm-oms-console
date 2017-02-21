@@ -24,64 +24,64 @@
     <div class="col-lg-4">
       <div class="panel panel-default">
         <div class="text-center wrapper m-b-sm bg-primary">
-          用户统计
+          {{ 'dashboard.playerStat.title' | translate }}
         </div>
         <ul class="list-group no-radius">
           <li class="list-group-item">
             <span class="pull-right">{{stat.user_total||0}}</span>
-            累计总数
+            {{ 'dashboard.playerStat.total' | translate }}
           </li>
           <li class="list-group-item">
             <span class="pull-right">{{stat.user_yesterday||0}}</span>
-            昨日新增
+            {{ 'dashboard.playerStat.yesterday' | translate }}
           </li>
           <li class="list-group-item">
             <span class="pull-right">{{stat.user_today||0}}</span>
-            今日新增
+            {{ 'dashboard.playerStat.today' | translate }}
           </li>
           <li class="list-group-item">
             <span class="pull-right">{{stat.user_guest||0}}</span>
-            游客
+            {{ 'dashboard.playerStat.guest' | translate }}
           </li>
           <li class="list-group-item">
             <span class="pull-right">{{stat.user_mobile||0}}</span>
-            手机
+            {{ 'dashboard.playerStat.mobile' | translate }}
           </li>
           <li class="list-group-item">
             <span class="pull-right">{{(stat.user_wechat+stat.user_qq)||0}}</span>
-            其它
+            {{ 'dashboard.playerStat.other' | translate }}
           </li>
         </ul>
       </div>
     </div>
     <div class="col-lg-4">
       <div class="text-center wrapper m-b-sm bg-info">
-        充值统计
+        {{ 'dashboard.rechargeStat.title' | translate }}
       </div>
       <ul class="list-group no-radius">
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_total*0.01||0}}</span>
-          累计充值
+          {{ 'dashboard.rechargeStat.total' | translate }}
         </li>
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_yesterday*0.01||0}}</span>
-          昨日充值
+          {{ 'dashboard.rechargeStat.yesterday' | translate }}
         </li>
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_today*0.01||0}}</span>
-          今日充值
+          {{ 'dashboard.rechargeStat.today' | translate }}
         </li>
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_order_total||0}}</span>
-          总笔数
+          {{ 'dashboard.rechargeStat.totalSum' | translate }}
         </li>
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_order_valid||0}}</span>
-          有效笔数
+          {{ 'dashboard.rechargeStat.validSum' | translate }}
         </li>
         <li class="list-group-item">
           <span class="pull-right">{{stat.recharge_order_invalid||0}}</span>
-          无效笔数
+          {{ 'dashboard.rechargeStat.invalidSum' | translate }}
         </li>
       </ul>
     </div>

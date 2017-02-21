@@ -380,7 +380,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
     var sso = jm.sdk.sso;
     $scope.checkInput = {};
     var viewPath = 'view.agent.list';
-    $scope.super = false;
+    $scope.super = true;
     $scope.per = {};
     global.getUserPermission(viewPath).then(function(obj){
         $scope.per = obj[viewPath]||{};
@@ -441,6 +441,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
     //}
     $scope.create = function(){
         var agent = $scope.agent;
+        console.log(111);
         agent.tags = formatTags(agent.tags);
         $http.post(agentUri+'/agents', $scope.agent, {
             params:{
@@ -448,6 +449,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
             }
         }).success(function(result){
             var obj = result;
+            console.log(result);
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
