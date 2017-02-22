@@ -1,9 +1,13 @@
 {
-  "COPYRIGHT": "有限公司<br>&copy; 2015",
+  "COPYRIGHT": "Limited company<br>&copy; 2015",
+  "HEADNAME": "Backstage",
   "login": {
     "LOGIN": "Log in",
     "FORGOT_PASSWORD": "Forgot password?",
-    "ENTER_LOGIN_INFO": "Please enter the login information"
+    "ENTER_LOGIN_INFO": "Please enter the login information",
+    "ACCOUNT": "Account",
+    "PASSWORD": "Password",
+    "VERIFICATION": "Verification code"
   },
   "nav": {
     "HEADER": "Navigation",
@@ -113,11 +117,9 @@
     },
     "shop":{
       "manage":"Shop Manage",
-      "category":"Shop Category",
       "product":"Shop Product",
-      "order":"Shop Order",
       "lottery":"Shop Lottery",
-      "bet":"Shop Bet"
+      "lotteryWin":"Shop Lottery Winner"
     },
     "home":{
       "manage":"Hall Manage",

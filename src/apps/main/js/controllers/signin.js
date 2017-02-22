@@ -2,7 +2,8 @@
 
 /* Controllers */
 // signin controller
-app.controller('SigninCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoader', function ($scope, $http, $state, $translatePartialLoader) {
+    $translatePartialLoader.addPart('main');
     var sso = jm.sdk.sso;
     $scope.user = {};
     $scope.visImgCode = localStorage.getItem('visImgCode')=='true';

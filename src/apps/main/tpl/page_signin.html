@@ -11,14 +11,14 @@
       </div>
       <div class="list-group list-group-sm">
         <div class="list-group-item">
-          <input type="text" placeholder="账号" class="form-control no-border" ng-model="user.account" ng-change="onInput()" required>
+          <input type="text" placeholder="{{ 'login.ACCOUNT' | translate }}" class="form-control no-border" ng-model="user.account" ng-change="onInput()" required>
         </div>
         <div class="list-group-item">
-           <input type="password" placeholder="密码" class="form-control no-border" ng-model="user.passwd" ng-change="onInput()" required>
+           <input type="password" placeholder="{{ 'login.PASSWORD' | translate }}" class="form-control no-border" ng-model="user.passwd" ng-change="onInput()" required>
           <a ui-sref="access.forgotpwd" tabIndex="-1" translate="login.FORGOT_PASSWORD" style="position: absolute;top: 13px;right: 3px;color: #BBB;">忘记密码?</a>
         </div>
         <div class="list-group-item" ng-if="visImgCode">
-          <input type="text" placeholder="验证码" class="form-control no-border" ng-model="user.checkcode" ng-change="onInput()" required>
+          <input type="text" placeholder="{{ 'login.VERIFICATION' | translate }}" class="form-control no-border" ng-model="user.checkcode" ng-change="onInput()" required>
           <img alt="" ng-src="{{imgCodeUri}}" style="width: 70px;position: absolute;top: 6px;right: 3px" ng-click="refresh()">
         </div>
       </div>
