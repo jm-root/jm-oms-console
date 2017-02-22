@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal',
-        function ($scope, $translate, $localStorage, $window, toaster, $modal) {
+    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location',
+        function ($scope, $translate, $localStorage, $window, toaster, $modal, $location) {
             // add 'ie' classes to html
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             if (isIE) {
@@ -12,8 +12,12 @@ angular.module('app')
             }
             if (isSmartDevice($window)) {
                 angular.element($window.document.body).addClass('smart')
-            }
-            ;
+            };
+
+            var host = $location.host();
+            var port = $location.port();
+            $scope.host = port==80 ? host : host+':'+port;
+            console.log($scope.host);
 
             // config
             $scope.app = {

@@ -7,7 +7,8 @@ var gConfig = {
         staticHost:"http://localhost:20400"
     },
     development: {
-        sdkHost: "http://192.168.0.55:19990",
+        apiHost: "http://192.168.0.55:19990",
+        sdkHost: "http://192.168.0.61:81",
         opensdkHost: "http://jamma.3322.org:20300",
         staticHost:"http://jamma.3322.org:20400"
     },
@@ -20,38 +21,39 @@ var gConfig = {
 
 gConfig = gConfig['development'];
 
+var apiHost = gConfig.apiHost;
 var sdkHost = gConfig.sdkHost;
 var opensdkHost = gConfig.opensdkHost;
 var staticHost = gConfig.staticHost;
 
-var ssoUri = sdkHost+"/sso";
-var aclUri = sdkHost+"/acl";
-var adminUri = sdkHost+"/admin";
-var omsUri = sdkHost+"/oms";
-var appMgrUri = sdkHost + "/appManager";
-var agentUri = sdkHost + "/agent";
-var configUri = sdkHost + "/config";
+var ssoUri = apiHost+"/sso";
+var aclUri = apiHost+"/acl";
+var adminUri = apiHost+"/admin";
+var omsUri = apiHost+"/oms";
+var appMgrUri = apiHost + "/appManager";
+var agentUri = apiHost + "/agent";
+var configUri = apiHost + "/config";
 var uploadUri = sdkHost + "/upload";
 var staticUri = staticHost + "/static";
-var activityUri = sdkHost + "/activity";
-var propUri = sdkHost + "/prop";
-var depotUri = sdkHost + "/depot";
-var payUri = sdkHost + "/pay";
-var bbsUri = sdkHost + "/bbs";
-var wordfilterUri = sdkHost + "/wordfilter";
-var packUri = sdkHost + "/pack";
-var statUri = sdkHost + "/stat";
-var cardUri = sdkHost + "/card";
-var homeUri = sdkHost + "/home";
-var recordUri = sdkHost + "/record";
-var guestbookUri = sdkHost + "/guestbook";
-var shopUri = sdkHost + "/shop";
-var logUri = sdkHost + "/log";
-var baoxiangUri = sdkHost + "/baoxiang";
-var algUri = sdkHost + "/alg";
+var activityUri = apiHost + "/activity";
+var propUri = apiHost + "/prop";
+var depotUri = apiHost + "/depot";
+var payUri = apiHost + "/pay";
+var bbsUri = apiHost + "/bbs";
+var wordfilterUri = apiHost + "/wordfilter";
+var packUri = apiHost + "/pack";
+var statUri = apiHost + "/stat";
+var cardUri = apiHost + "/card";
+var homeUri = apiHost + "/home";
+var recordUri = apiHost + "/record";
+var guestbookUri = apiHost + "/guestbook";
+var shopUri = apiHost + "/shop";
+var logUri = apiHost + "/log";
+var baoxiangUri = apiHost + "/baoxiang";
+var algUri = apiHost + "/alg";
 
 
-jm.sdk.init({uri: sdkHost});
+jm.sdk.init({uri: apiHost});
 
 var domain = '';
 var host = document.domain;
