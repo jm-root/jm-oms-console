@@ -1,9 +1,9 @@
 <div class="bg-light lter b-b wrapper">
-    <h1 class="m-n font-thin h3">编辑图片</h1>
+    <h1 class="m-n font-thin h3">{{'imgcrop.title'|translate}}</h1>
 </div>
 <div class="wrapper-md">
     <div class="fileUpload btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-folder"></i>
-        <span>浏览...</span>
+        <span>{{'imgcrop.label'|translate}}...</span>
         <input type="file" class="upload" ui-filereader ng-model="cropper.sourceImage" accept="image/*"/>
     </div>
     <div class="hbox hbox-auto-xs">
@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="m-t-xs">
-        <label class="btn btn-success" ng-click="ok()"><strong>ok</strong></label>
-        <label class="btn btn-default" ng-click="cancel()"><strong>cancel</strong></label>
+        <label class="btn btn-success" ng-click="ok()"><strong>{{'imgcrop.ok'|translate}}</strong></label>
+        <label class="btn btn-default" ng-click="cancel()"><strong>{{'imgcrop.cancel'|translate}}</strong></label>
     </div>
 </div>

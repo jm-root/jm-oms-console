@@ -19,5 +19,11 @@
     "memo": "备注",
     "confirm": "确认",
     "name":"名称"
+  },
+  "imgcrop":{
+    "title":"编辑图片",
+    "label":"浏览",
+    "ok":"确定",
+    "cancel":"取消"
   }
 }
