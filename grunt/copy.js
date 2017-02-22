@@ -123,7 +123,8 @@ module.exports = {
                 src:  [
                     'moment/moment.js',
                     'moment/locale/*.js',
-                    'lodash/dist/lodash.js'
+                    'lodash/dist/lodash.js',
+                    'echarts/dist/echarts.js'
                 ],
                 dest: 'libs/jquery',
                 cwd:  'node_modules',

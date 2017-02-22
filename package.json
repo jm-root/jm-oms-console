@@ -18,6 +18,7 @@
     "jm-config": "*",
     "jm-acl": "*",
     "jm-oms": "*",
+    "echarts": "*",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-usemin": "^3.1.1"

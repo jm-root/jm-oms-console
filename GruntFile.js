@@ -21,13 +21,13 @@ module.exports = function(grunt) {
         'usemin',
         'clean:tmp'
     ]);
-    
+
     gtx.alias('build:html', [
-        'clean:html', 
-        'copy:html', 
-        'recess:html', 
-        'swig:html', 
-        'concat:html', 
+        'clean:html',
+        'copy:html',
+        'recess:html',
+        'swig:html',
+        'concat:html',
         'uglify:html'
     ]);
 
