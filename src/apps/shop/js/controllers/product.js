@@ -166,10 +166,21 @@ app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',func
 
     var id = $stateParams.id;
     $scope.id = id;
-    $scope.product = {};
+    // $scope.product = {};
 
     $scope.categories = {};
-    $scope.cate = {};
+    // $scope.cate = {};
+    var type = $stateParams.type;
+
+    $scope.lottery = {
+        period: 1,
+        prodNum: 1,
+        type: "1",
+        currency: "dbj",
+        unitPrice: 1,
+        sort: 0,
+        status: 1
+    };
 
     $http.get(shopUri+'/categories', {
         params:{
@@ -200,11 +211,11 @@ app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',func
                     }else{
                         $scope.product = obj
                         $scope.product.picture = obj.pic ? sdkHost + obj.pic : "";
-                        for(var i=0; i<$scope.categories.length; i++){
-                            if($scope.categories[i]._id == obj.category._id){
-                                $scope.cate = $scope.categories[i];
-                            }
-                        }
+                        // for(var i=0; i<$scope.categories.length; i++){
+                        //     if($scope.categories[i]._id == obj.category._id){
+                        //         $scope.cate = $scope.categories[i];
+                        //     }
+                        // }
                     }
                 }).error(function(msg, code){
                     $scope.errorTips(code);
@@ -212,6 +223,15 @@ app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',func
             }else{
                 // $scope.category.name = obj.name;
                 // $scope.category.pid = obj.pid;
+                $scope.product = {
+                    status: 1,
+                }
+
+                if((type !== undefined) && (type == 'lottery')){
+                    $scope.product.type = 1;
+                }else{
+                    $scope.product.type = 2;
+                }
             }
 
         }
@@ -224,7 +244,22 @@ app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',func
             url += "/" + id;
         }
 
-        $scope.product.category = $scope.cate._id;
+        // $scope.product.category = $scope.cate._id;
+        $scope.product.price = 0;
+        $scope.product.inventory = 999999999;
+        $scope.product.currency = "dbj";
+        $scope.product.type = parseInt($scope.product.type);
+
+        if($scope.product.type == 1){
+            $scope.product.visible = 0;
+            $scope.product.unitPrice = 0;
+        }else{
+            if($scope.product.visible){
+                $scope.product.visible = parseInt($scope.product.visible);
+            }else{
+                $scope.product.visible = 1;
+            }
+        }
 
         $http.post(url, $scope.product, {
             params:{
@@ -235,12 +270,51 @@ app.controller('ProdEditCtrl', ['$scope', '$http', '$state', '$stateParams',func
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
-                $state.go('app.shop.product.list');
+                if($scope.product.type == 1 && !id){
+
+                    $scope.lottery.product = obj._id;
+                    $scope.lottery.title || ($scope.lottery.title = $scope.product.title);
+                    $scope.lottery.summary || ($scope.lottery.summary = $scope.product.summary);
+                    $scope.lottery.enable = true;
+
+                    var url = shopUri  + '/lotteries';
+
+                    $http.post(url, $scope.lottery, {
+                        params:{
+                            token: sso.getToken()
+                        }
+                    }).success(function(result){
+                        var obj = result;
+                        if(obj.err){
+                            $scope.error(obj.msg);
+                        }else{
+                            $scope.success('操作成功');
+                            $state.go('app.shop.lottery.list');
+                        }
+                    }).error(function(msg, code){
+                        $scope.errorTips(code);
+                    });
+
+                }else{
+                    $scope.success('操作成功');
+                    $state.go('app.shop.product.list');
+                }
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
+    };
+
+    $scope.chgAttach = function (attach) {
+        if($scope.product.type == 2){
+            for(var i=0; i<$scope.props.length; ++i){
+                if($scope.props[i]._id == attach){
+                    $scope.product.name = $scope.props[i].name;
+                    $scope.product.description = $scope.props[i].name;
+                    break;
+                }
+            }
+        }
     };
 
     var cropper = {

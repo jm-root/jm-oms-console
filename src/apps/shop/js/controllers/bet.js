@@ -81,6 +81,15 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGR
         },
         onCellDoubleClicked: function(cell){
             // $state.go('app.shop.bet_edit' , {id: cell.data._id});
+            $scope.openTips({
+                title:'幸运码',
+                content: "<div style='word-break:break-all;'>" + cell.data.codes + "</div>",
+                okTitle:'是',
+                // cancelTitle:'否',
+                // cancelTitle:'否',
+                // okCallback: function(){
+                // }
+            });
         },
         localeText: AGGRID.zh_CN,
         datasource: dataSource,

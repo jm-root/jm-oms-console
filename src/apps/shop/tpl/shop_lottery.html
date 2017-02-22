@@ -1,8 +1,8 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
-        <!--<button ui-sref="app.shop.lottery.edit" type="button" class="btn btn-sm btn-primary btn-addon">-->
-            <!--<i class="fa fa-plus"></i>创建-->
-        <!--</button>-->
+        <button ui-sref="app.shop.product.edit({type:'lottery'})" type="button" class="btn btn-sm btn-primary btn-addon">
+            <i class="fa fa-plus"></i>创建
+        </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
             <i class="fa fa-trash-o"></i>{{'shop.lottery.delete'|translate}}
         </button>
@@ -20,7 +20,16 @@
         </select>
     </div>
 
-    <div class="pull-right m-r-sm">
+    <div class="pull-right">
+        <button ui-sref="app.shop.order.list" type="button" class="btn btn-sm btn-primary btn-addon">
+            商城信息
+        </button>
+        <button ui-sref="app.shop.bet.list" type="button" class="btn btn-sm btn-primary btn-addon">
+            夺宝信息
+        </button>
+    </div>
+
+    <div class="pull-right m-r-sm" ng-if="isShowFormula">
         <button type="button" class="btn btn-sm btn-info btn-addon" ng-click="goEditFormula()">
             <i class="fa fa-edit"></i>{{'shop.lottery.editFormula'|translate}}
         </button>

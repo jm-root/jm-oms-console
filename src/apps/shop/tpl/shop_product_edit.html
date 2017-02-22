@@ -13,96 +13,7 @@
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productName'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="{{'shop.product.edit.productName'|translate}}" ng-model="product.name"  required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productPicture'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <a ui-sref=".pic"><img width="200" height="200" src="{{product.picture}}" onerror="this.src='apps/common/img/logo.jpg'"/></a>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productCategories'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <select class="form-control" ng-model="cate" ng-options="(c.name) group by c.pid.name for c in categories" >
-                        <!--<select class="form-control" ng-model="cate" ng-options="c._id as c.name for c in categories" >-->
-                            <option value="">---{{'shop.product.edit.pleaseSelectCategories'|translate}}---</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productTab'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="{{'shop.product.edit.productTab'|translate}}" ng-model="product.tags"  required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productDescribe'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="{{'shop.product.edit.productDescribe'|translate}}" ng-model="product.description"  required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.primeCosts'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.primeCosts'|translate}}" ng-model="product.price" required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productInventory'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.productInventory'|translate}}" ng-model="product.inventory"  required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.buyCurrencyType'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <select class="form-control" ng-model="product.currency">
-                            <option value="dbj">{{'shop.product.edit.robWealthVoucher'|translate}}</option>
-                            <option value="jb">{{'shop.product.edit.gold'|translate}}</option>
-                            <option value="tb">{{'shop.product.edit.tCurrency'|translate}}</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.buyingPrice'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.buyingPrice'|translate}}" ng-model="product.unitPrice" required>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.productType'|translate}}<code style="background-color: transparent">*</code></label>
-                    <div class="col-sm-9">
-                        <div class="radio">
-                            <label class="i-checks">
-                                <input type="radio" name="实物" value="1" ng-model="product.type" ng-checked="true">
-                                <i></i>
-                                {{'shop.product.edit.materialObject'|translate}}
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label class="i-checks">
-                                <input type="radio" name="虚拟" value="2" ng-model="product.type">
-                                <i></i>
-                                {{'shop.product.edit.virtualObject'|translate}}
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                <!--虚拟物品-->
                 <div class="form-group" ng-if="product.type == 2">
                     <label class="col-sm-2 control-label">{{'shop.product.edit.virtualGoods'|translate}}<code style="background-color: transparent" ng-disabled="id"></code></label>
                     <div class="col-sm-9">
@@ -112,7 +23,133 @@
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
+
+                <div class="form-group" ng-if="(product.type == 1) && !id">
+                    <label class="col-sm-2 control-label">物品ID<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="物品ID" ng-model="lottery.id"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <!--产品名称-->
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.productName'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="{{'shop.product.edit.productName'|translate}}" ng-model="product.name"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <!--产品描述-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.productDescribe'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="{{'shop.product.edit.productDescribe'|translate}}" ng-model="product.description"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.productCategories'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<select class="form-control" ng-model="cate" ng-options="(c.name) group by c.pid.name for c in categories" >-->
+                        <!--&lt;!&ndash;<select class="form-control" ng-model="cate" ng-options="c._id as c.name for c in categories" >&ndash;&gt;-->
+                            <!--<option value="">-&#45;&#45;{{'shop.product.edit.pleaseSelectCategories'|translate}}-&#45;&#45;</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.productTab'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="text" class="form-control" placeholder="{{'shop.product.edit.productTab'|translate}}" ng-model="product.tags"  required>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.primeCosts'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="number" class="form-control" placeholder="{{'shop.product.edit.primeCosts'|translate}}" ng-model="product.price" required>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.productInventory'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="number" class="form-control" placeholder="{{'shop.product.edit.productInventory'|translate}}" ng-model="product.inventory"  required>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.buyCurrencyType'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<select class="form-control" ng-model="product.currency">-->
+                            <!--<option value="dbj">{{'shop.product.edit.robWealthVoucher'|translate}}</option>-->
+                            <!--<option value="jb">{{'shop.product.edit.gold'|translate}}</option>-->
+                            <!--<option value="tb">{{'shop.product.edit.tCurrency'|translate}}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.buyingPrice'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="number" class="form-control" placeholder="{{'shop.product.edit.buyingPrice'|translate}}" ng-model="product.unitPrice" required>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{'shop.product.edit.productType'|translate}}<code style="background-color: transparent">*</code></label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="radio">-->
+                            <!--<label class="i-checks">-->
+                                <!--<input type="radio" name="实物" value="1" ng-model="product.type" ng-checked="true">-->
+                                <!--<i></i>-->
+                                <!--{{'shop.product.edit.materialObject'|translate}}-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <!--<div class="radio">-->
+                            <!--<label class="i-checks">-->
+                                <!--<input type="radio" name="虚拟" value="2" ng-model="product.type">-->
+                                <!--<i></i>-->
+                                <!--{{'shop.product.edit.virtualObject'|translate}}-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
+                <div class="form-group"  ng-if="(product.type == 1) && !id">
+                    <label class="col-sm-2 control-label">消耗夺宝卷数<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="必须大于等于35" ng-model="lottery.totalPrice" min="35" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="(product.type == 1) && !id">
+                    <label class="col-sm-2 control-label">总期数<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="总期数" ng-model="lottery.maxPeriod"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-if="(product.type == 1) && !id">
+                    <label class="col-sm-2 control-label">排序<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="排序" ng-model="lottery.sort"  required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="product.type == 2">
+                    <label class="col-sm-2 control-label">消耗夺宝卷数<code style="background-color: transparent">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="消耗夺宝卷数" ng-model="product.unitPrice" required >
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group" ng-if="product.type == 2 && id">
                     <label class="col-sm-2 control-label">{{'shop.product.edit.productStatus'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <div class="radio">
@@ -132,8 +169,9 @@
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.frontEndVisible'|translate}}<code style="background-color: transparent">*</code></label>
+
+                <div class="form-group" ng-show="product.type == 2">
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.frontEndVisible'|translate}}（仅限商城）<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <div class="radio">
                             <label class="i-checks">
@@ -152,6 +190,16 @@
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
+
+                <!--产品图片-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.productPicture'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <a ui-sref=".pic"><img width="200" height="200" src="{{product.picture}}" onerror="this.src='apps/common/img/logo.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer text-right bg-light lter">

@@ -57,7 +57,7 @@
         "theQuantity":"每期夺宝产品的数量",
         "treasureProductsTitle":"夺宝产品标题",
         "treasureProductsSummary":"夺宝产品简介",
-        "periodsNumber":"期数",
+        "periodsNumber":"当期数",
         "maxPeriodsNumber":"最大期数",
         "sorting":"排序",
         "markedPrice":"标价(大于等于35)",
@@ -100,7 +100,7 @@
       "create":"创建",
       "delete":"删除",
       "productList":"产品列表",
-      "search":"名字/描述",
+      "search":"搜索 名字/描述",
       "edit":{
         "editInformation":"编辑信息",
         "productID":"产品id",
