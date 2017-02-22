@@ -39,7 +39,8 @@ angular.module('app')
                 '../libs/jquery/fullcalendar/dist/fullcalendar.css',
                 '../libs/jquery/fullcalendar/dist/fullcalendar.theme.css'],
             tagsinput: ['../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
-                '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css']
+                '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
+            echarts: ['../libs/jquery/echarts/dist/echarts.js']
         }
     )
     .constant('MODULE_CONFIG', {

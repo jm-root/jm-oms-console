@@ -1,7 +1,21 @@
 'use strict';
 
 app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoader',  '$state', '$http', '$interval', 'global', function ( $scope, $translate, $translatePartialLoader,$state, $http, $interval,  global ) {
+    $translatePartialLoader.addPart('dashboard');
+
     var sso=jm.sdk.sso;
+    var bank = jm.sdk.bank;
+    bank.query({},function(err,result){
+        result || (result||{});
+        var holds = result.holds||{};
+        var tbObj = holds.tb || {};
+        var jbObj = holds.jb || {};
+        var dbjObj = holds.dbj || {};
+        $scope.tb = tbObj.amountValid;
+        $scope.jb = jbObj.amountValid;
+        $scope.dbj = dbjObj.amountValid;
+    });
+
     $scope.search = {};
     $scope.search.date || ($scope.search.date = {});
 
@@ -9,6 +23,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         startDate: moment().subtract(7, 'days'),
         endDate: moment()
     };
+
     $scope.stat = {};
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
@@ -73,16 +88,23 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 $scope.stat = obj||{};
             }
         }).error(function(msg, code){
-
             $scope.errorTips(code);
         });
     };
 
     reqStat();
-    /*     data.t = $interval(function(){
-     reqStat();
-     }, 5000);
-     */
+    var t = $interval(function(){
+        reqStat();
+    }, 5000);
+    $scope.$on("$destroy", function(){
+        $interval.cancel(t);
+    });
+
+    $scope.$on('translateBroadcast', function () {
+        $scope.getData();
+    });
+
+    //平台数据
     var orders = [
         {key:'register',name:'注册人数'},
         {key:'login',name:'登录人数'},
@@ -91,7 +113,6 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         {key:'recharge',name:'充值数'},
         {key:'arppu',name:'ARPPU'}
     ];
-
     $scope.lineOptions = [];
 
     $scope.getData = function(){
@@ -148,8 +169,9 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 });
                 orders.forEach(function(item){
                     var o = statMap[item.key];
+                    var name = global.translateByKey('dashboard.platformData.'+item.key);
                     var opts = {
-                        name: item.name,
+                        name: name,
                         x: o.x,
                         y: o.y,
                         max: o.max
@@ -172,14 +194,13 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         dataLoaded:true
     };
 
-
     var colors = ['#5793f3', '#d14a61', '#675bba'];
 
-    var getLineOption = function(otps){
-        otps || (otps={});
-        otps.max || (otps.max=100);
-        if(otps.max<10) otps.max = 10;
-        var max = Math.round(otps.max*1.2);
+    var getLineOption = function(opts){
+        opts || (opts={});
+        opts.max || (opts.max=100);
+        if(opts.max<10) opts.max = 10;
+        var max = Math.round(opts.max*1.2);
         var step = Math.round(max/6);
         return {
             color: colors,
@@ -188,26 +209,26 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             },
             toolbox: {
                 feature: {
-                    dataView: {show: true, readOnly: false},
+                    // dataView: {show: true, readOnly: true},
                     magicType: {show: true, type: ['line', 'bar']},
-                    restore: {show: true},
+                    // restore: {show: true},
                     saveAsImage: {show: true}
                 }
             },
             legend: {
-                data:[otps.name],
-                x:'left'
+                data:[opts.name],
+                // x:'left'
             },
             xAxis: [
                 {
                     type: 'category',
-                    data: otps.x||[]
+                    data: opts.x||[]
                 }
             ],
             yAxis: [
                 {
                     type: 'value',
-                    name: otps.name,
+                    name: opts.name,
                     min: 0,
                     max: max,
                     interval: step,
@@ -220,14 +241,13 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             ],
             series: [
                 {
-                    name: otps.name,
+                    name: opts.name,
                     type:'bar',
-                    data:otps.y||[]
+                    data:opts.y||[]
                 }
             ]
         }
     };
-
     $scope.$watch('search.date', function () {
         $scope.getData();
     });

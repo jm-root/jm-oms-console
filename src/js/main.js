@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location',
-        function ($scope, $translate, $localStorage, $window, toaster, $modal, $location) {
+    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global',
+        function ($scope, $translate, $localStorage, $window, toaster, $modal, $location, global) {
             // add 'ie' classes to html
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             if (isIE) {
@@ -73,6 +73,7 @@ angular.module('app')
                 zh_CN: '中文',
                 en: 'English'
             };
+            $scope.langKey = "zh_CN";
             $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || '中文';
             $scope.setLang = function (langKey, $event) {
                 // set the current lang
@@ -80,6 +81,8 @@ angular.module('app')
                 // You can change the language during runtime
                 $translate.use(langKey);
                 $scope.lang.isopen = !$scope.lang.isopen;
+
+                $scope.langKey = langKey;
             };
 
             function isSmartDevice($window) {
@@ -117,6 +120,17 @@ angular.module('app')
                     $scope.error('网络故障');
                 }
             };
+
+            $scope.$on('translateBroadcast', function () {
+                global.agGrid.loadingOoo = global.agGrid.localeText.loadingOoo;
+                global.agGrid.noRowsToShow = global.agGrid.localeText.noRowsToShow;
+                global.agGrid.localeText.next = global.translateByKey('ag-grid.next');
+                global.agGrid.localeText.last = global.translateByKey('ag-grid.last');
+                global.agGrid.localeText.first = global.translateByKey('ag-grid.first');
+                global.agGrid.localeText.previous = global.translateByKey('ag-grid.previous');
+                global.agGrid.localeText.loadingOoo = global.translateByKey('ag-grid.loading');
+                global.agGrid.localeText.noRowsToShow = global.translateByKey('ag-grid.noRowsToShow');
+            });
 
             window.onresize = function () {
                 $scope.app.navHeight = window.innerHeight - 50;

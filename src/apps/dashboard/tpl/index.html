@@ -1,4 +1,27 @@
-<div class="wrapper-md" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+<div class="bg-light lter b-b wrapper-md">
+  <div class="row">
+    <div class="pull-right">
+      <div class="inline m-r text-left" style="text-align: center">
+        <div class="m-b-xs" translate="dashboard.dbjBalance">夺宝卷余额</div>
+        <div>{{dbj||0}}</div>
+      </div>
+    </div>
+    <div class="pull-right">
+      <div class="inline m-r text-left" style="text-align: center">
+        <div class="m-b-xs" translate="dashboard.jbBalance">金币余额</div>
+        <div>{{jb||0}}</div>
+      </div>
+    </div>
+    <div class="pull-right">
+      <div class="inline m-r text-left" style="text-align: center">
+        <div class="m-b-xs" translate="dashboard.tbBalance">元宝余额</div>
+        <div>{{tb||0}}</div>
+      </div>
+    </div>
+    <h1 class="m-n font-thin h3" translate="dashboard.title1">个人账户信息</h1>
+  </div>
+</div>
+<div class="wrapper-md" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-125}}+'px', size:'8px'}">
   <div class="row">
     <div class="col-lg-4">
       <div class="panel panel-default">
@@ -14,7 +37,7 @@
           <div class="row no-gutter">
             <div class="col-xs-12">
               <div class="wrapper" style="cursor:pointer" ng-click="download()">
-                <h2 class="m-n font-thin" style="color: white">包下载</h2>
+                <h2 class="m-n font-thin" style="color: white" translate="dashboard.packageDownload">包下载</h2>
               </div>
             </div>
           </div>
@@ -55,59 +78,69 @@
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="text-center wrapper m-b-sm bg-info">
-        {{ 'dashboard.rechargeStat.title' | translate }}
+      <div class="panel panel-default">
+        <div class="text-center wrapper m-b-sm bg-info">
+          {{ 'dashboard.rechargeStat.title' | translate }}
+        </div>
+        <ul class="list-group no-radius">
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_total*0.01||0}}</span>
+            {{ 'dashboard.rechargeStat.total' | translate }}
+          </li>
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_yesterday*0.01||0}}</span>
+            {{ 'dashboard.rechargeStat.yesterday' | translate }}
+          </li>
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_today*0.01||0}}</span>
+            {{ 'dashboard.rechargeStat.today' | translate }}
+          </li>
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_order_total||0}}</span>
+            {{ 'dashboard.rechargeStat.totalSum' | translate }}
+          </li>
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_order_valid||0}}</span>
+            {{ 'dashboard.rechargeStat.validSum' | translate }}
+          </li>
+          <li class="list-group-item">
+            <span class="pull-right">{{stat.recharge_order_invalid||0}}</span>
+            {{ 'dashboard.rechargeStat.invalidSum' | translate }}
+          </li>
+        </ul>
       </div>
-      <ul class="list-group no-radius">
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_total*0.01||0}}</span>
-          {{ 'dashboard.rechargeStat.total' | translate }}
-        </li>
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_yesterday*0.01||0}}</span>
-          {{ 'dashboard.rechargeStat.yesterday' | translate }}
-        </li>
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_today*0.01||0}}</span>
-          {{ 'dashboard.rechargeStat.today' | translate }}
-        </li>
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_order_total||0}}</span>
-          {{ 'dashboard.rechargeStat.totalSum' | translate }}
-        </li>
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_order_valid||0}}</span>
-          {{ 'dashboard.rechargeStat.validSum' | translate }}
-        </li>
-        <li class="list-group-item">
-          <span class="pull-right">{{stat.recharge_order_invalid||0}}</span>
-          {{ 'dashboard.rechargeStat.invalidSum' | translate }}
-        </li>
-      </ul>
     </div>
   </div>
   <div class="row">
     <div style="padding: 15px">
       <div class="pull-right">
         <div class="input-group m-r-sm" style="width: 185px;margin-top: 10px;">
-          <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="position: relative;height: 30px"/>
-          <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+          <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
+          <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
       </div>
-      <uib-tabset class="tab-container">
-        <uib-tab heading="平台数据">
-          <div class="row">
+      <tabset class="tab-container">
+        <tab heading="{{ 'dashboard.platformData.title' | translate }}" id="chart1">
+          <div class="row" id="chart1">
             <div class="col-lg-4 col-md-6 col-xs-12" ng-repeat="item in lineOptions">
               <div style="width: 100%;height:300px;">
                 <ng-echarts class="col-md-6 col-xs-12 echarts" ec-config="lineConfig" ec-option="item" style="width: 100%;height:100%;"></ng-echarts>
               </div>
             </div>
           </div>
-        </uib-tab>
-        <uib-tab heading="游戏数据">
-          建设中...
-        </uib-tab>
-      </uib-tabset>
+        </tab>
+        <tab heading="{{ 'dashboard.gameData.title' | translate }}" id="chart2" ng-if="0">
+          <div class="row" id="chart2">
+            <div class="col-lg-4 col-md-6 col-xs-12" ng-repeat="item in gameOptions">
+              <div style="width: 100%;height:300px;">
+                <ng-echarts class="col-md-6 col-xs-12 echarts" ec-config="gameConfig" ec-option="item" style="width: 100%;height:100%;"></ng-echarts>
+              </div>
+            </div>
+          </div>
+        </tab>
+      </tabset>
     </div>
   </div>
 </div>
+
+

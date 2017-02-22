@@ -28,6 +28,10 @@ angular.module('app', [
                 $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
                     $translate.refresh();
                 });
+
+                $rootScope.$on('$translateChangeSuccess', function () {
+                    $rootScope.$broadcast('translateBroadcast');
+                });
             }
         ]
     )

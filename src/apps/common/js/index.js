@@ -66,7 +66,7 @@ angular.module('app')
             ],
         });
     }])
-    .service('global', ['$document', '$q', '$http', '$state', function ($document, $q, $http, $state) {
+    .service('global', ['$document', '$q', '$http', '$state', '$translate', '$filter', function ($document, $q, $http, $state, $translate, $filter) {
         var self = this;
         jm.enableEvent(self);
         var sso = jm.sdk.sso;
@@ -176,6 +176,123 @@ angular.module('app')
             });
             return deferred.promise;
         };
+
+        self.translateByKey = function(key,expression,comparator){
+            return $filter('translate').apply(this, arguments);
+        };
+
+        self.agGrid = {
+            localeText:{
+                // for filter panel
+                page: ' ',
+                more: ' ',
+                to: '-',
+                of: '/',
+                next: '下一页',
+                last: '未尾页',
+                first: '首页',
+                previous: '上一页',
+                loadingOoo: '加载中...',
+                // for set filter
+                selectAll: '全选',
+                searchOoo: '搜索...',
+                blanks: '空白',
+                // for number filter and string filter
+                filterOoo: '过滤...',
+                applyFilter: '应用过滤...',
+                // for number filter
+                equals: '等于',
+                lessThan: '小于',
+                greaterThan: '大于',
+                // for text filter
+                contains: '包含',
+                startsWith: '开始',
+                endsWith: '结束',
+                // tool panel
+                columns: '列',
+                pivotedColumns: '主列',
+                pivotedColumnsEmptyMessage: '请将列拖到这里',
+                valueColumns: '列值',
+                valueColumnsEmptyMessage: '请将列拖到这里',
+                //
+                noRowsToShow: '无数据'
+            }
+        };
+        self.aggridTranslate = function(translateKeys, gridOptions) {
+            $translate(translateKeys).then(function (translate) {
+                self.agGridHeaderTranslates = translate;
+                gridOptions.api.refreshHeader();
+                gridOptions.api.refreshView();
+
+                var btLast = document.getElementById('btLast');
+                if(btLast){
+                    btLast.innerHTML = self.agGrid.localeText.last;
+                }
+                var btNext = document.getElementById('btNext');
+                if(btNext){
+                    btNext.innerHTML = self.agGrid.localeText.next;
+                }
+                var btPrevious = document.getElementById('btPrevious');
+                if(btPrevious){
+                    btPrevious.innerHTML = self.agGrid.localeText.previous;
+                }
+                var btFirst = document.getElementById('btFirst');
+                if(btFirst){
+                    btFirst.innerHTML = self.agGrid.localeText.first;
+                }
+
+                self.agGridOverlay();
+
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        self.agGridOverlay = function(){
+            var overlay = angular.element(document.getElementById('overlay')).find('span');
+            var content = overlay.html();
+            if(content == "ag-grid.loading") overlay.html(self.agGrid.localeText.loadingOoo);
+            if(content == "ag-grid.noRowsToShow") overlay.html(self.agGrid.localeText.noRowsToShow);
+            if(content==self.agGrid.loadingOoo) overlay.html(self.agGrid.localeText.loadingOoo);
+            if(content==self.agGrid.noRowsToShow) overlay.html(self.agGrid.localeText.noRowsToShow);
+        };
+
+        self.agGridHeaderTranslates = null;
+        self.agGridHeaderCellRendererFunc = function(params) {
+            var eHeader = document.createElement('span');
+            if(params.colDef.translateKey){
+                // var headerName = translates[params.colDef.translateKey];
+                var translates = self.agGridHeaderTranslates;
+                if(translates){
+                    var headerName = translates[params.colDef.translateKey];
+                    if(headerName){
+                        params.colDef.headerName = headerName;
+                    }
+                }
+            }
+
+            var eTitle = document.createTextNode(params.colDef.headerName + '');
+            eHeader.appendChild(eTitle);
+
+            return eHeader;
+        };
+
+        self.agGridTranslateSync = function($scope, columnDefs, headsRranslateKeys){
+            $scope.$on('translateBroadcast', function () {
+                self.aggridTranslate(headsRranslateKeys, $scope.gridOptions);
+            });
+            $translate(headsRranslateKeys).then(function (translate) {
+                self.agGridHeaderTranslates = translate;
+                if($scope.gridOptions.api){
+                    $scope.gridOptions.api.refreshHeader();
+                }
+            }, function (error) {
+                console.log(error);
+            });
+            headsRranslateKeys.forEach(function(key,index){
+                columnDefs[index].translateKey = key;
+            });
+        }
 
 
         self.isIE = function () {
