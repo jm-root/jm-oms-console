@@ -18,7 +18,8 @@ angular.module('app', [
     'oc.lazyLoad',
     'pascalprecht.translate',
     'toaster',
-    'agGrid'
+    'agGrid',
+    'ng.ueditor'
 ])
     .run(
         ['$rootScope', '$state', '$stateParams', '$translate',

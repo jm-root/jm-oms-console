@@ -40,7 +40,8 @@ angular.module('app')
                 '../libs/jquery/fullcalendar/dist/fullcalendar.theme.css'],
             tagsinput: ['../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.js',
                 '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
-            echarts: ['../libs/jquery/echarts/dist/echarts.js']
+            echarts: ['../libs/jquery/echarts/dist/echarts.js'],
+            ueditor: ['../libs/jquery/ueditor/ueditor.config.js', '../libs/jquery/ueditor/ueditor.all.min.js']
         }
     )
     .constant('MODULE_CONFIG', {
@@ -123,8 +124,8 @@ angular.module('app')
         var MODULE_CONFIG = {};
         var load = function (srcs, callback) {
             return {
-                deps: ['$ocLazyLoad', '$q',
-                    function ($ocLazyLoad, $q) {
+                deps: ['$ocLazyLoad', '$q', 'uiLoad',
+                    function ($ocLazyLoad, $q, uiLoad) {
                         var deferred = $q.defer();
                         var promise = false;
                         srcs = angular.isArray(srcs) ? srcs : srcs.split(/\s+/);
@@ -134,9 +135,9 @@ angular.module('app')
                         angular.forEach(srcs, function (src) {
                             promise = promise.then(function () {
                                 if (JQ_CONFIG[src]) {
-                                    return $ocLazyLoad.load(JQ_CONFIG[src]);
+                                    return uiLoad.load(JQ_CONFIG[src]);
                                 }
-                                name = src;
+                                var name = src;
                                 return $ocLazyLoad.load(name);
                             });
                         });
