@@ -31,35 +31,35 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.treasureProductsTitle'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="不填默认为产品标题" ng-model="lottery.title">
+                        <input type="text" class="form-control" placeholder="{{'shop.lottery.edit.defaultTitle'|translate}}" ng-model="lottery.title">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.treasureProductsSummary'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="不填默认为产品简介" ng-model="lottery.summary">
+                        <input type="text" class="form-control" placeholder="{{'shop.lottery.edit.defaultSummary'|translate}}" ng-model="lottery.summary">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.markedPrice'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="标价" ng-model="lottery.totalPrice" min="35" required ng-disabled="id">
+                        <input type="number" class="form-control" placeholder="{{'shop.lottery.edit.markedPrice'|translate}}" ng-model="lottery.totalPrice" min="35" required ng-disabled="id">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.maxPeriodsNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="最大期数" ng-model="lottery.maxPeriod"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.lottery.edit.maxPeriodsNumber'|translate}}" ng-model="lottery.maxPeriod"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.periodsNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="期数" ng-model="lottery.period"  required  disabled="true">
+                        <input type="number" class="form-control" placeholder="{{'shop.lottery.edit.periodsNumber'|translate}}" ng-model="lottery.period"  required  disabled="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.lottery.edit.sorting'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="排序" ng-model="lottery.sort"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.lottery.edit.sorting'|translate}}" ng-model="lottery.sort"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -110,11 +110,11 @@
                 <!--</div>-->
 
                 <div class="form-group" ng-if="lottery.status < 3">
-                    <label class="col-sm-2 control-label">是否上架<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.lottery.edit.whetherShelves'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <select class="form-control" ng-model="lottery.enable">
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option value="1">{{'common.yes'|translate}}</option>
+                            <option value="0">{{'common.no'|translate}}</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>
@@ -134,17 +134,17 @@
                 </div>
 
                 <div class="form-group" ng-if="lottery.status >= 3">
-                    <label class="col-sm-2 control-label">物流公司<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.lottery.edit.logisticsCompany'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="物流公司" ng-model="lottery.logistics">
+                        <input type="text" class="form-control" placeholder="{{'shop.lottery.edit.logisticsCompany'|translate}}" ng-model="lottery.logistics">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group" ng-if="lottery.status >= 3">
-                    <label class="col-sm-2 control-label">物流单号<code style="background-color: transparent"></code></label>
+                    <label class="col-sm-2 control-label">{{'shop.lottery.edit.logisticsOrderNumber'|translate}}<code style="background-color: transparent"></code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="物流单号" ng-model="lottery.lorder">
+                        <input type="text" class="form-control" placeholder="{{'shop.lottery.edit.logisticsOrderNumber'|translate}}" ng-model="lottery.lorder">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'shop.category.edit.categoryNmae'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="分类名称" ng-model="category.name"  required>
+                        <input type="text" class="form-control" placeholder="{{'shop.category.edit.categoryNmae'|translate}}" ng-model="category.name"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -17,7 +17,7 @@
                     <label class="col-sm-2 control-label">{{'shop.category.edit.parentClass'|translate}}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
                         <select class="form-control" ng-model="category.parent" ng-options="(parentCate.name) for parentCate in parentCates" >
-                            <option value="">-- 选择父类（不选创建为父类） --</option>
+                            <option value="">-- {{'shop.category.edit.default'|translate}} --</option>
                         </select>
                     </div>
                     <div class="col-sm-1"></div>

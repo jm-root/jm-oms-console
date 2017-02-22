@@ -3,6 +3,7 @@
     "get": "查询",
     "put": "增加",
     "post": "修改",
+    "create":"创建",
     "delete": "删除",
     "add": "新增",
     "modify": "修改",
@@ -22,7 +23,9 @@
     "personal": "个人信息",
     "passwordSet": "密码设置",
     "securitySet": "安全设置",
-    "exit": "退出"
+    "exit": "退出",
+    "yes":"是",
+    "no":"否"
   },
   "imgcrop":{
     "title":"编辑图片",

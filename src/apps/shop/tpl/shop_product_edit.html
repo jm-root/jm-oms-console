@@ -25,9 +25,9 @@
                 </div>
 
                 <div class="form-group" ng-if="(product.type == 1) && !id">
-                    <label class="col-sm-2 control-label">物品ID<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.articleID'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="物品ID" ng-model="lottery.id"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.articleID'|translate}}" ng-model="lottery.id"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -120,31 +120,31 @@
                     <!--<div class="col-sm-1"></div>-->
                 <!--</div>-->
                 <div class="form-group"  ng-if="(product.type == 1) && !id">
-                    <label class="col-sm-2 control-label">消耗夺宝卷数<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.consumeTreasureNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="必须大于等于35" ng-model="lottery.totalPrice" min="35" required>
+                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.greaterThanOrEqual'|translate}}" ng-model="lottery.totalPrice" min="35" required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group" ng-if="(product.type == 1) && !id">
-                    <label class="col-sm-2 control-label">总期数<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.totalPeriodNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="总期数" ng-model="lottery.maxPeriod"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.totalPeriodNumber'|translate}}" ng-model="lottery.maxPeriod"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="form-group" ng-if="(product.type == 1) && !id">
-                    <label class="col-sm-2 control-label">排序<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.sorting'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="排序" ng-model="lottery.sort"  required>
+                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.sorting'|translate}}" ng-model="lottery.sort"  required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group" ng-if="product.type == 2">
-                    <label class="col-sm-2 control-label">消耗夺宝卷数<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.consumeTreasureNumber'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="消耗夺宝卷数" ng-model="product.unitPrice" required >
+                        <input type="number" class="form-control" placeholder="{{'shop.product.edit.consumeTreasureNumber'|translate}}" ng-model="product.unitPrice" required >
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="form-group" ng-show="product.type == 2">
-                    <label class="col-sm-2 control-label">{{'shop.product.edit.frontEndVisible'|translate}}（仅限商城）<code style="background-color: transparent">*</code></label>
+                    <label class="col-sm-2 control-label">{{'shop.product.edit.frontEndVisible'|translate}}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
                         <div class="radio">
                             <label class="i-checks">
