@@ -19,5 +19,11 @@
     "memo": "Memo",
     "confirm": "confirm",
     "name":"Name"
+  },
+  "imgcrop":{
+    "title":"Edit Picture",
+    "label":"Browse",
+    "ok":"ok",
+    "cancel":"cancel"
   }
 }
