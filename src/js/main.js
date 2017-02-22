@@ -19,6 +19,10 @@ angular.module('app')
             $scope.host = port==80 ? host : host+':'+port;
             console.log($scope.host);
 
+            $scope.apiHost = apiHost;
+            $scope.sdkHost = sdkHost;
+            $scope.staticHost = staticHost;
+
             // config
             $scope.app = {
                 name: 'OMS',

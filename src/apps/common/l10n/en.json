@@ -18,7 +18,11 @@
     "balance": "Balance",
     "memo": "Memo",
     "confirm": "confirm",
-    "name":"Name"
+    "name":"Name",
+    "personal": "Personal info",
+    "passwordSet": "Password set",
+    "securitySet": "Security set",
+    "exit": "Exit"
   },
   "imgcrop":{
     "title":"Edit Picture",

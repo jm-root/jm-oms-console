@@ -8,7 +8,7 @@
       <div class="dropdown wrapper" dropdown>
         <a href="">
           <span class="thumb-lg w-auto-folded avatar m-t-sm">
-            <img ng-src="apps/common/img/avatar.jpg" class="img-full"  alt="...">
+            <img ng-src="{{sdkHost+userInfo.headimgurl}}" class="img-full" onerror="this.src='apps/common/img/avatar.jpg'" alt="...">
           </span>
         </a>
         <a href class="dropdown-toggle hidden-folded" dropdown-toggle>
@@ -28,17 +28,17 @@
           <!--<a href>设置</a>-->
           <!--</li>-->
           <li>
-            <a ui-sref="app.profile">个人信息</a>
+            <a ui-sref="app.profile" translate="common.personal">个人信息</a>
           </li>
           <li>
-            <a ui-sref="app.updatepasswd">密码设置</a>
+            <a ui-sref="app.updatepasswd" translate="common.passwordSet">密码设置</a>
           </li>
           <li>
-            <a ui-sref="app.security">安全设置</a>
+            <a ui-sref="app.security" translate="common.securitySet">安全设置</a>
           </li>
           <li class="divider"></li>
           <li>
-            <a ng-click="signout()">退出</a>
+            <a ng-click="signout()" translate="common.exit">退出</a>
           </li>
         </ul>
         <!-- / dropdown -->

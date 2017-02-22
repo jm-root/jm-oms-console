@@ -3,8 +3,10 @@
 app.controller('ProfileCtrl', ['$scope', '$state', '$http',  'global', function ($scope, $state, $http,  global) {
     var uri = ssoUri+'/users';
     var sso = jm.sdk.sso;
-    global.getLocalUser().then(function(user){
+    $scope.user = {avatarUri:'apps/common/img/avatar.jpg'};
+    global.getUser().then(function(user){
         $scope.user = user;
+        $scope.user.avatarUri = sdkHost+$scope.user.headimgurl;
     });
 
     var cropper = {

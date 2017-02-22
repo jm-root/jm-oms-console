@@ -4,11 +4,11 @@
         <div class="hbox h-auto m-b-lg">
             <div class="col text-center w-sm">
                 <div class="thumb-lg avatar inline">
-                    <a ui-sref=".avatar"><img src="{{sdkHost+userInfo.avatarUri}}" onerror="this.src='apps/common/img/avatar.jpg'"/></a>
+                    <a ui-sref=".avatar"><img ng-src="{{user.avatarUri}}" onerror="this.src='apps/common/img/avatar.jpg'"/></a>
                 </div>
             </div>
             <div class="col v-middle">
-                <div class="h1 font-thin">{{userInfo.nick}}</div>
+                <div class="h1 font-thin">{{user.nick}}</div>
             </div>
         </div>
         <!-- fields -->
@@ -16,13 +16,13 @@
             <div class="form-group m-b-sm">
                 <label class="col-sm-2 control-label w">手机</label>
                 <div class="col-md-3">
-                    <p class="form-control-static">{{userInfo.mobile||'无'}}</p>
+                    <p class="form-control-static">{{user.mobile||'无'}}</p>
                 </div>
             </div>
             <div class="form-group m-b-sm">
                 <label class="col-sm-2 control-label w">邮箱</label>
                 <div class="col-md-3">
-                    <p class="form-control-static">{{userInfo.email||'无'}}</p>
+                    <p class="form-control-static">{{user.email||'无'}}</p>
                 </div>
             </div>
         </div>
