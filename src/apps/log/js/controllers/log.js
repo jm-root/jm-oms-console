@@ -410,6 +410,7 @@ app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', f
             }
         }).success(function(result){
             var obj = result;
+            console.log(result);
             if(obj.err){
                 $scope.error(obj.msg);
             }else{

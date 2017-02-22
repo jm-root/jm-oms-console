@@ -75,6 +75,7 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
                 }
             }).error(function (msg, code) {
                 $scope.errorTips(code);
+                console.log(code);
             });
         }
     };
