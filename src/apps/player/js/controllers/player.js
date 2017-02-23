@@ -432,15 +432,18 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     });
 }]);
 
-app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global','data', function ($scope, $state, $http, $interval, global, data) {
+app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global', function ($scope, $state, $http, $interval, global) {
     var history = global.playerOnlineHistory||(global.playerOnlineHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
     var url = recordUri+'/onlines';
 
-    data.t = $interval(function(){
+    var t = $interval(function(){
         $scope.onPageSizeChanged();
     }, 10000);
+    $scope.$on("$destroy", function(){
+        $interval.cancel(t);
+    });
 
     var format_uid = function(params) {
         var obj = params.data.user || {};

@@ -31,23 +31,7 @@
                         .state('app.player.online', {
                             url: '/online',
                             templateUrl: path + 'tpl/player.info.online.html',
-                            controller: 'PlayerOnlineCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return ;
-                                    }],
-                                data:['$interval',function($interval){
-                                    return {$interval:$interval};
-                                }]
-                            },
-                            onEnter: ['data',function(data){
-                            }],
-                            onExit: ['data',function(data){
-                                var $interval = data.$interval;
-                                var t = data.t;
-                                $interval.cancel(t);
-                            }]
+                            controller: 'PlayerOnlineCtrl'
                         })
                         .state('app.player.info.games', {
                             url: '/games/{id}?name',
