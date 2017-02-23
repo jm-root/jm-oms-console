@@ -24,8 +24,21 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'glo
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'shop.bet.header._id',
+        'shop.bet.header.user.nick',
+        'shop.bet.header.user._id',
+        'shop.bet.header.lottery.title',
+        'shop.bet.header.lottery.period',
+        'shop.bet.header.codes',
+        'shop.bet.header.codeNum',
+        'shop.bet.header.payId',
+        'shop.bet.header.status',
+        'shop.bet.header.crTime',
+        'shop.bet.header.modiTime',
+    ]);
 
-    function angGridFormtStatus(params) {
+        function angGridFormtStatus(params) {
         var formatStr = params.data.status + "";
         switch (params.data.status){
             case 1:
@@ -43,6 +56,8 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'glo
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/bets', {
                 params:{
@@ -92,6 +107,10 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'glo
             });
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource,
         angularCompileRows: true
     };

@@ -34,6 +34,18 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         // {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'shop.lottery.header._id',
+        'shop.lottery.header.maxPeriod',
+        'shop.lottery.header.period',
+        'shop.lottery.header.title',
+        'shop.lottery.header.summary',
+        'shop.lottery.header.totalPrice',
+        'shop.lottery.header.joinNumber2',
+        'shop.lottery.header.joinPepole',
+        'shop.lottery.header.joinNumber',
+        'shop.lottery.header.status'
+    ]);
     function edit_render(params){
         var index = params.data.lotteryIds.length - 1;
         var id = params.data.lotteryIds[index];
@@ -166,6 +178,8 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/lotteryActivities', {
                 params:{
@@ -217,6 +231,10 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             $state.go('app.shop.lottery.edit' , {id: cell.data.lotteryIds[index]});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource,
         angularCompileRows: true
     };
@@ -492,6 +510,21 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
         {headerName: "#", width: 70, cellRenderer: edit_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'shop.lottery.headerwin._id',
+        'shop.lottery.headerwin.id',
+        'shop.lottery.headerwin.title',
+        'shop.lottery.headerwin.userNick',
+        'shop.lottery.headerwin.userId',
+        'shop.lottery.headerwin.period',
+        'shop.lottery.headerwin.winCode',
+        'shop.lottery.headerwin.address',
+        'shop.lottery.headerwin.name',
+        'shop.lottery.headerwin.mobile',
+        'shop.lottery.headerwin.logistics',
+        'shop.lottery.headerwin.lorder',
+        'shop.lottery.headerwin.status',
+    ]);
 
     function edit_render(params){
         return '<button class="btn btn-xs bg-primary" ng-click="goEdit(\''+params.data._id+'\')">编辑</button>';
@@ -593,6 +626,8 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/lotteries', {
                 params:{
@@ -634,6 +669,10 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
             $state.go('app.shop.lotteryWin.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer:global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
+        },
         datasource: dataSource,
         angularCompileRows: true
     };

@@ -29,6 +29,7 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function 
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
+        'shop.product.header._id',
         'shop.product.header.name',
         'shop.product.header.type',
         'shop.product.header.price',
@@ -123,7 +124,11 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function 
             $state.go('app.shop.product.edit' , {id: cell.data._id, type: "product"});
         },
         localeText: global.agGrid.localeText,
-        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource,
         angularCompileRows: true
     };

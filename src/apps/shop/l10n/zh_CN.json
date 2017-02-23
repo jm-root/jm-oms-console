@@ -14,6 +14,17 @@
         "city":"市",
         "detailedAddress":"详细地址",
         "save":"保存"
+      },
+      "header":{
+        "_id":"_id",
+        "user.nick":"用户昵称",
+        "name":"名字",
+        "phone":"电话",
+        "province":"省",
+        "city":"市",
+        "detail":"详细地址",
+        "crTime":"创建时间",
+        "modiTime":"更改时间"
       }
     },
     "bet":{
@@ -29,6 +40,19 @@
         "city":"市",
         "detailedAddress":"详细地址",
         "save":"保存"
+      },
+      "header":{
+        "_id":"_id",
+        "user.nick":"用户名",
+        "user._id":"用户id",
+        "lottery.title":"产品名称",
+        "lottery.period":"期数",
+        "codes":"幸运码",
+        "codeNum":"抽奖编码数量",
+        "payId":"支付单号",
+        "status":"状态",
+        "crTime":"购买时间",
+        "modiTime":"修改时间"
       }
     },
     "category":{
@@ -42,6 +66,13 @@
         "parentClass":"父级分类",
         "default":"选择父类（不选创建为父类）",
         "save":"保存"
+      },
+      "header":{
+        "_id":"_id",
+        "code":"编码",
+        "name":"名称",
+        "pid.name":"父类",
+        "crTime":"创建时间"
       }
     },
     "formula":{
@@ -88,6 +119,33 @@
         "save":"保存",
         "logisticsCompany":"物流公司",
         "logisticsOrderNumber":"物流单号"
+      },
+      "header":{
+        "_id":"Id",
+        "maxPeriod":"总期数",
+        "period":"当前期数",
+        "title":"物品名称",
+        "summary":"物品描述",
+        "totalPrice":"消耗夺宝卷数",
+        "joinNumber2":"总参与人次",
+        "joinPepole":"总参与人数",
+        "joinNumber":"商品进度",
+        "status":"状态"
+      },
+      "headerwin":{
+        "_id":"_id",
+        "id":"物品Id",
+        "title":"夺宝标题",
+        "userNick":"玩家名称",
+        "userId":"玩家ID",
+        "period":"中奖期数",
+        "winCode":"中奖编码",
+        "address":"玩家地址",
+        "name":"玩家姓名",
+        "mobile":"手机号码",
+        "logistics":"物流公司",
+        "lorder":"物流订单",
+        "status":"当前状态"
       }
     },
     "order":{
@@ -106,6 +164,15 @@
         "alreadyPaid":"已支付",
         "alreadyCompleted":"已完成",
         "save":"保存"
+      },
+      "header":{
+        "_id":"_id",
+        "product.name":"产品",
+        "buyNum":"数量",
+        "userNick":"购买用户",
+        "status":"状态",
+        "crTime":"创建时间",
+        "modiTime":"修改时间"
       }
     },
     "product":{
@@ -148,6 +215,7 @@
         "sorting":"排序"
       },
       "header":{
+        "_id":"_id",
         "name":"产品名称",
         "category.code":"分类编码",
         "category.name":"分类名称",

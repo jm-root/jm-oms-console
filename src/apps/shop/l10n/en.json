@@ -14,6 +14,17 @@
         "city":"City",
         "detailedAddress":"Detailed Address",
         "save":"Save"
+      },
+      "header":{
+        "_id":"_id",
+        "user.nick":"User nick",
+        "name":"Name",
+        "phone":"Phone",
+        "province":"Province",
+        "city":"City",
+        "detail":"Detail",
+        "crTime":"Create time",
+        "modiTime":"Modify time"
       }
     },
     "bet":{
@@ -29,6 +40,19 @@
         "city":"City",
         "detailedAddress":"Detailed Address",
         "save":"Save"
+      },
+      "header":{
+        "_id":"_id",
+        "user.nick":"User nick",
+        "user._id":"User id",
+        "lottery.title":"Lottery title",
+        "lottery.period":"Lottery period",
+        "codes":"Codes",
+        "codeNum":"Code number",
+        "payId":"Pay Id",
+        "status":"Status",
+        "crTime":"Buying time",
+        "modiTime":"Modify time"
       }
     },
     "category":{
@@ -42,6 +66,13 @@
         "parentClass":"Parent Class",
         "default":"Select parent class（default create parent class）",
         "save":"save"
+      },
+      "header":{
+        "_id":"_id",
+        "code":"Code",
+        "name":"Name",
+        "pid.name":"Parent class",
+        "crTime":"Create time"
       }
     },
     "formula":{
@@ -88,6 +119,33 @@
         "save":"Save",
         "logisticsCompany":"Logistics Company",
         "logisticsOrderNumber":"Logistics Order Number"
+      },
+      "header":{
+        "_id":"ID",
+        "maxPeriod":"Max period",
+        "period":"period",
+        "title":"Title",
+        "summary":"Summary",
+        "totalPrice":"Total price",
+        "joinNumber2":"Join number",
+        "joinPepole":"Join pepole",
+        "joinNumber":"Commodity progress",
+        "status":"Status"
+      },
+      "headerwin":{
+        "_id":"_id",
+        "id":"Article Id",
+        "title":"Title",
+        "userNick":"User nick",
+        "userUId":"User Id",
+        "period":"Lottery period",
+        "winCode":"Win code",
+        "address":"User address",
+        "name":"User name",
+        "mobile":"User mobile",
+        "logistics":"Logistics",
+        "lorder":"Logistics order",
+        "status":"Status"
       }
     },
     "order":{
@@ -106,6 +164,15 @@
         "alreadyPaid":"Already Paid",
         "alreadyCompleted":"Already Completed",
         "save":"Save"
+      },
+      "header":{
+        "_id":"_id",
+        "product.name":"Product name",
+        "buyNum":"Number",
+        "userNick":"User nick",
+        "status":"Status",
+        "crTime":"Create time",
+        "modiTime":"Modify time"
       }
     },
     "product":{
@@ -148,7 +215,8 @@
         "sorting":"Sorting"
       },
       "header":{
-        "name":"name",
+        "_id":"_id",
+        "name":"Name",
         "category.code":"Category code",
         "category.name":"Category name",
         "description":"Description",

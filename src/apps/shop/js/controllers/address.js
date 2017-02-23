@@ -19,9 +19,23 @@ app.controller('AddrListCtrl', ['$scope', '$state', '$http', 'global', function 
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "更改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
-    
+
+    global.agGridTranslateSync($scope,columnDefs,[
+        'shop.address.header._id',
+        'shop.address.header.user.nick',
+        'shop.address.header.name',
+        'shop.address.header.phone',
+        'shop.address.header.province',
+        'shop.address.header.city',
+        'shop.address.header.detail',
+        'shop.address.header.crTime',
+        'shop.address.header.modiTime'
+    ])
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/addresses', {
                 params:{
@@ -62,6 +76,7 @@ app.controller('AddrListCtrl', ['$scope', '$state', '$http', 'global', function 
             $state.go('app.shop.address.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
         datasource: dataSource
     };
     

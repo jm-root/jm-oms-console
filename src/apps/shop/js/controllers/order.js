@@ -24,6 +24,15 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'g
         // {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'shop.order.header._id',
+        'shop.order.header.product.name',
+        'shop.order.header.buyNum',
+        'shop.order.header.userNick',
+        'shop.order.header.status',
+        'shop.order.header.crTime',
+        'shop.order.header.modiTime'
+    ]);
     // function opr_render(params){
     //     return '<button class="btn btn-xs bg-primary" ng-click="goBet(\''+params.data._id+'\')">查看</button>';
     // }
@@ -102,6 +111,8 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'g
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/orders', {
                 params:{
@@ -142,6 +153,10 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'g
             $state.go('app.shop.order.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource,
         angularCompileRows: true
     };

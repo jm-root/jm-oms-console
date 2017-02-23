@@ -16,8 +16,18 @@ app.controller('CateListCtrl', ['$scope', '$state', '$http', 'global', function 
         {headerName: "创建时间", field: "crTime", width: 100, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'shop.category.header._id',
+        'shop.category.header.code',
+        'shop.category.header.name',
+        'shop.category.header.pid.name',
+        'shop.category.header.crTime'
+    ]);
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/categories', {
                 params:{
@@ -57,6 +67,10 @@ app.controller('CateListCtrl', ['$scope', '$state', '$http', 'global', function 
             $state.go('app.shop.category.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
+        },
         datasource: dataSource
     };
 
