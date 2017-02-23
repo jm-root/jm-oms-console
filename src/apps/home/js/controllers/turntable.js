@@ -3,7 +3,7 @@
  */
 'use strict'
 var sso = jm.sdk.sso;
-app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', function ($scope, $state, $http, $timeout) {
+app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'global', function ($scope, $state, $http, $timeout, global) {
     var url = activityUri+'/items';
 
     $scope.activity = {};

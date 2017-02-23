@@ -113,16 +113,32 @@ angular.module('app')
                 toaster.pop('warning', title, body);
             };
 
-            $scope.errorTips = function (code) {
-                if (code == 401) {
-                    $scope.error('未登录');
-                } else if (code == 403) {
-                    $scope.error('没有操作权限');
-                } else if (code == 404) {
-                    $scope.error('请求路径失败');
-                } else {
-                    $scope.error('网络故障');
+            $scope.errorTips = function(code){
+                if(code==401){
+                    $scope.error(global.translateByKey('common.notLogged'));
+                }else if(code==403){
+                    $scope.error(global.translateByKey('common.noPermission'));
+                }else if(code==404){
+                    $scope.error(global.translateByKey('common.requestPathFailed'));
+                }else{
+                    $scope.error(global.translateByKey('common.networkFault'));
                 }
+            };
+
+            //angular-Grid全局定义
+            $scope.angGridFormatDateS = function (params) {
+                var date = params.data[params.colDef.field];
+                if(!date) return '';
+                return moment(date).format('YYYY-MM-DD HH:mm:ss');
+            };
+            $scope.angGridFormatDate = function (params) {
+                var date = params.data[params.colDef.field];
+                if(!date) return '';
+                return moment(date).format('YYYY-MM-DD');
+            };
+
+            $scope.angGridFormatStatus = function (params) {
+                return params.data[params.colDef.field] ? "启用" : "禁用";
             };
 
             $scope.$on('translateBroadcast', function () {
