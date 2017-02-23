@@ -1,6 +1,7 @@
 {
   "shop":{
     "address":{
+      "search":"搜索 名字/电话",
       "create":"创建",
       "delete":"删除",
       "addressList":"地址列表",
@@ -17,6 +18,8 @@
     },
     "bet":{
       "betList":"投注列表",
+      "search":"搜索",
+      "searchUser":"是否搜索用户",
       "edit":{
         "editInformation":"编辑信息",
         "userID":"用户ID",
@@ -29,6 +32,7 @@
       }
     },
     "category":{
+      "search":"搜索 名称",
       "create":"创建",
       "delete":"删除",
       "categoryList":"分类列表",
@@ -36,6 +40,7 @@
         "editInformation":"编辑信息",
         "categoryNmae":"分类名称",
         "parentClass":"父级分类",
+        "default":"选择父类（不选创建为父类）",
         "save":"保存"
       }
     },
@@ -50,13 +55,17 @@
       "delete":"删除",
       "editFormula":"编辑夺宝计算公式显示",
       "treasureList":"夺宝列表",
+      "shopMessage":"商城信息",
+      "treasureMessage":"夺宝信息",
       "edit":{
         "editInformation":"编辑信息",
         "treasureProductsID":"夺宝产品id",
         "treasureActivityID":"夺宝活动id",
         "theQuantity":"每期夺宝产品的数量",
         "treasureProductsTitle":"夺宝产品标题",
+        "defaultTitle":"不填默认为产品标题",
         "treasureProductsSummary":"夺宝产品简介",
+        "defaultSummary":"不填默认为产品简介",
         "periodsNumber":"当期数",
         "maxPeriodsNumber":"最大期数",
         "sorting":"排序",
@@ -70,12 +79,15 @@
         "continuousDrawing":"连续开奖",
         "limitTheLottery":"限时开奖",
         "limitTheLotterytime":"限时开奖时间",
+        "whetherShelves":"是否上架",
         "state":"状态",
         "theLotteryAnnounced":"开奖公布",
         "notYetShipped":"未发货",
         "alreadyShipped":"已发货",
         "alreadyCompleted":"已完成",
-        "save":"保存"
+        "save":"保存",
+        "logisticsCompany":"物流公司",
+        "logisticsOrderNumber":"物流单号"
       }
     },
     "order":{
@@ -128,7 +140,12 @@
         "frontEndVisible":"前端是否可见",
         "no":"否",
         "yes":"是",
-        "save":"保存"
+        "save":"保存",
+        "articleID":"物品ID",
+        "consumeTreasureNumber":"消耗夺宝卷数",
+        "greaterThanOrEqual":"必须大于等于35",
+        "totalPeriodNumber":"总期数",
+        "sorting":"排序"
       }
     },
     "user":{

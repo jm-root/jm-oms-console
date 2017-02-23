@@ -1,14 +1,15 @@
 {
   "common": {
-    "get": "get",
-    "put": "put",
-    "post": "post",
-    "delete": "delete",
-    "add": "add",
-    "modify": "modify",
-    "cancel": "cancel",
+    "get": "Get",
+    "put": "Put",
+    "post": "Post",
+    "create":"Create",
+    "delete": "Delete",
+    "add": "Add",
+    "modify": "Modify",
+    "cancel": "Cancel",
     "times": "Start time and end time",
-    "searchUser": "account/nick/phone",
+    "searchUser": "Account/nick/phone",
     "search": "Search",
     "userName": "User name",
     "userId": "User ID",
@@ -22,7 +23,9 @@
     "personal": "Personal info",
     "passwordSet": "Password set",
     "securitySet": "Security set",
-    "exit": "Exit"
+    "exit": "Exit",
+    "yes":"Yes",
+    "no":"No"
   },
   "imgcrop":{
     "title":"Edit Picture",

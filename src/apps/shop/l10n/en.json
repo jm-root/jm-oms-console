@@ -1,6 +1,7 @@
 {
   "shop":{
     "address":{
+      "search":"search name/phone",
       "create":"Create",
       "delete":"Delete",
       "addressList":"Address List",
@@ -17,6 +18,8 @@
     },
     "bet":{
       "betList":"Bet List",
+      "search":"Search",
+      "searchUser":"Search User",
       "edit":{
         "editInformation":"Edit Information",
         "userID":"User ID",
@@ -29,6 +32,7 @@
       }
     },
     "category":{
+      "search":"Search name",
       "create":"Create",
       "delete":"Delete",
       "categoryList":"Category List",
@@ -36,6 +40,7 @@
         "editInformation":"Edit Information",
         "categoryNmae":"Category Name",
         "parentClass":"Parent Class",
+        "default":"Select parent class（default create parent class）",
         "save":"save"
       }
     },
@@ -50,13 +55,17 @@
       "delete":"Delete",
       "editFormula":"Edit treasure formula",
       "treasureList":"Treasure List",
+      "shopMessage":"Shop Message",
+      "treasureMessage":"Treasure Message",
       "edit":{
         "editInformation":"Edit Information",
         "treasureProductsID":"Treasure Products ID",
         "treasureActivityID":"Treasure Activity ID",
         "theQuantity":"The Quantity Of Each product to treasure",
         "treasureProductsTitle":"Treasure Products Title",
+        "defaultTitle":"Default treasure products title",
         "treasureProductsSummary":"Treasure Products Summary",
+        "defaultSummary":"Default treasure products summary",
         "periodsNumber":"Periods Number",
         "maxPeriodsNumber":"Max Periods Number",
         "sorting":"Sorting",
@@ -70,12 +79,15 @@
         "continuousDrawing":"Continuous Drawing",
         "limitTheLottery":"Limit The Lottery",
         "limitTheLotterytime":"Limit The Lottery Time",
+        "whetherShelves":"Whether Shelves",
         "state":"State",
         "theLotteryAnnounced":"The Lottery Announced",
         "notYetShipped":"Not yet shipped",
         "alreadyShipped":"Already Shipped",
         "alreadyCompleted":"Already Completed",
-        "save":"Save"
+        "save":"Save",
+        "logisticsCompany":"Logistics Company",
+        "logisticsOrderNumber":"Logistics Order Number"
       }
     },
     "order":{
@@ -128,7 +140,12 @@
         "frontEndVisible":"Front End Visible",
         "no":"No",
         "yes":"Yes",
-        "save":"Save"
+        "save":"Save",
+        "articleID":"Article ID",
+        "consumeTreasureNumber":"Consume treasure number",
+        "greaterThanOrEqual":"Greater than or equal to 35",
+        "totalPeriodNumber":"Total period number",
+        "sorting":"Sorting"
       }
     },
     "user":{
