@@ -364,8 +364,17 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'player.info.games.header.name',
+        'player.info.games.header.count',
+        'player.info.games.header.gain_jb',
+        'player.info.games.header.gain_day_jb',
+        'player.info.games.header.gain_dbj'
+    ]);
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -406,6 +415,10 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer:global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -472,8 +485,23 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         {headerName: "渠道", field: "channel", width: 100}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.info.online.header.uid',
+        'player.info.online.header.nick',
+        'player.info.online.header.appname',
+        'player.info.online.header.areaId',
+        'player.info.online.header.areaType',
+        'player.info.online.header.tb',
+        'player.info.online.header.jb',
+        'player.info.online.header.dbj',
+        'player.info.online.header.device',
+        'player.info.online.header.channel'
+    ]);
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -515,6 +543,10 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer:global.agGridHeaderCellRendererFunc,
+        onRowDataChanged:function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -597,8 +629,26 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         {headerName: "结束时间", field: "offTime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.record.header.uid',
+        'player.record.header.nick',
+        'player.record.header.appname',
+        'player.record.header.areaId',
+        'player.record.header.areaType',
+        'player.record.header.prejb',
+        'player.record.header.bkjb',
+        'player.record.header.changejb',
+        'player.record.header.device',
+        'player.record.header.channel',
+        'player.record.header.time',
+        'player.record.header.onTime',
+        'player.record.header.offTime'
+    ]);
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var search = $scope.search;
             var date = search.date;
             var startDate = date.startDate || "";
@@ -649,6 +699,10 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -726,8 +780,23 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
         {headerName: "赠送时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.givelog.header._id',
+        'player.givelog.header.fromUserId',
+        'player.givelog.header.fromUser',
+        'player.givelog.header.toUserId',
+        'player.givelog.header.toUser',
+        'player.givelog.header.type',
+        'player.givelog.header.amount',
+        'player.givelog.header.origin',
+        'player.givelog.header.fee',
+        'player.givelog.header.crtime'
+    ]);
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var search = $scope.search;
             var date = $scope.search.date;
             var startDate = date.startDate || "";
@@ -781,6 +850,10 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 

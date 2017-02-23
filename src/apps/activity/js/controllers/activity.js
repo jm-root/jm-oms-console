@@ -32,8 +32,19 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
         {headerName: "是否堆叠", field: "isStack", width: 85}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'activity.proplist.header.code',
+        'activity.proplist.header.app',
+        'activity.proplist.header.name',
+        'activity.proplist.header.description',
+        'activity.proplist.header.type',
+        'activity.proplist.header.useMode',
+        'activity.proplist.header.isStack'
+    ]);
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(propUri+'/props', {
                 params: {
@@ -75,6 +86,10 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
             $state.go('app.activity.prop.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -375,6 +390,14 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
         {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'activity.forumlist.header.code',
+        'activity.forumlist.header.title',
+        'activity.forumlist.header.author',
+        'activity.forumlist.header.crtime',
+        'activity.forumlist.header.moditime',
+        'activity.forumlist.header.visible'
+    ]);
     function opr_render(params){
         return '<button class="btn btn-xs bg-primary" ng-click="publish(\''+params.data._id+'\')">发布活动</button>';
     }
@@ -403,6 +426,8 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -444,6 +469,10 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
             $state.go('app.activity.forum.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -674,6 +703,15 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
         {headerName: "#", width: 100, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'activity.atylist.header.forum',
+        'activity.atylist.header.code',
+        'activity.atylist.header.title',
+        'activity.atylist.header.author',
+        'activity.atylist.header.crtime',
+        'activity.atylist.header.moditime',
+        'activity.atylist.header.visible',
+    ]);
     function opr_render(params){
         return '<button class="btn btn-xs bg-primary m-r-xs" ng-click="goItem(\''+params.data._id+'\')">配置活动项</button>'+
             '<span class="btn btn-xs bg-info" ng-click="onpush(data)">{{data.status?"取消发布":"发布"}}</span>';
@@ -707,6 +745,8 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var search = $scope.search;
             var keyword = search.keyword;
             var forum = search.forum;
@@ -754,6 +794,10 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
             $state.go('app.activity.aty.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -1150,7 +1194,10 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
         {headerName: "标题", field: "title", width: 300},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
-
+    global.agGridTranslateSync($scope,columnDefs,[
+       'activity.atyitemlist.header.title',
+        'activity.atyitemlist.header.crtime'
+    ]);
     $scope.visChange = function(id, val){
         $http.post(url+'/'+id, {visible:val}, {
             params:{
@@ -1169,6 +1216,8 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -1211,6 +1260,10 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
             $state.go('app.activity.aty.item.edit', {id: cell.data._id, pid:$scope.pid});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 

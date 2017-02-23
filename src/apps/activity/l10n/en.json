@@ -54,14 +54,27 @@
     "atyitemlist":{
       "create":"Create",
       "delete":"Delete",
-      "ActivityItem":"Activity Item"
+      "ActivityItem":"Activity Item",
+      "header":{
+        "title":"title",
+        "crtime":"Create time"
+      }
     },
     "atylist":{
       "search":"Search Title",
       "create":"Create",
       "delete":"Delete",
       "SelectSection":"Select Section",
-      "ActivityList":"Activity List"
+      "ActivityList":"Activity List",
+      "header":{
+        "forum":"Section name",
+        "code":"Code",
+        "title":"Title",
+        "author":"Author",
+        "crtime":"Create time",
+        "moditime":"Modify time",
+        "visible":"visible"
+      }
     },
     "forumedit":{
       "EditInformation":"Edit Information",
@@ -78,7 +91,15 @@
     "forumlist":{
       "create":"Create",
       "delete":"Delete",
-      "ForumList":"Forum List"
+      "ForumList":"Forum List",
+      "header":{
+        "code":"Code",
+        "title":"Title",
+        "author":"Author",
+        "crtime":"Create time",
+        "moditime":"Modify time",
+        "visible":" Visible"
+      }
     },
     "gaveprop":{
       "AssignProps":"Assign Props",
@@ -124,7 +145,16 @@
     "proplist":{
       "create":"Create",
       "delete":"Delete",
-      "PropList":"Prop List"
+      "PropList":"Prop List",
+      "header":{
+        "code":"Code",
+        "app":"App ID",
+        "name":"Name",
+        "description":"Description",
+        "type":"Type",
+        "useMode":"Use mode",
+        "isStack":"Is stack"
+      }
     }
   }
 }

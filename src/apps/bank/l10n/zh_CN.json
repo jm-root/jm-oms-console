@@ -13,7 +13,32 @@
         "dbj": "夺宝卷",
         "opts": "支付状态",
         "opt0": "未付",
-        "opt1": "已付"
+        "opt1": "已付",
+        "header":{
+          "_id":"_id",
+          "code":"单号",
+          "user":"支付用户",
+          "channel":"渠道",
+          "title":"标题",
+          "content":"详情",
+          "currency":"币种",
+          "amount":"数量",
+          "status":"状态",
+          "note":"备注",
+          "crtime":"创建时间"
+        }
+      },
+      "header":{
+        "id": "账户ID",
+        "user": "用户名",
+        "tb": "元宝余额",
+        "tb_a": "元宝额度",
+        "jb": "金币余额",
+        "jb_a": "金币额度",
+        "dbj": "夺宝卷余额",
+        "dbj_a": "夺宝卷额度",
+        "status": "状态",
+        "createdAt": "创建时间"
       }
     },
     "bank": {

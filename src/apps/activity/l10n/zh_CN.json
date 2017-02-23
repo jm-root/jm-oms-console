@@ -54,14 +54,27 @@
     "atyitemlist":{
       "create":"创建",
       "delete":"删除",
-      "ActivityItem":"活动项"
+      "ActivityItem":"活动项",
+      "header":{
+        "title":"标题",
+        "crtime":"创建时间"
+      }
     },
     "atylist":{
       "search":"搜索 标题",
       "create":"创建",
       "delete":"删除",
       "SelectSection":"选择版块",
-      "ActivityList":"活动列表"
+      "ActivityList":"活动列表",
+      "header":{
+        "forum":"所属版块",
+        "code":"编码",
+        "title":"标题",
+        "author":"作者",
+        "crtime":"创建时间",
+        "moditime":"修改时间",
+        "visible":"显示"
+      }
     },
     "forumedit":{
       "EditInformation":"编辑信息",
@@ -78,7 +91,15 @@
     "forumlist":{
       "create":"创建",
       "delete":"删除",
-      "ForumList":"版块列表"
+      "ForumList":"版块列表",
+      "header":{
+        "code":"编码",
+        "title":"标题",
+        "author":"作者",
+        "crtime":"创建时间",
+        "moditime":"修改时间",
+        "visible":"显示"
+      }
     },
     "gaveprop":{
       "AssignProps":"分配道具",
@@ -124,7 +145,16 @@
     "proplist":{
       "create":"创建",
       "delete":"删除",
-      "PropList":"道具列表"
+      "PropList":"道具列表",
+      "header":{
+        "code":"编码",
+        "app":"应用ID",
+        "name":"名称",
+        "description":"描述",
+        "type":"类型",
+        "useMode":"使用方式",
+        "isStack":"是否堆叠"
+      }
     }
   }
 }

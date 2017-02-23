@@ -49,13 +49,26 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
-
+    global.agGridTranslateSync($scope,columnDefs,[
+        'bbs.forum.list.header._id',
+        'bbs.forum.list.header.code',
+        'bbs.forum.list.header.title',
+        'bbs.forum.list.header.postCount',
+        'bbs.forum.list.header.postCountToday',
+        'bbs.forum.list.header.postCountYesterday',
+        'bbs.forum.list.header.creator',
+        'bbs.forum.list.header.visible',
+        'bbs.forum.list.header.crtime',
+        'bbs.forum.list.header.moditime'
+    ])
     function opr_render(params){
         return '<button class="btn btn-xs bg-primary" ng-click="publish(\''+params.data._id+'\')">发布帖子</button>';
     }
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -97,6 +110,10 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
             $state.go('app.bbs.forum.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -358,8 +375,26 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'bbs.topic.list.header._id',
+        'bbs.topic.list.header.section',
+        'bbs.topic.list.header.code',
+        'bbs.topic.list.header.title',
+        'bbs.topic.list.header.favTimes',
+        'bbs.topic.list.header.shareTimes',
+        'bbs.topic.list.header.viewCount',
+        'bbs.topic.list.header.replyCount',
+        'bbs.topic.list.header.favorTimes',
+        'bbs.topic.list.header.againstTimes',
+        'bbs.topic.list.header.author',
+        'bbs.topic.list.header.visible',
+        'bbs.topic.list.header.crtime',
+        'bbs.topic.list.header.moditime'
+    ]);
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -402,6 +437,10 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
             $state.go('app.bbs.topic.edit' , {id: cell.data._id});
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -467,7 +506,7 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
 
     $scope.create = function(){
         $state.go('app.bbs.topic.edit' , {pid: $scope.forum});
-    };
+};
 
     $scope.onPageSizeChanged = function() {
         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理

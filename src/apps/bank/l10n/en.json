@@ -13,7 +13,32 @@
         "dbj": "Treasure",
         "opts": "Payment Status",
         "opt0": "Unpaid",
-        "opt1": "Paid"
+        "opt1": "Paid",
+        "header":{
+          "_id":"_id",
+          "code":"Order number",
+          "user":"Payment user",
+          "channel":"Channel",
+          "title":"Title",
+          "content":"Content",
+          "currency":"Currency",
+          "amount":"Amount",
+          "status":"Status",
+          "note":"Note",
+          "crtime":"Create time"
+        }
+      },
+      "header":{
+        "id": "Account ID",
+        "user": "User name",
+        "tb": "Ingot balance",
+        "tb_a": "Ingot quota",
+        "jb": "Gold balance",
+        "jb_a": "Gold quota",
+        "dbj": "Treasure balance",
+        "dbj_a": "Treasure quota",
+        "status": "Status",
+        "createdAt": "Create time"
       }
     },
     "bank": {

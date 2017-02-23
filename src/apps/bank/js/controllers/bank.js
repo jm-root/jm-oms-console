@@ -69,9 +69,22 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
         {headerName: "状态", field: "status", width: 70, valueGetter: format_status},
         {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
-
+    global.agGridTranslateSync($scope,columnDefs,[
+        'bank.account.header.id',
+        'bank.account.header.user',
+        'bank.account.header.tb',
+        'bank.account.header.tb_a',
+        'bank.account.header.jb',
+        'bank.account.header.jb_a',
+        'bank.account.header.dbj',
+        'bank.account.header.dbj_a',
+        'bank.account.header.status',
+        'bank.account.header.createdAt'
+    ]);
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             bank.accounts({
                 page: page,
@@ -108,6 +121,10 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -271,8 +288,19 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
         {headerName: "时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'bank.bank.deal.header.userId',
+        'bank.bank.deal.header.user',
+        'bank.bank.deal.header.ctName',
+        'bank.bank.deal.header.flag',
+        'bank.bank.deal.header.amount',
+        'bank.bank.deal.header.createdAt'
+    ]);
+
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             bank.history({
                 page: page,
@@ -305,6 +333,10 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -356,6 +388,14 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
         {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'bank.bank.preauth.header.user',
+        'bank.bank.preauth.header.control',
+        'bank.bank.preauth.header.ct',
+        'bank.bank.preauth.header.amount',
+        'bank.bank.preauth.header.createdAt'
+    ]);
+
     var ok = true;
     $scope.npreauth = function(data){
         if(!ok) return;
@@ -390,6 +430,8 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             bank.preauthList({
                 page: page,
@@ -425,6 +467,10 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 
@@ -792,8 +838,23 @@ app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'global', fun
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+       'bank.account.paylist.header._id',
+        'bank.account.paylist.header.code',
+        'bank.account.paylist.header.user',
+        'bank.account.paylist.header.channel',
+        'bank.account.paylist.header.title',
+        'bank.account.paylist.header.content',
+        'bank.account.paylist.header.currency',
+        'bank.account.paylist.header.amount',
+        'bank.account.paylist.header.status',
+        'bank.account.paylist.header.note',
+        'bank.account.paylist.header.crtime'
+    ]);
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var search = $scope.search;
             var date = search.date;
             var startDate = date.startDate || "";
@@ -847,6 +908,10 @@ app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'global', fun
         onCellDoubleClicked: function(cell){
         },
         localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         datasource: dataSource
     };
 

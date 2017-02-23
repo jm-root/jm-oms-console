@@ -6,7 +6,19 @@
       "system":"System",
       "player":"Player",
       "chooseProps":"Choose Props",
-      "giveLog":"give Log"
+      "giveLog":"Give record",
+      "header":{
+        "_id": "ID",
+        "fromUserId": "Give ID",
+        "fromUser": "Giver",
+        "toUserId": "Donee ID",
+        "toUser": "Donee",
+        "type": "Prop type",
+        "amount": "Prop amount",
+        "origin": "Get way",
+        "fee": "fee",
+        "crtime": "Give time"
+      }
     },
     "info":{
       "list":{
@@ -48,16 +60,50 @@
         }
       },
       "games":{
-        "gameData": "Game Data"
+        "gameData": "Game Data",
+        "header":{
+          "name": "Game name",
+          "count": "Game times",
+          "gain_jb": "The game always win",
+          "gain_day_jb": "Today the total wins",
+          "gain_dbj": "Treasure amount"
+        }
       },
       "online":{
         "title": "Player online status",
-        "search": "Search player id / nick"
+        "search": "Search player id / nick",
+        "header":{
+          "uid": "Player ID",
+          "nick": "Nick",
+          "appname": "Game name",
+          "areaId": "Room ID",
+          "areaType": "Room type",
+          "tb": "Ingot",
+          "jb": "Gold",
+          "dbj": "Treasure",
+          "device": "Device",
+          "channel": "Channel"
+        }
       }
     },
     "record":{
       "title": "Game record",
-      "search": "Search account/nick/mobile"
+      "search": "Search account/nick/mobile",
+      "header":{
+        "uid": "Player ID",
+        "nick": "Nick",
+        "appname": "Game name",
+        "areaId": "Room ID",
+        "areaType": "Room type",
+        "prejb": "Start gold",
+        "bkjb": "End gold",
+        "changejb": "Win gold",
+        "device": "Device",
+        "channel": "Channel",
+        "time": "Play how long",
+        "onTime": "Start time",
+        "offTime": "End time"
+      }
     }
   }
 }

@@ -4,7 +4,19 @@
       "list":{
         "create":"Create",
         "delete":"Delete",
-        "forumList":"Forum List"
+        "forumList":"Forum List",
+        "header":{
+          "_id":"_id",
+          "code":"Code",
+          "title":"Title",
+          "postCount":"Post count",
+          "postCountToday":"Post count today",
+          "postCountYesterday":"Post count yesterday",
+          "creator":"Creator",
+          "visible":"Visible",
+          "crtime":"Crtime",
+          "moditime":"Moditime"
+        }
       },
       "edit":{
         "editInformation":"Edit Information",
@@ -30,7 +42,23 @@
         "search":"Search title/author",
         "create":"Create",
         "delete":"Delete",
-        "topicList":"Post List"
+        "topicList":"Post List",
+        "header":{
+          "_id":"_id",
+          "section":"Section name",
+          "code":"Code",
+          "title":"Title",
+          "favTimes":"Collection times",
+          "shareTimes":"Share times",
+          "viewCount":"View count",
+          "replyCount":"Reply count",
+          "favorTimes":"Favor times",
+          "againstTimes":"Against times",
+          "author":"Author",
+          "visible":"Visible",
+          "crtime":"Crtime",
+          "moditime":"Modify time"
+        }
       },
       "edit":{
         "editInformation":"Edit Information",

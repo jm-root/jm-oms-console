@@ -4,7 +4,19 @@
       "list":{
         "create":"创建",
         "delete":"删除",
-        "forumList":"板块列表"
+        "forumList":"板块列表",
+        "header":{
+          "_id":"_id",
+          "code":"编码",
+          "title":"标题",
+          "postCount":"贴子数量",
+          "postCountToday":"今日发帖",
+          "postCountYesterday":"昨日发帖",
+          "creator":"创建者",
+          "visible":"显示",
+          "crtime":"创建时间",
+          "moditime":"修改时间"
+        }
       },
       "edit":{
         "editInformation":"编辑信息",
@@ -30,7 +42,23 @@
         "search":"搜索 标题/作者",
         "create":"创建",
         "delete":"删除",
-        "topicList":"帖子列表"
+        "topicList":"帖子列表",
+        "header":{
+          "_id":"_id",
+          "section":"所属板块",
+          "code":"编码",
+          "title":"标题",
+          "favTimes":"收藏次数",
+          "shareTimes":"分享次数",
+          "viewCount":"浏览次数",
+          "replyCount":"回复次数",
+          "favorTimes":"支持人数",
+          "againstTimes":"反对人数",
+          "author":"作者",
+          "visible":"显示",
+          "crtime":"创建时间",
+          "moditime":"修改时间"
+        }
       },
       "edit":{
         "editInformation":"编辑信息",

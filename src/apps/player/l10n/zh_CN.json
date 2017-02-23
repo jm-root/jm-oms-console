@@ -6,7 +6,19 @@
           "system":"系统",
           "player":"玩家",
           "chooseProps":"选择道具类型",
-          "giveLog":"赠送记录"
+          "giveLog":"赠送记录",
+          "header":{
+              "_id": "ID",
+              "fromUserId": "赠送ID",
+              "fromUser": "赠送者",
+              "toUserId": "受赠ID",
+              "toUser": "受赠者",
+              "type": "道具类型",
+              "amount": "道具数量",
+              "origin": "获得途径",
+              "fee": "手续费",
+              "crtime": "赠送时间"
+          }
       },
       "info":{
           "list":{
@@ -48,16 +60,50 @@
               }
           },
           "games":{
-              "gameData": "游戏数据"
+              "gameData": "游戏数据",
+              "header":{
+                  "name": "游戏名称",
+                  "count": "游戏局数",
+                  "gain_jb": "游戏总输赢",
+                  "gain_day_jb": "今日总输赢",
+                  "gain_dbj": "总获取夺宝卷"
+              }
           },
           "online":{
               "title": "玩家在线状态",
-              "search": "搜索 玩家ID/昵称"
+              "search": "搜索 玩家ID/昵称",
+              "header":{
+                  "uid": "玩家ID",
+                  "nick": "昵称",
+                  "appname": "游戏名称",
+                  "areaId": "房间号",
+                  "areaType": "房间类型",
+                  "tb": "元宝",
+                  "jb": "金币",
+                  "dbj": "夺宝卷",
+                  "device": "设备",
+                  "channel": "渠道"
+              }
           }
       },
       "record":{
           "title":"游戏记录",
-          "search": "搜索 账号/昵称/手机号"
+          "search": "搜索 账号/昵称/手机号",
+          "header":{
+              "uid": "玩家ID",
+              "nick": "昵称",
+              "appname": "游戏名称",
+              "areaId": "房间号",
+              "areaType": "房间类型",
+              "prejb": "开始前金币",
+              "bkjb": "结束后金币",
+              "changejb": "输赢金币",
+              "device": "设备",
+              "channel": "渠道",
+              "time": "游戏时长",
+              "onTime": "开始时间",
+              "offTime": "结束时间"
+          }
       }
   }
 }
