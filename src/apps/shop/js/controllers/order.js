@@ -3,7 +3,7 @@
  */
 "use strict";
 var sso = jm.sdk.sso;
-app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
+app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -141,7 +141,7 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http','AG
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.order.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

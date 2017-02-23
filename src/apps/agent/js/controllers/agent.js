@@ -1,5 +1,5 @@
 'use strict';
-app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var sso = jm.sdk.sso;
     var history = global.agentListHistory||(global.agentListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -231,7 +231,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                 $state.go('app.agent.edit' , {id: cell.data._id._id});
             }
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

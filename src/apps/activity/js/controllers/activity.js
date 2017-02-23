@@ -1,6 +1,6 @@
 'use strict';
 var sso =jm.sdk.sso;
-app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODULE_CONFIG', 'global',function($scope, $http, $state, AGGRID,MODULE_CONFIG, global) {
+app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG', 'global',function($scope, $http, $state,MODULE_CONFIG, global) {
     var history = global.activityPropHistory||(global.activityPropHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -74,7 +74,7 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state', 'AGGRID','MODUL
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.prop.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -355,7 +355,7 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
     });
 }]);
 
-app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state, global) {
     var history = global.activityForumListHistory||(global.activityForumListHistory={});
     var url = activityUri+'/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -443,7 +443,7 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.forum.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -628,7 +628,7 @@ app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state, global) {
     var history = global.activityAtyListHistory||(global.activityAtyListHistory={});
     var url = activityUri+'/activities';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -753,7 +753,7 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'g
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.aty.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -1121,7 +1121,7 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
 
 }]);
 
-app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateParams', 'AGGRID', 'global',function($scope, $http, $state, $stateParams, AGGRID,global) {
+app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateParams', 'global',function($scope, $http, $state, $stateParams,global) {
     var history = global.activityAtyItemListHistory||(global.activityAtyItemListHistory={});
     var url = activityUri+'/items';
     var purl = activityUri+'/activities';
@@ -1210,7 +1210,7 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.aty.item.edit', {id: cell.data._id, pid:$scope.pid});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

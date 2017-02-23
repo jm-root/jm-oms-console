@@ -1,5 +1,5 @@
 
-app.controller('ConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, common, AGGRID, global) {
+app.controller('ConfigCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'common', 'global', function($scope, $http, $state, $stateParams, $timeout, common, global) {
     var sso = jm.sdk.sso;
 
 }]);

@@ -3,7 +3,7 @@
  */
 "use strict";
 var sso = jm.sdk.sso;
-app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
+app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -91,7 +91,7 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGR
                 // }
             });
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

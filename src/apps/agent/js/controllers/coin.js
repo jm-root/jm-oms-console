@@ -82,7 +82,7 @@ app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$statePar
 }]);
 
 //订单管理
-app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinStockOrderHistory||(global.coinStockOrderHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -226,7 +226,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -331,7 +331,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
 }]);
 
 //库存列表
-app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinStockListHistory||(global.coinStockListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -593,7 +593,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -631,7 +631,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
 }]);
 
 //批量分发
-app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinDistributeBatchHistory||(global.coinDistributeBatchHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -753,7 +753,7 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
         onCellDoubleClicked: function(cell){
             //$state.go('app.agent.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -835,7 +835,7 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
 }]);
 
 //生成首充号
-app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinDistributeBatchHistory||(global.coinDistributeBatchHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -958,7 +958,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
         onCellDoubleClicked: function(cell){
             $state.go('app.coin.distribute.makeinfo' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -1030,7 +1030,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
 }]);
 
 //生成首充号详情
-app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var id = $stateParams.id;
     $scope.users = [];
     if(id){
@@ -1052,7 +1052,7 @@ app.controller('CoinDistributeMakeInfoCtrl', ['$scope', '$http', '$state', '$sta
 }]);
 
 //帐号列表
-app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinAccountListHistory||(global.coinAccountListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -1238,7 +1238,7 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -1260,7 +1260,7 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
 }]);
 
 //玩家账号统计
-app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinStockListHistory||(global.coinStockListHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -1371,7 +1371,7 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -1411,7 +1411,7 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
 }]);
 
 //渠道账号统计
-app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinRecordAgentStatHistory||(global.coinRecordAgentStatHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -1510,7 +1510,7 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -1551,7 +1551,7 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
 }]);
 
 //日志查询
-app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.coinRecordLogsHistory||(global.coinRecordLogsHistory={});
     $scope.page = history.page||1;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -1809,7 +1809,7 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

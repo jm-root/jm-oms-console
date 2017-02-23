@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     global.reportAccountHistory || (global.reportAccountHistory = {});
     var history = global.reportAccountHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -94,7 +94,7 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         floatingBottomRowData: []
     };

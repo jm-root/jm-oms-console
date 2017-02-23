@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID,global) {
+app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state,global) {
     var sso = jm.sdk.sso;
     var history = global.BBSForumListHistory||(global.BBSForumListHistory={});
     var url = bbsUri+'/forums';
@@ -96,7 +96,7 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
         onCellDoubleClicked: function(cell){
             $state.go('app.bbs.forum.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -302,7 +302,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
 
 }]);
 
-app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID,global) {
+app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state,global) {
     var sso = jm.sdk.sso;
     var history = global.BBSTopicListHistory||(global.BBSTopicListHistory={});
     var url = bbsUri+'/topics';
@@ -401,7 +401,7 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'glob
         onCellDoubleClicked: function(cell){
             $state.go('app.bbs.topic.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

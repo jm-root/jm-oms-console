@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('SystemAdminCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history=global.SystemAdminHitory || (global.SystemAdminHitory={});
     $scope.pageSize = history.pageSize || $scope.defaultRows;
     $scope.search = history.search || {};
@@ -57,7 +57,7 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
     $scope.onPageSizeChanged = function() {
@@ -73,7 +73,7 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http','AGGRID', 'global
 
 }]);
 
-app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var history=global.SystemLogHistory||(global.SystemLogHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
@@ -157,7 +157,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
     $scope.onPageSizeChanged = function() {
@@ -179,6 +179,6 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http','AGGRID', 'global',
 
 }]);
 //新建用户
-app.controller('SystemAdminAddCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('SystemAdminAddCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
 }]);

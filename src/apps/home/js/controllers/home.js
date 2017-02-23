@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state, global) {
     var history = global.homeBBSForumListHistory||(global.homeBBSForumListHistoryhomeBBSForumListHistory={});
     var url = homeUri+'/bbs/forums';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -75,7 +75,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -243,7 +243,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state, global) {
     var history = global.homeBBSTopicListHistory||(global.homeBBSTopicListHistory={});
     var url = homeUri+'/bbs/topics';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -336,7 +336,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -584,7 +584,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'AGGRID', 'global',function($scope, $http, $state, AGGRID, global) {
+app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',function($scope, $http, $state, global) {
     var history = global.homeActivityHistory||(global.homeActivityHistory={});
     var url = homeUri+'/bbs/topics';
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -675,7 +675,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'AGGRID', '
         onCellDoubleClicked: function(cell){
             $state.go('app.home.activitys.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -829,7 +829,7 @@ app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$statePara
 
 }]);
 
-app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', 'AGGRID', function($scope, $http, $state, $stateParams,global, AGGRID) {
+app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams,global) {
     $scope.notice = {};
     $scope.selt = {};
 
@@ -877,7 +877,7 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         rowData: []
     };
 

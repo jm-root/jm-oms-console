@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.agentDataRegisterHistory||(global.agentDataRegisterHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -94,7 +94,7 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -116,7 +116,7 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global', function($scope, $http, $state, $stateParams, $timeout, AGGRID, global) {
+app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var history = global.agentDataRechargeHistory||(global.agentDataRechargeHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -209,7 +209,7 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -231,7 +231,7 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
 
 }]);
 
-app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     global.agentDataAnalysisHistory || (global.agentDataAnalysisHistory = {});
     var history = global.agentDataAnalysisHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -312,7 +312,7 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http','AGGRID', '
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

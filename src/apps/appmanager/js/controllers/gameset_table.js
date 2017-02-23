@@ -3,7 +3,7 @@
  */
 "use strict";
 var sso = jm.sdk.sso;
-app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', '$q', function ($scope, $state, $stateParams, $http, AGGRID, global, $q) {
+app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', '$q', function ($scope, $state, $stateParams, $http, global, $q) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -312,7 +312,7 @@ app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$ht
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.gameset.table.edit' , {appId: tmpl_id, type: tmpl_type, roomId: roomId, id: cell.data.tableType});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

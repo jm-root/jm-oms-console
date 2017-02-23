@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', '$timeout', function ($scope, $state, $http,AGGRID, global, $timeout) {
+app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
     var history = global.playerListHistory||(global.playerListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -130,9 +130,33 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global
         {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'player.info.list.header.agent',
+        'player.info.list.header.uid',
+        'player.info.list.header.account',
+        'player.info.list.header.mobile',
+        'player.info.list.header.nick',
+        'player.info.list.header.level',
+        'player.info.list.header.mac',
+        'player.info.list.header.ip',
+        'player.info.list.header.tb',
+        'player.info.list.header.jb',
+        'player.info.list.header.dbj',
+        'player.info.list.header.cny',
+        'player.info.list.header.card',
+        'player.info.list.header.win_jb',
+        'player.info.list.header.jbamount',
+        'player.info.list.header.jbamount_d',
+        'player.info.list.header.crtime',
+        'player.info.list.header.active',
+        'player.info.list.header.ctrl'
+    ]);
+
     var dataSource = {
         //pageSize: Number($scope.pageSize),
         getRows: function (params) {
+            global.agGridOverlay();   //翻译
+
             var search = $scope.search;
             var date = search.date;
             var startDate = date.startDate || "";
@@ -194,7 +218,8 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global
         rowHeight: 30,
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         datasource: dataSource,
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
@@ -324,7 +349,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global
 
 }]);
 
-app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
+app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.playerGamesListHistory||(global.playerGamesListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var id = $stateParams.id;
@@ -381,7 +406,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -395,7 +420,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     });
 }]);
 
-app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'AGGRID', 'global','data', function ($scope, $state, $http, $interval, AGGRID, global, data) {
+app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global','data', function ($scope, $state, $http, $interval, global, data) {
     var history = global.playerOnlineHistory||(global.playerOnlineHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -490,7 +515,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'A
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -508,7 +533,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'A
     });
 }]);
 
-app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     global.playerRecordHistory || (global.playerRecordHistory = {});
     var history = global.playerRecordHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -624,7 +649,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glob
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -646,7 +671,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glob
     });
 }]);
 
-app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.playerGiveLogHistory||(global.playerGiveLogHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -756,7 +781,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

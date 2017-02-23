@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.bankAccountHistory||(global.bankAccountHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -107,7 +107,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http','AGGRID', 'global
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -217,7 +217,7 @@ app.controller('BankExchangeCtrl', ['$scope', '$state', '$http', 'global', funct
     }
 }]);
 
-app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.bankDealHistory||(global.bankDealHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -304,7 +304,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global',
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -321,7 +321,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global',
     });
 }]);
 
-app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout','AGGRID', 'global', function ($scope, $state, $http, $timeout,AGGRID, global) {
+app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'global', function ($scope, $state, $http, $timeout, global) {
     var history = global.bankPreauthHistory||(global.bankPreauthHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -424,7 +424,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout','AGGRI
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -740,7 +740,7 @@ app.controller('CurrencyCtrl', ['$scope', '$state', '$http','global',function ($
     };
 }]);
 
-app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http, AGGRID, global) {
+app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.accountPayListHistory||(global.accountPayListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -846,7 +846,7 @@ app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'AGGRID', 'gl
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('AppsListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', "$stateParams", function ($scope, $state, $http,AGGRID, global, $stateParams) {
+app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$stateParams", function ($scope, $state, $http, global, $stateParams) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -119,7 +119,7 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
         onCellDoubleClicked: function(cell){
             $state.go('app.apps.manage.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

@@ -3,7 +3,7 @@
  */
 'use strict'
 var sso = jm.sdk.sso;
-app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout','AGGRID', function ($scope, $state, $http, $timeout,AGGRID) {
+app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', function ($scope, $state, $http, $timeout) {
     var url = activityUri+'/items';
 
     $scope.activity = {};
@@ -98,7 +98,7 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout','AG
         rowSelection: 'single',
         rowHeight: 30,
         columnDefs: columnDefs,
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         rowData: [],
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();

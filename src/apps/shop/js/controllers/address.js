@@ -3,7 +3,7 @@
  */
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('AddrListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('AddrListCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -61,7 +61,7 @@ app.controller('AddrListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.address.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
     

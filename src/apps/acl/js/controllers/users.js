@@ -1,7 +1,7 @@
 
 'use strict';
-app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global',
-    function($scope, $http, $state, $stateParams, $timeout, AGGRID,global) {
+app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global',
+    function($scope, $http, $state, $stateParams, $timeout,global) {
     var sso=jm.sdk.sso;
     var acl = jm.sdk.acl;
     var history = global.usersListHistory||(global.usersListHistory={});
@@ -87,7 +87,7 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
         onCellDoubleClicked: function(cell){
             $state.go('app.acl.users.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

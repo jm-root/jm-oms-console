@@ -3,7 +3,7 @@
  */
 "use strict";
 var sso = jm.sdk.sso;
-app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http, AGGRID, global) {
+app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -110,7 +110,7 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.baoxiang.edit' , {appId: tmpl_id, id: cell.data.boxType});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };
@@ -315,7 +315,7 @@ app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams',
 }]);
 
 
-app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$http','AGGRID', 'global', function ($scope, $state, $stateParams, $http,AGGRID, global) {
+app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -411,7 +411,7 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
         onCellDoubleClicked: function(cell){
             // $state.go('app.shop.product.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

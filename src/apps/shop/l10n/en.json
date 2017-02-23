@@ -146,6 +146,21 @@
         "greaterThanOrEqual":"Greater than or equal to 35",
         "totalPeriodNumber":"Total period number",
         "sorting":"Sorting"
+      },
+      "header":{
+        "name":"name",
+        "category.code":"Category code",
+        "category.name":"Category name",
+        "description":"Description",
+        "type":"Type",
+        "price":"Price",
+        "pic":"Picture",
+        "tags":"Tags",
+        "inventory":"Inventory",
+        "status":"Status",
+        "visible":"Front end visible",
+        "crTime":"Create time",
+        "modiTime":"Modify time"
       }
     },
     "user":{

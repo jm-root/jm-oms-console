@@ -3,7 +3,7 @@
  */
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, AGGRID, global) {
+app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -216,7 +216,7 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             var index = cell.data.lotteryIds.length - 1;
             $state.go('app.shop.lottery.edit' , {id: cell.data.lotteryIds[index]});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };
@@ -454,7 +454,7 @@ app.controller('LotteryFormulaCtrl', ['$scope', '$http', '$state', '$stateParams
 }]);
 
 
-app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http', 'AGGRID', 'global', function ($scope, $state, $stateParams, $http, AGGRID, global) {
+app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -633,7 +633,7 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.lotteryWin.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource,
         angularCompileRows: true
     };

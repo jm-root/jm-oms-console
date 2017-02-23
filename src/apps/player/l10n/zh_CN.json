@@ -24,7 +24,28 @@
               "playerTotal": "玩家总人数",
               "mobileTotal": "手机用户数",
               "registeredYesterday": "昨天注册人数",
-              "registerToday": "今天注册人数"
+              "registerToday": "今天注册人数",
+              "header":{
+                  "agent": "所属渠道",
+                  "uid": "玩家ID",
+                  "account": "账号",
+                  "mobile": "手机",
+                  "nick": "昵称",
+                  "level": "VIP等级",
+                  "mac": "mac地址",
+                  "ip": "IP",
+                  "tb": "元宝",
+                  "jb": "金币",
+                  "dbj": "夺宝卷",
+                  "cny": "充值",
+                  "card": "点卡充值",
+                  "win_jb": "历史最高金币",
+                  "jbamount": "累计消耗金币",
+                  "jbamount_d": "当天游戏总输赢",
+                  "crtime": "注册时间",
+                  "active": "封停/解封",
+                  "ctrl": "各游戏累计输赢"
+              }
           },
           "games":{
               "gameData": "游戏数据"

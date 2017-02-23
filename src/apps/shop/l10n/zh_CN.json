@@ -146,6 +146,21 @@
         "greaterThanOrEqual":"必须大于等于35",
         "totalPeriodNumber":"总期数",
         "sorting":"排序"
+      },
+      "header":{
+        "name":"产品名称",
+        "category.code":"分类编码",
+        "category.name":"分类名称",
+        "description":"产品描述",
+        "type":"产品类型",
+        "price":"产品价格",
+        "pic":"产品图片",
+        "tags":"产品标签",
+        "inventory":"产品库存",
+        "status":"产品状态",
+        "visible":"前端是否可见",
+        "crTime":"创建时间",
+        "modiTime":"修改时间"
       }
     },
     "user":{

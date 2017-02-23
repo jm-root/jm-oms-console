@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var history = global.GuestBookHistory||(global.GuestBookHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
@@ -54,7 +54,7 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global'
         },
         onCellDoubleClicked: function(cell){
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -113,7 +113,7 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global'
 }]);
 
 
-app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var history = global.WordFilterLogHistory||(global.WordFilterLogHistory={});
     $scope.pageSize=history.pageSize||$scope.defaultRows;
@@ -170,7 +170,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -230,7 +230,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'AGGRID', 'glo
 }]);
 
 
-app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http','AGGRID', 'global', function ($scope, $state,$stateParams, $http,AGGRID, global) {
+app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'global', function ($scope, $state,$stateParams, $http, global) {
     var sso = jm.sdk.sso;
     var history = global.WordFilterHistory||(global.WordFilterHistory={});
     $scope.pageSize=history.pageSize||'50';
@@ -303,7 +303,7 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http','AG
         onCellDoubleClicked: function(cell){
             $state.go('app.wordfilter.update',{id : cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
     $scope.onPageSizeChanged = function() {

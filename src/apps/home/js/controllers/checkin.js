@@ -3,7 +3,7 @@
  */
 'use strict'
 var sso = jm.sdk.sso;
-app.controller('CheckinCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     console.log("CheckinCtrl");
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -58,7 +58,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http','AGGRID', 'global', f
         onCellDoubleClicked: function(cell){
             $state.go('app.home.checkin.edit' , {id: cell.data._id});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
         datasource: dataSource
     };
 

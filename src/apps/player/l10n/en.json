@@ -9,7 +9,9 @@
       "giveLog":"give Log"
     },
     "info":{
-      "list":{"info": "Player Info",
+      "list":{
+        "search": "Search account/nick/phone",
+        "info": "Player Info",
         "type":"Type",
         "tourist":"Tourist",
         "phone":"Phone",
@@ -22,7 +24,28 @@
         "playerTotal": "Player Total",
         "mobileTotal": "Mobile Total",
         "registeredYesterday": "Registered Yesterday",
-        "registerToday": "Register Today"
+        "registerToday": "Register Today",
+        "header":{
+          "agent": "Agent",
+          "uid": "Player ID",
+          "account": "Account",
+          "mobile": "Mobile",
+          "nick": "Nick",
+          "level": "VIP Level",
+          "mac": "mac",
+          "ip": "IP",
+          "tb": "Ingot",
+          "jb": "Gold",
+          "dbj": "Treasure",
+          "cny": "Recharge",
+          "card": "Card",
+          "win_jb": "History gold",
+          "jbamount": "Consume gold",
+          "jbamount_d": "Game winning total",
+          "crtime": "Registration time",
+          "active": "Closure / Release",
+          "ctrl": "All Games Record"
+        }
       },
       "games":{
         "gameData": "Game Data"

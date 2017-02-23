@@ -3,7 +3,7 @@
  */
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', function ($scope, $state, $http,AGGRID, global) {
+app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -11,12 +11,13 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "产品名称", field: "name", width: 120},
-        {headerName: "分类编码", field: "category.code", width: 120},
-        {headerName: "分类名称", field: "category.name", width: 120},
-        {headerName: "产品描述", field: "description", width: 120},
+        // {headerName: "分类编码", field: "category.code", width: 120},
+        // {headerName: "分类名称", field: "category.name", width: 120},
+        // {headerName: "产品描述", field: "description", width: 120},
+        {headerName: "产品类型", cellRenderer: type_render, width: 120, cellStyle:{'text-align':'center'}},
         {headerName: "产品价格", field: "price", width: 120},
         {headerName: "产品图片", field: "pic", width: 120},
-        {headerName: "产品标签", field: "tags", width: 120},
+        // {headerName: "产品标签", field: "tags", width: 120},
         {headerName: "产品库存", field: "inventory", width: 120},
         {headerName: "产品状态", field: "status", width: 120, valueGetter: $scope.angGridFormatStatus},
         {headerName: "前端是否可见", field: "visible", width: 120},
@@ -27,15 +28,35 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
         {headerName: "#", width: 70, cellRenderer: create_goods, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope,columnDefs,[
+        'shop.product.header.name',
+        'shop.product.header.type',
+        'shop.product.header.price',
+        'shop.product.header.pic',
+        'shop.product.header.inventory',
+        'shop.product.header.status',
+        'shop.product.header.visible',
+        'shop.product.header.crTime',
+        'shop.product.header.modiTime'
+    ])
+
     function opr_render(params){
         return '<button class="btn btn-xs bg-primary" ng-click="goCheck(\''+params+'\')">查看</button>';
     }
-    
+
+    function type_render(params) {
+        if(params.data.type == 1){
+            return "夺宝";
+        }else{
+            return "商城";
+        }
+    }
+
     function create_lottery(params) {
         var str = "";
-        if(params.data.status == 1){
-            str = '<button class="btn btn-xs bg-primary" ng-click="goCreateLottery(\''+params.data._id+'\')">新建活动</button> ';
-        }
+        // if(params.data.status == 1){
+        //     str = '<button class="btn btn-xs bg-primary" ng-click="goCreateLottery(\''+params.data._id+'\')">新建活动</button> ';
+        // }
         str += '<button class="btn btn-xs bg-primary" ng-click="goCheckLottery(\''+params.data._id+'\')">查看活动</button>';
         return str;
     }
@@ -61,6 +82,8 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(shopUri+'/products', {
                 params:{
@@ -97,9 +120,10 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http','AGGRID', 'global', 
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
-            $state.go('app.shop.product.edit' , {id: cell.data._id});
+            $state.go('app.shop.product.edit' , {id: cell.data._id, type: "product"});
         },
-        localeText: AGGRID.zh_CN,
+        localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         datasource: dataSource,
         angularCompileRows: true
     };
