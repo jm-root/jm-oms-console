@@ -1,5 +1,5 @@
 'use strict';
-app.controller('ResourceCtrl', ['$scope', '$state', '$http',  function ($scope, $state, $http) {
+app.controller('AclResourceCtrl', ['$scope', '$state', '$http',  function ($scope, $state, $http) {
     var sso=jm.sdk.sso;
     $scope.opts = {
         injectClasses: {

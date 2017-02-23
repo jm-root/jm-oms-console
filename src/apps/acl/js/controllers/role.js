@@ -1,5 +1,5 @@
 'use strict';
-app.controller('RoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
+app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
     var sso=jm.sdk.sso;
     var acl=jm.sdk.acl;
     $scope.isCollapsed = true;

@@ -1,6 +1,6 @@
 
 'use strict';
-app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global',
+app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'AGGRID', 'global',
     function($scope, $http, $state, $stateParams, $timeout, AGGRID,global) {
     var sso=jm.sdk.sso;
     var acl = jm.sdk.acl;
@@ -158,7 +158,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     });
 }]);
 
-app.controller('UsersCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
+app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',function($scope, $http, $state, $stateParams) {
     var sso=jm.sdk.sso;
     var acl=jm.sdk.acl;
     var token=sso.getToken();

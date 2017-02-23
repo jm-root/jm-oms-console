@@ -28,23 +28,25 @@
                         })
                         .state('app.acl.users.list', {
                             url: '/list',
-                            templateUrl: path +'tpl/users_list.html'
+                            templateUrl: path +'tpl/users_list.html',
+                            controller: 'AclUsersListCtrl'
                         })
                         .state('app.acl.users.edit', {
                             url: '/edit/{id}',
                             templateUrl: path +'tpl/users_edit.html',
+                            controller: 'AclUsersCtrl',
                             resolve: lazyLoadProvider.load(['ngTagsInput','localytics.directives','chosen'])
                         })
                         .state('app.acl.role', {
                             url: '/role',
                             templateUrl: path +'tpl/role.html',
-                            controller: 'RoleCtrl',
+                            controller: 'AclRoleCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/role.js','ngTagsInput','localytics.directives','chosen','ueditor'])
                         })
                         .state('app.acl.resource', {
                             url: '/resource',
                             templateUrl: path +'tpl/resource.html',
-                            controller: 'ResourceCtrl',
+                            controller: 'AclResourceCtrl',
                             resolve:lazyLoadProvider.load([path + 'js/controllers/resource.js','treeControl','ngTagsInput','localytics.directives','chosen','ueditor'])
                         });
                 }
