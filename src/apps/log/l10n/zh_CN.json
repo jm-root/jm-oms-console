@@ -5,6 +5,27 @@
     "wordfilter":"敏感词",
     "createTime":"创建时间",
     "save":"保存",
-    "add":"添加"
+    "add":"添加",
+    "guestbook":{
+      "ip":"ip",
+      "content":"内容",
+      "time":"时间",
+      "contact":"联系方式"
+    },
+    "log":{
+      "userId":"用户ID",
+      "ip":"IP",
+      "content":"拦截内容",
+      "words":"敏感词",
+      "tags":"标签",
+      "crtime":"拦截时间"
+    },
+    "list":{
+      "id":"ID",
+      "word":"敏感词",
+      "status":"状态",
+      "crtime":"创建时间",
+      "ctrl":"操作"
+    }
   }
 }

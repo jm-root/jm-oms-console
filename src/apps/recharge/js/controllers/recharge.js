@@ -32,19 +32,19 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
 
 
     function ctrl_render(params){
-        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="goto(data)">编辑</span>'+
-            '<span class="btn btn-xs bg-danger m-r-xs" ng-click="delete(data)">删除</span>';
+        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="goto(data)" translate="recharge.edit">编辑</span>'+
+            '<span class="btn btn-xs bg-danger m-r-xs" ng-click="delete(data)" translate="recharge.delete">删除</span>';
     }
 
     function form_status(params){
         var data = params.data;
         var info = "";
         if(data.status == "0"){
-            info = "禁用";
+            info = global.translateByKey('recharge.card.disable');
         }else if(data.status == "1"){
-            info = "未用";
+            info = global.translateByKey('recharge.card.unused');
         }else if(data.status == "2"){
-            info = "已使用";
+            info = global.translateByKey('recharge.card.used');
         }
         return info;
     }
@@ -52,15 +52,15 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
     function isNewCard(params){
         var data = params.data;
         if(data.card.type == "1"){
-            return "是";
+            return global.translateByKey('recharge.yes');
         }else{
-            return "否";
+            return global.translateByKey('recharge.no');
         }
     }
 
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 10, hide: true},
+        // {headerName: "_id", field: "_id", width: 10, hide: true},
         {headerName: "ID", field: "_id", width: 90},
         {headerName: "卡号", field: "code", width: 70},
         {headerName: "密码", field: "passwd", width: 70},
@@ -73,9 +73,21 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
         {headerName: "生成时间", field: "crTime", width: 105,valueGetter: $scope.angGridFormatDateS},
         {headerName: "操作", field: "_id", width: 125, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'recharge.card._id',
+        'recharge.card.code',
+        'recharge.card.passwd',
+        'recharge.card.parValue',
+        'recharge.card.cardName',
+        'recharge.card.cardType',
+        'recharge.card.status',
+        'recharge.card.crTime',
+        'recharge.card.ctrl'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -139,6 +151,7 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
@@ -148,7 +161,10 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
                 $state.go('app.recharge.cardlog',{code:cell.data.code});
             }
         },
-        localeText: global.agGrid.localeText,
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
+        },
+        llocaleText: global.agGrid.localeText,
         datasource: dataSource
     };
 
@@ -156,10 +172,10 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
         var id = data._id;
         if(id){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
 
                     $http.delete(cardUri+'/cards', {
@@ -172,7 +188,7 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -182,9 +198,9 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -248,7 +264,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
     }
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 100, hide: true},
+        // {headerName: "_id", field: "_id", width: 100, hide: true},
         {headerName: "id", field: "_id", width: 140},
         {headerName:"卡号",field:"code",width:150},
         {headerName:"类型",field:"card.name",width:100},
@@ -260,12 +276,26 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
         {headerName:"充值前/后元宝数",field:"b2Recharge",width:160,valueGetter:format_b2Recharge},
         {headerName:"得到多少元宝",field:"amount",width:160,valueGetter:format_amount}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'recharge.log._id',
+        'recharge.log.code',
+        'recharge.log.cardName',
+        'recharge.log.parValue',
+        'recharge.log.userId',
+        'recharge.log.nick',
+        'recharge.log.userIP',
+        'recharge.log.useTime',
+        'recharge.log.b2Recharge',
+        'recharge.log.amount'
+    ]);
 
     $scope.$state = $state;
     var code = $stateParams.code;
     if(code){
         var dataSource = {
             getRows: function (params) {
+                global.agGridOverlay();             //翻译
+
                 $http.get(cardUri + '/info?code=' + code, {
                     params: {
                         token: sso.getToken(),
@@ -289,6 +319,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
 
         var dataSource = {
             getRows: function (params) {
+                global.agGridOverlay();             //翻译
                 var search = $scope.search;
                 var date = search.date;
                 var startDate = date.startDate || '';
@@ -347,9 +378,13 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
         rowSelection: 'multiple',
         angularCompileRows: true,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
 
         localeText: global.agGrid.localeText,
@@ -392,7 +427,7 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
     var format_suid = function(params) {
         var obj = params.data.pay || {};
         var bill = obj.bill || {};
-        var info = '未知';
+        var info = global.translateByKey('recharge.third.unknown');
         if(obj.channel=='pingxx') info = bill.id;
         if(obj.channel=='swiftpass') info = bill.transaction_id;
         if(obj.channel=='alipay') info = bill.trade_no;
@@ -424,15 +459,15 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
     var format_cstatus = function(params) {
         var obj = params.data.pay || {};
         if(obj.status==undefined) return '';
-        var info = '未付';
-        if(obj.status) info = '已付';
+        var info = global.translateByKey('recharge.third.unpaid');
+        if(obj.status) info = global.translateByKey('recharge.third.paid');
         return info;
     };
 
     var format_status = function(params) {
         var status = params.data.status;
-        var info = '不成功';
-        if(status) info = '成功';
+        var info = global.translateByKey('recharge.third.fail');
+        if(status) info = global.translateByKey('recharge.third.success');
         return info;
     };
 
@@ -464,9 +499,24 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         {headerName: "支付时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "到账时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'recharge.third.code',
+        'recharge.third.suid',
+        'recharge.third.channel',
+        'recharge.third.uid',
+        'recharge.third.nick',
+        'recharge.third.amount',
+        'recharge.third.cstatus',
+        'recharge.third.status',
+        'recharge.third.b2amount',
+        'recharge.third.tbamount',
+        'recharge.third.crtime',
+        'recharge.third.moditime',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var date = search.date;
             var startDate = date.startDate || "";
@@ -513,11 +563,15 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         rowSelection: 'multiple',
         rowHeight: 30,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -633,7 +687,7 @@ app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$htt
                 if(obj.err){
                     $scope.error(obj.msg);
                 }else{
-                    $scope.success(obj.ret || '操作成功');
+                    $scope.success(obj.ret || global.translateByKey('common.openTips.operationSuccess'));
                     $scope.$state.go('app.recharge.card.list');
                 }
             }).error(function (msg,code) {
@@ -657,7 +711,7 @@ app.controller('RechargeCardAddCtrl', ['$scope', '$state', '$stateParams', '$htt
                 if(obj.err){
                     $scope.error(obj.msg);
                 }else{
-                    $scope.success(obj.ret || '操作成功');
+                    $scope.success(obj.ret || global.translateByKey('common.succeed'));
                     $state.go('app.recharge.card.list');
                 }
             }).error(function (msg,code) {
@@ -694,8 +748,8 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
 
 
     function ctrl_render(params){
-        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="goto(data)">编辑</span>'+
-            '<span class="btn btn-xs bg-danger m-r-xs" ng-click="delete(data)">删除</span>';
+        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="goto(data)" translate="recharge.edit">编辑</span>'+
+            '<span class="btn btn-xs bg-danger m-r-xs" ng-click="delete(data)" translate="recharge.delete">删除</span>';
     }
 
     // function form_status(params){
@@ -704,14 +758,20 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
     // }
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 10, hide: true},
+        // {headerName: "_id", field: "_id", width: 10, hide: true},
         {headerName: "ID", field: "_id", width: 50},
         {headerName: "类型", field: "name", width: 50},
         {headerName: "操作", field: "_id", width: 125, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'recharge.cardtype._id',
+        'recharge.cardtype.type',
+        'recharge.cardtype.ctrl'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var type = search.type;
@@ -747,9 +807,13 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -759,10 +823,10 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
         var id = data._id;
         if(id){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
 
                     $http.delete(cardUri+'/cardTypes', {
@@ -775,7 +839,7 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -785,9 +849,9 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -867,7 +931,7 @@ app.controller('RechargeCardTypeAddCtrl', ['$scope', '$state','$stateParams', '$
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.recharge.cardtype.list');
             }
         }).error(function(msg, code){

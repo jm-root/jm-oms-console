@@ -1,12 +1,25 @@
 {
   "recharge":{
+    "edit":"编辑",
+    "delete":"删除",
+    "yes":"是",
+    "no":"否",
       "card":{
         "state":"使用状态",
         "disable":"禁用",
         "unused":"未用",
         "used":"已使用",
         "type":"类型",
-        "cardadd":"点卡添加"
+        "cardadd":"点卡添加",
+        "_id": "ID",
+        "code": "卡号",
+        "passwd": "密码",
+        "parValue": "面值",
+        "cardName": "类型",
+        "cardType": "是否新手卡",
+        "status": "是否已用",
+        "crTime": "生成时间",
+        "ctrl": "操作"
       },
       "cardadd":{
         "cardedit":"点卡编辑",
@@ -18,10 +31,23 @@
         "confirm":"确定"
       },
       "log":{
-        "type":"类型"
+        "type":"类型",
+        "_id": "ID",
+        "code": "卡号",
+        "cardName": "类型",
+        "parValue": "面值",
+        "userId": "玩家ID",
+        "nick": "玩家账号",
+        "userIP": "IP",
+        "useTime": "充值时间",
+        "b2Recharge": "充值前/后元宝数",
+        "amount": "得到多少元宝"
       },
       "cardtype":{
-        "cardtypeadd":"点卡类型添加"
+        "cardtypeadd":"点卡类型添加",
+        "_id": "ID",
+        "type":"类型",
+        "ctrl": "操作"
       },
       "cardtypeadd":{
         "cardtypeedit":"点卡类型编辑",
@@ -38,7 +64,10 @@
         "submit":"提交"
       },
       "third":{
+        "unknown":"未知",
         "state":"充值状态",
+        "unpaid":"未付",
+        "paid":"已付",
         "success":"成功",
         "fail":"不成功",
         "totalrecharge":"充值总人数",
@@ -48,7 +77,19 @@
         "rechargeyesterday":"昨天充值金额",
         "rechargetoday":"今天充值金额",
         "effectiveorder":"有效订单数",
-        "invalidorder":"无效订单数"
+        "invalidorder":"无效订单数",
+        "code":"订单编号",
+        "suid":"第三方订单号",
+        "channel":"支付渠道",
+        "uid":"玩家ID",
+        "nick":"玩家昵称",
+        "amount":"支付金额",
+        "cstatus":"支付状态",
+        "status":"充值状态",
+        "b2amount":"充值前/后元宝数",
+        "tbamount":"充值元宝数",
+        "crtime":"支付时间",
+        "moditime":"到账时间"
 
       }
   }

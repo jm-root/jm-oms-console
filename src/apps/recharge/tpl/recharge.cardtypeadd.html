@@ -25,7 +25,7 @@
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="recharge.cardtypeadd.attachprops"><code style="background-color: transparent">*</code>附加道具</label>
+                    <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'recharge.cardtypeadd.attachprops' | translate }}</label>
                     <div class="col-sm-9">
                         <table class="table table-bordered table-hover table-condensed bg-white-only">
                             <span class="btn btn-default" ng-click="addItem()" translate="recharge.cardtypeadd.addprops">添加道具</span>
@@ -42,10 +42,10 @@
                                     </select>
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                    <input type="number" class="form-control" placeholder="{{ 'recharge.cardtypeadd.number' | translate }}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                    <input type="number" class="form-control" placeholder="{{ 'recharge.cardtypeadd.deadline' | translate }}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
                                 </td>
                                 <td style="white-space: nowrap">
                                     <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" translate="recharge.cardtypeadd.delete">删除</a>

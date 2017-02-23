@@ -1,12 +1,25 @@
 {
   "recharge":{
+    "edit":"Edit",
+    "delete":"Delete",
+    "yes":"Yes",
+    "no":"No",
       "card":{
         "state":"State",
         "disable":"Disable",
         "unused":"Unused",
         "used":"Used",
         "type":"Type",
-        "cardadd":"Add Card"
+        "cardadd":"Add Card",
+        "_id": "ID",
+        "code": "Card number",
+        "passwd": "Password",
+        "parValue": "Face value",
+        "cardName": "Type",
+        "cardType": "Novice card",
+        "status": "Used",
+        "crTime": "Generation time",
+        "ctrl": "Operation"
       },
     "cardadd":{
       "cardedit":"Card Edit",
@@ -18,10 +31,23 @@
       "confirm":"Confirm"
     },
     "log":{
-      "type":"Type"
+      "type":"Type",
+      "_id": "ID",
+      "code": "Card number",
+      "cardName": "Type",
+      "parValue": "Face value",
+      "userId": "User ID",
+      "nick": "User account",
+      "userIP": "IP",
+      "useTime": "Recharge time",
+      "b2Recharge": "Recharge before / after gold number",
+      "amount": "Ingot amount"
     },
     "cardtype":{
-      "cardtypeadd":"Add Card Type"
+      "cardtypeadd":"Add Card Type",
+      "_id": "ID",
+      "type":"Type",
+      "ctrl": "Operation"
     },
     "cardtypeadd":{
       "cardtypeedit":"Edit Card Type",
@@ -38,7 +64,10 @@
       "submit":"Submit"
     },
     "third":{
+      "unknown":"Unknown",
       "state":"State",
+      "unpaid":"Unpaid",
+      "paid":"Paid",
       "success":"Success",
       "fail":"Fail",
       "totalrecharge":"Total Recharge",
@@ -48,7 +77,19 @@
       "rechargeyesterday":"Recharge Yesterday",
       "rechargetoday":"Recharge Today",
       "effectiveorder":"Effective Order",
-      "invalidorder":"Invalid Order"
+      "invalidorder":"Invalid Order",
+      "code":"Code",
+      "suid":"Third Code",
+      "channel":"Channel",
+      "uid":"User ID",
+      "nick":"User Nick",
+      "amount":"Payment Amount",
+      "cstatus":"Payment Status",
+      "status":"Recharge Status",
+      "b2amount":"Recharge before/after tb Amount",
+      "tbamount":"Recharge tb Amount",
+      "crtime":"Payment Time",
+      "moditime":"Payment Date"
     }
   }
 }

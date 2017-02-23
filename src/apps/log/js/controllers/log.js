@@ -13,8 +13,15 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
         {headerName:"时间",field:"messageDate",width:200,valueGetter:$scope.angGridFormatDateS},
         {headerName:"联系方式",field:"contact",width:400}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'log.guestbook.ip',
+        'log.guestbook.content',
+        'log.guestbook.time',
+        'log.guestbook.contact'
+    ]);
     var dataSource={
         getRows:function(params){
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var keyword = search.keyword;
 
@@ -48,11 +55,15 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -63,10 +74,10 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -83,7 +94,7 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -93,9 +104,9 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -123,7 +134,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
 
 
     var columnDefs=[
-        {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "用户ID", field: "userId", width: 50,hide:true},
         {headerName: "IP", field: "ip", width: 50},
         {headerName: "拦截内容", field: "content", width: 50},
@@ -131,8 +142,18 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
         {headerName: "标签", field: "tags", width: 50},
         {headerName: "拦截时间", field: "crtime", width: 60, valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'log.log.userId',
+        'log.log.ip',
+        'log.log.content',
+        'log.log.words',
+        'log.log.tags',
+        'log.log.crtime'
+    ]);
+
     var dataSource={
         getRows:function(params){
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var keyword = search.keyword;
 
@@ -166,9 +187,13 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -179,10 +204,10 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -199,7 +224,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -209,9 +234,9 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -245,20 +270,29 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
     $scope.log = {};
 
     var columnDefs=[
-        {headerName:"_id",field:"_id",width:80,hide:true},
+        // {headerName:"_id",field:"_id",width:80,hide:true},
         {headerName:"ID",field:"id",width:80,valueGetter:format_id},
         {headerName:"敏感词",field:"word",width:200},//给敏感词添加一个模板，或者事件监听
         {headerName:"状态",field:"status",width:200,hide:true},
         {headerName:"创建时间",field:"crtime",width:200,valueGetter:$scope.angGridFormatDateS,sort:'desc'},
-        {headerName:"操作",field:"",width:100,cellRenderer:operate,cellStyle:{'text-align':'center'}},
+        {headerName:"操作",field:"ctrl",width:100,cellRenderer:operate,cellStyle:{'text-align':'center'}},
         {headerName:"状态",field:"__v",width:200,hide:true}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'log.list.id',
+        'log.list.word',
+        'log.list.status',
+        'log.list.crtime',
+        'log.list.ctrl'
+    ]);
+
     function format_id(params){
         var a = params.node.id+1;
         return a;
     };
     var dataSource={
         getRows:function(params){
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var page = params.startRow / $scope.pageSize + 1;
             var keyword = search.keyword;
@@ -284,7 +318,7 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
         }
     };
     function operate() {
-        return '<button class="btn btn-danger btn-xs" ng-click="delete()">删除</button>'
+        return '<button class="btn btn-danger btn-xs" ng-click="delete()" translate="log.delete">删除</button>'
     };
 
     $scope.gridOptions={
@@ -296,12 +330,16 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
         rowSelection: 'multiple',
         angularCompileRows: true,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.wordfilter.update',{id : cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -320,10 +358,10 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
     $scope.delete = function () {
         var rows = $scope.gridOptions.api.getSelectedRows();
         $scope.openTips({
-            title: '提示',
-            content: '是否确认删除?',
-            okTitle: '是',
-            cancelTitle: '否',
+            title:global.translateByKey('openTips.title'),
+            content:global.translateByKey('openTips.delContent'),
+            okTitle:global.translateByKey('common.yes'),
+            cancelTitle:global.translateByKey('common.no'),
             okCallback: function () {
                 var ids = '';
                 rows.forEach(function (e) {
@@ -340,7 +378,7 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
                     if (obj.err) {
                         $scope.error(obj.msg);
                     } else {
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.gridOptions.api.setDatasource(dataSource);
                     }
                 }).error(function (msg, code) {
@@ -364,7 +402,7 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
-                    $scope.success('操作成功');
+                    $scope.success(global.translateByKey('common.succeed'));
                     $scope.gridOptions.api.setDatasource(dataSource);
                 }
             }).error(function (msg, code) {
@@ -372,9 +410,9 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
             });
         } else {
             $scope.openTips({
-                title: '提示',
-                content: '不允许添加空值!',
-                cancelTitle: '确定',
+                title: global.translateByKey('openTips.title'),
+                content: global.translateByKey('openTips.notAllow'),
+                cancelTitle: global.translateByKey('openTips.cancelDelContent'),
                 singleButton: true
             });
         }
@@ -414,7 +452,7 @@ app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', f
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.wordfilter.list');
             }
         }).error(function(msg, code){

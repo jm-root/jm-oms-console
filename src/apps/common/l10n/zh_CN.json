@@ -47,6 +47,7 @@
     "selectDelContent": "请选择要删除的数据!",
     "cancelDelContent": "确定",
     "operationSuccess": "操作成功",
-    "operationFail": "操作失败"
+    "operationFail": "操作失败",
+    "notAllow":"不允许添加空值!"
   }
 }

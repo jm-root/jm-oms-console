@@ -5,6 +5,27 @@
     "wordfilter":"Wordfilter",
     "createTime":"Create Time",
     "save":"Save",
-    "add":"Add"
+    "add":"Add",
+    "guestbook":{
+      "ip":"ip",
+      "content":"Content",
+      "time":"Time",
+      "contact":"Contact Information"
+    },
+    "log":{
+      "userId":"User ID",
+      "ip":"IP",
+      "content":"Intercept Content",
+      "words":"Wordfilter",
+      "tags":"Label",
+      "crtime":"Intercept Time"
+    },
+    "list":{
+      "id":"ID",
+      "word":"Wordfilter",
+      "status":"Status",
+      "crtime":"Create Time",
+      "ctrl":"Operation"
+    }
   }
 }

@@ -47,6 +47,7 @@
     "selectDelContent": "Select delete content",
     "cancelDelConfirm": "Confirm",
     "operationSuccess": "Operation success",
-    "operationFail": "Operation fail"
+    "operationFail": "Operation fail",
+    "notAllow":"Not Allow Add Null"
   }
 }
