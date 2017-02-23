@@ -1,13 +1,13 @@
 <div style="margin: 10px;">
-    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ 'appmanager.appmgr.appList' | translate }}>></a><a ng-click="goRoomList()">{{ 'appmanager.appmgr.roomList' | translate }}>></a><a ng-click="goTableList()">{{ 'appmanager.appmgr.tableList' | translate }}>></a>{{ 'appmanager.appmgr.table.tableConfig' | translate }}</h1>
+    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ 'appmgr.appList' | translate }}>></a><a ng-click="goRoomList()">{{ 'appmgr.roomList' | translate }}>></a><a ng-click="goTableList()">{{ 'appmgr.tableList' | translate }}>></a>{{ 'appmgr.table.tableConfig' | translate }}</h1>
 </div>
 
 <div>
     <uib-tabset class="tab-container">
-        <uib-tab heading="{{ 'appmanager.appmgr.basicConfig' | translate }}">
+        <uib-tab heading="{{ 'appmgr.basicConfig' | translate }}">
             <div ng-include="gameset_config_tmpl"></div>
         </uib-tab>
-        <uib-tab heading="{{ 'appmanager.appmgr.roomDiff' | translate }}">
+        <uib-tab heading="{{ 'appmgr.roomDiff' | translate }}">
             <div ng-include="gameset_config_diffcult_tmpl"></div>
         </uib-tab>
     </uib-tabset>

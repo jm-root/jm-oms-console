@@ -2,27 +2,42 @@
  * Created by ZL on 2016/12/16.
  */
 "use strict";
-var sso = jm.sdk.sso;
-app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateParams", function ($scope, $state, $http, global, $stateParams) {
-    var history = global.appsListHistory||(global.appsListHistory={});
+
+var sso =jm.sdk.sso;
+app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'global', "$stateParams", "$translatePartialLoader", "$filter", function ($rootScope, $scope, $state, $http, global, $stateParams, $translatePartialLoader, $filter) {
+    $translatePartialLoader.addPart('appManager');
+
+    var history = global.appsListHistory || (global.appsListHistory = {});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
     // var id = $stateParams.id;
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "userId", field: "userId", width: 200, hide: true},
-        {headerName: "应用名称", field: "name", width: 100},
-        {headerName: "密码", field: "password", width: 70, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "userId", field: "userId", width: 200, hide: true},
+        {headerName: "名称", field: "name", width: 100},
+        // {headerName: "密码", field: "password", width: 70, hide: true},
         {headerName: "排序", field: "sort", width: 70},
         {headerName: "分类", field: "category", width: 100},
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "创建人", field: "userNick", width: 70},
         {headerName: "状态", field: "status", width: 80, valueGetter: statusFormat},
-        {headerName: "显示", field: "visible", width: 80, valueGetter: visibleFormat},
+        {headerName: "显示", field: "visible", width: 80, valueGetter: visibleFormat}
     ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'common.name',
+        'common.sort',
+        'common.cate',
+        'common.ctime',
+        'common.mtime',
+        'common.creator',
+        'common.status',
+        'common.visible'
+    ]);
+
 
     function goRoomConfig(params){
         if(params.data.tmpl == "baoxiang"){
@@ -33,22 +48,22 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
     }
 
     function statusFormat(params) {
-        var value = "禁用";
+        var value = $filter('translate')('common.disable');
         switch(params.data.status){
             case 0:{
-                value = "禁用";
+                var value = $filter('translate')('common.disable');
                 break;
             }
             case 1:{
-                value = "启用";
+                var value = $filter('translate')('common.enable');
                 break;
             }
             case 2:{
-                value = "接入中";
+                var value = $filter('translate')('appmgr.access');
                 break;
             }
             case 3:{
-                value = "审核中";
+                var value = $filter('translate')('appmgr.review');
                 break;
             }
         }
@@ -56,7 +71,7 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
     };
 
     function visibleFormat(params) {
-        return params.data.visible ? "是" : "否";
+        return params.data.visible ? $filter('translate')('common.yes') : $filter('translate')('common.no');
     }
 
     function goConfig(id, type) {
@@ -69,6 +84,8 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(appMgrUri+'/apps', {
                 params:{
@@ -85,6 +102,7 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
                     $scope.error(data.msg);
                 }else{
                     var rowsThisPage = data.rows || [];
+                    // var rowsThisPage =  [];
                     var lastRow = data.total||rowsThisPage.length||0;
                     params.successCallback(rowsThisPage, lastRow);
                 }
@@ -109,9 +127,13 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
         onCellDoubleClicked: function(cell){
             goRoomConfig(cell);
         },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
-        angularCompileRows: true
+            angularCompileRows: true,
+            headerCellRenderer: global.agGridHeaderCellRendererFunc
     };
 
     $scope.onPageSizeChanged = function() {
@@ -124,6 +146,8 @@ app.controller('RoomsListCtrl', ['$scope', '$state', '$http', 'global', "$stateP
     });
     $scope.$watch('search', function () {
         history.search = $scope.search;
+
+
     });
 
 }]);

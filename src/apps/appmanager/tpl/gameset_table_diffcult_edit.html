@@ -2,18 +2,18 @@
     <div ui-view class="fade-in-down"></div>
     <div class="panel panel-default">
         <div class="panel-heading" id="baseConfigs">
-            <strong>{{ 'appmanager.appmgr.tableName' | translate }}{{id}}</strong>
+            <strong>{{ 'appmgr.tableName' | translate }}{{id}}</strong>
         </div>
         <div class="panel-body">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmanager.appmgr.table.tableDiff' | translate }}:</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.table.tableDiff' | translate }}:</label>
                     <div class="col-sm-3">
                         <select class="form-control m-b" ng-model="diff2" ng-options="item.name for item in showData.diffs">
                         </select>
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveDiff(diff2.value)">{{ 'appmanager.appmgr.save' | translate }}</button>
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveDiff(diff2.value)">{{ 'common.save' | translate }}</button>
                     </div>
                 </div>
             </form>
@@ -23,7 +23,7 @@
             <form class="form-horizontal">
                 <div class="form-group">
                     <!--<label class="col-sm-2 control-label">桌子炒场难度(0-{{showData.options.length}}):</label>-->
-                    <label class="col-sm-2 control-label">{{ 'appamanger.appmgr.table.tableCCDiff' | translate }}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.table.tableCCDiff' | translate }}:</label>
                     <!--<div class="col-sm-3">-->
                         <!--<input type="number" class="form-control" placeholder="桌子炒场难度" ng-model="room.rejustDiffs">-->
                     <!--</div>-->
@@ -32,7 +32,7 @@
                         </select>
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">{{ 'appmanager.appmgr.save' | translate }}</button>
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">{{ 'common.save' | translate }}</button>
                     </div>
                 </div>
             </form>

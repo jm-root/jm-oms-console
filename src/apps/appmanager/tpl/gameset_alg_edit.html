@@ -7,66 +7,67 @@
         <!--</div>-->
         <div class="panel-body">
             <div class="">
-                <form class="form-horizontal">
+                <form class="form-horizontal form-validation" name="formValidate1">
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.tableNumber' | translate }}:</label>
                         <div class="col-sm-1">
-                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table1.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                            <input type="text" class="form-control" placeholder="(a-z|A-Z|0-9)" ng-model="table1.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                         </div>
                         <label class="col-sm-1 control-label">in:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="alg统计in" ng-model="table1.algIn" >
+                            <input type="number" class="form-control" placeholder="server in" ng-model="table1.algIn" >
                         </div>
                         <label class="col-sm-1 control-label">out:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="alg统计out" ng-model="table1.algOut" >
+                            <input type="number" class="form-control" placeholder="server out" ng-model="table1.algOut" >
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="saveInOut()">{{'appmanager.appmgr.room.syncAlgData' | translate}}</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="line line-dashed b-b line-lg pull-in"></div>
-            <div>
-                <form class="form-horizontal form-validation">
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
-                        <div class="col-sm-1">
-                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table2.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
-                        </div>
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.coinRate' | translate}}:</label>
-                        <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.coinRate' | translate}}" ng-model="table2.coin_rate" required>
-                        </div>
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.difficulty' | translate}}:</label>
-                        <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.difficulty' | translate}}" ng-model="table2.diff" required>
-                        </div>
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.playerNum' | translate}}:</label>
-                        <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.playerNum' | translate}}" ng-model="table2.totalPlayerNum" required>
-                        </div>
-                        <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="execInit()">{{'appmanager.appmgr.room.initTable' | translate}}</button>
+                            <button class="btn btn-success" ng-click="!formValidate1.$invalid&&saveInOut()">{{ 'appmgr.room.syncAlgData' | translate }}</button>
+                            <!--<button class="btn btn-success" ng-click="saveInOut()">{{ 'appmgr.room.syncAlgData' | translate }}</button>-->
                         </div>
                     </div>
                 </form>
             </div>
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div>
-                <form class="form-horizontal form-validation">
+                <form class="form-horizontal form-validation" name="formValidate2">
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.tableNumber' | translate }}:</label>
                         <div class="col-sm-1">
-                            <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table3.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                            <input type="text" class="form-control" placeholder="(a-z|A-Z|0-9)" ng-model="table2.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                         </div>
-                        <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.difficulty' | translate}}</label>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.coinRate' | translate }}:</label>
                         <div class="col-sm-1">
-                            <input type="number" class="form-control" placeholder="{{'appmanager.appmgr.room.difficulty' | translate}}" ng-model="table3.diff" required>
+                            <input type="number" class="form-control" placeholder="{{ 'appmgr.room.coinRate' | translate }}" ng-model="table2.coin_rate" required>
+                        </div>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.difficulty' | translate }}:</label>
+                        <div class="col-sm-1">
+                            <input type="number" class="form-control" placeholder="{{ 'appmgr.room.difficulty' | translate }}" ng-model="table2.diff" required>
+                        </div>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.playerNum' | translate }}:</label>
+                        <div class="col-sm-1">
+                            <input type="number" class="form-control" placeholder="{{ 'appmgr.room.playerNum' | translate }}" ng-model="table2.totalPlayerNum" required>
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-success" ng-click="changeDiff()">{{'appmanager.appmgr.room.changeTableDiff' | translate}}</button>
+                            <button class="btn btn-success" ng-click="!formValidate2.$invalid&&execInit()">{{ 'appmgr.room.initTable' | translate }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div>
+                <form class="form-horizontal form-validation" name="formValidate3">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.tableNumber' | translate }}:</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" placeholder="(a-z|A-Z|0-9)" ng-model="table3.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                        </div>
+                        <label class="col-sm-1 control-label">{{ 'appmgr.room.difficulty' | translate }}</label>
+                        <div class="col-sm-1">
+                            <input type="number" class="form-control" placeholder="{{ 'appmgr.room.difficulty' | translate }}" ng-model="table3.diff" required>
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success" ng-click="!formValidate3.$invalid&&changeDiff()">{{ 'appmgr.room.changeTableDiff' | translate }}</button>
                         </div>
                     </div>
                 </form>
@@ -74,14 +75,20 @@
             <div class="line line-dashed b-b line-lg pull-in"></div>
             <div>
                 <div style="margin-bottom: 10px;">
-                    <form class="form-horizontal form-validation">
+                    <form class="form-horizontal form-validation" name="formValidate4">
                         <div class="form-group">
-                            <label class="col-sm-1 control-label">{{'appmanager.appmgr.room.tableNumber' | translate}}:</label>
+                            <label class="col-sm-1 control-label">{{ 'appmgr.room.tableNumber' | translate }}:</label>
                             <div class="col-sm-1">
-                                <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="table4.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                                <input type="text" class="form-control" placeholder="(a-z|A-Z|0-9)" ng-model="table4.id" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                             </div>
-                            <div class="col-sm-1">
-                                <button class="btn btn-info" ng-click="getAlgData()">{{'appmanager.appmgr.room.refresh' | translate}}</button>
+                            <div class="col-sm-2">
+                                <button class="btn btn-info" ng-click="!formValidate4.$invalid&&getAlgData()">{{ 'appmgr.room.refresh' | translate }}</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-info" ng-click="!formValidate4.$invalid&&autoGetAlgData()">{{ 'appmgr.room.autoRefresh' | translate }}</button>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-info" ng-click="!formValidate4.$invalid&&cancelGetAlgData()">{{ 'appmgr.room.cancelAutoRefresh' | translate }}</button>
                             </div>
                         </div>
                     </form>
@@ -90,15 +97,18 @@
                     <table class="table table-striped table-hover table-condensed table-bordered">
                         <thead>
                         <tr>
-                            <th>{{'appmanager.appmgr.room.tableNumber' | translate}}</th>
-                            <th>{{'appmanager.appmgr.room.coinRate' | translate}}(coin_rate)</th>
-                            <th>{{'appmanager.appmgr.room.difficulty' | translate}}(diff)</th>
-                            <th>{{'appmanager.appmgr.room.algGin' | translate}}(gin)</th>
-                            <th>{{'appmanager.appmgr.room.algGout' | translate}}(gout)</th>
-                            <th>{{'appmanager.appmgr.room.algGwinRate' | translate}}(gin-gout)/gin</th>
-                            <th>{{'appmanager.appmgr.room.serverIn' | translate}}(in)</th>
-                            <th>{{'appmanager.appmgr.room.serverOut' | translate}}(out)</th>
-                            <th>{{'appmanager.appmgr.room.serverWinRate' | translate}}(in-out)/in</th>
+                            <th>{{ 'appmgr.room.tableNumber' | translate }}</th>
+                            <th>{{ 'appmgr.room.coinRate' | translate }}(coin_rate)</th>
+                            <th>{{ 'appmgr.room.difficulty' | translate }}(diff)</th>
+                            <th>{{ 'appmgr.room.algMaxSend' | translate }}</th>
+                            <th>{{ 'appmgr.room.algGin' | translate }}(gin)</th>
+                            <th>{{ 'appmgr.room.algGout' | translate }}(gout)</th>
+                            <th>{{ 'appmgr.room.algGwin' | translate }}(gin-gout)</th>
+                            <th>{{ 'appmgr.room.algGwinRate' | translate }}(gin-gout)/gin</th>
+                            <th>{{ 'appmgr.room.serverIn' | translate }}(in)</th>
+                            <th>{{ 'appmgr.room.serverOut' | translate }}(out)</th>
+                            <th>{{ 'appmgr.room.serverWin' | translate }}(in-out)</th>
+                            <th>{{ 'appmgr.room.serverWinRate' | translate }}(in-out)/in</th>
                         </tr>
                         </thead>
 
@@ -107,11 +117,14 @@
                             <td>{{table.roomId}}</td>
                             <td>{{table.coin_rate}}</td>
                             <td>{{table.diff}}</td>
+                            <td>{{table.max_send}}</td>
                             <td>{{table.gIn}} total:{{table.totalgIn}}</td>
                             <td>{{table.gOut}} total:{{table.totalgOut}}</td>
+                            <td>{{table.glose}}</td>
                             <td>{{table.gIngOutRate}}</td>
                             <td>{{table.inout.roomsIn}}</td>
                             <td>{{table.inout.roomsOut}}</td>
+                            <td>{{table.lose}}</td>
                             <td>{{table.inOutRate}}</td>
                         </tr>
                         </tbody>

@@ -1,15 +1,17 @@
 'use strict';
-var sso = jm.sdk.sso;
-app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$stateParams", function ($scope, $state, $http, global, $stateParams) {
+var sso =jm.sdk.sso;
+app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$stateParams", "$translatePartialLoader", function ($scope, $state, $http, global, $stateParams, $translatePartialLoader) {
+    $translatePartialLoader.addPart('appManager');
+
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "userId", field: "userId", width: 200, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "userId", field: "userId", width: 200, hide: true},
         {headerName: "应用名称", field: "name", width: 100},
-        {headerName: "密码", field: "password", width: 70, hide: true},
+        // {headerName: "密码", field: "password", width: 70, hide: true},
         {headerName: "排序", field: "sort", width: 70},
         {headerName: "分类", field: "category", width: 100},
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
@@ -20,35 +22,52 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
         {headerName: "#", width: 70, cellRenderer: config_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'common.name',
+        'common.sort',
+        'common.cate',
+        'common.ctime',
+        'common.mtime',
+        'common.creator',
+        'common.status',
+        'common.visible'
+    ]);
+
+
     function config_render(params){
         if(params.data.category != 999999 && params.data.tmpl && params.data.tmpl != "empty"){
             if(params.data.tmpl == "baoxiang"){
-                return '<button class="btn btn-xs bg-primary" ng-click="goBaoxiangConfig(\''+params.data._id+'\', \''+params.data.tmpl+'\')">配置</button>';
+                return '<button class="btn btn-xs bg-primary" ng-click="goBaoxiangConfig(\''+params.data._id+'\', \''+params.data.tmpl+'\')" translate="appmgr.config">配置</button>';
             }else{
-                return '<button class="btn btn-xs bg-primary" ng-click="goConfig(\''+params.data._id+'\', \''+params.data.tmpl+'\')">房间配置</button>';
+                return '<button class="btn btn-xs bg-primary" ng-click="goConfig(\''+params.data._id+'\', \''+params.data.tmpl+'\')" translate=\'appmgr.room.roomConfig\'>房间配置</button>';
             }
         }else{
-            return;
+            return "";
         }
     }
 
     function statusFormat(params) {
-        var value = "禁用";
+        // var value = "禁用";
+        var value = global.translateByKey("common.disable");
         switch(params.data.status){
             case 0:{
-                value = "禁用";
+                // value = "禁用";
+                value = global.translateByKey("common.disable");
                 break;
             }
             case 1:{
-                value = "启用";
+                // value = "启用";
+                value = global.translateByKey("common.enable");
                 break;
             }
             case 2:{
-                value = "接入中";
+                // value = "接入中";
+                value = global.translateByKey("appmgr.access");
                 break;
             }
             case 3:{
-                value = "审核中";
+                // value = "审核中";
+                value = global.translateByKey("appmgr.review");
                 break;
             }
         }
@@ -56,7 +75,8 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
     };
 
     function visibleFormat(params) {
-        return params.data.visible ? "是" : "否";
+        // return params.data.visible ? "是" : "否";
+        return params.data.visible ? global.translateByKey("common.yes") : global.translateByKey("common.no");
     }
 
     function user_render(params){
@@ -79,6 +99,8 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(appMgrUri+'/apps', {
                 params:{
@@ -119,9 +141,13 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
         onCellDoubleClicked: function(cell){
             $state.go('app.apps.manage.edit' , {id: cell.data._id});
         },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
-        angularCompileRows: true
+        angularCompileRows: true,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc
     };
 
     $scope.delete = function(){
@@ -129,10 +155,10 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title: global.translateByKey("openTips.title"),
+                content: global.translateByKey("openTips.delContent"),
+                okTitle: global.translateByKey("common.yes"),
+                cancelTitle: global.translateByKey("common.no"),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -149,7 +175,8 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            // $scope.success('操作成功');
+                            $scope.success(global.translateByKey("common.succeed"));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -159,9 +186,9 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title: global.translateByKey("openTips.title"),
+                content:global.translateByKey("openTips.selectDelContetn"),
+                cancelTitle:global.translateByKey("openTips.cancelDelConfirm"),
                 singleButton:true
             });
         }
@@ -181,19 +208,28 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
 
 }]);
 
-app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','FileUploader', function($scope, $http, $state, $stateParams, FileUploader) {
+app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams', 'FileUploader', 'global', function($scope, $http, $state, $stateParams, FileUploader, global) {
+    // $translatePartialLoader.addPart('appManager');
+
     $scope.$state = $state;
 
     var id = $stateParams.id;
     $scope.id = id;
     $scope.appgame = {};
 
+    // $scope.appCategories = [
+    //     {value: "999999", name: global.translateByKey("appmgr.appManager.cateLobby")},
+    //     {value: "0", name: global.translateByKey("appmgr.appManager.cateFish")},
+    //     {value: "1", name: global.translateByKey("appmgr.appManager.cateGamble")},
+    //     {value: "2", name: global.translateByKey("appmgr.appManager.cateChess")},
+    //     {value: "3", name: global.translateByKey("appmgr.appManager.cateLittleGame")}
+    // ];
     $scope.appCategories = [
-        {value: "999999", name: "大厅"},
-        {value: "0", name: "捕鱼类"},
-        {value: "1", name: "压分类"},
-        {value: "2", name: "棋牌类"},
-        {value: "3", name: "小游戏"}
+        {value: "999999", name: 'appmgr.appManager.cateLobby'},
+        {value: "0", name: "appmgr.appManager.cateFish"},
+        {value: "1", name: "appmgr.appManager.cateGamble"},
+        {value: "2", name: "appmgr.appManager.cateChess"},
+        {value: "3", name: "appmgr.appManager.cateLittleGame"}
     ];
     
     $scope.createPassword = function () {
@@ -249,6 +285,10 @@ app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','Fi
         var url = appMgrUri + '/apps';
         if(id){
             url = appMgrUri + '/apps/' + id;
+        }else{
+            if($scope.id){
+                $scope.appgame._id = $scope.id;
+            }
         }
 
         $scope.appgame.category = parseInt($scope.appgame.category);
@@ -278,7 +318,8 @@ app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','Fi
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                // $scope.success('操作成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 $state.go('app.apps.manage');
             }
         }).error(function(msg, code){
@@ -286,14 +327,17 @@ app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','Fi
         });
     };
 
-    $scope.pwdText = "显示密码";
+    // $scope.pwdText = "显示密码";
+    $scope.pwdText = "appmgr.appManager.showPwd";
     $scope.showPwd = true;
     $scope.showPassword = function () {
         if($scope.showPwd){
-            $scope.pwdText = "隐藏密码";
+            // $scope.pwdText = "隐藏密码";
+            $scope.pwdText = "appmgr.appManager.hidePwd";
             $scope.showPwd = false;
         }else{
-            $scope.pwdText = "显示密码";
+            // $scope.pwdText = "显示密码";
+            $scope.pwdText = "appmgr.appManager.showPwd";
             $scope.showPwd = true;
         }
 
@@ -361,7 +405,8 @@ app.controller('AppManageCtrl', ['$scope', '$http', '$state', '$stateParams','Fi
 
     uploader.onCompleteAll = function() {
         // console.info('onCompleteAll');
-        $scope.uploaderStatus = fileName + " 上传成功";
+        // $scope.uploaderStatus = fileName + " 上传成功";
+        $scope.uploaderStatus = fileName + global.translateByKey("appmgr.appManager.uploadSucceed");
 
         $scope.appgame.package = filePath;
     };

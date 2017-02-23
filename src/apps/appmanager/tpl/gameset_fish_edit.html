@@ -3,41 +3,41 @@
     <form ng-show="$state.is('app.rooms.manage.gameset.edit') && tabPageShow" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
             <div class="panel-heading" id="baseConfigs">
-                <strong>{{'appmanager.appmgr.room.roomConfig' | translate}}</strong>
+                <strong>{{ 'appmgr.room.roomConfig' | translate }}</strong>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomType' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomType' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="编码(a-z|A-Z字符)" ng-model="room.roomType" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
+                        <input type="text" class="form-control" placeholder="(a-z|A-Z|0-9)" ng-model="room.roomType" ng-pattern="/^[a-z|A-Z|0-9]*$/" ng-disabled="id" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomName' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomName' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" placeholder="房间名字" ng-model="room.name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomIntro' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomIntro' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" placeholder="房间简介" ng-model="room.intro">
                     </div>
                 </div>
                 <div ng-show="isFromAppManager" class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.algStartTableNum' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.algStartTableNum' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="起始桌子编号" ng-model="room.startAreaId" min="0" required>
                     </div>
                 </div>
                 <div ng-show="isFromAppManager" class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.tableNum' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.tableNum' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="桌子数量" ng-model="room.maxAreas" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomDiff' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomDiff' | translate }}</label>
                     <!--<div class="col-sm-2">-->
                     <!--<select class="form-control m-b" ng-model="room.diff">-->
                     <!--<option value="0">炒场</option>-->
@@ -53,127 +53,127 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomRate' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomRate' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="房间倍率" ng-model="room.areaRate" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.tablePlayerLimit' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.tablePlayerLimit' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="桌子玩家上限" ng-model="room.maxPlayers" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.maxCarry' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.maxCarry' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="最大携带" ng-model="room.maxAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.minCarry' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.minCarry' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="最小携带" ng-model="room.minAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.setup' | translate}}(游戏币)</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.setup' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="上分设置(游戏币)" ng-model="room.exchangeAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.currencyScore' | translate}}(游戏分值)</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.currencyScore' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="一币分值(游戏分值)" ng-model="room.exchangeRate" min="0" step="0.01" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.onlineNum' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.onlineNum' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="虚拟在线人数" ng-model="room.virtualOnlineCount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.rateShift' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.rateShift' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" placeholder="倍率档位" ng-model="room.rates" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomMode' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomMode' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.mode">
-                            <option value="0">{{'appmanager.appmgr.room.modeGold' | translate}}</option>
-                            <option value="1">{{'appmanager.appmgr.room.modeGoldLottery' | translate}}</option>
+                            <option value="0">{{ 'appmgr.room.modeGold' | translate }}</option>
+                            <option value="1">{{ 'appmgr.room.modeGoldLottery' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group" ng-if="room.mode == 1">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.lotteryModeGoldOdds' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="彩票模式出金币几率" ng-model="room.oddsCredit" min="0" required>
                     </div>
                 </div>
                 <div class="form-group" ng-if="room.mode == 1">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.lotteryModeCurrency' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeCurrency' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.ctCodeTicket">
-                            <option value="dbj">{{'appmanager.appmgr.room.dbj' | translate}}</option>
+                            <option value="dbj">{{ 'common.dbj' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.roomCurrency' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomCurrency' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.ctCode">
-                            <option value="jb">{{'appmanager.appmgr.room.jb' | translate}}</option>
-                            <option value="tb">{{'appmanager.appmgr.room.tb' | translate}}</option>
+                            <option value="jb">{{ 'common.jb' | translate }}</option>
+                            <option value="tb">{{ 'common.tb' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.channelIsolation' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.channelIsolation' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.agentIsolate">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.autoSeat' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.autoSeat' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.autoSeat">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.freeField' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.freeField' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.free">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.enable' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'common.enable' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.status">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.visible' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'common.visible' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.visible">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
@@ -181,65 +181,65 @@
                 <div class="line line-dashed b-b line-lg pull-in" id="gameConfigs"></div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.tableFishNum' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.tableFishNum' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="桌子最少鱼数" ng-model="room.minFishes" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.toggleSceneTime' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.toggleSceneTime' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="切换场景时间" ng-model="room.intervalChangeScene" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.critScore' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.critScore' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="暴击分数" ng-model="room.baoji" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.shootPerSec' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.shootPerSec' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="每秒发射数量" ng-model="room.fireSpeed" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.rapidShootPerSec' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.rapidShootPerSec' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="每秒速射发射数量" ng-model="room.maxfireSpeed" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.bulletSpeed' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.bulletSpeed' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="子弹移动速度(像素/秒)" ng-model="room.bulletSpeed" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.autoAim' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.autoAim' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.autoAim">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.doubleGun' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.doubleGun' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.doubleFire">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'appmanager.appmgr.room.fixedGunValue' | translate}}</label>
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.fixedGunValue' | translate }}</label>
                     <div class="col-sm-2">
                         <select class="form-control m-b" ng-model="room.fixedRate">
-                            <option value="1">{{'appmanager.appmgr.room.yes' | translate}}</option>
-                            <option value="0">{{'appmanager.appmgr.room.no' | translate}}</option>
+                            <option value="1">{{ 'common.yes' | translate }}</option>
+                            <option value="0">{{ 'common.no' | translate }}</option>
                         </select>
                     </div>
                 </div>
@@ -248,10 +248,10 @@
             <footer class="panel-footer bg-light lter">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-1">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{'appmanager.appmgr.save' | translate}}</button>
+                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{ 'common.save' | translate }}</button>
                     </div>
                     <div class="col-sm-1">
-                        <button type="button" class="btn btn-info" ng-click="recovery()">{{'appmanager.appmgr.recovery' | translate}}</button>
+                        <button type="button" class="btn btn-info" ng-click="recovery()">{{ 'common.recovery' | translate }}</button>
                     </div>
                 </div>
             </footer>

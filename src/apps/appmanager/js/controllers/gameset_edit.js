@@ -2,12 +2,14 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-var sso = jm.sdk.sso;
-app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q', 'global', function($scope, $http, $state, $stateParams,$q, global) {
+var sso =jm.sdk.sso;
+app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
 
     var roomDefault = {
-        name: "新手港湾",
-        intro: "新手港湾",
+        // name: "新手港湾",
+        // intro: "新手港湾",
+        name: global.translateByKey("appmgr.noviceBay"),
+        intro: global.translateByKey("appmgr.noviceBay"),
         maxAmount: 0,
         minAmount: 0,
         diff: 0,
@@ -94,6 +96,8 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
         $scope.room.doubleFire = $scope.room.doubleFire + "";
         $scope.room.fixedRate = $scope.room.fixedRate + "";
         $scope.room.autoAim = $scope.room.autoAim + "";
+
+        $scope.room.intervalChangeScene /= 1000;
     }
 
     function transformInt() {
@@ -114,6 +118,8 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
             }
             $scope.room.rates = rates;
         }
+
+        $scope.room.intervalChangeScene *= 1000;
     }
 
 
@@ -146,7 +152,8 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
             if(data.err){
                 $scope.error(data.msg);
             }else{
-                $scope.success('设置成功');
+                // $scope.success('设置成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
                 }
@@ -195,83 +202,97 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
             }
         }
 
+        getConfigCoinRate().then(function (data) {
+            var coinRate = data.ret;
 
-        var url = appMgrUri + "/appConfig";
-        $http.get(url, {
-            params: {
-                token: sso.getToken(),
-                root: hkey,
-                list: 1,
-                all: 1
-            }
-        }).error(function (msg, code) {
-            $scope.errorTips(code);
-        }).success(function (result) {
-            var data = result;
-            if(data.err){
-                $scope.error(data.msg);
-            }else{
-                if(data.err == 404){
-                    data = {};
+            var url = appMgrUri + "/appConfig";
+            $http.get(url, {
+                params: {
+                    token: sso.getToken(),
+                    root: hkey,
+                    list: 1,
+                    all: 1
                 }
-
-                var begin = $scope.room.startAreaId;
-                var end = $scope.room.startAreaId + $scope.room.maxAreas;
-                var arr = [];
-                for(var i=begin; i<end; ++i){
-                    arr.push(i);
-                }
-
-                arr.forEach(function (index) {
-                    var i = index;
-
-                    if(!data[i]){
-
-                        setDiff(i, tableDefault.diff).then(function (data) {
-                            if(data && data.ret == "ok"){
-
-                                var temp = angular.copy(tableDefault);
-
-                                temp.roomType = id;
-                                temp.tableType = i + "";
-                                temp.name = "桌子" + i;
-                                temp.intro = "桌子" + i + "简介";
-
-                                var url = appMgrUri + "/appConfig";
-                                $http.post(url, {root: hkey, key: i, value: temp}, {
-                                    params:{
-                                        token: sso.getToken()
-                                    }
-                                }).error(function (msg, code) {
-                                    $scope.errorTips(code);
-                                }).success(function (result) {
-                                    var data = result;
-                                    if(data.err){
-                                        $scope.error(data.msg);
-                                    }else{
-                                        $scope.success('创建桌子'+i+'成功');
-                                        console.log('创建桌子'+i+'成功');
-                                    }
-                                });
-
-                            }else{
-
-                                $scope.error("算法设置难度失败");
-                            }
-                        });
-
-
+            }).error(function (msg, code) {
+                $scope.errorTips(code);
+            }).success(function (result) {
+                var data = result;
+                if(data.err){
+                    $scope.error(data.msg);
+                }else{
+                    if(data.err == 404){
+                        data = {};
                     }
-                });
 
-            }
+                    var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
+                    if(!isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    var begin = $scope.room.startAreaId;
+                    var end = $scope.room.startAreaId + $scope.room.maxAreas;
+                    var arr = [];
+                    for(var i=begin; i<end; ++i){
+                        arr.push(i);
+                    }
+
+                    arr.forEach(function (index) {
+                        var i = index;
+
+                        if(!data[i]){
+
+                            initTable(i, tableDefault.diff, coin_rate).then(function (data) {
+                                // setDiff(i, tableDefault.diff).then(function (data) {
+                                if(data && data.ret == "ok"){
+
+                                    var temp = angular.copy(tableDefault);
+
+                                    temp.roomType = id;
+                                    temp.tableType = i + "";
+                                    // temp.name = "桌子" + i;
+                                    // temp.intro = "桌子" + i + "简介";
+                                    temp.name = global.translateByKey("appmgr.tableName");
+                                    temp.intro = global.translateByKey("appmgr.tableName") + i + global.translateByKey("appmgr.intro");
+
+                                    var url = appMgrUri + "/appConfig";
+                                    $http.post(url, {root: hkey, key: i, value: temp}, {
+                                        params:{
+                                            token: sso.getToken()
+                                        }
+                                    }).error(function (msg, code) {
+                                        $scope.errorTips(code);
+                                    }).success(function (result) {
+                                        var data = result;
+                                        if(data.err){
+                                            $scope.error(data.msg);
+                                        }else{
+                                            // $scope.success('创建桌子'+i+'成功');
+                                            $scope.success(global.translateByKey("appmgr.createTable", {value: i}));
+                                            // console.log('创建桌子'+i+'成功');
+                                        }
+                                    });
+
+                                }else{
+
+                                    // $scope.error("算法设置难度失败");
+                                    $scope.error(global.translateByKey("setAlgDiffFail"));
+                                }
+                            });
+
+
+                        }
+                    });
+
+                }
+            });
+
         });
 
     }
 
     function saveConfig(jump) {
 
-        saveRoomConfig(jump)
+        saveRoomConfig(jump);
         // if($scope.room.diff == original.diff){
         //     saveRoomConfig(jump)
         // }else{
@@ -324,6 +345,56 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
         return deferred.promise;
     }
 
+    function initTable(room, diff, coin_rate) {
+
+        var deferred = $q.defer();
+
+        var totalPlayerNum = 4;
+        var url = algUri + '/' + $stateParams.type + '/init';
+        var diffData = { "room": parseInt(room), "diff": parseInt(diff), "coin_rate": parseInt(coin_rate), "totalPlayerNum": parseInt(totalPlayerNum)};
+        $http.post(url, diffData, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "root:config:roots",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
 
 
     $scope.isFromAppManager = false;
@@ -344,8 +415,10 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams','$q'
 app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
 
     var roomDefault = {
-        name: "新手港湾",
-        intro: "新手港湾",
+        // name: "新手港湾",
+        // intro: "新手港湾",
+        name: global.translateByKey("appmgr.noviceBay"),
+        intro: global.translateByKey("appmgr.noviceBay"),
         maxAmount: 0,
         minAmount: 0,
         diff: 0,
@@ -368,6 +441,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         agentIsolate: 0,
         agentAreas : {},
         //---------------
+        betTime: 15000,
         betLimit: 1000,
         absenceNum: 10,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
@@ -423,6 +497,8 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $scope.room.free = $scope.room.free + "";
         $scope.room.status = $scope.room.status + "";
         $scope.room.visible = $scope.room.visible + "";
+
+        $scope.room.betTime /= 1000;
     }
 
     function transformInt() {
@@ -440,6 +516,8 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             }
             $scope.room.rates = rates;
         }
+
+        $scope.room.betTime *= 1000;
     }
 
 
@@ -472,7 +550,8 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             if(data.err){
                 $scope.error(data.msg);
             }else{
-                $scope.success('设置成功');
+                // $scope.success('设置成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
                 }
@@ -516,78 +595,92 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         }
 
 
-        var url = appMgrUri + "/appConfig";
-        $http.get(url, {
-            params: {
-                token: sso.getToken(),
-                root: hkey,
-                list: 1,
-                all: 1
-            }
-        }).error(function (msg, code) {
-            $scope.errorTips(code);
-        }).success(function (result) {
-            var data = result;
-            if(data.err){
-                $scope.error(data.msg);
-            }else{
-                if(data.err == 404){
-                    data = {};
+        getConfigCoinRate().then(function (data) {
+            var coinRate = data.ret;
+
+            var url = appMgrUri + "/appConfig";
+            $http.get(url, {
+                params: {
+                    token: sso.getToken(),
+                    root: hkey,
+                    list: 1,
+                    all: 1
                 }
-
-                var begin = $scope.room.startAreaId;
-                var end = $scope.room.startAreaId + $scope.room.maxAreas;
-                var arr = [];
-                for(var i=begin; i<end; ++i){
-                    arr.push(i);
-                }
-
-                arr.forEach(function (index) {
-                    var i = index;
-
-                    if(!data[i]){
-
-                        setDiff(i, tableDefault.diff).then(function (data) {
-                            if(data && data.ret == "ok"){
-
-                                var temp = angular.copy(tableDefault);
-
-                                temp.roomType = id;
-                                temp.tableType = i + "";
-                                temp.name = "桌子" + i;
-                                temp.intro = "桌子" + i + "简介";
-
-                                var url = appMgrUri + "/appConfig";
-                                $http.post(url, {root: hkey, key: i, value: temp}, {
-                                    params:{
-                                        token: sso.getToken()
-                                    }
-                                }).error(function (msg, code) {
-                                    $scope.errorTips(code);
-                                }).success(function (result) {
-                                    var data = result;
-                                    if(data.err){
-                                        $scope.error(data.msg);
-                                    }else{
-                                        $scope.success('创建桌子'+i+'成功');
-                                        // console.log('创建桌子'+i+'成功');
-                                    }
-                                });
-
-                            }else{
-
-                                $scope.error("算法设置难度失败");
-                            }
-                        });
-
-
-
-
+            }).error(function (msg, code) {
+                $scope.errorTips(code);
+            }).success(function (result) {
+                var data = result;
+                if(data.err){
+                    $scope.error(data.msg);
+                }else{
+                    if(data.err == 404){
+                        data = {};
                     }
-                });
 
-            }
+                    var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
+                    if(!isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    var begin = $scope.room.startAreaId;
+                    var end = $scope.room.startAreaId + $scope.room.maxAreas;
+                    var arr = [];
+                    for(var i=begin; i<end; ++i){
+                        arr.push(i);
+                    }
+
+                    arr.forEach(function (index) {
+                        var i = index;
+
+                        if(!data[i]){
+
+                            initTable(i, tableDefault.diff, coin_rate).then(function (data) {
+                                if(data && data.ret == "ok"){
+
+                                    var temp = angular.copy(tableDefault);
+
+                                    temp.roomType = id;
+                                    temp.tableType = i + "";
+                                    // temp.name = "桌子" + i;
+                                    // temp.intro = "桌子" + i + "简介";
+                                    temp.name = global.translateByKey("appmgr.tableName");
+                                    temp.intro = global.translateByKey("appmgr.tableName") + i + global.translateByKey("appmgr.intro");
+
+
+                                    var url = appMgrUri + "/appConfig";
+                                    $http.post(url, {root: hkey, key: i, value: temp}, {
+                                        params:{
+                                            token: sso.getToken()
+                                        }
+                                    }).error(function (msg, code) {
+                                        $scope.errorTips(code);
+                                    }).success(function (result) {
+                                        var data = result;
+                                        if(data.err){
+                                            $scope.error(data.msg);
+                                        }else{
+                                            // $scope.success('创建桌子'+i+'成功');
+                                            $scope.success(global.translateByKey("appmgr.createTable", {value: i}));
+                                        }
+                                    });
+
+                                }else{
+
+                                    // $scope.error("算法设置难度失败");
+                                    $scope.error(global.translateByKey("appmgr.setAlgDiffFail"));
+                                }
+                            }, function (data) {
+                                $scope.error(global.translateByKey("appmgr.setAlgDiffFail"));
+                            });
+                        }
+                    });
+
+                }
+            });
+
+
         });
+
 
     }
     function saveConfig(jump) {
@@ -644,6 +737,59 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
 
         return deferred.promise;
     }
+
+    function initTable(room, diff, coin_rate) {
+
+        var deferred = $q.defer();
+
+        var totalPlayerNum = 8;
+        var url = algUri + '/' + $stateParams.type + '/init';
+        var diffData = { "room": parseInt(room), "diff": parseInt(diff), "coin_rate": parseInt(coin_rate), "totalPlayerNum": parseInt(totalPlayerNum)};
+        $http.post(url, diffData, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "root:config:roots",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+
 
     $scope.isFromAppManager = false;
     var viewPath = 'view.appmanager.gameset.config';

@@ -2,12 +2,14 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-var sso = jm.sdk.sso;
-app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', function($scope, $http, $state, $stateParams, $q) {
+var sso =jm.sdk.sso;
+app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', "global", function($scope, $http, $state, $stateParams, $q, global) {
 
     var tableDefault = {
-        name: "桌子",
-        intro: "桌子",
+        // name: "桌子",
+        // intro: "桌子",
+        name: global.translateByKey("appmgr.tableName"),
+        intro: global.translateByKey("appmgr.tableName"),
         maxAmount: 0,
         minAmount: 0,
         diff: 0,
@@ -125,6 +127,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.table.doubleFire = $scope.table.doubleFire + "";
         $scope.table.fixedRate = $scope.table.fixedRate + "";
         $scope.table.autoAim = $scope.table.autoAim + "";
+
+        $scope.table.intervalChangeScene /= 1000;
     }
 
     function transformInt() {
@@ -144,6 +148,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
             }
             $scope.table.rates = rates;
         }
+
+        $scope.table.intervalChangeScene *= 1000;
     }
 
 
@@ -174,7 +180,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
             if(data.err){
                 $scope.error(data.msg);
             }else{
-                $scope.success('设置成功');
+                // $scope.success('设置成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.table.list', {appId: $stateParams.appId, type: $stateParams.type, roomId: $stateParams.roomId});
                 }
@@ -224,11 +231,13 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
 }]);
 
-app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', function($scope, $http, $state, $stateParams,$q) {
+app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
 
     var tableDefault = {
-        name: "新手港湾",
-        intro: "新手港湾",
+        // name: "新手港湾",
+        // intro: "新手港湾",
+        name: global.translateByKey("appmgr.tableName"),
+        intro: global.translateByKey("appmgr.tableName"),
         maxAmount: 0,
         minAmount: 0,
         diff: 0,
@@ -247,8 +256,9 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         virtualOnlineCount: 0,
         rates: [1,2,3,4,5,6,7,8,9,10],
         //---------------
-        betLimit: 1000,
+        betTime: 15000,
         absenceNum: 10,
+        betLimit: 1000,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
@@ -337,6 +347,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         $scope.table.free = $scope.table.free + "";
         $scope.table.status = $scope.table.status + "";
         $scope.table.visible = $scope.table.visible + "";
+
+        $scope.table.betTime /= 1000;
     }
 
     function transformInt() {
@@ -353,6 +365,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
             }
             $scope.table.rates = rates;
         }
+
+        $scope.table.betTime *= 1000;
     }
 
 
@@ -383,7 +397,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
             if(data.err){
                 $scope.error(data.msg);
             }else{
-                $scope.success('设置成功');
+                // $scope.success('设置成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.table.list', {appId: $stateParams.appId, type: $stateParams.type, roomId: $stateParams.roomId});
                 }

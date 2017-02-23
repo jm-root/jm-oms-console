@@ -9,7 +9,7 @@
     </div>
     <div class="pull-right">
         <div class="input-group m-r-sm">
-            <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索">
+            <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'appmgr.search' | translate }}">
             <span class="input-group-btn" style="width: auto">
     <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
     </span>
@@ -19,7 +19,8 @@
         <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmanager.appmgr.appList" | translate }}>></a><a ng-click="goBaoxiangList()">{{ "appmanager.appmgr.baoxiangList" | translate }}>></a>{{ "appmanager.appmgr.baoxiangJoinList" | translate }}</h1>
+
+    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmgr.appList" | translate }}>></a><a ng-click="goBaoxiangList()">{{ "appmgr.baoxiangList" | translate }}>></a>{{ "appmgr.baoxiangJoinList" | translate }}</h1>
 </div>
 
 <div class="panel panel-default">

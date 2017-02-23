@@ -2,6 +2,7 @@
 
 var gConfig = {
     localhost: {
+        apiHost: "http://localhost:19990",
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://localhost:20300",
         staticHost:"http://localhost:20400"
@@ -54,7 +55,7 @@ var baoxiangUri = sdkHost + "/baoxiang";
 var algUri = sdkHost + "/alg";
 
 
-jm.sdk.init({uri: apiHost});
+jm.sdk.init({uri: sdkHost});
 
 var domain = '';
 var host = document.domain;

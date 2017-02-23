@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div ng-show="isFromAppManager" class="pull-right">
         <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="create()">
-            <i class="fa fa-plus"></i>{{ 'appmanager.appmgr.create' | translate }}
+            <i class="fa fa-plus"></i>{{ "common.create" | translate}}
         </button>
         <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-            <i class="fa fa-trash-o"></i>{{ 'appmanager.appmgr.delete' | translate }}
+            <i class="fa fa-trash-o"></i>{{ "common.delete" | translate}}
         </button>
     </div>
     <!--<div class="pull-right">-->
@@ -19,7 +19,8 @@
         <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmanager.appmgr.appList" | translate }}>></a>{{ "appmanager.appmgr.baoxiangList" | translate }}</h1>
+
+    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmgr.appList" | translate }}>></a>{{ "appmgr.baoxiangList" | translate }}</h1>
 </div>
 
 <div class="panel panel-default">

@@ -6,7 +6,7 @@
             <div class="pull-right">
                 <form>
                     <div class="input-group m-r-sm">
-                        <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 应用名称">
+                        <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'appmgr.searchPlaceholder' | translate }}">
                     <span class="input-group-btn" style="width: auto">
                 <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
               </span>
@@ -17,7 +17,7 @@
                 <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
                 </select>
             </div>
-            <h1 class="m-n font-thin h3">房间列表</h1>
+            <h1 class="m-n font-thin h3" translate="appmgr.appList">应用列表</h1>
         </div>
 
         <div class="panel panel-default">

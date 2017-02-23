@@ -2,13 +2,14 @@
  * Created by ZL on 2016/9/17.
  */
 "use strict";
-var sso = jm.sdk.sso;
+
+var sso =jm.sdk.sso;
 app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
-    $scope.isFromAppManager = true;
+    $scope.isFromAppManager = false;
     var viewPath = 'view.appmanager.gameset.config';
     $scope.per = {};
     global.getUserPermission(viewPath).then(function(obj){
@@ -29,21 +30,29 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
     // var hkey = 'appConfig_' + tmpl_id;
     var hkey = 'app:' + tmpl_id + ':config';
 
+
+
     var columnDefs = [
         {headerName: "宝箱类型", field: "boxType", width: 100},
         {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'appmgr.baoxiangType'
+    ]);
+
     function opr_render(params){
-        return '<button class="btn btn-xs bg-primary" ng-click="goCheck(\''+params.data.boxType+'\')">查看</button>';
+        return '<button class="btn btn-xs bg-primary" ng-click="goCheck(\''+params.data.boxType+'\')" translate=\'appmgr.check\'>查看</button>';
     };
 
     $scope.goCheck = function (id) {
-        $state.go('app.rooms.manage.baoxiang.record.list' , {typeId: id});
+        $state.go('app.rooms.manage.baoxiang.record.list' , {appId: $stateParams.appId, typeId: id});
     };
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             // config.listConfig({token: sso.getToken(),root:hkey, all:true},function(err,result){
             //     var data = result;
@@ -104,15 +113,21 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
         // enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.baoxiang.edit' , {appId: tmpl_id, id: cell.data.boxType});
         },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
-        angularCompileRows: true
+        angularCompileRows: true,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc
+
     };
 
     $scope.create = function () {
@@ -124,10 +139,10 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title: global.translateByKey("openTips.title"),
+                content:global.translateByKey("openTips.delContent"),
+                okTitle:global.translateByKey("common.yes"),
+                cancelTitle:global.translateByKey("common.no"),
                 okCallback: function(){
                     var ids = 0;
                     rows.forEach(function(e){
@@ -162,7 +177,8 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
                             }else{
                                 ids++;
                                 if(ids == len) {
-                                    $scope.success('操作成功');
+                                    // $scope.success('操作成功');
+                                    $scope.success(global.translateByKey("common.succeed"));
                                     $scope.gridOptions.api.setDatasource(dataSource);
                                 }
                             }
@@ -172,9 +188,9 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title: global.translateByKey("openTips.title"),
+                content:global.translateByKey("openTips.selectDelContetn"),
+                cancelTitle:global.translateByKey("openTips.cancelDelConfirm"),
                 singleButton:true
             });
         }
@@ -195,7 +211,7 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
 }]);
 
 
-app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
 
     // jm.sdk.init({uri: gConfig.sdkHost});
     // var config = jm.sdk.config;
@@ -206,6 +222,11 @@ app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams',
     var appId = $stateParams.appId;
     var hkey = 'app:' + appId + ':config';
     $scope.id = id;
+
+    $scope.goBaoxiangList = function () {
+        $state.go("app.rooms.manage.baoxiang.list", {appId: $stateParams.appId});
+    };
+
 
     var boxDefault1 =
     {
@@ -288,7 +309,8 @@ app.controller('BaoXiangEditCtrl', ['$scope', '$http', '$state', '$stateParams',
                 // }).error(function(msg, code){
                 //     $scope.errorTips(code);
                 // });
-                $scope.success('设置成功');
+                // $scope.success('设置成功');
+                $scope.success(global.translateByKey("common.succeed"));
                 $state.go('app.rooms.manage.baoxiang.list', {appId: appId});
             }
         });
@@ -322,8 +344,12 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
 
     var type = $stateParams.typeId;
 
+    $scope.goBaoxiangList = function () {
+        $state.go("app.rooms.manage.baoxiang.list", {appId: $stateParams.appId});
+    };
+
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "用户id", field: "userId", width: 50},
         {headerName: "用户呢称", field: "userNick", width: 100},
         {headerName: "宝箱类型", field: "type", width: 100},
@@ -335,17 +361,29 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS},
     ];
 
+    global.agGridTranslateSync($scope, columnDefs, [
+        'appmgr.userId',
+        'appmgr.userName',
+        'appmgr.baoxiangType',
+        'appmgr.cost',
+        'appmgr.award',
+        'appmgr.payId',
+        'appmgr.status',
+        'common.mtime',
+        'common.ctime'
+    ]);
+
     function angGridFormatStatus(params) {
         var formatStr = params.data.status + "";
         switch (params.data.status){
             case 1:
-                formatStr = "订单生成";
+                formatStr = global.translateByKey("appmgr.orderGeneration");
                 break;
             case 2:
-                formatStr = "支付完成";
+                formatStr = global.translateByKey("appmgr.paymentCompleted");
                 break;
             case 3:
-                formatStr = "交易完成";
+                formatStr = global.translateByKey("appmgr.transactionCompleted");
                 break;
 
         }
@@ -374,6 +412,8 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(baoxiangUri+'/records/'+type, {
                 params:{
@@ -405,15 +445,20 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             // $state.go('app.shop.product.edit' , {id: cell.data._id});
         },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
-        angularCompileRows: true
+        angularCompileRows: true,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc
     };
 
     $scope.delete = function(){
@@ -421,10 +466,10 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title: global.translateByKey("openTips.title"),
+                content: global.translateByKey("openTips.delContent"),
+                okTitle: global.translateByKey("common.yes"),
+                cancelTitle: global.translateByKey("common.no"),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -441,7 +486,8 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            // $scope.success('操作成功');
+                            $scope.success(global.translateByKey("common.succeed"));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -451,9 +497,9 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title: global.translateByKey("openTips.title"),
+                content:global.translateByKey("openTips.selectDelContetn"),
+                cancelTitle:global.translateByKey("openTips.cancelDelConfirm"),
                 singleButton:true
             });
         }

@@ -2,8 +2,10 @@
  * Created by ZL on 2016/8/13.
  */
 "use strict";
-var sso = jm.sdk.sso;
-app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
+var sso =jm.sdk.sso;
+app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', '$filter', function ($scope, $state, $stateParams, $http, global, $filter) {
+
+
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -26,7 +28,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             {headerName: "最少鱼数", field: "minFishes", width: 120},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
-            {headerName: "货币种类", field: "ctCode", width: 120},
+            {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
             {headerName: "一币分值", field: "exchangeRate", width: 120},
             // {headerName: "发炮速度限制", field: "gunSpeedLimit", width: 180},
             {headerName: "最大携带", field: "maxAmount", width: 120},
@@ -37,7 +39,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "上分上限", field: "maxUpScore", width: 120},
             // {headerName: "爆机分数", field: "baoji", width: 120},
             // {headerName: "限时发炮", field: "maxWaitFireTime", width: 120}
-            {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
+            // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
             {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
             {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
         ],
@@ -56,34 +58,63 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             {headerName: "最小携带", field: "minAmount", width: 120},
             {headerName: "上分设置", field: "exchangeAmount", width: 120},
             {headerName: "一币分值", field: "exchangeRate", width: 120},
-            {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
+            // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
             {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
             {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
         ]
     };
 
+    global.agGridTranslateSync($scope, columnDefs.fish, [
+        'appmgr.room.roomType',
+        'appmgr.room.roomName',
+        'appmgr.room.roomRate',
+        'appmgr.room.freeField',
+        'appmgr.room.tableFishNum',
+        'appmgr.room.tableNum',
+        'appmgr.room.roomMode',
+        'appmgr.room.roomCurrency',
+        'appmgr.room.currencyScore',
+        'appmgr.room.maxCarry',
+        'appmgr.room.minCarry',
+        'appmgr.room.setup'
+    ]);
+
+    global.agGridTranslateSync($scope, columnDefs.gamble, [
+        'appmgr.room.roomType',
+        'appmgr.room.roomName',
+        'appmgr.room.roomRate',
+        'appmgr.room.freeField',
+        'appmgr.room.roomMode',
+        'appmgr.room.roomCurrency',
+        'appmgr.room.tableNum',
+        'appmgr.room.maxCarry',
+        'appmgr.room.minCarry',
+        'appmgr.room.setup',
+        'appmgr.room.currencyScore'
+    ]);
+
     function angGridFormatVisible(params) {
-        return params.data.visible == 1 ? "是" : "否";
+        return params.data.visible == 1 ? $filter('translate')('common.yes') : $filter('translate')('common.no');
     }
     function angGridFormatFree(params) {
-        return params.data.free == 1 ? "是" : "否";
+        return params.data.free == 1 ? $filter('translate')('common.yes') : $filter('translate')('common.no');
     }
     function angGridFormatFixedRate(params) {
-        return params.data.fixedRate == 1 ? "是" : "否";
+        return params.data.fixedRate == 1 ? $filter('translate')('common.yes') : $filter('translate')('common.no');
     }
     function angGridFormatMode(params) {
-        return params.data.mode == 1 ? "只出夺宝卷" : "只出金币" ;
+        return params.data.mode == 1 ? $filter('translate')('appmgr.room.modeGoldLottery') : $filter('translate')('appmgr.room.modeGold');
     }
     function angGridFormatCtCode(params) {
-        return params.data.ctCode == 1 ? "T币" : "金币";
+        return params.data.ctCode == "tb" ? $filter('translate')('common.tb') : $filter('translate')('common.jb');
     }
 
     function angGridFormatRoomBtn(params) {
-        return '<button class="btn btn-xs bg-primary" ng-click="goRoomConfig(\''+params.data.roomType+'\')">房间配置</button>';
+        return '<button class="btn btn-xs bg-primary" ng-click="goRoomConfig(\''+params.data.roomType+'\')" translate="appmgr.room.roomConfig">房间配置</button>';
     }
 
     function angGridFormatTableBtn(params) {
-        return '<button class="btn btn-xs bg-primary" ng-click="goTableConfig(\''+tmpl_id+'\', \''+tmpl_type+'\',\''+params.data.roomType+'\')">桌子配置</button>';
+        return '<button class="btn btn-xs bg-primary" ng-click="goTableConfig(\''+tmpl_id+'\', \''+tmpl_type+'\',\''+params.data.roomType+'\')" translate="appmgr.table.tableConfig">桌子配置</button>';
     }
 
     $scope.goRoomConfig = function(roomType){
@@ -97,6 +128,9 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
 
     var dataSource = {
         getRows: function (params) {
+
+            global.agGridOverlay();
+
             var page = params.startRow / $scope.pageSize + 1;
             var url = appMgrUri + "/appConfig";
             $http.get(url, {
@@ -139,15 +173,20 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         rowSelection: 'multiple',
         // columnDefs: columnDefs,
         columnDefs: columnDefs[tmpl_type],
+        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.gameset.edit' , {appId: tmpl_id, type: tmpl_type, id: cell.data.roomType});
         },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();
+        },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
-        angularCompileRows: true
+        angularCompileRows: true,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc
     };
 
     $scope.create = function () {
@@ -159,10 +198,10 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:$filter('translate')('openTips.title'),
+                content:$filter('translate')('openTips.delContent'),
+                okTitle:$filter('translate')('common.yes'),
+                cancelTitle:$filter('translate')('common.no'),
                 okCallback: function(){
                     var ids = 0;
                     rows.forEach(function(e){
@@ -182,7 +221,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
                             }else{
                                 ids++;
                                 if(ids == len) {
-                                    $scope.success('操作成功');
+                                    $scope.success($filter('translate')('openTips.operationSuccess'));
                                     $scope.gridOptions.api.setDatasource(dataSource);
                                 }
                             }
@@ -192,9 +231,9 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:$filter('translate')('openTips.title'),
+                content:$filter('translate')('openTips.selectDelContent'),
+                cancelTitle:$filter('translate')('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -227,12 +266,15 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
 
 }]);
 
-app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout,global, $location, $anchorScroll) {
+app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout, global, $location, $anchorScroll) {
 
     $scope.gameset_config_tmpl = "tpl/appmanager/gameset_" + $stateParams.type + "_edit.html";
     $scope.gameset_config_alg_tmpl = "tpl/appmanager/gameset_alg_edit.html";
     $scope.gameset_config_diffcult_tmpl = "tpl/appmanager/gameset_diffcult_edit.html";
 
+    $scope.goRoomList = function () {
+        $state.go("app.rooms.manage.gameset.list", {appId: $stateParams.appId, type:$stateParams.type});
+    };
 
     $scope.goScroll = function (anchor) {
 
@@ -242,36 +284,84 @@ app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', 
     }
 }]);
 
-app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','$q', function($scope, $http, $state, $stateParams, $timeout,$q) {
+app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$interval', '$q', '$filter', function($scope, $http, $state, $stateParams, $interval, $q, $filter) {
 
     var baseUrl = algUri + '/' + $stateParams.type;
 
     $scope.saveInOut = function () {
+
         var url = baseUrl + '/changeInOut';
         var data = {};
         data.in = {};
         data.out = {};
-        if($scope.table1.algIn){
-            data.in[$scope.table1.id] = $scope.table1.algIn;
-        }
-        if($scope.table1.algOut){
-            data.out[$scope.table1.id] = $scope.table1.algOut;
-        }
-        $http.post(url, data, {
-            params:{
-                token: sso.getToken()
+        if($scope.table1.algOut == undefined && $scope.table1.algOut == undefined){
+            getAlgData($scope.table1.id).then(function (algData) {
 
-            }
-        }).error(function (msg, code) {
-            $scope.errorTips(code);
-        }).success(function (result) {
-            var data = result;
-            if(data.ret == "ok"){
-                $scope.success("设置成功");
+                var totalgIn = 0;
+                var totalgOut = 0;
+                if($stateParams.type == "fish"){
+                    var arrIn = algData.gIn;
+                    arrIn.forEach(function (e, i) {
+                        totalgIn += e;
+                    });
+
+                    var arrOut = algData.gOut;
+                    arrOut.forEach(function (e, i) {
+                        totalgOut += e;
+                    })
+                }else{
+                    totalgIn = algData.gIn;
+                    totalgOut = algData.gOut;
+                }
+
+                data.in[$scope.table1.id] = totalgIn;
+                data.out[$scope.table1.id] = totalgOut;
+
+                $http.post(url, data, {
+                    params:{
+                        token: sso.getToken()
+                    }
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                }).success(function (result) {
+                    var data = result;
+                    if(data.ret == "ok"){
+                        $scope.success($filter('translate')('openTips.operationSuccess'));
+                    }else{
+                        $scope.error($filter('translate')('openTips.operationFail'));
+                    }
+                });
+            }, function (data) {
+                $scope.error($filter('translate')('openTips.operationFail'));
+            });
+        }else{
+            if($scope.table1.algIn == undefined){
+                data.out[$scope.table1.id] = 0;
             }else{
-                $scope.error("设置失败");
+                data.in[$scope.table1.id] = $scope.table1.algIn;
             }
-        });
+            if($scope.table1.algOut == undefined){
+                data.out[$scope.table1.id] = 0;
+            }else{
+                data.out[$scope.table1.id] = $scope.table1.algOut;
+            }
+
+            $http.post(url, data, {
+                params:{
+                    token: sso.getToken()
+                }
+            }).error(function (msg, code) {
+                $scope.errorTips(code);
+            }).success(function (result) {
+                var data = result;
+                if(data.ret == "ok"){
+                    $scope.success($filter('translate')('openTips.operationSuccess'));
+                }else{
+                    $scope.error($filter('translate')('openTips.operationFail'));
+                }
+            });
+        }
+
     };
 
     $scope.execInit = function () {
@@ -292,9 +382,9 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
         }).success(function (result) {
             var data = result;
             if(data.ret == "ok"){
-                $scope.success("设置成功");
+                $scope.success($filter('translate')('openTips.operationSuccess'));
             }else{
-                $scope.error("设置失败");
+                $scope.error($filter('translate')('openTips.operationFail'));
             }
         });
     };
@@ -312,9 +402,9 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
         }).success(function (result) {
             var data = result;
             if(data.ret == "ok"){
-                $scope.success("设置成功");
+                $scope.success($filter('translate')('openTips.operationSuccess'));
             }else{
-                $scope.error("设置失败");
+                $scope.error($filter('translate')('openTips.operationFail'));
             }
         });
     };
@@ -340,8 +430,11 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
                 msg.gIngOutRate = (msg.totalgIn - msg.totalgOut) / msg.totalgIn;
             }else{
                 msg.gIngOutRate = (msg.gIn - msg.gOut) / msg.gIn;
+                msg.totalIn = msg.gIn;
+                msg.totalOut = msg.gOut;
             }
-
+            msg.glose = msg.totalgIn - msg.totalgOut;
+            msg.lose = msg.inout.roomsIn - msg.inout.roomsOut;
             msg.inOutRate = (msg.inout.roomsIn - msg.inout.roomsOut) / msg.inout.roomsIn;
             msg.inOutRate = msg.inOutRate.toFixed(4);
             msg.gIngOutRate = msg.gIngOutRate.toFixed(4);
@@ -353,9 +446,24 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
 
 
         }, function (data) {
-            $scope.error("获取数据失败");
+            $scope.error($filter('translate')('appmgr.getDataError'));
         });
     };
+
+    var refreshData = {};
+    $scope.autoGetAlgData = function () {
+        refreshData.t = $interval(function(){
+            $scope.getAlgData();
+        }, 1000);
+    };
+
+    $scope.cancelGetAlgData = function () {
+        $interval.cancel(refreshData.t);
+    };
+
+    $scope.$on("$destroy", function(){
+        $interval.cancel(refreshData.t);
+    });
 
     function getAlgData(room) {
 
@@ -380,9 +488,10 @@ app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams
 
         return deferred.promise;
     }
+
 }]);
 
-app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', '$q', 'global', function($scope, $http, $state, $stateParams, $timeout, $q, global) {
+app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', '$q', 'global', '$filter', function($scope, $http, $state, $stateParams, $timeout, $q, global, $filter) {
 
     var tmpl_type = $stateParams.type;
     var appId = $stateParams.appId;
@@ -396,62 +505,63 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
 
     $scope.tabPageShow = false;
 
+    // global.translateByKey("")
 
     var showData = {
         fish: {
             diffs: [
-                {name: "最简单", value: 0},
-                {name: "简单", value: 1},
-                {name: "难", value: 2},
-                {name: "最难", value: 3},
-                {name: "死难", value: 4},
-                {name: "难5", value: 5},
-                {name: "难6", value: 6},
-                {name: "难7", value: 7},
-                {name: "难8", value: 8},
-                {name: "难9", value: 9}
+                {name: global.translateByKey("appmgr.difficulty0"), value: 0},
+                {name: global.translateByKey("appmgr.difficulty1"), value: 1},
+                {name: global.translateByKey("appmgr.difficulty2"), value: 2},
+                {name: global.translateByKey("appmgr.difficulty3"), value: 3},
+                {name: global.translateByKey("appmgr.difficulty4"), value: 4},
+                {name: global.translateByKey("appmgr.difficulty5"), value: 5},
+                {name: global.translateByKey("appmgr.difficulty6"), value: 6},
+                {name: global.translateByKey("appmgr.difficulty7"), value: 7},
+                {name: global.translateByKey("appmgr.difficulty8"), value: 8},
+                {name: global.translateByKey("appmgr.difficulty9"), value: 9}
             ],
             rejustDiffs: [
-                {name: "零负分（关闭炒场）", value: 44, max_send:0},
-                {name: "最高-5000", value: 28, max_send: 5000},
-                {name: "最高-10000", value: 29, max_send: 10000},
-                {name: "最高-15000", value: 30, max_send: 15000},
-                {name: "最高-20000", value: 33, max_send: 20000},
-                {name: "最高-25000", value: 37, max_send: 25000},
-                {name: "最高-30000", value: 38, max_send: 30000},
-                {name: "最高-35000", value: 39, max_send: 35000},
-                {name: "最高-40000", value: 40, max_send: 40000},
-                {name: "最高-45000", value: 41, max_send: 45000},
-                {name: "最高-55000", value: 42, max_send: 55000},
-                {name: "最高-100000", value: 43, max_send: 100000}
+                {name: global.translateByKey("appmgr.closeMaxSend"), value: 44, max_send:0},
+                {name: global.translateByKey("appmgr.highest") + "-3000", value: 28, max_send: 3000},
+                {name: global.translateByKey("appmgr.highest") + "-8000", value: 29, max_send: 8000},
+                {name: global.translateByKey("appmgr.highest") + "-13000", value: 30, max_send: 13000},
+                {name: global.translateByKey("appmgr.highest") + "-18000", value: 33, max_send: 18000},
+                {name: global.translateByKey("appmgr.highest") + "-23000", value: 37, max_send: 23000},
+                {name: global.translateByKey("appmgr.highest") + "-28000", value: 38, max_send: 28000},
+                {name: global.translateByKey("appmgr.highest") + "-33000", value: 39, max_send: 33000},
+                {name: global.translateByKey("appmgr.highest") + "-38000", value: 40, max_send: 38000},
+                {name: global.translateByKey("appmgr.highest") + "-43000", value: 41, max_send: 43000},
+                {name: global.translateByKey("appmgr.highest") + "-53000", value: 42, max_send: 53000},
+                {name: global.translateByKey("appmgr.highest") + "-98000", value: 43, max_send: 98000}
             ]
         },
         gamble: {
             diffs: [
-                {name: "最简单", value: 0},
-                {name: "简单", value: 1},
-                {name: "难", value: 2},
-                {name: "最难", value: 3},
-                {name: "死难", value: 4},
-                {name: "难5", value: 5},
-                {name: "难6", value: 6},
-                {name: "难7", value: 7},
-                {name: "难8", value: 8},
-                {name: "难9", value: 9}
+                {name: global.translateByKey("appmgr.difficulty0"), value: 0},
+                {name: global.translateByKey("appmgr.difficulty1"), value: 1},
+                {name: global.translateByKey("appmgr.difficulty2"), value: 2},
+                {name: global.translateByKey("appmgr.difficulty3"), value: 3},
+                {name: global.translateByKey("appmgr.difficulty4"), value: 4},
+                {name: global.translateByKey("appmgr.difficulty5"), value: 5},
+                // {name: global.translateByKey("difficult6"), value: 6},
+                // {name: global.translateByKey("difficult7"), value: 7},
+                // {name: global.translateByKey("difficult8"), value: 8},
+                // {name: global.translateByKey("difficult9"), value: 9}
             ],
             rejustDiffs: [
-                {name: "零负分（关闭炒场）", value: 44, max_send:0},
-                {name: "最高-5000", value: 28, max_send: 5000},
-                {name: "最高-10000", value: 29, max_send: 10000},
-                {name: "最高-15000", value: 30, max_send: 15000},
-                {name: "最高-20000", value: 33, max_send: 20000},
-                {name: "最高-25000", value: 37, max_send: 25000},
-                {name: "最高-30000", value: 38, max_send: 30000},
-                {name: "最高-35000", value: 39, max_send: 35000},
-                {name: "最高-40000", value: 40, max_send: 40000},
-                {name: "最高-45000", value: 41, max_send: 45000},
-                {name: "最高-55000", value: 42, max_send: 55000},
-                {name: "最高-100000", value: 43, max_send: 100000}
+                {name: global.translateByKey("appmgr.closeMaxSend"), value: 44, max_send:0},
+                {name: global.translateByKey("appmgr.highest") + "-1000", value: 28, max_send: 1000},
+                {name: global.translateByKey("appmgr.highest") + "-6000", value: 29, max_send: 6000},
+                {name: global.translateByKey("appmgr.highest") + "-11000", value: 30, max_send: 11000},
+                {name: global.translateByKey("appmgr.highest") + "-16000", value: 33, max_send: 16000},
+                {name: global.translateByKey("appmgr.highest") + "-21000", value: 37, max_send: 21000},
+                {name: global.translateByKey("appmgr.highest") + "-26000", value: 38, max_send: 26000},
+                {name: global.translateByKey("appmgr.highest") + "-31000", value: 39, max_send: 31000},
+                {name: global.translateByKey("appmgr.highest") + "-36000", value: 40, max_send: 36000},
+                {name: global.translateByKey("appmgr.highest") + "-41000", value: 41, max_send: 41000},
+                {name: global.translateByKey("appmgr.highest") + "-51000", value: 42, max_send: 51000},
+                {name: global.translateByKey("appmgr.highest") + "-96000", value: 43, max_send: 96000}
             ]
         }
     };
@@ -516,7 +626,7 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
             if(data.err){
                 $scope.error(data.msg);
             }else{
-                $scope.success('设置成功');
+                $scope.success($filter('translate')('openTips.operationSuccess'));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
                 }
@@ -543,7 +653,7 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
             }
 
             if(!isOk){
-                $scope.error("算法设置难度失败");
+                $scope.error(global.translateByKey("setAlgDiffFail"));
             }else{
                 saveRoomConfig(jump, diff);
             }
@@ -568,9 +678,9 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
             }
 
             if(!isOk){
-                $scope.error("算法设置炒场难度失败");
+                $scope.error(global.translateByKey("setAlgCCDiffFail"));
             }else{
-                $scope.success("算法设置炒场难度成功");
+                $scope.error(global.translateByKey("setAlgCCDiffSuccess"));
                 if(jump){
                     $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
                 }
@@ -636,14 +746,16 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
                         if(data.ret != "ok"){
                             deferred.reject(data);
                         }else{
-                            var totalPlayerNum;
-                            if($stateParams.type === "fish"){
-                                totalPlayerNum = 4;
-                            }else{
-                                totalPlayerNum = 8;
-                            }
-                            var url = algUri + '/' + $stateParams.type + '/init';
-                            var diffData = { "room": parseInt(room), "diff": $scope.room.diff, "coin_rate": algData.coin_rate, "totalPlayerNum": totalPlayerNum};
+                            // var totalPlayerNum;
+                            // if($stateParams.type === "fish"){
+                            //     totalPlayerNum = 4;
+                            // }else{
+                            //     totalPlayerNum = 8;
+                            // }
+                            // var url = algUri + '/' + $stateParams.type + '/init';
+                            // var diffData = { "room": parseInt(room), "diff": $scope.room.diff, "coin_rate": algData.coin_rate, "totalPlayerNum": totalPlayerNum};
+                            var url = algUri + '/' + $stateParams.type + '/changeDiff';
+                            var diffData = { "room": parseInt(room), "diff": $scope.room.diff};
                             $http.post(url, diffData, {
                                 params:{
                                     token: sso.getToken()
