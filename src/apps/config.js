@@ -26,6 +26,7 @@ var sdkHost = gConfig.sdkHost;
 var opensdkHost = gConfig.opensdkHost;
 var staticHost = gConfig.staticHost;
 
+var perUri = sdkHost+"/acl";
 var ssoUri = apiHost+"/sso";
 var aclUri = apiHost+"/acl";
 var adminUri = apiHost+"/admin";

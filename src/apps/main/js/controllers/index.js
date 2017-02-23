@@ -8,6 +8,9 @@ angular.module('app')
         $scope.defaultRows = '20';
         $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
 
+        var url = adminUri+'/nav';
+        // url = omsUri + '/nav';
+
         var sso = jm.sdk.sso;
         global.getUser().then(function (user) {
             $scope.userInfo = user;
@@ -15,18 +18,24 @@ angular.module('app')
         }).then(function (roles) {
             global.ready = true;
             global.emit('ready', global);
-            $http.get(omsUri + '/nav', {
+            $http.get(url, {
                 params: {
                     token: sso.getToken(),
                     acl_user: $scope.userInfo.id
                 }
             }).success(function (result) {
-                console.log(result);
+                // console.log(result);
                 var obj = result;
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
-                    $scope.nav = sort(obj.ret);
+                    var rows;
+                    if(obj.rows){
+                        rows = obj.rows;
+                    }else{
+                        rows = sort(obj.ret);
+                    }
+                    $scope.nav = rows||[];
                 }
             }).error(function (msg, code) {
                 console.log(msg);

@@ -32,5 +32,21 @@
     "label":"Browse",
     "ok":"ok",
     "cancel":"cancel"
+  },
+  "ag-grid": {
+    "next": "Next",
+    "last": "Last",
+    "first": "First",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "noRowsToShow": "No Rows To Show"
+  },
+  "openTips": {
+    "title": "Tips",
+    "delContent": "Delete ?",
+    "selectDelContent": "Select delete content",
+    "cancelDelConfirm": "Confirm",
+    "operationSuccess": "Operation success",
+    "operationFail": "Operation fail"
   }
 }

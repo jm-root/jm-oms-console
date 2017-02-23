@@ -32,5 +32,21 @@
     "label":"浏览",
     "ok":"确定",
     "cancel":"取消"
+  },
+  "ag-grid": {
+    "next": "下一页",
+    "last": "未尾页",
+    "first": "首页",
+    "previous": "上一页",
+    "loading": "加载中...",
+    "noRowsToShow": "无数据"
+  },
+  "openTips": {
+    "title": "提示",
+    "delContent": "是否确认删除?",
+    "selectDelContent": "请选择要删除的数据!",
+    "cancelDelContent": "确定",
+    "operationSuccess": "操作成功",
+    "operationFail": "操作失败"
   }
 }

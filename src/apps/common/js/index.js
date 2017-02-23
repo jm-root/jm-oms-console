@@ -123,7 +123,9 @@ angular.module('app')
 
         self.getRoles = function () {
             var deferred = $q.defer();
-            $http.get(aclUri + '/userRoles', {
+            var url = aclUri + '/userRoles';
+            url = perUri + '/user/roles';
+            $http.get(url, {
                 params: {
                     token: sso.getToken()
                 }
@@ -132,7 +134,12 @@ angular.module('app')
                 if (obj.err) {
                     deferred.reject(obj);
                 } else {
-                    var roles = obj.ret || [];
+                    var roles;
+                    if(obj.ret){
+                        roles = obj.ret || [];
+                    }else{
+                        roles = obj.roles || [];
+                    }
                     self.roles = roles;
                     if (roles.length) {
                         deferred.resolve(roles);
@@ -150,7 +157,7 @@ angular.module('app')
 
         self.getUserPermission = function (resource) {
             var deferred = $q.defer();
-            $http.get(aclUri + '/user/permissions', {
+            $http.get(perUri + '/user/permissions', {
                 params: {
                     token: sso.getToken(),
                     resource: resource

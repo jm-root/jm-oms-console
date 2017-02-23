@@ -14,6 +14,14 @@
     "MAIN": "Home"
   },
   "app": {
+    "per": {
+      "manage":"Permission",
+      "org": "Organization",
+      "users": "User",
+      "role": "Role",
+      "resource": "Resource",
+      "roleUser": "Role User"
+    },
     "acl": {
       "manage":"Permission",
       "user": "User",
@@ -136,6 +144,7 @@
       },
       "activitys":"Activitys",
       "checkin":"Checkin",
+      "turntable":"Turntable",
       "sendnotice":"Send Notice",
       "senddak":"Send Mail",
       "rank":"Rank Set"

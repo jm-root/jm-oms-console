@@ -1,0 +1,84 @@
+<div ng-controller="UsersCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.per.users.edit') " name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>编辑信息</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">头像</label>
+                    <div class="col-sm-9">
+                        <a ui-sref=".avatar"><img width="200" height="200" src="{{user.avatar}}" onerror="this.src='apps/common/img/avatar.jpg'"/></a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">token不过期</label>
+                    <div class="col-sm-9">
+                        <label class="i-switch i-switch-md m-t-xs m-r">
+                            <input type="checkbox" ng-model="user.isNotExpired">
+                            <i></i>
+                        </label>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">ObjectId</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="ObjectId" ng-model="user.id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" style="padding-top: 13px">标签</label>
+
+                    <div class="col-sm-9">
+                        <tags-input class="bootstrap" ng-model="user.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">昵称<code style="background-color: transparent" ng-hide="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="昵称" ng-model="user.nick" required>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">帐号<code style="background-color: transparent" ng-hide="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="帐号" ng-model="user.account" ng-disabled="id" ng-required="!id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group" ng-hide="id">
+                    <label class="col-sm-2 control-label">初始密码<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="初始密码" ng-model="user.passwd">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">手机</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="手机" ng-model="user.mobile" ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Email" ng-model="user.email" ng-disabled="id">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <!-- 加载编辑器的容器 -->
+            <footer class="panel-footer text-right bg-light lter">
+                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
+            </footer>
+        </div>
+    </form>
+
+</div>

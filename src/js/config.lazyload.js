@@ -116,6 +116,11 @@ angular.module('app')
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.js',
                 '../libs/jquery/bootstrap-daterangepicker/daterangepicker.css',
                 '../libs/angular/angular-daterangepicker/js/angular-daterangepicker.js'
+            ],
+            'treeControl': [
+                '../libs/angular/angular-tree-control/angular-tree-control.js',
+                '../libs/angular/angular-tree-control/tree-control.css',
+                '../libs/angular/angular-tree-control/tree-control-attribute.css'
             ]
             }
     )

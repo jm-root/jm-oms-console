@@ -217,7 +217,6 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
             $scope.error(result.msg);
         }else{
             $scope.userRoles =result;
-            console.log(result);
             getRoles(result);
         }
     }).error(function(msg, code){

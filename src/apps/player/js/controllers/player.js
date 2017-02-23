@@ -10,7 +10,6 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 
     $scope.dateOptions = global.dateRangeOptions;
 
-    jm.sdk.init({uri: gConfig.sdkHost});
     var bank = jm.sdk.bank;
 
     var format_agent = function(params) {

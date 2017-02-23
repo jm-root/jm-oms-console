@@ -14,8 +14,16 @@
     "MAIN": "概况"
   },
   "app": {
-    "acl": {
+    "per": {
       "manage":"权限管理",
+      "org": "组织管理",
+      "users": "用户管理",
+      "role": "角色管理",
+      "resource": "资源管理",
+      "roleUser": "角色用户"
+    },
+    "acl": {
+      "manage":"权限管理(新)",
       "user": "用户管理",
       "role": "角色管理",
       "resource": "资源管理"
@@ -136,6 +144,7 @@
       },
       "activitys":"活动列表",
       "checkin":"签到设置",
+      "turntable":"转盘配置",
       "sendnotice":"发送公告",
       "senddak":"发送邮件",
       "rank":"排行榜设置"
