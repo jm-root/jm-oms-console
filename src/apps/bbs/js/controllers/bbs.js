@@ -174,23 +174,12 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
     };
 }]);
 
-app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global',function($scope, $http, $state, $stateParams, $timeout, global) {
     var url = bbsUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
     $scope.forum = {pattern:0};
     $scope.apps = [{_id:'corp',name:'官网'}];
-
-    var getLogoUri = function(id, bTimestamp){
-        if (id){
-            var uri = '/upload/bbs/forum/' + id +'/image/logo.jpg';
-            if(bTimestamp){
-                uri += '?t=' + new Date();
-            }
-            return uri;
-        }
-        return 'img/logo.jpg';
-    };
 
     var ueditor;
     $scope.onUeditor = function(ue){
@@ -214,7 +203,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
                 $scope.error(obj.msg);
             }else{
                 $scope.forum = obj;
-                $scope.forum.logo = sdkHost+getLogoUri(id, true);
+                $scope.forum.logo = sdkHost+global.getImgUri($scope.forum.logo, true);
 
                 if($scope.forum.pattern==1){
                     $scope.forum.content = '<pre>'+$scope.forum.content+'</pre>';
@@ -224,7 +213,7 @@ app.controller('BBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             $scope.errorTips(code);
         });
     }else{
-        $scope.forum.logo = sdkHost+getLogoUri();
+        $scope.forum.logo = sdkHost+global.getImgUri();
     }
 
     function submit(){
@@ -524,7 +513,7 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
     });
 }]);
 
-app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global',function($scope, $http, $state, $stateParams,$timeout, global) {
     var sso = jm.sdk.sso;
     var url = bbsUri+'/topics';
     var furl = bbsUri+'/forums';
@@ -579,8 +568,8 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
                 $scope.topic = obj;
                 $scope.forum = obj.forum;
                 $scope.topic.forum = obj.forum._id;
-                $scope.topic.logo = sdkHost+getLogoUri(id, true);
-                $scope.topic.imgtitle = sdkHost+getTitleUri(id, true);
+                $scope.topic.logo = sdkHost+global.getImgUri($scope.topic.logo, true);
+                $scope.topic.imgtitle = sdkHost+global.getImgUri($scope.topic.imgtitle, true);
 
                 if($scope.topic.pattern==1){
                     $scope.topic.content = '<pre>'+$scope.topic.content+'</pre>';
@@ -590,8 +579,8 @@ app.controller('BBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams',
             $scope.errorTips(code);
         });
     }else{
-        $scope.topic.logo = sdkHost+getLogoUri();
-        $scope.topic.imgtitle = sdkHost+getTitleUri();
+        $scope.topic.logo = sdkHost+global.getImgUri();
+        $scope.topic.imgtitle = sdkHost+global.getImgUri();
     }
 
     $http.get(furl, {

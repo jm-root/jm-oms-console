@@ -149,7 +149,7 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
     });
 }]);
 
-app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'global',function($scope, $http, $state, $stateParams, global) {
     var id = $stateParams.id;
     $scope.id = id;
     $scope.prop = {};
@@ -168,14 +168,13 @@ app.controller('ActivityPropEditCtrl', ['$scope', '$http', '$state', '$statePara
                 $scope.prop = obj;
                 if($scope.prop.type!=undefined) $scope.prop.type = $scope.prop.type.toString();
                 if($scope.prop.useMode!=undefined) $scope.prop.useMode = $scope.prop.useMode.toString();
-                if(!$scope.prop.logo){'apps/common/img/logo.jpg';
-                }
+                $scope.prop.logo=sdkHost+global.getImgUri($scope.prop.logo,true);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     }else{
-        $scope.prop.logo = 'apps/common/img/logo.jpg';
+        $scope.prop.logo = sdkHost+global.getImgUri();
     }
 
     $http.get(appMgrUri+'/apps', {
@@ -533,23 +532,12 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
     };
 }]);
 
-app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global',function($scope, $http, $state, $stateParams,$timeout, global) {
     var url = activityUri+'/forums';
     var id = $stateParams.id;
     $scope.id = id;
     $scope.forum = {};
     $scope.apps = [];
-
-    var getLogoUri = function(id, bTimestamp){
-        if (id){
-            var uri = '/upload/activity/forum/' + id +'/image/logo.jpg';
-            if(bTimestamp){
-                uri += '?t=' + new Date();
-            }
-            return uri;
-        }
-        return 'apps/common/img/logo.jpg';
-    };
 
     var ueditor;
     $scope.onUeditor = function(ue){
@@ -573,13 +561,13 @@ app.controller('ActivityForumEditCtrl', ['$scope', '$http', '$state', '$statePar
                 $scope.error(obj.msg);
             }else{
                 $scope.forum = obj;
-                $scope.forum.logo = sdkHost+getLogoUri(id, true);
+                $scope.forum.logo = sdkHost+global.getImgUri($scope.forum.logo,true);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     }else{
-        $scope.forum.logo = sdkHost+getLogoUri();
+        $scope.forum.logo = sdkHost+global.getImgUri();
     }
 
     $http.get(appMgrUri+'/apps', {
@@ -886,28 +874,6 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
     $scope.activity = {pattern:0};
     $scope.apps = [];
 
-    var getLogoUri = function(id, bTimestamp){
-        if (id){
-            var uri = '/upload/activity/activities/' + id +'/image/logo.jpg';
-            if(bTimestamp){
-                uri += '?t=' + new Date();
-            }
-            return uri;
-        }
-        return 'img/logo.jpg';
-    };
-
-    var getTitleUri = function(id, bTimestamp){
-        if (id){
-            var uri = '/upload/activity/activities/' + id +'/image/title.jpg';
-            if(bTimestamp){
-                uri += '?t=' + new Date();
-            }
-            return uri;
-        }
-        return 'img/logo.jpg';
-    };
-
     var ueditor;
     $scope.onUeditor = function(ue){
         ueditor = ue;
@@ -932,8 +898,8 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
                 $scope.activity = obj;
                 $scope.forum = obj.forum;
                 $scope.activity.forum = obj.forum._id;
-                $scope.activity.logo = sdkHost+getLogoUri(id, true);
-                $scope.activity.imgtitle = sdkHost+getTitleUri(id, true);
+                $scope.activity.logo = sdkHost+global.getImgUri($scope.activity.logo, true);
+                $scope.activity.imgtitle = sdkHost+global.getImgUri($scope.activity.imgtitle, true);
 
                 if($scope.activity.pattern==1){
                     $scope.activity.content = '<pre>'+$scope.activity.content+'</pre>';
@@ -943,8 +909,8 @@ app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParam
             $scope.errorTips(code);
         });
     }else{
-        $scope.activity.logo = sdkHost+getLogoUri();
-        $scope.activity.imgtitle = sdkHost+getTitleUri();
+        $scope.activity.logo = sdkHost+global.getImgUri();
+        $scope.activity.imgtitle = sdkHost+global.getImgUri();
     }
 
     $http.get(furl, {

@@ -29,7 +29,7 @@
                         })
                         .state('app.apps.manage.edit.icon', {
                             url: '/icon',
-                            templateUrl: path + 'tpl/imgcrop.html',
+                            templateUrl: 'apps/common/tpl/imgcrop.html',
                             resolve: lazyLoadProvider.load(['ngImgCrop'])
                         })
                         .state('app.apps.upload', {
