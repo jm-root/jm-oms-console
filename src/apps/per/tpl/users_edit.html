@@ -1,4 +1,4 @@
-<div ng-controller="UsersCtrl" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-51}}+'px', size:'8px'}">
+<div ng-controller="UsersCtrl" >
     <div ui-view class="fade-in-down"></div>
     <form ng-show="$state.is('app.per.users.edit') " name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
@@ -75,9 +75,10 @@
                 </div>
             </div>
             <!-- 加载编辑器的容器 -->
-            <footer class="panel-footer text-right bg-light lter">
-                <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>
-            </footer>
+            <!--<footer class="panel-footer text-right bg-light lter">-->
+                <!--<button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">保存</button>-->
+            <!--</footer>-->
+
         </div>
     </form>
 

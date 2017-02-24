@@ -76,7 +76,7 @@
                         })
                         .state('app.home.bbs.forum.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/commom/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
@@ -97,7 +97,7 @@
                         })
                         .state('app.home.bbs.topic.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
 
@@ -119,7 +119,7 @@
                         })
                         .state('app.home.activitys.edit.logo', {
                             url: '/logo',
-                            templateUrl: path + 'tpl/imgcrop2.html',
+                            templateUrl: 'apps/common/tpl/imgcrop2.html',
                             resolve: lazyLoadProvider.load('angular-img-cropper')
                         })
                         .state('app.home.checkin', {
