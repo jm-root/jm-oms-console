@@ -166,12 +166,5 @@
       "account":"账目统计"
     },
     "promote":"推广地址"
-  },
-  "ag-grid":{
-    "first":"首页",
-    "previous":"上一页",
-    "next":"下一页",
-    "last":"末尾页",
-    "noRowsToShow":"无数据"
   }
 }

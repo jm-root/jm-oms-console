@@ -166,12 +166,5 @@
       "account":"Account"
     },
     "promote":"Promote"
-  },
-  "ag-grid":{
-    "first":"First",
-    "previous":"Previous",
-    "next":"Next",
-    "last":"Last",
-    "noRowsToShow":"No data"
   }
 }
