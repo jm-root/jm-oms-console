@@ -13,4 +13,11 @@
     opacity: 0;
     filter: alpha(opacity=0);
 }
-
+.titlefixed{
+    width:100%;
+    position: fixed;
+    z-index: 1; top:50px;
+}
+.paddingtop{
+    padding-top: 50px;
+}
