@@ -55,9 +55,6 @@ app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', 
             $scope.errorTips(code);
         });
     };
-
-    $scope.myStyle={'height':$scope.app.navHeight-123+'px'};
-
 }]);
 
 
@@ -691,7 +688,5 @@ app.controller('ConfigUnifiedCtrl', ['$scope', '$http', '$state', '$stateParams'
             $scope.errorTips(code);
         });
     }
-
-    $scope.myStyle={'height':$scope.app.navHeight-123+'px'};
 
 }]);

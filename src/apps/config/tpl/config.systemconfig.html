@@ -1,8 +1,8 @@
 <!-- hbox layout -->
-<div class="hbox hbox-auto-xs hbox-auto-sm bg-light "style="min-height:1000px;overflow-y:auto;max-height:660px;">
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light" ng-style="{height:app.navHeight-55+'px'}">
     <!-- column -->
     <div class="col w-lg lter b-r">
-        <div class="vbox"  style="min-height:1000px; overflow-y:auto;max-height:510px;">
+        <div class="vbox">
             <!--<div class="row-row">-->
                 <div class="wrapper-sm b-b">
                     <div class="pull-right">
@@ -31,7 +31,7 @@
 
     <!-- column -->
     <div class="col lter b-r">
-        <div class="vbox" style="min-height: 660px">
+        <div class="vbox">
             <div class="wrapper-sm b-b">
                 <div class="pull-right">
                     <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="save()" translate="config.systemconfig.save">保存</a>
@@ -44,8 +44,8 @@
             <div class="row-row">
                 <div class="cell">
                     <div class="cell-inner">
-                        <div class="panel-body bg-white-only" style="height: 1000px">
-                            <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="myStyle" placeholder="请输入JSON格式数据" ng-model="val"></textarea>
+                        <div class="panel-body bg-white-only" ng-style="{height:app.navHeight-100+'px'}">
+                            <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="{height:app.navHeight-123+'px'}" placeholder="请输入JSON格式数据" ng-model="val"></textarea>
                         </div>
                     </div>
                 </div>
