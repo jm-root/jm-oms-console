@@ -38,7 +38,7 @@
 
                     <div class="col-sm-9">
                         <div class="input-group" style="max-width: 360px;">
-                            <input type="text" class="form-control" placeholder="用户ID" ng-model="dak.userId">
+                            <input type="text" class="form-control" placeholder="{{ 'home.sendDak.userID' | translate }}" ng-model="dak.userId">
                             <div class="input-group-btn dropdown" drop-down-table>
                                 <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">{{ 'home.sendDak.search' | translate }} <span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
@@ -89,10 +89,10 @@
                                     </select>
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="数量" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
+                                    <input type="number" class="form-control" placeholder="{{ 'home.sendDak.number' | translate }}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
                                 </td>
                                 <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="过期时间" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
+                                    <input type="number" class="form-control" placeholder="{{ 'home.sendDak.dueTime' | translate }}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
                                 </td>
                                 <td style="white-space: nowrap">
                                     <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">{{ 'home.delete' | translate }}</a>

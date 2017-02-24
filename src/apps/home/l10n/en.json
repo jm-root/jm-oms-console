@@ -7,6 +7,13 @@
     "setting":"Setting",
     "refresh":"Refresh",
     "turntable":"Turntable Config",
+    "turn":{
+      "order":"ID",
+      "title":"Prize",
+      "p_name":"Award",
+      "p_amount":"Number",
+      "amount":"Probability"
+    },
     "activity": {
       "edit":"Edit Information",
       "title":"Title",
@@ -22,9 +29,43 @@
       "editContent":"Edit Content",
       "link":"Link Address",
       "pureText":"Pure Text",
-      "formattedPlainText":"Formatted Plain Text"
+      "formattedPlainText":"Formatted Plain Text",
+      "list":{
+        "title":"Title",
+        "favTimes":"Collection Times",
+        "shareTimes":"Share Times",
+        "viewCount":"View Times",
+        "replyCount":"Reply Times",
+        "recommend_add":"Support Number",
+        "recommend_sub":"Opposition Number",
+        "author":"Author",
+        "visible":"Display",
+        "crtime":"Create Time",
+        "moditime":"Revise Time"
+      }
     },
     "bbs":{
+      "list":{
+        "code":"Code",
+        "name":"Name",
+        "type":"Type",
+        "postCount":"Post Count",
+        "postCountToday":"Post Count Today",
+        "postCountYesterday":"Post Count Yesterday",
+        "creator":"Creator",
+        "visible":"Display",
+        "crtime":"Create Time",
+        "moditime":"Revise Time",
+        "title":"Title",
+        "favTimes":"Collection Times",
+        "shareTimes":"Share Times",
+        "viewCount":"View Times",
+        "replyCount":"Reply Times",
+        "recommend_add":"Support Number",
+        "recommend_sub":"Opposition Number",
+        "author":"Author",
+        "plate":"All Plate"
+      },
       "forum":{
         "edit":{
           "editInformation":"Edit Information",
@@ -66,7 +107,9 @@
       "jb": "Gold",
       "tb": "Ingot",
       "dbj": "DuoBaoJuan",
-      "rewardQuantity":"Reward Quantity"
+      "rewardQuantity":"Reward Quantity",
+      "day":"Day Number",
+      "reward":"Reward"
     },
     "sendnotice": {
       "title": "Send notice",
@@ -80,6 +123,7 @@
       "addTimes": "Add time",
       "timesList": "Time list",
       "lackOfTimes": "Lack of time allocation",
+      "successfulDelete":"Successful Delete",
       "msgType": {
         "type": "Message type",
         "opts1": "One message",
@@ -128,17 +172,23 @@
     "vip":{
       "cond":{
         "setting":"VIP Condition Setting",
-        "recharge":"Recharge"
+        "recharge":"Recharge",
+        "setSuccess":"Set Success",
+        "add":"Add To Achieve Different Levels Of Recharge"
       },
       "item":{
         "setting":"VIP Preferences Category Setting",
         "give":"Daily Login Give",
         "rebatejb":"Additional Recharge Rebate(Gold)",
         "rebatedbj":"Additional Recharge Rebate(DuoBaoJuan)",
-        "turntable":"Daily Turntable"
+        "turntable":"Daily Turntable",
+        "addMultiple":"Add Multiple(100*1.2)",
+        "addPercentage":"Add Percentage(100*3%)",
+        "addTimes":"Add Times"
       },
       "set":{
-        "configList":"VIP Config List"
+        "configList":"VIP Config List",
+        "name":"Name"
       },
       "setedit":{
         "vipEdit":"VIP Edit",
@@ -146,7 +196,9 @@
         "config":"Config Preferences",
         "describe":"Describe",
         "pureText":"Pure Text",
-        "formattedPlainText":"Formatted Plain Text"
+        "formattedPlainText":"Formatted Plain Text",
+        "change":"The Level Already Exists, Please Change The Rank",
+        "setSuccess":"Set Success"
       }
     }
   }

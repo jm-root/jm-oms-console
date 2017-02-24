@@ -61,6 +61,16 @@
     "analysisAndDecompression": "解析与解压中...",
     "config": "配置",
     "latest": "当前最新",
+    "list":{
+      "name":"应用名称",
+      "sort":"排序",
+      "category":"分类",
+      "crTime":"创建时间",
+      "modiTime":"修改时间",
+      "creator":"创建人",
+      "status":"状态",
+      "visible":"显示"
+    },
     "room": {
       "roomConfig": "房间配置",
       "roomType": "房间类型",

@@ -23,14 +23,14 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
-        'common.name',
-        'common.sort',
-        'common.cate',
-        'common.ctime',
-        'common.mtime',
-        'common.creator',
-        'common.status',
-        'common.visible'
+        'appmgr.list.name',
+        'appmgr.list.sort',
+        'appmgr.list.category',
+        'appmgr.list.crTime',
+        'appmgr.list.modiTime',
+        'appmgr.list.creator',
+        'appmgr.list.status',
+        'appmgr.list.visible'
     ]);
 
 

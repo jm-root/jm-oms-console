@@ -33,7 +33,7 @@ app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', function
                 return $scope.error(err);
             }
             $timeout(function(){
-                $scope.success('设置成功');
+                $scope.success(global.translateByKey('home.vip.cond.setSuccess'));
             });
         });
     }
@@ -75,7 +75,7 @@ app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout',function 
                 return $scope.error(err);
             }
             $timeout(function(){
-                $scope.success('设置成功');
+                $scope.success(global.translateByKey('home.vip.cond.setSuccess'));
             });
         });
     }
@@ -92,7 +92,11 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
     var columnDefs = [
         {headerName: "名称", field: "name", width: 140}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.vip.set.name'
+    ]);
 
+    global.agGridOverlay();             //翻译
     $scope.gridOptions = {
         // paginationPageSize: Number($scope.pageSize),
         // rowModelType:'pagination',
@@ -102,11 +106,15 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
         angularCompileRows: true,
         rowSelection: 'single',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.vip.setedit' , {key: cell.data.key});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         rowData: []
@@ -133,26 +141,26 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var row = rows[0];
                     config.delConfig({token: sso.getToken(),root:hkey,key:row.key},function(err,doc){
                         if(err){
                             return $scope.error(doc||err);
                         }
-                        $scope.success('删除成功');
+                        $scope.success(global.translateByKey('common.deleteSucceed'));
                         $scope.refresh();
                     });
                 }
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -229,7 +237,7 @@ app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '
         config.getConfig({token: sso.getToken(),root:hkey,key:key},function(err,result){
             if(!$scope.key&&result.ret){
                 $timeout(function(){
-                    $scope.error('该等级已经存在,请更改等级');
+                    $scope.error(global.translateByKey('home.vip.setedit.change'));
                 });
                  return ;
             }
@@ -239,7 +247,7 @@ app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '
                     return $scope.error(err);
                 }
                 $timeout(function(){
-                    $scope.success('设置成功');
+                    $scope.success(global.translateByKey('home.vip.setedit.setSuccess'));
                     $state.go('app.home.vip.set');
                 });
             });

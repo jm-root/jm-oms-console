@@ -31,7 +31,7 @@
                     <div class="form-group" ng-if="notice.type=='0'">
                         <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.list.header.count' | translate }}</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control w-sm" placeholder="次数(正整数)" ng-model="selt.count" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
+                            <input type="number" class="form-control w-sm" placeholder="{{ 'home.sendnotice.list.header.count' | translate }}" ng-model="selt.count" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="form-group" ng-if="notice.type=='0'">
                         <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.sendnotice.seconds' | translate }}</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control w-sm" placeholder="秒数(正整数)" ng-model="selt.times" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
+                            <input type="number" class="form-control w-sm" placeholder="{{ 'home.sendnotice.seconds' | translate }}" ng-model="selt.times" min="1" ng-pattern="/^[0-9]*$/" ng-required="true">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>

@@ -12,7 +12,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
     };
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "编码", field: "code", width: 80},
         {headerName: "名称", field: "name", width: 100},
         {headerName: "类型", field: "type", width: 70},
@@ -27,6 +27,19 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.bbs.list.code',
+        'home.bbs.list.name',
+        'home.bbs.list.type',
+        'home.bbs.list.postCount',
+        'home.bbs.list.postCountToday',
+        'home.bbs.list.postCountYesterday',
+        'home.bbs.list.creator',
+        'home.bbs.list.visible',
+        'home.bbs.list.crtime',
+        'home.bbs.list.moditime'
+    ]);
+
 
     function opr_render(params){
         return '<button class="btn btn-xs bg-primary" ng-click="publish(\''+params.data._id+'\')">发布帖子</button>';
@@ -34,6 +47,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -68,12 +82,16 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
         rowSelection: 'multiple',
         rowHeight: 30,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -84,10 +102,10 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     angular.forEach(rows, function (item,index) {
@@ -114,9 +132,9 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -202,7 +220,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.home.bbs.forum.list');
             }
         }).error(function(msg, code){
@@ -270,7 +288,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -292,9 +310,25 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.bbs.list.code',
+        'home.bbs.list.title',
+        'home.bbs.list.favTimes',
+        'home.bbs.list.shareTimes',
+        'home.bbs.list.viewCount',
+        'home.bbs.list.replyCount',
+        'home.bbs.list.recommend_add',
+        'home.bbs.list.recommend_sub',
+        'home.bbs.list.author',
+        'home.bbs.list.visible',
+        'home.bbs.list.crtime',
+        'home.bbs.list.moditime'
+    ]);
+
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -329,12 +363,16 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -345,10 +383,10 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     angular.forEach(rows, function (item,index) {
@@ -375,9 +413,9 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -535,7 +573,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.home.bbs.topic.list');
             }
         }).error(function(msg, code){
@@ -610,7 +648,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -631,9 +669,24 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.activity.list.title',
+        'home.activity.list.favTimes',
+        'home.activity.list.shareTimes',
+        'home.activity.list.viewCount',
+        'home.activity.list.replyCount',
+        'home.activity.list.recommend_add',
+        'home.activity.list.recommend_sub',
+        'home.activity.list.author',
+        'home.activity.list.visible',
+        'home.activity.list.crtime',
+        'home.activity.list.moditime'
+    ]);
+
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
@@ -668,12 +721,16 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.activitys.edit' , {id: cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -684,10 +741,10 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     angular.forEach(rows, function (item,index) {
@@ -714,9 +771,9 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -807,7 +864,7 @@ app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$statePara
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.home.activitys.list');
             }
         }).error(function(msg, code){
@@ -839,7 +896,7 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
     var hkey = 'HomeNotice';
 
     function operate() {
-        return '<button class="btn btn-danger btn-xs" ng-click="delete(data)">删除</button>'
+        return '<button class="btn btn-danger btn-xs" ng-click="delete(data)" translate="home.delete">删除</button>'
     };
 
     function format_count(params){
@@ -850,8 +907,8 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
     function format_type(params){
         var type = params.data.type;
         var info;
-        if(type==0) info = '间隔消息';
-        if(type==1) info = '定时消息';
+        if(type==0) info = global.translateByKey('home.sendnotice.msgType.opts2');
+        if(type==1) info = global.translateByKey('home.sendnotice.msgType.opts3');
         return info||'';
     };
 
@@ -862,7 +919,16 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
         {headerName: "已发", field: "step", width: 90},
         {headerName:"操作",field:"",width:100,cellRenderer:operate,cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.sendnotice.list.header.message',
+        'home.sendnotice.list.header.type',
+        'home.sendnotice.list.header.count',
+        'home.sendnotice.list.header.step',
+        'home.sendnotice.list.header.ctrl'
+    ]);
 
+
+    global.agGridOverlay();             //翻译
     $scope.gridOptions = {
         // paginationPageSize: Number($scope.pageSize),
         // rowModelType:'pagination',
@@ -872,10 +938,14 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
         angularCompileRows: true,
         rowSelection: 'single',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         rowData: []
@@ -892,7 +962,7 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
         }else if(notice.type=='1'){
             var tags = [];
             notice.times = notice.times || [];
-            if(!notice.times.length) return $scope.error('缺少时间配置');
+            if(!notice.times.length) return $scope.error(global.translateByKey('home.sendnotice.lackOfTimes'));
             notice.times.forEach(function(item){
                 tags.push(item.text);
             });
@@ -909,7 +979,7 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('发送成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.notice = {};
                 $scope.refresh();
             }
@@ -952,16 +1022,16 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
 
     $scope.delete = function(data){
         $scope.openTips({
-            title:'提示',
-            content:'是否确认删除?',
-            okTitle:'是',
-            cancelTitle:'否',
+            title:global.translateByKey('openTips.title'),
+            content:global.translateByKey('openTips.delContent'),
+            okTitle:global.translateByKey('common.yes'),
+            cancelTitle:global.translateByKey('common.no'),
             okCallback: function(){
                 config.delConfig({token: sso.getToken(),root:hkey,key:data.key},function(err,doc){
                     if(err){
                         return $scope.error(doc||err);
                     }
-                    $scope.success('删除成功');
+                    $scope.success(global.translateByKey('home.sendnotice.successfulDelete'));
                     $scope.refresh();
                 });
             }
@@ -983,7 +1053,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('发送成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.dak = {isSys:true};
             }
         }).error(function(msg, code){
@@ -1060,7 +1130,7 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.openTips.operationSuccess'));
                 $scope.user = {};
             }
         }).error(function(msg, code){

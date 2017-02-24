@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code>{{ 'home.activity.title' | translate }}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" style="max-width: 320px" placeholder="名称" ng-model="topic.title" required>
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="{{ 'home.activity.title' | translate }}" ng-model="topic.title" required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'home.activity.displayOrder' | translate }}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" style="max-width: 320px" placeholder="顺序号(正整数)" ng-model="topic.rank" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" style="max-width: 320px" placeholder="{{ 'home.activity.displayOrder' | translate }}" ng-model="topic.rank" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'home.activity.index' | translate }}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" style="max-width: 320px" placeholder="推荐指数(正整数)" ng-model="topic.recommends" min="0" ng-pattern="/^[0-9]*$/">
+                        <input type="number" class="form-control" style="max-width: 320px" placeholder="{{ 'home.activity.index' | translate }}" ng-model="topic.recommends" min="0" ng-pattern="/^[0-9]*$/">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -34,7 +34,7 @@
                     <label class="col-sm-2 control-label">{{ 'home.activity.label' | translate }}</label>
 
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" style="max-width: 320px" ng-model="topic.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" style="max-width: 320px" ng-model="topic.tags" add-on-space="true" add-on-paste="true" placeholder="{{ 'home.activity.label' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'home.activity.jump' | translate }}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" style="max-width: 320px" placeholder="跳转地址" ng-model="topic.url">
+                        <input type="text" class="form-control" style="max-width: 320px" placeholder="{{ 'home.activity.jump' | translate }}" ng-model="topic.url">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -120,7 +120,7 @@
 
                             <div class="ueditor" ng-model="topic.content" config="ueditor_config" ready="onUeditor"></div>
                         </div>
-                        <input ng-if="topic.type=='url'" type="text" class="form-control" placeholder="连接地址" ng-model="topic.content">
+                        <input ng-if="topic.type=='url'" type="text" class="form-control" placeholder="{{ 'home.activity.link' | translate }}" ng-model="topic.content">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

@@ -7,6 +7,13 @@
     "setting":"设置",
     "refresh":"刷新",
     "turntable":"转盘配置",
+    "turn":{
+      "order":"ID",
+      "title":"奖项",
+      "p_name":"奖品",
+      "p_amount":"数量",
+      "amount":"几率"
+    },
     "activity": {
       "edit":"编辑信息",
       "title":"标题",
@@ -22,9 +29,43 @@
       "editContent":"编辑内容",
       "link":"连接地址",
       "pureText":"纯文本",
-      "formattedPlainText":"带格式纯文本"
+      "formattedPlainText":"带格式纯文本",
+      "list":{
+        "title":"标题",
+        "favTimes":"收藏次数",
+        "shareTimes":"分享次数",
+        "viewCount":"浏览次数",
+        "replyCount":"回复次数",
+        "recommend_add":"支持人数",
+        "recommend_sub":"反对人数",
+        "author":"作者",
+        "visible":"显示",
+        "crtime":"创建时间",
+        "moditime":"修改时间"
+      }
     },
     "bbs":{
+      "list":{
+        "code":"编码",
+        "name":"名称",
+        "type":"类型",
+        "postCount":"帖子数量",
+        "postCountToday":"今日发帖",
+        "postCountYesterday":"昨日发帖",
+        "creator":"创建者",
+        "visible":"显示",
+        "crtime":"创建时间",
+        "moditime":"修改时间",
+        "title":"标题",
+        "favTimes":"收藏次数",
+        "shareTimes":"分享次数",
+        "viewCount":"浏览次数",
+        "replyCount":"回复次数",
+        "recommend_add":"支持人数",
+        "recommend_sub":"反对人数",
+        "author":"作者",
+        "plate":"全部板块"
+      },
       "forum":{
         "edit":{
           "editInformation":"编辑信息",
@@ -67,7 +108,9 @@
       "jb": "金币",
       "tb": "元宝",
       "dbj": "夺宝卷",
-      "rewardQuantity":"奖励数量"
+      "rewardQuantity":"奖励数量",
+      "day":"天数",
+      "reward":"奖励"
     },
     "sendnotice": {
       "title": "发送公告",
@@ -81,6 +124,7 @@
       "addTimes": "添加时间",
       "timesList": "时间列表",
       "lackOfTimes": "缺少时间配置",
+      "successfulDelete":"删除成功",
       "msgType": {
         "type": "消息类型",
         "opts1": "一条消息",
@@ -129,17 +173,23 @@
     "vip":{
       "cond":{
         "setting":"VIP条件设置",
-        "recharge":"充值"
+        "recharge":"充值",
+        "setSuccess":"设置成功",
+        "add":"添加达成不同等级的充值数(添加顺序对应相应等级)"
       },
       "item":{
         "setting":"VIP优惠种类设置",
         "give":"每日登录赠送",
         "rebatejb":"充值额外返利(金币)",
         "rebatedbj":"充值额外返利(夺宝卷)",
-        "turntable":"大厅每日转盘次数"
+        "turntable":"大厅每日转盘次数",
+        "addMultiple":"添加倍数(100*1.2)",
+        "addPercentage":"添加百分数(100*3%)",
+        "addTimes":"添加次数"
       },
       "set":{
-        "configList":"VIP配置列表"
+        "configList":"VIP配置列表",
+        "name":"名称"
       },
       "setedit":{
         "vipEdit":"VIP编辑",
@@ -147,7 +197,9 @@
         "config":"配置优惠",
         "describe":"描述",
         "pureText":"纯文本",
-        "formattedPlainText":"带格式文本"
+        "formattedPlainText":"带格式文本",
+        "change":"该等级已经存在,请更改等级",
+        "setSuccess":"设置成功"
       }
     }
   }

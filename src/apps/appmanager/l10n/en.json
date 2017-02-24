@@ -61,6 +61,16 @@
     "analysisAndDecompression": "Analysis and decompression...",
     "config": "Configure",
     "latest": "Latest",
+    "list":{
+      "name":"App Name",
+      "sort":"Sort",
+      "category":"Category",
+      "crTime":"Create Time",
+      "modiTime":"Modify Time",
+      "creator":"Creator",
+      "status":"Status",
+      "visible":"Visible"
+    },
     "room": {
       "roomConfig": "Room Configuration",
       "roomType": "Room type",

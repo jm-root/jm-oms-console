@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.give' | translate }}</label>
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="item.login" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9|\.]+$" placeholder="添加倍数(100*1.2)" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="item.login" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9|\.]+$" placeholder="{{ 'home.vip.item.addMultiple' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('login')">{{ 'home.save' | translate }}</button></div>
                 </div>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.rebatejb' | translate }}</label>
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="item.recharge_jb" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加百分数(100*3%)" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="item.recharge_jb" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="{{ 'home.vip.item.addPercentage' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_jb')">{{ 'home.save' | translate }}</button></div>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.rebatedbj' | translate }}</label>
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="item.recharge_dbj" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加百分数(100*3%)" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="item.recharge_dbj" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="{{ 'home.vip.item.addPercentage' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('recharge_dbj')">{{ 'home.save' | translate }}</button></div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" style="padding-top: 11px">{{ 'home.vip.item.turntable' | translate }}</label>
                     <div class="col-sm-9">
-                        <tags-input class="bootstrap" ng-model="item.turntable" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="添加次数" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="item.turntable" add-on-space="true" add-on-paste="true" allowed-tags-pattern="^[0-9]+$" placeholder="{{ 'home.vip.item.addTimes' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1" style="padding-top: 4px"><button class="btn btn-success" ng-click="save('turntable')">{{ 'home.save' | translate }}</button></div>
                 </div>

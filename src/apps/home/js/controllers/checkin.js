@@ -10,10 +10,14 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
     $scope.search = history.search||'';
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 150, hide: true},
+        // {headerName: "_id", field: "_id", width: 150, hide: true},
         {headerName: "天数", field: "day", width: 80},
         {headerName: "奖励", width: 80, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.checkin.day',
+        'home.checkin.reward'
+    ]);
 
     function opr_render(params){
         return '<p>'+params.data.rewards[0].amount+'</p>';
@@ -21,6 +25,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(homeUri + "/rewards", {
                 params:{
@@ -52,11 +57,15 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.checkin.edit' , {id: cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -67,10 +76,10 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -87,7 +96,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -97,9 +106,9 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -164,7 +173,7 @@ app.controller('CheckinEditCtrl', ['$scope', '$http', '$state', '$stateParams', 
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.home.checkin.list');
             }
         }).error(function(msg, code){

@@ -32,7 +32,7 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
 
     $scope.refresh();
 
-
+    global.agGridOverlay();             //翻译
     $http.get(activityUri+'/activities', {
         params:{
             token: sso.getToken(),
@@ -85,6 +85,14 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
         {headerName: "数量", field: "p_amount", width: 90, editable: true},
         {headerName: "机率", field: "amount", width: 90, editable: true}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.turn.order',
+        'home.turn.title',
+        'home.turn.p_name',
+        'home.turn.p_amount',
+        'home.turn.amount'
+    ]);
+
 
     var oldVal,newVal;
 
@@ -98,6 +106,7 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
         rowSelection: 'single',
         rowHeight: 30,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         localeText: global.agGrid.localeText,
         rowData: [],
         onGridReady: function(event) {
@@ -105,6 +114,9 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
         },
         onCellDoubleClicked: function(cell){
 
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         onCellEditingStarted: function (event) {
             oldVal = event.value;
@@ -135,7 +147,7 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -162,7 +174,7 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
                 $scope.onoff = old;
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
