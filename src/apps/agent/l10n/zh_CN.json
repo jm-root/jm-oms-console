@@ -2,6 +2,44 @@
   "agent": {
     "agent": {
       "create": {
+        "list": {
+          "title": "渠道列表",
+          "search": "搜索 代理ID/名称",
+          "level": "级",
+          "auditOpts":{
+            "opts1": "审核状态",
+            "opts2": "未审核",
+            "opts3": "审核通过",
+            "opts4": "审核不通过"
+          },
+          "accountOpts":{
+            "opts1": "账号状态",
+            "opts2": "暂停",
+            "opts3": "正常"
+          },
+          "cooperateOpts":{
+            "other": "其它",
+            "cooperate": "合作",
+            "buyout": "买断"
+          },
+          "statusOpts":{
+            "enable": "启用",
+            "suspend": "暂停"
+          },
+          "header":{
+            "pcode": "上级渠道号",
+            "code": "渠道号",
+            "name": "渠道名",
+            "account": "账号",
+            "level": "代理级别",
+            "type": "合作方式",
+            "crtime": "创建时间",
+            "status": "状态",
+            "audit": "审核状态",
+            "ctrl": "操作",
+            "addr": "推广地址"
+          }
+        },
         "AgentCreate": "渠道创建",
         "RemainingCreationQuantity": "剩余创建数量",
         "AgentLevel": "渠道级别",
@@ -24,8 +62,10 @@
         "BranchAccount": "开户支行",
         "BankCardNumber": "银行卡号",
         "label": "标签",
+        "addLabel":"添加标签",
         "remarks": "备注",
-        "SubmitAudit": "提交审核"
+        "SubmitAudit": "提交审核",
+        "number":"数量"
       },
       "edit": {
         "AgentEdit": "渠道编辑",

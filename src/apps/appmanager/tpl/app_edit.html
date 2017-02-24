@@ -12,7 +12,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.appManager.appId' | translate }}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="应用id" ng-model="id">
+                        <input type="text" class="form-control" placeholder="{{ 'appmgr.appManager.appId' | translate }}" ng-model="id">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -20,7 +20,7 @@
                     <label class="col-sm-2 control-label">{{ 'appmgr.appManager.appPwd' | translate }}<code style="background-color: transparent" ng-disabled="id">*</code></label>
                     <div class="col-sm-9">
                         <div class="input-group">
-                            <input type="{{showPwd? 'password' : 'text'}}" class="form-control" placeholder="应用密码" ng-model="appgame.password">
+                            <input type="{{showPwd? 'password' : 'text'}}" class="form-control" placeholder="{{ 'appmgr.appManager.appPwd' | translate }}" ng-model="appgame.password">
                             <span class="input-group-btn">
                                 <!--<button class="btn btn-default" type="button" ng-click="showPassword()">{{pwdText}}</button>-->
                                 <button class="btn btn-default" type="button" ng-click="showPassword()">{{pwdText | translate}}</button>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.appManager.appSort' | translate }}<code style="background-color: transparent">*</code></label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="应用排序" ng-model="appgame.sort" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.appManager.appSort' | translate }}" ng-model="appgame.sort" required>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

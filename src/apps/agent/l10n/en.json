@@ -2,6 +2,44 @@
   "agent": {
     "agent":{
       "create":{
+        "list": {
+          "title": "Channel list",
+          "search": "Search channel ID/name",
+          "level": " Level",
+          "auditOpts":{
+            "opts1": "Audit status",
+            "opts2": "Unaudited",
+            "opts3": "Audit through",
+            "opts4": "Audit not approved"
+          },
+          "accountOpts":{
+            "opts1": "Account status",
+            "opts2": "suspend",
+            "opts3": "normal"
+          },
+          "cooperateOpts":{
+            "other": "Other",
+            "cooperate": "Cooperate",
+            "buyout": "Buyout"
+          },
+          "statusOpts":{
+            "enable": "Enable",
+            "suspend": "Suspend"
+          },
+          "header":{
+            "pcode": "Superior channel number",
+            "code": "Channel number",
+            "name": "Channel name",
+            "account": "Account",
+            "level": "Channel level",
+            "type": "Way",
+            "crtime": "Create time",
+            "status": "Status",
+            "audit": "Audit status",
+            "ctrl": "Operation",
+            "addr": "Address"
+          }
+        },
         "AgentCreate":"Agent Create",
         "RemainingCreationQuantity":"Remaining Creation Quantity",
         "AgentLevel":"Agent Level",
@@ -24,8 +62,10 @@
         "BranchAccount":"Branch Account",
         "BankCardNumber":"Bank Card Number",
         "label":"Label",
+        "addLabel":"Add Label",
         "remarks":"Remarks",
-        "SubmitAudit":"Submit Audit"
+        "SubmitAudit":"Submit Audit",
+        "number":"Number"
       },
       "edit":{
         "AgentEdit":"Agent Edit",

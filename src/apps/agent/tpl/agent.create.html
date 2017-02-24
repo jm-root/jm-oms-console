@@ -22,7 +22,7 @@
                     <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.AccountNumber">账号</label></label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="账号" ng-model="agent.account" ng-blur="onBlur('account')" ng-required="true">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.AccountNumber' | translate }}" ng-model="agent.account" ng-blur="onBlur('account')" ng-required="true">
                         <span style="color: red" ng-if="checkInput.account" translate="agent.agent.create.AccountAlreadyExists">账号已在</span>
                     </div>
                     <div class="col-sm-1"></div>
@@ -31,7 +31,7 @@
                 <div class="form-group" ng-if="!agent.userId">
                     <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.password">密码</label></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="密码" ng-model="agent.passwd" ng-required="true">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.password' | translate }}" ng-model="agent.passwd" ng-required="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -78,7 +78,7 @@
                     <label class="col-sm-2 control-label"><code style="background-color: transparent">*</code><label translate="agent.agent.create.AgentName">渠道名</label></label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="名称" ng-model="agent.name" ng-required="true">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.AgentName' | translate }}" ng-model="agent.name" ng-required="true">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -99,7 +99,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.ApplicantName">申请人姓名</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="姓名" ng-model="agent.realName">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.ApplicantName' | translate }}" ng-model="agent.realName">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -108,7 +108,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.tel">手机号</label>
 
                     <div class="col-sm-9">
-                        <input type="number" class="form-control w-sm" placeholder="手机号" maxlength="11" ng-pattern="/([0-9]{11})$/" ng-model="agent.mobile">
+                        <input type="number" class="form-control w-sm" placeholder="{{ 'agent.agent.create.tel' | translate }}" maxlength="11" ng-pattern="/([0-9]{11})$/" ng-model="agent.mobile">
                         <!--<span style="color: red" ng-if="checkInput.mobile">手机号已在</span>-->
                     </div>
                     <div class="col-sm-1"></div>
@@ -118,7 +118,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.PromotionCap">推广上限</label>
 
                     <div class="col-sm-9">
-                        <input type="number" class="form-control w-sm" placeholder="数量" min="0" ng-pattern="/([0-9])$/" ng-model="agent.limit">
+                        <input type="number" class="form-control w-sm" placeholder="{{ 'agent.agent.create.number' | translate }}" min="0" ng-pattern="/([0-9])$/" ng-model="agent.limit">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -127,7 +127,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.QQ">QQ号</label>
 
                     <div class="col-sm-9">
-                        <input type="number" class="form-control w-sm" placeholder="QQ号" ng-model="agent.qq">
+                        <input type="number" class="form-control w-sm" placeholder="{{ 'agent.agent.create.QQ' | translate }}" ng-model="agent.qq">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -136,7 +136,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.mail">邮箱</label>
 
                     <div class="col-sm-9">
-                        <input type="email" class="form-control w-sm" placeholder="邮箱" ng-model="agent.email">
+                        <input type="email" class="form-control w-sm" placeholder="{{ 'agent.agent.create.mail' | translate }}" ng-model="agent.email">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -145,7 +145,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.BankAccountName">银行账号名</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="银行账号名" ng-model="agent.bankInfo.account">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankAccountName' | translate }}" ng-model="agent.bankInfo.account">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -180,7 +180,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.BranchAccount">开户支行</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="开户支行" ng-model="agent.bankInfo.subbranch">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BranchAccount' | translate }}" ng-model="agent.bankInfo.subbranch">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -189,7 +189,7 @@
                     <label class="col-sm-2 control-label" translate="agent.agent.create.BankCardNumber">银行卡号</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="银行卡号" ng-model="agent.bankInfo.card">
+                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankCardNumber' | translate }}" ng-model="agent.bankInfo.card">
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -213,7 +213,7 @@
             </div>
             <footer class="panel-footer text-right bg-light lter" style="height: 100px">
                 <div style="max-width: 750px">
-                    <input type="button" class="btn btn-success" ng-click="!formValidate.$invalid&&create()" ng-if="super||per['创建']" translate="agent.agent.create.SubmitAudit" value="提交审核"/>
+                    <input type="button" class="btn btn-success" ng-click="!formValidate.$invalid&&create()" value="{{ 'agent.agent.create.SubmitAudit' | translate }}"/>
                     <!--<button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&create()" ng-if="super||per['创建']" translate="agent.agent.create.SubmitAudit">提交审核</button>-->
                 </div>
             </footer>

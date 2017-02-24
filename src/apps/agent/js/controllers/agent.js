@@ -24,11 +24,11 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
     var format_type = function(params) {
         var type = params.data.type || 0;
-        var info = '其它';
+        var info = global.translateByKey('agent.agent.create.list.cooperateOpts.other');
         if(type==1){
-            info = '合作';
+            info = global.translateByKey('agent.agent.create.list.cooperateOpts.cooperate');
         }else if(type==2){
-            info = '买断';
+            info = global.translateByKey('agent.agent.create.list.cooperateOpts.buyout');
         }
 
         return info;
@@ -36,21 +36,21 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
     var format_level = function(params) {
         var level = params.data.level;
-        return level+'级';
+        return level+global.translateByKey('agent.agent.create.list.level');
     };
 
     var format_status = function(params) {
         var status = params.data.status;
-        var info = '启用';
-        if(status==0) info = '暂停';
+        var info = global.translateByKey('agent.agent.create.list.statusOpts.enable');
+        if(status==0) info = global.translateByKey('agent.agent.create.list.statusOpts.suspend');
         return info;
     };
 
     var format_audit = function(params) {
         var audit = params.data.audit;
-        var info = '未审核';
-        if(audit==1) info = '审核通过';
-        if(audit==2) info = '审核不通过';
+        var info = global.translateByKey('agent.agent.create.list.auditOpts.opts2');
+        if(audit==1) info = global.translateByKey('agent.agent.create.list.auditOpts.opts3');
+        if(audit==2) info = global.translateByKey('agent.agent.create.list.auditOpts.opts4');
         return info;
     };
 
@@ -86,7 +86,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.onPageSizeChanged();
             }
         }).error(function(msg, code){
@@ -106,7 +106,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.onPageSizeChanged();
             }
         }).error(function(msg, code){
@@ -117,13 +117,13 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     var htmlFun = function(account){
         return '<form name="formValidate" class="form-horizontal form-validation">' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">账号</label>' +
+            '<label class="col-sm-2 control-label" translate="common.account">账号</label>' +
             '<div class="col-lg-10 w-auto">' +
             '<p class="form-control-static">'+account+'</p>' +
             '</div>' +
             '</div>' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">密码</label>' +
+            '<label class="col-sm-2 control-label" translate="common.password>密码</label>' +
             '<div class="col-sm-9">' +
             '<input type="number" class="form-control" placeholder="密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
@@ -136,10 +136,10 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         var account = data._id.account||data._id.mobile;
         var user = data._id._id;
         $scope.openTips({
-            title:'重置密码',
+            title:global.translateByKey('common.resetPassword'),
             content: htmlFun(account),
-            okTitle:'确定',
-            cancelTitle:'取消',
+            okTitle:global.translateByKey('common.confirm'),
+            cancelTitle:global.translateByKey('common.cancel'),
             okCallback: function($s){
                 var passwd;
                 $http.post(agentUri+'/resetPasswd', {
@@ -154,7 +154,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                     if(obj.err){
                         $scope.error(obj.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                     }
                 }).error(function(msg, code){
                     $scope.errorTips(code);
@@ -164,10 +164,10 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     };
 
     function ctrl_render(params){
-        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,true)" ng-if="(data.audit==0||data.audit==2)&&(super||per[\'通过\'])">通过</span>'+
-            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,false)" ng-if="data.audit==0&&(super||per[\'不通过\'])">不通过</span>'+
-            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="onoff(data)" ng-if="super||per[\'onoff\']">{{data.status?"暂停":"正常"}}</span>'+
-            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="resetPasswd(data)">重置密码</span>';
+        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,true)" ng-if="(data.audit==0||data.audit==2)&&(super||per[\'通过\'])" translate="common.pass">通过</span>'+
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,false)" ng-if="data.audit==0&&(super||per[\'不通过\'])" translate="common.notPass">不通过</span>'+
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="onoff(data)" ng-if="super||per[\'onoff\']">{{data.status?suspend:normal}}</span>'+
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="resetPasswd(data)" translate="common.resetPassword">重置密码</span>';
     }
 
     var columnDefs = [
@@ -183,9 +183,23 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         {headerName: "操作", width: 200, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}},
         {headerName: "推广地址", width: 360, cellRenderer: render_url}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'agent.agent.create.list.header.pcode',
+        'agent.agent.create.list.header.code',
+        'agent.agent.create.list.header.name',
+        'agent.agent.create.list.header.account',
+        'agent.agent.create.list.header.level',
+        'agent.agent.create.list.header.type',
+        'agent.agent.create.list.header.crtime',
+        'agent.agent.create.list.header.status',
+        'agent.agent.create.list.header.audit',
+        'agent.agent.create.list.header.ctrl',
+        'agent.agent.create.list.header.addr'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             $http.get(agentUri + '/agents', {
@@ -222,9 +236,13 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         onCellDoubleClicked: function(cell){
             if($scope.super||$scope.per['详情']||$scope.per['编辑']){
@@ -240,10 +258,10 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 size:'sm',
                 okCallback: function(){
                     var ids = '';
@@ -261,7 +279,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -271,9 +289,9 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 size:'sm',
                 singleButton:true
             });
@@ -365,7 +383,7 @@ app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'g
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $state.go('app.agent.list');
             }
         }).error(function(msg, code){
@@ -453,7 +471,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
-                $scope.success('创建成功');
+                $scope.success(global.translateByKey('common.createSucceed'));
                 $scope.agent = {type:'1',bankInfo:{}};
                 $state.go('app.agent.list');
             }

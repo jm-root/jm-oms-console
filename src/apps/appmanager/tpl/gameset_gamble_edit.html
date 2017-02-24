@@ -15,25 +15,25 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.roomName' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="房间名字" ng-model="room.name">
+                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.roomName' | translate }}" ng-model="room.name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.roomIntro' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="房间简介" ng-model="room.intro">
+                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.roomIntro' | translate }}" ng-model="room.intro">
                     </div>
                 </div>
                 <div ng-show="isFromAppManager" class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.algStartTableNum' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="起始桌子编号" ng-model="room.startAreaId" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.algStartTableNum' | translate }}" ng-model="room.startAreaId" min="0" required>
                     </div>
                 </div>
                 <div ng-show="isFromAppManager" class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.tableNum' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="桌子数量" ng-model="room.maxAreas" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.tableNum' | translate }}" ng-model="room.maxAreas" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,55 +49,55 @@
                     <!--</select>-->
                     <!--</div>-->
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="房间所有桌子难度" ng-model="room.diff" required>
+                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.roomDiff' | translate }}" ng-model="room.diff" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.roomRate' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="房间倍率" ng-model="room.areaRate" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.roomRate' | translate }}" ng-model="room.areaRate" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.tablePlayerLimit' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="桌子玩家上限" ng-model="room.maxPlayers" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.tablePlayerLimit' | translate }}" ng-model="room.maxPlayers" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.maxCarry' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="最大携带" ng-model="room.maxAmount" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.maxCarry' | translate }}" ng-model="room.maxAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.minCarry' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="最小携带" ng-model="room.minAmount" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.minCarry' | translate }}" ng-model="room.minAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.setup' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="上分设置(游戏币)" ng-model="room.exchangeAmount" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.setup' | translate }}" ng-model="room.exchangeAmount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.currencyScore' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="一币分值(游戏分值)" ng-model="room.exchangeRate" min="0" step="0.01" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.currencyScore' | translate }}" ng-model="room.exchangeRate" min="0" step="0.01" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.onlineNum' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="虚拟在线人数" ng-model="room.virtualOnlineCount" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.onlineNum' | translate }}" ng-model="room.virtualOnlineCount" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.rateShift' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="倍率档位" ng-model="room.rates" required>
+                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.rateShift' | translate }}" ng-model="room.rates" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -112,7 +112,7 @@
                 <div class="form-group" ng-if="room.mode == 1">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="彩票模式出金币几率" ng-model="room.oddsCredit" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}" ng-model="room.oddsCredit" min="0" required>
                     </div>
                 </div>
                 <div class="form-group" ng-if="room.mode == 1">
@@ -183,13 +183,13 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.kickOut' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="多少局没压踢出" ng-model="room.absenceNum" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.kickOut' | translate }}" ng-model="room.absenceNum" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.betTime' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="押注时间(秒)" ng-model="room.betTime" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.betTime' | translate }}" ng-model="room.betTime" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -201,69 +201,69 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.dragon' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:龙" ng-model="room.perLimit[10]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.dragon' | translate }}" ng-model="room.perLimit[10]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.green' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿" ng-model="room.perLimit[12]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.green' | translate }}" ng-model="room.perLimit[12]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.red' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红" ng-model="room.perLimit[11]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.red' | translate }}" ng-model="room.perLimit[11]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.greenRabbit' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿兔子" ng-model="room.perLimit[9]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.greenRabbit' | translate }}" ng-model="room.perLimit[9]" min="0" required>
                     </div>
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.redRabbit' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红兔子" ng-model="room.perLimit[0]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.redRabbit' | translate }}" ng-model="room.perLimit[0]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.greenPanda' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿熊猫" ng-model="room.perLimit[7]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.greenPanda' | translate }}" ng-model="room.perLimit[7]" min="0" required>
                     </div>
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.redPanda' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红熊猫" ng-model="room.perLimit[2]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.redPanda' | translate }}" ng-model="room.perLimit[2]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.greenElephant' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿大象" ng-model="room.perLimit[6]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.greenElephant' | translate }}" ng-model="room.perLimit[6]" min="0" required>
                     </div>
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.redElephant' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红大象" ng-model="room.perLimit[3]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.redElephant' | translate }}" ng-model="room.perLimit[3]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.greenLion' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿狮子" ng-model="room.perLimit[5]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.greenLion' | translate }}" ng-model="room.perLimit[5]" min="0" required>
                     </div>
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.redLion' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红狮子" ng-model="room.perLimit[4]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.redLion' | translate }}" ng-model="room.perLimit[4]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.greenMonkey' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:绿猴子" ng-model="room.perLimit[8]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.greenMonkey' | translate }}" ng-model="room.perLimit[8]" min="0" required>
                     </div>
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.redMonkey' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="压分上限:红猴子" ng-model="room.perLimit[1]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.redMonkey' | translate }}" ng-model="room.perLimit[1]" min="0" required>
                     </div>
                 </div>
 
