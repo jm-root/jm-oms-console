@@ -67,7 +67,7 @@ app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$statePar
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 callback[way](result.ticket);
             }
         }).error(function(msg, code){
@@ -128,23 +128,23 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         var status = params.data.status;
         var info = '';
         if(status==0){
-            info = '未付款';
+            info = global.translateByKey('agent.coin.stock.order.unpaid');
         }else if(status==1){
-            info = '已付款';
+            info = global.translateByKey('agent.coin.stock.order.paid');
         }else if(status==2){
-            info = '已到账';
+            info = global.translateByKey('agent.coin.stock.order.arrivalAccount');
         }else if(status==3){
-            info = '已发货';
+            info = global.translateByKey('agent.coin.stock.order.alreadyShipped');
         }else if(status==4){
-            info = '申请退款';
+            info = global.translateByKey('agent.coin.stock.order.applyRefund');
         }else if(status==5){
-            info = '同意退款';
+            info = global.translateByKey('agent.coin.stock.order.agreeRefund');
         }else if(status==6){
-            info = '已退款';
+            info = global.translateByKey('agent.coin.stock.order.refunded');
         }else if(status==7){
-            info = '已取消';
+            info = global.translateByKey('agent.coin.stock.order.canceled');
         }else if(status==8){
-            info = '已作废';
+            info =global.translateByKey('agent.coin.stock.order.obsolete');
         }
         return info;
     };
@@ -176,9 +176,14 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         {headerName: "支付金额", field: "amount", width: 100, valueGetter: format_amount},
         {headerName: "状态", field: "status", width: 100, valueGetter: format_status}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'home.checkin.day',
+        'home.checkin.reward'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -220,11 +225,15 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -235,10 +244,10 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -255,7 +264,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -265,9 +274,9 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -303,7 +312,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
 
     $scope.updateStatus = function(status){
         if(!$scope.checks.length){
-            return $scope.error('请选择订单');
+            return $scope.error(global.translateByKey('agent.coin.stock.select'));
         }
         var update = {
             status: status,
@@ -317,7 +326,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.onPageSizeChanged();
             }
         }).error(function(msg, code){
@@ -326,7 +335,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
     };
 
     $scope.onExportExcel = function() {
-        window.location = agentUri+'/orders' + '?fileName='+encodeURIComponent('订单列表.xls')+'&token=' + sso.getToken();
+        window.location = agentUri+'/orders' + '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.stock.orderList'))+'&token=' + sso.getToken();
     };
 }]);
 

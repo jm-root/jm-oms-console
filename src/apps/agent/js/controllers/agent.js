@@ -164,6 +164,8 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     };
 
     function ctrl_render(params){
+        $scope.suspend = global.translateByKey('common.suspend');
+        $scope.normal = global.translateByKey('common.normal');
         return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,true)" ng-if="(data.audit==0||data.audit==2)&&(super||per[\'通过\'])" translate="common.pass">通过</span>'+
             '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,false)" ng-if="data.audit==0&&(super||per[\'不通过\'])" translate="common.notPass">不通过</span>'+
             '<span class="btn btn-xs bg-primary m-r-xs" ng-click="onoff(data)" ng-if="super||per[\'onoff\']">{{data.status?suspend:normal}}</span>'+

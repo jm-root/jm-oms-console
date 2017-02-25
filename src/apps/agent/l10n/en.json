@@ -139,6 +139,11 @@
         "code": "Channel ID",
         "search":"Search",
         "time":"Time Slot",
+        "levelOpts":{
+          "opts1":"Unknown",
+          "opts2":"1 level",
+          "opts3":"2 level"
+        },
         "header":{
           "date": "Date",
           "name": "Channel name",
@@ -213,6 +218,8 @@
        }
      },
       "stock":{
+        "select":"Please Select Order",
+        "orderList":"Order List.xls",
         "list":{
           "balance":"Coin Balance",
           "code": "Channel ID",

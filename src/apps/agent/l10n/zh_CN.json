@@ -139,6 +139,11 @@
         "code": "渠道ID",
         "search": "搜索",
         "time": "时间段",
+        "levelOpts": {
+          "opts1": "未知",
+          "opts2": "一级",
+          "opts3": "二级"
+        },
         "header": {
           "date": "日期",
           "name": "渠道名",
@@ -213,12 +218,25 @@
         }
       },
       "stock": {
+        "select":"请选择订单",
+        "orderList":"订单列表.xls",
         "list": {
           "balance":"T币余额",
           "code": "渠道ID",
           "search":"搜索",
           "reset":"重置",
           "export":"导出excel"
+        },
+        "header":{
+          "check":"多选",
+          "code":"单号",
+          "crtime":"订单时间",
+          "agent":"申购渠道",
+          "agentId":"渠道ID",
+          "user":"操作人",
+          "tAmount":"买T币数",
+          "amount":"支付金额",
+          "status":"状态"
         },
         "order": {
           "code": "渠道ID",
