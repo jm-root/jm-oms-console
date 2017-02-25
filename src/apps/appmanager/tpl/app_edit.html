@@ -1,14 +1,12 @@
 <div ng-controller="AppManageCtrl">
     <div ui-view class="fade-in-down"></div>
-    <div style="margin: 10px;">
-        <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ 'appmgr.appList' | translate }}>></a>{{ 'appmgr.appEdit' | translate }}</h1>
-    </div>
     <form ng-show="$state.is('app.apps.manage.edit') " name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>{{ 'common.edit' | translate }}</strong>
+            <div class="panel-heading titlefixed">
+                <!--<strong>{{ 'common.edit' | translate }}</strong>-->
+                <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ 'appmgr.appList' | translate }}>></a>{{ 'appmgr.appEdit' | translate }}</h1>
             </div>
-            <div class="panel-body">
+            <div class="panel-body paddingtop">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.appManager.appId' | translate }}</label>
                     <div class="col-sm-9">
