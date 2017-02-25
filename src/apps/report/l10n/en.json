@@ -6,6 +6,15 @@
         "opts1": "Statistics by day",
         "opts2": "Statistics by month",
         "opts3": "Statistics by year"
+      },
+      "header":{
+        "date":"Date",
+        "recharge_p":"Recharge Number",
+        "recharge":"Recharge Amount",
+        "give_jb":"Give JB",
+        "give_dbj":"Give DBJ",
+        "gain_jb":"JB Total Wins",
+        "gain_dbj":"DBJ Total Wins"
       }
     }
   }

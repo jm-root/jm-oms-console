@@ -88,7 +88,9 @@
     "get": "Get",
     "put": "Put",
     "post": "Post",
-    "modify": "Modify"
+    "modify": "Modify",
+    "back":"Back",
+    "tb":"TB"
   },
   "imgcrop":{
     "title":"Edit Picture",

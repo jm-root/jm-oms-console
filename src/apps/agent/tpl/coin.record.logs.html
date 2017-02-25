@@ -11,29 +11,29 @@
             <option value="0" translate="agent.coin.record.logs.playerlog">玩家日志</option>
             <option value="1" translate="agent.coin.record.logs.agentlog">渠道日志</option>
             <option value="2" translate="agent.coin.record.logs.orderlog">订单日志</option>
-            <option value="3" translate="agent.coin.record.logs.accountlog">账户日志</option>
+            <option value="3" translate="agent.coin.record.logs.account">账户日志</option>
         </select>
         <select class="pull-left" style="height: 28px;" ng-model="search.type" ng-options="option.code as option.name for option in ctrltype[type]">
             <option value="" translate="agent.coin.record.logs.type">操作类型</option>
         </select>
         <span class="pull-left" style="margin-top: 3px;margin-left: 10px" translate="agent.coin.record.logs.time">操作时间&nbsp;&nbsp;</span>
         <div class="input-group" style="width: 205px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="height: 28px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="height: 28px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
     <div class="col-lg-12">
         <span ng-if="type=='0'||type=='3'">
             <span translate="agent.coin.record.logs.player">玩家&nbsp;&nbsp;</span>
-            <input type="text" ng-model="search.user" style="margin-left:4px;" placeholder="账号/昵称/手机号">
+            <input type="text" ng-model="search.user" style="margin-left:4px;" placeholder="{{ 'agent.coin.record.logs.player' | translate }}">
         </span>
         <span ng-if="type=='1'||type=='2'">
             <span translate="agent.coin.record.logs.code">渠道ID&nbsp;&nbsp;</span>
-            <input type="text" ng-model="search.agent" style="margin-left:4px;" placeholder="渠道ID">
+            <input type="text" ng-model="search.agent" style="margin-left:4px;" placeholder="{{ 'agent.coin.record.logs.code' | translate }}">
         </span>
         <span ng-if="type=='2'">
             <span translate="agent.coin.record.logs.orderNumber">单号&nbsp;&nbsp;</span>
-            <input type="text" ng-model="search.order" style="margin-left:4px;" placeholder="单号">
+            <input type="text" ng-model="search.order" style="margin-left:4px;" placeholder="{{ 'agent.coin.record.logs.orderNumber' | translate }}">
         </span>
     </div>
     <div class="col-lg-12 marl">

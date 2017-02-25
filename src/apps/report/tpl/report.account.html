@@ -1,20 +1,20 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
         <div class="input-group m-r-sm" style="width: 185px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="position: relative;height: 30px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
-            <option value="0" translate="report.account.timeType.opts1">按天统计</option>
-            <option value="1" translate="report.account.timeType.opts2">按月统计</option>
-            <option value="2" translate="report.account.timeType.opts3">按年统计</option>
+            <option value="0">{{ 'report.account.timeType.opts1' | translate }}</option>
+            <option value="1">{{ 'report.account.timeType.opts2' | translate }}</option>
+            <option value="2">{{ 'report.account.timeType.opts3' | translate }}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="" translate="report.account.TheChannel">所属渠道</option>
+            <option value="">{{ 'report.account.TheChannel' | translate }}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">

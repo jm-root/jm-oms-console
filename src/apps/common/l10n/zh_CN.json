@@ -88,7 +88,9 @@
     "get": "查询",
     "put": "增加",
     "post": "修改",
-    "modify": "修改"
+    "modify": "修改",
+    "back":"返回",
+    "tb":"T币"
   },
   "imgcrop":{
     "title":"编辑图片",

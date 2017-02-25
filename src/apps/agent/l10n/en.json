@@ -1,5 +1,6 @@
 {
   "agent": {
+    "id":"Channel ID/Name",
     "agent":{
       "create":{
         "list": {
@@ -157,7 +158,24 @@
     "coin":{
       "account":{
         "list":{
-
+          "accountList":"Account List",
+          "unfreeze":"Unfreeze",
+          "frozen":"Frozen",
+          "normal":"Normal",
+          "cancellation":"Cancellation",
+          "determine":"Determine Whether",
+          "account":"User Account?",
+          "inputPaymentPassword":"Please Input Payment Password!",
+          "uid":"User ID",
+          "user":"User Name",
+          "agentCode":"The Channel",
+          "agentName":"The Channel Name",
+          "mobile":"Mobile Phone",
+          "tb":"TB Balance",
+          "jb":"JB Balance",
+          "dbj":"DBJ Balance",
+          "accountStatus":"Account Status",
+          "operation":"Operation"
         }
       },
       "distribute":{
@@ -165,12 +183,32 @@
           "balance":"Coin Balance",
           "userName":"User Name",
           "distributeCoin":"Distribute Coin",
-          "determineRecharge":"Determine Recharge"
+          "determineRecharge":"Determine Recharge",
+          "check":"Multiselect",
+          "user":"User Name",
+          "crtime":"Create Time",
+          "selectUser":"Please Select User",
+          "enterAmount":"Please enter the amount of recharge",
+          "insufficient":"Your current balance is insufficient",
+          "recharge":"Do you want to recharge the following users?",
+          "paymentPassword":"Payment password",
+          "enter":"Please enter the payment password"
         },
         "make":{
           "balance":"Coin Balance",
           "createTime":"Select Create Time",
-          "create":"Create"
+          "create":"Create",
+          "code":"Batch Number",
+          "count":"Number",
+          "amount":"Coin Number",
+          "rebate":"Discount",
+          "sAmount":"Consume Tb Currency",
+          "agent":"Channel ID",
+          "crtime":"Creation Date",
+          "operation":"Operation",
+          "charge":"First Charge Number.xls",
+          "generateA":"Generate Account Number",
+          "generateG":"Generate Gold Number"
         },
         "makeinfo":{
           "information":"Account Information",
@@ -179,7 +217,7 @@
           "state":"Active State"
         }
       },
-     "record":{
+      "record":{
        "agentStat":{
          "type":"Statistical Type",
          "day":"Dayly Statistics",
@@ -189,7 +227,12 @@
          "code": "Channel ID",
          "search":"Search",
          "reset":"Reset",
-         "export":"Export Excel"
+         "export":"Export Excel",
+         "statistics":"Channel Account Statistics.xls",
+         "name":"Channel Name",
+         "pAgent":"Agent Code",
+         "amount":"Distribution Amount",
+         "date":"Statistical Time"
        },
        "logs":{
          "playerlog":"Player Log",
@@ -203,7 +246,27 @@
          "orderNumber":"Order Number",
          "search":"Search",
          "reset":"Reset",
-         "export":"Export Excel"
+         "export":"Export Excel",
+         "unpaid":"Unpaid",
+         "paid":"Paid",
+         "arrivalAccount":"Arrival Account",
+         "alreadyShipped":"Already Shipped",
+         "applyRefund":"Apply for Refund",
+         "agreeRefund":"Agree Refund",
+         "refunded":"Refunded",
+         "canceled":"Canceled",
+         "obsolete":"Obsolete",
+         "unfreeze":"Unfreeze",
+         "frozen":"Frozen",
+         "batch":"Batch Distribution",
+         "generation":"Generation and Distribution",
+         "add":"Add",
+         "deduction":"Deduction",
+         "discount":"Discount",
+         "system":"System",
+         "header":{
+           "account":"Player Account"
+         }
        },
        "playerStat":{
          "type":"Statistical Type",
@@ -214,9 +277,20 @@
          "player": "Player",
          "search":"Search",
          "reset":"Reset",
-         "export":"Export Excel"
+         "export":"Export Excel",
+         "discount":"Discount",
+         "statistics":"Player Account Statistics.xls",
+         "header":{
+           "account":"Account",
+           "mobile":"Mobile Phone",
+           "agentCode":"Agent Code",
+           "amount":"Distribute Gold",
+           "rebate":"Discount",
+           "sAmount":"Value TB",
+           "date":"Statistical Time"
+         }
        }
-     },
+      },
       "stock":{
         "select":"Please Select Order",
         "orderList":"Order List.xls",

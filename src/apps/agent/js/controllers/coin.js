@@ -742,9 +742,15 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
         {headerName: "用户名", field: "user", width: 200, valueGetter: format_user},
         {headerName: "创建时间", field: "crtime", width: 200, valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.distribute.batch.check',
+        'agent.coin.distribute.batch.user',
+        'agent.coin.distribute.batch.crtime'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             $http.get(agentUri + '/users', {
@@ -780,12 +786,16 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             //event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             //$state.go('app.agent.edit' , {id: cell.data._id});
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -806,10 +816,10 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
     $scope.recharge = function(){
         console.log($scope.hasPasswd);
         if(!$scope.checks.length){
-            return $scope.warning('请选择充值用户');
+            return $scope.warning(global.translateByKey('agent.coin.distribute.batch.selectUser'));
         }
         if(!$scope.tbUseAmount){
-            return $scope.warning('请输入充值金额');
+            return $scope.warning(global.translateByKey('agent.coin.distribute.batch.enterAmount'));
         }
         var userIds = [];
         var users = [];
@@ -820,19 +830,19 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
         users = users.join(', ');
         var total = $scope.tbUseAmount * userIds.length;
         if($scope.tbAmount<total){
-            return $scope.warning('你当前余额不足');
+            return $scope.warning(global.translateByKey('agent.coin.distribute.batch.insufficient'));
         }
         $scope.openTips({
-            title:'提示',
+            title:global.translateByKey('openTips.title'),
             content:
             '<div style="margin-left: 12px">' +
-            '<div style="margin-bottom: 5px">确定对下列用户充值吗?</div>'+
+            '<div style="margin-bottom: 5px" translate="agent.coin.distribute.batch.recharge">确定对下列用户充值吗?</div>'+
             '<div style="margin-bottom: 10px">'+users+'</div>'+
             '<div style="margin-bottom: 10px;color: red">本次操作将从你账户上扣除:&nbsp;&nbsp;'+total+'&nbsp;&nbsp;T币</div>' +
             '</div>' +
             '<form name="formValidate" class="form-horizontal form-validation">' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">支付密码</label>' +
+            '<label class="col-sm-2 control-label" translate="agent.coin.distribute.batch.paymentPassword">支付密码</label>' +
             '<div class="col-sm-9" style="padding-left:0px">' +
             '<input type="password" class="form-control" placeholder="支付密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
@@ -840,10 +850,10 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
             '</div>' +
             '<a style="margin-left: 13px;font-size: 10px;color: #884b00" ui-sref="app.security({successUri:\'app.coin.distribute.batch\'})" ng-click="cancel()" ng-if="'+!$scope.hasPasswd+'">设置支付密码</a>' +
             '</form>',
-            okTitle:'是',
-            cancelTitle:'否',
+            okTitle:global.translateByKey('common.yes'),
+            cancelTitle:global.translateByKey('common.no'),
             okCallback: function($s){
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.distribute.batch.enter'));
                 var data = {
                     userIds:userIds,fromCTCode:'tb',toCTCode:'jb',rate:$scope.rate,rebate:$scope.rebate,
                     fromAmount:$scope.tbUseAmount,toAmount:$scope.jbAmount,passwd:$s.passwd
@@ -856,7 +866,7 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                         queryTB();
                     }
@@ -945,9 +955,20 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
         {headerName: "创建日期", field: "crtime", width: 200, valueGetter: $scope.angGridFormatDateS},
         {headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.distribute.make.code',
+        'agent.coin.distribute.make.count',
+        'agent.coin.distribute.make.amount',
+        'agent.coin.distribute.make.rebate',
+        'agent.coin.distribute.make.sAmount',
+        'agent.coin.distribute.make.agent',
+        'agent.coin.distribute.make.crtime',
+        'agent.coin.distribute.make.operation',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var date = $scope.search.date;
             var startDate = date.startDate&&date.startDate.toString() || "";
@@ -985,9 +1006,13 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             //event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.coin.distribute.makeinfo' , {id: cell.data._id});
@@ -1017,13 +1042,13 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
     $scope.makeFun = function(){
         var total = $scope.tbUseAmount*$scope.count;
         $scope.openTips({
-            title: '提示',
+            title:global.translateByKey('openTips.title'),
             content: '<div style="margin-left: 12px">' +
             '<div style="margin-bottom: 10px;color: red">本次操作将从你账户上扣除:&nbsp;&nbsp;' + total + '&nbsp;&nbsp;T币</div>' +
             '</div>' +
             '<form name="formValidate" class="form-horizontal form-validation">' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">支付密码</label>' +
+            '<label class="col-sm-2 control-label" translate="agent.coin.distribute.batch.paymentPassword">支付密码</label>' +
             '<div class="col-sm-9" style="padding-left:0px">' +
             '<input type="password" class="form-control" placeholder="支付密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
@@ -1031,10 +1056,10 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
             '</div>' +
             '<a style="margin-left: 13px;font-size: 10px;color: #884b00" ui-sref="app.security({successUri:\'app.coin.distribute.make\'})" ng-click="cancel()" ng-if="' + !$scope.hasPasswd + '">设置支付密码</a>' +
             '</form>',
-            okTitle: '是',
-            cancelTitle: '否',
+            okTitle:global.translateByKey('common.yes'),
+            cancelTitle:global.translateByKey('common.no'),
             okCallback: function ($s) {
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.distribute.batch.enter'));
                 var data = {
                     count:$scope.count,ctCode:'jb',sCtCode:'tb',rate:$scope.rate,rebate:$scope.rebate,
                     amount:$scope.jbAmount,sAmount:$scope.tbUseAmount,passwd:$s.passwd
@@ -1047,7 +1072,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                         queryTB();
                     }
@@ -1059,7 +1084,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
     };
 
     $scope.onExportExcel = function(id) {
-        window.location = agentUri+'/userMakeLogs/detail'+ '?fileName='+encodeURIComponent('首充号明细.xls')+'&token=' + sso.getToken()+'&id='+id;
+        window.location = agentUri+'/userMakeLogs/detail'+ '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.distribute.make.charge'))+'&token=' + sso.getToken()+'&id='+id;
     };
 }]);
 
@@ -1153,11 +1178,11 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         var status = params.data.defAccount.status;
         var info = '';
         if(status==0){
-            info = '冻结';
+            info = global.translateByKey('agent.coin.account.list.frozen');
         }else if(status==1){
-            info = '正常';
+            info = global.translateByKey('agent.coin.account.list.normal');
         }else if(status==2){
-            info = '注销';
+            info = global.translateByKey('agent.coin.account.list.cancellation');
         }
         return info;
     };
@@ -1169,8 +1194,8 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         if(status>=2) return;
         status = 1-status;
         var title,ask;
-        status ? title = '解冻': title = '冻结';
-        ask = '是否确定'+title+'('+userName+')用户账户?';
+        status ? title = global.translateByKey('agent.coin.account.list.unfreeze'): title = global.translateByKey('agent.coin.account.list.frozen');
+        ask = global.translateByKey('agent.coin.account.list.determine')+title+'('+userName+')用户账户?';
 
         $scope.openTips({
             title:title,
@@ -1178,7 +1203,7 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
             '<div style="margin-left:13px;margin-bottom: 10px">'+ask+'</div>'+
             '<form name="formValidate" class="form-horizontal form-validation">' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">支付密码</label>' +
+            '<label class="col-sm-2 control-label" translate="agent.coin.distribute.batch.paymentPassword">支付密码</label>' +
             '<div class="col-sm-9" style="padding-left:0px">' +
             '<input type="password" class="form-control" placeholder="支付密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
@@ -1186,10 +1211,10 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
             '</div>' +
             '<a style="margin-left: 13px;font-size: 10px;color: #884b00" ui-sref="app.security({successUri:\'app.coin.account.list\'})" ng-click="cancel()" ng-if="'+!$scope.hasPasswd+'">设置支付密码</a>' +
             '</form>',
-            okTitle:'确定',
-            cancelTitle:'取消',
+            okTitle:global.translateByKey('common.yes'),
+            cancelTitle:global.translateByKey('common.no'),
             okCallback: function($s){
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.account.list.inputPaymentPassword'));
                 var data = {userId:id,status:status,passwd:$s.passwd};
                 $http.post(agentUri+'/account/status', data, {
                     params:{
@@ -1199,7 +1224,7 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                     }
                 }).error(function(msg, code){
@@ -1211,8 +1236,8 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
 
     function ctrl_render(params){
         var status = params.data.defAccount.status;
-        var freezeName = '冻结';
-        if(status==0) freezeName = '解冻';
+        var freezeName = global.translateByKey('agent.coin.account.list.frozen');
+        if(status==0) freezeName = global.translateByKey('agent.coin.account.list.unfreeze');
         return '<span class="btn btn-xs bg-primary m-r-xs" ng-if="'+$scope.super+'" ng-click="freeze(data)">'+freezeName+'</span>';
     }
 
@@ -1228,10 +1253,22 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         {headerName: "账户状态", field: "accountStatus", width: 90, valueGetter: format_accountStatus},
         {headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
-
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.account.list.uid',
+        'agent.coin.account.list.user',
+        'agent.coin.account.list.agentCode',
+        'agent.coin.account.list.agentName',
+        'agent.coin.account.list.mobile',
+        'agent.coin.account.list.tb',
+        'agent.coin.account.list.jb',
+        'agent.coin.account.list.dbj',
+        'agent.coin.account.list.accountStatus',
+        'agent.coin.account.list.operation',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             $scope.page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             $http.get(agentUri+'/users/accounts', {
@@ -1266,11 +1303,15 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -1320,7 +1361,7 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
 
     var format_rebate = function(params) {
         var obj = params.data._id || {};
-        return obj.rebate+'折'||'';
+        return obj.rebate+global.translateByKey('agent.coin.record.playerStat.discount')||'';
     };
 
     var format_date = function(params) {
@@ -1356,9 +1397,19 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
         {headerName: "统计时间", field: "date", width: 145, valueGetter: format_date},
         //{headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.record.playerStat.header.account',
+        'agent.coin.record.playerStat.header.mobile',
+        'agent.coin.record.playerStat.header.agentCode',
+        'agent.coin.record.playerStat.header.amount',
+        'agent.coin.record.playerStat.header.rebate',
+        'agent.coin.record.playerStat.header.sAmount',
+        'agent.coin.record.playerStat.header.date'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             $scope.page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -1399,11 +1450,15 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
         rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
            event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -1440,7 +1495,7 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
     $scope.dateOptions = global.dateRangeOptions;
 
     $scope.onExportExcel = function() {
-        window.location = agentUri+'/stat/users' + '?fileName='+encodeURIComponent('玩家账号统计.xls')+'&token=' + sso.getToken();
+        window.location = agentUri+'/stat/users' + '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.record.playerStat.statistics'))+'&token=' + sso.getToken();
     };
 }]);
 
@@ -1495,9 +1550,17 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
         {headerName: "统计时间", field: "date", width: 145, valueGetter: format_date},
         //{headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.record.agentStat.code',
+        'agent.coin.record.agentStat.name',
+        'agent.coin.record.agentStat.pAgent',
+        'agent.coin.record.agentStat.amount',
+        'agent.coin.record.agentStat.date'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             $scope.page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -1538,9 +1601,13 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
         rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         onCellDoubleClicked: function(cell){
         },
@@ -1580,7 +1647,7 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
     $scope.dateOptions = global.dateRangeOptions;
 
     $scope.onExportExcel = function() {
-        window.location = agentUri+'/stat/agents' + '?fileName='+encodeURIComponent('渠道账号统计.xls')+'&token=' + sso.getToken();
+        window.location = agentUri+'/stat/agents' + '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.record.agentStat.statistics'))+'&token=' + sso.getToken();
     };
 }]);
 
@@ -1598,20 +1665,20 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
     $scope.search.type = $scope.search.type || '';
 
     $scope.ctrltype = {
-        '0':[{code:'0',name:'批量分发'},{code:'1',name:'生成分发'}],
-        '1':[{code:'0',name:'增加'},{code:'1',name:'扣减'}],
+        '0':[{code:'0',name:global.translateByKey('agent.coin.record.logs.batch')},{code:'1',name:global.translateByKey('agent.coin.record.logs.generation')}],
+        '1':[{code:'0',name:global.translateByKey('agent.coin.record.logs.add')},{code:'1',name:global.translateByKey('agent.coin.record.logs.deduction')}],
         '2':[
-            {code:'0',name:'未付款'},
-            {code:'1',name:'已付款'},
-            {code:'2',name:'已到账'},
-            {code:'3',name:'已发货'},
-            {code:'4',name:'申请退款'},
-            {code:'5',name:'同意退款'},
-            {code:'6',name:'已退款'},
-            {code:'7',name:'已取消下单'},
-            {code:'8',name:'已作废'}
+            {code:'0',name:global.translateByKey('agent.coin.record.logs.unpaid')},
+            {code:'1',name:global.translateByKey('agent.coin.record.logs.paid')},
+            {code:'2',name:global.translateByKey('agent.coin.record.logs.arrivalAccount')},
+            {code:'3',name:global.translateByKey('agent.coin.record.logs.alreadyShipped')},
+            {code:'4',name:global.translateByKey('agent.coin.record.logs.applyRefund')},
+            {code:'5',name:global.translateByKey('agent.coin.record.logs.agreeRefund')},
+            {code:'6',name:global.translateByKey('agent.coin.record.logs.refunded')},
+            {code:'7',name:global.translateByKey('agent.coin.record.logs.canceled')},
+            {code:'8',name:global.translateByKey('agent.coin.record.logs.obsolete')}
         ],
-        '3':[{code:'0',name:'冻结'},{code:'1',name:'解冻'}]
+        '3':[{code:'0',name:global.translateByKey('agent.coin.record.logs.frozen')},{code:'1',name:global.translateByKey('agent.coin.record.logs.unfreeze')}]
     };
 
     var format_account = function(params) {
@@ -1626,7 +1693,7 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
 
     var format_rebate = function(params) {
         var obj = params.data || {};
-        return obj.rebate+'折'||'';
+        return obj.rebate+global.translateByKey('agent.coin.record.logs.discount')||'';
     };
 
     var format_amount = function(params) {
@@ -1642,8 +1709,8 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
     var format_type = function(params) {
         var obj = params.data || {};
         var info = '';
-        if(obj.type=='0') info = '批量分发';
-        if(obj.type=='1') info = '生成分发';
+        if(obj.type=='0') info = global.translateByKey('agent.coin.record.logs.batch');
+        if(obj.type=='1') info = global.translateByKey('agent.coin.record.logs.generation');
         return info;
     };
 
@@ -1671,8 +1738,8 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
     var format_type1 = function(params) {
         var obj = params.data || {};
         var info = '';
-        if(obj.type=='0') info = '增加';
-        if(obj.type=='1') info = '扣减';
+        if(obj.type=='0') info = global.translateByKey('agent.coin.record.logs.add');
+        if(obj.type=='1') info = global.translateByKey('agent.coin.record.logs.deduction');
         return info;
     };
 
@@ -1710,21 +1777,21 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
 
     var format_creator2 = function(params) {
         var obj = params.data.user || {};
-        return obj.account||'系统';
+        return obj.account||global.translateByKey('agent.coin.record.logs.system');
     };
 
     var format_type2 = function(params) {
         var status = params.data.status;
         var info = '';
-        if(status==0) info = '未付款';
-        if(status==1) info = '已付款';
-        if(status==2) info = '已到账';
-        if(status==3) info = '批准发货';
-        if(status==4) info = '申请退款';
-        if(status==5) info = '同意退款';
-        if(status==6) info = '已退款';
-        if(status==7) info = '已取消下单';
-        if(status==8) info = '已作废';
+        if(status==0) info = global.translateByKey('agent.coin.record.logs.unpaid');
+        if(status==1) info = global.translateByKey('agent.coin.record.logs.paid');
+        if(status==2) info = global.translateByKey('agent.coin.record.logs.arrivalAccount');
+        if(status==3) info = global.translateByKey('agent.coin.record.logs.alreadyShipped');
+        if(status==4) info = global.translateByKey('agent.coin.record.logs.applyRefund');
+        if(status==5) info = global.translateByKey('agent.coin.record.logs.agreeRefund');
+        if(status==6) info = global.translateByKey('agent.coin.record.logs.refunded');
+        if(status==7) info = global.translateByKey('agent.coin.record.logs.canceled');
+        if(status==8) info = global.translateByKey('agent.coin.record.logs.obsolete');
         return info;
     };
 
@@ -1735,14 +1802,14 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
 
     var format_creator3 = function(params) {
         var obj = params.data.creator || {};
-        return obj.account||'系统';
+        return obj.account||global.translateByKey('agent.coin.record.logs.system');
     };
 
     var format_type3 = function(params) {
         var obj = params.data || {};
         var info = '';
-        if(obj.type=='0') info = '冻结';
-        if(obj.type=='1') info = '解冻';
+        if(obj.type=='0') info = global.translateByKey('agent.coin.record.logs.frozen');
+        if(obj.type=='1') info = global.translateByKey('agent.coin.record.logs.unfreeze');
         return info;
     };
 
@@ -1784,6 +1851,10 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
             {headerName: "操作类型", field: "type", width: 100, valueGetter: format_type3}
         ]
     };
+    global.agGridTranslateSync($scope, columnDefs['1'], [                 //翻译
+            'agent.coin.record.logs.header.account'
+    ]);
+
 
     var targetUri = {
         '0':'/userDistributeLogs',
@@ -1794,6 +1865,7 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             $scope.page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -1837,11 +1909,15 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
         rowSelection: 'multiple',
         columnDefs: columnDefs[$scope.type],
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             //event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource

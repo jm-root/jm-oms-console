@@ -15,13 +15,13 @@
         </select>
         <span class="pull-left" style="margin-top: 3px;margin-left: 10px" translate="agent.coin.record.playerStat.time">操作时间&nbsp;&nbsp;</span>
         <div class="input-group" style="width: 205px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="height: 28px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="height: 28px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
     <div class="col-lg-12">
         <span translate="agent.coin.record.playerStat.player">玩家&nbsp;&nbsp;</span>
-        <input type="text" ng-model="search.user" style="margin-left:4px;" placeholder="账号/昵称/手机号">
+        <input type="text" ng-model="search.user" style="margin-left:4px;" placeholder="{{ 'agent.coin.record.playerStat.playerr' | translate }}">
     </div>
     <div class="col-lg-12 marl">
         <button class="btn btn-default" ng-click="searchFun()" translate="agent.coin.record.playerStat.search">搜索</button>

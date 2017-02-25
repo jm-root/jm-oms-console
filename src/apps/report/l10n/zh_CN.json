@@ -6,6 +6,15 @@
         "opts1": "按天统计",
         "opts2": "按月统计",
         "opts3": "按年统计"
+      },
+      "header":{
+        "date":"日期",
+        "recharge_p":"充值人数",
+        "recharge":"充值数(分)",
+        "give_jb":"赠送金币",
+        "give_dbj":"赠送夺宝卷",
+        "gain_jb":"游戏金币总输赢",
+        "gain_dbj":"游戏夺宝卷总输赢"
       }
     }
   }

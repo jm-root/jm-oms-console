@@ -7,12 +7,12 @@
 </div>
 <div class="panel-body">
     <div class="col-lg-12 m-b-xs">
-        <strong style="vertical-align:middle" translate="agent.coin.stock.list.balance">T币余额：{{(tbAmount||0)+' T币'}}</strong>
+        <strong style="vertical-align:middle">{{ 'agent.coin.stock.list.balance' | translate }}：{{(tbAmount||0)+' T币'}}</strong>
     </div>
     <div class="col-lg-12 m-b-xs">
         <div class="pull-left">
             <span translate="agent.coin.stock.list.code">渠道ID/名称&nbsp;&nbsp;</span>
-            <input type="text" placeholder="渠道ID/名称" ng-model="search.agent">
+            <input type="text" placeholder="{{ 'agent.id' | translate }}" ng-model="search.agent">
         </div>
     </div>
     <div class="col-lg-12">

@@ -36,9 +36,19 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', func
         {headerName: "游戏金币总输赢", field: "gain_jb", width: 100},
         {headerName: "游戏夺宝卷总输赢", field: "gain_dbj", width: 100}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'report.account.header.date',
+        'report.account.header.recharge_p',
+        'report.account.header.recharge',
+        'report.account.header.give_jb',
+        'report.account.header.give_dbj',
+        'report.account.header.gain_jb',
+        'report.account.header.gain_dbj',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var date = search.date;
             var startDate = date.startDate || "";
@@ -87,12 +97,16 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', func
         angularCompileRows: true,
         rowSelection: 'multiple',
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource,
