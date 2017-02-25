@@ -67,7 +67,7 @@ app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$statePar
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 callback[way](result.ticket);
             }
         }).error(function(msg, code){
@@ -128,23 +128,23 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         var status = params.data.status;
         var info = '';
         if(status==0){
-            info = '未付款';
+            info = global.translateByKey('agent.coin.stock.order.unpaid');
         }else if(status==1){
-            info = '已付款';
+            info = global.translateByKey('agent.coin.stock.order.paid');
         }else if(status==2){
-            info = '已到账';
+            info = global.translateByKey('agent.coin.stock.order.arrivalAccount');
         }else if(status==3){
-            info = '已发货';
+            info = global.translateByKey('agent.coin.stock.order.alreadyShipped');
         }else if(status==4){
-            info = '申请退款';
+            info = global.translateByKey('agent.coin.stock.order.applyRefund');
         }else if(status==5){
-            info = '同意退款';
+            info = global.translateByKey('agent.coin.stock.order.agreeRefund');
         }else if(status==6){
-            info = '已退款';
+            info = global.translateByKey('agent.coin.stock.order.refunded');
         }else if(status==7){
-            info = '已取消';
+            info = global.translateByKey('agent.coin.stock.order.canceled');
         }else if(status==8){
-            info = '已作废';
+            info =global.translateByKey('agent.coin.stock.order.obsolete');
         }
         return info;
     };
@@ -176,9 +176,21 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         {headerName: "支付金额", field: "amount", width: 100, valueGetter: format_amount},
         {headerName: "状态", field: "status", width: 100, valueGetter: format_status}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.stock.header.check',
+        'agent.coin.stock.header.code',
+        'agent.coin.stock.header.crtime',
+        'agent.coin.stock.header.agent',
+        'agent.coin.stock.header.agentId',
+        'agent.coin.stock.header.user',
+        'agent.coin.stock.header.tAmount',
+        'agent.coin.stock.header.amount',
+        'agent.coin.stock.header.status',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -220,11 +232,15 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -235,10 +251,10 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         var len = rows.length;
         if(len){
             $scope.openTips({
-                title:'提示',
-                content:'是否确认删除?',
-                okTitle:'是',
-                cancelTitle:'否',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.delContent'),
+                okTitle:global.translateByKey('common.yes'),
+                cancelTitle:global.translateByKey('common.no'),
                 okCallback: function(){
                     var ids = '';
                     rows.forEach(function(e){
@@ -255,7 +271,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
                         if(obj.err){
                             $scope.error(obj.msg);
                         }else{
-                            $scope.success('操作成功');
+                            $scope.success(global.translateByKey('common.succeed'));
                             $scope.gridOptions.api.setDatasource(dataSource);
                         }
                     }).error(function(msg, code){
@@ -265,9 +281,9 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
             });
         }else{
             $scope.openTips({
-                title:'提示',
-                content:'请选择要删除的数据!',
-                cancelTitle:'确定',
+                title:global.translateByKey('openTips.title'),
+                content:global.translateByKey('openTips.selectDelContent'),
+                cancelTitle:global.translateByKey('openTips.cancelDelContent'),
                 singleButton:true
             });
         }
@@ -303,7 +319,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
 
     $scope.updateStatus = function(status){
         if(!$scope.checks.length){
-            return $scope.error('请选择订单');
+            return $scope.error(global.translateByKey('agent.coin.stock.select'));
         }
         var update = {
             status: status,
@@ -317,7 +333,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.success('操作成功');
+                $scope.success(global.translateByKey('common.succeed'));
                 $scope.onPageSizeChanged();
             }
         }).error(function(msg, code){
@@ -326,7 +342,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
     };
 
     $scope.onExportExcel = function() {
-        window.location = agentUri+'/orders' + '?fileName='+encodeURIComponent('订单列表.xls')+'&token=' + sso.getToken();
+        window.location = agentUri+'/orders' + '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.stock.orderList'))+'&token=' + sso.getToken();
     };
 }]);
 
@@ -374,9 +390,9 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
 
     var format_level = function(params) {
         var level = params.data.level;
-        var info = '未知';
-        if(level==1) info = '一级';
-        if(level==2) info = '二级';
+        var info = global.translateByKey('agent.coin.stock.list.levelOpts.opts1');
+        if(level==1) info = global.translateByKey('agent.coin.stock.list.levelOpts.opts2');
+        if(level==2) info = global.translateByKey('agent.coin.stock.list.levelOpts.opts3');
         return info;
     };
 
@@ -390,9 +406,9 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         var status = params.data.status;
         var info = '';
         if(status==0){
-            info = '停用';
+            info = global.translateByKey('agent.coin.stock.list.disable');
         }else if(status==1){
-            info = '激活';
+            info = global.translateByKey('agent.coin.stock.list.activation');
         }
         return info;
     };
@@ -401,18 +417,18 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         var status = params.data.accountStatus;
         var info = '';
         if(status==0){
-            info = '冻结';
+            info = global.translateByKey('agent.coin.stock.list.frozen');
         }else if(status==1){
-            info = '正常';
+            info = global.translateByKey('agent.coin.stock.list.normal');
         }else if(status==2){
-            info = '注销';
+            info = global.translateByKey('agent.coin.stock.list.cancellation');
         }
         return info;
     };
 
     var htmlFun = function(id, name, type){
         var amoutInput = '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">输入金额</label>' +
+            '<label class="col-sm-2 control-label" translate="agent.coin.stock.list.inputAmount">输入金额</label>' +
             '<div class="col-sm-9">' +
             '<input type="number" class="form-control" placeholder="T币" ng-model="amount" ng-required="true">' +
             '</div>' +
@@ -427,24 +443,24 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
             '</div>' +
             '<form name="formValidate" class="form-horizontal form-validation">' + amoutInput +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label">支付密码</label>' +
+            '<label class="col-sm-2 control-label" translate="agent.coin.stock.list.paymentPassword">支付密码</label>' +
             '<div class="col-sm-9">' +
             '<input type="password" class="form-control" placeholder="支付密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
-            '<a style="margin-left: 13px;font-size: 10px;color: #884b00" ui-sref="app.security({successUri:\'app.coin.stock.list\'})" ng-click="cancel()" ng-if="' + !$scope.hasPasswd + '">设置支付密码</a>' +
+            '<a style="margin-left: 13px;font-size: 10px;color: #884b00" ui-sref="app.security({successUri:\'app.coin.stock.list\'})" ng-click="cancel()" ng-if="' + !$scope.hasPasswd + '" translate="agent.coin.stock.list.setPaymentPassword">设置支付密码</a>' +
             '</form>';
     };
 
     $scope.add = function(id, code, name){
         $scope.openTips({
-            title:'增加',
+            title:global.translateByKey('agent.coin.stock.list.add'),
             content: htmlFun(code,name),
-            okTitle:'确定',
-            cancelTitle:'取消',
+            okTitle:global.translateByKey('common.confirm'),
+            cancelTitle:global.translateByKey('common.cancel'),
             okCallback: function($s){
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.stock.list.inputPaymentPassword'));
                 var data = {amount:$s.amount,passwd:$s.passwd,userId:id};
                 $http.post(agentUri+'/coins/add', data, {
                     params:{
@@ -454,7 +470,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                         queryTB();
                     }
@@ -467,12 +483,12 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
 
     $scope.deduct = function(id, code, name){
         $scope.openTips({
-            title:'扣减',
+            title:global.translateByKey('agent.coin.stock.list.deduction'),
             content: htmlFun(code,name),
-            okTitle:'确定',
-            cancelTitle:'取消',
+            okTitle:global.translateByKey('common.confirm'),
+            cancelTitle:global.translateByKey('common.cancel'),
             okCallback: function($s){
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.stock.list.inputPaymentPassword'));
                 var data = {amount:$s.amount,passwd:$s.passwd,userId:id};
                 $http.post(agentUri+'/coins/deduct', data, {
                     params:{
@@ -482,7 +498,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                         queryTB();
                     }
@@ -496,14 +512,14 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
     $scope.freeze = function(id, code, name,status){
         status = 1-status;
         var title;
-        status ? title = '解冻': title = '冻结';
+        status ? title = global.translateByKey('agent.coin.stock.list.unfreeze'): title = global.translateByKey('agent.coin.stock.list.frozen');
         $scope.openTips({
             title:title,
             content: htmlFun(code,name,'freeze'),
-            okTitle:'确定',
-            cancelTitle:'取消',
+            okTitle:global.translateByKey('common.confirm'),
+            cancelTitle:global.translateByKey('common.cancel'),
             okCallback: function($s){
-                if(!$s.passwd) return $scope.error('请输入支付密码!');
+                if(!$s.passwd) return $scope.error(global.translateByKey('agent.coin.stock.list.inputPaymentPassword'));
                 var data = {userId:id,status:status,passwd:$s.passwd};
                 $http.post(agentUri+'/account/status', data, {
                     params:{
@@ -513,7 +529,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
                     if(result.err){
                         $scope.error(result.msg);
                     }else{
-                        $scope.success('操作成功');
+                        $scope.success(global.translateByKey('common.succeed'));
                         $scope.onPageSizeChanged();
                     }
                 }).error(function(msg, code){
@@ -529,10 +545,10 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         var code = params.data.code;
         var id = user._id;
         var status = params.data.accountStatus;
-        var freezeName = '冻结';
-        if(status==0) freezeName = '解冻';
-        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="add(\''+id+'\',\''+code+'\',\''+name+'\')" ng-if="super||per[\'增加\']">增加</span>'+
-            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="deduct(\''+id+'\',\''+code+'\',\''+name+'\')" ng-if="super||per[\'扣减\']">扣减</span>'+
+        var freezeName = global.translateByKey('agent.coin.stock.list.frozen');
+        if(status==0) freezeName = global.translateByKey('agent.coin.stock.list.unfreeze');
+        return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="add(\''+id+'\',\''+code+'\',\''+name+'\')" ng-if="super||per[\'增加\']" translate="agent.coin.stock.list.add">增加</span>'+
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="deduct(\''+id+'\',\''+code+'\',\''+name+'\')" ng-if="super||per[\'扣减\']" translate="agent.coin.stock.list.deduction">扣减</span>'+
             '<span class="btn btn-xs bg-primary m-r-xs" ng-click="freeze(\''+id+'\',\''+code+'\',\''+name+'\',\''+status+'\')" ng-if="super||per[\'冻结\']">'+freezeName+'</span>'+
             '<span class="btn btn-xs bg-primary" ng-click="onExportExcel(\''+id+'\')" ng-if="super||per[\'execl\']">execl</span>';
     }
@@ -550,9 +566,23 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "操作", width: 200, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'agent.coin.stock.list.header.code',
+        'agent.coin.stock.list.header.name',
+        'agent.coin.stock.list.header.level',
+        'agent.coin.stock.list.header.user',
+        'agent.coin.stock.list.header.buyAmount',
+        'agent.coin.stock.list.header.sellAmount',
+        'agent.coin.stock.list.header.amount',
+        'agent.coin.stock.list.header.status',
+        'agent.coin.stock.list.header.accountStatus',
+        'agent.coin.stock.list.header.crtime',
+        'agent.coin.stock.list.header.ctrl',
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             $scope.page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             $http.get(agentUri+'/agents', {
@@ -587,11 +617,15 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         rowSelection: 'multiple',
         columnDefs: columnDefs,
         rowHeight: 30,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -626,7 +660,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
     $scope.onExportExcel = function(id) {
         id = id || '';
         id ? id=('/'+id) : '';
-        window.location = agentUri+'/agents'+ id + '?fileName='+encodeURIComponent('库存列表.xls')+'&token=' + sso.getToken();
+        window.location = agentUri+'/agents'+ id + '?fileName='+encodeURIComponent(global.translateByKey('agent.coin.stock.inventoryList'))+'&token=' + sso.getToken();
     };
 }]);
 

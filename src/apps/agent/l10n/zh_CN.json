@@ -139,6 +139,11 @@
         "code": "渠道ID",
         "search": "搜索",
         "time": "时间段",
+        "levelOpts": {
+          "opts1": "未知",
+          "opts2": "一级",
+          "opts3": "二级"
+        },
         "header": {
           "date": "日期",
           "name": "渠道名",
@@ -213,12 +218,58 @@
         }
       },
       "stock": {
+        "select":"请选择订单",
+        "orderList":"订单列表.xls",
+        "inventoryList":"库存列表.xls",
         "list": {
           "balance":"T币余额",
           "code": "渠道ID",
           "search":"搜索",
           "reset":"重置",
-          "export":"导出excel"
+          "export":"导出excel",
+          "disable":"停用",
+          "activation":"激活",
+          "unfreeze":"解冻",
+          "frozen":"冻结",
+          "normal":"正常",
+          "cancellation":"注销",
+          "inputAmount":"输入金额",
+          "tb":"T币",
+          "owner":"拥有者",
+          "paymentPassword":"支付密码",
+          "setPaymentPassword":"设置支付密码",
+          "inputPaymentPassword":"请输入支付密码!",
+          "add":"增加",
+          "deduction":"扣减",
+          "levelOpts": {
+            "opts1": "未知",
+            "opts2": "一级",
+            "opts3": "二级"
+          },
+          "header":{
+            "code":"渠道ID",
+            "name":"渠道名",
+            "level":"代理级别",
+            "user":"拥有者",
+            "buyAmount":"总金额",
+            "sellAmount":"发放金额",
+            "amount":"未发金额",
+            "status":"状态",
+            "accountStatus":"账户状态",
+            "crtime":"创建时间",
+            "ctrl":"操作"
+          }
+        },
+        "header":{
+          "check":"多选",
+          "code":"单号",
+          "crtime":"订单时间",
+          "agent":"申购渠道",
+          "agentId":"渠道ID",
+          "user":"操作人",
+          "tAmount":"买T币数",
+          "amount":"支付金额",
+          "status":"状态"
         },
         "order": {
           "code": "渠道ID",

@@ -32,9 +32,9 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
     var format_level = function(params) {
         var agent = params.data.agent || {};
         var level = agent.level;
-        var info = '未知';
-        if(level==1) info = '一级';
-        if(level==2) info = '二级';
+        var info = global.translateByKey('agent.agentdata.register.levelOpts.opts1');
+        if(level==1) info = global.translateByKey('agent.agentdata.register.levelOpts.opts2');
+        if(level==2) info = global.translateByKey('agent.agentdata.register.levelOpts.opts3');
         return info;
     };
 
@@ -47,9 +47,19 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
         {headerName: "上级渠道名", field: "pname", width: 100, valueGetter: format_pname},
         {headerName: "注册人数", field: "count", width: 100}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'agent.agentdata.register.header.date',
+        'agent.agentdata.register.code',
+        'agent.agentdata.register.header.name',
+        'agent.agentdata.register.header.level',
+        'agent.agentdata.register.header.pcode',
+        'agent.agentdata.register.header.pname',
+        'agent.agentdata.register.header.count'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -88,11 +98,15 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -148,9 +162,9 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
     var format_level = function(params) {
         var agent = params.data.agent || {};
         var level = agent.level;
-        var info = '未知';
-        if(level==1) info = '一级';
-        if(level==2) info = '二级';
+        var info = global.translateByKey('agent.agentdata.recharge.levelOpts.opts1');
+        if(level==1) info = global.translateByKey('agent.agentdata.recharge.levelOpts.opts2');
+        if(level==2) info = global.translateByKey('agent.agentdata.recharge.levelOpts.opts3');
         return info;
     };
 
@@ -163,9 +177,19 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
         {headerName: "上级渠道名", field: "pname", width: 100, valueGetter: format_pname},
         {headerName: "充值数", field: "amount", width: 100}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'agent.agentdata.recharge.header.date',
+        'agent.agentdata.recharge.code',
+        'agent.agentdata.recharge.header.name',
+        'agent.agentdata.recharge.header.level',
+        'agent.agentdata.recharge.header.pcode',
+        'agent.agentdata.recharge.header.pname',
+        'agent.agentdata.recharge.header.amount'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date = $scope.search.date;
@@ -203,11 +227,15 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
         enableColResize: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -261,9 +289,22 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
         {headerName: "总营收", field: "totalAmount" ,width: 100, valueGetter: format_totalAmount},
         {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'agent.agentdata.analysis.header.code',
+        'agent.agentdata.analysis.header.name',
+        'agent.agentdata.analysis.header.regCount',
+        'agent.agentdata.analysis.header.online',
+        'agent.agentdata.analysis.header.chargeSum',
+        'agent.agentdata.analysis.header.chargeAmount',
+        'agent.agentdata.analysis.header.cardAmount',
+        'agent.agentdata.analysis.header.sysAmount',
+        'agent.agentdata.analysis.header.totalAmount',
+        'agent.agentdata.analysis.header.crtime'
+    ]);
 
     var dataSource = {
         getRows: function (params) {
+            global.agGridOverlay();             //翻译
             var search = $scope.search;
             var date = search.date || {};
             var startDate = date.startDate || "";
@@ -306,11 +347,15 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
         rowSelection: 'multiple',
         rowHeight: 30,
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource

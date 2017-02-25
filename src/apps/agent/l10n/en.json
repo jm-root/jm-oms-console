@@ -139,6 +139,11 @@
         "code": "Channel ID",
         "search":"Search",
         "time":"Time Slot",
+        "levelOpts":{
+          "opts1":"Unknown",
+          "opts2":"1 level",
+          "opts3":"2 level"
+        },
         "header":{
           "date": "Date",
           "name": "Channel name",
@@ -213,12 +218,58 @@
        }
      },
       "stock":{
+        "select":"Please Select Order",
+        "orderList":"Order List.xls",
+        "inventoryList":"Inventory List.xls",
         "list":{
           "balance":"Coin Balance",
           "code": "Channel ID",
           "search":"Search",
           "reset":"Reset",
-          "export":"Export Excel"
+          "export":"Export Excel",
+          "disable":"Disable",
+          "activation":"Activation",
+          "unfreeze":"Unfreeze",
+          "frozen":"Frozen",
+          "normal":"Normal",
+          "cancellation":"Cancellation",
+          "inputAmount":"Input Amount",
+          "tb":"TB",
+          "owner":"Owner",
+          "paymentPassword":"Payment Password",
+          "setPaymentPassword":"Set Payment Password",
+          "inputPaymentPassword":"Please Input Payment Password!",
+          "add":"Add",
+          "deduction":"Deduction",
+          "levelOpts":{
+            "opts1":"Unknown",
+            "opts2":"1 level",
+            "opts3":"2 level"
+          },
+          "header":{
+            "code":"Channel ID",
+            "name":"Channel Name",
+            "level":"Agent Level",
+            "user":"Owner",
+            "buyAmount":"Total Amount",
+            "sellAmount":"Payment Amount",
+            "amount":"Outstanding Amount",
+            "status":"Status",
+            "accountStatus":"Account Status",
+            "crtime":"Create Time",
+            "ctrl":"Operation"
+          }
+        },
+        "header":{
+          "check":"Multiselect",
+          "code":"Order Number",
+          "crtime":"Order Time",
+          "agent":"Purchase Channel",
+          "agentId":"Channel ID",
+          "user":"Operator",
+          "tAmount":"Buy tb Currency",
+          "amount":"Payment Amount",
+          "status":"Status"
         },
         "order":{
           "code": "Channel ID",

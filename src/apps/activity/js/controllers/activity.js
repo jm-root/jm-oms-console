@@ -865,7 +865,7 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
     });
 }]);
 
-app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('ActivityAtyEditCtrl', ['$scope', '$http', '$state', '$stateParams','global', '$timeout',function($scope, $http, $state, $stateParams,global,$timeout) {
     var url = activityUri+'/activities';
     var furl = activityUri+'/forums';
     var id = $stateParams.id;

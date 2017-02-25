@@ -17,17 +17,17 @@
     <div class="col-lg-12">
         <div class="pull-left">
             <span translate="agent.agentdata.register.code">渠道ID&nbsp;&nbsp;</span>
-            <input type="text" placeholder="渠道ID" ng-model="search.agent">
+            <input type="text" placeholder="{{ 'agent.agentdata.register.code' | translate }}" ng-model="search.agent">
         </div>
         <span class="pull-left" style="margin-top: 3px;margin-left:15px" translate="agent.agentdata.register.time">时间段&nbsp;&nbsp;</span>
         <div class="pull-left">
             <div class="input-group" style="width: 205px;">
-                <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="起始时间和结束时间" style="height: 28px"/>
+                <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.searchUser' | translate }}" style="height: 28px"/>
                 <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
             </div>
         </div>
         <div class="pull-left m-l-xs">
-            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;" translate="agent.agentdata.register.search">搜索</span>
+            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">{{ 'agent.agentdata.register.search' | translate }}</span>
         </div>
     </div>
 </div>
