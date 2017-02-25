@@ -225,7 +225,7 @@ app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$ht
     };
 
     function angGridFormatTableBtn(params) {
-        return '<button class="btn btn-xs bg-primary" ng-click="goTableConfig(\''+tmpl_id+'\', \''+tmpl_type+'\',\''+roomId+'\',\''+params.data.tableType+'\') translate=\'appmgr.table.tableConfig\'">桌子配置</button>';
+        return '<button class="btn btn-xs bg-primary" ng-click="goTableConfig(\''+tmpl_id+'\', \''+tmpl_type+'\',\''+roomId+'\',\''+params.data.tableType+'\')" translate=\'appmgr.table.tableConfig\'>桌子配置</button>';
     }
 
     $scope.goTableConfig = function(appId, type, roomId, id){
