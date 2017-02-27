@@ -265,7 +265,25 @@
          "discount":"Discount",
          "system":"System",
          "header":{
-           "account":"Player Account"
+           "account":"Player Account",
+           "agentCode":"Subordinate Channel",
+           "amount":"Distribution Amount",
+           "rebate":"Rebate",
+           "valueT":"Value T Currency",
+           "crtime":"Operating Time",
+           "memo":"Remarks",
+           "type":"Operating Type",
+           "channel":"Channel ID",
+           "agentName":"Channel Name",
+           "pagentCode":"Distribution Channel",
+           "amountT":"Distribution T Currency",
+           "code":"Odd Numbers",
+           "time":"Order Time",
+           "purchaseChannel":"Purchase Channel",
+           "buyT":"Buy T Currency",
+           "cash":"Payment Amount",
+           "creator":"Operator",
+           "user":"User"
          }
        },
        "playerStat":{
@@ -364,7 +382,6 @@
           "reset":"Reset",
           "export":"Export Excel",
           "refund":"Refund",
-          "invalid ":"Invalid",
           "approvedPayment":"Approved Payment",
           "approvedRefund":"Approved Refund"
         },

@@ -1851,8 +1851,24 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
             {headerName: "操作类型", field: "type", width: 100, valueGetter: format_type3}
         ]
     };
+    global.agGridTranslateSync($scope, columnDefs['0'], [                 //翻译
+        'agent.coin.record.logs.header.account',
+        'agent.coin.record.logs.header.agentCode',
+        'agent.coin.record.logs.header.amount',
+        'agent.coin.record.logs.header.rebate',
+        'agent.coin.record.logs.header.valueT',
+        'agent.coin.record.logs.header.crtime',
+        'agent.coin.record.logs.header.memo',
+        'agent.coin.record.logs.header.type',
+    ]);
     global.agGridTranslateSync($scope, columnDefs['1'], [                 //翻译
-            'agent.coin.record.logs.header.account'
+        'agent.coin.record.logs.header.channel',
+        'agent.coin.record.logs.header.agentName',
+        'agent.coin.record.logs.header.pagentCode',
+        'agent.coin.record.logs.header.amountT',
+        'agent.coin.record.logs.header.memo',
+        'agent.coin.record.logs.header.crtime',
+        'agent.coin.record.logs.header.type',
     ]);
 
 

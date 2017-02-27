@@ -6,7 +6,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
     $scope.pageSize = history.pageSize||$scope.defaultRows;
 
     var format_creator = function(params) {
-        if(!params.data.creator) return '系统建立';
+        if(!params.data.creator) return global.translateByKey('home.bbs.list.systemBulid');
         var obj = params.data.creator;
         return obj.nick || '';
     };
@@ -42,7 +42,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
 
 
     function opr_render(params){
-        return '<button class="btn btn-xs bg-primary" ng-click="publish(\''+params.data._id+'\')">发布帖子</button>';
+        return '<button class="btn btn-xs bg-primary" ng-click="publish(\''+params.data._id+'\')" translate="home.bbs.list.publishPost">发布帖子</button>';
     }
 
     var dataSource = {
@@ -430,7 +430,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
         if (data.err) {
             $scope.error(data.msg);
         } else {
-            var rows = [{_id:'',name:'全部版块'}];
+            var rows = [{_id:'',name:global.translateByKey('home.bbs.list.plate')}];
             rows = rows.concat(data.rows || []);
             $scope.forums = rows;
         }

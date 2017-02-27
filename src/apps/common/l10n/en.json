@@ -90,7 +90,8 @@
     "post": "Post",
     "modify": "Modify",
     "back":"Back",
-    "tb":"TB"
+    "tb":"TB",
+    "cancel ":"Cancel"
   },
   "imgcrop":{
     "title":"Edit Picture",

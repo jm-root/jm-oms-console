@@ -64,7 +64,9 @@
         "recommend_add":"Support Number",
         "recommend_sub":"Opposition Number",
         "author":"Author",
-        "plate":"All Plate"
+        "plate":"All Plate",
+        "systemBulid":"System Bulid",
+        "publishPost":"Publish Post"
       },
       "forum":{
         "edit":{
@@ -148,6 +150,7 @@
       "userEmail":"User Email",
       "userID":"User ID",
       "search":"Search",
+      "searchUserName":"Search User Name",
       "userObjectID":"User ObjectID",
       "userName":"User Name",
       "attachProp":"Attach Prop",
@@ -198,7 +201,8 @@
         "pureText":"Pure Text",
         "formattedPlainText":"Formatted Plain Text",
         "change":"The Level Already Exists, Please Change The Rank",
-        "setSuccess":"Set Success"
+        "setSuccess":"Set Success",
+        "select":"Please Select"
       }
     }
   }

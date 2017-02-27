@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" translate="agent.agent.create.AgentLevel">渠道级别</label>
                     <div class="col-lg-10 w-auto">
-                        <p class="form-control-static">{{agentLevel}}级</p>
+                        <p class="form-control-static">{{agentLevel}}{{ 'agent.agent.create.list.level' | translate }}</p>
                     </div>
                 </div>
 
@@ -197,7 +197,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" translate="agent.agent.create.label">标签</label>
                     <div class="col-sm-4">
-                        <tags-input class="bootstrap" ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="添加标签" min-length="1"></tags-input>
+                        <tags-input class="bootstrap" ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="{{ 'common.addTag' | translate }}" min-length="1"></tags-input>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

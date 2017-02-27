@@ -266,7 +266,25 @@
           "discount":"折",
           "system":"系统",
           "header":{
-            "account":"玩家账号"
+            "account":"玩家账号",
+            "agentCode":"所属渠道",
+            "amount":"分发金额",
+            "rebate":"折扣",
+            "valueT":"价值T币",
+            "crtime":"操作时间",
+            "memo":"备注",
+            "type":"操作类型",
+            "channel":"渠道ID",
+            "agentName":"渠道名",
+            "pagentCode":"分发渠道",
+            "amountT":"分发T币数",
+            "code":"单号",
+            "time":"下单时间",
+            "purchaseChannel":"申购渠道",
+            "buyT":"购买T币数",
+            "cash":"支付金额",
+            "creator":"操作者",
+            "user":"用户"
           }
         },
         "playerStat": {
@@ -365,7 +383,6 @@
           "reset":"重置",
           "export":"导出excel",
           "refund":"退款",
-          "invalid ":"作废",
           "approvedPayment":"批准发放",
           "approvedRefund":"批准退款"
         },

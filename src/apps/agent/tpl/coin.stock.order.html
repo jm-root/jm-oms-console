@@ -43,12 +43,12 @@
         <button class="btn btn-default" ng-click="resetFun()" translate="agent.coin.stock.order.reset">重置</button>
         <button class="btn btn-default" ng-click="onExportExcel()" translate="agent.coin.stock.order.export">导出excel</button>
         <span class="m-l-md">
-            <button class="btn btn-default" ng-click="updateStatus(2)" ng-if="super||per['已到账']" translate="agent.coin.stock.order.arrivalAccount">已到账</button>
-            <button class="btn btn-default" ng-click="updateStatus(3)" ng-if="super||per['批准发放']" translate="agent.coin.stock.order.approvedPayment">批准发放</button>
-            <button class="btn btn-default" ng-click="updateStatus(4)" ng-if="super||per['退款']" translate="agent.coin.stock.order.refund">退款</button>
-            <button class="btn btn-default" ng-click="updateStatus(5)" ng-if="super||per['批准退款']" translate="agent.coin.stock.order.approvedRefund">批准退款</button>
-            <button class="btn btn-default" ng-click="updateStatus(6)" ng-if="super||per['已退款']" translate="agent.coin.stock.order.refunded">已退款</button>
-            <button class="btn btn-default" ng-click="updateStatus(8)" ng-if="super||per['作废']" translate="agent.coin.stock.order.invalid">作废</button>
+            <button class="btn btn-default" ng-click="updateStatus(2)" ng-if="super||per['已到账']">{{ 'agent.coin.stock.order.arrivalAccount' | translate }}</button>
+            <button class="btn btn-default" ng-click="updateStatus(3)" ng-if="super||per['批准发放']">{{ 'agent.coin.stock.order.approvedPayment' | translate }}</button>
+            <button class="btn btn-default" ng-click="updateStatus(4)" ng-if="super||per['退款']">{{ 'agent.coin.stock.order.refund' | translate }}</button>
+            <button class="btn btn-default" ng-click="updateStatus(5)" ng-if="super||per['批准退款']">{{ 'agent.coin.stock.order.approvedRefund' | translate }}</button>
+            <button class="btn btn-default" ng-click="updateStatus(6)" ng-if="super||per['已退款']">{{ 'agent.coin.stock.order.refunded' | translate }}</button>
+            <button class="btn btn-default" ng-click="updateStatus(8)" ng-if="super||per['作废']">{{ 'common.cancel' | translate }}</button>
         </span>
     </div>
 </div>

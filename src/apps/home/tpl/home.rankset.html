@@ -15,7 +15,7 @@
                                 <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">{{ 'home.rankset.search' | translate }} <span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
+                                        <input type="text" class="form-control input-sm btn-rounded" placeholder="{{ 'home.sendDak.searchUserName' | translate }}" ng-model="keyword">
                                         <span class="input-group-btn">
                                               <span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>
                                             </span>

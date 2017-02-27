@@ -2,7 +2,8 @@
   "config":{
     "menus":{
       "save":"Save",
-      "editInformation":"Edit Information"
+      "editInformation":"Edit Information",
+      "enter":"Please Enter JSON Format Data"
     },
     "systeminit":{
       "init":"Init",
@@ -13,7 +14,8 @@
       "save":"Save",
       "refresh":"Refresh",
       "system":"System",
-      "configure":"Configure"
+      "configure":"Configure",
+      "systemName":"Enter System Name"
     },
     "systemunified":{
       "add":"Add",
@@ -27,7 +29,9 @@
       "refresh":"Refresh",
       "item":"Item",
       "key":"Key",
-      "value":"Value"
+      "value":"Value",
+      "searchResources":"Search Resources",
+      "enter":"Enter Configuration Key"
     },
     "view":{
       "saveall":"Save All",

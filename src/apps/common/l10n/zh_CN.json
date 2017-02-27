@@ -90,7 +90,8 @@
     "post": "修改",
     "modify": "修改",
     "back":"返回",
-    "tb":"T币"
+    "tb":"T币",
+    "cancel":"作废"
   },
   "imgcrop":{
     "title":"编辑图片",

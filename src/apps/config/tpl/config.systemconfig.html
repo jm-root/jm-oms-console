@@ -9,7 +9,7 @@
                         <a href class="btn btn-sm btn-info m-t-n-xs" ng-click="addItem(name)" translate="config.systemconfig.add">新增</a>
                     </div>
                     <div class="pull-right">
-                        <input type="text" class="no-border no-bg" placeholder="输入系统名" ng-model="name">
+                        <input type="text" class="no-border no-bg" placeholder="{{ 'config.systemconfig.systemName' | translate }}" ng-model="name">
                     </div>
                     <div class="h4" translate="config.systemconfig.system">系统</div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="cell">
                     <div class="cell-inner">
                         <div class="panel-body bg-white-only" ng-style="{height:app.navHeight-100+'px'}">
-                            <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="{height:app.navHeight-123+'px'}" placeholder="请输入JSON格式数据" ng-model="val"></textarea>
+                            <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="{height:app.navHeight-123+'px'}" placeholder="{{ 'config.menus.enter' | translate }}" ng-model="val"></textarea>
                         </div>
                     </div>
                 </div>
