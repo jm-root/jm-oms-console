@@ -96,6 +96,14 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'global', function
         {headerName:"操作时间",field:"crtime",width:150,valueGetter:$scope.angGridFormatDateS},
         {headerName:"操作者IP",field:"ip",width:150}
     ];
+    global.agGridTranslateSync($scope, columnDefs, [
+        'system.log.type',
+        'system.log.operation',
+        'system.log.user',
+        'system.log.crtime',
+        'system.log.ip',
+
+    ]);
 
     function formatOperation  (param) {
        if(param.data.type == 1){
@@ -109,6 +117,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'global', function
 
     var dataSource={
         getRows:function (params) {
+            global.agGridOverlay();             //翻译
             var page = params.startRow / $scope.pageSize + 1;
             var search = $scope.search;
             var date =search.date;
@@ -153,9 +162,13 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'global', function
         angularCompileRows: true,
         rowSelection: 'multiple',
         columnDefs: columnDefs,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             event.api.sizeColumnsToFit();
+        },
+        onRowDataChanged: function (cell) {
+            global.agGridOverlay();                 //翻译
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
