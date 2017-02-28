@@ -8,8 +8,8 @@ var gConfig = {
         staticHost:"http://localhost:20400"
     },
     development: {
-        apiHost: "http://192.168.55:19990",
-        sdkHost: "http://192.168.50:20200",
+        apiHost: "http://test.gzleidi.cn:82",
+        sdkHost: "http://test.gzleidi.cn:81",
         opensdkHost: "http://jamma.3322.org:20300",
         staticHost:"http://jamma.3322.org:20400"
     },
@@ -55,7 +55,7 @@ var baoxiangUri = sdkHost + "/baoxiang";
 var algUri = sdkHost + "/alg";
 
 
-jm.sdk.init({uri: sdkHost});
+jm.sdk.init({uri: apiHost});
 
 var domain = '';
 var host = document.domain;
