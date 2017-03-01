@@ -42,7 +42,7 @@ angular.module('app')
                 '../libs/jquery/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'],
             echarts: ['../libs/jquery/echarts/dist/echarts.js'],
             ueditor: ['../libs/jquery/ueditor/ueditor.config.js', '../libs/jquery/ueditor/ueditor.all.min.js'],
-            jmGameDiffcult:['../libs/jm/jm-ajax/dist/js/jm-ajax.js','../libs/jm/jm-cord/dist/js/jm-core.js', '../libs/jm/jm-ms/dist/js/jm-ms.js'],
+            jmGameDiffcult:['../libs/jm/jm-ajax/dist/js/jm-ajax.js','../libs/jm/jm-core/dist/js/jm-core.js', '../libs/jm/jm-ms/dist/js/jm-ms.js'],
         }
     )
     .constant('MODULE_CONFIG', {
