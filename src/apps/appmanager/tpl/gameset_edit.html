@@ -7,24 +7,24 @@
 </div>
 
 <div>
-    <uib-tabset class="tab-container" >
-        <uib-tab index="0">
-            <uib-tab-heading>
+    <tabset class="tab-container" >
+        <tab index="0">
+            <tab-heading>
                 {{ 'appmgr.basicConfig' | translate }}
-            </uib-tab-heading>
+            </tab-heading>
             <div ng-include="gameset_config_tmpl"></div>
-        </uib-tab>
-        <uib-tab index="1">
-            <uib-tab-heading>
+        </tab>
+        <tab index="1">
+            <tab-heading>
                 {{ 'appmgr.roomDiff' | translate }}
-            </uib-tab-heading>
+            </tab-heading>
             <div ng-include="gameset_config_diffcult_tmpl"></div>
-        </uib-tab>
-        <uib-tab index="1">
-            <uib-tab-heading>
+        </tab>
+        <tab index="1">
+            <tab-heading>
                 {{ 'appmgr.tableAdjust' | translate }}
-            </uib-tab-heading>
+            </tab-heading>
             <div ng-include="gameset_config_alg_tmpl"></div>
-        </uib-tab>
-    </uib-tabset>
+        </tab>
+    </tabset>
 </div>
