@@ -514,6 +514,7 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         'recharge.third.moditime'
     ]);
 
+    
     var dataSource = {
         getRows: function (params) {
             global.agGridOverlay();             //翻译
