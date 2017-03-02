@@ -152,6 +152,9 @@
     "room":{
       "manage":"Room Manage"
     },
+    "robot": {
+      "manage":"Robot Manage"
+    },
     "wordfilter":{
       "manage":"Wordfilter",
       "list":"List",

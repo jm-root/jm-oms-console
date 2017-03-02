@@ -5,18 +5,22 @@ var gConfig = {
         apiHost: "http://localhost:19990",
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://localhost:20300",
-        staticHost:"http://localhost:20400"
+        staticHost:"http://localhost:20400",
+        robotUri: "ws://localhost:25000"
     },
     development: {
         apiHost: "http://192.168.55:19990",
-        sdkHost: "http://192.168.50:20200",
+        sdkHost: "http://localhost:20200",
         opensdkHost: "http://jamma.3322.org:20300",
-        staticHost:"http://jamma.3322.org:20400"
+        staticHost:"http://jamma.3322.org:20400",
+        // robotUri: "ws://api.gzleidi.com/robot"
+        robotUri: "ws://localhost:25000/robot"
     },
     production: {
         sdkHost: "http://api.gzleidi.com",
         opensdkHost: "http://openapi.gzleidi.com",
-        staticHost:"http://www.gzleidi.com"
+        staticHost:"http://www.gzleidi.com",
+        robotUri: "ws://api.gzleidi.com/robot"
     }
 };
 
@@ -26,6 +30,7 @@ var apiHost = gConfig.apiHost;
 var sdkHost = gConfig.sdkHost;
 var opensdkHost = gConfig.opensdkHost;
 var staticHost = gConfig.staticHost;
+var robotUri = gConfig.robotUri;
 
 var perUri = sdkHost+"/acl";
 var ssoUri = sdkHost+"/sso";

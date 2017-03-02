@@ -152,6 +152,9 @@
     "room":{
       "manage":"房间管理"
     },
+    "robot": {
+      "manage":"机器人管理"
+    },
     "wordfilter":{
       "manage":"敏感词管理",
       "list":"敏感词列表",

@@ -1,0 +1,200 @@
+<div >
+    <div ui-view class="fade-in-down"></div>
+    <form ng-show="$state.is('app.robot.manage')" name="formValidate" class="form-horizontal form-validation">
+        <div class="panel panel-default">
+            <div class="panel-heading titlefixed">
+                <h1 class="m-n font-thin h3" >机器人管理</h1>
+            </div>
+            <div class="panel-body paddingtop">
+
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="recharge.cardadd.denomination">面值</label>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<input type="text" class="form-control" style="max-width: 320px" placeholder="{{ 'recharge.card.parValue' | translate }}" ng-model="card.parValue">-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1">-->
+                        <!--<select class="form-control w-sm" ng-model="card.type" ng-options="x.type as x.name for x in typedata">-->
+                            <!--<option value="" translate="recharge.cardadd.select">请选择</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <div class="container-fluid">
+
+                    <div style="margin-top: 20px;">
+                        <form name="formValidate2" class="form-horizontal form-validation">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label">游戏列表<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                                <div class="col-sm-2">
+                                    <select class="form-control" ng-model="room.game" ng-options="(cate.name) for cate in games" required>
+                                        <option value="">-- 选择游戏 --</option>
+                                    </select>
+                                </div>
+
+                                <label class="col-sm-1   control-label">游戏房间<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                                <div class="col-sm-2">
+                                    <select class="form-control" ng-model="room.area" ng-options="(cate.name) for cate in areas[room.game.key]" required>
+                                        <option value="">-- 选择房间 --</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="submit" class="btn btn-success" ng-click="!formValidate2.$invalid&&search()">查询</button>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="submit" class="btn btn-success" ng-click="!formValidate2.$invalid&&addAgent()">添加代理</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <table class="table table-striped table-hover table-condensed table-bordered">
+
+                        <thead>
+                        <tr>
+                            <th style="width:10px;">批次标识</th>
+                            <th style="width:10px;">机器数目</th>
+                            <th style="width:10px;">服务模式</th>
+                            <th style="width:10px;">进入时间</th>
+                            <th style="width:10px;">离开时间</th>
+                            <th style="width:10px;">携带分数</th>
+                            <th style="width:10px;">进入间隔</th>
+                            <th style="width:10px;">离开间隔</th>
+                            <th style="width:10px;">换桌局数</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr ng-repeat="group in groups" ng-click="clickRow($index)">
+                            <td>{{group.groupId}}</td>
+                            <td>{{group.number}}</td>
+                            <td>{{group.modes}}</td>
+                            <td>{{group.entryTime}}</td>
+                            <td>{{group.exitTime}}</td>
+                            <td>{{group.gamePoint.min}}-{{group.gamePoint.max}}</td>
+                            <td>{{group.entryInterval.base}}-{{group.entryInterval.float}}</td>
+                            <td>{{group.exitInterval.base}}-{{group.exitInterval.float}}</td>
+                            <td>{{group.changeTable.min}}-{{group.changeTable.max}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid">
+                    <form name="formValidate" class="form-horizontal form-validation">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">批次标识<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" placeholder="批次标识" ng-model="room.groupId" required disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">机器数目<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" placeholder="机器数目" ng-model="room.number"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">服务模式<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-10">
+                                <label class="checkbox-inline i-checks">
+                                    <input type="checkbox" value="occupation" ng-model="room.modes.occupation"><i></i> 占座
+                                </label>
+                                <label class="checkbox-inline i-checks">
+                                    <input type="checkbox" value="passive" ng-model="room.modes.passive"><i></i> 被动
+                                </label>
+                                <label class="checkbox-inline i-checks">
+                                    <input type="checkbox" value="active" ng-model="room.modes.active">><i></i> 主动
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">进入时间<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-9">
+                                <input type="datetime" class="form-control" placeholder="进入时间(2017-12-08 24:00:00)" ng-model="room.entryTime"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">离开时间<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-9">
+                                <input type="datetime" class="form-control" placeholder="离开时间(2017-12-08 24:00:00)" ng-model="room.exitTime"  required>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                        <!--<label class="col-sm-2 control-label">携带分数<code style="background-color: transparent" ng-disabled="id">*</code></label>-->
+                        <!--<div class="col-sm-4">-->
+                        <!--<input type="number" class="form-control" placeholder="最小分数" ng-model="room.gamePoint.min"  required>-->
+                        <!--</div>-->
+                        <!--<label class="col-sm-1 text-center">-</label>-->
+                        <!--<div class="col-sm-4">-->
+                        <!--<input type="number" class="form-control" placeholder="最大分数" ng-model="room.gamePoint.max"  required>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">进入间隔<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="进入间隔" ng-model="room.entryInterval.base"  required>
+                            </div>
+                            <label class="col-sm-1 control-label">间隔浮动<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="间隔浮动" ng-model="room.entryInterval.float"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">离开间隔<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="离开间隔" ng-model="room.exitInterval.base"  required>
+                            </div>
+                            <label class="col-sm-1 control-label">间隔浮动<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="间隔浮动" ng-model="room.exitInterval.float"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">换桌局数<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="最小局数" ng-model="room.changeTable.min"  required>
+                            </div>
+                            <label class="col-sm-1 text-center">-</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" placeholder="最大局数" ng-model="room.changeTable.max"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">机器人帐号<code style="background-color: transparent" ng-disabled="id">*</code></label>
+                            <div class="col-sm-2">
+                                <div class="checkbox">
+                                    <label class="i-checks">
+                                        <input type="checkbox" value="" ng-model="room.loginNormalUser">
+                                        <i></i>
+                                        普通用户登录
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-1 col-sm-offset-9">
+                                <button type="number" class="btn btn-success" ng-click="room.groupId&&room.game&&room.area&&delete()">删除</button>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="number" class="btn btn-success" ng-click="!formValidate.$invalid&&add()">添加</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-sm-offset-10">
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+
+            <!--<footer class="panel-footer text-right bg-light lter">-->
+                <!--<button type="submit" class="btn btn-success" ng-click="savecard()" translate="recharge.cardadd.confirm">确定</button>-->
+            <!--</footer>-->
+        </div>
+    </form>
+
+</div>
+
