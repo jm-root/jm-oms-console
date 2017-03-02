@@ -11,10 +11,10 @@
         "date":"Date",
         "recharge_p":"Recharge Number",
         "recharge":"Recharge Amount",
-        "give_jb":"Give JB",
-        "give_dbj":"Give DBJ",
-        "gain_jb":"JB Total Wins",
-        "gain_dbj":"DBJ Total Wins"
+        "give_jb":"Give Gold",
+        "give_dbj":"Give Ticket",
+        "gain_jb":"Gold Total Wins",
+        "gain_dbj":"Ticket Total Wins"
       }
     }
   }

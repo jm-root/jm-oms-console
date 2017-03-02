@@ -511,7 +511,7 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         'recharge.third.b2amount',
         'recharge.third.tbamount',
         'recharge.third.crtime',
-        'recharge.third.moditime',
+        'recharge.third.moditime'
     ]);
 
     var dataSource = {

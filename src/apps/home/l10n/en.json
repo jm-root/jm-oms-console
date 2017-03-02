@@ -107,8 +107,8 @@
       "number":"Number of Days",
       "rewardType":"Reward Type",
       "jb": "Gold",
-      "tb": "Ingot",
-      "dbj": "DuoBaoJuan",
+      "tb": "TB",
+      "dbj": "Ticket",
       "rewardQuantity":"Reward Quantity",
       "day":"Day Number",
       "reward":"Reward"
@@ -168,9 +168,9 @@
       "userObjectID":"User ObjectID",
       "userName":"User Name",
       "VIPLevel":"VIP Level",
-      "highestIngot":"The Highest Ingot",
+      "highestIngot":"The Highest TB",
       "highestGold":"The Highest Gold",
-      "highestDuoBaoJuan":"The Highest DuoBaoJuan"
+      "highestDuoBaoJuan":"The Highest Ticket"
     },
     "vip":{
       "cond":{
@@ -183,7 +183,7 @@
         "setting":"VIP Preferences Category Setting",
         "give":"Daily Login Give",
         "rebatejb":"Additional Recharge Rebate(Gold)",
-        "rebatedbj":"Additional Recharge Rebate(DuoBaoJuan)",
+        "rebatedbj":"Additional Recharge Rebate(Ticket)",
         "turntable":"Daily Turntable",
         "addMultiple":"Add Multiple(100*1.2)",
         "addPercentage":"Add Percentage(100*3%)",
