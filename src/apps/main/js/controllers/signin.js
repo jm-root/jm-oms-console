@@ -5,18 +5,21 @@
 app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoader', function ($scope, $http, $state, $translatePartialLoader) {
     $translatePartialLoader.addPart('main');
     var sso = jm.sdk.sso;
-    $scope.user = {};
+    $scope.user = {account:localStorage.getItem('account')||''};
     $scope.visImgCode = localStorage.getItem('visImgCode')=='true';
+    $scope.headerImg = sdkHost+(localStorage.getItem('headerImg')||'/apps/common/img/avatar.jpg');
 
     $scope.authError = sso.authError || null;
     var isWXLongin = localStorage.getItem('isWXLogin');
     $scope.isWXLongin = !!(isWXLongin=='1'||isWXLongin=='true');
 
     $scope.login = function () {
+        localStorage.setItem('loginExpire', Date.now()+86400000);
         localStorage.setItem('isWXLogin', false);
         $scope.authError = null;
         sso.signon($scope.user, function(err, result){
             console.log(result);
+            localStorage.setItem('account', $scope.user.account);
             if(result.token){
                 localStorage.setItem('token',result.token);
                 localStorage.setItem('id',result.id);
@@ -32,6 +35,7 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoa
                 if($scope.visImgCode) $scope.refresh();
                 if(result.err===2007) $scope.authError = '验证码错误';
                 $scope.isWXLongin = false;
+                $scope.warning($scope.authError);
             }
         });
     };

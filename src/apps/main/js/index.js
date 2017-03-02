@@ -43,6 +43,12 @@
                             controller: 'SecurityCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/security.js'])
                         })
+                        .state('lockme', {
+                            url: '/lockme',
+                            templateUrl: path + 'tpl/page_lockme.html',
+                            controller: 'SigninCtrl',
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/signin.js'])
+                        })
                         .state('access', {
                             url: '/access',
                             template: '<div ui-view class="fade-in-right-big smooth"></div>'
