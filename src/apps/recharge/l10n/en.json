@@ -12,13 +12,13 @@
         "type":"Type",
         "cardadd":"Add Card",
         "_id": "ID",
-        "code": "Card number",
+        "code": "Card Number",
         "passwd": "Password",
-        "parValue": "Face value",
+        "parValue": "Face Value",
         "cardName": "Type",
-        "cardType": "Novice card",
+        "cardType": "Novice Card",
         "status": "Used",
-        "crTime": "Generation time",
+        "crTime": "Generation Time",
         "ctrl": "Operation"
       },
     "cardadd":{
@@ -33,15 +33,15 @@
     "log":{
       "type":"Type",
       "_id": "ID",
-      "code": "Card number",
+      "code": "Card Number",
       "cardName": "Type",
-      "parValue": "Face value",
+      "parValue": "Face Value",
       "userId": "User ID",
-      "nick": "User account",
+      "nick": "User Account",
       "userIP": "IP",
-      "useTime": "Recharge time",
-      "b2Recharge": "Recharge before / after gold number",
-      "amount": "Ingot amount"
+      "useTime": "Recharge Time",
+      "b2Recharge": "Recharge Before / After TB Number",
+      "amount": "TB Amount"
     },
     "cardtype":{
       "cardtypeadd":"Add Card Type",
@@ -86,8 +86,8 @@
       "amount":"Payment Amount",
       "cstatus":"Payment Status",
       "status":"Recharge Status",
-      "b2amount":"Recharge before/after tb Amount",
-      "tbamount":"Recharge tb Amount",
+      "b2amount":"Recharge before/after TB Amount",
+      "tbamount":"Recharge TB Amount",
       "crtime":"Payment Time",
       "moditime":"Payment Date"
     }

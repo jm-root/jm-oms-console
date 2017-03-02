@@ -4,7 +4,12 @@
       "add":"Add"
     },
     "log":{
-      "searchuser":"Search User"
+      "searchuser":"Search User",
+      "type":"Type",
+      "operation":"Operation Content",
+      "user":"Operation Manager",
+      "crtime":"Operating Time",
+      "ip":"Operator IP"
     }
   }
 }

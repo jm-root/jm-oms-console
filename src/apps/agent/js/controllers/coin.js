@@ -1870,6 +1870,23 @@ app.controller('CoinRecordLogsCtrl', ['$scope', '$http', '$state', '$stateParams
         'agent.coin.record.logs.header.crtime',
         'agent.coin.record.logs.header.type',
     ]);
+    global.agGridTranslateSync($scope, columnDefs['2'], [                 //翻译
+        'agent.coin.record.logs.header.code',
+        'agent.coin.record.logs.header.time',
+        'agent.coin.record.logs.header.purchaseChannel',
+        'agent.coin.record.logs.header.channel',
+        'agent.coin.record.logs.header.buyT',
+        'agent.coin.record.logs.header.cash',
+        'agent.coin.record.logs.header.creator',
+        'agent.coin.record.logs.header.crtime',
+        'agent.coin.record.logs.header.type'
+    ]);
+    global.agGridTranslateSync($scope, columnDefs['3'], [                 //翻译
+        'agent.coin.record.logs.header.user',
+        'agent.coin.record.logs.header.creator',
+        'agent.coin.record.logs.header.crtime',
+        'agent.coin.record.logs.header.type'
+    ]);
 
 
     var targetUri = {

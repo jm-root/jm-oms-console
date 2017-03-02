@@ -171,16 +171,16 @@
           "agentCode":"The Channel",
           "agentName":"The Channel Name",
           "mobile":"Mobile Phone",
-          "tb":"TB Balance",
-          "jb":"JB Balance",
-          "dbj":"DBJ Balance",
+          "tb":"TB",
+          "jb":"Gold",
+          "dbj":"Ticket",
           "accountStatus":"Account Status",
           "operation":"Operation"
         }
       },
       "distribute":{
         "batch":{
-          "balance":"Coin Balance",
+          "balance":"The Balance of TB",
           "userName":"User Name",
           "distributeCoin":"Distribute Coin",
           "determineRecharge":"Determine Recharge",
@@ -195,14 +195,14 @@
           "enter":"Please enter the payment password"
         },
         "make":{
-          "balance":"Coin Balance",
+          "balance":"The Balance of TB",
           "createTime":"Select Create Time",
           "create":"Create",
           "code":"Batch Number",
           "count":"Number",
           "amount":"Coin Number",
           "rebate":"Discount",
-          "sAmount":"Consume Tb Currency",
+          "sAmount":"Consume TB",
           "agent":"Channel ID",
           "crtime":"Creation Date",
           "operation":"Operation",
@@ -269,18 +269,18 @@
            "agentCode":"Subordinate Channel",
            "amount":"Distribution Amount",
            "rebate":"Rebate",
-           "valueT":"Value T Currency",
+           "valueT":"Value Of TB",
            "crtime":"Operating Time",
            "memo":"Remarks",
            "type":"Operating Type",
            "channel":"Channel ID",
            "agentName":"Channel Name",
            "pagentCode":"Distribution Channel",
-           "amountT":"Distribution T Currency",
+           "amountT":"Distribute TB",
            "code":"Odd Numbers",
            "time":"Order Time",
            "purchaseChannel":"Purchase Channel",
-           "buyT":"Buy T Currency",
+           "buyT":"Buy TB",
            "cash":"Payment Amount",
            "creator":"Operator",
            "user":"User"
@@ -304,7 +304,7 @@
            "agentCode":"Agent Code",
            "amount":"Distribute Gold",
            "rebate":"Discount",
-           "sAmount":"Value TB",
+           "sAmount":"Value Of TB",
            "date":"Statistical Time"
          }
        }
@@ -314,7 +314,7 @@
         "orderList":"Order List.xls",
         "inventoryList":"Inventory List.xls",
         "list":{
-          "balance":"Coin Balance",
+          "balance":"The Balance Of TB",
           "code": "Channel ID",
           "search":"Search",
           "reset":"Reset",
@@ -359,7 +359,7 @@
           "agent":"Purchase Channel",
           "agentId":"Channel ID",
           "user":"Operator",
-          "tAmount":"Buy tb Currency",
+          "tAmount":"Buy TB",
           "amount":"Payment Amount",
           "status":"Status"
         },
@@ -387,8 +387,8 @@
         },
         "recharge":{
           "recharge":"Recharge",
-          "balance":"Coin Balance",
-          "rechargeTb":"Recharge Coin",
+          "balance":"The Balance Of TB",
+          "rechargeTb":"Recharge TB",
           "amountRequired":"Amount Required"
         }
       }

@@ -14,7 +14,7 @@
           "postCountYesterday":"Post count yesterday",
           "creator":"Creator",
           "visible":"Visible",
-          "crtime":"Crtime",
+          "crtime":"Create time",
           "moditime":"Moditime"
         }
       },
@@ -50,10 +50,10 @@
           "title":"Title",
           "favTimes":"Collection times",
           "shareTimes":"Share times",
-          "viewCount":"View count",
-          "replyCount":"Reply count",
-          "favorTimes":"Favor times",
-          "againstTimes":"Against times",
+          "viewCount":"Browse times",
+          "replyCount":"Reply times",
+          "favorTimes":"Favor number",
+          "againstTimes":"Against number",
           "author":"Author",
           "visible":"Visible",
           "crtime":"Crtime",

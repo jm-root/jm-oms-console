@@ -65,7 +65,7 @@
         "categoryNmae":"Category Name",
         "parentClass":"Parent Class",
         "default":"Select parent class（default create parent class）",
-        "save":"save"
+        "save":"Save"
       },
       "header":{
         "_id":"_id",
@@ -77,7 +77,7 @@
     },
     "formula":{
       "editInformation":"Edit Information",
-      "calculationFormula":"calculation Formula",
+      "calculationFormula":"Calculation Formula",
       "numericalA":"Numerical A",
       "numericalB":"Numerical B",
       "save":"Save"
@@ -103,9 +103,9 @@
         "markedPrice":"Marked Price(>=35)",
         "unitPrice":"Unit Price",
         "currencyType":"Currency Type",
-        "treasure":"Treasure",
+        "treasure":"Ticket",
         "gold":"Gold",
-        "tCurrency":"T Currency",
+        "tCurrency":"TB",
         "treasureType":"Treasure Type",
         "continuousDrawing":"Continuous Drawing",
         "limitTheLottery":"Limit The Lottery",
@@ -192,9 +192,9 @@
         "primeCosts":"Prime Costs",
         "productInventory":"Product Inventory",
         "buyCurrencyType":"Buy Currency Type",
-        "treasure":"Treasure",
+        "treasure":"Ticket",
         "gold":"Gold",
-        "tCurrency":"T Currency",
+        "tCurrency":"TB",
         "buyingPrice":"Buying Price",
         "productType":"Product Type",
         "materialObject":"Material Object",

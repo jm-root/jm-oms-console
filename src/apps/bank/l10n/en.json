@@ -8,9 +8,9 @@
         "search": "Search  Order Number/User ID",
         "currencyType": "Currency Type",
         "cny": "RMB",
-        "tb": "Ingot",
+        "tb": "TB",
         "jb": "Gold",
-        "dbj": "Treasure",
+        "dbj": "Ticket",
         "opts": "Payment Status",
         "opt0": "Unpaid",
         "opt1": "Paid",
@@ -31,12 +31,12 @@
       "header":{
         "id": "Account ID",
         "user": "User name",
-        "tb": "Ingot balance",
-        "tb_a": "Ingot quota",
-        "jb": "Gold balance",
-        "jb_a": "Gold quota",
-        "dbj": "Treasure balance",
-        "dbj_a": "Treasure quota",
+        "tb": "Remainder TB",
+        "tb_a": "Total TB",
+        "jb": "Remainder gold",
+        "jb_a": "Total gold",
+        "dbj": "Remainder ticket",
+        "dbj_a": "Total ticket",
         "status": "Status",
         "createdAt": "Create time"
       }
@@ -75,9 +75,9 @@
         "cancelAuthorization": "Cancel authorization",
         "ctOpts": {
           "opts": "Choose currency",
-          "opts1": "Ingot",
+          "opts1": "TB",
           "opts2": "Gold",
-          "opts3": "Treasure"
+          "opts3": "Ticket"
         }
       },
       "overdraw": {
@@ -88,13 +88,13 @@
         "label4":"Set Up",
         "odOpts": {
           "opts": "Choose currency",
-          "opts1": "Ingot",
+          "opts1": "TB",
           "opts2": "Gold",
-          "opts3": "Treasure"
+          "opts3": "Ticket"
         }
       },
       "preauth": {
-        "title": "Pre authorization list",
+        "title": "Preauthorization list",
         "cancelSuccess": "Cancel success",
         "cancelAuthorization": "Cancel authorization",
         "header": {
@@ -115,9 +115,9 @@
         "defaultAccount": "Default account",
         "ctOpts": {
           "opts": "Choose currency",
-          "opts1": "Ingot",
+          "opts1": "TB",
           "opts2": "Gold",
-          "opts3": "Treasure"
+          "opts3": "Ticket"
         }
       }
     },

@@ -9,7 +9,7 @@
       "section":"Section",
       "SubordinateApplication":"Subordinate Application",
       "ActivityDisplayTime":"Activity Display Time",
-      "ActivityStartStopTime":"Activity Start Stop Time",
+      "ActivityStartStopTime":"Start and end time",
       "code":"Code",
       "title":"Title",
       "subtitle":"Subtitle",
@@ -30,12 +30,12 @@
       "ConditionType":"Condition Type",
       "PleaseSelect":"Please Select",
       "sign":"Sign",
-      "SignIn":"Sign In",
+      "SignIn":"Log in",
       "recharge":"Recharge",
       "consumption":"Consumption",
       "turntable":"Turntable",
-      "EffectiveStartStopTime":"Effective Start Stop Time",
-      "PropsToWhereToSave":"Props To Where To Save",
+      "EffectiveStartStopTime":"Effective start and end time",
+      "PropsToWhereToSave":"Where is the props saved",
       "knapsack":"Knapsack",
       "mail":"Mail",
       "DisplayOrder":"Display Order",
@@ -56,7 +56,7 @@
       "delete":"Delete",
       "ActivityItem":"Activity Item",
       "header":{
-        "title":"title",
+        "title":"Title",
         "crtime":"Create time"
       }
     },
@@ -73,7 +73,7 @@
         "author":"Author",
         "crtime":"Create time",
         "moditime":"Modify time",
-        "visible":"visible"
+        "visible":"Visible"
       }
     },
     "forumedit":{
@@ -120,7 +120,7 @@
       "describe":"Describe",
       "label":"Label",
       "tab":"Tab",
-      "WhetherGift":"Whether Gift",
+      "WhetherGift":"Whether it can be presented",
       "SubordinateApplication":"Subordinate Application",
       "NoApplication":"No Application",
       "PropType":"Prop Type",
@@ -153,7 +153,7 @@
         "description":"Description",
         "type":"Type",
         "useMode":"Use mode",
-        "isStack":"Is stack"
+        "isStack":"Whether it is stacked"
       }
     }
   }

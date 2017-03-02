@@ -4,7 +4,12 @@
       "add":"添加"
     },
     "log":{
-      "searchuser":"是否搜索用户"
+      "searchuser":"是否搜索用户",
+      "type":"类别",
+      "operation":"操作内容",
+      "user":"操作管理员",
+      "crtime":"操作时间",
+      "ip":"操作者IP"
     }
   }
 }

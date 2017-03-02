@@ -60,7 +60,7 @@ var baoxiangUri = sdkHost + "/baoxiang";
 var algUri = sdkHost + "/alg";
 
 
-jm.sdk.init({uri: sdkHost});
+jm.sdk.init({uri: apiHost});
 
 var domain = '';
 var host = document.domain;
