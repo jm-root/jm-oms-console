@@ -47,18 +47,17 @@ angular.module('app')
                 //$scope.errorTips(code);
             });
         }).catch(function (err) {
-            if (err.err) {
-                $scope.error(err.msg);
-            } else if (err.code) {
-                $scope.errorTips(err.code);
-            }
+            // if (err.err) {
+            //     $scope.error(err.msg);
+            // } else if (err.code) {
+            //     $scope.errorTips(err.code);
+            // }
             $state.go('access.signin');
         });
 
         $scope.signout = function () {
             sso.signout();
             $state.go('access.signin');
-            localStorage.setItem('isWXLogin', false);
         };
 
         $state.back = function () {
