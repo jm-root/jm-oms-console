@@ -2,8 +2,8 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-var sso =jm.sdk.sso;
-app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
+
+app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
 
     var roomDefault = {
         // name: "新手港湾",
@@ -152,6 +152,41 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             if(data.err){
                 $scope.error(data.msg);
             }else{
+
+
+                getConfigCoinRate().then(function (data) {
+                    var coinRate = data.ret;
+
+                    var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
+                    if(isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    var tableArr = [];
+                    var begin = $scope.room.startAreaId;
+                    var end = $scope.room.startAreaId + $scope.room.maxAreas;
+                    for(var i=begin; i<end; ++i){
+                        tableArr.push(i);
+                    }
+                    tableArr.forEach(function (e, i) {
+                        getAlgData(i).then(function (data) {
+                            if(data.coin_rate != coin_rate){
+                                initTable(i, $scope.room.diff, coin_rate).then(function (data) {
+                                    if(data.ret != "ok"){
+                                        $scope.error("设置桌子"+i+"投币比例失败");
+                                    }
+                                });
+                            }
+                        }, function () {
+                            $scope.error("获取桌子"+i+"投币比例失败");
+                        });
+                    });
+
+                }, function () {
+                    $scope.error("获取CoinRate失败");
+                });
+
+
                 // $scope.success('设置成功');
                 $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
@@ -225,7 +260,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
                     }
 
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
-                    if(!isNaN(coin_rate)){
+                    if(isNaN(coin_rate)){
                         coin_rate = 1;
                     }
 
@@ -378,7 +413,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $http.get(url, {
             params: {
                 token: sso.getToken(),
-                root: "root:config:roots",
+                root: "SystemConfig",
                 list: 0,
                 key: "coinRate"
             }
@@ -396,6 +431,29 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         return deferred.promise;
     }
 
+    function getAlgData(room) {
+
+        var deferred = $q.defer();
+
+        var url = algUri + '/' + $stateParams.type + '/getAlgData';
+        $http.get(url, {
+            params:{
+                token: sso.getToken(),
+                room: parseInt(room)
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    };
 
     $scope.isFromAppManager = false;
     var viewPath = 'view.appmanager.gameset.config';
@@ -412,7 +470,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
 
 }]);
 
-app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
+app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
 
     var roomDefault = {
         // name: "新手港湾",
@@ -550,6 +608,40 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             if(data.err){
                 $scope.error(data.msg);
             }else{
+
+                getConfigCoinRate().then(function (data) {
+                    var coinRate = data.ret;
+
+                    var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
+                    if(isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    var tableArr = [];
+                    var begin = $scope.room.startAreaId;
+                    var end = $scope.room.startAreaId + $scope.room.maxAreas;
+                    for(var i=begin; i<end; ++i){
+                        tableArr.push(i);
+                    }
+                    tableArr.forEach(function (e, i) {
+                        getAlgData(i).then(function (data) {
+                            if(data.coin_rate != coin_rate){
+                                initTable(i, $scope.room.diff, coin_rate).then(function (data) {
+                                    if(data.ret != "ok"){
+                                        $scope.error("设置桌子"+i+"投币比例失败");
+                                    }
+                                });
+                            }
+                        }, function () {
+                            $scope.error("获取桌子"+i+"投币比例失败");
+                        });
+                    });
+
+                }, function () {
+                    $scope.error("获取CoinRate失败");
+                });
+
+
                 // $scope.success('设置成功');
                 $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
@@ -618,7 +710,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
                     }
 
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
-                    if(!isNaN(coin_rate)){
+                    if(isNaN(coin_rate)){
                         coin_rate = 1;
                     }
 
@@ -771,7 +863,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $http.get(url, {
             params: {
                 token: sso.getToken(),
-                root: "root:config:roots",
+                root: "SystemConfig",
                 list: 0,
                 key: "coinRate"
             }
@@ -790,6 +882,29 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
     }
 
 
+    function getAlgData(room) {
+
+        var deferred = $q.defer();
+
+        var url = algUri + '/' + $stateParams.type + '/getAlgData';
+        $http.get(url, {
+            params:{
+                token: sso.getToken(),
+                room: parseInt(room)
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    };
 
     $scope.isFromAppManager = false;
     var viewPath = 'view.appmanager.gameset.config';

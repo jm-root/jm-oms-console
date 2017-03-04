@@ -2,8 +2,8 @@
  * Created by Admin on 2016/8/6.
  */
 "use strict";
-var sso =jm.sdk.sso;
-app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', "global", function($scope, $http, $state, $stateParams, $q, global) {
+
+app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', "global", function($scope, $http, $state, $stateParams, sso, $q, global) {
 
     var tableDefault = {
         // name: "桌子",
@@ -180,6 +180,34 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
             if(data.err){
                 $scope.error(data.msg);
             }else{
+
+                getConfigCoinRate().then(function (data) {
+                    var coinRate = data.ret;
+
+                    var coin_rate = (coinRate * $scope.table.exchangeRate)/$scope.table.areaRate;
+                    if(isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    getAlgData(id).then(function (data) {
+                        if(data.coin_rate != coin_rate){
+                            initTable(id, $scope.table.diff, coin_rate).then(function (data) {
+                                if(data.ret != "ok"){
+                                    $scope.error("设置桌子投币比例失败");
+                                }
+                            });
+                        }
+                    }, function () {
+                        $scope.error("获取桌子投币比例失败");
+                    });
+
+
+                }, function () {
+                    $scope.error("获取CoinRate失败");
+                });
+
+
+
                 // $scope.success('设置成功');
                 $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
@@ -229,9 +257,62 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
 
         return deferred.promise;
     }
+
+
+    function initTable(room, diff, coin_rate) {
+
+        var deferred = $q.defer();
+
+        var totalPlayerNum = 4;
+        var url = algUri + '/' + $stateParams.type + '/init';
+        var diffData = { "room": parseInt(room), "diff": parseInt(diff), "coin_rate": parseInt(coin_rate), "totalPlayerNum": parseInt(totalPlayerNum)};
+        $http.post(url, diffData, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "SystemConfig",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
 }]);
 
-app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
+app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
 
     var tableDefault = {
         // name: "新手港湾",
@@ -397,6 +478,33 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
             if(data.err){
                 $scope.error(data.msg);
             }else{
+
+                getConfigCoinRate().then(function (data) {
+                    var coinRate = data.ret;
+
+                    var coin_rate = (coinRate * $scope.table.exchangeRate)/$scope.table.areaRate;
+                    if(isNaN(coin_rate)){
+                        coin_rate = 1;
+                    }
+
+                    getAlgData(id).then(function (data) {
+                        if(data.coin_rate != coin_rate){
+                            initTable(id, $scope.table.diff, coin_rate).then(function (data) {
+                                if(data.ret != "ok"){
+                                    $scope.error("设置桌子投币比例失败");
+                                }
+                            });
+                        }
+                    }, function () {
+                        $scope.error("获取桌子投币比例失败");
+                    });
+
+
+                }, function () {
+                    $scope.error("获取CoinRate失败");
+                });
+
+
                 // $scope.success('设置成功');
                 $scope.success(global.translateByKey("common.succeed"));
                 if(jump){
@@ -441,6 +549,108 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                 deferred.resolve(data);
             }else{
                 deferred.reject(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function initTable(room, diff, coin_rate) {
+
+        var deferred = $q.defer();
+
+        var totalPlayerNum = 8;
+        var url = algUri + '/' + $stateParams.type + '/init';
+        var diffData = { "room": parseInt(room), "diff": parseInt(diff), "coin_rate": parseInt(coin_rate), "totalPlayerNum": parseInt(totalPlayerNum)};
+        $http.post(url, diffData, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "SystemConfig",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function initTable(room, diff, coin_rate) {
+
+        var deferred = $q.defer();
+
+        var totalPlayerNum = 4;
+        var url = algUri + '/' + $stateParams.type + '/init';
+        var diffData = { "room": parseInt(room), "diff": parseInt(diff), "coin_rate": parseInt(coin_rate), "totalPlayerNum": parseInt(totalPlayerNum)};
+        $http.post(url, diffData, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "SystemConfig",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
             }
         });
 

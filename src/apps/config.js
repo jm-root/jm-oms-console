@@ -9,7 +9,7 @@ var gConfig = {
         robotUri: "ws://localhost:25000"
     },
     development: {
-        apiHost: "http://192.168.55:19990",
+        apiHost: "http://localhost:20200",
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://jamma.3322.org:20300",
         staticHost:"http://jamma.3322.org:20400",
