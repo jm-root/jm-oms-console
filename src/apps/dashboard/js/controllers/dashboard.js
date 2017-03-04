@@ -15,7 +15,9 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         $scope.jb = jbObj.amountValid;
         $scope.dbj = dbjObj.amountValid;
     });
-
+    var reg = function (data) {
+        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
     $scope.search = {};
     $scope.search.date || ($scope.search.date = {});
 
@@ -86,6 +88,12 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 $scope.error(obj.msg);
             }else{
                 $scope.stat = obj||{};
+                $scope.stat.recharge_total = reg($scope.stat.recharge_total*0.01||0);
+                $scope.stat.recharge_yesterday = reg($scope.stat.recharge_yesterday*0.01||0);
+                $scope.stat.recharge_today = reg($scope.stat.recharge_today*0.01||0);
+                $scope.stat.recharge_order_total = reg($scope.stat.recharge_order_total||0);
+                $scope.stat.recharge_order_valid = reg($scope.stat.recharge_order_valid||0);
+                $scope.stat.recharge_order_invalid = reg($scope.stat.recharge_order_invalid||0);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

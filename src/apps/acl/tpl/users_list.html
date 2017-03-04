@@ -1,10 +1,10 @@
 <div class="bg-light lter b-b wrapper">
     <div class="pull-right">
-        <button ui-sref="app.acl.users.edit" type="button" class="btn btn-sm btn-primary btn-addon" translate="acl.user.create">
-            <i class="fa fa-plus"></i>创建
+        <button ui-sref="app.acl.users.edit" type="button" class="btn btn-sm btn-primary btn-addon">
+            <i class="fa fa-plus"></i><!--创建-->{{'acl.user.create'|translate}}
         </button>
-        <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()" translate="acl.user.delete">
-            <i class="fa fa-trash-o"></i>删除
+        <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
+            <i class="fa fa-trash-o"></i><!--删除-->{{'acl.user.delete'|translate}}
         </button>
     </div>
     <div class="pull-right">
@@ -19,9 +19,9 @@
     </div>
     <div class="pull-right m-r-sm" >
         <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
-            <option value="" translate="acl.user.state">状态</option>
-            <option value="0" translate="acl.user.suspend">封停</option>
-            <option value="1" translate="acl.user.normal">正常</option>
+            <option value=""><!--状态-->{{'acl.user.state'|translate}}</option>
+            <option value="0"><!--封停-->{{'acl.user.suspend'|translate}}</option>
+            <option value="1"><!--正常-->{{'acl.user.normal'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">
