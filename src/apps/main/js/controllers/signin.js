@@ -9,13 +9,8 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoa
     $scope.visImgCode = localStorage.getItem('visImgCode')=='true';
     $scope.headerImg = sdkHost+(localStorage.getItem('headerImg')||'/apps/common/img/avatar.jpg');
 
-    $scope.authError = sso.authError || null;
-    var isWXLongin = localStorage.getItem('isWXLogin');
-    $scope.isWXLongin = !!(isWXLongin=='1'||isWXLongin=='true');
-
     $scope.login = function () {
         localStorage.setItem('loginExpire', Date.now()+86400000);
-        localStorage.setItem('isWXLogin', false);
         $scope.authError = null;
         sso.signon($scope.user, function(err, result){
             console.log(result);
@@ -41,8 +36,6 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoa
     };
 
     $scope.weixin = function(){
-        $scope.authError =
-        localStorage.setItem('isWXLogin', true);
         $http.get(ssoUri+'/wechat/authuri', {
             params: {
                 process_uri:'http://'+$scope.host+'/wechat/oauth',

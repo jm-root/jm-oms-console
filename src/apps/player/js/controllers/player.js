@@ -612,7 +612,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         var obj = params.data || {};
         var start = moment(obj.onTime).valueOf();
         var end = moment(obj.offTime).valueOf();
-        return Math.round((end-start)*0.01)+'秒';
+        return Math.round((end-start)*0.001)+'秒';
     };
 
 

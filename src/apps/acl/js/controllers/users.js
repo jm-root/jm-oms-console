@@ -1,12 +1,11 @@
 
 'use strict';
-app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global',
-    function($scope, $http, $state, $stateParams, $timeout,global) {
+app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout,global) {
+    var history = global.usersListHistory||(global.usersListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
+    $scope.search = history.search||{};
     var sso=jm.sdk.sso;
     var acl = jm.sdk.acl;
-    var history = global.usersListHistory||(global.usersListHistory={});
-    $scope.pageSize = history.pageSize||'10';
-    $scope.search = history.search||{};
     var format_status = function(params) {
         var status = params.data.status||'';
         if(status=='0') status = '未激活';
@@ -32,7 +31,6 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
         return rolesAry;
     };
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "昵称", field: "nick", width: 90,cellStyle:{'text-align':'center'}},
         {headerName: "角色", field: "roles", width: 80, valueGetter:format_roles,cellStyle:{'text-align':'center'} },
         {headerName: "标签", field: "tags", width: 80},
@@ -50,23 +48,26 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
             var keyword = search.keyword;
             var status=search.status;
             var page = params.startRow / $scope.pageSize + 1;
-            acl.user.list({
-                token: sso.getToken(),
-                page: page,
-                rows: $scope.pageSize,
-                keyword: keyword,
-                status:status
-            }, function(err, doc){
-                if(doc.err){
-                    $scope.errorTips(doc.err);
-                    return;
-                } else
-                {
-                    var data = doc;
+            $http.get(aclUri+'/users', {
+                params: {
+                    token: sso.getToken(),
+                    page: page,
+                    rows: $scope.pageSize,
+                    keyword: keyword,
+                    status:status
+                }
+            }).success(function (result) {
+                var data = result;
+                if (data.err) {
+                    $scope.error(data.msg);
+                } else {
+                    data.rows = data.rows || [];
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;
                     params.successCallback(rowsThisPage, lastRow);
                 }
+            }).error(function(msg, code){
+                $scope.errorTips(code);
             });
         }
     };
