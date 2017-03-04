@@ -72,7 +72,7 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         $scope.isCollapsed = true;
         $scope.ubtnname='修改';
         var id = $scope.role._id;
-        $http.post(aclUri+'/roles'+id, $scope.role, {
+        $http.post(aclUri+'/roles/'+id, $scope.role, {
             params:{
                 token: sso.getToken()
             }
