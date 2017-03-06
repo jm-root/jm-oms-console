@@ -3,12 +3,12 @@
 </div>
 
 <div>
-    <uib-tabset class="tab-container">
-        <uib-tab heading="{{ 'appmgr.basicConfig' | translate }}">
+    <tabset class="tab-container">
+        <tab heading="{{ 'appmgr.basicConfig' | translate }}">
             <div ng-include="gameset_config_tmpl"></div>
-        </uib-tab>
-        <uib-tab heading="{{ 'appmgr.roomDiff' | translate }}">
+        </tab>
+        <tab heading="{{ 'appmgr.roomDiff' | translate }}">
             <div ng-include="gameset_config_diffcult_tmpl"></div>
-        </uib-tab>
-    </uib-tabset>
+        </tab>
+    </tabset>
 </div>

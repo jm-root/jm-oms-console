@@ -3,7 +3,7 @@
  */
 "use strict";
 
-app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', "global", function($scope, $http, $state, $stateParams, sso, $q, global) {
+app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', "global", function($scope, $http, $state, $stateParams, $q, global) {
 
     var tableDefault = {
         // name: "桌子",
@@ -312,7 +312,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
 
 }]);
 
-app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'sso', '$q', 'global', function($scope, $http, $state, $stateParams, sso, $q, global) {
+app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q', 'global', function($scope, $http, $state, $stateParams, $q, global) {
 
     var tableDefault = {
         // name: "新手港湾",

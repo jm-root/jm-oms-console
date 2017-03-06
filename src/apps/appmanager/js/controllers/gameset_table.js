@@ -500,8 +500,8 @@ app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$ht
 app.controller('GameSetTableEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', '$location', '$anchorScroll', function($scope, $http, $state, $stateParams, $timeout, global, $location, $anchorScroll) {
 
     var tmpl_type = $stateParams.type;
-    $scope.gameset_config_tmpl = "tpl/appmanager/gameset_" + $stateParams.type + "_table_edit.html";
-    $scope.gameset_config_diffcult_tmpl = "tpl/appmanager/gameset_table_diffcult_edit.html";
+    $scope.gameset_config_tmpl = "apps/appmanager/tpl/gameset_" + $stateParams.type + "_table_edit.html";
+    $scope.gameset_config_diffcult_tmpl = "apps/appmanager/tpl/gameset_table_diffcult_edit.html";
 
     $scope.goRoomList = function () {
         $state.go("app.rooms.manage.gameset.list", {appId: $stateParams.appId, type:$stateParams.type});

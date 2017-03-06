@@ -70,7 +70,7 @@
                         })
                         .state('app.rooms.manage.gameset.table.list', {
                             url: '/list/{appId}/{type}/{roomId}',
-                            templateUrl: path + 'tpl/gameset_list.html',
+                            templateUrl: path + 'tpl/gameset_table_list.html',
                             controller: 'GameSetTableListCtrl'
                         })
                         .state('app.rooms.manage.gameset.table.edit', {
