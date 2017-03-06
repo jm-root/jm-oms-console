@@ -17,11 +17,10 @@ app.controller('AclResourceCtrl', ['$scope', '$state', '$http',  function ($scop
                 token: sso.getToken()
             }
         }).success(function(result){
-            console.log(result.ret);
             if(result.err){
                     $scope.error(result.msg);
                 }else{
-                    $scope.resourceTreedata = [{title:'默认'}].concat(result.ret);
+                    $scope.resourceTreedata = [{title:'默认'}].concat(result.rows);
                     $scope.expandedResourceNodes = $scope.expandResourceNodes($scope.resourceTreedata[1]);
                 }
             }).error(function(msg, code){

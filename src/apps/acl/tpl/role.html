@@ -72,7 +72,7 @@
 
     <!-- column -->
     <script type="text/ng-template" id="angularTreeTemplate">          <!-- 资源内容 -->
-        <div class="tree-node tree-node-content background bottomborder">
+        <div class="tree-node tree-node-content background bottomborder" >
             <a ng-if="item.children.length > 0" data-nodrag ng-click="toggle(this)">
                 <span class="glyphicon" ng-class="{'glyphicon-plus': collapsed, 'glyphicon-minus': !collapsed }"></span>
             </a>
@@ -82,25 +82,25 @@
                      {{ item.title ||item.code}}
                  </span>
 
-                <label   ng-style="item.permissions.indexOf('get')==-1?style:''" ng-class="" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
-                    <input class="resetValue" type="checkbox" value="get"   ng-checked="curPermission[item.code].indexOf('get')>-1" ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
+                <label ng-style="checkPer(item,'get')?'':style" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
+                    <input class="resetValue" type="checkbox" value="get" ng-checked="curPermission[item.code].indexOf('get')>-1" ng-click="setPermisssion($event,item.code)" ng-disabled="userRoles[curRole.code]" ><i></i>
                 </label>
 
-                <label   ng-style="item.permissions.indexOf('delete')==-1?style:''" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;"  >
-                    <input  class="resetValue" type="checkbox" value="delete"   ng-checked="curPermission[item.code].indexOf('delete')>-1"  ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
-                </label>
-
-
-                <label   ng-style="item.permissions.indexOf('put')==-1?style:''"class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
-                    <input class="resetValue" type="checkbox" value="put"   ng-checked="curPermission[item.code].indexOf('put')>-1"    ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]" ><i></i>
+                <label ng-style="checkPer(item,'delete')?'':style" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;"  >
+                    <input  class="resetValue" type="checkbox" value="delete" ng-checked="curPermission[item.code].indexOf('delete')>-1" ng-click="setPermisssion($event,item.code)" ng-disabled="userRoles[curRole.code]" ><i></i>
                 </label>
 
 
-                <label  ng-style="item.permissions.indexOf('post')==-1?style:''" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;">
+                <label ng-style="checkPer(item,'put')?'':style" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;" >
+                    <input class="resetValue" type="checkbox" value="put" ng-checked="curPermission[item.code].indexOf('put')>-1" ng-click="setPermisssion($event,item.code)" ng-disabled="userRoles[curRole.code]" ><i></i>
+                </label>
+
+
+                <label  ng-style="checkPer(item,'post')?'':style" class="i-checks checkbox-inline pull-right" style="display: inline-block;width: 100px;">
                     <input   class="resetValue" type="checkbox"  value="post"  ng-checked="curPermission[item.code].indexOf('post')>-1"   ng-click="setPermisssion($event,item.code)"   ng-disabled="userRoles[curRole.code]"><i></i>
                 </label>
-
         </div>
+
         <ul ng-model="item.children" ng-class="{hidden: collapsed}" style="margin:0px;list-style:none;">
             <li ng-repeat="item in item.children" ui-tree-node ng-include="'angularTreeTemplate'">
 
@@ -108,7 +108,7 @@
         </ul>
     </script>
     <div class="col w-lg lter b-r">
-        <div class="wrapper-sm b-b"style="height: 41px">
+        <div class="wrapper-sm b-b" style="height: 41px">
                 <label class="control-label h4"  translate="acl.role.rolename">角色名称</label>
                 <input style="display: inline-block;width: auto;margin-right: 10%;height: 30px" type="text" class="form-control input-sm text-md" placeholder="角色名称" ng-model="curRole.title"  disabled>
                 <label class="control-label h4"  translate="acl.role.describe">描述</label>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="line b-b" style="margin: 0"></div>
                 <ul ui-tree-nodes ng-model="angularTreeList" style="margin:0px;list-style:none;">
-                    <li ng-repeat="item in angularTreeList" ui-tree-node ng-include="readonly?'angularTreeReadOnlyTemplate':'angularTreeTemplate'">
+                    <li ng-repeat="item in angularTreeList" ui-tree-node ng-include="'angularTreeTemplate'">
                     </li>
                 </ul>
             </div>
