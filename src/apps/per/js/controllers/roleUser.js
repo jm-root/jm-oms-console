@@ -80,7 +80,7 @@ app.controller('RoleUserCtrl', ['$scope', '$http', function($scope, $http) {
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.newuser = $scope.selectRow._id;
     };
 

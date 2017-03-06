@@ -224,7 +224,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.toUserId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };
@@ -595,7 +595,7 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
         findAccounts();
@@ -659,7 +659,7 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };

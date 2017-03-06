@@ -298,7 +298,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
     };
     $scope.selectUser = function($event){
         if(!$scope.id){
-            $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+            $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
             $scope.user._id = $scope.selectRow._id;
             $scope.user.nick = $scope.selectRow.nick;
         }
