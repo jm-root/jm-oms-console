@@ -47,7 +47,17 @@ app.controller('RoleUserCtrl', ['$scope', '$http', function($scope, $http) {
         }
         return ary;
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    };
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    };
     $scope.usersInfo={};
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
@@ -62,6 +72,8 @@ app.controller('RoleUserCtrl', ['$scope', '$http', function($scope, $http) {
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
+
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

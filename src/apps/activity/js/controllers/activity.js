@@ -337,7 +337,17 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
             $scope.errorTips(code);
         });
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -351,6 +361,7 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

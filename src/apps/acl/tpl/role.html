@@ -72,7 +72,7 @@
 
     <!-- column -->
     <script type="text/ng-template" id="angularTreeTemplate">          <!-- 资源内容 -->
-        <div class="tree-node tree-node-content background" >
+        <div class="tree-node tree-node-content background bottomborder">
             <a ng-if="item.children.length > 0" data-nodrag ng-click="toggle(this)">
                 <span class="glyphicon" ng-class="{'glyphicon-plus': collapsed, 'glyphicon-minus': !collapsed }"></span>
             </a>
@@ -101,7 +101,6 @@
                 </label>
 
         </div>
-        <div class="line b-b" style="margin: 0;"></div>
         <ul ng-model="item.children" ng-class="{hidden: collapsed}" style="margin:0px;list-style:none;">
             <li ng-repeat="item in item.children" ui-tree-node ng-include="'angularTreeTemplate'">
 

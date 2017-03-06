@@ -1076,7 +1076,17 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
     }).error(function(msg, code){
         $scope.errorTips(code);
     });
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.removeItem = function(index) {
         $scope.dak.attach.splice(index, 1);
     };
@@ -1098,6 +1108,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -1137,7 +1148,17 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
             $scope.errorTips(code);
         });
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -1151,6 +1172,7 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

@@ -23,5 +23,12 @@
     padding-top: 50px;
 }
 .background:hover{
-    background: #E4EAEC;
+    background: #EDF1F2;
+}
+.bottomborder{
+    border-bottom: 1px solid #E4EAEC;
+    padding-bottom: 2px;
+}
+.color:hover{
+    color:#1993B9;
 }
