@@ -1115,7 +1115,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.dak.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };
@@ -1179,7 +1179,7 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.selectRow.member = $scope.selectRow.member || {};
         $scope.selectRow.record = $scope.selectRow.record || {};
         $scope.user = $scope.selectRow;
