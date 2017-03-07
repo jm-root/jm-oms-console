@@ -6,6 +6,9 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
     $scope.search = history.search||{};
     var sso=jm.sdk.sso;
     var acl = jm.sdk.acl;
+
+    $scope.allRoles = [];
+
     var format_status = function(params) {
         var status = params.data.status||'';
         if(status=='0') status = '未激活';
@@ -152,7 +155,6 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
      },function (err,result) {
         if(result.err){
             $scope.error(result.msg);
-            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }
@@ -168,6 +170,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
     $scope.id = id;
     $scope.user = {
     };
+    $scope.allRoles = [];
     //获取用户拥有的角色列表
     acl.role.list({
         token: token
@@ -175,7 +178,6 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
         console.log(result);
         if(result.err){
             $scope.error(result.msg);
-            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }

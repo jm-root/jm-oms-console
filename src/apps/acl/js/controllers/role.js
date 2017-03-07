@@ -198,6 +198,7 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
 
 
     var token = sso.getToken();
+    $scope.userResources = {};
     //获取用户资源及其权限
     $http.get(aclUri + '/users/'+localStorage.getItem('id')+'/resources', {
         params: {
@@ -207,7 +208,6 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         if (result.err) {
             $scope.error(result.msg);
         } else {
-            console.log(result);
             $scope.userResources = result||{};
         }
     }).error(function (msg, code) {
