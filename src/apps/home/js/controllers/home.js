@@ -1076,7 +1076,17 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
     }).error(function(msg, code){
         $scope.errorTips(code);
     });
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.removeItem = function(index) {
         $scope.dak.attach.splice(index, 1);
     };
@@ -1098,13 +1108,14 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.dak.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };
@@ -1137,7 +1148,17 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
             $scope.errorTips(code);
         });
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -1151,13 +1172,14 @@ app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.selectRow.member = $scope.selectRow.member || {};
         $scope.selectRow.record = $scope.selectRow.record || {};
         $scope.user = $scope.selectRow;

@@ -6,6 +6,9 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
     $scope.search = history.search||{};
     var sso=jm.sdk.sso;
     var acl = jm.sdk.acl;
+
+    $scope.allRoles = [];
+
     var format_status = function(params) {
         var status = params.data.status||'';
         if(status=='0') status = '未激活';
@@ -152,7 +155,6 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
      },function (err,result) {
         if(result.err){
             $scope.error(result.msg);
-            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }
@@ -168,6 +170,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
     $scope.id = id;
     $scope.user = {
     };
+    $scope.allRoles = [];
     //获取用户拥有的角色列表
     acl.role.list({
         token: token
@@ -175,7 +178,6 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
         console.log(result);
         if(result.err){
             $scope.error(result.msg);
-            $scope.errorTips(result.msg);
         }else{
             $scope.allRoles = result.rows;
         }
@@ -265,6 +267,17 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
             $scope.errorTips(code);
         });
     };
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    };
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    };
     $scope.usersInfo={};
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
@@ -274,12 +287,12 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
                 keyword: keyword
             }
         }).success(function(result){
-            console.log(result)
             var data = result;
             if(data.err){
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -287,7 +300,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
     };
     $scope.selectUser = function($event){
         if(!$scope.id){
-            $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+            $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
             $scope.user._id = $scope.selectRow._id;
             $scope.user.nick = $scope.selectRow.nick;
         }

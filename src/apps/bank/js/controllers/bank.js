@@ -170,7 +170,6 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
             }
         });
     });
-
     $scope.changeAcount = function(){
         $scope.defAccount = _.find($scope.accounts, { id: $scope.bank.fromAccountId });
     };
@@ -194,7 +193,17 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
             }
         });
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    }
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    }
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -208,13 +217,14 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.toUserId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };
@@ -554,7 +564,17 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
         $scope.bank.allAmount = null;
         $scope.bank.amount = null;
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    };
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    };
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -568,13 +588,14 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
         findAccounts();
@@ -607,7 +628,17 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
         });
     };
 
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    };
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    };
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
             params:{
@@ -621,13 +652,14 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };

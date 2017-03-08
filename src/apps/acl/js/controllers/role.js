@@ -189,23 +189,45 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         });
     };
 
+    $scope.checkPer = function(item,per){
+        item.permissions || (item.permissions=[]);
+        if(item.permissions.indexOf(per)==-1) return false;
+        if(!$scope.userResources[item.code]) return false;
+        return $scope.userResources[item.code].indexOf(per)!=-1;
+    };
+
 
     var token = sso.getToken();
-        //获取用户资源树及其权限
-        $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/resources/tree', {
-            params: {
-                token: token
-            }
-        }).success(function (result) {
-            if(result.err){
-                $scope.error(result.msg);
-            }else{
-                $scope.angularTreeList =result;
-                $scope.treeOptions=$scope.angularTreeList;
-            }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
-        });
+    $scope.userResources = {};
+    //获取用户资源及其权限
+    $http.get(aclUri + '/users/'+localStorage.getItem('id')+'/resources', {
+        params: {
+            token: token
+        }
+    }).success(function (result) {
+        if (result.err) {
+            $scope.error(result.msg);
+        } else {
+            $scope.userResources = result||{};
+        }
+    }).error(function (msg, code) {
+        $scope.errorTips(code);
+    });
+    //获取资源树
+    $http.get(aclUri + '/resources/tree', {
+        params: {
+            token: token
+        }
+    }).success(function (result) {
+        if (result.err) {
+            $scope.error(result.msg);
+        } else {
+            $scope.angularTreeList = result.rows||[];
+            $scope.treeOptions = $scope.angularTreeList;
+        }
+    }).error(function (msg, code) {
+        $scope.errorTips(code);
+    });
 
     //获取用户所属角色
     $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/roles', {

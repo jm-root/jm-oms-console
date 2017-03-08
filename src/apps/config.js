@@ -9,12 +9,11 @@ var gConfig = {
         robotUri: "localhost:20760"
     },
     development: {
-        apiHost: "http://localhost:20200",
-        sdkHost: "http://localhost:20200",
-        opensdkHost: "http://jamma.3322.org:20300",
-        staticHost:"http://jamma.3322.org:20400",
-        // robotUri: "ws://api.gzleidi.com/robot"
-        robotUri: "localhost:20760/robot"
+        apiHost: "http://test.gzleidi.cn:82",
+        sdkHost: "http://test.gzleidi.cn:81",
+        opensdkHost: "http://test.gzleidi.cn:20300",
+        staticHost:"http://test.gzleidi.cn",
+        robotUri: "ws://localhost:25000/robot"
     },
     production: {
         sdkHost: "http://api.gzleidi.com",

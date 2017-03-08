@@ -47,7 +47,17 @@ app.controller('RoleUserCtrl', ['$scope', '$http', function($scope, $http) {
         }
         return ary;
     };
-
+    $scope.i = 1;
+    $scope.left = function () {
+        if($scope.i>1){
+            --$scope.i;
+        }
+    };
+    $scope.right = function () {
+        if($scope.i<$scope.psize){
+            ++$scope.i;
+        }
+    };
     $scope.usersInfo={};
     $scope.searchUser = function(keyword){
         $http.get(ssoUri+'/users', {
@@ -62,13 +72,15 @@ app.controller('RoleUserCtrl', ['$scope', '$http', function($scope, $http) {
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
+                $scope.psize = $scope.usersInfo.rows.length/5;
+
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.newuser = $scope.selectRow._id;
     };
 
