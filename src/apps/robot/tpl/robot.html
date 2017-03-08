@@ -1,4 +1,4 @@
-<div >
+<div ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-50}}+'px', size:'8px'}">
     <div ui-view class="fade-in-down"></div>
     <form ng-show="$state.is('app.robot.manage')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default">
@@ -6,22 +6,7 @@
                 <h1 class="m-n font-thin h3" >机器人管理</h1>
             </div>
             <div class="panel-body paddingtop">
-
-                <!--<div class="form-group">-->
-                    <!--<label class="col-sm-2 control-label" translate="recharge.cardadd.denomination">面值</label>-->
-                    <!--<div class="col-sm-4">-->
-                        <!--<input type="text" class="form-control" style="max-width: 320px" placeholder="{{ 'recharge.card.parValue' | translate }}" ng-model="card.parValue">-->
-                    <!--</div>-->
-                    <!--<div class="col-sm-1">-->
-                        <!--<select class="form-control w-sm" ng-model="card.type" ng-options="x.type as x.name for x in typedata">-->
-                            <!--<option value="" translate="recharge.cardadd.select">请选择</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
                 <div class="container-fluid">
-
                     <div style="margin-top: 20px;">
                         <form name="formValidate2" class="form-horizontal form-validation">
                             <div class="form-group">
@@ -45,6 +30,9 @@
                                     <button type="submit" class="btn btn-success" ng-click="!formValidate2.$invalid&&addAgent()">添加代理</button>
                                 </div>
 
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success" ng-click="!formValidate2.$invalid&&cleanRobot()">清理机器人数据</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -111,14 +99,42 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">进入时间<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                            <div class="col-sm-9">
-                                <input type="datetime" class="form-control" placeholder="进入时间(2017-12-08 24:00:00)" ng-model="room.entryTime"  required>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-md-4 w">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" value="{{room.entryTime | date:'yyyy-MM-dd HH:mm'}}" onfocus="this.blur()">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                </div>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <datetimepicker ng-model="room.entryTime" before-render="onBeforeRenderOpenDate($dates)" on-set-time="endDateOnSetTimeOpenDate()" datetimepicker-config="{ startView:'day', minView:'minute', dropdownSelector:'#dropdown1', renderOn:'valid-openDate' }"> </datetimepicker>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">离开时间<code style="background-color: transparent" ng-disabled="id">*</code></label>
-                            <div class="col-sm-9">
-                                <input type="datetime" class="form-control" placeholder="离开时间(2017-12-08 24:00:00)" ng-model="room.exitTime"  required>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-md-4 w">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" value="{{room.exitTime | date:'yyyy-MM-dd HH:mm'}}" onfocus="this.blur()" ng-disabled="!room.entryTime">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                </div>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu" ng-if="room.entryTime">
+                                                <datetimepicker ng-model="room.exitTime" before-render="onBeforeRenderCloseDate($view,$dates)" on-set-time="endDateOnSetTimeCloseDate()"  datetimepicker-config="{ startView:'day', minView:'minute', dropdownSelector:'#dropdown2', renderOn:'valid-closeDate' }"> </datetimepicker>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--<div class="form-group">-->
@@ -185,8 +201,6 @@
                         </div>
                     </form>
                 </div>
-
-
 
             </div>
 

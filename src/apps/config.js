@@ -6,7 +6,7 @@ var gConfig = {
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://localhost:20300",
         staticHost:"http://localhost:20400",
-        robotUri: "ws://localhost:25000"
+        robotUri: "localhost:20760"
     },
     development: {
         apiHost: "http://localhost:20200",
@@ -14,13 +14,13 @@ var gConfig = {
         opensdkHost: "http://jamma.3322.org:20300",
         staticHost:"http://jamma.3322.org:20400",
         // robotUri: "ws://api.gzleidi.com/robot"
-        robotUri: "ws://localhost:25000/robot"
+        robotUri: "localhost:20760/robot"
     },
     production: {
         sdkHost: "http://api.gzleidi.com",
         opensdkHost: "http://openapi.gzleidi.com",
         staticHost:"http://www.gzleidi.com",
-        robotUri: "ws://api.gzleidi.com/robot"
+        robotUri: "api.gzleidi.com/robot"
     }
 };
 
@@ -57,7 +57,8 @@ var guestbookUri = sdkHost + "/guestbook";
 var shopUri = sdkHost + "/shop";
 var logUri = sdkHost + "/log";
 var baoxiangUri = sdkHost + "/baoxiang";
-var algUri = sdkHost + "/alg";
+// var algUri = sdkHost + "/alg";
+var algUri = "http://test.gzleidi.cn:81/alg";
 
 
 jm.sdk.init({uri: apiHost});

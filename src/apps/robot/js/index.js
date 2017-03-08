@@ -13,7 +13,7 @@
                             abstract: true,
                             url: '/robot',
                             template: '<div ui-view class="fade-in-right-big smooth"></div>',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/index.js', path + 'js/controllers/robot.js', '../libs/jm/jm-ms/dist/js/jm-ms.js'])
+                            resolve: lazyLoadProvider.load(['ui.bootstrap.datetimepicker', path + 'js/controllers/index.js', path + 'js/controllers/robot.js', '../libs/jm/jm-ms/dist/js/jm-ms.js'])
                         })
                         .state('app.robot.manage', {
                             url: '/manage',

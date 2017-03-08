@@ -98,7 +98,7 @@ app.controller('RobotManageCtrl', ['$scope', '$state', '$http', 'global', functi
 
     var ms = jm.ms;
     var client = null;
-    var uri = robotUri;
+    var uri = "ws://" + robotUri;
 
     ms.client({
         uri: uri,
@@ -254,5 +254,87 @@ app.controller('RobotManageCtrl', ['$scope', '$state', '$http', 'global', functi
 
     };
 
+
+    $scope.cleanRobot = function () {
+
+        var uri = "http://" + robotUri + "/agent/clean";
+        $http.get(uri, {
+            params:{
+                token: sso.getToken()
+            }
+        }).success(function(result){
+            var data = result;
+            if(data.err){
+                $scope.error(data.msg);
+            }else{
+                if(data.ret == true){
+                    $scope.success("清理机器人数据成功");
+                }
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    };
+
+
+    $scope.onBeforeRenderOpenDate = function ($dates) {
+
+    };
+
+    $scope.endDateOnSetTimeOpenDate = function () {
+        $scope.$broadcast('valid-openDate');
+        $scope.$broadcast('valid-startDate');
+        $scope.$broadcast('valid-endDate');
+        $scope.$broadcast('valid-closeDate');
+        if(!$scope.entryTime){
+            $scope.entryTime = $scope.openDate;
+        }
+    };
+    $scope.endDateOnSetTimeCloseDate = function () {
+        $scope.$broadcast('valid-startDate');
+        $scope.$broadcast('valid-endDate');
+        $scope.$broadcast('valid-closeDate');
+        if(!$scope.room.exitTime){
+            $scope.room.exitTime = $scope.closeDate;
+        }
+    };
+
+    $scope.onBeforeRenderCloseDate = function ($view,$dates) {
+        if ($scope.openDate) {
+            var activeDate = moment($scope.openDate).subtract(1, $view).add(1, 'minute');
+
+            $dates.filter(function (date) {
+                return date.localDateValue() <= activeDate.valueOf()
+            }).forEach(function (date) {
+                date.selectable = false;
+            })
+        }
+    };
+
+    $scope.onBeforeRenderStartDate = function ($view,$dates) {
+        if ($scope.openDate) {
+            var start = moment($scope.openDate).subtract(1, $view).add(1, 'minute');
+            var end = moment($scope.closeDate);
+
+            $dates.filter(function (date) {
+                return date.localDateValue() <= start.valueOf()||date.localDateValue() > end.valueOf();
+            }).forEach(function (date) {
+                date.selectable = false;
+            })
+        }
+    };
+
+    $scope.onBeforeRenderEndDate = function ($view,$dates) {
+        if ($scope.openDate) {
+            var start = moment($scope.openDate).subtract(1, $view).add(1, 'minute');
+            var end = moment($scope.closeDate);
+
+            $dates.filter(function (date) {
+                return date.localDateValue() <= start.valueOf()||date.localDateValue() > end.valueOf();
+            }).forEach(function (date) {
+                date.selectable = false;
+            })
+        }
+    };
 
 }]);
