@@ -561,6 +561,17 @@ app.controller('GameSetTableDiffcultEditCtrl', ['$scope', '$http', '$state', '$s
                 {name: global.translateByKey("appmgr.highest") + "-43000", value: 41, max_send: 43000},
                 {name: global.translateByKey("appmgr.highest") + "-53000", value: 42, max_send: 53000},
                 {name: global.translateByKey("appmgr.highest") + "-98000", value: 43, max_send: 98000}
+                // {name: global.translateByKey("appmgr.highest") + "-5000", value: 28, max_send: 5000},
+                // {name: global.translateByKey("appmgr.highest") + "-10000", value: 29, max_send: 10000},
+                // {name: global.translateByKey("appmgr.highest") + "-15000", value: 30, max_send: 15000},
+                // {name: global.translateByKey("appmgr.highest") + "-20000", value: 33, max_send: 20000},
+                // {name: global.translateByKey("appmgr.highest") + "-25000", value: 37, max_send: 25000},
+                // {name: global.translateByKey("appmgr.highest") + "-30000", value: 38, max_send: 30000},
+                // {name: global.translateByKey("appmgr.highest") + "-35000", value: 39, max_send: 35000},
+                // {name: global.translateByKey("appmgr.highest") + "-40000", value: 40, max_send: 40000},
+                // {name: global.translateByKey("appmgr.highest") + "-45000", value: 41, max_send: 45000},
+                // {name: global.translateByKey("appmgr.highest") + "-55000", value: 42, max_send: 55000},
+                // {name: global.translateByKey("appmgr.highest") + "-100000", value: 43, max_send: 100000}
             ]
         },
         gamble: {
@@ -589,6 +600,17 @@ app.controller('GameSetTableDiffcultEditCtrl', ['$scope', '$http', '$state', '$s
                 {name: global.translateByKey("appmgr.highest") + "-41000", value: 41, max_send: 41000},
                 {name: global.translateByKey("appmgr.highest") + "-51000", value: 42, max_send: 51000},
                 {name: global.translateByKey("appmgr.highest") + "-96000", value: 43, max_send: 96000}
+                // {name: global.translateByKey("appmgr.highest") + "-5000", value: 28, max_send: 5000},
+                // {name: global.translateByKey("appmgr.highest") + "-10000", value: 29, max_send: 10000},
+                // {name: global.translateByKey("appmgr.highest") + "-15000", value: 30, max_send: 15000},
+                // {name: global.translateByKey("appmgr.highest") + "-20000", value: 33, max_send: 20000},
+                // {name: global.translateByKey("appmgr.highest") + "-25000", value: 37, max_send: 25000},
+                // {name: global.translateByKey("appmgr.highest") + "-30000", value: 38, max_send: 30000},
+                // {name: global.translateByKey("appmgr.highest") + "-35000", value: 39, max_send: 35000},
+                // {name: global.translateByKey("appmgr.highest") + "-40000", value: 40, max_send: 40000},
+                // {name: global.translateByKey("appmgr.highest") + "-45000", value: 41, max_send: 45000},
+                // {name: global.translateByKey("appmgr.highest") + "-55000", value: 42, max_send: 55000},
+                // {name: global.translateByKey("appmgr.highest") + "-100000", value: 43, max_send: 100000}
             ]
         }
     };
