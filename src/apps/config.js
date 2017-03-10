@@ -9,8 +9,8 @@ var gConfig = {
         robotUri: "localhost:20760"
     },
     development: {
-        apiHost: "http://test.gzleidi.cn:82",
-        sdkHost: "http://test.gzleidi.cn:81",
+        apiHost: "http://test.gzleidi.cn:81",
+        sdkHost: "http://test.gzleidi.cn:82",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
         robotUri: "ws://localhost:25000/robot"
@@ -32,7 +32,7 @@ var staticHost = gConfig.staticHost;
 var robotUri = gConfig.robotUri;
 
 var perUri = sdkHost+"/acl";
-var ssoUri = sdkHost+"/sso";
+var ssoUri = apiHost+"/sso";
 var aclUri = apiHost+"/acl";
 var adminUri = sdkHost+"/admin";
 var omsUri = apiHost+"/oms";
@@ -44,7 +44,7 @@ var staticUri = staticHost + "/static";
 var activityUri = sdkHost + "/activity";
 var propUri = sdkHost + "/prop";
 var depotUri = sdkHost + "/depot";
-var payUri = sdkHost + "/pay";
+var payUri = apiHost + "/pay";
 var bbsUri = sdkHost + "/bbs";
 var wordfilterUri = sdkHost + "/wordfilter";
 var packUri = sdkHost + "/pack";
