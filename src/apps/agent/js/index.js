@@ -35,6 +35,12 @@
                             controller: 'AgentCreateCtrl',
                             resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
                         })
+                        .state('app.agent.message', {
+                            url: '/message',
+                            templateUrl: 'tpl/agent/agent.message.html',
+                            controller: 'AgentMessageCtrl'
+                            // resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
+                        })
                     //包
                         .state('app.package', {
                             url: '/package',

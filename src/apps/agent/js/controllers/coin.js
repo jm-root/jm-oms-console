@@ -632,7 +632,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
     };
 
     $scope.onPageSizeChanged = function() {
-        dataSource.pageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
+        dataSource.paginationPageSize = Number($scope.paginationPageSize);//需重新负值,不然会以之前的值处理
         $scope.gridOptions.api.setDatasource(dataSource);
     };
 

@@ -57,6 +57,12 @@
                             controller: 'PlayerGiveLogCtrl',
                             resolve: lazyLoadProvider.load('daterangepicker')
                         })
+                        .state('app.player.changescore', {
+                            url: '/changescore',
+                            templateUrl: 'tpl/player/player.changescore.html',
+                            controller: 'PlayerChangeScoreCtrl',
+                            resolve: lazyLoadProvider.load(['jmPlaySDK'])
+                        })
                 }
             ]
         );
