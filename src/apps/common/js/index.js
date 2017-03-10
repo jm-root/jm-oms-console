@@ -87,7 +87,6 @@ angular.module('app')
         self.getRoles = function () {
             var deferred = $q.defer();
             var url = aclUri + '/userRoles';
-            url = perUri + '/user/roles';
             $http.get(url, {
                 params: {
                     token: sso.getToken()
@@ -97,12 +96,7 @@ angular.module('app')
                 if (obj.err) {
                     deferred.reject(obj);
                 } else {
-                    var roles;
-                    if(obj.ret){
-                        roles = obj.ret || [];
-                    }else{
-                        roles = obj.roles || [];
-                    }
+                    var roles = obj.rows || [];
                     self.roles = roles;
                     if (roles.length) {
                         deferred.resolve(roles);
