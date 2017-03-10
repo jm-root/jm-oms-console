@@ -568,6 +568,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
 }]);
 
 app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+    var sso = jm.sdk.sso;
     global.playerRecordHistory || (global.playerRecordHistory = {});
     var history = global.playerRecordHistory;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
@@ -575,7 +576,11 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
     $scope.search.date = $scope.search.date || {};
     var url = recordUri+'/gameovers';
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.timePicker = true;
+    $scope.dateOptions.timePicker24Hour = true;
+    $scope.dateOptions.locale.format = "YYYY/MM/DD HH:mm";
+    $scope.dateOptions.opens = 'center';
 
     var format_uid = function(params) {
         var obj = params.data.user || {};
@@ -909,3 +914,125 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
     });
 }]);
 
+app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
+    $scope.player = {};
+    $scope.bank = {};
+    $scope.data;
+
+    jm.sdk.init({uri: gConfig.sdkHost});
+    var bank = jm.sdk.bank;
+    bank.query({},function(err,result){
+        result || (result||{});
+        var holds = result.holds||{};
+        var jbObj = holds.jb || {};
+        $scope.jb = reg(jbObj.amountValid||0);
+    });
+    var reg = function (data) {
+        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
+    $scope.operate = function () {
+        $scope.type = Number($scope.operate.type);
+        if($scope.type == 1){
+            $scope.sum = $scope.player.jb + $scope.bank.amount;
+        }else if($scope.type == 2){
+            $scope.sum = $scope.player.jb - $scope.bank.amount;
+        }else {
+            $scope.sum = $scope.player.jb;
+        };
+    };
+    $scope.page = 1;
+    $scope.left = function () {
+        if($scope.page>1){
+            --$scope.page;
+        }
+    }
+    $scope.right = function () {
+        if($scope.page<$scope.pages){
+            ++$scope.page;
+        }
+    };
+
+    $scope.searchUser = function(keyword){
+        $http.get(ssoUri+'/users', {
+            params:{
+                token: sso.getToken(),
+                keyword: keyword
+            }
+        }).success(function(result){
+            $scope.data = result;
+            if($scope.data.err){
+                $scope.error($scope.data.msg);
+            }else{
+                $scope.usersInfo = $scope.data;
+                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    };
+
+    $scope.selectUser = function($event){
+        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.page-1),[10*$scope.page])[$event.currentTarget.rowIndex-1];
+        $scope.player.toUserId = $scope.selectRow._id;
+        $scope.nick = $scope.selectRow.nick;
+        bank.query({userId:$scope.player.toUserId},function(err,result){
+            result || (result||{});
+            var holds = result.holds||{};
+            var jbObj = holds.jb || {};
+            $scope.player.jb = jbObj.amount||0;
+        });
+    };
+    $scope.$watch('player.toUserId', function () {
+        if(!$scope.player.toUserId){
+            $scope.nick = null;
+        }
+    });
+
+    $scope.updateData = function(event){
+        var data = $scope.selectRow;
+        var account = data.account||data.nick||data.uid;
+        var ct = {'jb':global.translateByKey('common.jb')};
+        var amount = $scope.bank.amount;
+        var fromUserId,toUserId,info;
+        var memo = $scope.bank.memo||"";
+        console.info(memo);
+        if($scope.type == 1){
+            info = global.translateByKey('player.info.transferTip.add',{val:account})+amount+ct["jb"];
+            fromUserId = sso.user.id;
+            toUserId = data._id;
+        }else if($scope.type == 2){
+            info = global.translateByKey('player.info.transferTip.deduct',{val:account})+amount+ct["jb"];
+            fromUserId = data._id;
+            toUserId = sso.user.id;
+        }
+        $scope.openTips({
+            title:global.translateByKey('player.info.TipInfo.title'),
+            content: info,
+            okTitle:global.translateByKey('player.info.TipInfo.okTitle'),
+            cancelTitle:global.translateByKey('player.info.TipInfo.cancelTitle'),
+            okCallback: function($s){
+                var o = {
+                    ctCode:"jb",
+                    amount:amount,
+                    fromUserId:fromUserId,
+                    toUserId:toUserId,
+                    memo:memo,
+                };
+                bank.transfer(o,function(err,result){
+                    if (err) {
+                        $timeout(function () {
+                            $scope.error(result.msg);
+                        });
+                    } else {
+                        $timeout(function () {
+                            $scope.success(global.translateByKey('common.succeed'));
+                        });
+                        $scope.player.jb = $scope.sum;
+                        $scope.bank.amount = null;
+                        $scope.bank.memo = "";
+                    }
+                });
+            }
+        });
+    }
+}]);

@@ -37,7 +37,7 @@
                         })
                         .state('app.agent.message', {
                             url: '/message',
-                            templateUrl: 'tpl/agent/agent.message.html',
+                            templateUrl: path +'tpl/agent.message.html',
                             controller: 'AgentMessageCtrl'
                             // resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
                         })

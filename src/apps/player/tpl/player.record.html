@@ -10,14 +10,14 @@
         </form>
     </div>
     <div class="pull-right">
-        <div class="input-group m-r-sm" style="width: 185px;">
+        <div class="input-group m-r-sm" style="width: 250px;">
             <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
     <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="search.gamename" ng-options="opt._id as opt.name for opt in apps" ng-change="onPageSizeChanged()">
-            <option value="" disabled>游戏名称</option>
+            <option value="">{{ 'player.record.header.appname' | translate }}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm">

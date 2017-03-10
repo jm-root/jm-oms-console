@@ -1,6 +1,9 @@
 {
   "agent": {
     "id":"Channel ID/Name",
+    "message":{
+      "title":"Promotion information"
+    },
     "agent":{
       "create":{
         "list": {

@@ -59,6 +59,15 @@
           "ctrl": "All Games Record"
         }
       },
+      "TipInfo":{
+        "title": "Update account",
+        "okTitle": "Confirm",
+        "cancelTitle": "Cancel"
+      },
+      "transferTip":{
+        "add": "Whether to account【{{val}}】charge",
+        "deduct": "Whether deduction account【{{val}}】"
+      },
       "games":{
         "gameData": "Game Data",
         "header":{
@@ -104,6 +113,22 @@
         "onTime": "Start time",
         "offTime": "End time"
       }
+    },
+    "changescore":{
+      "title":"Change Score",
+      "label1":"Operable remainder amount",
+      "label2":"Operation type",
+      "opts":{
+        "opt1":"Please select the type of operation",
+        "opt2":"Increase",
+        "opt3":"Decrease"
+      },
+      "label3":"Select player",
+      "label4":"Player surplus",
+      "label5":"Operation amount",
+      "before":"Before operation",
+      "after":"After operation",
+      "balence":"Not sufficient funds"
     }
   }
 }

@@ -1,6 +1,9 @@
 {
   "agent": {
     "id":"渠道ID/名称",
+    "message":{
+      "title":"推广信息"
+    },
     "agent": {
       "create": {
         "list": {

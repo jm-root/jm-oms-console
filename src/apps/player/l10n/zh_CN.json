@@ -59,6 +59,15 @@
                   "ctrl": "各游戏累计输赢"
               }
           },
+          "TipInfo":{
+              "title": "更新账目",
+              "okTitle": "确定",
+              "cancelTitle": "取消"
+          },
+          "transferTip":{
+              "add": "是否给账号【{{val}}】充",
+              "deduct": "是否扣除账号【{{val}}】"
+          },
           "games":{
               "gameData": "游戏数据",
               "header":{
@@ -104,6 +113,22 @@
               "onTime": "开始时间",
               "offTime": "结束时间"
           }
+      },
+      "changescore":{
+          "title":"上/退分",
+          "label1":"可操作余额",
+          "label2":"操作类型",
+          "opts":{
+              "opt1":"请选操作类型",
+              "opt2":"上分",
+              "opt3":"退分"
+          },
+          "label3":"选择玩家",
+          "label4":"玩家余额",
+          "label5":"操作金额",
+          "before":"操作前",
+          "after":"操作后",
+          "balence":"余额不足"
       }
   }
 }

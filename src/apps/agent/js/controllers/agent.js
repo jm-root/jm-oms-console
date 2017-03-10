@@ -533,3 +533,27 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
     };
 
 }]);
+app.controller('AgentMessageCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
+    $scope.agent={};
+    var sso = jm.sdk.sso;
+
+    $scope.save = function () {
+        var id = localStorage.getItem('id');
+        var info = $scope.agent.memo||"";
+        $http.post(agentUri+'/agents/'+id, {info:info}, {
+            params:{
+                token: sso.getToken()
+            }
+        }).success(function(result){
+            var obj = result;
+            if(obj.err){
+                $scope.error(obj.msg);
+            }else{
+                $scope.success(global.translateByKey('common.succeed'));
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    }
+
+}]);
