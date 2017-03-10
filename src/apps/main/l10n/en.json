@@ -48,7 +48,8 @@
       "info": "Info",
       "online": "Online",
       "record": "Record",
-      "givelog": "Give Log"
+      "givelog": "Give Log",
+      "changescore":"Change Score"
     },
     "system":{
       "manage": "System Manage",
@@ -66,7 +67,8 @@
       "manage":"Agent Manage",
       "create":"Agent Create",
       "list":"Agent List",
-      "data":"Agent Data"
+      "data":"Agent Data",
+      "message":"Promotion information"
     },
     "agentdata":{
       "register":"Register",

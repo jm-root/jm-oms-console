@@ -657,6 +657,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             var startDate = date.startDate || "";
             var endDate = date.endDate || "";
             var keyword = search.keyword;
+            var gamename = search.gamename;
 
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
@@ -667,7 +668,8 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
                     search: keyword,
                     isEnd: true,
                     startDate: startDate.toString(),
-                    endDate: endDate.toString()
+                    endDate: endDate.toString(),
+                    appid:gamename
                 }
             }).success(function (result) {
                 var data = result;
@@ -708,7 +710,20 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         },
         datasource: dataSource
     };
-
+    $http.get(appMgrUri+'/apps', {
+        params:{
+            token: sso.getToken(),
+        }
+    }).success(function(result){
+        var obj = result;
+        if(obj.err){
+            $scope.error(obj.msg);
+        }else{
+            $scope.apps =obj.rows||[];
+        }
+    }).error(function(msg, code){
+        $scope.errorTips(code);
+    });
     $scope.onPageSizeChanged = function() {
         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
         $scope.gridOptions.api.setDatasource(dataSource);

@@ -15,6 +15,11 @@
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="search.gamename" ng-options="opt._id as opt.name for opt in apps" ng-change="onPageSizeChanged()">
+            <option value="" disabled>游戏名称</option>
+        </select>
+    </div>
     <div class="pull-right m-r-sm">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>

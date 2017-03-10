@@ -48,7 +48,8 @@
       "info": "玩家信息",
       "online": "在线状态",
       "record": "游戏记录",
-      "givelog": "赠送记录"
+      "givelog": "赠送记录",
+      "changescore":"上/退分"
     },
     "system":{
       "manage": "系统管理",
@@ -66,7 +67,8 @@
       "manage":"渠道管理",
       "create":"下级渠道创建",
       "list":"渠道列表",
-      "data":"渠道数据"
+      "data":"渠道数据",
+      "message":"推广信息"
     },
     "agentdata":{
       "register":"注册",
