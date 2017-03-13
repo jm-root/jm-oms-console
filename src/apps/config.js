@@ -13,7 +13,7 @@ var gConfig = {
         sdkHost: "http://test.gzleidi.cn:82",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
-        robotUri: "localhost:25000/robot"
+        robotUri: "test.gzleidi.cn:81"
     },
     production: {
         sdkHost: "http://api.gzleidi.com",
@@ -56,8 +56,7 @@ var guestbookUri = sdkHost + "/guestbook";
 var shopUri = sdkHost + "/shop";
 var logUri = sdkHost + "/log";
 var baoxiangUri = sdkHost + "/baoxiang";
-// var algUri = sdkHost + "/alg";
-var algUri = "http://test.gzleidi.cn:81/alg";
+var algUri = sdkHost + "/alg";
 
 
 jm.sdk.init({uri: apiHost});
