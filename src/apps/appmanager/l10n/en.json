@@ -78,6 +78,7 @@
       "roomIntro": "Room introduce",
       "algStartTableNum": "Algorithm start table number",
       "tableNum": "Table Number",
+      "tableNumRemark": "Table to reduce the need to restart the server, the front will show reduced",
       "roomDiff": "Room table difficulty",
       "roomCCDiff": "Room table chaochang difficulty",
       "roomRate": "Room Rate",

@@ -13,7 +13,7 @@ var gConfig = {
         sdkHost: "http://test.gzleidi.cn:82",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
-        robotUri: "ws://localhost:25000/robot"
+        robotUri: "localhost:25000/robot"
     },
     production: {
         sdkHost: "http://api.gzleidi.com",
