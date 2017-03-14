@@ -352,7 +352,6 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
         $http.get(ssoUri+'/users', {
             params:{
                 token: sso.getToken(),
-                page: 1,
                 keyword: keyword
             }
         }).success(function(result){
@@ -361,14 +360,14 @@ app.controller('ActivityGavePropCtrl', ['$scope', '$http', '$state', '$statePara
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = $scope.usersInfo.rows.length/5;
+                $scope.psize = Math.ceil($scope.usersInfo.rows.length/10);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.i-1),[10*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.depot.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };

@@ -101,7 +101,7 @@
         </div>
 
         <ul ng-model="item.children" ng-class="{hidden: collapsed}" style="margin:0px;list-style:none;">
-            <li ng-repeat="item in item.children" ui-tree-node ng-include="'angularTreeTemplate'">
+            <li ng-repeat="item in item.children  | filter:query" ui-tree-node ng-include="'angularTreeTemplate'">
 
             </li>
         </ul>

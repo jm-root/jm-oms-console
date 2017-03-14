@@ -641,7 +641,6 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
         $http.get(ssoUri+'/users', {
             params:{
                 token: sso.getToken(),
-                page: 1,
                 keyword: keyword
             }
         }).success(function(result){
@@ -650,7 +649,7 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = $scope.usersInfo.rows.length/5;
+                $scope.psize = Math.ceil($scope.usersInfo.rows.length/10);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
