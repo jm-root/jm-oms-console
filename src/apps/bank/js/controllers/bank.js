@@ -200,7 +200,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
         }
     }
     $scope.right = function () {
-        if($scope.i<$scope.psize){
+        if($scope.i<$scope.pages){
             ++$scope.i;
         }
     }
@@ -208,7 +208,6 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
         $http.get(ssoUri+'/users', {
             params:{
                 token: sso.getToken(),
-                page: 1,
                 keyword: keyword
             }
         }).success(function(result){
@@ -217,14 +216,14 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = $scope.usersInfo.rows.length/5;
+                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.i-1),[10*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.toUserId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };
@@ -571,7 +570,7 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
         }
     };
     $scope.right = function () {
-        if($scope.i<$scope.psize){
+        if($scope.i<$scope.pages){
             ++$scope.i;
         }
     };
@@ -579,7 +578,6 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
         $http.get(ssoUri+'/users', {
             params:{
                 token: sso.getToken(),
-                page: 1,
                 keyword: keyword
             }
         }).success(function(result){
@@ -588,14 +586,14 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = $scope.usersInfo.rows.length/5;
+                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.i-1),[10*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
         findAccounts();

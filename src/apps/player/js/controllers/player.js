@@ -917,7 +917,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
 app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
     $scope.player = {};
     $scope.bank = {};
-    $scope.data;
+    $scope.data = {};
 
     jm.sdk.init({uri: gConfig.sdkHost});
     var bank = jm.sdk.bank;
