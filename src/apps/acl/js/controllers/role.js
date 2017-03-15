@@ -1,7 +1,10 @@
 'use strict';
-app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $state, $http) {
+app.controller('AclRoleCtrl', ['$scope', '$state', '$http','global',function ($scope, $state, $http,global) {
     var sso=jm.sdk.sso;
     var acl=jm.sdk.acl;
+    // $scope.search = {};
+    $scope.role;
+
     $scope.isCollapsed = true;
     $scope.opts = {
         injectClasses: {
@@ -29,7 +32,9 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         if(!$scope.isCollapsed){
             $scope.role = $scope.curRole;
         }
+        // $scope.role = role;
         $scope.getResource(role);
+        $scope.dataSource();
     };
 
     $scope.change = function(id){
@@ -196,7 +201,6 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         return $scope.userResources[item.code].indexOf(per)!=-1;
     };
 
-
     var token = sso.getToken();
     $scope.userResources = {};
     //获取用户资源及其权限
@@ -214,20 +218,31 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http',function ($scope, $st
         $scope.errorTips(code);
     });
     //获取资源树
-    $http.get(aclUri + '/resources/tree', {
-        params: {
-            token: token
-        }
-    }).success(function (result) {
-        if (result.err) {
-            $scope.error(result.msg);
-        } else {
-            $scope.angularTreeList = result.rows||[];
-            $scope.treeOptions = $scope.angularTreeList;
-        }
-    }).error(function (msg, code) {
-        $scope.errorTips(code);
-    });
+    $scope.dataSource = function () {
+            var search = $scope.search;
+            // var keyword = search.keyword;
+            $http.get(aclUri + '/resources/tree', {
+                params: {
+                    token: token
+                    // keyword: keyword
+                }
+            }).success(function (result) {
+                if (result.err) {
+                    $scope.error(result.msg);
+                } else {
+                    $scope.angularTreeList = result.rows || [];
+                }
+            }).error(function (msg, code) {
+                $scope.errorTips(code);
+            });
+    };
+    // $scope.search = function () {
+    //     $scope.ketword = $scope.search.keyword||'';
+    //     console.info($scope.role);
+    //     // reset();
+    //     $scope.getResource($scope.role);
+    //     $scope.dataSource();
+    // }
 
     //获取用户所属角色
     $http.get(aclUri+'/users/'+localStorage.getItem('id')+'/roles', {

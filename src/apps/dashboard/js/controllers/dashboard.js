@@ -11,9 +11,9 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         var tbObj = holds.tb || {};
         var jbObj = holds.jb || {};
         var dbjObj = holds.dbj || {};
-        $scope.tb = tbObj.amountValid;
-        $scope.jb = jbObj.amountValid;
-        $scope.dbj = dbjObj.amountValid;
+        $scope.tb = reg(tbObj.amountValid||0);
+        $scope.jb = reg(jbObj.amountValid||0);
+        $scope.dbj = reg(dbjObj.amountValid||0);
     });
     var reg = function (data) {
         return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
