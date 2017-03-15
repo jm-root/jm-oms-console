@@ -78,7 +78,7 @@
       "roomIntro": "房间简介",
       "algStartTableNum": "算法起始桌子编号",
       "tableNum": "桌子数量",
-      "tableNumRemark": "桌子减少需要重启服务器，前端才会显示减少",
+      "tableNumRemark": "桌子减少需要重启服务器，请谨慎操作",
       "roomDiff": "房间所有桌子难度",
       "roomCCDiff": "房间所有桌子炒场难度",
       "roomRate": "房间倍率",

@@ -237,18 +237,32 @@ app.controller('RobotManageCtrl', ['$scope', '$state', '$http', 'global', functi
 
         if(groupIndex >= 0){
             var group = $scope.groups[groupIndex];
-            $scope.room.groupId = group.groupId;
-            $scope.room.isRunning = group.isRunning;
-            if(group.isRunning){
-                $scope.room.number = group.number;
-                $scope.room.modes = group.modes;
-                $scope.room.entryTime = group.entryTime;
-                $scope.room.exitTime = group.exitTime ;
-                $scope.room.gamePoint = group.gamePoint;
-                $scope.room.entryInterval = group.entryInterval;
-                $scope.room.exitInterval = group.exitInterval;
-                $scope.room.changeTable = group.changeTable;
-                $scope.room.loginNormalUser = group.loginNormalUser;
+            if(group){
+                $scope.room.groupId = group.groupId;
+                $scope.room.isRunning = group.isRunning;
+                if(group.isRunning){
+                    $scope.room.number = group.number;
+                    $scope.room.modes = group.modes;
+                    $scope.room.entryTime = group.entryTime;
+                    $scope.room.exitTime = group.exitTime ;
+                    $scope.room.gamePoint = group.gamePoint;
+                    $scope.room.entryInterval = group.entryInterval;
+                    $scope.room.exitInterval = group.exitInterval;
+                    $scope.room.changeTable = group.changeTable;
+                    $scope.room.loginNormalUser = group.loginNormalUser;
+                    for(var i=0; i<$scope.games.length; ++i){
+                        var game = $scope.games[i];
+                        if(game.key == group.game){
+                            $scope.room.game = game;
+                        }
+                    }
+                    for(var j=0; j<$scope.areas[group.game].length; ++j){
+                        var area = $scope.areas[group.game][j];
+                        if(area.value == group.area){
+                            $scope.room.area = area;
+                        }
+                    }
+                }
             }
         }
 
@@ -336,5 +350,11 @@ app.controller('RobotManageCtrl', ['$scope', '$state', '$http', 'global', functi
             })
         }
     };
+
+    $scope.$on("$destroy", function(){
+        if(client){
+            client.close();
+        }
+    });
 
 }]);
