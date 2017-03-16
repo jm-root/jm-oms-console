@@ -168,17 +168,17 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
                     for(var i=begin; i<end; ++i){
                         tableArr.push(i);
                     }
-                    tableArr.forEach(function (e, i) {
-                        getAlgData(i).then(function (data) {
+                    tableArr.forEach(function (e) {
+                        getAlgData(e).then(function (data) {
                             if(data.coin_rate != coin_rate){
-                                initTable(i, $scope.room.diff, coin_rate).then(function (data) {
+                                initTable(e, $scope.room.diff, coin_rate).then(function (data) {
                                     if(data.ret != "ok"){
-                                        $scope.error("设置桌子"+i+"投币比例失败");
+                                        $scope.error("设置桌子"+e+"投币比例失败");
                                     }
                                 });
                             }
                         }, function () {
-                            $scope.error("获取桌子"+i+"投币比例失败");
+                            $scope.error("获取桌子"+e+"投币比例失败");
                         });
                     });
 
@@ -327,32 +327,32 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
 
     function saveConfig(jump) {
 
-        saveRoomConfig(jump);
-        // if($scope.room.diff == original.diff){
-        //     saveRoomConfig(jump)
-        // }else{
-        //     var funtions = [];
-        //     for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
-        //         funtions.push(setDiff(i, $scope.room.diff));
-        //     }
-        //
-        //     $q.all(funtions).then(function (arr) {
-        //         var isOk = true;
-        //         for(var i=0; i<arr.length; ++i){
-        //             var item = arr[i];
-        //             if(!item || item.ret != "ok"){
-        //                 isOk = false;
-        //                 break;
-        //             }
-        //         }
-        //
-        //         if(!isOk){
-        //             $scope.error("算法设置难度失败");
-        //         }else{
-        //             saveRoomConfig(jump);
-        //         }
-        //     });
-        // }
+        // saveRoomConfig(jump);
+        if($scope.room.diff == original.diff){
+            saveRoomConfig(jump)
+        }else{
+            var funtions = [];
+            for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
+                funtions.push(setDiff(i, $scope.room.diff));
+            }
+
+            $q.all(funtions).then(function (arr) {
+                var isOk = true;
+                for(var i=0; i<arr.length; ++i){
+                    var item = arr[i];
+                    if(!item || item.ret != "ok"){
+                        isOk = false;
+                        break;
+                    }
+                }
+
+                if(!isOk){
+                    $scope.error("算法设置难度失败");
+                }
+
+                saveRoomConfig(jump);
+            });
+        }
 
     }
 
@@ -623,17 +623,17 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
                     for(var i=begin; i<end; ++i){
                         tableArr.push(i);
                     }
-                    tableArr.forEach(function (e, i) {
-                        getAlgData(i).then(function (data) {
+                    tableArr.forEach(function (e) {
+                        getAlgData(e).then(function (data) {
                             if(data.coin_rate != coin_rate){
-                                initTable(i, $scope.room.diff, coin_rate).then(function (data) {
+                                initTable(e, $scope.room.diff, coin_rate).then(function (data) {
                                     if(data.ret != "ok"){
-                                        $scope.error("设置桌子"+i+"投币比例失败");
+                                        $scope.error("设置桌子"+e+"投币比例失败");
                                     }
                                 });
                             }
                         }, function () {
-                            $scope.error("获取桌子"+i+"投币比例失败");
+                            $scope.error("获取桌子"+e+"投币比例失败");
                         });
                     });
 
@@ -777,32 +777,32 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
     }
     function saveConfig(jump) {
 
-        saveRoomConfig(jump);
-        // if($scope.room.diff == original.diff){
-        //     saveRoomConfig(jump);
-        // }else{
-        //     var funtions = [];
-        //     for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
-        //         funtions.push(setDiff(i, $scope.room.diff));
-        //     }
-        //
-        //     $q.all(funtions).then(function (arr) {
-        //         var isOk = true;
-        //         for(var i=0; i<arr.length; ++i){
-        //             var item = arr[i];
-        //             if(!item || item.ret != "ok"){
-        //                 isOk = false;
-        //                 break;
-        //             }
-        //         }
-        //
-        //         if(!isOk){
-        //             $scope.error("算法设置难度失败");
-        //         }else{
-        //             saveRoomConfig(jump);
-        //         }
-        //     });
-        // }
+        // saveRoomConfig(jump);
+        if($scope.room.diff == original.diff){
+            saveRoomConfig(jump);
+        }else{
+            var funtions = [];
+            for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
+                funtions.push(setDiff(i, $scope.room.diff));
+            }
+
+            $q.all(funtions).then(function (arr) {
+                var isOk = true;
+                for(var i=0; i<arr.length; ++i){
+                    var item = arr[i];
+                    if(!item || item.ret != "ok"){
+                        isOk = false;
+                        break;
+                    }
+                }
+
+                if(!isOk){
+                    $scope.error("算法设置难度失败");
+                }
+                
+                saveRoomConfig(jump);
+            });
+        }
 
     }
 

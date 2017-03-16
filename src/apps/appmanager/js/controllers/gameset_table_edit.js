@@ -219,16 +219,17 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
 
     function saveConfig(jump) {
 
-        saveTableConfig(jump);
-        // if($scope.table.diff == original.diff){
-        //     saveTableConfig(jump);
-        // }else{
-        //     setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
-        //         saveTableConfig(jump);
-        //     }, function (data) {
-        //         $scope.error("算法设置难度失败");
-        //     });
-        // }
+        // saveTableConfig(jump);
+        if($scope.table.diff == original.diff){
+            saveTableConfig(jump);
+        }else{
+            setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
+                saveTableConfig(jump);
+            }, function (data) {
+                $scope.error("算法设置难度失败");
+                saveTableConfig(jump);
+            });
+        }
 
     }
 
@@ -516,16 +517,17 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
 
     function saveConfig(jump) {
 
-        saveTableConfig(jump);
-        // if($scope.table.diff == original.diff){
-        //     saveTableConfig(jump);
-        // }else{
-        //     setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
-        //         saveTableConfig(jump);
-        //     }, function (data) {
-        //         $scope.error("算法设置难度失败");
-        //     });
-        // }
+        // saveTableConfig(jump);
+        if($scope.table.diff == original.diff){
+            saveTableConfig(jump);
+        }else{
+            setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
+                saveTableConfig(jump);
+            }, function (data) {
+                $scope.error("算法设置难度失败");
+                saveTableConfig(jump);
+            });
+        }
 
     }
 
