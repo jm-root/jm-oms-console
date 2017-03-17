@@ -5,8 +5,8 @@
     </div>
     <h1 class="m-n font-thin h3" translate="app.coin.record.agentStat">渠道帐号统计</h1>
 </div>
-<div class="panel-body">
-    <div class="col-lg-12 m-b-xs">
+<div>
+    <div class="pull-left m-l-sm headpadd buttonpadd">
         <select class="pull-left" style="height: 28px;" ng-model="search.statType">
             <option value="" translate="agent.coin.record.agentStat.type">统计类型</option>
             <option value="0" translate="agent.coin.record.agentStat.day">按天统计</option>
@@ -19,14 +19,14 @@
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
-    <div class="col-lg-12">
+    <div class="pull-left m-l-sm headpadd buttonpadd">
         <span translate="agent.coin.record.agentStat.code">渠道ID&nbsp;&nbsp;</span>
         <input type="text" ng-model="search.agent" style="margin-left:4px;" placeholder="{{ 'agent.coin.record.agentStat.code' | translate }}">
     </div>
-    <div class="col-lg-12 marl">
-        <button class="btn btn-default" ng-click="searchFun()" translate="agent.coin.record.agentStat.search">搜索</button>
-        <button class="btn btn-default" ng-click="resetFun()" translate="agent.coin.record.agentStat.reset">重置</button>
-        <button class="btn btn-default" ng-click="onExportExcel()" translate="agent.coin.record.agentStat.export">导出excel</button>
+    <div class="pull-left m-l-sm headpadd buttonpadd">
+        <button class="btn btn-default btn-sm" ng-click="searchFun()" translate="agent.coin.record.agentStat.search">搜索</button>
+        <button class="btn btn-default btn-sm" ng-click="resetFun()" translate="agent.coin.record.agentStat.reset">重置</button>
+        <button class="btn btn-default btn-sm" ng-click="onExportExcel()" translate="agent.coin.record.agentStat.export">导出excel</button>
     </div>
 </div>
 
@@ -34,6 +34,6 @@
 <div class="panel panel-default">
     <div class="line b-b" style="margin: 0"></div>
     <div class="panel-body">
-        <div ng-style="{height:app.navHeight-290+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
     </div>
 </div>

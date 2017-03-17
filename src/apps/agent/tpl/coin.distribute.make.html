@@ -1,15 +1,15 @@
 <div class="bg-light lter b-b wrapper">
-    <div class="pull-right m-r-sm">
+    <div class="pull-right">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
     <h1 class="m-n font-thin h3" translate="app.coin.distribute.make">生成首充号</h1>
 </div>
-<div class="panel-body">
-    <div class="col-lg-12 m-b-xs">
+<div class="">
+    <div class="m-l-sm pull-left headpadd buttonpadd">
         <strong style="vertical-align:middle">{{ 'agent.coin.distribute.make.balance' | translate }}：{{(tbAmount||0)+' T币'}}</strong>
     </div>
-    <div class="col-lg-12 m-b-sm">
+    <div class="m-l-sm pull-left headpadd buttonpadd">
         <span class="pull-left" style="margin-top: 3px" translate="agent.coin.distribute.make.createTime">选择创建时间段&nbsp;&nbsp;</span>
         <div class="pull-left">
             <div class="input-group" style="width: 205px;">
@@ -18,25 +18,22 @@
             </div>
         </div>
         <div class="pull-left m-l-xs">
-            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;" translate="agent.coin.distribute.make.search">搜索</span>
+            <span class="btn btn-default btn-sm" ng-click="searchFun()" style="margin-top:-2px;" translate="agent.coin.distribute.make.search">搜索</span>
         </div>
-
     </div>
-    <div class="col-lg-12">
-        <div class="pull-left">
+    <div class="m-l-sm pull-left headpadd buttonpadd">
             <span translate="app.coin.distribute.make">生成首充号&nbsp;&nbsp;</span>
-            <input class="w-sm" type="number" min="1" placeholder="{{ 'agent.coin.distribute.make.generateA' | translate }}" ng-model="count">
-            <input class="w-sm" type="number" min="1" placeholder="{{ 'agent.coin.distribute.make.generateG' | translate }}" ng-model="jbAmount">
-            <input class="w-xs" type="number" min="1" max="10" placeholder="{{ 'agent.coin.distribute.make.rebate' | translate }}" ng-model="rebate">
-            <input class="w-xs" type="text" placeholder="{{ 'agent.coin.distribute.make.sAmount' | translate }}" ng-value="tbUseAmount=(jbAmount*(rebate*0.1/rate))" ng-model="tbUseAmount" disabled>
+            <input class="w-sm " type="number" min="1" placeholder="{{ 'agent.coin.distribute.make.generateA' | translate }}" ng-model="count">
+            <input class="w-sm " type="number" min="1" placeholder="{{ 'agent.coin.distribute.make.generateG' | translate }}" ng-model="jbAmount">
+            <input class="w-xs " type="number" min="1" max="10" placeholder="{{ 'agent.coin.distribute.make.rebate' | translate }}" ng-model="rebate">
+            <input class="w-xs " type="text" placeholder="{{ 'agent.coin.distribute.make.sAmount' | translate }}" ng-value="tbUseAmount=(jbAmount*(rebate*0.1/rate))" ng-model="tbUseAmount" disabled>
             <span class="btn btn-sm btn-default" ng-disabled="!tbUseAmount" ng-click="tbUseAmount&&makeFun()" style="margin-top:-3px;" translate="agent.coin.distribute.make.create">生成</span>
-        </div>
     </div>
 </div>
 
 <div class="panel panel-default">
     <div class="line b-b" style="margin: 0"></div>
     <div class="panel-body">
-        <div ng-style="{height:app.navHeight-293+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
     </div>
 </div>
