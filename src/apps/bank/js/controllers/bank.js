@@ -626,15 +626,15 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
         });
     };
 
-    $scope.i = 1;
+    $scope.page = 1;
     $scope.left = function () {
-        if($scope.i>1){
-            --$scope.i;
+        if($scope.page>1){
+            --$scope.page;
         }
-    };
+    }
     $scope.right = function () {
-        if($scope.i<$scope.psize){
-            ++$scope.i;
+        if($scope.page<$scope.pages){
+            ++$scope.page;
         }
     };
     $scope.searchUser = function(keyword){
@@ -649,14 +649,14 @@ app.controller('BankOverdrawCtrl', ['$scope', '$state', '$http', 'global', '$tim
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = Math.ceil($scope.usersInfo.rows.length/10);
+                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
     };
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
+        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.page-1),[10*$scope.page])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
         $scope.nick = $scope.selectRow.nick;
     };

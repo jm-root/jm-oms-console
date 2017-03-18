@@ -1001,7 +1001,7 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
 
     $scope.updateData = function(event){
         var data = $scope.selectRow;
-        var account = data.account||data.nick||data.uid;
+        var account = data.nick||data.account||data.uid;
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.bank.amount;
         var fromUserId,toUserId,info;
@@ -1016,34 +1016,44 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             fromUserId = data._id;
             toUserId = sso.user.id;
         }
-        $scope.openTips({
-            title:global.translateByKey('player.info.TipInfo.title'),
-            content: info,
-            okTitle:global.translateByKey('player.info.TipInfo.okTitle'),
-            cancelTitle:global.translateByKey('player.info.TipInfo.cancelTitle'),
-            okCallback: function($s){
-                var o = {
-                    ctCode:"jb",
-                    amount:amount,
-                    fromUserId:fromUserId,
-                    toUserId:toUserId,
-                    memo:memo,
-                };
-                bank.transfer(o,function(err,result){
-                    if (err) {
-                        $timeout(function () {
-                            $scope.error(result.msg);
-                        });
-                    } else {
-                        $timeout(function () {
-                            $scope.success(global.translateByKey('common.succeed'));
-                        });
-                        $scope.player.jb = $scope.sum;
-                        $scope.bank.amount = null;
-                        $scope.bank.memo = "";
-                    }
-                });
-            }
-        });
+        if($scope.sum<0){
+            $scope.openTips({
+                title: global.translateByKey('openTips.title'),
+                content: global.translateByKey('player.info.TipInfo.balance'),
+                cancelTitle: global.translateByKey('openTips.cancelDelContent'),
+                singleButton: true
+            });
+        }else{
+            $scope.openTips({
+                title:global.translateByKey('player.info.TipInfo.title'),
+                content: info,
+                okTitle:global.translateByKey('player.info.TipInfo.okTitle'),
+                cancelTitle:global.translateByKey('player.info.TipInfo.cancelTitle'),
+                okCallback: function($s){
+                    var o = {
+                        ctCode:"jb",
+                        amount:amount,
+                        fromUserId:fromUserId,
+                        toUserId:toUserId,
+                        memo:memo,
+                    };
+                    bank.transfer(o,function(err,result){
+                        if (err) {
+                            $timeout(function () {
+                                $scope.error(result.msg);
+                            });
+                        } else {
+                            $timeout(function () {
+                                $scope.success(global.translateByKey('common.succeed'));
+                            });
+                            $scope.player.jb = $scope.sum;
+                            $scope.bank.amount = null;
+                            $scope.bank.memo = "";
+                        }
+                    });
+                }
+            });
+        }
     }
 }]);
+

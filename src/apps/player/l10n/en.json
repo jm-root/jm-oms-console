@@ -62,7 +62,8 @@
       "TipInfo":{
         "title": "Update account",
         "okTitle": "Confirm",
-        "cancelTitle": "Cancel"
+        "cancelTitle": "Cancel",
+        "balance":"not sufficient funds"
       },
       "transferTip":{
         "add": "Whether to account【{{val}}】charge",

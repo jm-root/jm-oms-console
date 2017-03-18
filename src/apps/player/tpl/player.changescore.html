@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><!--可操作余额-->{{'player.changescore.label1'|translate}}</label>
                     <div class="col-lg-9 w-auto">
-                        <p class="form-control-static">{{jb||0}}</p>
+                        <p class="form-control-static">{{jb}}</p>
                     </div>
                 </div>
 
@@ -79,7 +79,8 @@
                     </div>
                     <label class="col-lg-1 col-md-2 col-sm-3 control-label">{{'player.changescore.after'|translate}}:</label><!--操作后-->
                     <div class="col-lg-1 col-sm-6 control-label w-auto">
-                        <p ng-if="(operate.type&&sum)||((operate.type&&sum==0))">{{sum>=0?sum:"余额不足" }}</p><!--余额不足-->
+                        <!--<input ng-model="bank.blance"></input>-->
+                        <p ng-if="(operate.type&&sum)||((operate.type&&sum==0))" >{{sum>=0?sum:"余额不足" }}</p><!--余额不足-->
                     </div>
                 </div>
 
