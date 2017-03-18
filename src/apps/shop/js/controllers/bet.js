@@ -92,7 +92,23 @@ app.controller('BetListCtrl', ['$scope', '$state', '$stateParams', '$http', 'glo
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                // $state.go('app.shop.bet_edit' , {id: cell.data._id});
+                $scope.openTips({
+                    title:'幸运码',
+                    content: "<div style='word-break:break-all;'>" + cell.data.codes + "</div>",
+                    okTitle:'是',
+                    // cancelTitle:'否',
+                    // cancelTitle:'否',
+                    // okCallback: function(){
+                    // }
+                });
+            }
         },
         onCellDoubleClicked: function(cell){
             // $state.go('app.shop.bet_edit' , {id: cell.data._id});

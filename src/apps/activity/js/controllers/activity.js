@@ -27,9 +27,9 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
         {headerName: "应用ID", field: "app", width: 220},
         {headerName: "名称", field: "name", width: 100},
         {headerName: "描述", field: "description", width: 200},
-        {headerName: "类型", field: "type", width: 85, valueGetter: format_type},
-        {headerName: "使用方式", field: "useMode", width: 85, valueGetter: format_useMode},
-        {headerName: "是否堆叠", field: "isStack", width: 85}
+        {headerName: "类型", field: "type", width: 120, valueGetter: format_type},
+        {headerName: "使用方式", field: "useMode", width: 120, valueGetter: format_useMode},
+        {headerName: "是否堆叠", field: "isStack", width: 120}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
@@ -80,7 +80,14 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.activity.prop.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.prop.edit' , {id: cell.data._id});
@@ -390,13 +397,13 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
     };
 
     var columnDefs = [
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "标题", field: "title", width: 100},
-        {headerName: "作者", field: "author", width: 90, valueGetter: format_author},
+        {headerName: "编码", field: "code", width: 120},
+        {headerName: "标题", field: "title", width: 120},
+        {headerName: "作者", field: "author", width: 100, valueGetter: format_author},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "显示", field: "visible", width: 70, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
-        {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "显示", field: "visible", width: 120, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "#", width: 120, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
@@ -472,7 +479,14 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.activity.forum.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.forum.edit' , {id: cell.data._id});
@@ -691,14 +705,14 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
     };
 
     var columnDefs = [
-        {headerName: "所属版块", field: "forum", width: 100, valueGetter: format_forum},
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "标题", field: "title", width: 100},
-        {headerName: "作者", field: "author", width: 90, valueGetter: format_author},
+        {headerName: "所属版块", field: "forum", width: 120, valueGetter: format_forum},
+        {headerName: "编码", field: "code", width: 120},
+        {headerName: "标题", field: "title", width: 120},
+        {headerName: "作者", field: "author", width: 100, valueGetter: format_author},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "显示", field: "visible", width: 70, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
-        {headerName: "#", width: 100, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "显示", field: "visible", width: 120, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "#", width: 250, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
@@ -786,7 +800,14 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.activity.aty.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.aty.edit' , {id: cell.data._id});
@@ -1231,6 +1252,13 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.activity.aty.item.edit', {id: cell.data._id, pid:$scope.pid});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.activity.aty.item.edit', {id: cell.data._id, pid:$scope.pid});

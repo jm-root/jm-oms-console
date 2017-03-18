@@ -58,7 +58,7 @@ app.controller('GuestBookCtrl', ['$scope', '$state', '$http', 'global', function
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -135,12 +135,12 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
 
     var columnDefs=[
         // {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "用户ID", field: "userId", width: 50,hide:true},
-        {headerName: "IP", field: "ip", width: 50},
-        {headerName: "拦截内容", field: "content", width: 50},
-        {headerName: "敏感词", field: "words", width: 60},
-        {headerName: "标签", field: "tags", width: 50},
-        {headerName: "拦截时间", field: "crtime", width: 60, valueGetter: $scope.angGridFormatDateS}
+        {headerName: "用户ID", field: "userId", width: 150,hide:true},
+        {headerName: "IP", field: "ip", width: 150},
+        {headerName: "拦截内容", field: "content", width: 150},
+        {headerName: "敏感词", field: "words", width: 160},
+        {headerName: "标签", field: "tags", width: 150},
+        {headerName: "拦截时间", field: "crtime", width: 160, valueGetter: $scope.angGridFormatDateS}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'log.log.userId',
@@ -190,7 +190,7 @@ app.controller('WordFilterLogCtrl', ['$scope', '$state', '$http', 'global', func
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译
@@ -271,11 +271,11 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
 
     var columnDefs=[
         // {headerName:"_id",field:"_id",width:80,hide:true},
-        {headerName:"ID",field:"id",width:80,valueGetter:format_id},
+        {headerName:"ID",field:"id",width:180,valueGetter:format_id},
         {headerName:"敏感词",field:"word",width:200},//给敏感词添加一个模板，或者事件监听
         {headerName:"状态",field:"status",width:200,hide:true},
         {headerName:"创建时间",field:"crtime",width:200,valueGetter:$scope.angGridFormatDateS,sort:'desc'},
-        {headerName:"操作",field:"ctrl",width:100,cellRenderer:operate,cellStyle:{'text-align':'center'}},
+        {headerName:"操作",field:"ctrl",width:200,cellRenderer:operate,cellStyle:{'text-align':'center'}},
         {headerName:"状态",field:"__v",width:200,hide:true}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
@@ -333,7 +333,14 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.wordfilter.update',{id : cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.wordfilter.update',{id : cell.data._id});

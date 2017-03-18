@@ -16,15 +16,15 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 70, hide: true},
         // {headerName: "userId", field: "userId", width: 200, hide: true},
-        {headerName: "名称", field: "name", width: 100},
+        {headerName: "名称", field: "name", width: 120},
         // {headerName: "密码", field: "password", width: 70, hide: true},
-        {headerName: "排序", field: "sort", width: 70},
-        {headerName: "分类", field: "category", width: 100},
+        {headerName: "排序", field: "sort", width: 100},
+        {headerName: "分类", field: "category", width: 120},
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "创建人", field: "userNick", width: 70},
-        {headerName: "状态", field: "status", width: 80, valueGetter: statusFormat},
-        {headerName: "显示", field: "visible", width: 80, valueGetter: visibleFormat}
+        {headerName: "创建人", field: "userNick", width: 100},
+        {headerName: "状态", field: "status", width: 150, valueGetter: statusFormat},
+        {headerName: "显示", field: "visible", width: 150, valueGetter: visibleFormat}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
@@ -122,7 +122,14 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                goRoomConfig(cell);
+            }
         },
         onCellDoubleClicked: function(cell){
             goRoomConfig(cell);

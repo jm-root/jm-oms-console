@@ -62,7 +62,8 @@
           "TipInfo":{
               "title": "更新账目",
               "okTitle": "确定",
-              "cancelTitle": "取消"
+              "cancelTitle": "取消",
+              "balance":"余额不足!"
           },
           "transferTip":{
               "add": "是否给账号【{{val}}】充",

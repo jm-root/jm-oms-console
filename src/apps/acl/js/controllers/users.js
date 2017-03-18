@@ -34,15 +34,15 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
         return rolesAry;
     };
     var columnDefs = [
-        {headerName: "昵称", field: "nick", width: 90,cellStyle:{'text-align':'center'}},
-        {headerName: "角色", field: "roles", width: 80, valueGetter:format_roles,cellStyle:{'text-align':'center'} },
-        {headerName: "标签", field: "tags", width: 80},
-        {headerName: "创建者", field: "creator.nick", width: 80},
-        {headerName: "激活状态", field: "status", width: 100, valueGetter:format_status,cellStyle:{'text-align':'center'}},
+        {headerName: "昵称", field: "nick", width: 200,cellStyle:{'text-align':'center'}},
+        {headerName: "角色", field: "roles", width: 200, valueGetter:format_roles,cellStyle:{'text-align':'center'} },
+        {headerName: "标签", field: "tags", width: 120},
+        {headerName: "创建者", field: "creator.nick", width: 120},
+        {headerName: "激活状态", field: "status", width: 120, valueGetter:format_status,cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS,cellStyle:{'text-align':'center'}},
-        {headerName: "最后登录IP", field: "creator.nick", width: 80},
-        {headerName: "最后登录时间", field: "creator.nick", width: 80},
-        {headerName: "登录次数", field: "creator.nick", width: 80}
+        {headerName: "最后登录IP", field: "creator.nick", width: 120},
+        {headerName: "最后登录时间", field: "creator.nick", width: 150},
+        {headerName: "登录次数", field: "creator.nick", width: 120}
     ];
 
     var dataSource = {
@@ -86,7 +86,14 @@ app.controller('AclUsersListCtrl', ['$scope', '$http', '$state', '$stateParams',
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.acl.users.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.acl.users.edit' , {id: cell.data._id});

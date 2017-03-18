@@ -33,8 +33,8 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
 
 
     var columnDefs = [
-        {headerName: "宝箱类型", field: "boxType", width: 100},
-        {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "宝箱类型", field: "boxType", width: 200},
+        {headerName: "#", width: 200, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
@@ -116,6 +116,13 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.rooms.manage.baoxiang.edit' , {appId: tmpl_id, id: cell.data.boxType});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.baoxiang.edit' , {appId: tmpl_id, id: cell.data.boxType});
@@ -350,9 +357,9 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
 
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "用户id", field: "userId", width: 50},
-        {headerName: "用户呢称", field: "userNick", width: 100},
-        {headerName: "宝箱类型", field: "type", width: 100},
+        {headerName: "用户id", field: "userId", width: 100},
+        {headerName: "用户呢称", field: "userNick", width: 120},
+        {headerName: "宝箱类型", field: "type", width: 120},
         {headerName: "消耗", field: "costs", width: 120, valueGetter: angGridFormatCosts},
         {headerName: "奖励", field: "awards", width: 120, valueGetter: angGridFormatAwards},
         {headerName: "支付id", field: "payId", width: 120},
@@ -447,7 +454,7 @@ app.controller('BaoXiangRecordListCtrl', ['$scope', '$state', '$stateParams', '$
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
             // $state.go('app.shop.product.edit' , {id: cell.data._id});

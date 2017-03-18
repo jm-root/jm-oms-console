@@ -35,19 +35,19 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
 
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "标题", field: "title", width: 100},
+        {headerName: "编码", field: "code", width: 120},
+        {headerName: "标题", field: "title", width: 120},
         //{headerName: "类型", field: "type", width: 70},
         //{headerName: "收藏次数", field: "favTimes", width: 85},
         //{headerName: "分享次数", field: "shareTimes", width: 85},
-        {headerName: "贴子数量", field: "postCount", width: 85},
-        {headerName: "今日发帖", field: "postCountToday", width: 85},
-        {headerName: "昨日发帖", field: "postCountYesterday", width: 85},
-        {headerName: "创建者", field: "creator", width: 90, valueGetter: format_creator},
-        {headerName: "显示", field: "visible", width: 70,cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "贴子数量", field: "postCount", width: 120},
+        {headerName: "今日发帖", field: "postCountToday", width: 120},
+        {headerName: "昨日发帖", field: "postCountYesterday", width: 120},
+        {headerName: "创建者", field: "creator", width: 100, valueGetter: format_creator},
+        {headerName: "显示", field: "visible", width: 100,cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "#", width: 120, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope,columnDefs,[
         'bbs.forum.list.header._id',
@@ -104,7 +104,14 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.bbs.forum.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.bbs.forum.edit' , {id: cell.data._id});
@@ -350,16 +357,16 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "所属板块", field: "title", width: 150,valueGetter: format_title},
-        {headerName: "编码", field: "code", width: 80},
+        {headerName: "编码", field: "code", width: 120},
         {headerName: "标题", field: "title", width: 250},
-        {headerName: "收藏次数", field: "favTimes", width: 85},
-        {headerName: "分享次数", field: "shareTimes", width: 85},
-        {headerName: "浏览次数", field: "viewCount", width: 85},
-        {headerName: "回复次数", field: "replyCount", width: 85},
-        {headerName: "支持人数", field: "favorTimes", width: 85},
-        {headerName: "反对人数", field: "againstTimes", width: 85},
-        {headerName: "作者", field: "author", width: 90, valueGetter: format_author},
-        {headerName: "显示", field: "visible", width: 70, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "收藏次数", field: "favTimes", width: 120},
+        {headerName: "分享次数", field: "shareTimes", width: 120},
+        {headerName: "浏览次数", field: "viewCount", width: 120},
+        {headerName: "回复次数", field: "replyCount", width: 120},
+        {headerName: "支持人数", field: "favorTimes", width: 120},
+        {headerName: "反对人数", field: "againstTimes", width: 120},
+        {headerName: "作者", field: "author", width: 100, valueGetter: format_author},
+        {headerName: "显示", field: "visible", width: 100, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
@@ -420,7 +427,14 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.bbs.topic.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.bbs.topic.edit' , {id: cell.data._id});

@@ -10,10 +10,10 @@ app.controller('CateListCtrl', ['$scope', '$state', '$http', 'global', function 
 
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 150, hide: true},
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "名称", field: "name", width: 80},
-        {headerName: "父类", field: "pid.name", width: 80, hide: false},
-        {headerName: "创建时间", field: "crTime", width: 100, valueGetter: $scope.angGridFormatDateS}
+        {headerName: "编码", field: "code", width: 120},
+        {headerName: "名称", field: "name", width: 120},
+        {headerName: "父类", field: "pid.name", width: 120, hide: false},
+        {headerName: "创建时间", field: "crTime", width: 150, valueGetter: $scope.angGridFormatDateS}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
@@ -61,7 +61,14 @@ app.controller('CateListCtrl', ['$scope', '$state', '$http', 'global', function 
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.shop.category.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.category.edit' , {id: cell.data._id});

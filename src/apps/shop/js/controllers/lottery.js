@@ -13,24 +13,24 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     $scope.isShowFormula = true;
 
     var columnDefs = [
-        {headerName: "Id", field: "_id", width: 70},
-        {headerName: "总期数", field: "maxPeriod", width: 100},
-        {headerName: "当前期数", field: "period", width: 100},
-        {headerName: "物品名称", field: "title", width: 100},
-        {headerName: "物品描述", field: "summary", width: 100},
+        {headerName: "Id", field: "_id", width: 100},
+        {headerName: "总期数", field: "maxPeriod", width: 120},
+        {headerName: "当前期数", field: "period", width: 120},
+        {headerName: "物品名称", field: "title", width: 120},
+        {headerName: "物品描述", field: "summary", width: 120},
         {headerName: "消耗夺宝卷数", field: "totalPrice", width: 120},
         {headerName: "总参与人次", field: "joinNumber2", width: 100},
-        {headerName: "总参与人数", field: "joinPepole", width: 100},
-        {headerName: "商品进度", field: "joinNumber", width: 100},
+        {headerName: "总参与人数", field: "joinPepole", width: 120},
+        {headerName: "商品进度", field: "joinNumber", width: 120},
         // {headerName: "中奖用户", width: 70, cellRenderer: editWinUser, cellStyle:{'text-align':'center'}},
         // {headerName: "中奖编码", field: "winCode", width: 100},
         // {headerName: "状态", field: "status", width: 100, valueGetter: angGridFormtStatus},
         // {headerName: "状态", field: "enable", width: 100},
-        {headerName: "状态", width: 100, cellRenderer: enable_render , cellStyle:{'text-align':'center'}},
+        {headerName: "状态", width: 120, cellRenderer: enable_render , cellStyle:{'text-align':'center'}},
         // {headerName: "是否启用", field: "enable", width: 100},
         // {headerName: "开始时间", field: "beginTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         // {headerName: "结束时间", field: "endTime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "#", width: 70, cellRenderer: edit_render , cellStyle:{'text-align':'center'}},
+        {headerName: "#", width: 150, cellRenderer: edit_render , cellStyle:{'text-align':'center'}},
         // {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
@@ -224,7 +224,15 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                var index = cell.data.lotteryIds.length - 1;
+                $state.go('app.shop.lottery.edit' , {id: cell.data.lotteryIds[index]});
+            }
         },
         onCellDoubleClicked: function(cell){
             var index = cell.data.lotteryIds.length - 1;
@@ -482,32 +490,32 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
     $scope.isShowFormula = false;
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "物品Id", field: "id", width: 100},
-        {headerName: "夺宝标题", field: "title", width: 100},
-        {headerName: "玩家名称", field: "userNick", width: 100},
-        {headerName: "玩家ID", field: "userUId", width: 100},
-        {headerName: "中奖期数", field: "period", width: 100},
+        {headerName: "_id", field: "_id", width: 100, hide: true},
+        {headerName: "物品Id", field: "id", width: 120},
+        {headerName: "夺宝标题", field: "title", width: 120},
+        {headerName: "玩家名称", field: "userNick", width: 120},
+        {headerName: "玩家ID", field: "userUId", width: 120},
+        {headerName: "中奖期数", field: "period", width: 120},
         // {headerName: "总期数", field: "maxPeriod", width: 100},
         // {headerName: "单价", field: "unitPrice", width: 100},
         // {headerName: "消耗夺宝卷数", field: "totalPrice", width: 120},
         // {headerName: "已参加人数", field: "joinNumber", width: 100},
         // {headerName: "总需要人数", field: "totalNumber", width: 100},
         // {headerName: "中奖用户", width: 70, cellRenderer: editWinUser, cellStyle:{'text-align':'center'}},
-        {headerName: "中奖编码", field: "winCode", width: 100},
-        {headerName: "玩家地址", field: "address.address", width: 100},
+        {headerName: "中奖编码", field: "winCode", width: 120},
+        {headerName: "玩家地址", field: "address.address", width: 120},
         {headerName: "玩家姓名", field: "address.name", width: 120},
         {headerName: "手机号码", field: "address.mobile", width: 100},
-        {headerName: "物流公司", field: "logistics", width: 100},
-        {headerName: "物流订单", field: "lorder", width: 100},
-        {headerName: "当前状态", field: "status", width: 100, valueGetter: angGridFormtStatus},
+        {headerName: "物流公司", field: "logistics", width: 120},
+        {headerName: "物流订单", field: "lorder", width: 120},
+        {headerName: "当前状态", field: "status", width: 120, valueGetter: angGridFormtStatus},
         // {headerName: "排序", field: "sort", width: 100},
         // {headerName: "是否启用", field: "enable", width: 100},
         // {headerName: "开始时间", field: "beginTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         // {headerName: "结束时间", field: "endTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         // {headerName: "#", width: 70, cellRenderer: publish, cellStyle:{'text-align':'center'}},
         // {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
-        {headerName: "#", width: 70, cellRenderer: edit_render, cellStyle:{'text-align':'center'}}
+        {headerName: "#", width: 100, cellRenderer: edit_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
@@ -663,7 +671,14 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.shop.lotteryWin.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.lotteryWin.edit' , {id: cell.data._id});

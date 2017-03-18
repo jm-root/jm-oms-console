@@ -5,6 +5,9 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
 
     var sso=jm.sdk.sso;
     var bank = jm.sdk.bank;
+    var reg = function (data) {
+        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
     bank.query({},function(err,result){
         result || (result||{});
         var holds = result.holds||{};
@@ -15,9 +18,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         $scope.jb = reg(jbObj.amountValid||0);
         $scope.dbj = reg(dbjObj.amountValid||0);
     });
-    var reg = function (data) {
-        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    };
+
     $scope.search = {};
     $scope.search.date || ($scope.search.date = {});
 

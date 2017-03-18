@@ -55,7 +55,7 @@ app.controller('SystemAdminCtrl', ['$scope', '$state', '$http', 'global', functi
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         localeText: global.agGrid.localeText,
         datasource: dataSource
@@ -165,7 +165,7 @@ app.controller('SystemLogCtrl', ['$scope', '$state', '$http', 'global', function
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译

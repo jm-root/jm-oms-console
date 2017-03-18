@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="agent.agent.list.AgentList">渠道列表</h1></div>
+<div>
+    <div class="pull-right m-r-xxl headpadd">
         <button ui-sref="app.agent.create"  class="btn btn-sm btn-primary btn-addon" >
             <i class="fa fa-plus"></i>{{'agent.agent.list.create'|translate}}
         </button>
@@ -8,7 +9,7 @@
             <i class="fa fa-trash-o"></i>{{'agent.agent.list.delete'|translate}}
         </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <form>
             <div class="input-group m-r-sm">
                 <input type="text" ng-model="search.agent" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
@@ -18,7 +19,7 @@
             </div>
         </form>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="audit" ng-change="onPageSizeChanged()">
             <option value="" translate="agent.agent.list.AuditStatus">审核状态</option>
             <option value="0" translate="agent.agent.list.unaudited">未审核</option>
@@ -26,18 +27,17 @@
             <option value="2" translate="agent.agent.list.AuditNotApproved">审核不通过</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="status" ng-change="onPageSizeChanged()">
             <option value="" translate="agent.agent.list.AccountStatus">账号状态</option>
             <option value="0" translate="agent.agent.list.pause">暂停</option>
             <option value="1" translate="agent.agent.list.normal">正常</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3" translate="agent.agent.list.AgentList">渠道列表</h1>
 </div>
 
 <div class="panel panel-default">

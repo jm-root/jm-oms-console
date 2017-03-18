@@ -1,7 +1,8 @@
 <div ui-view class="fade-in-down">
     <div ng-controller="AppsListCtrl">
-        <div class="bg-light lter b-b wrapper">
-            <div class="pull-right">
+        <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{ "appmgr.appList" | translate }}</h1></div>
+        <div>
+            <div class="pull-right m-r-xxl headpadd">
                 <button ui-sref="app.apps.manage.edit" type="button" class="btn btn-sm btn-primary btn-addon">
                     <i class="fa fa-plus"></i>{{ "common.create" | translate}}
                 </button>
@@ -9,7 +10,7 @@
                     <i class="fa fa-trash-o"></i>{{ "common.delete" | translate}}
                 </button>
             </div>
-            <div class="pull-right">
+            <div class="pull-right m-r-sm headpadd">
                 <form>
                     <div class="input-group m-r-sm">
                         <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
@@ -19,11 +20,10 @@
                     </div>
                 </form>
             </div>
-            <div class="pull-right m-r-sm">
+            <div class="pull-right m-r-sm headpadd">
                 <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
                 </select>
             </div>
-            <h1 class="m-n font-thin h3">{{ "appmgr.appList" | translate }}</h1>
         </div>
 
         <div class="panel panel-default">

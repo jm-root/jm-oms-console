@@ -16,7 +16,7 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function 
         // {headerName: "产品描述", field: "description", width: 120},
         {headerName: "产品类型", cellRenderer: type_render, width: 120, cellStyle:{'text-align':'center'}},
         {headerName: "产品价格", field: "price", width: 120},
-        {headerName: "产品图片", field: "pic", width: 120},
+        {headerName: "产品图片", field: "pic", width: 300},
         // {headerName: "产品标签", field: "tags", width: 120},
         {headerName: "产品库存", field: "inventory", width: 120},
         {headerName: "产品状态", field: "status", width: 120, valueGetter: $scope.angGridFormatStatus},
@@ -25,7 +25,7 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function 
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS},
 
         {headerName: "#", width: 200, cellRenderer: create_lottery, cellStyle:{'text-align':'center'}},
-        {headerName: "#", width: 70, cellRenderer: create_goods, cellStyle:{'text-align':'center'}}
+        {headerName: "#", width: 100, cellRenderer: create_goods, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
@@ -118,7 +118,14 @@ app.controller('ProdListCtrl', ['$scope', '$state', '$http', 'global', function 
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.shop.product.edit' , {id: cell.data._id, type: "product"});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.product.edit' , {id: cell.data._id, type: "product"});

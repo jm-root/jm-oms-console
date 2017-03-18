@@ -12,14 +12,14 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
         // {headerName: "userId", field: "userId", width: 200, hide: true},
         {headerName: "应用名称", field: "name", width: 100},
         // {headerName: "密码", field: "password", width: 70, hide: true},
-        {headerName: "排序", field: "sort", width: 70},
-        {headerName: "分类", field: "category", width: 100},
+        {headerName: "排序", field: "sort", width: 100},
+        {headerName: "分类", field: "category", width: 120},
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "modiTime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "创建人", width: 70, cellRenderer: user_render, cellStyle:{'text-align':'center'}},
-        {headerName: "状态", field: "status", width: 80, valueGetter: statusFormat},
-        {headerName: "显示", field: "visible", width: 80, valueGetter: visibleFormat},
-        {headerName: "#", width: 70, cellRenderer: config_render, cellStyle:{'text-align':'center'}}
+        {headerName: "创建人", width: 100, cellRenderer: user_render, cellStyle:{'text-align':'center'}},
+        {headerName: "状态", field: "status", width: 120, valueGetter: statusFormat},
+        {headerName: "显示", field: "visible", width: 120, valueGetter: visibleFormat},
+        {headerName: "#", width: 100, cellRenderer: config_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
@@ -136,7 +136,14 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.apps.manage.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.apps.manage.edit' , {id: cell.data._id});

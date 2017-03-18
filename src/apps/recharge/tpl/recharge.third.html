@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="app.recharge.third">第三方充值</h1></div>
+<div>
+    <div class="pull-right headpadd">
         <form>
             <div class="input-group m-r-sm w-lg">
                 <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
@@ -11,14 +12,14 @@
     </div>
 
     <!--日期区间-->
-    <div class="pull-right">
+    <div class="pull-right headpadd">
         <div class="input-group m-r-sm" style="width: 185px;">
             <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
 
-    <div class="pull-right m-r-sm" >
+    <div class="pull-right m-r-sm headpadd" >
         <select class="input-sm form-control" ng-model="search.status" ng-change="onPageSizeChanged()">
             <option value="" translate="recharge.third.state">充值状态</option>
             <option value="0" translate="recharge.third.fail">不成功</option>
@@ -26,12 +27,12 @@
         </select>
     </div>
 
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3" translate="app.recharge.third">第三方充值</h1>
 </div>
+
 <div>
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>

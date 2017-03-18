@@ -1,6 +1,7 @@
 <div>
-    <div class="bg-light lter b-b wrapper">
-        <div class="pull-right">
+    <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{ 'home.sendnotice.title' | translate }}</h1></div>
+    <div>
+        <div class="pull-right m-r-xxl headpadd">
             <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="send()">
                 <i class="fa fa-plus"></i>{{ 'home.sendnotice.title' | translate }}
             </button>
@@ -8,12 +9,11 @@
                 <i class="fa fa-refresh"></i>{{ 'home.sendnotice.refresh' | translate }}
             </button>
         </div>
-
-        <h1 class="m-n font-thin h3">{{ 'home.sendnotice.title' | translate }}</h1>
     </div>
+
     <div>
         <div class="panel panel-default">
-            <div style="margin-top: 20px">
+            <div style="margin-top: 40px">
                 <form name="formValidate" class="form-horizontal form-validation">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">{{ 'home.sendnotice.msgType.type' | translate }}</label>

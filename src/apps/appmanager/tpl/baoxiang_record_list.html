@@ -1,13 +1,14 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmgr.appList" | translate }}>></a><a ng-click="goBaoxiangList()">{{ "appmgr.baoxiangList" | translate }}>></a>{{ "appmgr.baoxiangJoinList" | translate }}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <!--<button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="create()">-->
-            <!--<i class="fa fa-plus"></i>创建-->
+        <!--<i class="fa fa-plus"></i>创建-->
         <!--</button>-->
         <!--<button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">-->
-            <!--<i class="fa fa-trash-o"></i>删除-->
+        <!--<i class="fa fa-trash-o"></i>删除-->
         <!--</button>-->
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <div class="input-group m-r-sm">
             <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'appmgr.search' | translate }}">
             <span class="input-group-btn" style="width: auto">
@@ -15,12 +16,10 @@
     </span>
         </div>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-
-    <h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmgr.appList" | translate }}>></a><a ng-click="goBaoxiangList()">{{ "appmgr.baoxiangList" | translate }}>></a>{{ "appmgr.baoxiangJoinList" | translate }}</h1>
 </div>
 
 <div class="panel panel-default">

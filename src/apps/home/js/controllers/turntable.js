@@ -79,11 +79,11 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
     };
 
     var columnDefs = [
-        {headerName: "ID", field: "order", width: 60, editable: true},
-        {headerName: "奖项", field: "title", width: 140, editable: true},
-        {headerName: "奖品", field: "p_name", width: 140, editable: true, cellRenderer: render_p_name},
-        {headerName: "数量", field: "p_amount", width: 90, editable: true},
-        {headerName: "机率", field: "amount", width: 90, editable: true}
+        {headerName: "ID", field: "order", width: 120, editable: true},
+        {headerName: "奖项", field: "title", width: 200, editable: true},
+        {headerName: "奖品", field: "p_name", width: 200, editable: true, cellRenderer: render_p_name},
+        {headerName: "数量", field: "p_amount", width: 120, editable: true},
+        {headerName: "机率", field: "amount", width: 120, editable: true}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'home.turn.order',
@@ -106,11 +106,12 @@ app.controller('HomeTurntableCtrl', ['$scope', '$state', '$http', '$timeout', 'g
         rowSelection: 'single',
         rowHeight: 30,
         columnDefs: columnDefs,
+        singleClickEdit: true,   //表格内可编辑元素变为单击编辑，适应移动端
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         localeText: global.agGrid.localeText,
         rowData: [],
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
 

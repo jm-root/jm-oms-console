@@ -1,4 +1,4 @@
-<div class="bg-light lter b-b wrapper">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="agent.agentdata.recharge.title">充值数</h1></div>
     <!--<div class="pull-right">-->
     <!--<div class="input-group m-r-sm">-->
     <!--<input type="text" ng-model="search.agent" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 代理ID/名称">-->
@@ -7,34 +7,31 @@
     <!--</span>-->
     <!--</div>-->
     <!--</div>-->
-    <div class="pull-right">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
-        </select>
+<div>
+    <div class="pull-right m-l-xs headpadd buttonpadd">
+        <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">{{ 'agent.agentdata.recharge.search' | translate }}</span>
     </div>
-    <h1 class="m-n font-thin h3" translate="agent.agentdata.recharge.title">充值数</h1>
-</div>
-<div class="panel-body">
-    <div class="col-lg-12">
-        <div class="pull-left">
-            <span translate="agent.agentdata.recharge.code">渠道ID&nbsp;&nbsp;</span>
-            <input type="text" placeholder="{{ 'agent.agentdata.recharge.code' | translate }}" ng-model="search.agent">
-        </div>
-        <span class="pull-left" style="margin-top: 3px;margin-left:15px" translate="agent.agentdata.recharge.time">时间段&nbsp;&nbsp;</span>
+    <div class="pull-right m-r-sm headpadd">
+        <span class="pull-left m-r-sm" style="margin-top: 3px;margin-left:15px" translate="agent.agentdata.recharge.time">时间段&nbsp;&nbsp;</span>
         <div class="pull-left">
             <div class="input-group" style="width: 205px;">
                 <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="height: 28px"/>
                 <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
             </div>
         </div>
-
-        <div class="pull-left m-l-xs">
-            <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">{{ 'agent.agentdata.recharge.search' | translate }}</span>
-        </div>
+    </div>
+    <div class="pull-right headpadd buttonpadd">
+        <span translate="agent.agentdata.recharge.code">渠道ID&nbsp;&nbsp;</span>
+        <input type="text" placeholder="{{ 'agent.agentdata.recharge.code' | translate }}" ng-model="search.agent">
+    </div>
+    <div class="pull-right headpadd buttonpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
     </div>
 </div>
 <div class="panel panel-default">
     <div class="line b-b" style="margin: 0"></div>
     <div class="panel-body">
-        <div ng-style="{height:app.navHeight-225+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
     </div>
 </div>

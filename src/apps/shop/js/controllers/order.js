@@ -12,10 +12,10 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'g
 
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "产品", field: "product.name", width: 100},
-        {headerName: "数量", field: "buyNum", width: 70},
-        {headerName: "购买用户", field: "userNick", width: 70},
-        {headerName: "状态", field: "status", width: 100, valueGetter: angGridFormtStatus},
+        {headerName: "产品", field: "product.name", width: 120},
+        {headerName: "数量", field: "buyNum", width: 100},
+        {headerName: "购买用户", field: "userNick", width: 100},
+        {headerName: "状态", field: "status", width: 120, valueGetter: angGridFormtStatus},
         // {headerName: "排序", field: "sort", width: 100},
         // {headerName: "是否启用", field: "enable", width: 100},
         {headerName: "创建时间", field: "crTime", width: 145, valueGetter: $scope.angGridFormatDateS},
@@ -147,7 +147,14 @@ app.controller('OrderListCtrl', ['$scope', '$state', '$stateParams', '$http', 'g
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.shop.order.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.shop.order.edit' , {id: cell.data._id});

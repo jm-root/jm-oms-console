@@ -109,18 +109,18 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 
     var columnDefs = [
         {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
-        {headerName: "玩家ID", field: "uid", width: 70, cellRenderer: uid_render},
+        {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
         {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
         {headerName: "手机", field: "mobile", width: 100},
         {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
         {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
         {headerName: "mac地址", field: "mac", width: 100},
         {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
-        {headerName: "元宝", field: "tb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+        {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
         {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
         {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
         {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
-        {headerName: "点卡充值", field: "card", width: 90},
+        {headerName: "点卡充值", field: "card", width: 100},
         {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
         {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
         {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
@@ -220,8 +220,19 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         localeText: global.agGrid.localeText,
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         datasource: dataSource,
+        singleClickEdit: true,   //表格内可编辑元素变为单击编辑，适应移动端
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                var field = cell.colDef.field;
+                var coin = ['tb','jb','dbj'];
+                if(coin.indexOf(field)!=-1) return;
+                $state.go('app.player.info.games' , {id: cell.data._id,name:cell.data.nick});
+            }
         },
         onCellDoubleClicked: function(cell){
             var field = cell.colDef.field;
@@ -359,8 +370,8 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     var columnDefs = [
         {headerName: "游戏名称", field: "name", width: 120},
         {headerName: "游戏局数", field: "count", width: 100},
-        {headerName: "游戏总输赢", field: "gain_jb", width: 100},
-        {headerName: "今日总输赢", field: "gain_day_jb", width: 100},
+        {headerName: "游戏总输赢", field: "gain_jb", width: 120},
+        {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
         {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
     ];
 
@@ -541,7 +552,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -704,7 +715,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -868,7 +879,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -990,7 +1001,7 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
 
     $scope.updateData = function(event){
         var data = $scope.selectRow;
-        var account = data.account||data.nick||data.uid;
+        var account = data.nick||data.account||data.uid;
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.bank.amount;
         var fromUserId,toUserId,info;
@@ -1005,34 +1016,44 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             fromUserId = data._id;
             toUserId = sso.user.id;
         }
-        $scope.openTips({
-            title:global.translateByKey('player.info.TipInfo.title'),
-            content: info,
-            okTitle:global.translateByKey('player.info.TipInfo.okTitle'),
-            cancelTitle:global.translateByKey('player.info.TipInfo.cancelTitle'),
-            okCallback: function($s){
-                var o = {
-                    ctCode:"jb",
-                    amount:amount,
-                    fromUserId:fromUserId,
-                    toUserId:toUserId,
-                    memo:memo,
-                };
-                bank.transfer(o,function(err,result){
-                    if (err) {
-                        $timeout(function () {
-                            $scope.error(result.msg);
-                        });
-                    } else {
-                        $timeout(function () {
-                            $scope.success(global.translateByKey('common.succeed'));
-                        });
-                        $scope.player.jb = $scope.sum;
-                        $scope.bank.amount = null;
-                        $scope.bank.memo = "";
-                    }
-                });
-            }
-        });
+        if($scope.sum<0){
+            $scope.openTips({
+                title: global.translateByKey('openTips.title'),
+                content: global.translateByKey('player.info.TipInfo.balance'),
+                cancelTitle: global.translateByKey('openTips.cancelDelContent'),
+                singleButton: true
+            });
+        }else{
+            $scope.openTips({
+                title:global.translateByKey('player.info.TipInfo.title'),
+                content: info,
+                okTitle:global.translateByKey('player.info.TipInfo.okTitle'),
+                cancelTitle:global.translateByKey('player.info.TipInfo.cancelTitle'),
+                okCallback: function($s){
+                    var o = {
+                        ctCode:"jb",
+                        amount:amount,
+                        fromUserId:fromUserId,
+                        toUserId:toUserId,
+                        memo:memo,
+                    };
+                    bank.transfer(o,function(err,result){
+                        if (err) {
+                            $timeout(function () {
+                                $scope.error(result.msg);
+                            });
+                        } else {
+                            $timeout(function () {
+                                $scope.success(global.translateByKey('common.succeed'));
+                            });
+                            $scope.player.jb = $scope.sum;
+                            $scope.bank.amount = null;
+                            $scope.bank.memo = "";
+                        }
+                    });
+                }
+            });
+        }
     }
 }]);
+
