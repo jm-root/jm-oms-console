@@ -1,6 +1,6 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3"><a ui-sref="app.rooms.manage">{{ "appmgr.appList" | translate }}>></a>{{ "appmgr.roomList" | translate }}</h1></div>
 <div>
-    <div ng-show="isFromAppManager" class="pull-right m-r-sm headpadd">
+    <div ng-show="isFromAppManager" class="pull-right m-r-xxl headpadd">
         <button type="button" class="btn btn-sm btn-primary btn-addon" ng-click="create()">
             <i class="fa fa-plus"></i>{{ "common.create" | translate}}
         </button>
@@ -17,7 +17,7 @@
     <!--</div>-->
     <!--</div>-->
     <div class="pull-right m-r-sm headpadd">
-        <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
 </div>

@@ -21,7 +21,7 @@
         <input class="w-xs m-t-xs" type="text" placeholder="{{ 'agent.coin.distribute.make.sAmount' | translate }}" ng-value="tbUseAmount=(jbAmount*(rebate*0.1/rate))" ng-model="tbUseAmount" disabled>
         <span class="btn btn-sm btn-default" ng-disabled="!tbUseAmount" ng-click="tbUseAmount&&recharge()" style="margin-top:-3px;" translate="agent.coin.distribute.batch.determineRecharge">确定充值</span>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-xxl headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>

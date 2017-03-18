@@ -41,14 +41,14 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "id", field: "uid", width: 50},
-        {headerName: "账号", field: "account", width: 100},
+        {headerName: "id", field: "uid", width: 200},
+        {headerName: "账号", field: "account", width: 120},
         {headerName: "手机号", field: "mobile", width: 120},
         {headerName: "邮箱", field: "email", width: 120},
         // {headerName: "微信UnionID", field: "mp_unionid", width: 255},
         // {headerName: "微信OpenID", field: "mp_openid", width: 255},
-        {headerName: "昵称", field: "nick", width: 90},
-        {headerName: "性别", field: "gender", width: 80, valueGetter: format_gender},
+        {headerName: "昵称", field: "nick", width: 100},
+        {headerName: "性别", field: "gender", width: 100, valueGetter: format_gender},
         {headerName: "激活状态", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
@@ -103,7 +103,14 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.per.users.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.per.users.edit' , {id: cell.data._id});
