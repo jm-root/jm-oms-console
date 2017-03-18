@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{ 'home.checkin.list' | translate }}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.home.checkin.edit" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{ 'home.create' | translate }}
         </button>
@@ -7,17 +8,17 @@
             <i class="fa fa-trash-o"></i>{{ 'home.delete' | translate }}
         </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <form>
             <div class="input-group m-r-sm">
                 <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
-              <span class="input-group-btn" style="width: auto">
+                <span class="input-group-btn" style="width: auto">
                 <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
               </span>
             </div>
         </form>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-change="onPageSizeChanged()">
             <option value="10">10</option>
             <option value="50">50</option>
@@ -25,7 +26,6 @@
             <option value="200">200</option>
         </select>
     </div>
-    <h1 class="m-n font-thin h3">{{ 'home.checkin.list' | translate }}</h1>
 </div>
 
 <div class="panel panel-default">

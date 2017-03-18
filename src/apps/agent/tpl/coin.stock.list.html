@@ -1,15 +1,9 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right m-r-sm">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
-        </select>
-    </div>
-    <h1 class="m-n font-thin h3" translate="app.coin.stock.list">库存列表</h1>
-</div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="app.coin.stock.list">库存列表</h1></div>
 <div>
-    <div class="pull-left m-l-sm m-t-xs headpadd buttonpadd">
+    <div class="pull-left m-l-sm m-t-xs headpadd">
         <strong style="vertical-align:middle">{{ 'agent.coin.stock.list.balance' | translate }}：{{(tbAmount||0)+' T币'}}</strong>
     </div>
-    <div class="pull-left  m-t-xs headpadd buttonpadd">
+    <div class="pull-left m-l-sm m-t-xs headpadd">
         <span translate="agent.coin.stock.list.code">渠道ID/名称&nbsp;&nbsp;</span>
         <input type="text" placeholder="{{ 'agent.id' | translate }}" ng-model="search.agent">
     </div>
@@ -17,6 +11,10 @@
         <button class="btn btn-default btn-sm" ng-click="searchFun()" translate="agent.coin.stock.list.search">搜索</button>
         <button class="btn btn-default btn-sm" ng-click="resetFun()" translate="agent.coin.stock.list.reset">重置</button>
         <button class="btn btn-default btn-sm" ng-click="onExportExcel()" translate="agent.coin.stock.list.export">导出excel</button>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
     </div>
 </div>
 

@@ -220,8 +220,19 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         localeText: global.agGrid.localeText,
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         datasource: dataSource,
+        singleClickEdit: true,   //表格内可编辑元素变为单击编辑，适应移动端
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                var field = cell.colDef.field;
+                var coin = ['tb','jb','dbj'];
+                if(coin.indexOf(field)!=-1) return;
+                $state.go('app.player.info.games' , {id: cell.data._id,name:cell.data.nick});
+            }
         },
         onCellDoubleClicked: function(cell){
             var field = cell.colDef.field;
@@ -359,8 +370,8 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     var columnDefs = [
         {headerName: "游戏名称", field: "name", width: 120},
         {headerName: "游戏局数", field: "count", width: 100},
-        {headerName: "游戏总输赢", field: "gain_jb", width: 100},
-        {headerName: "今日总输赢", field: "gain_day_jb", width: 100},
+        {headerName: "游戏总输赢", field: "gain_jb", width: 120},
+        {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
         {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
     ];
 
@@ -541,7 +552,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -704,7 +715,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -868,7 +879,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },

@@ -1,12 +1,7 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right m-r-sm">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()"></select>
-    </div>
-    <h1 class="m-n font-thin h3" translate="app.coin.stock.order">订单管理</h1>
-</div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="app.coin.stock.order">订单管理</h1></div>
 <div>
-    <div class="pull-left headpadd">
-        <div class="pull-left buttonpadd">
+    <div class="pull-left m-l-sm m-t-xs headpadd">
+        <div class="pull-left">
             <span class="pull-left"  ng-style="!per['退款']&&{'margin-left': '15px'}" style="margin-top: 3px" translate="agent.coin.stock.order.time">时间段&nbsp;&nbsp;</span>
             <div class="input-group" style="width: 205px;">
                 <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="height: 28px"/>
@@ -52,6 +47,9 @@
             <button class="btn btn-default btn-sm" ng-click="resetFun()" translate="agent.coin.stock.order.reset">重置</button>
             <button class="btn btn-default btn-sm" ng-click="onExportExcel()" translate="agent.coin.stock.order.export">导出excel</button>
         </span>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()"></select>
     </div>
 </div>
 

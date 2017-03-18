@@ -29,12 +29,12 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', func
         // {headerName: "夺宝卷", field: "dbj", width: 150},
         // {headerName: "登录人数", field: "login", width: 100},
         // {headerName: "签到人数", field: "checkin", width: 100},
-        {headerName: "充值人数", field: "recharge_p", width: 100},
-        {headerName: "充值数(分)", field: "recharge", width: 100},
+        {headerName: "充值人数", field: "recharge_p", width: 120},
+        {headerName: "充值数(分)", field: "recharge", width: 120},
         {headerName: "赠送金币", field: "give_jb", width: 150},
-        {headerName: "赠送夺宝卷", field: "give_dbj", width: 100},
-        {headerName: "游戏金币总输赢", field: "gain_jb", width: 100},
-        {headerName: "游戏夺宝卷总输赢", field: "gain_dbj", width: 100}
+        {headerName: "赠送夺宝卷", field: "give_dbj", width: 120},
+        {headerName: "游戏金币总输赢", field: "gain_jb", width: 120},
+        {headerName: "游戏夺宝卷总输赢", field: "gain_dbj", width: 120}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'report.account.header.date',
@@ -101,7 +101,7 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', func
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },

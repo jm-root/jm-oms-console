@@ -58,15 +58,15 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
     };
 
     var columnDefs = [
-        {headerName: "账户ID", field: "id", width: 80},
-        {headerName: "用户名", field: "user", width: 100, valueGetter: format_user},
-        {headerName: "T币余额", field: "tb", width: 100, valueGetter: format_tb},
-        {headerName: "T币额度", field: "tb_a", width: 100, valueGetter: format_tb_a},
-        {headerName: "金币余额", field: "jb", width: 100, valueGetter: format_jb},
-        {headerName: "金币额度", field: "jb_a", width: 100, valueGetter: format_jb_a},
-        {headerName: "夺宝卷余额", field: "dbj", width: 100, valueGetter: format_dbj},
-        {headerName: "夺宝卷额度", field: "dbj_a", width: 100, valueGetter: format_dbj_a},
-        {headerName: "状态", field: "status", width: 70, valueGetter: format_status},
+        {headerName: "账户ID", field: "id", width: 200},
+        {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+        {headerName: "T币余额", field: "tb", width: 120, valueGetter: format_tb},
+        {headerName: "T币额度", field: "tb_a", width: 120, valueGetter: format_tb_a},
+        {headerName: "金币余额", field: "jb", width: 120, valueGetter: format_jb},
+        {headerName: "金币额度", field: "jb_a", width: 120, valueGetter: format_jb_a},
+        {headerName: "夺宝卷余额", field: "dbj", width: 120, valueGetter: format_dbj},
+        {headerName: "夺宝卷额度", field: "dbj_a", width: 120, valueGetter: format_dbj_a},
+        {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
         {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
     global.agGridTranslateSync($scope,columnDefs,[
@@ -116,7 +116,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -289,11 +289,11 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
     };
 
     var columnDefs = [
-        {headerName: "用户ID", field: "user", width: 100, valueGetter: format_userid},
-        {headerName: "用户名", field: "user", width: 100, valueGetter: format_user},
-        {headerName: "币种", field: "ctName", width: 100, valueGetter: format_ctName},
-        {headerName: "交易标记", field: "flag", width: 100, valueGetter: format_flag},
-        {headerName: "金额", field: "amount", width: 100},
+        {headerName: "用户ID", field: "user", width: 200, valueGetter: format_userid},
+        {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+        {headerName: "币种", field: "ctName", width: 120, valueGetter: format_ctName},
+        {headerName: "交易标记", field: "flag", width: 120, valueGetter: format_flag},
+        {headerName: "金额", field: "amount", width: 120},
         {headerName: "时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
 
@@ -337,7 +337,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -391,10 +391,10 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
     var columnDefs = [
         {headerName: "授权者", field: "user", width: 120, valueGetter: format_user},
         {headerName: "操作者", field: "control", width: 120, valueGetter: format_control},
-        {headerName: "币种", field: "ct", width: 80, valueGetter: format_ct},
-        {headerName: "数量", field: "amount", width: 100},
+        {headerName: "币种", field: "ct", width: 100, valueGetter: format_ct},
+        {headerName: "数量", field: "amount", width: 120},
         {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "#", width: 100, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
@@ -471,7 +471,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -857,12 +857,12 @@ app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'global', fun
         {headerName: "_id", field: "_id", width: 200},
         {headerName: "单号", field: "code", width: 150},
         {headerName: "支付用户", field: "user", width: 200},
-        {headerName: "渠道", field: "channel", width: 100, valueGetter: format_channel},
+        {headerName: "渠道", field: "channel", width: 120, valueGetter: format_channel},
         {headerName: "标题", field: "title", width: 150},
         {headerName: "详情", field: "content", width: 150},
-        {headerName: "币种", field: "currency", width: 100, valueGetter: format_currency},
-        {headerName: "数量", field: "amount", width: 100},
-        {headerName: "状态", field: "status", width: 70, valueGetter: format_status},
+        {headerName: "币种", field: "currency", width: 120, valueGetter: format_currency},
+        {headerName: "数量", field: "amount", width: 120},
+        {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
         {headerName: "备注", field: "note", width: 150},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
@@ -932,7 +932,7 @@ app.controller('AccountPayListCtrl', ['$scope', '$state', '$http', 'global', fun
         columnDefs: columnDefs,
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },

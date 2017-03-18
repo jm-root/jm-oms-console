@@ -166,15 +166,15 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
     };
 
     var columnDefs = [
-        {headerName: "多选", field: "check", width: 70, cellRenderer: check_render, cellStyle:{'text-align':'center'}},
-        {headerName: "单号", field: "code", width: 140},
+        {headerName: "多选", field: "check", width: 100, cellRenderer: check_render, cellStyle:{'text-align':'center'}},
+        {headerName: "单号", field: "code", width: 150},
         {headerName: "订单时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "申购渠道", field: "agent", width: 100, valueGetter: format_agent},
-        {headerName: "渠道ID", field: "agentId", width: 100, valueGetter: format_agentId},
-        {headerName: "操作人", field: "user", width: 100, valueGetter: format_user},
-        {headerName: "买T币数", field: "tAmount", width: 100, valueGetter: format_tAmount},
-        {headerName: "支付金额", field: "amount", width: 100, valueGetter: format_amount},
-        {headerName: "状态", field: "status", width: 100, valueGetter: format_status}
+        {headerName: "申购渠道", field: "agent", width: 120, valueGetter: format_agent},
+        {headerName: "渠道ID", field: "agentId", width: 120, valueGetter: format_agentId},
+        {headerName: "操作人", field: "user", width: 120, valueGetter: format_user},
+        {headerName: "买T币数", field: "tAmount", width: 120, valueGetter: format_tAmount},
+        {headerName: "支付金额", field: "amount", width: 120, valueGetter: format_amount},
+        {headerName: "状态", field: "status", width: 120, valueGetter: format_status}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'agent.coin.stock.header.check',
@@ -235,7 +235,7 @@ app.controller('CoinStockOrderCtrl', ['$scope', '$http', '$state', '$stateParams
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -554,17 +554,17 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
 
     var columnDefs = [
-        {headerName: "渠道ID", field: "code", width: 100},
-        {headerName: "渠道名", field: "name", width: 100},
-        {headerName: "代理级别", field: "level", width: 100, valueGetter: format_level},
-        {headerName: "拥有者", field: "user", width: 100, valueGetter: format_user},
-        {headerName: "总金额", field: "buyAmount", width: 100},
-        {headerName: "发放金额", field: "sellAmount", width: 100},
-        {headerName: "未发金额", field: "amount", width: 100, valueGetter: format_amount},
-        {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
-        {headerName: "账户状态", field: "accountStatus", width: 100, valueGetter: format_accountStatus},
+        {headerName: "渠道ID", field: "code", width: 120},
+        {headerName: "渠道名", field: "name", width: 120},
+        {headerName: "代理级别", field: "level", width: 120, valueGetter: format_level},
+        {headerName: "拥有者", field: "user", width: 120, valueGetter: format_user},
+        {headerName: "总金额", field: "buyAmount", width: 120},
+        {headerName: "发放金额", field: "sellAmount", width: 120},
+        {headerName: "未发金额", field: "amount", width: 120, valueGetter: format_amount},
+        {headerName: "状态", field: "status", width: 120, valueGetter: format_status},
+        {headerName: "账户状态", field: "accountStatus", width: 120, valueGetter: format_accountStatus},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "操作", width: 200, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
+        {headerName: "操作", width: 250, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'agent.coin.stock.list.header.code',
@@ -620,7 +620,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -738,9 +738,9 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
     };
 
     var columnDefs = [
-        {headerName: "多选", field: "check", width: 70, cellRenderer: check_render, cellStyle:{'text-align':'center'}},
-        {headerName: "用户名", field: "user", width: 200, valueGetter: format_user},
-        {headerName: "创建时间", field: "crtime", width: 200, valueGetter: $scope.angGridFormatDateS}
+        {headerName: "多选", field: "check", width: 100, cellRenderer: check_render, cellStyle:{'text-align':'center'}},
+        {headerName: "用户名", field: "user", width: 300, valueGetter: format_user},
+        {headerName: "创建时间", field: "crtime", width: 300, valueGetter: $scope.angGridFormatDateS}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'agent.coin.distribute.batch.check',
@@ -1014,6 +1014,13 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译
         },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.coin.distribute.makeinfo' , {id: cell.data._id});
+            }
+        },
         onCellDoubleClicked: function(cell){
             $state.go('app.coin.distribute.makeinfo' , {id: cell.data._id});
         },
@@ -1250,8 +1257,8 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         {headerName: "T币余额", field: "tb", width: 125, valueGetter: format_tb},
         {headerName: "金币余额", field: "jb", width: 125, valueGetter: format_jb},
         {headerName: "夺宝卷余额", field: "dbj", width: 125, valueGetter: format_dbj},
-        {headerName: "账户状态", field: "accountStatus", width: 90, valueGetter: format_accountStatus},
-        {headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
+        {headerName: "账户状态", field: "accountStatus", width: 100, valueGetter: format_accountStatus},
+        {headerName: "操作", width: 120, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'agent.coin.account.list.uid',
@@ -1306,7 +1313,7 @@ app.controller('CoinAccountListCtrl', ['$scope', '$http', '$state', '$stateParam
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -1392,8 +1399,8 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
         {headerName: "手机", field: "mobile", width: 120, valueGetter: format_mobile},
         {headerName: "分发渠道", field: "agentCode", width: 100, valueGetter: format_agentCode},
         {headerName: "分发金币", field: "amount", width: 100, valueGetter: format_amount},
-        {headerName: "折扣", field: "rebate", width: 80, valueGetter: format_rebate},
-        {headerName: "价值T币", field: "sAmount", width: 80, valueGetter: format_sAmount},
+        {headerName: "折扣", field: "rebate", width: 100, valueGetter: format_rebate},
+        {headerName: "价值T币", field: "sAmount", width: 100, valueGetter: format_sAmount},
         {headerName: "统计时间", field: "date", width: 145, valueGetter: format_date},
         //{headerName: "操作", width: 100, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}}
     ];
@@ -1453,7 +1460,7 @@ app.controller('CoinRecordPlayerStatCtrl', ['$scope', '$http', '$state', '$state
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-           event.api.sizeColumnsToFit();
+           // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -1604,7 +1611,7 @@ app.controller('CoinRecordAgentStatCtrl', ['$scope', '$http', '$state', '$stateP
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译

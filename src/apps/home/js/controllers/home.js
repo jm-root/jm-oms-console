@@ -13,19 +13,19 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
 
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "名称", field: "name", width: 100},
-        {headerName: "类型", field: "type", width: 70},
+        {headerName: "编码", field: "code", width: 120},
+        {headerName: "名称", field: "name", width: 120},
+        {headerName: "类型", field: "type", width: 120},
         //{headerName: "收藏次数", field: "favTimes", width: 85},
         //{headerName: "分享次数", field: "shareTimes", width: 85},
-        {headerName: "贴子数量", field: "postCount", width: 85},
-        {headerName: "今日发帖", field: "postCountToday", width: 85},
-        {headerName: "昨日发帖", field: "postCountYesterday", width: 85},
-        {headerName: "创建者", field: "creator", width: 90, valueGetter: format_creator},
-        {headerName: "显示", field: "visible", width: 70},
+        {headerName: "贴子数量", field: "postCount", width: 100},
+        {headerName: "今日发帖", field: "postCountToday", width: 100},
+        {headerName: "昨日发帖", field: "postCountYesterday", width: 100},
+        {headerName: "创建者", field: "creator", width: 100, valueGetter: format_creator},
+        {headerName: "显示", field: "visible", width: 100},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "#", width: 70, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "#", width: 120, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'home.bbs.list.code',
@@ -85,7 +85,14 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
@@ -296,17 +303,17 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
     };
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
-        {headerName: "编码", field: "code", width: 80},
-        {headerName: "标题", field: "title", width: 250},
-        {headerName: "收藏次数", field: "favTimes", width: 85},
-        {headerName: "分享次数", field: "shareTimes", width: 85},
-        {headerName: "浏览次数", field: "viewCount", width: 85},
-        {headerName: "回复次数", field: "replyCount", width: 85},
-        {headerName: "支持人数", field: "recommend_add", width: 85},
-        {headerName: "反对人数", field: "recommend_sub", width: 85},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
+        {headerName: "编码", field: "code", width: 100},
+        {headerName: "标题", field: "title", width: 300},
+        {headerName: "收藏次数", field: "favTimes", width: 120},
+        {headerName: "分享次数", field: "shareTimes", width: 120},
+        {headerName: "浏览次数", field: "viewCount", width: 120},
+        {headerName: "回复次数", field: "replyCount", width: 120},
+        {headerName: "支持人数", field: "recommend_add", width: 120},
+        {headerName: "反对人数", field: "recommend_sub", width: 120},
         {headerName: "作者", field: "author", width: 90, valueGetter: format_author},
-        {headerName: "显示", field: "visible", width: 70, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "显示", field: "visible", width: 120, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
@@ -366,7 +373,14 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
@@ -656,16 +670,16 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
     };
 
     var columnDefs = [
-        {headerName: "_id", field: "_id", width: 70, hide: true},
+        // {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "标题", field: "title", width: 250},
-        {headerName: "收藏次数", field: "favTimes", width: 85},
-        {headerName: "分享次数", field: "shareTimes", width: 85},
-        {headerName: "浏览次数", field: "viewCount", width: 85},
-        {headerName: "回复次数", field: "replyCount", width: 85},
-        {headerName: "支持人数", field: "recommend_add", width: 85},
-        {headerName: "反对人数", field: "recommend_sub", width: 85},
-        {headerName: "作者", field: "author", width: 90, valueGetter: format_author},
-        {headerName: "显示", field: "visible", width: 70, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
+        {headerName: "收藏次数", field: "favTimes", width: 120},
+        {headerName: "分享次数", field: "shareTimes", width: 120},
+        {headerName: "浏览次数", field: "viewCount", width: 120},
+        {headerName: "回复次数", field: "replyCount", width: 120},
+        {headerName: "支持人数", field: "recommend_add", width: 120},
+        {headerName: "反对人数", field: "recommend_sub", width: 120},
+        {headerName: "作者", field: "author", width: 100, valueGetter: format_author},
+        {headerName: "显示", field: "visible", width: 120, cellRenderer: visible_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
         {headerName: "修改时间", field: "moditime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];
@@ -724,7 +738,14 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.home.activitys.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.activitys.edit' , {id: cell.data._id});
@@ -914,10 +935,10 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
 
     var columnDefs = [
         {headerName: "消息", field: "message", width: 300},
-        {headerName: "类型", field: "type", width: 90, valueGetter: format_type},
-        {headerName: "次数", field: "count", width: 90, valueGetter: format_count},
-        {headerName: "已发", field: "step", width: 90},
-        {headerName:"操作",field:"",width:100,cellRenderer:operate,cellStyle:{'text-align':'center'}}
+        {headerName: "类型", field: "type", width: 120, valueGetter: format_type},
+        {headerName: "次数", field: "count", width: 120, valueGetter: format_count},
+        {headerName: "已发", field: "step", width: 120},
+        {headerName:"操作",field:"",width:120,cellRenderer:operate,cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'home.sendnotice.list.header.message',
@@ -940,7 +961,7 @@ app.controller('HomeSendNoticeCtrl', ['$scope', '$http', '$state', '$stateParams
         columnDefs: columnDefs,
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },

@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3"><a ng-if="activity.title" ui-sref="app.activity.aty.list">{{activity.title+'>>'}}</a>{{'activity.atyitemlist.ActivityItem'|translate}}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.activity.aty.item.edit({pid:'{{pid}}'})" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{'activity.atyitemlist.create'|translate}}
         </button>
@@ -7,14 +8,13 @@
             <i class="fa fa-trash-o"></i>{{'activity.atyitemlist.delete'|translate}}
         </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <select class="m-t-xs m-r-sm" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
 
     </div>
-
-    <h1 class="m-n font-thin h3"><a ng-if="activity.title" ui-sref="app.activity.aty.list">{{activity.title+'>>'}}</a>{{'activity.atyitemlist.ActivityItem'|translate}}</h1>
 </div>
+
 <div>
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>

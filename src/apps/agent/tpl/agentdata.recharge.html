@@ -1,4 +1,4 @@
-<div class="bg-light lter b-b wrapper">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3" translate="agent.agentdata.recharge.title">充值数</h1></div>
     <!--<div class="pull-right">-->
     <!--<div class="input-group m-r-sm">-->
     <!--<input type="text" ng-model="search.agent" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 代理ID/名称">-->
@@ -7,18 +7,11 @@
     <!--</span>-->
     <!--</div>-->
     <!--</div>-->
-    <div class="pull-right m-r-sm">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
-        </select>
-    </div>
-    <h1 class="m-n font-thin h3" translate="agent.agentdata.recharge.title">充值数</h1>
-</div>
 <div>
-    <div class="pull-left m-l-sm headpadd buttonpadd">
-        <span translate="agent.agentdata.recharge.code">渠道ID&nbsp;&nbsp;</span>
-        <input type="text" placeholder="{{ 'agent.agentdata.recharge.code' | translate }}" ng-model="search.agent">
+    <div class="pull-right m-l-xs headpadd buttonpadd">
+        <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">{{ 'agent.agentdata.recharge.search' | translate }}</span>
     </div>
-    <div class="pull-left m-l-sm headpadd buttonpadd">
+    <div class="pull-right headpadd">
         <span class="pull-left" style="margin-top: 3px;margin-left:15px" translate="agent.agentdata.recharge.time">时间段&nbsp;&nbsp;</span>
         <div class="pull-left">
             <div class="input-group" style="width: 205px;">
@@ -27,8 +20,13 @@
             </div>
         </div>
     </div>
-    <div class="pull-left m-l-sm headpadd buttonpadd">
-        <span class="btn btn-sm btn-default" ng-click="searchFun()" style="margin-top:-2px;">{{ 'agent.agentdata.recharge.search' | translate }}</span>
+    <div class="pull-right headpadd buttonpadd">
+        <span translate="agent.agentdata.recharge.code">渠道ID&nbsp;&nbsp;</span>
+        <input type="text" placeholder="{{ 'agent.agentdata.recharge.code' | translate }}" ng-model="search.agent">
+    </div>
+    <div class="pull-right headpadd buttonpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
     </div>
 </div>
 <div class="panel panel-default">

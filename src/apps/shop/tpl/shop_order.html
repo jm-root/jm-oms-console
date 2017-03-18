@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'shop.order.commoditiesList'|translate}}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <!--<button ui-sref="app.shop.lottery.edit" type="button" class="btn btn-sm btn-primary btn-addon">-->
         <!--<i class="fa fa-plus"></i>创建-->
         <!--</button>-->
@@ -15,11 +16,10 @@
     <!--</span>-->
     <!--</div>-->
     <!--</div>-->
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <h1 class="m-n font-thin h3">{{'shop.order.commoditiesList'|translate}}</h1>
 </div>
 
 <div class="panel panel-default">

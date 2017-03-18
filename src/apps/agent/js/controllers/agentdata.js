@@ -39,13 +39,13 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
     };
 
     var columnDefs = [
-        {headerName: "日期", field: "date", width: 100, valueGetter: format_date},
-        {headerName: "渠道ID", field: "code", width: 100, valueGetter: format_code},
-        {headerName: "渠道名", field: "name", width: 100, valueGetter: format_name},
-        {headerName: "渠道层级", field: "level", width: 100, valueGetter: format_level},
-        {headerName: "上级渠道ID", field: "pcode", width: 100, valueGetter: format_pcode},
-        {headerName: "上级渠道名", field: "pname", width: 100, valueGetter: format_pname},
-        {headerName: "注册人数", field: "count", width: 100}
+        {headerName: "日期", field: "date", width: 120, valueGetter: format_date},
+        {headerName: "渠道ID", field: "code", width: 120, valueGetter: format_code},
+        {headerName: "渠道名", field: "name", width: 120, valueGetter: format_name},
+        {headerName: "渠道层级", field: "level", width: 120, valueGetter: format_level},
+        {headerName: "上级渠道ID", field: "pcode", width: 120, valueGetter: format_pcode},
+        {headerName: "上级渠道名", field: "pname", width: 120, valueGetter: format_pname},
+        {headerName: "注册人数", field: "count", width: 120}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
         'agent.agentdata.register.header.date',
@@ -101,7 +101,7 @@ app.controller('AgentDataRegisterCtrl', ['$scope', '$http', '$state', '$statePar
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -169,13 +169,13 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
     };
 
     var columnDefs = [
-        {headerName: "日期", field: "date", width: 100, valueGetter: format_date},
-        {headerName: "渠道ID", field: "code", width: 100, valueGetter: format_code},
-        {headerName: "渠道名", field: "name", width: 100, valueGetter: format_name},
-        {headerName: "渠道层级", field: "level", width: 100, valueGetter: format_level},
-        {headerName: "上级渠道ID", field: "pcode", width: 100, valueGetter: format_pcode},
-        {headerName: "上级渠道名", field: "pname", width: 100, valueGetter: format_pname},
-        {headerName: "充值数", field: "amount", width: 100}
+        {headerName: "日期", field: "date", width: 120, valueGetter: format_date},
+        {headerName: "渠道ID", field: "code", width: 120, valueGetter: format_code},
+        {headerName: "渠道名", field: "name", width: 120, valueGetter: format_name},
+        {headerName: "渠道层级", field: "level", width: 120, valueGetter: format_level},
+        {headerName: "上级渠道ID", field: "pcode", width: 120, valueGetter: format_pcode},
+        {headerName: "上级渠道名", field: "pname", width: 120, valueGetter: format_pname},
+        {headerName: "充值数", field: "amount", width: 120}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
         'agent.agentdata.recharge.header.date',
@@ -230,7 +230,7 @@ app.controller('AgentDataRechargeCtrl', ['$scope', '$http', '$state', '$statePar
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -278,15 +278,15 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
     };
 
     var columnDefs = [
-        {headerName: "渠道ID", field: "code",width: 100 },
-        {headerName: "渠道名称", field: "name", width: 100},
-        {headerName: "注册人数", field: "regCount",width: 100 },
-        {headerName: "在线人数", field: "online",width: 100 },
-        {headerName: "充值人数", field: "chargeSum",width: 100 },
-        {headerName: "充值金额", field: "chargeAmount",width: 100},
-        {headerName: "点卡充值", field: "cardAmount" ,width: 100},
-        {headerName: "系统奖励", field: "sysAmount" ,width: 100},
-        {headerName: "总营收", field: "totalAmount" ,width: 100, valueGetter: format_totalAmount},
+        {headerName: "渠道ID", field: "code",width: 120 },
+        {headerName: "渠道名称", field: "name", width: 120},
+        {headerName: "注册人数", field: "regCount",width: 120 },
+        {headerName: "在线人数", field: "online",width: 120 },
+        {headerName: "充值人数", field: "chargeSum",width: 120 },
+        {headerName: "充值金额", field: "chargeAmount",width: 120},
+        {headerName: "点卡充值", field: "cardAmount" ,width: 120},
+        {headerName: "系统奖励", field: "sysAmount" ,width: 120},
+        {headerName: "总营收", field: "totalAmount" ,width: 120, valueGetter: format_totalAmount},
         {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
@@ -350,7 +350,7 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },

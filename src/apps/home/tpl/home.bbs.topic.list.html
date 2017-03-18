@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{ 'app.home.bbs.topic' | translate }}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.home.bbs.topic.edit" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{ 'home.create' | translate }}
         </button>
@@ -7,27 +8,26 @@
             <i class="fa fa-trash-o"></i>{{ 'home.delete' | translate }}
         </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <form>
             <div class="input-group m-r-sm">
                 <input type="text" ng-model="search"
                        class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
-              <span class="input-group-btn" style="width: auto">
+                <span class="input-group-btn" style="width: auto">
                 <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
               </span>
             </div>
         </form>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="forum" ng-options="option._id as option.name for option in forums" ng-change="onPageSizeChanged()"></select>
     </div>
-
-    <h1 class="m-n font-thin h3">{{ 'app.home.bbs.topic' | translate }}</h1>
 </div>
+
 <div>
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>

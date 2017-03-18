@@ -61,17 +61,17 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
 
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 10, hide: true},
-        {headerName: "ID", field: "_id", width: 90},
-        {headerName: "卡号", field: "code", width: 70},
-        {headerName: "密码", field: "passwd", width: 70},
-        {headerName: "面值", field: "parValue", width: 40},
+        {headerName: "ID", field: "_id", width: 150},
+        {headerName: "卡号", field: "code", width: 170},
+        {headerName: "密码", field: "passwd", width: 170},
+        {headerName: "面值", field: "parValue", width: 140},
         // {headerName: "微信UnionID", field: "mp_unionid", width: 255},
         // {headerName: "微信OpenID", field: "mp_openid", width: 255},
-        {headerName: "类型", field: "card.name", width: 50},
-        {headerName: "是否新手卡", field: "card.type", width: 70,valueGetter:isNewCard},
-        {headerName: "是否已用", field: "status", width: 60,valueGetter:form_status},
-        {headerName: "生成时间", field: "crTime", width: 105,valueGetter: $scope.angGridFormatDateS},
-        {headerName: "操作", field: "_id", width: 125, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
+        {headerName: "类型", field: "card.name", width: 150},
+        {headerName: "是否新手卡", field: "card.type", width: 170,valueGetter:isNewCard},
+        {headerName: "是否已用", field: "status", width: 160,valueGetter:form_status},
+        {headerName: "生成时间", field: "crTime", width: 150,valueGetter: $scope.angGridFormatDateS},
+        {headerName: "操作", field: "_id", width: 150, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
         'recharge.card._id',
@@ -154,7 +154,16 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                if(cell.data.status =="2"){
+                    $state.go('app.recharge.cardlog',{code:cell.data.code});
+                }
+            }
         },
         onCellDoubleClicked: function(cell){
             if(cell.data.status =="2"){
@@ -267,8 +276,8 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
         // {headerName: "_id", field: "_id", width: 100, hide: true},
         {headerName: "id", field: "_id", width: 140},
         {headerName:"卡号",field:"code",width:150},
-        {headerName:"类型",field:"card.name",width:100},
-        {headerName:"面值",field:"parValue",width:100},
+        {headerName:"类型",field:"card.name",width:120},
+        {headerName:"面值",field:"parValue",width:120},
         {headerName:"玩家ID",field:"userId",width:140},
         {headerName:"玩家账号",field:"nick",width:180,valueGetter:format_nick},
         {headerName:"IP",field:"userIP",width:200},
@@ -381,7 +390,7 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译
@@ -491,7 +500,7 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         {headerName: "支付渠道", field: "channel", width: 100, valueGetter: format_channel},
         {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
         {headerName: "玩家昵称", field: "nick", width: 150, valueGetter: format_nick},
-        {headerName: "支付金额", field: "amount", width: 90, valueGetter: format_amount},
+        {headerName: "支付金额", field: "amount", width: 120, valueGetter: format_amount},
         {headerName: "支付状态", field: "cstatus", width: 100, valueGetter: format_cstatus},
         {headerName: "充值状态", field: "status", width: 100, valueGetter: format_status},
         {headerName: "充值前/后元宝数", field: "b2amount", width: 200, valueGetter: format_b2amount, cellStyle:{'text-align':'center'}},
@@ -566,7 +575,7 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onCellDoubleClicked: function(cell){
         },
@@ -759,9 +768,9 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
 
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 10, hide: true},
-        {headerName: "ID", field: "_id", width: 50},
-        {headerName: "类型", field: "name", width: 50},
-        {headerName: "操作", field: "_id", width: 125, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
+        {headerName: "ID", field: "_id", width: 250},
+        {headerName: "类型", field: "name", width: 150},
+        {headerName: "操作", field: "_id", width: 150, cellRenderer: ctrl_render,cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
         'recharge.cardtype._id',
@@ -810,7 +819,7 @@ app.controller('RechargeCardTypeCtrl', ['$scope', '$state', '$http', 'global', f
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译

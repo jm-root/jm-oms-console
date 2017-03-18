@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'bbs.forum.list.forumList'|translate}}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.bbs.forum.edit" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{'bbs.forum.list.create'|translate}}
         </button>
@@ -7,14 +8,13 @@
             <i class="fa fa-trash-o"></i>{{'bbs.forum.list.delete'|translate}}
         </button>
     </div>
-    <div class="pull-right m-r-sm">
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
 
     </div>
-
-    <h1 class="m-n font-thin h3">{{'bbs.forum.list.forumList'|translate}}</h1>
 </div>
+
 <div>
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>

@@ -1,31 +1,30 @@
+<div class="bg-light lter wrapper"><h1 class="m-n font-thin h3">{{ 'app.wordfilter.manage' | translate }}</h1></div>
 <div>
-    <div class="bg-light lter wrapper">
-        <div class="pull-right ">
-            <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
-                <i class="fa fa-trash-o"></i>{{ 'log.delete' | translate }}
-            </button>
-        </div>
-
-        <div class="pull-right">
-            <form>
-                <div class="input-group m-r-sm">
-                    <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
-                    <span class="input-group-btn" style="width: auto">
-                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
-            </form>
-        </div>
-        <div class="pull-right m-r-xs">
-            <select class="m-r-sm input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
-            </select>
-        </div>
-        <h1 class="m-n font-thin h3">{{ 'app.wordfilter.manage' | translate }}</h1>
+    <div class="pull-right m-r-sm headpadd">
+        <button type="button" class="btn btn-sm btn-danger btn-addon" ng-click="delete()">
+            <i class="fa fa-trash-o"></i>{{ 'log.delete' | translate }}
+        </button>
     </div>
-    <div class="panel panel-default">
-        <div class="line b-b"></div>
-        <div class="panel-body">
-            <div ng-style="{height:app.navHeight-180+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
-        </div>
+
+    <div class="pull-right m-r-sm headpadd">
+        <form>
+            <div class="input-group m-r-sm">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
+                <span class="input-group-btn" style="width: auto">
+                <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+        </form>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="m-r-sm input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="line b-b"></div>
+    <div class="panel-body">
+        <div ng-style="{height:app.navHeight-180+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
     </div>
 </div>

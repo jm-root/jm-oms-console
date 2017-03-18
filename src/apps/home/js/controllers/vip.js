@@ -90,7 +90,7 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
     var hkey = 'VIP_CONFIG';
 
     var columnDefs = [
-        {headerName: "名称", field: "name", width: 140}
+        {headerName: "名称", field: "name", width: 700}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'home.vip.set.name'
@@ -108,7 +108,14 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
         columnDefs: columnDefs,
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.home.vip.setedit' , {key: cell.data.key});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.vip.setedit' , {key: cell.data.key});

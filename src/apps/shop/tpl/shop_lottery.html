@@ -1,5 +1,6 @@
-<div class="bg-light lter b-b wrapper">
-    <div class="pull-right">
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'shop.lottery.treasureList'|translate}}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.shop.product.edit({type:'lottery'})" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{'common.create'|translate}}
         </button>
@@ -8,19 +9,19 @@
         </button>
     </div>
     <!--<div class="pull-right">-->
-        <!--<div class="input-group m-r-sm">-->
-            <!--<input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 产品民称">-->
-              <!--<span class="input-group-btn" style="width: auto">-->
-                <!--<button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>-->
-              <!--</span>-->
-        <!--</div>-->
+    <!--<div class="input-group m-r-sm">-->
+    <!--<input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 产品民称">-->
+    <!--<span class="input-group-btn" style="width: auto">-->
+    <!--<button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>-->
+    <!--</span>-->
     <!--</div>-->
-    <div class="pull-right m-r-sm">
+    <!--</div>-->
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
 
-    <div class="pull-right">
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.shop.order.list" type="button" class="btn btn-sm btn-primary btn-addon">
             {{'shop.lottery.shopMessage'|translate}}
         </button>
@@ -29,13 +30,11 @@
         </button>
     </div>
 
-    <div class="pull-right m-r-sm" ng-if="isShowFormula">
+    <div class="pull-right m-r-sm headpadd" ng-if="isShowFormula">
         <button type="button" class="btn btn-sm btn-info btn-addon" ng-click="goEditFormula()">
             <i class="fa fa-edit"></i>{{'shop.lottery.editFormula'|translate}}
         </button>
     </div>
-
-    <h1 class="m-n font-thin h3">{{'shop.lottery.treasureList'|translate}}</h1>
 </div>
 
 <div class="panel panel-default">

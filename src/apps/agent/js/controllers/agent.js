@@ -173,17 +173,17 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     }
 
     var columnDefs = [
-        {headerName: "上级渠道号", field: "pcode", width: 100},
-        {headerName: "渠道号", field: "code", width: 100},
-        {headerName: "渠道名", field: "name", width: 100},
-        {headerName: "账号", field: "account", width: 100, valueGetter: format_account},
-        {headerName: "代理级别", field: "level", width: 100, valueGetter: format_level},
-        {headerName: "合作方式", field: "type", width: 100, valueGetter: format_type},
+        {headerName: "上级渠道号", field: "pcode", width: 120},
+        {headerName: "渠道号", field: "code", width: 120},
+        {headerName: "渠道名", field: "name", width: 120},
+        {headerName: "账号", field: "account", width: 120, valueGetter: format_account},
+        {headerName: "代理级别", field: "level", width: 120, valueGetter: format_level},
+        {headerName: "合作方式", field: "type", width: 120, valueGetter: format_type},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "状态", field: "status", width: 70, valueGetter: format_status},
-        {headerName: "审核状态", field: "audit", width: 100, valueGetter: format_audit},
-        {headerName: "操作", width: 200, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}},
-        {headerName: "推广地址", width: 360, cellRenderer: render_url}
+        {headerName: "状态", field: "status", width: 120, valueGetter: format_status},
+        {headerName: "审核状态", field: "audit", width: 120, valueGetter: format_audit},
+        {headerName: "操作", width: 300, cellRenderer: ctrl_render, cellStyle:{'text-align':'center'}},
+        {headerName: "推广地址", width: 500, cellRenderer: render_url}
     ];
     global.agGridTranslateSync($scope, columnDefs, [
         'agent.agent.create.list.header.pcode',
@@ -241,10 +241,19 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
         },
         onRowDataChanged: function (cell) {
             global.agGridOverlay();                 //翻译
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                if($scope.super||$scope.per['详情']||$scope.per['编辑']){
+                    $state.go('app.agent.edit' , {id: cell.data._id._id});
+                }
+            }
         },
         onCellDoubleClicked: function(cell){
             if($scope.super||$scope.per['详情']||$scope.per['编辑']){

@@ -11,8 +11,8 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
 
     var columnDefs = [
         // {headerName: "_id", field: "_id", width: 150, hide: true},
-        {headerName: "天数", field: "day", width: 80},
-        {headerName: "奖励", width: 80, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        {headerName: "天数", field: "day", width: 300},
+        {headerName: "奖励", width: 300, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
     ];
     global.agGridTranslateSync($scope, columnDefs, [                 //翻译
         'home.checkin.day',
@@ -59,7 +59,14 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
         columnDefs: columnDefs,
         headerCellRenderer: global.agGridHeaderCellRendererFunc,     //翻译
         onGridReady: function(event) {
-            event.api.sizeColumnsToFit();
+            // event.api.sizeColumnsToFit();
+        },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.home.checkin.edit' , {id: cell.data._id});
+            }
         },
         onCellDoubleClicked: function(cell){
             $state.go('app.home.checkin.edit' , {id: cell.data._id});

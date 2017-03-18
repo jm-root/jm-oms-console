@@ -407,6 +407,13 @@ app.controller('GameSetTableListCtrl', ['$scope', '$state', '$stateParams', '$ht
         onGridReady: function(event) {
             // event.api.sizeColumnsToFit();
         },
+        onCellClicked: function(cell){
+            var browser = global.browser();
+            //判断是否移动端
+            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+                $state.go('app.rooms.manage.gameset.table.edit' , {appId: tmpl_id, type: tmpl_type, roomId: roomId, id: cell.data.tableType});
+            }
+        },
         onCellDoubleClicked: function(cell){
             $state.go('app.rooms.manage.gameset.table.edit' , {appId: tmpl_id, type: tmpl_type, roomId: roomId, id: cell.data.tableType});
         },
