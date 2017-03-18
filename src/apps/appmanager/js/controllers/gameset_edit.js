@@ -799,7 +799,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
                 if(!isOk){
                     $scope.error("算法设置难度失败");
                 }
-                
+
                 saveRoomConfig(jump);
             });
         }

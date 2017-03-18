@@ -661,7 +661,7 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
 
         var functions = [];
         for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
-            functions.push(setDiff(i, diff));
+            functions.push(setDiff(i, diff, coin_rate));
         }
 
         $q.all(functions).then(function (arr) {
@@ -684,29 +684,39 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
 
     function saveRoomRejust(jump, diff) {
 
-        var functions = [];
-        for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
-            functions.push(setRejustDiff(i, diff));
-        }
+        getConfigCoinRate().then(function (data) {
+            var coinRate = data.ret;
 
-        $q.all(functions).then(function (arr) {
-            var isOk = true;
-            for(var i=0; i<arr.length; ++i){
-                var item = arr[i];
-                if(!item || item.ret != "ok"){
-                    isOk = false;
-                    break;
-                }
+            var coin_rate = (coinRate * $scope.room.exchangeRate) / $scope.room.areaRate;
+            if (isNaN(coin_rate)) {
+                coin_rate = 1;
             }
 
-            if(!isOk){
-                $scope.error(global.translateByKey("appmgr.setAlgCCDiffFail"));
-            }else{
-                $scope.success(global.translateByKey("appmgr.setAlgCCDiffSuccess"));
-                if(jump){
-                    $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
-                }
+            var functions = [];
+            for(var i=$scope.room.startAreaId; i<($scope.room.startAreaId+$scope.room.maxAreas); ++i){
+                functions.push(setRejustDiff(i, diff, coin_rate));
             }
+
+            $q.all(functions).then(function (arr) {
+                var isOk = true;
+                for(var i=0; i<arr.length; ++i){
+                    var item = arr[i];
+                    if(!item || item.ret != "ok"){
+                        isOk = false;
+                        break;
+                    }
+                }
+
+                if(!isOk){
+                    $scope.error(global.translateByKey("appmgr.setAlgCCDiffFail"));
+                }else{
+                    $scope.success(global.translateByKey("appmgr.setAlgCCDiffSuccess"));
+                    if(jump){
+                        $state.go('app.rooms.manage.gameset.list', {appId: $stateParams.appId, type: $stateParams.type});
+                    }
+                }
+            });
+
         });
     }
 
@@ -734,7 +744,7 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
         return deferred.promise;
     }
 
-    function setRejustDiff(room, diff) {
+    function setRejustDiff(room, diff, coin_rate) {
         var deferred = $q.defer();
 
         var url = algUri + '/' + $stateParams.type + '/getAlgData';
@@ -754,6 +764,9 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
                 var algData = data;
                 var url = algUri + '/' + $stateParams.type + '/setRejustDiff';
                 var diffData = { "room": parseInt(room), "diff": parseInt(diff)};
+                if(coin_rate != undefined){
+                    diffData.coin_rate = parseInt(coin_rate);
+                }
                 $http.post(url, diffData, {
                     params:{
                         token: sso.getToken()
@@ -825,5 +838,31 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
 
         return deferred.promise;
     };
+
+    function getConfigCoinRate() {
+
+        var deferred = $q.defer();
+
+        var url = appMgrUri + "/appConfig";
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: "SystemConfig",
+                list: 0,
+                key: "coinRate"
+            }
+        }).error(function (msg, code) {
+            deferred.reject(code);
+        }).success(function (result) {
+            var data = result;
+            if(data.err){
+                deferred.reject(data.err);
+            }else{
+                deferred.resolve(data);
+            }
+        });
+
+        return deferred.promise;
+    }
 
 }]);
