@@ -83,10 +83,10 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
                     if(data && (typeof data == "object")){
                         $scope.table.diff = data.diff;
                     }
-                    transformStr();
-                    original = angular.copy($scope.table);
-                    $scope.tabPageShow = true;
                 });
+                $scope.tabPageShow = true;
+                transformStr();
+                original = angular.copy($scope.table);
             }
         });
     }else{
@@ -184,9 +184,20 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
+                    var isQuZheng = ((coinRate * $scope.table.exchangeRate) % $scope.table.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.table.exchangeRate)/$scope.table.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
+                    }
+
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
                     }
 
                     getAlgData(id).then(function (data) {
@@ -386,11 +397,11 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                     if(data && (typeof data == "object")){
                         $scope.table.diff = data.diff;
                     }
-                    transformStr();
-                    original = angular.copy($scope.table);
-                    $scope.tabPageShow = true;
                 });
 
+                transformStr();
+                original = angular.copy($scope.table);
+                $scope.tabPageShow = true;
 
             }
         });
@@ -483,12 +494,24 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
+                    var isQuZheng = ((coinRate * $scope.table.exchangeRate) % $scope.table.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.table.exchangeRate)/$scope.table.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
                     }
 
-                    getAlgData(id).then(function (data) {
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
+                    }
+
+
+                    getAlgData(key).then(function (data) {
                         if(data.coin_rate != coin_rate){
                             initTable(id, $scope.table.diff, coin_rate).then(function (data) {
                                 if(data.ret != "ok"){

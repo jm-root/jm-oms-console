@@ -157,9 +157,21 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
+
+                    var isQuZheng = ((coinRate * $scope.room.exchangeRate) % $scope.room.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
+                    }
+
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
                     }
 
                     var tableArr = [];
@@ -259,9 +271,20 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
                         data = {};
                     }
 
+                    var isQuZheng = ((coinRate * $scope.room.exchangeRate) % $scope.room.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
+                    }
+
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
                     }
 
                     var begin = $scope.room.startAreaId;
@@ -612,9 +635,20 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
+                    var isQuZheng = ((coinRate * $scope.room.exchangeRate) % $scope.room.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
+                    }
+
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
                     }
 
                     var tableArr = [];
@@ -709,9 +743,20 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
                         data = {};
                     }
 
+                    var isQuZheng = ((coinRate * $scope.room.exchangeRate) % $scope.room.areaRate !== 0);
+                    if(isQuZheng){
+                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        return;
+                    }
+
                     var coin_rate = (coinRate * $scope.room.exchangeRate)/$scope.room.areaRate;
                     if(isNaN(coin_rate)){
                         coin_rate = 1;
+                    }
+
+                    if(coin_rate <= 0){
+                        $scope.error("投币比例要大于 0");
+                        return;
                     }
 
                     var begin = $scope.room.startAreaId;
