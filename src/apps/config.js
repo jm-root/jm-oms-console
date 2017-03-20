@@ -8,8 +8,8 @@ var gConfig = {
         staticHost:"http://localhost:20400"
     },
     development: {
-        apiHost: "http://test.gzleidi.cn:82",
-        sdkHost: "http://test.gzleidi.cn:81",
+        apiHost: "http://test.gzleidi.cn:81",
+        sdkHost: "http://test.gzleidi.cn:82",
         opensdkHost: "http://jamma.3322.org:20300",
         staticHost:"http://jamma.3322.org:20400"
     },

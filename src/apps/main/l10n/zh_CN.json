@@ -14,20 +14,7 @@
     "MAIN": "概况"
   },
   "app": {
-    "per": {
-      "manage":"权限管理",
-      "org": "组织管理",
-      "users": "用户管理",
-      "role": "角色管理",
-      "resource": "资源管理",
-      "roleUser": "角色用户"
-    },
-    "acl": {
-      "manage":"权限管理(新)",
-      "user": "用户管理",
-      "role": "角色管理",
-      "resource": "资源管理"
-    },
+    "promote":"推广地址",
     "config":{
       "manage": "配置管理",
       "list": "管理配置信息",
@@ -36,135 +23,92 @@
       "systemconfig": "系统配置",
       "unified": "统一配置"
     },
-    "recharge":{
-      "manage": "充值管理",
-      "cardtype": "点卡类型",
-      "card": "官方点卡",
-      "third": "第三方充值",
-      "cardlog": "点卡充值记录"
-    },
     "player":{
       "manage": "玩家管理",
-      "info": "玩家信息",
-      "online": "在线状态",
-      "record": "游戏记录",
-      "givelog": "赠送记录"
+      "search": "玩家搜索",
+      "list": "玩家列表",
+      "record": "玩家游戏记录",
+      "vip": "玩家VIP记录",
+      "online": "玩家在线状态",
+      "givelog": "玩家赠送记录",
+      "signlog":"玩家签到记录",
+      "receivelog":"玩家领取记录",
+      "suspend":"封停账号"
     },
-    "system":{
-      "manage": "系统管理",
-      "admin": "管理员列表",
-      "log": "系统日志"
+    "recharge":{
+      "manage": "充值管理",
+      "cardtype": "面额管理",
+      "third": "第三方充值记录",
+      "cardlog": "点卡充值记录",
+      "card": "点卡管理"
     },
-    "activity":{
-      "manage":"活动管理",
-      "prop":"道具列表",
-      "gaveprop":"分配道具",
-      "forum":"活动版块",
-      "list":"活动列表"
+    "data":{
+      "manage":"数据统计列表",
+      "player":"玩家统计",
+      "playerdata":"玩家数据分析",
+      "game":"游戏统计",
+      "gameconsume":"游戏消耗数据",
+      "gamegive":"游戏赠送数据"
     },
     "agent":{
-      "manage":"渠道管理",
-      "create":"下级渠道创建",
-      "list":"渠道列表",
-      "data":"渠道数据"
-    },
-    "agentdata":{
-      "register":"注册",
-      "recharge":"充值",
-      "analysis":"数据分析"
-    },
-    "coin":{
-      "sys":"T币系统",
-      "stock":{
-        "manage":"T币库存",
-        "recharge":"T币充值",
-        "list":"库存列表",
-        "order":"订单管理"
-      },
-      "distribute":{
-        "manage":"T币分发",
-        "make":"生成首充号",
-        "batch":"批量分发"
-      },
-      "account":{
-        "manage":"账号管理",
-        "list":"账号列表"
-      },
-      "record":{
-        "manage":"使用记录",
-        "playerStat":"玩家账号统计",
-        "agentStat":"渠道账号统计",
-        "logs":"日志查询"
-      }
-    },
-    "package":{
-      "manage":"包管理",
-      "take":"领包",
-      "set":"包设置"
-    },
-    "bank":{
-      "manage":"银行管理",
-      "account":"账户列表",
-      "preauth":"预授权列表",
-      "transfer":"转账",
-      "deal":"交易流水",
-      "npreauth":"取消授权",
-      "overdraw":"设置额度",
-      "rate":"货币对率",
-      "pay":{"list":"支付列表"}
-    },
-    "bbs":{
-      "manage":"论坛管理",
-      "forum":"版块列表",
-      "topic":"帖子列表"
-    },
-    "app":{
-      "manage":"应用管理",
-      "create":"应用列表",
-      "upload":"应用上传"
-    },
-    "shop":{
-      "manage":"商城管理",
-      "product":"商品管理",
-      "lottery":"夺宝管理",
-      "lotteryWin":"中奖管理"
+      "manage":"代理管理",
+      "extension":"代理推广商",
+      "statement":"代理结算记录",
+      "analysis":"代理数据分析"
     },
     "home":{
       "manage":"大厅管理",
+      "notice":{
+        "manage":"公告管理",
+        "list":"公告列表",
+        "send":"公告发送",
+        "aboutus":"关于我们"
+      },
+      "activitys":{
+        "manage":"活动管理",
+        "list":"活动列表",
+        "send":"活动发送"
+      },
+      "turntable":{
+        "manage":"转盘管理",
+        "config":"转盘设置"
+      },
       "vip":{
-        "config":"VIP配置",
-        "cond":"VIP条件",
-        "item":"优惠种类",
-        "set":"分配优惠"
+        "manage":"VIP特权管理",
+        "config":"VIP配置"
       },
-      "bbs":{
-        "manage":"论坛管理",
-        "forum":"版块列表",
-        "topic":"帖子列表"
+      "box":{
+        "manage":"宝箱管理",
+        "config":"宝箱设置"
       },
-      "activitys":"活动列表",
-      "checkin":"签到设置",
-      "turntable":"转盘配置",
-      "sendnotice":"发送公告",
-      "senddak":"发送邮件",
-      "rank":"排行榜设置"
+      "game":"游戏管理",
+      "currency":"货币管理",
+      "merrygoround":"走马灯管理",
+      "rank":"玩家排行榜管理",
+      "sendmail":"邮件发送管理"
     },
-    "room":{
-      "manage":"房间管理"
+    "shop":{
+      "manage":"商城管理",
+      "lottery":"夺宝商城管理",
+      "ordinary":"普通商城管理",
+      "lotteryWin":"中奖列表",
+      "orderlist":"商城订单列表"
     },
-    "wordfilter":{
-      "manage":"敏感词管理",
-      "list":"敏感词列表",
-      "log":"拦截日志"
+    "game":{
+      "manage":"游戏管理",
+      "difficulty":"游戏难度调整",
+      "components":"游戏组件",
+      "list":"游戏列表",
+      "robot":"机器人管理",
+      "virtual":"虚拟人数"
     },
-    "guestbook":{
-      "manage":"留言板管理",
-      "list":"留言板列表"
-    },
-    "report":{
-      "manage":"统计报表",
-      "account":"账目统计"
-    },
-    "promote":"推广地址"
+    "system":{
+      "manage": "系统管理",
+      "menu": "系统菜单",
+      "admin": "管理员列表",
+      "permission":"角色权限",
+      "backstagemenu":"代理后台菜单",
+      "wordfilter":"敏感词管理"
+    }
   }
 }

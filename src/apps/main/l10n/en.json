@@ -14,20 +14,7 @@
     "MAIN": "Home"
   },
   "app": {
-    "per": {
-      "manage":"Permission",
-      "org": "Organization",
-      "users": "User",
-      "role": "Role",
-      "resource": "Resource",
-      "roleUser": "Role User"
-    },
-    "acl": {
-      "manage":"Permission",
-      "user": "User",
-      "role": "Role",
-      "resource": "Resource"
-    },
+    "promote":"Promote",
     "config":{
       "manage": "Config Manage",
       "list": "Config List",
@@ -36,135 +23,92 @@
       "systemconfig": "System Config",
       "unified": "Unified Config"
     },
-    "recharge":{
-      "manage": "Recharge",
-      "cardtype": "Card Type",
-      "card": "Card",
-      "third": "Third",
-      "cardlog": "Log"
-    },
     "player":{
       "manage": "Player Manage",
-      "info": "Info",
-      "online": "Online",
+      "search": "Player Search",
+      "list": "Player List",
       "record": "Record",
-      "givelog": "Give Log"
+      "vip": "VIP",
+      "online": "Online",
+      "givelog": "Give Log",
+      "signlog":"Sign Log",
+      "receivelog":"Receive Log",
+      "suspend":"Suspend"
     },
-    "system":{
-      "manage": "System Manage",
-      "admin": "System Admin",
-      "log": "System Log"
+    "recharge":{
+      "manage": "Recharge",
+      "cardtype": "Denomination",
+      "third": "Third",
+      "cardlog": "Log",
+      "card": "Card"
     },
-    "activity":{
-      "manage":"Activity Manage",
-      "prop":"Prop List",
-      "gaveprop":"Gave Prop",
-      "forum":"Forum List",
-      "list":"Activity List"
+    "data":{
+      "manage":"Data Statistics",
+      "player":"Player",
+      "playerdata":"Player Data",
+      "game":"Game",
+      "gameconsume":"Game Consume",
+      "gamegive":"Game gift data"
     },
     "agent":{
-      "manage":"Agent Manage",
-      "create":"Agent Create",
-      "list":"Agent List",
-      "data":"Agent Data"
-    },
-    "agentdata":{
-      "register":"Register",
-      "recharge":"Recharge",
-      "analysis":"Analysis"
-    },
-    "coin":{
-      "sys":"Coin System",
-      "stock":{
-        "manage":"Coin Stock",
-        "recharge":"Stock Recharge",
-        "list":"Stock List",
-        "order":"Stock Order"
-      },
-      "distribute":{
-        "manage":"Distribute",
-        "make":"Distribute Make",
-        "batch":"Distribute Batch"
-      },
-      "account":{
-        "manage":"Account Manager",
-        "list":"Account List"
-      },
-      "record":{
-        "manage":"Usage Log",
-        "playerStat":"Player Stat",
-        "agentStat":"Agent Stat",
-        "logs":"Log Query"
-      }
-    },
-    "package":{
-      "manage":"Package Manage",
-      "take":"Take",
-      "set":"Set"
-    },
-    "bank":{
-      "manage":"Bank Manage",
-      "account":"Account",
-      "preauth":"Preauth List",
-      "transfer":"Transfer",
-      "deal":"Deal",
-      "npreauth":"Preauth Cancel",
-      "overdraw":"Set Overdraw",
-      "rate":"Currency Rate",
-      "pay":{"list":"Pay List"}
-    },
-    "bbs":{
-      "manage":"Forum Manage",
-      "forum":"Forum List",
-      "topic":"Post List"
-    },
-    "app":{
-      "manage":"App Manage",
-      "create":"App Create",
-      "upload":"App Upload"
-    },
-    "shop":{
-      "manage":"Shop Manage",
-      "product":"Shop Product",
-      "lottery":"Shop Lottery",
-      "lotteryWin":"Shop Lottery Winner"
+      "manage":"Agent",
+      "extension":"Promoter",
+      "statement":"Proxy settlement",
+      "analysis":"Proxy data analysis"
     },
     "home":{
       "manage":"Hall Manage",
+      "notice":{
+        "manage":"Notice",
+        "list":"Notice List",
+        "send":"Send Notice",
+        "aboutus":"About Us"
+      },
+      "activitys":{
+        "manage":"Activity",
+        "list":"Activity List",
+        "send":"Activity sent"
+      },
+      "turntable":{
+        "manage":"Turntable",
+        "config":"Turntable Config"
+      },
       "vip":{
-        "config":"VIP Config",
-        "cond":"VIP CON",
-        "item":"VIP Item",
-        "set":"VIP Set"
+        "manage":"VIP Privilege",
+        "config":"VIP Config"
       },
-      "bbs":{
-        "manage":"BBS Manage",
-        "forum":"Forum List",
-        "topic":"Topic List"
+      "box":{
+        "manage":"Treasure Box",
+        "config":"Treasure Box Config"
       },
-      "activitys":"Activitys",
-      "checkin":"Checkin",
-      "turntable":"Turntable",
-      "sendnotice":"Send Notice",
-      "senddak":"Send Mail",
-      "rank":"Rank Set"
+      "game":"Game",
+      "currency":"Currency management",
+      "merrygoround":"Merry go round",
+      "rank":"Rank",
+      "sendmail":"Send Mail"
     },
-    "room":{
-      "manage":"Room Manage"
+    "shop":{
+      "manage":"Shop Manage",
+      "lottery":"Shop Lottery",
+      "ordinary":"Shop Product",
+      "lotteryWin":"Shop Lottery Winner",
+      "orderlist":"Order List"
     },
-    "wordfilter":{
-      "manage":"Wordfilter",
-      "list":"List",
-      "log":"Log"
+    "game":{
+      "manage":"Game Manage",
+      "difficulty":"Difficulty adjustment",
+      "components":"Game components",
+      "list":"Game List",
+      "robot":"Robot management",
+      "virtual":"Virtual number"
     },
-    "guestbook":{
-      "manage":"Guest book",
-      "list":"List"
-    },
-    "report":{
-      "manage":"Report",
-      "account":"Account"
-    },
-    "promote":"Promote"
+    "system":{
+      "manage": "System Manage",
+      "menu": "System Menu",
+      "admin": "System Admin",
+      "permission":"Role permission",
+      "backstagemenu":"Backstage Menu",
+      "wordfilter":"Wordfilter"
+    }
   }
 }
