@@ -12,7 +12,7 @@
                         <div class="input-group" style="max-width: 360px;">
                             <input type="text" class="form-control" placeholder="{{'activity.gaveprop.UserId'|translate}}" ng-model="depot.userId" ng-required="true">
                             <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">{{'activity.gaveprop.search'|translate}}<span class="caret"></span></div>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default" ng-click="searchUser(depot.userId)">{{'activity.gaveprop.search'|translate}}<span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
                                     <div class="input-group">
                                         <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.search'|translate}}" ng-model="keyword">
