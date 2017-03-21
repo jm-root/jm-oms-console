@@ -524,6 +524,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         //---------------
         betTime: 15000,
         betLimit: 1000,
+        betLowLimit: 50,
         absenceNum: 10,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
@@ -710,6 +711,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             rates: [1,2,3,4,5,6,7,8,9,10],
             //---------------
             betLimit: 1000,
+            betLowLimit: 50,
             absenceNum: 10,
             perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
         };

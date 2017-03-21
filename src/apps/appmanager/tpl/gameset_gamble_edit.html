@@ -202,21 +202,27 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">{{ 'appmgr.room.betLowLimit' | translate }}</label>
+                    <div class="col-sm-2">
+                        <input type="number" class="form-control" placeholder="每门压分下限" ng-model="room.betLowLimit" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.dragon' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.dragon' | translate }}" ng-model="room.perLimit[10]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.dragon' | translate }}" ng-model="room.perLimit[12]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.green' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.green' | translate }}" ng-model="room.perLimit[12]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.green' | translate }}" ng-model="room.perLimit[11]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.red' | translate }}</label>
                     <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.red' | translate }}" ng-model="room.perLimit[11]" min="0" required>
+                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.red' | translate }}" ng-model="room.perLimit[10]" min="0" required>
                     </div>
                 </div>
                 <div class="form-group">

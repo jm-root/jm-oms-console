@@ -352,6 +352,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         betTime: 15000,
         absenceNum: 10,
         betLimit: 1000,
+        betLowLimit: 50,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
