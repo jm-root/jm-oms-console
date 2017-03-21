@@ -136,7 +136,7 @@ angular.module('app')
 
         self.getUserPermission = function (resource) {
             var deferred = $q.defer();
-            $http.get(perUri + '/user/permissions', {
+            $http.get(aclUri + '/userResources', {
                 params: {
                     token: sso.getToken(),
                     resource: resource
@@ -146,14 +146,14 @@ angular.module('app')
                     deferred.reject(result);
                 } else {
                     var obj = {};
-                    for (var key in result) {
-                        var ary = result[key];
-                        var per = {};
-                        ary.forEach(function (item) {
-                            per[item] = 1;
-                        });
-                        obj[key] = per;
+                    var per = {};
+                    for(var key in result){
+                        var index = key.indexOf('#');
+                        if(index==-1)index=key.length;
+                        var str = key.slice(index+1);
+                        str&&(per[str]=1);
                     }
+                    obj[resource] = per;
                     deferred.resolve(obj);
                 }
             }).error(function (msg, code) {

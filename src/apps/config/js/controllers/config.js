@@ -13,7 +13,7 @@ app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', 
     var sso = jm.sdk.sso;
     $scope.val = '';
 
-    $http.get(adminUri+'/navconfig', {
+    $http.get(omsUri+'/navconfig', {
         params:{
             token: sso.getToken()
         }
@@ -39,7 +39,7 @@ app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', 
         }catch (e){
             return $scope.warning('请输入正确的JSON格式数据');
         }
-        $http.post(adminUri+'/navconfig', {data:value}, {
+        $http.post(omsUri+'/navconfig', {data:value}, {
             params:{
                 token: sso.getToken()
             }

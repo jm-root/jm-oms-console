@@ -30,7 +30,7 @@
                         <div class="input-group" style="max-width: 360px;">
                             <input type="text" class="form-control" placeholder="{{ 'common.userId' | translate }}" ng-model="player.toUserId" ng-required="true">
                             <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default">{{ 'common.search' | translate }} <span class="caret"></span></div>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default" ng-click="searchUser(player.toUserId)">{{ 'common.search' | translate }} <span class="caret"></span></div>
                                 <ul class="dropdown-menu pull-right w-xxl">
                                     <div class="input-group">
                                         <input type="text" class="form-control input-sm btn-rounded" placeholder="{{ 'common.searchUser' | translate }}" ng-model="keyword">
@@ -41,15 +41,15 @@
                                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped" style="margin: 0 0 5px 0">
                                         <thead>
                                         <tr>
-                                            <th>{{ 'common.userObjectId' | translate }}</th>
                                             <th>{{ 'common.userId' | translate }}</th>
+                                            <th>{{ 'common.userAccount' | translate }}</th>
                                             <th>{{ 'common.userName' | translate }}</th>
                                         </tr>
                                         </thead>
                                         <tbody class="hand">
                                         <tr ng-repeat="row in usersInfo.rows.slice(10*(page-1),[10*page])" ng-click="selectUser($event)" st-select-mode="single">
-                                            <td>{{row._id}}</td>
                                             <td>{{row.uid}}</td>
+                                            <td>{{row.account||row.mobile}}</td>
                                             <td>{{row.nick}}</td>
                                         </tr>
                                         </tbody>
@@ -79,7 +79,6 @@
                     </div>
                     <label class="col-lg-1 col-md-2 col-sm-3 control-label">{{'player.changescore.after'|translate}}:</label><!--操作后-->
                     <div class="col-lg-1 col-sm-6 control-label w-auto">
-                        <!--<input ng-model="bank.blance"></input>-->
                         <p ng-if="(operate.type&&sum)||((operate.type&&sum==0))" >{{sum>=0?sum:"余额不足" }}</p><!--余额不足-->
                     </div>
                 </div>

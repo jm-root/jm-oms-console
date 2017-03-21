@@ -290,7 +290,6 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
         $http.get(ssoUri+'/users', {
             params:{
                 token: token,
-                page: 1,
                 keyword: keyword
             }
         }).success(function(result){
@@ -299,7 +298,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
                 $scope.error(data.msg);
             }else{
                 $scope.usersInfo = data;
-                $scope.psize = $scope.usersInfo.rows.length/5;
+                $scope.psize = Math.ceil($scope.usersInfo.rows.length/10);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -307,7 +306,7 @@ app.controller('AclUsersCtrl', ['$scope', '$http', '$state', '$stateParams',func
     };
     $scope.selectUser = function($event){
         if(!$scope.id){
-            $scope.selectRow = $scope.usersInfo.rows.slice(5*($scope.i-1),[5*$scope.i])[$event.currentTarget.rowIndex-1];
+            $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.i-1),[10*$scope.i])[$event.currentTarget.rowIndex-1];
             $scope.user._id = $scope.selectRow._id;
             $scope.user.nick = $scope.selectRow.nick;
         }
