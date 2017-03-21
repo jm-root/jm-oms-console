@@ -51,15 +51,15 @@
                                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped" style="margin: 0 0 5px 0">
                                         <thead>
                                         <tr>
-                                            <th>{{ 'home.sendDak.userObjectID' | translate }}</th>
-                                            <th>{{ 'home.sendDak.userID' | translate }}</th>
-                                            <th>{{ 'home.sendDak.userName' | translate }}</th>
+                                            <th>{{ 'common.userId' | translate }}</th>
+                                            <th>{{ 'common.userAccount' | translate }}</th>
+                                            <th>{{ 'common.userName' | translate }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr ng-repeat="row in usersInfo.rows.slice(10*(page-1),[10*page])" ng-click="selectUser($event)" st-select-mode="single">
-                                            <td>{{row._id}}</td>
                                             <td>{{row.uid}}</td>
+                                            <td>{{row.account||row.mobile}}</td>
                                             <td>{{row.nick}}</td>
                                         </tr>
                                         </tbody>

@@ -51,6 +51,7 @@
     "userName": "用户名",
     "userId": "用户ID",
     "userObjectId": "用户ObjectID",
+    "userAccount":"账号",
     "send": "发送",
     "amount": "数量",
     "deadline": "过期时间",

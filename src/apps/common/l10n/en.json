@@ -51,6 +51,7 @@
     "userName": "User name",
     "userId": "User ID",
     "userObjectId": "User ObjectID",
+    "userAccount":"User account",
     "send": "Send",
     "amount": "Amount",
     "deadline": "Deadline",
