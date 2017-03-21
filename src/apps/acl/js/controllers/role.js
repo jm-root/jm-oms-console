@@ -261,9 +261,11 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http','global',function ($s
     });
     //获取用户创建的角色
     function getRoles(userRoles) {
-        acl.role.list({
-            token: token
-        },function (err,result) {
+        $http.get(aclUri+'/roles', {
+            params: {
+                token: token
+            }
+        }).success(function (result) {
             if(result.err){
                 $scope.error(result.msg);
                 $scope.errorTips(result.msg);
@@ -283,6 +285,8 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http','global',function ($s
                 $scope.role = null;
                 $scope.curRole = null;
             }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
         });
     }
     //格式化参数
