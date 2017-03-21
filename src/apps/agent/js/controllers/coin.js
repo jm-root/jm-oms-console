@@ -23,6 +23,7 @@ app.controller('CoinStockRechargeCtrl', ['$scope', '$http', '$state', '$statePar
     });
 
     bank.query({ctCode:'tb'},function(err,result){
+        result.holds || (result.holds={});
         result.holds.tb = result.holds.tb || {};
         $scope.tbAmount = result.holds.tb.amount||0;
     });
@@ -368,6 +369,7 @@ app.controller('CoinStockListCtrl', ['$scope', '$http', '$state', '$stateParams'
 
     var queryTB = function(){
         bank.query({ctCode:'tb'},function(err,result){
+            result.holds || (result.holds={});
             result.holds.tb = result.holds.tb || {};
             $scope.tbAmount = result.holds.tb.amount||0;
         });
@@ -701,6 +703,7 @@ app.controller('CoinDistributeBatchCtrl', ['$scope', '$http', '$state', '$stateP
 
     var queryTB = function(){
         bank.query({ctCode:'tb'},function(err,result){
+            result.holds || (result.holds={});
             result.holds.tb = result.holds.tb || {};
             $scope.tbAmount = result.holds.tb.amount||0;
         });
@@ -915,6 +918,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
 
     var queryTB = function(){
         bank.query({ctCode:'tb'},function(err,result){
+            result.holds || (result.holds={});
             result.holds.tb = result.holds.tb || {};
             $scope.tbAmount = result.holds.tb.amount||0;
         });
