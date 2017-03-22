@@ -92,7 +92,18 @@
     "modify": "Modify",
     "back":"Back",
     "tb":"TB",
-    "cancel ":"Cancel"
+    "cancel ":"Cancel",
+    "resetLoginPwd":"Reset Login Password",
+    "resetChargePwd":"Reset Payment  Password",
+    "oldPwd":"Original Password",
+    "newPwd":"New Password",
+    "confirmNewPwd":"Confirm New Password",
+    "bindMobile":"Bind Mobile",
+    "boundMobile":"Bound Mobile",
+    "setRechargePwd":"Set Payment  Password",
+    "confirmRechargePwd":"Confirm Payment  Password",
+    "code":"Verification Code",
+    "getCode":"Get Verification Code"
   },
   "imgcrop":{
     "title":"Edit Picture",

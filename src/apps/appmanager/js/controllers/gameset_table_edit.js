@@ -186,7 +186,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
 
                     var isQuZheng = ((coinRate * $scope.table.exchangeRate) % $scope.table.areaRate !== 0);
                     if(isQuZheng){
-                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        // $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        $scope.error(global.translateByKey("appmgr.toBeDivisibleBy"));
                         return;
                     }
 
@@ -196,25 +197,29 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
                     }
 
                     if(coin_rate <= 0){
-                        $scope.error("投币比例要大于 0");
+                        // $scope.error("投币比例要大于 0");
+                        $scope.error(global.translateByKey("appmgr.coin_rateGt0"));
                         return;
                     }
 
-                    getAlgData(id).then(function (data) {
+                    getAlgData(key).then(function (data) {
                         if(data.coin_rate != coin_rate){
                             initTable(id, $scope.table.diff, coin_rate).then(function (data) {
                                 if(data.ret != "ok"){
-                                    $scope.error("设置桌子投币比例失败");
+                                    // $scope.error("设置桌子投币比例失败");
+                                    $scope.error(global.translateByKey("appmgr.setTableXCoinRateFail", {value: key}));
                                 }
                             });
                         }
                     }, function () {
-                        $scope.error("获取桌子投币比例失败");
+                        // $scope.error("获取桌子投币比例失败");
+                        $scope.error(global.translateByKey("appmgr.getTableCoinRateFail"));
                     });
 
 
                 }, function () {
-                    $scope.error("获取CoinRate失败");
+                    // $scope.error("获取CoinRate失败");
+                    $scope.error(global.translateByKey("appmgr.getCoinRateFail"));
                 });
 
 
@@ -237,7 +242,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
             setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
                 saveTableConfig(jump);
             }, function (data) {
-                $scope.error("算法设置难度失败");
+                // $scope.error("算法设置难度失败");
+                $scope.error(global.translateByKey("appmgr.setAlgDiffFail"));
                 saveTableConfig(jump);
             });
         }
@@ -352,6 +358,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         betTime: 15000,
         absenceNum: 10,
         betLimit: 1000,
+        betLowLimit: 50,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
@@ -496,7 +503,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
 
                     var isQuZheng = ((coinRate * $scope.table.exchangeRate) % $scope.table.areaRate !== 0);
                     if(isQuZheng){
-                        $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        // $scope.error("房间倍率必须能被常量乘与一币分值整除");
+                        $scope.error(global.translateByKey("appmgr.toBeDivisibleBy"));
                         return;
                     }
 
@@ -506,7 +514,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                     }
 
                     if(coin_rate <= 0){
-                        $scope.error("投币比例要大于 0");
+                        // $scope.error("投币比例要大于 0");
+                        $scope.error(global.translateByKey("appmgr.coin_rateGt0"));
                         return;
                     }
 
@@ -515,17 +524,20 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                         if(data.coin_rate != coin_rate){
                             initTable(id, $scope.table.diff, coin_rate).then(function (data) {
                                 if(data.ret != "ok"){
-                                    $scope.error("设置桌子投币比例失败");
+                                    // $scope.error("设置桌子投币比例失败");
+                                    $scope.error(global.translateByKey("appmgr.setTableXCoinRateFail", {value: key}));
                                 }
                             });
                         }
                     }, function () {
-                        $scope.error("获取桌子投币比例失败");
+                        // $scope.error("获取桌子投币比例失败");
+                        $scope.error(global.translateByKey("appmgr.getTableCoinRateFail"));
                     });
 
 
                 }, function () {
-                    $scope.error("获取CoinRate失败");
+                    // $scope.error("获取CoinRate失败");
+                    $scope.error(global.translateByKey("appmgr.getCoinRateFail"));
                 });
 
 
@@ -547,7 +559,8 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
             setDiff($scope.table.tableType, $scope.table.diff).then(function (data) {
                 saveTableConfig(jump);
             }, function (data) {
-                $scope.error("算法设置难度失败");
+                // $scope.error("算法设置难度失败");
+                $scope.error(global.translateByKey("appmgr.setAlgDiffFail"));
                 saveTableConfig(jump);
             });
         }

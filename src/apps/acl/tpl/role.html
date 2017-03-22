@@ -112,8 +112,8 @@
                 <input style="display: inline-block;width: auto;margin-right:5%;height: 30px" type="text" class="form-control input-sm text-md" placeholder="角色名称" ng-model="curRole.title"  disabled>
                 <label class="control-label h4"  translate="acl.role.describe">描述</label>
                 <input  style="display: inline-block;width: 25%;height: 30px;" type="text" class="form-control input-sm text-md" placeholder="描述" ng-model="curRole.description" disabled>
-                <div class="input-sm bg-light rounded padder" style="display: inline-block;margin: 0 3%">
-                    <i class="fa fa-search"></i> <input type="text" ng-model="query" class="bg-light no-border" placeholder="权限" style="display: inline-block;width: auto;">
+                <div class="input-sm bg-light rounded padder " style="display: inline-block;margin: 0 3%">
+                    <i class="fa fa-search"></i> <input type="text" ng-model="query" class="bg-light w-md no-border" placeholder="权限">
                 </div>
                 <button style="display: inline-block;height: 30px" class="btn btn-info btn-sm" ng-click="changePermission()" ng-if="!userRoles[curRole.code]" translate="acl.role.save">保存</button>
         </div>

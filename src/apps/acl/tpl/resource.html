@@ -2,23 +2,20 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm bg-light ">
     <!-- column -->
     <div class="col  w-xs b-r ">
-        <div class="wrapper-sm b-b">
+        <div class="wrapper-sm b-b center-align">
             <div class="pull-right">
                 <a href class="btn btn-sm btn-info m-t-n-xs" ng-init="ebtnname='新增'" ng-click="addNode()" translate="acl.resource.add">
                     {{ebtnname}}
                 </a>
             </div>
-
+            <div class="bg-white  pull-right " style="display: inline-block;margin: 0 3%">
+                <i class="fa fa-search"></i> <input type="text" ng-model="query" class=" w-sm no-border " placeholder="权限">
+            </div>
             <div class="h4" translate="acl.resource.resource">资源</div>
-        </div>
-        <div class="list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-91}}+'px', size:'8px'}">
-            <div style="padding: 10px 0px">
-                <treecontrol class="tree-custom"
-                             tree-model="resourceTreedata"
-                             options="opts"
-                             on-selection="selectedResourceNode(node,$parentNode)"
-                             expanded-nodes="expandedResourceNodes"
-                             selected-node="selected">
+        </div><br/>
+        <div class=" list-group no-radius no-border no-bg m-b-none" ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-110}}+'px', size:'8px'}">
+            <div>
+                <treecontrol class="tree-custom" tree-model="resourceTreedata" options="opts" on-selection="selectedResourceNode(node,$parentNode)" expanded-nodes="expandedResourceNodes" selected-node="selected">
                     {{node.title}}
                 </treecontrol>
             </div>
