@@ -18,44 +18,55 @@
                             controller:'PlayerCtrl',
                             resolve: lazyLoadProvider.load( [path + 'js/controllers/player.js',path + 'js/controllers/index.js'] )
                         })
-                        .state('app.player.info', {
+                        .state('app.player.search', {
                             url: '/info',
-                            template: '<div ui-view class="fade-in-down"></div>'
+                            templateUrl: path + 'tpl/search.html'
                         })
-                        .state('app.player.info.list', {
+                        .state('app.player.list', {
                             url: '/list',
-                            templateUrl: path + 'tpl/player.info.list.html',
-                            controller: 'PlayerListCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            templateUrl: path + 'tpl/list.html'
+                            // controller: 'PlayerListCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.online', {
                             url: '/online',
-                            templateUrl: path + 'tpl/player.info.online.html',
+                            templateUrl: path + 'tpl/online.html',
                             controller: 'PlayerOnlineCtrl'
-                        })
-                        .state('app.player.info.games', {
-                            url: '/games/{id}?name',
-                            templateUrl: path + 'tpl/player.info.games.html',
-                            controller: 'PlayerGamesListCtrl',
-                            resolve: {
-                                deps: ['$ocLazyLoad', 'uiLoad',
-                                    function ($ocLazyLoad,uiLoad) {
-                                        return;
-                                    }
-                                ]
-                            }
-                        })
-                        .state('app.player.record', {
-                            url: '/record',
-                            templateUrl: path + 'tpl/player.record.html',
-                            controller: 'PlayerRecordCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.givelog', {
                             url: '/givelog',
-                            templateUrl: path + 'tpl/player.givelog.html',
-                            controller: 'PlayerGiveLogCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            templateUrl: path + 'tpl/givelog.html',
+                            // controller: 'PlayerGamesListCtrl',
+                        })
+                        .state('app.player.record', {
+                            url: '/record',
+                            templateUrl: path + 'tpl/record.html',
+                            // controller: 'PlayerRecordCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
+                        })
+                        .state('app.player.receivelog', {
+                            url: '/receivelog',
+                            templateUrl: path + 'tpl/receivelog.html'
+                            // controller: 'PlayerGiveLogCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
+                        })
+                        .state('app.player.signlog', {
+                            url: '/signlog',
+                            templateUrl: path + 'tpl/signlog.html'
+                            // controller: 'PlayerGiveLogCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
+                        })
+                        .state('app.player.vip', {
+                            url: '/signlog',
+                            templateUrl: path + 'tpl/vip.html'
+                            // controller: 'PlayerGiveLogCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
+                        })
+                        .state('app.player.suspend', {
+                            url: '/suspend',
+                            templateUrl: path + 'tpl/suspend.html'
+                            // controller: 'PlayerGiveLogCtrl',
+                            // resolve: lazyLoadProvider.load('daterangepicker')
                         })
                 }
             ]

@@ -1,0 +1,24 @@
+<div class="bg-light lter b-b wrapper">
+    <h1 class="h4 font-bold">
+        <span>当前位置：</span>
+        <span class="hcolor">首页</span>
+        <span> 》</span>
+        <span class="hcolor">玩家列表</span>
+    </h1>
+</div>
+<div>
+    <form>
+        <div class="input-group w-sm headpadd">
+            <input type="text" ng-model="search.keyword" class="form-control input-sm  rounded padder" placeholder="搜索用户名或ID">
+        </div>
+    </form>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <span style="font-size: larger"></span>
+            <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>
