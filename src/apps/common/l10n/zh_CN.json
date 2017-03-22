@@ -92,7 +92,18 @@
     "modify": "修改",
     "back":"返回",
     "tb":"T币",
-    "cancel":"作废"
+    "cancel":"作废",
+    "resetLoginPwd":"重置登录密码",
+    "resetChargePwd":"重置支付密码",
+    "oldPwd":"原密码",
+    "newPwd":"新密码",
+    "confirmNewPwd":"确认新密码",
+    "bindMobile":"绑定手机号",
+    "boundMobile":"已绑定的手机号",
+    "setRechargePwd":"设置支付密码",
+    "confirmRechargePwd":"确认支付密码",
+    "code":"验证码",
+    "getCode":"免费获取验证码"
   },
   "imgcrop":{
     "title":"编辑图片",
