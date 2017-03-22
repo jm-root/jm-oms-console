@@ -200,7 +200,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
 
                 }, function () {
                     // $scope.error("获取CoinRate失败");
-                    $scope.error(global.translateByKey("appmgr.setTableXCoinRateFail", {value: e}));
+                    $scope.error(global.translateByKey("appmgr.getCoinRateFail"));
                 });
 
 
@@ -290,7 +290,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
 
                     if(coin_rate <= 0){
                         // $scope.error("投币比例要大于 0");
-                        $scope.error(global.translateByKey("setAlgDiffFail"));
+                        $scope.error(global.translateByKey("appmgr.coin_rateGt0"));
                         return;
                     }
 
