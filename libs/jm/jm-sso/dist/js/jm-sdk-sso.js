@@ -247,7 +247,7 @@ if ((typeof exports !== 'undefined' && typeof module !== 'undefined')) {
                         for (var key in doc) {
                             self.user[key] = doc[key];
                         }
-                        self.user.nick = self.user.nick || '楼主很懒连名字都不起一下';
+                        self.user.nick || (self.user.nick = '');
                         doc = self.user;
                     }else{
                         storage.removeItem('token');

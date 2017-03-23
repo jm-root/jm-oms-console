@@ -840,6 +840,7 @@ if (typeof module !== 'undefined' && module.exports) {
          * use({uri:uri, fn:router})
          * use({uri:uri, fn:obj})
          * use(router)
+         * use(obj) obj必须实现了request或者handle函数之一，优先使用request
          * 以下用法不能包含cb
          * use(uri, fn)
          * use(uri, fn1, fn2, ..., fnn)
@@ -880,6 +881,12 @@ if (typeof module !== 'undefined' && module.exports) {
                     fn: opts
                 };
                 cb = null;
+            }else if(typeof opts === 'object') {
+                if(!opts.fn) {
+                    opts = {
+                        fn: opts
+                    };
+                }
             }
 
             return this._use(opts, cb);
