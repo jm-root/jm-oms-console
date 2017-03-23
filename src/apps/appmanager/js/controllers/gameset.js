@@ -61,6 +61,25 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
             {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
             {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
+        ],
+        hulu: [
+            {headerName: "房间类型", field: "roomType", width: 100},
+            {headerName: "名字", field: "name", width: 100},
+            // {headerName: "简介", field: "intro", width: 120},
+            // {headerName: "最大玩家数", field: "maxPlayers", width: 100},
+            {headerName: "房间倍率", field: "areaRate", width: 120},
+            {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
+            {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
+            {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            {headerName: "桌子数", field: "maxAreas", width: 120},
+            // {headerName: "游戏难度", field: "hardLevel", width: 120},
+            {headerName: "最大携带", field: "maxAmount", width: 120},
+            {headerName: "最小携带", field: "minAmount", width: 120},
+            {headerName: "上分设置", field: "exchangeAmount", width: 120},
+            {headerName: "一币分值", field: "exchangeRate", width: 120},
+            // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
+            {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
+            {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
         ]
     };
 
@@ -80,6 +99,20 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     ]);
 
     global.agGridTranslateSync($scope, columnDefs.gamble, [
+        'appmgr.room.roomType',
+        'appmgr.room.roomName',
+        'appmgr.room.roomRate',
+        'appmgr.room.freeField',
+        'appmgr.room.roomMode',
+        'appmgr.room.roomCurrency',
+        'appmgr.room.tableNum',
+        'appmgr.room.maxCarry',
+        'appmgr.room.minCarry',
+        'appmgr.room.setup',
+        'appmgr.room.currencyScore'
+    ]);
+
+    global.agGridTranslateSync($scope, columnDefs.hulu, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
         'appmgr.room.roomRate',
@@ -555,6 +588,45 @@ app.controller('GameSetDiffcultEditCtrl', ['$scope', '$http', '$state', '$stateP
             ]
         },
         gamble: {
+            diffs: [
+                {name: global.translateByKey("appmgr.difficulty0"), value: 0},
+                {name: global.translateByKey("appmgr.difficulty1"), value: 1},
+                {name: global.translateByKey("appmgr.difficulty2"), value: 2},
+                {name: global.translateByKey("appmgr.difficulty3"), value: 3},
+                {name: global.translateByKey("appmgr.difficulty4"), value: 4},
+                {name: global.translateByKey("appmgr.difficulty5"), value: 5},
+                // {name: global.translateByKey("difficult6"), value: 6},
+                // {name: global.translateByKey("difficult7"), value: 7},
+                // {name: global.translateByKey("difficult8"), value: 8},
+                // {name: global.translateByKey("difficult9"), value: 9}
+            ],
+            rejustDiffs: [
+                {name: global.translateByKey("appmgr.closeMaxSend"), value: 44, max_send:0},
+                {name: global.translateByKey("appmgr.highest") + "-1000", value: 28, max_send: 1000},
+                {name: global.translateByKey("appmgr.highest") + "-6000", value: 29, max_send: 6000},
+                {name: global.translateByKey("appmgr.highest") + "-11000", value: 30, max_send: 11000},
+                {name: global.translateByKey("appmgr.highest") + "-16000", value: 33, max_send: 16000},
+                {name: global.translateByKey("appmgr.highest") + "-21000", value: 37, max_send: 21000},
+                {name: global.translateByKey("appmgr.highest") + "-26000", value: 38, max_send: 26000},
+                {name: global.translateByKey("appmgr.highest") + "-31000", value: 39, max_send: 31000},
+                {name: global.translateByKey("appmgr.highest") + "-36000", value: 40, max_send: 36000},
+                {name: global.translateByKey("appmgr.highest") + "-41000", value: 41, max_send: 41000},
+                {name: global.translateByKey("appmgr.highest") + "-51000", value: 42, max_send: 51000},
+                {name: global.translateByKey("appmgr.highest") + "-96000", value: 43, max_send: 96000}
+                // {name: global.translateByKey("appmgr.highest") + "-5000", value: 28, max_send: 5000},
+                // {name: global.translateByKey("appmgr.highest") + "-10000", value: 29, max_send: 10000},
+                // {name: global.translateByKey("appmgr.highest") + "-15000", value: 30, max_send: 15000},
+                // {name: global.translateByKey("appmgr.highest") + "-20000", value: 33, max_send: 20000},
+                // {name: global.translateByKey("appmgr.highest") + "-25000", value: 37, max_send: 25000},
+                // {name: global.translateByKey("appmgr.highest") + "-30000", value: 38, max_send: 30000},
+                // {name: global.translateByKey("appmgr.highest") + "-35000", value: 39, max_send: 35000},
+                // {name: global.translateByKey("appmgr.highest") + "-40000", value: 40, max_send: 40000},
+                // {name: global.translateByKey("appmgr.highest") + "-45000", value: 41, max_send: 45000},
+                // {name: global.translateByKey("appmgr.highest") + "-55000", value: 42, max_send: 55000},
+                // {name: global.translateByKey("appmgr.highest") + "-100000", value: 43, max_send: 100000}
+            ]
+        },
+        hulu: {
             diffs: [
                 {name: global.translateByKey("appmgr.difficulty0"), value: 0},
                 {name: global.translateByKey("appmgr.difficulty1"), value: 1},
