@@ -38,7 +38,7 @@
     "recharge":{
       "manage": "充值管理",
       "cardtype": "面额管理",
-      "third": "第三方充值记录",
+      "third": "第三方充值",
       "cardlog": "点卡充值记录",
       "card": "点卡管理"
     },
@@ -84,7 +84,7 @@
       "game":"游戏管理",
       "currency":"货币管理",
       "merrygoround":"走马灯管理",
-      "rank":"玩家排行榜管理",
+      "rank":"玩家排行榜",
       "sendmail":"邮件发送管理"
     },
     "shop":{

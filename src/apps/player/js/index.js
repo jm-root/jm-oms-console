@@ -57,7 +57,7 @@
                             // resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.vip', {
-                            url: '/signlog',
+                            url: '/vip',
                             templateUrl: path + 'tpl/vip.html'
                             // controller: 'PlayerGiveLogCtrl',
                             // resolve: lazyLoadProvider.load('daterangepicker')

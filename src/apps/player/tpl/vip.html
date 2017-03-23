@@ -6,3 +6,49 @@
         <span class="hcolor">玩家VIP记录</span>
     </h1>
 </div>
+<div>
+    <form class="pull-left m-l-sm">
+        <div class="input-group w-sm headpadd">
+            <input type="text" ng-model="search.keyword" class="form-control input-sm  rounded padder" placeholder="搜索用户名或ID">
+        </div>
+    </form>
+    <div class="pull-left m-t-sm m-l-sm">
+        <label class="i-checks checkbox-inline">
+            <input type="checkbox"><i></i>
+        </label>
+        <label class=" ">模糊</label>
+    </div>
+    <div class="pull-left  headpadd m-l-sm" >
+        <select class="input-sm form-control" >
+            <option value="">===全部===</option>
+            <option value="0">====</option>
+            <option value="1">========</option>
+        </select>
+    </div>
+    <div class="pull-left m-r-sm headpadd m-l-sm" >
+        <select class="input-sm form-control">
+            <option value="">VIP1</option>
+            <option value="0">========</option>
+            <option value="1">========</option>
+        </select>
+    </div>
+    <div class="pull-left headpadd m-l-sm">
+        <div class="input-group m-r-sm" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
+    </div>
+    <div class="pull-left headpadd m-l-sm">
+        <button type="submit" class="btn btn-sm btn-info btn-rounded"><i class="fa fa-search"></i> 搜索</button>
+        <button type="submit" class="btn btn-sm btn-info btn-rounded"><i class="fa fa-refresh"></i> 刷新</button>
+    </div>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <span style="font-size: larger"></span>
+            <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>
