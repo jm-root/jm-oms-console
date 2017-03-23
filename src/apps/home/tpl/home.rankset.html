@@ -12,15 +12,15 @@
                         <div class="input-group" style="max-width: 360px;">
                             <input type="text" class="form-control" placeholder="{{ 'home.rankset.userID' | translate }}" ng-model="user.userId" ng-required="true">
                             <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'用户名'"></div><div type="button" class="btn btn-default" ng-click="searchUser(user.userId)">{{ 'home.rankset.search' | translate }} <span class="caret"></span></div>
-                                <ul class="dropdown-menu pull-right w-xxl">
+                                <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div><div type="button" class="btn btn-default" ng-click="searchUser(user.userId)">{{ 'home.rankset.search' | translate }} <span class="caret"></span></div>
+                                <ul class="dropdown-menu pull-right">
                                     <div class="input-group">
                                         <input type="text" class="form-control input-sm btn-rounded" placeholder="{{ 'home.sendDak.searchUserName' | translate }}" ng-model="keyword">
                                         <span class="input-group-btn">
                                               <span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>
                                             </span>
                                     </div>
-                                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped" style="margin: 0 0 5px 0">
+                                    <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
                                         <thead>
                                         <tr>
                                             <th>{{ 'common.userId' | translate }}</th>
