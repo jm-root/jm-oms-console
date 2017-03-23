@@ -57,6 +57,7 @@ var shopUri = apiHost + "/shop";
 var logUri = apiHost + "/log";
 var baoxiangUri = apiHost + "/baoxiang";
 var algUri = sdkHost + "/alg";
+var bankUri = sdkHost + "/bank";
 
 
 jm.sdk.init({uri: apiHost});
