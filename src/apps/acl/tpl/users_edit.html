@@ -13,14 +13,14 @@
                             <input type="text" class="form-control input-sm" placeholder="用户" ng-model="user._id" ng-disabled="id" disabled/>
                             <div  class="input-group-btn dropdown " drop-down-table >
                                  <div type="button" class="btn btn-sm btn-default" translate="acl.user.search" ng-click="searchUser(user._id)">搜索 <span class="caret"></span></div>
-                                    <ul class="dropdown-menu pull-right w-auto" >
+                                    <ul class="dropdown-menu pull-right" >
                                         <div class="input-group">
                                             <input type="text" class="form-control input-sm btn-rounded" placeholder="搜索用户名" ng-model="keyword">
                                             <span class="input-group-btn">
                                               <button class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></button>
                                             </span>
                                         </div>
-                                        <table st-table="rowCollectionBasic" class="table table-bordered table-striped" style="margin: 0 0 5px 0">
+                                        <table st-table="rowCollectionBasic" class="w-xl table table-bordered table-striped" style="margin: 0 0 5px 0">
                                             <thead>
                                             <tr>
                                                 <th>{{ 'common.userId' | translate }}</th>

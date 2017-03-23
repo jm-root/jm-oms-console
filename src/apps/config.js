@@ -56,6 +56,7 @@ var guestbookUri = apiHost + "/guestbook";
 var shopUri = apiHost + "/shop";
 var logUri = apiHost + "/log";
 var baoxiangUri = apiHost + "/baoxiang";
+var bankUri = apiHost + "/bank";
 var algUri = sdkHost + "/alg";
 
 
