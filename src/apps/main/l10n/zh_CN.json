@@ -27,7 +27,7 @@
       "manage": "玩家管理",
       "search": "玩家搜索",
       "list": "玩家列表",
-      "record": "玩家游戏记录",
+      "gamelog": "玩家游戏记录",
       "vip": "玩家VIP记录",
       "online": "玩家在线状态",
       "givelog": "玩家赠送记录",
@@ -37,7 +37,7 @@
     },
     "recharge":{
       "manage": "充值管理",
-      "cardtype": "面额管理",
+      "denomination": "面额管理",
       "third": "第三方充值",
       "cardlog": "点卡充值记录",
       "card": "点卡管理"

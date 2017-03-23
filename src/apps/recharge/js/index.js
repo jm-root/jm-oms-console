@@ -18,58 +18,28 @@
                             controller:'RechargeCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/recharge.js',path + 'js/controllers/index.js'])
                         })
-                        .state('app.recharge.cardtype', {
-                            url: '/cardtype',
-                            template: '<div ui-view class="fade-in-down"></div>'
+                        .state('app.recharge.denomination', {
+                            url: '/denomination',
+                            templateUrl: path + 'tpl/denomination.html'
+                            // template: '<div ui-view class="fade-in-down"></div>'
                         })
-                        .state('app.recharge.cardtype.list', {
-                            url: '/list',
-                            templateUrl: path + 'tpl/recharge.cardtype.html',
-                            controller: 'RechargeCardTypeCtrl'
-                        })
-                        .state('app.recharge.cardtype.add', {
-                            url: '/add',
-                            params:{
-                                data : null
-                            },
-                            templateUrl: path + 'tpl/recharge.cardtypeadd.html',
-                            controller: 'RechargeCardTypeAddCtrl'
-                        })
-                        .state('app.recharge.card', {
-                            url: '/card',
-                            template: '<div ui-view class="fade-in-down"></div>'
-                        })
-                        .state('app.recharge.card.list', {
-                            url: '/list',
-                            templateUrl:path +  'tpl/recharge.card.html',
-                            controller: 'RechargeCardCtrl',
-                            resolve:lazyLoadProvider.load(['daterangepicker'])
-                        })
-                        .state('app.recharge.card.add', {
-                            url: '/add',
-                            params:{
-                                data : null
-                            },
-                            templateUrl:path + 'tpl/recharge.cardadd.html',
-                            controller: 'RechargeCardAddCtrl',
+                        .state('app.recharge.third', {
+                            url: '/third',
+                            templateUrl: path + 'tpl/third.html',
+                            // controller: 'RechargeCardTypeCtrl'
                             resolve:lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.recharge.cardlog', {
                             url: '/cardlog',
-                            params:{
-                                code : null
-                            },
-                            templateUrl: path + 'tpl/recharge.cardlog.html',
-                            controller: 'RechargeCardLogCtrl',
+                            templateUrl: path + 'tpl/cardlog.html',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
                         })
-                        .state('app.recharge.third', {
-                            url: '/third',
-                            templateUrl: path + 'tpl/recharge.third.html',
-                            controller: 'RechargeThirdCtrl',
+                        .state('app.recharge.card', {
+                            url: '/card',
+                            templateUrl:path +  'tpl/card.html',
+                            // controller: 'RechargeCardCtrl',
                             resolve:lazyLoadProvider.load(['daterangepicker'])
-                        })
-                    ;
+                        });
                 }
             ]
         );

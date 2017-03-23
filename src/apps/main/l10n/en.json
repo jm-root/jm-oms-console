@@ -27,8 +27,8 @@
       "manage": "Player Manage",
       "search": "Player Search",
       "list": "Player List",
-      "record": "Record",
-      "vip": "VIP",
+      "gamelog": "Game Log",
+      "vip": "VIP Log",
       "online": "Online",
       "givelog": "Give Log",
       "signlog":"Sign Log",
@@ -37,7 +37,7 @@
     },
     "recharge":{
       "manage": "Recharge",
-      "cardtype": "Denomination",
+      "denomination": "Denomination",
       "third": "Third",
       "cardlog": "Log",
       "card": "Card"

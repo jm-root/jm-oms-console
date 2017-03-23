@@ -3,7 +3,7 @@
         <span>当前位置：</span>
         <span class="hcolor">首页</span>
         <span> 》</span>
-        <span class="hcolor">玩家列表</span>
+        <span class="hcolor">第三方充值</span>
     </h1>
 </div>
 <div>
@@ -18,25 +18,39 @@
         </label>
         <label class=" ">模糊</label>
     </div>
-    <div class="pull-left headpadd m-l-sm">
-        <div class="input-group m-r-sm" style="width: 185px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
-            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
-        </div>
-    </div>
     <div class="pull-left m-r-sm headpadd m-l-sm" >
         <select class="input-sm form-control" >
-            <option value="">====</option>
+            <option value="">==全部==</option>
             <option value="0">====</option>
             <option value="1">========</option>
         </select>
     </div>
     <div class="pull-left m-r-sm headpadd m-l-sm" >
         <select class="input-sm form-control">
-            <option value="">========</option>
+            <option value="">===全部===</option>
             <option value="0">========</option>
             <option value="1">========</option>
         </select>
+    </div>
+    <div class="pull-left m-r-sm headpadd m-l-sm" >
+        <select class="input-sm form-control">
+            <option value="">===全部===</option>
+            <option value="0">========</option>
+            <option value="1">========</option>
+        </select>
+    </div>
+    <div class="pull-left m-r-sm headpadd m-l-sm" >
+        <select class="input-sm form-control">
+            <option value="">===请选择===</option>
+            <option value="0">========</option>
+            <option value="1">========</option>
+        </select>
+    </div>
+    <div class="pull-left headpadd m-l-sm">
+        <div class="input-group m-r-sm" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
     </div>
     <div class="pull-left headpadd m-l-sm">
         <button type="submit" class="btn btn-sm btn-info btn-rounded"><i class="fa fa-search"></i> 搜索</button>
@@ -48,7 +62,7 @@
         <div class="line b-b" style="margin: 0"></div>
         <div class="panel-body">
             <span style="font-size: larger"></span>
-            <div ng-style="{height:app.navHeight-195+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+            <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
         </div>
     </div>
 </div>
