@@ -11,9 +11,9 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         var tbObj = holds.tb || {};
         var jbObj = holds.jb || {};
         var dbjObj = holds.dbj || {};
-        $scope.tb = tbObj.amountValid;
-        $scope.jb = jbObj.amountValid;
-        $scope.dbj = dbjObj.amountValid;
+        $scope.tb = global.format_amount(tbObj.amountValid||0);
+        $scope.jb = global.format_amount(jbObj.amountValid||0);
+        $scope.dbj = global.format_amount(jbObj.amountValid||0);
     });
 
     $scope.search = {};
@@ -86,6 +86,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 $scope.error(obj.msg);
             }else{
                 $scope.stat = obj||{};
+                $scope.stat.recharge_total = global.format_amount($scope.stat.recharge_total*0.01||0);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
