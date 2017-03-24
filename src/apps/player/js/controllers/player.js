@@ -930,6 +930,9 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
     $scope.bank = {};
     $scope.data = {};
 
+    var reg = function (data) {
+        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
     jm.sdk.init({uri: gConfig.sdkHost});
     var bank = jm.sdk.bank;
     bank.query({},function(err,result){
@@ -938,9 +941,7 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         var jbObj = holds.jb || {};
         $scope.jb = reg(jbObj.amountValid||0);
     });
-    var reg = function (data) {
-        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    };
+
     $scope.operate = function () {
         $scope.type = Number($scope.operate.type);
         if($scope.type == 1){
