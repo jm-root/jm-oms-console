@@ -964,10 +964,10 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
     };
 
     $scope.searchUser = function(keyword){
-        $http.get(ssoUri+'/users', {
+        $http.get(statUri+'/players', {
             params:{
                 token: sso.getToken(),
-                keyword: keyword
+                search: keyword
             }
         }).success(function(result){
             $scope.data = result;
