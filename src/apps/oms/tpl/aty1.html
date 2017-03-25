@@ -1,0 +1,107 @@
+<div class="bg-white" ng-if="super"><form class="">
+    <div class="row m-l-xs">
+        <div class="col col-sm-4">
+            <div class="row col-sm-12">
+                <label class=" control-label m-t-sm">活动状态</label>
+                <div class=" radio checkbox-inline m-b-sm">
+                    <label class="i-checks i-checks-sm" >
+                        <input type="radio" name="pattern" value="true" ng-model="state"><i></i>开启
+                    </label>
+                </div>
+                <div class=" radio checkbox-inline m-t-sm">
+                    <label class="i-checks i-checks-sm" >
+                        <input type="radio" name="pattern" value="false" ng-model="state" ng-checked="true"><i></i>关闭
+                    </label>
+                </div>
+            </div>
+            <div class="row col-sm-12 form-group">
+                <label class="control-label pull-left m-t-xs">活动名称</label>
+                <div class="pull-left m-l-md">
+                    <input type="text" class="form-control input-sm w-md" value="免费送金币活动" ng-model="aty.name"/>
+                </div>
+            </div>
+            <div class="row col-sm-12 form-group">
+                <label class="control-label m-r-md pull-left m-t-xs">活动时间</label>
+                <div class="input-group m-l-md" style="width: 240px;">
+                    <input date-range-picker type="text" class="form-control" ng-model="aty.time" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+                </div>
+            </div>
+            <div class="row col-sm-12 form-group">
+                <label class="control-label pull-left m-t-xs">可获得金币</label>
+                <div class="pull-left m-l-sm">
+                    <input type="number" class="form-control input-sm w-md" min="0" ng-model="aty.jbamount"/>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-6 m-r-sm">
+            <div class="form-group m-t-xs" >
+                    <label class="m-l-sm m-r-sm control-label" >下分档位设置</label>
+                    <table class="table table-bordered table-hover table-condensed bg-white-only">
+                        <span class="btn btn-default" ng-click="addItem()">添加档位</span>
+                        <tr style="font-weight: bold">
+                            <td style="width:40%" >下分金币数</td>
+                            <td style="width:40%" >可获得现金数</td>
+                            <td style="width:40px" >编辑</td>
+                        </tr>
+                        <tr ng-repeat="item in gears.gear">
+                            <td class="v-middle">
+                                <input type="number" class="form-control" min="0"  ng-model="item.amount">
+                            </td>
+                            <td class="v-middle">
+                                <input type="number" class="form-control" min="0"  ng-model="item.expire">
+                            </td>
+                            <td style="white-space: nowrap">
+                                <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">删除</a>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 m-l-xs">
+            <span class="m-l-sm">活动内容设置：</span>
+            <div class="row m-l-sm m-r-sm">
+                <textarea class="form-control" style="resize: none;" rows="3" placeholder="活动内容" ng-model="aty.content"></textarea>
+            </div>
+        </div>
+        <div class=" m-t-xs m-b-sm m-r-sm col-sm-2 pull-right">
+            <button type="submit" class="btn btn-sm btn-success">保存设置</button>
+        </div>
+    </div>
+</form>
+</div>
+
+<div>
+    <div class="pull-left m-l-md headpadd">
+        <strong class="h3 ">活动信息栏</strong>
+    </div>
+    <form class="pull-right headpadd">
+        <div class="input-group w-md">
+            <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'common.search'|translate}}">
+            <span class="input-group-btn" style="width: auto">
+                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click=""><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="pull-right m-r-sm headpadd" >
+        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
+            <option value="">所属渠道</option>
+        </select>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+</div>
+
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <span style="font-size: larger"></span>
+            <div ng-style="{height:app.navHeight-145+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>
