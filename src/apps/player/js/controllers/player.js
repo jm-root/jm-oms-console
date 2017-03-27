@@ -175,6 +175,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
                     active: active,
                     type: type,
                     agent: agent,
+                    isPlayer: true,
                     startDate: startDate.toString(),
                     endDate: endDate.toString()
                 }
