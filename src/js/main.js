@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global',
-        function ($scope, $translate, $localStorage, $window, toaster, $modal, $location, global) {
+    .controller('AppCtrl', ['$rootScope', '$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global',
+        function ($rootScope, $scope, $translate, $localStorage, $window, toaster, $modal, $location, global) {
             // add 'ie' classes to html
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             if (isIE) {
@@ -150,6 +150,11 @@ angular.module('app')
                 global.agGrid.localeText.previous = global.translateByKey('ag-grid.previous');
                 global.agGrid.localeText.loadingOoo = global.translateByKey('ag-grid.loading');
                 global.agGrid.localeText.noRowsToShow = global.translateByKey('ag-grid.noRowsToShow');
+            });
+
+            $rootScope.$on('$translateLoadingError', function () {
+                console.log('$translateLoadingError');
+                $scope.warning('Resource is not fully loaded refresh page');
             });
 
             window.onresize = function () {
