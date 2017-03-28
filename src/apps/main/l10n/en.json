@@ -37,7 +37,7 @@
     },
     "recharge":{
       "manage": "Recharge",
-      "denomination": "Denomination",
+      "parvalue": "Par Value",
       "third": "Third",
       "cardlog": "Log",
       "card": "Card"

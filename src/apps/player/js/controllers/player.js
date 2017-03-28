@@ -522,6 +522,7 @@ app.controller('PlayerVipCtrl', ['$scope', '$state', '$http', '$interval', 'glob
 app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global', function ($scope, $state, $http, $interval, global) {
     var sso = jm.sdk.sso;
     $scope.search = {};
+    $scope.search.date = $scope.search.date || {};
     $scope.dateOptions = global.dateRangeOptions;
     var url = recordUri+'/onlines';
 

@@ -37,7 +37,7 @@
     },
     "recharge":{
       "manage": "充值管理",
-      "denomination": "面额管理",
+      "parvalue": "面额管理",
       "third": "第三方充值",
       "cardlog": "点卡充值记录",
       "card": "点卡管理"
