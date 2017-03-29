@@ -27,8 +27,11 @@
                         <select class="form-control m-b" ng-model="diff3" ng-options="item.name for item in showData.rejustDiffs">
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&saveRejustDiff(diff3.value)">{{ 'common.save' | translate }}</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-left" style="margin-top: 6px;">({{'appmgr.chaochangTip' | translate}})</label>
                     </div>
                 </div>
             </form>

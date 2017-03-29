@@ -122,6 +122,19 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.intervalChangeScene *= 1000;
     }
 
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
 
     $scope.save = function(){
         saveConfig(true);
@@ -613,6 +626,19 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $scope.room.betTime *= 1000;
     }
 
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
 
     $scope.save = function(){
         saveConfig(true);
@@ -1102,6 +1128,19 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.betTime *= 1000;
     }
 
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
 
     $scope.save = function(){
         saveConfig(true);

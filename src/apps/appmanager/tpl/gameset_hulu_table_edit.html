@@ -284,7 +284,7 @@
             <footer class="panel-footer text-right bg-light lter">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-1">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&save()">{{ 'common.save' | translate }}</button>
+                        <button type="submit" class="btn btn-success" ng-click="checkRates(table.rates) && !formValidate.$invalid&&save()">{{ 'common.save' | translate }}</button>
                     </div>
                     <div class="col-sm-1">
                         <button type="button" class="btn btn-info" ng-click="recovery()">{{ 'common.recovery' | translate }}</button>
