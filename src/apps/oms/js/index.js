@@ -19,7 +19,8 @@
                         .state('app.oms.aty1',{
                             url: '/aty1',
                             templateUrl: path + 'tpl/aty1.html',
-                            controller: 'OmsAty1Ctrl'
+                            controller: 'OmsAty1Ctrl',
+                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                 }
             ]

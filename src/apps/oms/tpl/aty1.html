@@ -5,32 +5,32 @@
                 <label class=" control-label m-t-sm">活动状态</label>
                 <div class=" radio checkbox-inline m-b-sm">
                     <label class="i-checks i-checks-sm" >
-                        <input type="radio" name="pattern" value="true" ng-model="state"><i></i>开启
+                        <input type="radio"  name="pattern" value="1" ng-model="aty.type" ng-change="getdata()"><i></i>开启
                     </label>
                 </div>
                 <div class=" radio checkbox-inline m-t-sm">
                     <label class="i-checks i-checks-sm" >
-                        <input type="radio" name="pattern" value="false" ng-model="state" ng-checked="true"><i></i>关闭
+                        <input type="radio" name="pattern" value="0" ng-model="aty.type" ng-change="getdata()"><i></i>关闭
                     </label>
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
                 <label class="control-label pull-left m-t-xs">活动名称</label>
                 <div class="pull-left m-l-md">
-                    <input type="text" class="form-control input-sm w-md" value="免费送金币活动" ng-model="aty.name"/>
+                    <input type="text" class="form-control input-sm w-md" ng-model="aty.name" ng-disabled="key" />
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
                 <label class="control-label m-r-md pull-left m-t-xs">活动时间</label>
                 <div class="input-group m-l-md" style="width: 240px;">
-                    <input date-range-picker type="text" class="form-control" ng-model="aty.time" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
+                    <input date-range-picker type="text" class="form-control" ng-model="aty.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px" ng-disabled="key"/>
                     <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
                 <label class="control-label pull-left m-t-xs">可获得金币</label>
                 <div class="pull-left m-l-sm">
-                    <input type="number" class="form-control input-sm w-md" min="0" ng-model="aty.jbamount"/>
+                    <input type="number" onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control input-sm w-md" min="0" ng-model="aty.jbamount" ng-disabled="key"/>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="form-group m-t-xs" >
                     <label class="m-l-sm m-r-sm control-label" >下分档位设置</label>
                     <table class="table table-bordered table-hover table-condensed bg-white-only">
-                        <span class="btn btn-default" ng-click="addItem()">添加档位</span>
+                        <span class="btn btn-default" ng-click="addItem()" ng-disabled="key">添加档位</span>
                         <tr style="font-weight: bold">
                             <td style="width:40%" >下分金币数</td>
                             <td style="width:40%" >可获得现金数</td>
@@ -46,13 +46,13 @@
                         </tr>
                         <tr ng-repeat="item in gears.gear">
                             <td class="v-middle">
-                                <input type="number" class="form-control" min="0"  ng-model="item.amount">
+                                <input type="number"  onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control" min="0"  ng-model="item.target" ng-disabled="key">
                             </td>
                             <td class="v-middle">
-                                <input type="number" class="form-control" min="0"  ng-model="item.expire">
+                                <input type="number"  onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control" min="0"  ng-model="item.get" ng-disabled="key">
                             </td>
                             <td style="white-space: nowrap">
-                                <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">删除</a>
+                                <a class="btn btn-sm btn-danger" ng-click="removeItem($index)" ng-disabled="key">删除</a>
                             </td>
                         </tr>
                     </table>
@@ -63,11 +63,11 @@
         <div class="col-sm-10 m-l-xs">
             <span class="m-l-sm">活动内容设置：</span>
             <div class="row m-l-sm m-r-sm">
-                <textarea class="form-control" style="resize: none;" rows="3" placeholder="活动内容" ng-model="aty.content"></textarea>
+                <textarea class="form-control" style="resize: none;" rows="3" placeholder="活动内容" ng-model="aty.content" ng-disabled="key"></textarea>
             </div>
         </div>
         <div class=" m-t-xs m-b-sm m-r-sm col-sm-2 pull-right">
-            <button type="submit" class="btn btn-sm btn-success">保存设置</button>
+            <button type="submit" class="btn btn-sm btn-success" ng-click="save()" ng-disabled="key">保存设置</button>
         </div>
     </div>
 </form>
@@ -79,14 +79,14 @@
     </div>
     <form class="pull-right headpadd">
         <div class="input-group w-md">
-            <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'common.search'|translate}}">
+            <input type="text" ng-model="aty.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'common.search'|translate}}">
             <span class="input-group-btn" style="width: auto">
-                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click=""><i class="fa fa-search"></i></button>
+                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
             </span>
         </div>
     </form>
     <div class="pull-right m-r-sm headpadd" >
-        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
+        <select class="input-sm form-control" ng-model="aty.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
             <option value="">所属渠道</option>
         </select>
     </div>
