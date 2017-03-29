@@ -91,8 +91,6 @@
     "post": "修改",
     "modify": "修改",
     "back":"返回",
-    "tb":"T币",
-    "cancel":"作废",
     "resetLoginPwd":"重置登录密码",
     "resetChargePwd":"重置支付密码",
     "oldPwd":"原密码",

@@ -18,7 +18,6 @@ app.controller('ConfigMenusCtrl', ['$scope', '$http', '$state', '$stateParams', 
             token: sso.getToken()
         }
     }).success(function(result){
-        console.log(result);
         var obj = result;
         if(obj.err){
             $scope.error(obj.msg);

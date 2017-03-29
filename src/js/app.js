@@ -33,6 +33,11 @@ angular.module('app', [
                 $rootScope.$on('$translateChangeSuccess', function () {
                     $rootScope.$broadcast('translateBroadcast');
                 });
+
+                $rootScope.$on('$translateChangeError', function () {
+                    console.log('$translateChangeError');
+                });
+
             }
         ]
     )

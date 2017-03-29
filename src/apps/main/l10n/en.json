@@ -120,6 +120,10 @@
       "forum":"Forum List",
       "topic":"Post List"
     },
+    "oms":{
+      "manage":"Operational activities",
+      "aty1":"Free jb"
+    },
     "app":{
       "manage":"App Manage",
       "create":"App Create",
