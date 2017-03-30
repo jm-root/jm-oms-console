@@ -67,17 +67,22 @@ angular.module('app')
             }
         );
 
+        var checkToken = function(){
+            var loginExpire = localStorage.getItem('loginExpire');
+            if(loginExpire<Date.now()){
+                $scope.signout();
+                $scope.warning('你的token已过期,请重新登录!');
+            }
+        };
+        checkToken();
+
         var t = $interval(function(){
             if($scope.times<Date.now()){
                 localStorage.removeItem('token');
                 $state.go('lockme');
                 $scope.warning('长时间没操作,为你的账号安全暂时退出后台!');
             }
-            var loginExpire = localStorage.getItem('loginExpire');
-            if(loginExpire<Date.now()){
-                $scope.signout();
-                $scope.warning('你的token已过期,请重新登录!');
-            }
+            checkToken();
         }, 5000);
         $scope.$on("$destroy", function(){
             $interval.cancel(t);
