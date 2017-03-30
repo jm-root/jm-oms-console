@@ -12,6 +12,7 @@ angular.module('app')
             }
             if (isSmartDevice($window)) {
                 angular.element($window.document.body).addClass('smart')
+                $scope.isSmartDevice = true;
             };
 
             var host = $location.host();
