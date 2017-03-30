@@ -1048,11 +1048,11 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         betTime: 15000,
         betLimit: 1000,
         betLowLimit: 50,
-        betLowLimitRed: 50,
-        betLowLimitGreen: 50,
-        betLowLimitDragon: 50,
+        betLowLimitZhuang: 50,
+        betLowLimitHe: 50,
+        betLowLimitXian: 50,
         absenceNum: 10,
-        perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+        perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
     $scope.room = angular.copy(roomDefault);
@@ -1256,11 +1256,11 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             //---------------
             betLimit: 1000,
             betLowLimit: 50,
-            betLowLimitRed: 50,
-            betLowLimitGreen: 50,
-            betLowLimitDragon: 50,
+            betLowLimitZhuang: 50,
+            betLowLimitHe: 50,
+            betLowLimitXian: 50,
             absenceNum: 10,
-            perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+            perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
         };
 
         for(var key in tableDefault){

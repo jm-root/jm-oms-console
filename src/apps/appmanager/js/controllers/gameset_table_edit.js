@@ -752,10 +752,13 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         rates: [1,2,3,4,5,6,7,8,9,10],
         //---------------
         betTime: 15000,
-        absenceNum: 10,
         betLimit: 1000,
         betLowLimit: 50,
-        perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+        betLowLimitZhuang: 50,
+        betLowLimitHe: 50,
+        betLowLimitXian: 50,
+        absenceNum: 10,
+        perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
     $scope.table = angular.copy(tableDefault);
