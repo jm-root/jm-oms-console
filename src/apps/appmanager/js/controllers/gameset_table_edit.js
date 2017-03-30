@@ -93,6 +93,20 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.tabPageShow = true;
     }
 
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
+
     function getAlgData(room) {
 
         var deferred = $q.defer();
@@ -415,6 +429,21 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
     }else{
         $scope.tabPageShow = true;
     }
+
+
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
 
     function getAlgData(room) {
 
@@ -782,6 +811,20 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
     }else{
         $scope.tabPageShow = true;
     }
+
+    $scope.checkRates = function (rates) {
+        var ratesArr = rates;
+        if(typeof rates == "string"){
+            ratesArr = rates.split(",");
+        }
+        for(var i=0; i<ratesArr.length; i++){
+            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+                return false;
+            }
+        }
+        return true;
+    };
 
     function getAlgData(room) {
 
