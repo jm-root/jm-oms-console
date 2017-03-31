@@ -58,9 +58,10 @@
                             resolve: lazyLoadProvider.load('daterangepicker')
                         })
                         .state('app.player.changescore', {
-                            url: '/changescore',
+                            url: '/changescore/{type}',
                             templateUrl: path +'tpl/player.changescore.html',
-                            controller: 'PlayerChangeScoreCtrl'
+                            controller: 'PlayerChargeCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/charge.js'] )
                         })
                 }
             ]
