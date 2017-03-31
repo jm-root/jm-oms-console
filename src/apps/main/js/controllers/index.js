@@ -6,14 +6,14 @@ angular.module('app')
         $translatePartialLoader.addPart('main');
 
         $scope.defaultRows = '20';
-        $scope.listRowsOptions = [{val:'20'},{val:'50'},{val:'100'},{val:'200'},{val:'500'},{val:'1000'}];
+        $scope.listRowsOptions = [{val: '20'}, {val: '50'}, {val: '100'}, {val: '200'}, {val: '500'}, {val: '1000'}];
 
-        var url = omsUri+'/nav';
+        var url = omsUri + '/nav';
         $scope.times = 0;
         var sso = jm.sdk.sso;
         global.getUser().then(function (user) {
             $scope.userInfo = user;
-            if($scope.userInfo.headimgurl)
+            if ($scope.userInfo.headimgurl)
                 localStorage.setItem('headerImg', $scope.userInfo.headimgurl);
             return global.getRoles();
         }).then(function (roles) {
@@ -33,7 +33,7 @@ angular.module('app')
                 if (obj.err) {
                     $scope.error(obj.msg);
                 } else {
-                    $scope.nav = obj.rows||[];
+                    $scope.nav = obj.rows || [];
                 }
             }).error(function (msg, code) {
                 console.log(msg);
@@ -53,10 +53,17 @@ angular.module('app')
             $state.go('access.signin');
         };
 
+
         $state.back = function () {
-            if (!$state.lastState) return;
+            if (!$state.lastState || !$state.lastState.name) return;
             $state.go($state.lastState.name, $state.lastState.params);
         };
+
+        $scope.$on('$stateChangeStart',
+            function (event, toState, toParams, fromState, fromParams) {
+                // $scope.loading = true;
+            }
+        );
 
         $scope.$on('$stateChangeSuccess',
             function (event, toState, toParams, fromState, fromParams) {
@@ -67,33 +74,32 @@ angular.module('app')
             }
         );
 
-        var checkToken = function(){
+        var checkToken = function () {
             var loginExpire = localStorage.getItem('loginExpire');
-            if(loginExpire<Date.now()){
+            if (loginExpire < Date.now()) {
                 $scope.signout();
                 $scope.warning('你的token已过期,请重新登录!');
             }
         };
         checkToken();
 
-        var t = $interval(function(){
-            if($scope.times<Date.now()){
+        var t = $interval(function () {
+            if ($scope.times < Date.now()) {
                 localStorage.removeItem('token');
                 $state.go('lockme');
                 $scope.warning('长时间没操作,为你的账号安全暂时退出后台!');
             }
             checkToken();
         }, 5000);
-        $scope.$on("$destroy", function(){
+        $scope.$on("$destroy", function () {
             $interval.cancel(t);
         });
 
-        $scope.updateTimes = function(expired){
+        $scope.updateTimes = function (expired) {
             var expire = expired || 1200000;
-            $scope.times = Date.now()+expire;
+            $scope.times = Date.now() + expire;
         };
 
     }])
 ;
-
 
