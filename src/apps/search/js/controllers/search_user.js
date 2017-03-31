@@ -64,7 +64,6 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
                 jb: jb
             };
             sessionStorage.setItem('selectedUser', JSON.stringify(obj));//缓存到本地
-            alert(JSON.stringify($state.lastState.params));
             $state.back();
         });
     };
