@@ -38,3 +38,9 @@
 .buttonpadd{
     padding-right: 1em;
 }
+.p-b-sm{
+    padding-bottom: 5px
+}
+.p-b-md{
+    padding-bottom: 10px
+}

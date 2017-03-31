@@ -15,13 +15,13 @@
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
-                <label class="control-label pull-left m-t-xs">活动名称</label>
+                <label class="control-label pull-left m-t-xs m-r-sm">活动名称</label>
                 <div class="pull-left m-l-md">
                     <input type="text" class="form-control input-sm w-md" ng-model="aty.name" ng-disabled="key" />
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
-                <label class="control-label m-r-md pull-left m-t-xs">活动时间</label>
+                <label class="control-label m-r-lg pull-left m-t-xs">活动时间</label>
                 <div class="input-group m-l-md" style="width: 240px;">
                     <input date-range-picker type="text" class="form-control" ng-model="aty.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px" ng-disabled="key"/>
                     <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
@@ -29,7 +29,7 @@
             </div>
             <div class="row col-sm-12 form-group">
                 <label class="control-label pull-left m-t-xs">可获得金币</label>
-                <div class="pull-left m-l-sm">
+                <div class="pull-left m-l-md">
                     <input type="number" onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control input-sm w-md" min="0" ng-model="aty.jbamount" ng-disabled="key"/>
                 </div>
             </div>

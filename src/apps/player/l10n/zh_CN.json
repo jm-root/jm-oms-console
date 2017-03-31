@@ -116,8 +116,9 @@
           }
       },
       "changescore":{
-          "title":"上/退分",
-          "label1":"可操作余额",
+          "title1":"上分",
+          "title2":"退分",
+          "label1":"账户余额",
           "label2":"操作类型",
           "opts":{
               "opt1":"请选操作类型",

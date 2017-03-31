@@ -9,6 +9,12 @@
     "PASSWORD": "Password",
     "VERIFICATION": "Verification code"
   },
+  "footer":{
+    "homepage":"home page",
+    "increase":"increase",
+    "decrease":"decrease",
+    "player":"player"
+  },
   "nav": {
     "HEADER": "Navigation",
     "MAIN": "Home"
@@ -49,7 +55,8 @@
       "online": "Online",
       "record": "Record",
       "givelog": "Give Log",
-      "changescore":"Change Score"
+      "changescore1":"Increase",
+      "changescore2":"Decrease"
     },
     "system":{
       "manage": "System Manage",

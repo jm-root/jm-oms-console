@@ -208,7 +208,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
         $http.get(ssoUri+'/users', {
             params:{
                 token: sso.getToken(),
-                keyword: keyword
+                keyword: keyword,
             }
         }).success(function(result){
             var data = result;

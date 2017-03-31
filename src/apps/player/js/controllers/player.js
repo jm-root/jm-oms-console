@@ -1,7 +1,7 @@
 'use strict';
-var sso = jm.sdk.sso;
 app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
     var history = global.playerListHistory||(global.playerListHistory={});
+    var sso = jm.sdk.sso;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
@@ -361,6 +361,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 }]);
 
 app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerGamesListHistory||(global.playerGamesListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var id = $stateParams.id;
@@ -445,6 +446,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
 }]);
 
 app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global', function ($scope, $state, $http, $interval, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerOnlineHistory||(global.playerOnlineHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -760,6 +762,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
 }]);
 
 app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerGiveLogHistory||(global.playerGiveLogHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -927,10 +930,14 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
 }]);
 
 app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
+    var sso = jm.sdk.sso;
     $scope.player = {};
     $scope.bank = {};
     $scope.data = {};
+    // $scope.device = "mobile";
+    $scope.device = "PC";
 
+    $scope.url="";
     var reg = function (data) {
         return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     };
@@ -943,25 +950,26 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         $scope.jb = reg(jbObj.amountValid||0);
     });
 
-    $scope.operate = function () {
-        $scope.type = Number($scope.operate.type);
-        if($scope.type == 1){
+    $scope.operate = function (type) {
+        if(type == 1){
             $scope.sum = $scope.player.jb + $scope.bank.amount;
-        }else if($scope.type == 2){
+        }else if(type == 2){
             $scope.sum = $scope.player.jb - $scope.bank.amount;
         }else {
             $scope.sum = $scope.player.jb;
         };
     };
     $scope.page = 1;
-    $scope.left = function () {
+    $scope.left = function (keyword) {
         if($scope.page>1){
-            --$scope.page;
+            $scope.page = $scope.page - 1;
+            $scope.searchUser(keyword);
         }
     }
-    $scope.right = function () {
+    $scope.right = function (keyword) {
         if($scope.page<$scope.pages){
-            ++$scope.page;
+            $scope.page = $scope.page + 1;
+            $scope.searchUser(keyword);
         }
     };
 
@@ -969,7 +977,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         $http.get(statUri+'/players', {
             params:{
                 token: sso.getToken(),
-                search: keyword
+                search: keyword,
+                page:$scope.page
             }
         }).success(function(result){
             $scope.data = result;
@@ -977,7 +986,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
                 $scope.error($scope.data.msg);
             }else{
                 $scope.usersInfo = $scope.data;
-                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);
+                $scope.pages = $scope.data.pages;
+                $scope.total = $scope.data.total;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -985,8 +995,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
     };
 
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.page-1),[10*$scope.page])[$event.currentTarget.rowIndex-1];
-        $scope.player.toUserId = $scope.selectRow._id;
+        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.player.toUserId = $scope.selectRow.uid;
         $scope.nick = $scope.selectRow.nick;
         bank.query({userId:$scope.player.toUserId},function(err,result){
             result || (result||{});
@@ -1000,20 +1010,49 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             $scope.nick = null;
         }
     });
+    $scope.inputsearch = function () {
+        if($scope.player.toUserId) {
+            $scope.page = 1;
+            $scope.searchUser($scope.player.toUserId);
+        }else {
+            $scope.searchUser($scope.player);
+        }
+    }
+    $scope.moselectUser = function($event){
+        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.uid = $scope.selectRow.uid;
+        $scope.nick = $scope.selectRow.nick;
+        $scope.player.toUserId = $scope.selectRow._id;
+        bank.query({userId:$scope.player.toUserId},function(err,result){
+            result || (result||{});
+            var holds = result.holds||{};
+            var jbObj = holds.jb || {};
+            $scope.player.jb = jbObj.amount||0;
+        });
+        $state.go('^');
+    };
 
-    $scope.updateData = function(event){
+    $scope.mobilesearch = function (keyword) {
+        if(keyword) {
+            $scope.page = 1;
+            $scope.searchUser(keyword);
+        }else {
+            $scope.searchUser();
+        }
+    }
+    $scope.mobile = !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/);
+    $scope.updateData = function(event,type){
         var data = $scope.selectRow;
         var account = data.nick||data.account||data.uid;
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.bank.amount;
         var fromUserId,toUserId,info;
         var memo = $scope.bank.memo||"";
-        console.info(memo);
-        if($scope.type == 1){
+        if(type == 1){
             info = global.translateByKey('player.info.transferTip.add',{val:account})+amount+ct["jb"];
             fromUserId = sso.user.id;
             toUserId = data._id;
-        }else if($scope.type == 2){
+        }else if(type == 2){
             info = global.translateByKey('player.info.transferTip.deduct',{val:account})+amount+ct["jb"];
             fromUserId = data._id;
             toUserId = sso.user.id;

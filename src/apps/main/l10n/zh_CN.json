@@ -9,6 +9,12 @@
     "PASSWORD": "密码",
     "VERIFICATION": "验证码"
   },
+  "footer":{
+    "homepage":"首页",
+    "increase":"上分",
+    "decrease":"退分",
+    "player":"玩家"
+  },
   "nav": {
     "HEADER": "导航",
     "MAIN": "概况"
@@ -49,7 +55,8 @@
       "online": "在线状态",
       "record": "游戏记录",
       "givelog": "赠送记录",
-      "changescore":"上/退分"
+      "changescore1":"上分",
+      "changescore2":"退分"
     },
     "system":{
       "manage": "系统管理",

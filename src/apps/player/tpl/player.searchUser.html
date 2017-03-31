@@ -1,0 +1,41 @@
+<div>
+    <div class="panel-heading">
+       <strong>{{'player.changescore.label3'|translate}}</strong>
+    </div>
+    <div class="panel-body bg-white">
+        <div class=" ">
+            <div class="input-group p-b-md">
+                <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-sm btn-rounded" ng-click="mobilesearch(keyword)"><i class="fa fa-search"></i></span>
+                </span>
+            </div>
+            <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>{{ 'common.userId' | translate }}</th>
+                    <th>{{ 'common.userAccount' | translate }}</th>
+                    <th>{{ 'common.userName' | translate }}</th>
+                </tr>
+                </thead>
+                <tbody class="hand">
+                <tr ng-repeat="row in usersInfo.rows" ng-click="moselectUser($event)" st-select-mode="single">
+                    <td>{{row.uid}}</td>
+                    <td>{{row.account||row.mobile}}</td>
+                    <td>{{row.nick}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-if="!total" style="text-align: center;">
+                <span style="border:1px solid #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+            </div>
+            <div ng-if="usersInfo.rows.length > 0||total" style="text-align: center;">
+                <i class="glyphicon glyphicon-chevron-left color hand" style="width: 20%" ng-click="left()"></i>
+                    <label>{{page}}</label>/
+                    <label>{{pages}}</label>
+                <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%" ng-click="right()"></i>
+            </div>
+        </div>
+    </div>
+
+</div>

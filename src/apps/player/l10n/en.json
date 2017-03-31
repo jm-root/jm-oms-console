@@ -116,8 +116,9 @@
       }
     },
     "changescore":{
-      "title":"Change Score",
-      "label1":"Operable remainder amount",
+      "title1":"Increase",
+      "title2":"Decrease",
+      "label1":"Account balance",
       "label2":"Operation type",
       "opts":{
         "opt1":"Please select the type of operation",
