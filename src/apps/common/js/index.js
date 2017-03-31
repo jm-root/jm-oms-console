@@ -55,6 +55,11 @@ angular.module('app')
                 }(),
                 language:(navigator.browserLanguage || navigator.language).toLowerCase()//检测浏览器语言
             }
+            if(browser.versions.android || browser.versions.mobile || browser.versions.ios){
+                plat = 'Mobile';
+            }else{
+                plat = 'PC'
+            }
             return browser;
         };
 

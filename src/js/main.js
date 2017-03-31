@@ -51,7 +51,8 @@ angular.module('app')
                 },
                 navHeight: window.innerHeight - 50
             };
-
+            //检测浏览器
+            global.browser();
             // save settings to local storage
             if (angular.isDefined($localStorage.settings)) {
                 $scope.app.settings = $localStorage.settings;

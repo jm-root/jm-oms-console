@@ -68,3 +68,8 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
+const stat = 'static';
+const oms = 'oms';
+var omsPlatform = oms;
+
+var plat;
