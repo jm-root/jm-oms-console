@@ -2,9 +2,9 @@
   "dashboard": {
     "title": "Dashboard",
     "title1": "Personal account information",
-    "tbBalance": "Ingot balance",
-    "jbBalance": "Gold balance",
-    "dbjBalance": "Treasure balance",
+    "tbBalance": "Ingot",
+    "jbBalance": "Gold",
+    "dbjBalance": "Ticket",
     "packageDownload": "Package download",
     "platformData": {
       "title": "Platform data",

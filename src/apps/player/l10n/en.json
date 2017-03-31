@@ -128,8 +128,8 @@
       "label3":"Select player",
       "label4":"Player surplus",
       "label5":"Operation amount",
-      "before":"Before operation",
-      "after":"After operation",
+      "before":"Before",
+      "after":"After",
       "balence":"Not sufficient funds"
     }
   }

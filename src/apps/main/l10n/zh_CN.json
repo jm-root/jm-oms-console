@@ -13,7 +13,8 @@
     "homepage":"首页",
     "increase":"上分",
     "decrease":"退分",
-    "player":"玩家"
+    "player":"玩家",
+    "bank":"银行"
   },
   "nav": {
     "HEADER": "导航",

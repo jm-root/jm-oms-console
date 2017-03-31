@@ -10,10 +10,11 @@
     "VERIFICATION": "Verification code"
   },
   "footer":{
-    "homepage":"home page",
-    "increase":"increase",
-    "decrease":"decrease",
-    "player":"player"
+    "homepage":"Home",
+    "increase":"Increase",
+    "decrease":"Decrease",
+    "player":"Player",
+    "bank":"Bank"
   },
   "nav": {
     "HEADER": "Navigation",

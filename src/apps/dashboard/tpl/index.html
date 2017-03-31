@@ -2,19 +2,19 @@
   <div class="row">
     <div class="pull-right">
       <div class="inline m-r text-left" style="text-align: center">
-        <div class="m-b-xs" translate="dashboard.dbjBalance">夺宝卷余额</div>
+        <div class="m-b-xs" translate="dashboard.dbjBalance">夺宝卷</div>
         <div>{{dbj}}</div>
       </div>
     </div>
     <div class="pull-right">
       <div class="inline m-r text-left" style="text-align: center">
-        <div class="m-b-xs" translate="dashboard.jbBalance">金币余额</div>
+        <div class="m-b-xs" translate="dashboard.jbBalance">金币</div>
         <div>{{jb}}</div>
       </div>
     </div>
     <div class="pull-right">
       <div class="inline m-r text-left" style="text-align: center">
-        <div class="m-b-xs" translate="dashboard.tbBalance">元宝余额</div>
+        <div class="m-b-xs" translate="dashboard.tbBalance">元宝</div>
         <div>{{tb}}</div>
       </div>
     </div>
@@ -111,7 +111,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div ng-if="!isSmartDevice" class="row">
     <div style="padding: 15px">
       <div class="pull-right">
         <div class="input-group m-r-sm" style="width: 185px;margin-top: 10px;">

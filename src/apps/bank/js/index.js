@@ -54,6 +54,10 @@
                             controller: 'BankTransferCtrl',
                             resolve: lazyLoadProvider.load([])
                         })
+                        .state('app.bank.transfer.searchUser', {
+                            url: '/searchUser',
+                            templateUrl: path  + 'tpl/bank.searchUser.html'
+                        })
                         .state('app.bank.exchange', {
                             url: '/exchange',
                             templateUrl: path + 'tpl/bank.exchange.html',

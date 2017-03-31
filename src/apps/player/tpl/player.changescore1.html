@@ -1,0 +1,143 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">{{'player.changescore.title1'|translate}}</h1>
+</div>
+
+<div class="wrapper-md">
+
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="list-group">
+                <!--操作类型-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {{'player.changescore.label2'|translate}}
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <span class="btn-group">
+                            <label class="btn btn-sm btn-info" ng-model="operate.type" btn-radio="'charge'">
+                                <i class="fa fa-check text-active"></i>
+                                {{'player.changescore.opts.opt2'|translate}}
+                            </label>
+                            <label class="btn btn-sm btn-success" ng-model="operate.type" btn-radio="'uncharge'">
+                                <i class="fa fa-check text-active"></i>
+                                {{'player.changescore.opts.opt3'|translate}}
+                            </label>
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <!--选择玩家-->
+                <li class="list-group-item">
+                    {{'player.changescore.label3'|translate}}
+                    <i ng-if="isSmartDevice" class="pull-right fa fa-chevron-right text-muted"></i>
+                    <div ng-if="!isSmartDevice" class="pull-right p-b-md">
+                        <div class="input-group" style="max-width: 360px;">
+                            <input type="text" class="form-control" placeholder="{{ 'common.userId' | translate }}"
+                                   ng-model="player.toUserId" ng-required="true" ng-keyup="inputsearch()">
+                            <div class="input-group-btn dropdown" drop-down-table>
+                                <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div>
+                                <div type="button" class="btn btn-default">{{ 'common.search' | translate }} <span
+                                        class="caret"></span></div>
+                                <ul class="dropdown-menu pull-right">
+                                    <table st-table="rowCollectionBasic"
+                                           class="w-xxl table table-bordered table-striped"
+                                           style="margin: 0 0 5px 0">
+                                        <thead>
+                                        <tr>
+                                            <th>{{ 'common.userId' | translate }}</th>
+                                            <th>{{ 'common.userAccount' | translate }}</th>
+                                            <th>{{ 'common.userName' | translate }}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="hand">
+                                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)"
+                                            st-select-mode="single">
+                                            <td>{{row.uid}}</td>
+                                            <td>{{row.account||row.mobile}}</td>
+                                            <td>{{row.nick}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div ng-if="!total" style="text-align: center;">
+                                        {{'ag-grid.noRowsToShow'|translate}}
+                                    </div>
+                                    <div ng-if="usersInfo.rows.length > 0||total" style="text-align: center;">
+                                        <i class="glyphicon glyphicon-chevron-left color hand" style="width: 20%"
+                                           ng-click="left(player.toUserId)"></i>
+                                        <label>{{page}}</label>/
+                                        <label>{{pages}}</label>
+                                        <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%"
+                                           ng-click="right(player.toUserId)"></i>
+                                    </div>
+                                </ul>
+                            </div><!-- /btn-group -->
+                        </div>
+                    </div>
+                </li>
+                <!--操作金额-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {{'player.changescore.label5'|translate}}
+                        </div>
+                        <div class="col-xs-8">
+                            <input type="number"
+                                   class="form-control" style="text-align: center" ng-model="bank.amount"
+                                   placeholder="{{ 'common.amount' | translate }}"
+                                   ng-change="operate()" ng-blur="operate()" min="1" ng-pattern="/^[0-9]+$/" required>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <!--可用数量-->
+                    <div class="row">
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-8">
+                            <label class="pull-left control-label">
+                                {{'player.changescore.label1'|translate}}</label>
+                            <div class="pull-right control-label p-b-md m-r-sm">
+                                <span>{{jb}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <!--玩家余额-->
+                    <div class="row">
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-8">
+                            <label class="control-label">
+                                {{'player.changescore.label4'|translate}}</label>
+                            <div class="pull-right control-label p-b-md m-r-sm">
+                                <span ng-if="player.toUserId">{{player.jb}}</span><span
+                                    ng-if="(operate.type&&sum)||((operate.type&&sum==0))"> =》 {{sum>=0?sum:"余额不足" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--备注-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            {{ 'common.memo' | translate }}
+                        </div>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" style="resize: none;" rows="2"
+                                      placeholder=""
+                                      ng-model="bank.memo"/>
+                        </div>
+                    </div>
+                </li>
+                <!--保存-->
+                <li class="list-group-item text-right">
+                    <button type="submit" class="btn btn-success"
+                            ng-click="!formValidate.$invalid&&updateData(event)">{{'common.save'|translate}}
+                    </button>
+                </li>
+            </div>
+
+        </div>
+
+    </div>
+</div>

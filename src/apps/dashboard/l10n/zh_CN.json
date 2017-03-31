@@ -2,9 +2,9 @@
   "dashboard": {
     "title": "概况",
     "title1": "个人账户信息",
-    "tbBalance": "元宝余额",
-    "jbBalance": "金币余额",
-    "dbjBalance": "夺宝卷余额",
+    "tbBalance": "元宝",
+    "jbBalance": "金币",
+    "dbjBalance": "夺宝卷",
     "packageDownload": "包下载",
     "platformData": {
       "title": "平台数据",

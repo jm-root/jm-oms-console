@@ -954,7 +954,13 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         if(type == 1){
             $scope.sum = $scope.player.jb + $scope.bank.amount;
         }else if(type == 2){
-            $scope.sum = $scope.player.jb - $scope.bank.amount;
+            $scope.result = $scope.player.jb - $scope.bank.amount;
+            if($scope.result>=0){
+                $scope.sum = $scope.result;
+            }else {
+                $scope.sum = global.translateByKey('player.changescore.balence');
+            }
+
         }else {
             $scope.sum = $scope.player.jb;
         };
@@ -1040,7 +1046,6 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             $scope.searchUser();
         }
     }
-    $scope.mobile = !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/);
     $scope.updateData = function(event,type){
         var data = $scope.selectRow;
         var account = data.nick||data.account||data.uid;
@@ -1057,7 +1062,7 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             fromUserId = data._id;
             toUserId = sso.user.id;
         }
-        if($scope.sum<0){
+        if($scope.result<0){
             $scope.openTips({
                 title: global.translateByKey('openTips.title'),
                 content: global.translateByKey('player.info.TipInfo.balance'),
