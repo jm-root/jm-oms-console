@@ -59,6 +59,11 @@
       "changescore1":"上分",
       "changescore2":"退分"
     },
+    "backpoints":{
+      "manage":"下分",
+      "list":"下分处理",
+      "log":"下分记录"
+    },
     "system":{
       "manage": "系统管理",
       "admin": "管理员列表",

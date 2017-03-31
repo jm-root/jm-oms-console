@@ -59,6 +59,11 @@
       "changescore1":"Increase",
       "changescore2":"Decrease"
     },
+    "backpoints":{
+      "manage":"Back Points",
+      "list":"Back points operation",
+      "log":"Back points log"
+    },
     "system":{
       "manage": "System Manage",
       "admin": "System Admin",
