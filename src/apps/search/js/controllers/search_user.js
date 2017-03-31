@@ -50,16 +50,20 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
 
     $scope.selectUser = function(row){
         var userId = row._id;
+        var uid = row.uid;
         var nick = row.nick;
         bank.query({userId: userId},function(err, result){
             result || (result||{});
             var holds = result.holds||{};
             var jbObj = holds.jb || {};
             var jb = jbObj.amount || 0;
-            $state.lastState.params || ($state.lastState.params = {});
-            $state.lastState.params.userId = userId;
-            $state.lastState.params.nick = nick;
-            $state.lastState.params.jb = jb;
+            var obj = {
+                id: userId,
+                uid: uid,
+                nick: nick,
+                jb: jb
+            };
+            sessionStorage.setItem('selectedUser', JSON.stringify(obj));//缓存到本地
             alert(JSON.stringify($state.lastState.params));
             $state.back();
         });
