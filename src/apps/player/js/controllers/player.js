@@ -106,14 +106,14 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             $scope.errorTips(code);
         });
     };
-
+if(omsPlatform === pfm_oms){
     var columnDefs = [
         {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
         {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
         {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
         {headerName: "手机", field: "mobile", width: 100},
         {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
-        {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
+        {headerName: "VIP等级", field: "level", width: 100, valueGetter: format_level},
         {headerName: "mac地址", field: "mac", width: 100},
         {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
         {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
@@ -150,6 +150,96 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         'player.info.list.header.active',
         'player.info.list.header.ctrl'
     ]);
+}else if(omsPlatform === pfm_cy){
+    var columnDefs = [
+        {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
+        {headerName: "玩家ID", field: "uid", width: 90, cellRenderer: uid_render},
+        {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
+        {headerName: "手机", field: "mobile", width: 100},
+        {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
+        {headerName: "VIP等级", field: "level", width: 100, valueGetter: format_level},
+        {headerName: "mac地址", field: "mac", width: 100},
+        {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
+        // {headerName: "元宝", field: "tb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+        {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+        // {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+        // {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
+        // {headerName: "点卡充值", field: "card", width: 90},
+        {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
+        {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
+        {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
+        {headerName: "注册时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
+        {headerName: "最后登录时间", field: "login", width: 145, valueGetter: $scope.angGridFormatDateS},
+        {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
+        {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+    ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.info.list.header.agent',
+        'player.info.list.header.uid',
+        'player.info.list.header.account',
+        'player.info.list.header.mobile',
+        'player.info.list.header.nick',
+        'player.info.list.header.level',
+        'player.info.list.header.mac',
+        'player.info.list.header.ip',
+        // 'player.info.list.header.tb',
+        'player.info.list.header.jb',
+        // 'player.info.list.header.dbj',
+        // 'player.info.list.header.cny',
+        // 'player.info.list.header.card',
+        'player.info.list.header.win_jb',
+        'player.info.list.header.jbamount',
+        'player.info.list.header.jbamount_d',
+        'player.info.list.header.crtime',
+        'player.info.list.header.login',
+        'player.info.list.header.active',
+        'player.info.list.header.ctrl'
+    ]);
+}
+    // var columnDefs = [
+    //     {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
+    //     {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
+    //     {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
+    //     {headerName: "手机", field: "mobile", width: 100},
+    //     {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
+    //     {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
+    //     {headerName: "mac地址", field: "mac", width: 100},
+    //     {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
+    //     {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+    //     {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+    //     {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+    //     {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
+    //     {headerName: "点卡充值", field: "card", width: 100},
+    //     {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
+    //     {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
+    //     {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
+    //     {headerName: "注册时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
+    //     {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
+    //     {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+    // ];
+    //
+    // global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+    //     'player.info.list.header.agent',
+    //     'player.info.list.header.uid',
+    //     'player.info.list.header.account',
+    //     'player.info.list.header.mobile',
+    //     'player.info.list.header.nick',
+    //     'player.info.list.header.level',
+    //     'player.info.list.header.mac',
+    //     'player.info.list.header.ip',
+    //     'player.info.list.header.tb',
+    //     'player.info.list.header.jb',
+    //     'player.info.list.header.dbj',
+    //     'player.info.list.header.cny',
+    //     'player.info.list.header.card',
+    //     'player.info.list.header.win_jb',
+    //     'player.info.list.header.jbamount',
+    //     'player.info.list.header.jbamount_d',
+    //     'player.info.list.header.crtime',
+    //     'player.info.list.header.active',
+    //     'player.info.list.header.ctrl'
+    // ]);
 
     var dataSource = {
         //pageSize: Number($scope.pageSize),
@@ -226,9 +316,9 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
+            // var browser = global.browser();
             //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if(plat === 'Mobile'){
                 var field = cell.colDef.field;
                 var coin = ['tb','jb','dbj'];
                 if(coin.indexOf(field)!=-1) return;
@@ -367,7 +457,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
     $scope.playerName = $stateParams.name;
     var url = statUri+'/players/'+id+'/gameStat';
 
-
+if(omsPlatform === pfm_oms){
     var columnDefs = [
         {headerName: "游戏名称", field: "name", width: 120},
         {headerName: "游戏局数", field: "count", width: 100},
@@ -383,6 +473,38 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         'player.info.games.header.gain_day_jb',
         'player.info.games.header.gain_dbj'
     ]);
+}else if(omsPlatform === pfm_cy){
+    var columnDefs = [
+        {headerName: "游戏名称", field: "name", width: 120},
+        {headerName: "游戏局数", field: "count", width: 100},
+        {headerName: "游戏总输赢", field: "gain_jb", width: 120},
+        {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
+        // {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
+    ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.info.games.header.name',
+        'player.info.games.header.count',
+        'player.info.games.header.gain_jb',
+        'player.info.games.header.gain_day_jb',
+        // 'player.info.games.header.gain_dbj'
+    ]);
+}
+    // var columnDefs = [
+    //     {headerName: "游戏名称", field: "name", width: 120},
+    //     {headerName: "游戏局数", field: "count", width: 100},
+    //     {headerName: "游戏总输赢", field: "gain_jb", width: 120},
+    //     {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
+    //     {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
+    // ];
+    //
+    // global.agGridTranslateSync($scope,columnDefs,[
+    //     'player.info.games.header.name',
+    //     'player.info.games.header.count',
+    //     'player.info.games.header.gain_jb',
+    //     'player.info.games.header.gain_day_jb',
+    //     'player.info.games.header.gain_dbj'
+    // ]);
     var dataSource = {
         getRows: function (params) {
             global.agGridOverlay();
@@ -486,7 +608,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         var obj = params.data.hold || {};
         return obj.dbj||0;
     };
-
+if(omsPlatform === pfm_oms){
     var columnDefs = [
         {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
         {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
@@ -512,6 +634,58 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         'player.info.online.header.device',
         'player.info.online.header.channel'
     ]);
+}else if(omsPlatform === pfm_cy){
+    var columnDefs = [
+        {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+        {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+        {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+        {headerName: "房间号", field: "areaId", width: 80},
+        {headerName: "房间类型", field: "areaType", width: 150},
+        // {headerName: "元宝", field: "tb", width: 100, valueGetter: format_tb},
+        {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
+        // {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
+        {headerName: "设备", field: "device", width: 100},
+        {headerName: "渠道", field: "channel", width: 100}
+    ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'player.info.online.header.uid',
+        'player.info.online.header.nick',
+        'player.info.online.header.appname',
+        'player.info.online.header.areaId',
+        'player.info.online.header.areaType',
+        // 'player.info.online.header.tb',
+        'player.info.online.header.jb',
+        // 'player.info.online.header.dbj',
+        'player.info.online.header.device',
+        'player.info.online.header.channel'
+    ]);
+}
+    // var columnDefs = [
+    //     {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+    //     {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+    //     {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+    //     {headerName: "房间号", field: "areaId", width: 80},
+    //     {headerName: "房间类型", field: "areaType", width: 150},
+    //     {headerName: "元宝", field: "tb", width: 100, valueGetter: format_tb},
+    //     {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
+    //     {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
+    //     {headerName: "设备", field: "device", width: 100},
+    //     {headerName: "渠道", field: "channel", width: 100}
+    // ];
+    //
+    // global.agGridTranslateSync($scope, columnDefs, [
+    //     'player.info.online.header.uid',
+    //     'player.info.online.header.nick',
+    //     'player.info.online.header.appname',
+    //     'player.info.online.header.areaId',
+    //     'player.info.online.header.areaType',
+    //     'player.info.online.header.tb',
+    //     'player.info.online.header.jb',
+    //     'player.info.online.header.dbj',
+    //     'player.info.online.header.device',
+    //     'player.info.online.header.channel'
+    // ]);
 
     var dataSource = {
         getRows: function (params) {

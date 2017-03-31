@@ -47,16 +47,16 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
         holds.dbj = holds.dbj || {};
         return holds.dbj.overdraw || 0;
     };
-
+console.log(global.translateByKey('bank.account.statusOpts.opts1'));
     var format_status = function(params) {
         var status = params.data.status;
         var info = '';
-        if(status==0) info = '冻结';
-        if(status==1) info = '正常';
-        if(status==2) info = '注销';
+        if(status==0) info = global.translateByKey('bank.bank.account.statusOpts.opts1');
+        if(status==1) info = global.translateByKey('bank.bank.account.statusOpts.opts2');
+        if(status==2) info = global.translateByKey('bank.bank.account.statusOpts.opts3');
         return info || '';
     };
-
+if(omsPlatform === pfm_oms){
     var columnDefs = [
         {headerName: "账户ID", field: "id", width: 200},
         {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
@@ -81,6 +81,57 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
         'bank.account.header.status',
         'bank.account.header.createdAt'
     ]);
+}else if(omsPlatform === pfm_cy){
+    var columnDefs = [
+        {headerName: "账户ID", field: "id", width: 200},
+        {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+        // {headerName: "元宝余额", field: "tb", width: 100, valueGetter: format_tb},
+        // {headerName: "元宝额度", field: "tb_a", width: 100, valueGetter: format_tb_a},
+        {headerName: "金币余额", field: "jb", width: 120, valueGetter: format_jb},
+        {headerName: "金币额度", field: "jb_a", width: 120, valueGetter: format_jb_a},
+        // {headerName: "夺宝卷余额", field: "dbj", width: 100, valueGetter: format_dbj},
+        // {headerName: "夺宝卷额度", field: "dbj_a", width: 100, valueGetter: format_dbj_a},
+        {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
+        {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
+    ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'bank.account.header.id',
+        'bank.account.header.user',
+        // 'bank.account.header.tb',
+        // 'bank.account.header.tb_a',
+        'bank.account.header.jb',
+        'bank.account.header.jb_a',
+        // 'bank.account.header.dbj',
+        // 'bank.account.header.dbj_a',
+        'bank.account.header.status',
+        'bank.account.header.createdAt'
+    ]);
+}
+    // var columnDefs = [
+    //     {headerName: "账户ID", field: "id", width: 200},
+    //     {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+    //     {headerName: "T币余额", field: "tb", width: 120, valueGetter: format_tb},
+    //     {headerName: "T币额度", field: "tb_a", width: 120, valueGetter: format_tb_a},
+    //     {headerName: "金币余额", field: "jb", width: 120, valueGetter: format_jb},
+    //     {headerName: "金币额度", field: "jb_a", width: 120, valueGetter: format_jb_a},
+    //     {headerName: "夺宝卷余额", field: "dbj", width: 120, valueGetter: format_dbj},
+    //     {headerName: "夺宝卷额度", field: "dbj_a", width: 120, valueGetter: format_dbj_a},
+    //     {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
+    //     {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
+    // ];
+    // global.agGridTranslateSync($scope,columnDefs,[
+    //     'bank.account.header.id',
+    //     'bank.account.header.user',
+    //     'bank.account.header.tb',
+    //     'bank.account.header.tb_a',
+    //     'bank.account.header.jb',
+    //     'bank.account.header.jb_a',
+    //     'bank.account.header.dbj',
+    //     'bank.account.header.dbj_a',
+    //     'bank.account.header.status',
+    //     'bank.account.header.createdAt'
+    // ]);
     var dataSource = {
         getRows: function (params) {
             global.agGridOverlay();

@@ -8,6 +8,12 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
     var reg = function (data) {
         return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     };
+    if(omsPlatform === pfm_oms){
+        $scope.switchs = true;
+    }else{
+        $scope.switchs = false;
+    }
+
     bank.query({},function(err,result){
         result || (result||{});
         var holds = result.holds||{};

@@ -56,7 +56,8 @@
           "jbamount_d": "Game winning total",
           "crtime": "Registration time",
           "active": "Closure / Release",
-          "ctrl": "All Games Record"
+          "ctrl": "All Games Record",
+          "login":"Last login time"
         }
       },
       "TipInfo":{

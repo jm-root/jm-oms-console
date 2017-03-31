@@ -7,7 +7,7 @@
             <div class="panel-body paddingtop">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bank.bank.transfer.label1'|translate}}</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 inline">
                         <select class="form-control w-sm" ng-model="bank.ctCode" ng-required="true">
                             <option value="">{{'bank.bank.transfer.ctOpts.opts'|translate}}</option>
                             <option value="tb">{{'bank.bank.transfer.ctOpts.opts1'|translate}}</option>
@@ -65,7 +65,7 @@
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{'bank.bank.transfer.label3'|translate}}</label>
-                    <div class="col-lg-9 w-auto">
+                    <div class="col-sm-9 w-auto">
                         <input type="number" class="form-control input-sm pull-left" style="width: 150px;" min="1" placeholder="{{'bank.bank.transfer.defaultAccount'|translate}}" ng-pattern="/^[0-9]*$/" ng-model="bank.toAccountId">
                     </div>
                     <div class="col-sm-1"></div>
@@ -73,7 +73,7 @@
 
                 <div class="form-group" ng-if="!isCP">
                     <label class="col-sm-2 control-label">{{'bank.bank.transfer.label4'|translate}}</label>
-                    <div class="col-lg-9 w-auto">
+                    <div class="col-sm-9 w-auto inline">
                         <p class="form-control-static" ng-if="accounts.length<=1">{{bank.fromAccountId||''}}</p>
                         <select class="form-control w-sm" ng-if="accounts.length>1" ng-model="bank.fromAccountId" ng-options="option.id as option.id for option in accounts" ng-change="changeAcount()" ng-required="true">
                         </select>
@@ -83,7 +83,7 @@
 
                 <div class="form-group" ng-if="!isCP">
                     <label class="col-sm-2 control-label">{{'common.balance'|translate}}</label>
-                    <div class="col-lg-9 w-auto">
+                    <div class="col-sm-9 w-auto inline">
                         <p class="form-control-static">{{sum=defAccount.holds[bank.ctCode]&&(defAccount.holds[bank.ctCode].amount||0)||0}}</p>
                     </div>
                     <div class="col-sm-1"></div>

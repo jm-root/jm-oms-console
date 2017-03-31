@@ -2,6 +2,43 @@
   "dashboard": {
     "title": "概况",
     "title1": "个人账户信息",
+    "tbBalance": "元宝",
+    "jbBalance": "金币",
+    "dbjBalance": "夺宝卷",
+    "packageDownload": "包下载",
+    "platformData": {
+      "title": "平台数据",
+      "register": "注册人数",
+      "login": "登录人数",
+      "arpu": "ARPU",
+      "recharge_p": "充值人数",
+      "recharge": "充值数(分)",
+      "arppu": "ARPPU"
+    },
+    "gameData": {
+      "title": "游戏数据"
+    },
+    "playerStat":{
+      "title": "用户统计",
+      "total": "累计总数",
+      "yesterday": "昨日新增",
+      "today": "今日新增",
+      "guest": "游客",
+      "mobile": "手机",
+      "other": "其它"
+    },
+    "rechargeStat":{
+      "title": "充值统计",
+      "total": "累计充值",
+      "yesterday": "昨日充值",
+      "today": "今日充值",
+      "totalSum": "总笔数",
+      "validSum": "有效笔数",
+      "invalidSum": "无效笔数"
+    }
+  },
+  "main": {
+    "title": "个人账户信息",
     "tbBalance": "元宝余额",
     "jbBalance": "金币余额",
     "dbjBalance": "夺宝卷余额",
@@ -35,6 +72,14 @@
       "totalSum": "总笔数",
       "validSum": "有效笔数",
       "invalidSum": "无效笔数"
+    },
+    "gainStat":{
+      "title": "分成统计",
+      "total": "总营收",
+      "ratio": "分成比例",
+      "divided": "已分成营收",
+      "notDivided": "可分成数",
+      "proportional": "按比例分成数"
     }
   }
 }
