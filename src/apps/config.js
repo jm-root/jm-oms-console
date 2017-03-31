@@ -68,3 +68,4 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
+var plat;
