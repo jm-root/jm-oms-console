@@ -22,7 +22,8 @@
                         .state('app.backpoints.list', {
                             url: '/list',
                             controller: 'BacklistCtrl',
-                            templateUrl: path  + 'tpl/backpoints.list.html'
+                            templateUrl: path  + 'tpl/backpoints.list.html',
+                            resolve: lazyLoadProvider.load([path + 'css/self.css'])
                         })
                         .state('app.backpoints.log', {
                             url: '/log',

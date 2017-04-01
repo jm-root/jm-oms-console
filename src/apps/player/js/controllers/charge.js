@@ -11,16 +11,12 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
         $scope.player = player;
     }
 
-    var reg = function (data) {
-        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    };
-
     var bank = jm.sdk.bank;
     bank.query({},function(err,result){
         result || (result||{});
         var holds = result.holds||{};
         var jbObj = holds.jb || {};
-        $scope.jb = reg(jbObj.amountValid||0);
+        $scope.jb = global.reg(jbObj.amountValid||0);
     });
 
     $scope.updateData = function(type, allAmount){

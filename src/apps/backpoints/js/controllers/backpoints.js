@@ -29,6 +29,9 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
     });
 
 }]);
+
+
+
 app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
     var sso = jm.sdk.sso;

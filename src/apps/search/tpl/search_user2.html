@@ -1,0 +1,38 @@
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="{{'common.userId'|translate}}" ng-model="bank.userId" ng-required="true" ng-click="searchUser(bank.userId)">
+    <div class="input-group-btn dropdown" drop-down-table>
+        <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div><div type="button" class="btn btn-default">{{'common.search'|translate}} <span class="caret"></span></div>
+        <ul class="dropdown-menu pull-right">
+            <!--<div class="input-group">-->
+                <!--<input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">-->
+                <!--<span class="input-group-btn">-->
+                    <!--<span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>-->
+                <!--</span>-->
+            <!--</div>-->
+            <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
+                <thead>
+                <tr>
+                    <th>{{ 'common.userId' | translate }}</th>
+                    <th>{{ 'common.userAccount' | translate }}</th>
+                    <th>{{ 'common.userName' | translate }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in usersInfo.rows.slice(10*(i-1),[10*i])" ng-click="selectUser($event)" st-select-mode="single">
+                    <td>{{row.uid}}</td>
+                    <td>{{row.account||row.mobile}}</td>
+                    <td>{{row.nick}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-if="total && pages>1" style="text-align: center;">
+                <i class="glyphicon glyphicon-chevron-left color" style="width: 20%" ng-click="left()"></i>
+                <span>
+                    <label>{{page}}</label>/
+                    <label>{{pages}}</label>
+                </span>
+                <i class="glyphicon glyphicon-chevron-right color" style="width: 20%" ng-click="right()"></i>
+            </div>
+        </ul>
+    </div><!-- /btn-group -->
+</div>
