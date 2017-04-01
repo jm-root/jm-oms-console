@@ -116,6 +116,7 @@
           }
       },
       "changescore":{
+          "title":"上/下分",
           "title1":"上分",
           "title2":"退分",
           "label1":"账户余额",

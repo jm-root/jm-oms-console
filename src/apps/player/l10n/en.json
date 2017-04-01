@@ -116,6 +116,7 @@
       }
     },
     "changescore":{
+      "title":"Increase/Decrease",
       "title1":"Increase",
       "title2":"Decrease",
       "label1":"Account balance",

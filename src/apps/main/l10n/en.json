@@ -56,8 +56,8 @@
       "online": "Online",
       "record": "Record",
       "givelog": "Give Log",
-      "changescore1":"Increase",
-      "changescore2":"Decrease"
+      "changescoreup":"Increase",
+      "changescoredown":"Decrease"
     },
     "backpoints":{
       "manage":"Back Points",

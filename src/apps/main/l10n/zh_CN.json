@@ -56,8 +56,8 @@
       "online": "在线状态",
       "record": "游戏记录",
       "givelog": "赠送记录",
-      "changescore1":"上分",
-      "changescore2":"退分"
+      "changescoreup":"上分",
+      "changescoredown":"下分"
     },
     "backpoints":{
       "manage":"下分",
