@@ -44,5 +44,50 @@
       "notDivided": "Not divided",
       "proportional": "Proportional share"
     }
+  },
+  "main": {
+    "title": "Personal account information",
+    "tbBalance": "Ingot balance",
+    "jbBalance": "Gold balance",
+    "dbjBalance": "Treasure balance",
+    "packageDownload": "Package download",
+    "platformData": {
+      "title": "Platform data",
+      "register": "Register",
+      "login": "Login",
+      "arpu": "ARPU",
+      "recharge_p": "Recharge people",
+      "recharge": "Recharge(fen)",
+      "arppu": "ARPPU"
+    },
+    "gameData": {
+      "title": "Game data"
+    },
+    "playerStat":{
+      "title": "User statistics",
+      "total": "Cumulative total",
+      "yesterday": "Register yesterday",
+      "today": "Register today",
+      "guest": "Guest",
+      "mobile": "Mobile",
+      "other": "Other"
+    },
+    "rechargeStat":{
+      "title": "Recharge statistics",
+      "total": "Cumulative recharge",
+      "yesterday": "Recharge yesterday",
+      "today": "Recharge today",
+      "totalSum": "Total pay",
+      "validSum": "Valid pay",
+      "invalidSum": "Invalid pay"
+    },
+    "gainStat":{
+      "title": "Divided into statistics",
+      "total": "Total surplus",
+      "ratio": "Ratio",
+      "divided": "Divided",
+      "notDivided": "Not divided",
+      "proportional": "Proportional share"
+    }
   }
 }
