@@ -68,4 +68,8 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
+const pfm_cy = 'static';
+const pfm_oms = 'oms';
+var omsPlatform = pfm_cy;
+
 var plat;

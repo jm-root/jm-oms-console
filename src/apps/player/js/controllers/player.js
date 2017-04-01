@@ -113,7 +113,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         });
     };
 
-    if(plat === 'PC'){
+    if(omsPlatform === pfm_oms){
         var columnDefs = [
             {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
             {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
@@ -157,7 +157,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             'player.info.list.header.active',
             'player.info.list.header.ctrl'
         ]);
-    }else if(plat === 'Mobile'){
+    }else if(omsPlatform === pfm_cy){
         var columnDefs = [
             {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
             {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}},
@@ -536,12 +536,12 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         var obj = params.data.hold || {};
         return obj.dbj||0;
     };
-    var format_channel = function(params) {
-        var obj = params.data || {};
-        return obj.channel;
-    };
+    // var format_channel = function(params) {
+    //     var obj = params.data || {};
+    //     return obj.channel;
+    // };
 
-    if(plat === 'PC'){
+    if(omsPlatform === pfm_oms){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
             {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
@@ -552,7 +552,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
             {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
             {headerName: "设备", field: "device", width: 100},
-            {headerName: "渠道", field: "channel", width: 100,valueGetter: format_channel}
+            {headerName: "渠道", field: "channel", width: 100}
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
@@ -567,7 +567,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             'player.info.online.header.device',
             'player.info.online.header.channel'
         ]);
-    }else if(plat === 'Mobile'){
+    }else if(omsPlatform === pfm_cy){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
             {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
@@ -575,7 +575,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             {headerName: "房间号", field: "areaId", width: 80},
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
-            {headerName: "渠道", field: "channel", width: 100,valueGetter: format_channel}
+            {headerName: "渠道", field: "channel", width: 100}
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
@@ -659,20 +659,20 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     $scope.$watch('search', function () {
         history.search = $scope.search;
     });
-    $http.get(agentUri + '/subAgents', {
-        params: {
-            token: sso.getToken()
-        }
-    }).success(function (result) {
-        console.log(result);
-        if (result.err) {
-            $scope.error(result.msg);
-        } else {
-            $scope.agents = result.rows;
-        }
-    }).error(function (msg, code) {
-        $scope.errorTips(code);
-    });
+    // $http.get(agentUri + '/subAgents', {
+    //     params: {
+    //         token: sso.getToken()
+    //     }
+    // }).success(function (result) {
+    //     console.log(result);
+    //     if (result.err) {
+    //         $scope.error(result.msg);
+    //     } else {
+    //         $scope.agents = result.rows;
+    //     }
+    // }).error(function (msg, code) {
+    //     $scope.errorTips(code);
+    // });
 }]);
 
 app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
@@ -734,7 +734,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         return Math.round((end-start)*0.001)+'秒';
     };
 
-    if(plat === 'PC'){
+    if(omsPlatform === pfm_oms){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
             {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
@@ -766,7 +766,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             'player.record.header.onTime',
             'player.record.header.offTime'
         ]);
-    }else if(plat === 'Mobile'){
+    }else if(omsPlatform === pfm_cy){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
             {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
