@@ -1,0 +1,137 @@
+{
+  "bank": {
+    "account": {
+      "dealquery": {
+      },
+      "paylist": {
+        "title": "Danh sách chi trả",
+        "search": "Tìm kiếm theo thứ tự số / User ID",
+        "currencyType": "币种",
+        "cny": "Nhân dân tệ",
+        "tb": "元宝",
+        "jb": "金币",
+        "dbj": "夺宝卷",
+        "opts": "tình trạng thanh toán",
+        "opt0": "Chưa trả",
+        "opt1": "Trả tiền",
+        "header":{
+          "_id":"_id",
+          "code":"Số thứ tự",
+          "user":"người sử dụng thanh toán",
+          "channel":"Kênh",
+          "title":"Tiêu đề",
+          "content":"Chi tiết",
+          "currency":"loại tiền",
+          "amount":"Số lượng",
+          "status":"trạng thái",
+          "note":"chú ý",
+          "crtime":"Tạo ra thời gian"
+        }
+      },
+      "header":{
+        "id": "ID tài khoản",
+        "user": "tên người dùng",
+        "tb": "số dư nguyên bảo",
+        "tb_a": "hạn ngạch nguyên bảo",
+        "jb": "số dư hoàng kim",
+        "jb_a": "hạn ngạch hoàng kim",
+        "dbj": "số dư phiếu đoạt bảo",
+        "dbj_a": "hạn ngạch phiếu đoạt bảo",
+        "status": "trạng thái",
+        "createdAt": "thời gian kiến tạo"
+      }
+    },
+    "bank": {
+      "account": {
+        "title": "danh sách tài khoản",
+        "statusOpts": {
+          "opts1": "đóng băng",
+          "opts2": "bình thường",
+          "opts3": "thanh lý"
+         }
+       },
+        "deal": {
+          "title": "qui trinh giao dịch",
+          "income": "nhận vào",
+          "expenditure": "chi ra",
+          "header": {
+            "userId": "ID người dùng",
+            "user": "tên người dùng",
+            "ctName": "loại tiền",
+            "flag": "ký hiệu giao dịch",
+            "amount": "số tiền",
+            "createdAt": "thời gian"
+          }
+        },
+        "exchange": {
+        },
+        "npreauth": {
+          "title": "hủy bỏ trao quyền",
+          "label1": "người dùng mục tiêu",
+          "label2": "@",
+          "label3": "lựa chọn loại tiền",
+          "label4": "@",
+          "label5": "@",
+          "cancelAuthorization": "hủy bỏ trao quyền",
+          "ctOpts": {
+            "opts": "mời chọn loại tiền",
+            "opts1": "nguyên bảo",
+            "opts2": "tiền vàng",
+            "opts3": "phiếu đoạt bảo"
+          }
+        },
+        "overdraw": {
+          "title":"Đặt số tiền thấu chi",
+          "label1":"目标用户",
+          "label2":"选择币种",
+          "label3":"Hạn mức thấu chi",
+          "label4":"lưu",
+          "odOpts":{
+            "opts": "mời chọn loại tiền",
+            "opts1": "nguyên bảo",
+            "opts2": "tiền vàng",
+            "opts3": "phiếu đoạt bảo"
+          }
+        },
+        "preauth": {
+          "title": "danh sách trao quyền dự bị",
+          "cancelSuccess": "hủy thành công",
+          "cancelAuthorization": "hủy trao quyền",
+          "header": {
+            "user": "người trao quyền",
+            "control": "người thao tác",
+            "ct": "loại tiền",
+            "amount": "số lượng",
+            "createdAt": "thời gian kiến tạo"
+          }
+        },
+        "transfer": {
+          "title": "chuyển khoản",
+          "label1": "lựa chọn loại tiền",
+          "label2": "chuyển vào người dùng",
+          "label3": "chuyển vào tài khoản",
+          "label4": "chuyển ra tài khoản",
+          "label5": "số tiền chuyển khoản",
+          "defaultAccount": "không thể điền khách hàng mặc định",
+          "ctOpts": {
+            "opts": "mời lựa chọn loại tiền",
+            "opts1": "nguyên bảo",
+            "opts2": "hoàng kim",
+            "opts3": "phiếu đoạt bảo"
+          }
+        }
+    },
+      "currency": {
+        "rate": {
+          "currency":"币种",
+          "coding":"mã hóa",
+          "name":"tên",
+          "noData":"无数据",
+          "exchangeRate":"Tỷ giá hối đoái",
+          "moneyExchange":"兑币",
+          "proportion":"Tỷ lệ",
+          "saveAdd":"Lưu & Thêm"
+        }
+      }
+  }
+}

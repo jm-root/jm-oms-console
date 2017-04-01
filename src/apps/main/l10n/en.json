@@ -86,7 +86,8 @@
     "agentdata":{
       "register":"Register",
       "recharge":"Recharge",
-      "analysis":"Analysis"
+      "analysis":"Analysis",
+      "divided":"Divided Log"
     },
     "coin":{
       "sys":"Coin System",

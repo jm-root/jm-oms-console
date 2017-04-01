@@ -124,6 +124,7 @@
     "cancelDelContent": "确定",
     "operationSuccess": "操作成功",
     "operationFail": "操作失败",
-    "notAllow":"不允许添加空值!"
+    "notAllow":"不允许添加空值!",
+    "tip":"请选择玩家"
   }
 }

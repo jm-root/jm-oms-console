@@ -1,0 +1,31 @@
+{
+  "log": {
+    "delete":"删除",
+    "revise":"Sửa đổi từ ngữ nhạy cảm",
+    "wordfilter":"từ ngữ nhạy cảm",
+    "createTime":"创建时间",
+    "save":"保存",
+    "add":"添加",
+    "guestbook":{
+      "ip":"ip",
+      "content":"Nội dung",
+      "time":"thời gian",
+      "contact":"tiếp xúc"
+    },
+    "log":{
+      "userId":"ID người dùng",
+      "ip":"IP",
+      "content":"chặn nội dung",
+      "words":"từ ngữ nhạy cảm",
+      "tags":"nhãn",
+      "crtime":"thời gian đánh chặn"
+    },
+    "list":{
+      "id":"ID",
+      "word":"từ ngữ nhạy cảm",
+      "status":"trạng thái",
+      "crtime":"创建时间",
+      "ctrl":"điều hành"
+    }
+  }
+}

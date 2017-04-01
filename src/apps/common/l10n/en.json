@@ -125,6 +125,7 @@
     "cancelDelConfirm": "Confirm",
     "operationSuccess": "Operation success",
     "operationFail": "Operation fail",
-    "notAllow":"Not Allow Add Null"
+    "notAllow":"Not Allow Add Null",
+    "tip":"Please select player"
   }
 }

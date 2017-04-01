@@ -55,11 +55,11 @@ angular.module('app')
             //检测浏览器
             global.browser();
             // save settings to local storage
-            if (angular.isDefined($localStorage.settings)) {
-                $scope.app.settings = $localStorage.settings;
-            } else {
-                $localStorage.settings = $scope.app.settings;
-            }
+            // if (angular.isDefined($localStorage.settings)) {
+            //     $scope.app.settings = $localStorage.settings;
+            // } else {
+            //     $localStorage.settings = $scope.app.settings;
+            // }
             $scope.$watch('app.settings', function () {
                 if ($scope.app.settings.asideDock && $scope.app.settings.asideFixed) {
                     // aside dock and fixed must set the header fixed.
@@ -77,7 +77,8 @@ angular.module('app')
             };
             $scope.langs = {
                 zh_CN: '中文',
-                en: 'English'
+                en: 'English',
+                vi: 'Tiếng Việt'
             };
             $scope.langKey = "zh_CN";
             $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || '中文';

@@ -1,0 +1,210 @@
+{
+  "home": {
+    "create":"创建",
+    "delete":"删除",
+    "save":"保存",
+    "send":"发送",
+    "setting":"设置",
+    "refresh":"刷新",
+    "turntable":"转盘配置",
+    "turn":{
+      "order":"ID",
+      "title":"奖项",
+      "p_name":"奖品",
+      "p_amount":"数量",
+      "amount":"几率"
+    },
+    "activity": {
+      "edit":"编辑信息",
+      "title":"标题",
+      "displayOrder":"显示顺序",
+      "index":"推荐指数",
+      "label":"标签",
+      "jump":"跳转地址",
+      "config":"配置",
+      "highLight":"是否高亮",
+      "essence":"是否精华",
+      "top":"是否置顶",
+      "content":"内容",
+      "editContent":"编辑内容",
+      "link":"连接地址",
+      "pureText":"纯文本",
+      "formattedPlainText":"带格式纯文本",
+      "list":{
+        "title":"标题",
+        "favTimes":"收藏次数",
+        "shareTimes":"分享次数",
+        "viewCount":"浏览次数",
+        "replyCount":"回复次数",
+        "recommend_add":"支持人数",
+        "recommend_sub":"反对人数",
+        "author":"作者",
+        "visible":"显示",
+        "crtime":"创建时间",
+        "moditime":"修改时间"
+      }
+    },
+    "bbs":{
+      "list":{
+        "code":"编码",
+        "name":"名称",
+        "type":"类型",
+        "postCount":"帖子数量",
+        "postCountToday":"今日发帖",
+        "postCountYesterday":"昨日发帖",
+        "creator":"创建者",
+        "visible":"显示",
+        "crtime":"创建时间",
+        "moditime":"修改时间",
+        "title":"标题",
+        "favTimes":"收藏次数",
+        "shareTimes":"分享次数",
+        "viewCount":"浏览次数",
+        "replyCount":"回复次数",
+        "recommend_add":"支持人数",
+        "recommend_sub":"反对人数",
+        "author":"作者",
+        "plate":"全部板块",
+        "systemBulid":"系统建立",
+        "publishPost":"发布帖子"
+      },
+      "forum":{
+        "edit":{
+          "editInformation":"编辑信息",
+          "cover":"封面",
+          "name":"名称",
+          "type":"类型",
+          "displayOrder":"显示顺序",
+          "label":"标签",
+          "describe":"描述"
+        }
+      },
+      "topic":{
+        "edit":{
+          "editInformation":"编辑信息",
+          "cover":"封面",
+          "section":"板块",
+          "code":"编码",
+          "title":"标题",
+          "displayOrder":"显示顺序",
+          "recommendationDegree":"推荐指数",
+          "label":"标签",
+          "jumpAddress":"跳转地址",
+          "config":"配置",
+          "highLight":"是否高亮",
+          "essence":"是否精华",
+          "top":"是否置顶",
+          "content":"内容",
+          "editContent":"编辑内容",
+          "link":"连接地址",
+          "pureText":"纯文本",
+          "formattedPlainText":"带格式纯文本"
+        }
+      }
+    },
+    "checkin": {
+      "list":"签到列表",
+      "edit":"编辑登录奖励",
+      "number":"天数",
+      "rewardType":"奖励类型",
+      "jb": "金币",
+      "tb": "元宝",
+      "dbj": "夺宝卷",
+      "rewardQuantity":"奖励数量",
+      "day":"天数",
+      "reward":"奖励"
+    },
+    "sendnotice": {
+      "title": "发送公告",
+      "sendNotice": "发送公告",
+      "refresh": "刷新",
+      "message": "消息",
+      "times": "次数",
+      "times_p": "次数(正整数)",
+      "seconds": "相隔秒数",
+      "seconds_p": "秒数(正整数)",
+      "addTimes": "添加时间",
+      "timesList": "时间列表",
+      "lackOfTimes": "缺少时间配置",
+      "successfulDelete":"删除成功",
+      "msgType": {
+        "type": "消息类型",
+        "opts1": "一条消息",
+        "opts2": "间隔消息",
+        "opts3": "定时消息"
+      },
+      "list": {
+        "header": {
+          "message": "消息",
+          "type": "类型",
+          "count": "次数",
+          "step": "已发",
+          "ctrl": "操作"
+        }
+      }
+    },
+    "sendDak":{
+      "send": "发送邮件",
+      "isUserMail": "是否用户邮件",
+      "title":"标题",
+      "content":"内容",
+      "userEmail":"是否用户邮件",
+      "userID":"用户ID",
+      "search":"搜索",
+      "searchUserName":"搜索用户名",
+      "userObjectID":"用户ObjectID",
+      "userName":"用户名",
+      "attachProp":"附加道具",
+      "addProp":"添加道具",
+      "prop":"道具",
+      "number":"数量",
+      "dueTime":"到期时间",
+      "edit":"编辑",
+      "noProp":"无道具"
+    },
+    "rankset":{
+      "setting":"排行设置",
+      "userID":"用户ID",
+      "search":"搜索",
+      "userObjectID":"用户ObjectID",
+      "userName":"用户名",
+      "VIPLevel":"VIP等级",
+      "highestIngot":"历史最高元宝",
+      "highestGold":"历史最高金币",
+      "highestDuoBaoJuan":"历史最高夺宝卷"
+    },
+    "vip":{
+      "cond":{
+        "setting":"VIP条件设置",
+        "recharge":"充值",
+        "setSuccess":"设置成功",
+        "add":"添加达成不同等级的充值数(添加顺序对应相应等级)"
+      },
+      "item":{
+        "setting":"VIP优惠种类设置",
+        "give":"每日登录赠送",
+        "rebatejb":"充值额外返利(金币)",
+        "rebatedbj":"充值额外返利(夺宝卷)",
+        "turntable":"大厅每日转盘次数",
+        "addMultiple":"添加倍数(100*1.2)",
+        "addPercentage":"添加百分数(100*3%)",
+        "addTimes":"添加次数"
+      },
+      "set":{
+        "configList":"VIP配置列表",
+        "name":"名称"
+      },
+      "setedit":{
+        "vipEdit":"VIP编辑",
+        "level":"等级",
+        "config":"配置优惠",
+        "describe":"描述",
+        "pureText":"纯文本",
+        "formattedPlainText":"带格式文本",
+        "change":"该等级已经存在,请更改等级",
+        "setSuccess":"设置成功",
+        "select":"请选择"
+      }
+    }
+  }
+}

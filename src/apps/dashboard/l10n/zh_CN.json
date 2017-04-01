@@ -35,6 +35,14 @@
       "totalSum": "总笔数",
       "validSum": "有效笔数",
       "invalidSum": "无效笔数"
+    },
+    "gainStat":{
+      "title": "分成统计",
+      "total": "总营收",
+      "ratio": "分成比例",
+      "divided": "已分成营收",
+      "notDivided": "可分成数",
+      "proportional": "按比例分成数"
     }
   }
 }

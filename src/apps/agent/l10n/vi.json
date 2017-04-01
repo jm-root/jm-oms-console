@@ -7,68 +7,68 @@
     "agent": {
       "create": {
         "list": {
-          "title": "渠道列表",
-          "search": "搜索 代理ID/名称",
-          "level": "级",
-          "gainRefresh": "刷新分成",
+          "title": "danh sách đường dẫn",
+          "search": "tìm kiếm ID/tên đại lý",
+          "level": "cấp",
+          "gainRefresh": "Cập nhật lại chia thành",
           "gainForm": {
-            "title": "更新分成数据"
+            "title": "Cập nhật dữ liệu chia"
           },
           "auditOpts":{
-            "opts1": "审核状态",
-            "opts2": "未审核",
-            "opts3": "审核通过",
-            "opts4": "审核不通过"
+            "opts1": "trạng thái xét duyệt",
+            "opts2": "chưa xét duyệt",
+            "opts3": "xét duyệt thông qua",
+            "opts4": "xét duyệt không thông qua"
           },
           "accountOpts":{
-            "opts1": "账号状态",
-            "opts2": "暂停",
-            "opts3": "正常"
+            "opts1": "trạng thái tài khoản",
+            "opts2": "tạm dừng",
+            "opts3": "bình thường"
           },
           "cooperateOpts":{
-            "other": "其它",
-            "cooperate": "合作",
-            "buyout": "买断"
+            "other": "khác",
+            "cooperate": "hợp tác",
+            "buyout": "mua đứt"
           },
           "statusOpts":{
-            "enable": "启用",
-            "suspend": "暂停"
+            "enable": "bắt đầu sử dụng",
+            "suspend": "tạm dừng"
           },
           "header":{
-            "pcode": "上级渠道号",
-            "code": "渠道号",
-            "name": "渠道名",
-            "account": "账号",
-            "level": "代理级别",
-            "type": "合作方式",
-            "crtime": "创建时间",
-            "status": "状态",
-            "audit": "审核状态",
-            "ctrl": "操作",
-            "addr": "推广地址"
+            "pcode": "số hiệu đường dẫn cấp trên",
+            "code": "số hiệu đường dẫn",
+            "name": "tên gọi đường dẫn",
+            "account": "tài khoản",
+            "level": "cấp bậc đại lý",
+            "type": "phương thức hợp tác",
+            "crtime": "thời gian kiến tạo",
+            "status": "trạng thái",
+            "audit": "trạng thái xét duyệt",
+            "ctrl": "thao tác",
+            "addr": "địa chỉ quảng bá"
           }
         },
-        "AgentCreate": "渠道创建",
-        "RemainingCreationQuantity": "剩余创建数量",
-        "AgentLevel": "渠道级别",
+        "AgentCreate": "kiến tạo đường dẫn",
+        "RemainingCreationQuantity": "số lượng kiến tạo còn lại",
+        "AgentLevel": "cấp bậc đường dẫn",
         "AccountNumber": "账号",
-        "AccountAlreadyExists": "账号已在",
+        "AccountAlreadyExists": "tài khoản đã tồn tại",
         "password": "密码",
-        "AgentName": "渠道名",
-        "CooperationMode": "合作方式",
-        "PleaseChooseCooperationMode": "请选合作方式",
-        "cooperation": "合作",
-        "buyout": "买断",
-        "ApplicantName": "申请人姓名",
+        "AgentName": "tên gọi đường dẫn",
+        "CooperationMode": "phương thức hợp tác",
+        "PleaseChooseCooperationMode": "mời lựa chọn phương thức hợp tác",
+        "cooperation": "hợp tác",
+        "buyout": "mua đứt",
+        "ApplicantName": "họ tên người đăng ký",
         "tel": "手机号",
-        "PromotionCap": "推广上限",
-        "QQ": "QQ号",
+        "PromotionCap": "giới hạn quảng bá",
+        "QQ": "số QQ",
         "mail": "邮箱",
-        "BankAccountName": "银行账号名",
+        "BankAccountName": "tên tài khoản ngân hàng",
         "bank": "银行",
         "PleaseChooseTheBank": "请选银行",
-        "BranchAccount": "开户支行",
-        "BankCardNumber": "银行卡号",
+        "BranchAccount": "@",
+        "BankCardNumber": "số thẻ ngân hàng",
         "label": "标签",
         "addLabel":"添加标签",
         "remarks": "备注",
@@ -76,75 +76,75 @@
         "number":"数量"
       },
       "edit": {
-        "AgentEdit": "渠道编辑",
-        "AgentLevel": "渠道级别",
+        "AgentEdit": "chỉnh lý đường dẫn",
+        "AgentLevel": "cấp bậc đường dẫn",
         "AccountNumber": "账号",
-        "AgentName": "渠道名",
-        "CooperationMode": "合作方式",
+        "AgentName": "tên gọi đường dẫn",
+        "CooperationMode": "phương thức hợp tác",
         "tel": "手机号",
-        "PromotionCap": "推广上限",
-        "QQ": "QQ号",
+        "PromotionCap": "giới hạn quảng bá",
+        "QQ": "số QQ",
         "mail": "邮箱",
-        "BankAccountName": "银行账号名",
+        "BankAccountName": "tên tài khoản ngân hàng",
         "bank": "银行",
         "PleaseChooseTheBank": "请选择银行",
-        "BranchAccount": "开户支行",
-        "BankCardNumber": "银行卡号",
+        "BranchAccount": "@",
+        "BankCardNumber": "số thẻ ngân hàng",
         "label": "标签",
         "remarks": "备注",
         "update": "更新"
       },
       "list": {
-        "AgentList": "渠道列表",
+        "AgentList": "danh sách đường dẫn",
         "create": "创建",
         "delete": "删除",
-        "AuditStatus": "审核状态",
-        "unaudited": "未审核",
-        "AuditThrough": "审核通过",
-        "AuditNotApproved": "审核不通过",
-        "AccountStatus": "账号状态",
-        "pause": "暂停",
-        "normal": "正常"
+        "AuditStatus": "trạng thái xét duyệt",
+        "unaudited": "chưa xét duyệt",
+        "AuditThrough": "xét duyệt thông qua",
+        "AuditNotApproved": "xét duyệt không thông qua",
+        "AccountStatus": "trạng thái tài khoản",
+        "pause": "tạm dừng",
+        "normal": "bình thường"
       }
     },
     "agentdata": {
       "analysis": {
-        "title": "数据分析",
+        "title": "số đăng ký",
         "header": {
-          "code": "渠道ID",
-          "name": "渠道名称",
-          "regCount": "注册人数",
-          "online": "在线人数",
-          "chargeSum": "充值人数",
-          "chargeAmount": "充值金额",
-          "cardAmount": "点卡充值",
-          "sysAmount": "系统奖励",
-          "totalAmount": "总营收",
-          "crtime": "注册时间"
+          "code": "ID đường dẫn",
+          "name": "tên đường dẫn",
+          "regCount": "số người đăng ký",
+          "online": "số người online",
+          "chargeSum": "số người nạp tiền",
+          "chargeAmount": "số tiền nạp",
+          "cardAmount": "nạp tiền qua thẻ điểm",
+          "sysAmount": "phần thưởng hệ thống",
+          "totalAmount": "tổng doanh thu",
+          "crtime": "thời gian đăng ký"
         }
       },
       "recharge": {
-        "title": "充值数",
+        "title": "số nạp",
         "search": "搜索",
         "time": "时间段",
         "code": "渠道ID",
         "levelOpts": {
-          "opts1": "未知",
-          "opts2": "一级",
-          "opts3": "二级"
+          "opts1":"chưa biết",
+          "opts2":"cấp 1",
+          "opts3":"cấp 2"
         },
         "header": {
-          "date": "日期",
-          "code": "渠道ID",
-          "name": "渠道名",
-          "level": "渠道层级",
-          "pcode": "上级渠道ID",
-          "pname": "上级渠道名",
-          "amount": "充值数"
+          "date": "ngày tháng",
+          "code": "ID đường dẫn",
+          "name": "tên đường dẫn",
+          "level": "cấp bậc đường dẫn",
+          "pcode": "ID đường dẫn cấp trên",
+          "pname": "tên đường dẫn cấp trên",
+          "amount": "số nạp"
         }
       },
       "register": {
-        "title": "注册数",
+        "title": "số đăng ký",
         "code": "渠道ID",
         "search": "搜索",
         "time": "时间段",
@@ -154,12 +154,12 @@
           "opts3": "二级"
         },
         "header": {
-          "date": "日期",
-          "name": "渠道名",
-          "level": "渠道层级",
-          "pcode": "上级渠道ID",
-          "pname": "上级渠道名",
-          "count": "注册人数"
+          "date": "ngày tháng",
+          "name": "tên đường dẫn",
+          "level": "cấp bậc đường dẫn",
+          "pcode": "ID đường dẫn cấp trên",
+          "pname": "tên đường dẫn cấp trên",
+          "count": "số người đăng ký"
         }
       }
     },
@@ -404,19 +404,19 @@
     },
     "package": {
       "set": {
-        "title": "包设置",
-        "cooperationType": "合作类型",
-        "authApp": "授权应用",
-        "select": "请选择",
+        "title": "bao cài đặt",
+        "cooperationType": "loại hình hợp tác",
+        "authApp": "ứng dụng chuyển quyền",
+        "select": "mời lựa chọn",
         "code": "渠道ID",
         "agent":"渠道",
         "save":"保存"
       },
       "take": {
-        "title": "打包生成",
-        "tip1": "请先成为代理",
-        "tip2": "正在打包中请等待",
-        "tip3": "打包完成请下载"
+        "title": "@",
+        "tip1": "Bạn phải trờ thành đại lý trước",
+        "tip2": "Đang đóng gói, xin chờ",
+        "tip3": "Đã đóng gói xong, mời tải về"
       }
     }
     }

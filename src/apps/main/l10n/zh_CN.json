@@ -57,7 +57,7 @@
       "record": "游戏记录",
       "givelog": "赠送记录",
       "changescoreup":"上分",
-      "changescoredown":"下分"
+      "changescoredown":"退分"
     },
     "backpoints":{
       "manage":"下分",
@@ -86,7 +86,8 @@
     "agentdata":{
       "register":"注册",
       "recharge":"充值",
-      "analysis":"数据分析"
+      "analysis":"数据分析",
+      "divided":"分成流水"
     },
     "coin":{
       "sys":"T币系统",

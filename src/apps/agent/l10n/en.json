@@ -10,6 +10,10 @@
           "title": "Channel list",
           "search": "Search channel ID/name",
           "level": " Level",
+          "gainRefresh": "Divided",
+          "gainForm": {
+            "title": "Update divided data"
+          },
           "auditOpts":{
             "opts1": "Audit status",
             "opts2": "Unaudited",
@@ -131,6 +135,7 @@
         },
         "header":{
           "date": "Date",
+          "code": "Channel ID",
           "name": "Channel name",
           "level": "Channel level",
           "pcode": "Superior channel ID",
