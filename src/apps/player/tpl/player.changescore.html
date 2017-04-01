@@ -1,202 +1,93 @@
-<div>
-    <div ui-view class="fade-in-down"></div>
-    <form ng-show="$state.is('app.player.changescore1')" name="formValidate" class="form-horizontal form-validation">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong class="m-l-sm">{{'player.changescore.title1'|translate}}</strong>
-            </div>
-            <div class="panel-body m-r-lg m-t-sm m-l-lg " style="width: 98%;margin: 0 auto">
-                <div class="col-lg-5 col-md-6 col-md-offset-1">
-                    <div class="row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-md">{{'player.changescore.label1'|translate}}</label>
-                        <div class="pull-right control-label m-r-sm">
-                            <span>{{jb}}</span>
-                        </div>
-                    </div>
-                    <div ui-sref=".searchUser" ng-if="isSmartDevice" class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-md">{{'player.changescore.label3'|translate}}</label><!--选择玩家-->
-                        <div  class="pull-right  m-r-sm  control-label">
-                            <span class="m-r-md">{{uid}}</span>
-                            <span class="m-r-md">{{nick}}</span>
-                            <i class="fa fa-chevron-right"></i>
-                        </div>
-                    </div>
-                    <div ng-if="!isSmartDevice" class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-lg">{{'player.changescore.label3'|translate}}</label><!--选择玩家-->
-                        <div  class="pull-right ">
-                            <div class="input-group" style="max-width: 360px;">
-                                <input type="text" class="form-control" placeholder="{{ 'common.userId' | translate }}" ng-model="player.toUserId" ng-required="true" ng-keyup="inputsearch()">
-                                <div class="input-group-btn dropdown" drop-down-table>
-                                    <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div>
-                                    <div type="button" class="btn btn-default">{{ 'common.search' | translate }} <span class="caret"></span></div>
-                                    <ul class="dropdown-menu pull-right">
-                                        <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
-                                            <thead>
-                                            <tr>
-                                                <th>{{ 'common.userId' | translate }}</th>
-                                                <th>{{ 'common.userAccount' | translate }}</th>
-                                                <th>{{ 'common.userName' | translate }}</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="hand">
-                                            <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">
-                                                <td>{{row.uid}}</td>
-                                                <td>{{row.account||row.mobile}}</td>
-                                                <td>{{row.nick}}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <div ng-if="!total" style="text-align: center;">
-                                            {{'ag-grid.noRowsToShow'|translate}}
-                                        </div>
-                                        <div ng-if="usersInfo.rows.length > 0||total" style="text-align: center;">
-                                            <i class="glyphicon glyphicon-chevron-left color hand" style="width: 20%" ng-click="left(player.toUserId)"></i>
-                                            <label>{{page}}</label>/
-                                            <label>{{pages}}</label>
-                                            <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%" ng-click="right(player.toUserId)"></i>
-                                        </div>
-                                    </ul>
-                                </div><!-- /btn-group -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label">{{'player.changescore.label5'|translate}}</label>
-                        <div class="pull-right p-b-md">
-                            <input type="number" onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control col-xs-10" style="width: 150px;" ng-model="bank.amount" min="1"
-                                   placeholder="{{ 'common.amount' | translate }}" ng-pattern="/^[0-9]*$/" ng-change="operate(1)" ng-blur="operate(1)">
-                        </div>
-                    </div>
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">{{'player.changescore.title'|translate}}</h1>
+</div>
 
-                    <div class="form-group row m-b-sm b-b">
-                        <div class="pull-left control-label p-b-md">
-                            <label>{{'player.changescore.label4'|translate}}</label>
+<div class="wrapper-md">
+    <div class="row">
+        <div class="col-sm-9">
+            <form name="formValidate" class="form-horizontal form-validation">
+                <div class="list-group">
+                <!--选择玩家-->
+                <li class="list-group-item" ui-sref="app.search.user">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            {{'player.changescore.label3'|translate}}
                         </div>
-                        <div class="col-xs-4">
-                            <label class="pull-left control-label">{{'player.changescore.before'|translate}}:</label>
-                            <div class="pull-left control-label w-auto">
-                                <p ng-if="player.toUserId">{{player.jb}}</p>
+                        <div class="col-xs-7">
+                            <span ng-if="player"><span ng-if="player.nick">{{player.nick}}</span>(ID: {{player.uid}})</span>
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <i class="fa fa-chevron-right text-muted"></i>
+                        </div>
+                    </div>
+                </li>
+                <!--操作金额-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            {{'player.changescore.label5'|translate}}
+                        </div>
+                        <div class="col-xs-9">
+                            <input type="number"
+                                   class="form-control" style="text-align: center" ng-model="amount"
+                                   placeholder="{{ 'common.amount' | translate }}" min="1" ng-pattern="/^[0-9]+$/" required>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <!--可用数量-->
+                    <div class="row">
+                        <div class="col-xs-3">
+                        </div>
+                        <div class="col-xs-9">
+                            <label class="pull-left control-label">
+                                {{'player.changescore.label1'|translate}}</label>
+                            <div class="pull-right control-label p-b-md m-r-sm">
+                                <span>{{jb}}</span>
                             </div>
                         </div>
-                        <div class="col-xs-4">
-                            <label class="pull-left control-label">{{'player.changescore.after'|translate}}:</label>
-                            <div class="pull-left control-label w-auto">
-                                <p ng-if="sum||sum==0">{{sum}}</p>
+                    </div>
+                    <div class="line"></div>
+                    <!--玩家余额-->
+                    <div class="row">
+                        <div class="col-xs-3">
+                        </div>
+                        <div class="col-xs-9">
+                            <label class="control-label">
+                                {{'player.changescore.label4'|translate}}</label>
+                            <div class="pull-right control-label p-b-md m-r-sm">
+                                <span ng-if="player.id">{{player.jb}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label">{{ 'common.memo' | translate }}</label>
-                        <div class="pull-right w-lg p-b-md">
-                            <textarea class="form-control" style="resize: none;" rows="4" placeholder="" ng-model="bank.memo"></textarea>
+                </li>
+                <!--备注-->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            {{ 'common.memo' | translate }}
+                        </div>
+                        <div class="col-xs-9">
+                            <textarea class="form-control" style="resize: none;" rows="2"
+                                      placeholder=""
+                                      ng-model="memo"/>
                         </div>
                     </div>
-                    <div class="row pull-right">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&updateData(event,1)">{{'common.save'|translate}}</button>
-                    </div>
-                </div>
+                </li>
+                <!--保存-->
+                <li class="list-group-item text-right">
+                    <button ng-if="type == 'charge'" type="submit" class="btn btn-success"
+                            ng-click="!formValidate.$invalid&&updateData('charge')">{{'player.changescore.opts.opt2'|translate}}
+                    </button>
+                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-info"
+                            ng-click="!formValidate.$invalid&&updateData('uncharge')">{{'player.changescore.opts.opt3'|translate}}
+                    </button>
+                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-danger"
+                            ng-click="!formValidate.$invalid&&updateData('uncharge', true)">全退
+                    </button>
+                </li>
             </div>
+            </form>
         </div>
-    </form>
 
-
-    <form ng-show="$state.is('app.player.changescore2')" name="formValidate" class="form-horizontal form-validation">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong class="m-l-sm">{{'player.changescore.title2'|translate}}</strong>
-            </div>
-            <div class="panel-body m-r-lg m-t-sm m-l-lg bg-white " style="width: 98%;margin: 0 auto">
-                <div class="col-lg-5 col-md-6 col-md-offset-1">
-                    <div class="row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-md">{{'player.changescore.label1'|translate}}</label>
-                        <div class="pull-right control-label m-r-sm">
-                            <span>{{jb}}</span>
-                        </div>
-                    </div>
-                    <div ui-sref=".searchUser" ng-if="isSmartDevice" class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-md">{{'player.changescore.label3'|translate}}</label><!--选择玩家-->
-                        <div  class="pull-right  m-r-sm  control-label">
-                            <span class="m-r-md">{{uid}}</span>
-                            <span class="m-r-md">{{nick}}</span>
-                            <i class="fa fa-chevron-right"></i>
-                        </div>
-                    </div>
-                    <div ng-if="!isSmartDevice" class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label p-b-md">{{'player.changescore.label3'|translate}}</label>
-                        <div class="pull-right ">
-                            <div class="input-group" style="max-width: 360px;">
-                                <input type="text" class="form-control" placeholder="{{ 'common.userId' | translate }}" ng-model="player.toUserId" ng-required="true" ng-keyup="inputsearch()">
-                                <div class="input-group-btn dropdown" drop-down-table>
-                                    <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div>
-                                    <div type="button" class="btn btn-default">{{ 'common.search' | translate }} <span class="caret"></span></div>
-                                    <ul class="dropdown-menu pull-right">
-                                        <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
-                                            <thead>
-                                            <tr>
-                                                <th>{{ 'common.userId' | translate }}</th>
-                                                <th>{{ 'common.userAccount' | translate }}</th>
-                                                <th>{{ 'common.userName' | translate }}</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="hand">
-                                            <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser($event)" st-select-mode="single">
-                                                <td>{{row.uid}}</td>
-                                                <td>{{row.account||row.mobile}}</td>
-                                                <td>{{row.nick}}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <div ng-if="!total" style="text-align: center;">
-                                            {{'ag-grid.noRowsToShow'|translate}}
-                                        </div>
-                                        <div ng-if="usersInfo.rows.length > 0||total" style="text-align: center;">
-                                            <i class="glyphicon glyphicon-chevron-left color hand" style="width: 20%" ng-click="left(player.toUserId)"></i>
-                                            <label>{{page}}</label>/
-                                            <label>{{pages}}</label>
-                                            <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%" ng-click="right(player.toUserId)"></i>
-                                        </div>
-                                    </ul>
-                                </div><!-- /btn-group -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label">{{'player.changescore.label5'|translate}}</label>
-                        <div class="pull-right p-b-md">
-                            <input type="number" onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control col-xs-10" style="width: 150px;" ng-model="bank.amount" min="1"
-                                   placeholder="{{ 'common.amount' | translate }}" ng-pattern="/^[0-9]*$/" ng-change="operate(2)" ng-blur="operate(2)">
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-sm b-b">
-                        <div class="pull-left control-label p-b-md">
-                            <label>{{'player.changescore.label4'|translate}}</label>
-                        </div>
-                        <div class="col-xs-4">
-                            <label class="pull-left control-label">{{'player.changescore.before'|translate}}:</label>
-                            <div class="pull-left control-label w-auto">
-                                <p ng-if="player.toUserId">{{player.jb}}</p>
-                            </div>
-                        </div>
-                        <div class="col-xs-5">
-                            <label class="pull-left control-label">{{'player.changescore.after'|translate}}:</label>
-                            <div class="pull-left control-label w-auto">
-                                <p ng-if="sum||sum==0">{{sum}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-sm b-b">
-                        <label class="pull-left control-label">{{ 'common.memo' | translate }}</label>
-                        <div class="pull-right w-lg p-b-md">
-                            <textarea class="form-control" style="resize: none;" rows="4" placeholder="" ng-model="bank.memo"></textarea>
-                        </div>
-                    </div>
-                    <div class="row pull-right">
-                        <button type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&updateData(event,2)">{{'common.save'|translate}}</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
+    </div>
 </div>

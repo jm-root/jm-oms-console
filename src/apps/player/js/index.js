@@ -57,23 +57,11 @@
                             controller: 'PlayerGiveLogCtrl',
                             resolve: lazyLoadProvider.load('daterangepicker')
                         })
-                        .state('app.player.changescore1', {
-                            url: '/changescore1',
+                        .state('app.player.changescore', {
+                            url: '/changescore/{type}',
                             templateUrl: path +'tpl/player.changescore.html',
-                            controller: 'PlayerChangeScoreCtrl'
-                        })
-                        .state('app.player.changescore2', {
-                            url: '/changescore2',
-                            templateUrl: path +'tpl/player.changescore.html',
-                            controller: 'PlayerChangeScoreCtrl'
-                        })
-                        .state('app.player.changescore1.searchUser', {
-                            url: '/searchUser',
-                            templateUrl: path +'tpl/player.searchUser.html'
-                        })
-                        .state('app.player.changescore2.searchUser', {
-                            url: '/searchUser',
-                            templateUrl: path +'tpl/player.searchUser.html'
+                            controller: 'PlayerChargeCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/charge.js'] )
                         })
                 }
             ]
