@@ -7,34 +7,27 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
     var pageSize = 10;
     var pages = 1;
     var total = 0;
-    $scope.left = function (keyword) {
+    $scope.left = function () {
         if(page>1){
             --page;
-            $scope.search(keyword);
+            $scope.search();
         }
     }
-    $scope.right = function (keyword) {
+    $scope.right = function () {
         if(page<pages){
             ++page;
-            $scope.search(keyword);
+            $scope.search();
         }
     };
-    $scope.inputsearch = function (keyword) {
-        if($scope.keyword) {
-            page = 1;
-            $scope.search(keyword);
-        }else {
-            $scope.search($scope.player);
-        }
-    }
-    $scope.search = function(keyword){
+
+    $scope.search = function(){
         $scope.moreLoading = true;
         $http.get(statUri+'/players', {
             params:{
                 page: page,
                 rows: pageSize,
                 token: sso.getToken(),
-                search:keyword
+                search:$scope.keyword
             }
         }).success(function(result){
             $scope.moreLoading = false;
@@ -55,10 +48,17 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         });
     };
 
+    $scope.inputsearch = function () {
+        if($scope.keyword) {
+            page = 1;
+            $scope.search();
+        }
+    }
+
     $scope.selectUser = function(row){
-        $scope.userId = row._id;
-        $scope.uid = row.uid;
-        $scope.nick = row.nick;
+        var userId = row._id;
+        var uid = row.uid;
+        var nick = row.nick;
         bank.query({userId: userId},function(err, result){
             result || (result||{});
             var holds = result.holds||{};

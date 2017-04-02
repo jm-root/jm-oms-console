@@ -18,7 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="row in usersInfo.rows.slice(10*(i-1),[10*i])" ng-click="selectUser($event)" st-select-mode="single">
+                <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single">
                     <td>{{row.uid}}</td>
                     <td>{{row.account||row.mobile}}</td>
                     <td>{{row.nick}}</td>

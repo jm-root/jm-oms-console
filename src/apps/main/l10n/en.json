@@ -14,7 +14,7 @@
     "increase":"Increase",
     "decrease":"Decrease",
     "player":"Player",
-    "bank":"Bank"
+    "transfer":"transfer"
   },
   "nav": {
     "HEADER": "Navigation",
