@@ -50,7 +50,7 @@
                         })
                         .state('app.bank.transfer', {
                             url: '/transfer',
-                            templateUrl: path  + 'tpl/bank.transfer.html',
+                            templateUrl: path  + 'tpl/bank.transfer1.html',
                             controller: 'BankTransferCtrl',
                             resolve: lazyLoadProvider.load([])
                         })
