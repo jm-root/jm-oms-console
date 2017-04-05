@@ -122,5 +122,14 @@
     "operationFail": "thao tác thất bại",
     "notAllow":"不允许添加空值!",
     "tip":"Hãy chọn người dùng"
+  },
+  "search":{
+    "selectplayer":"Người chơi lựa chọn",
+    "all":"Hoàn trả đầy đủ",
+    "player":"玩家：",
+    "balence":"余额：",
+    "charge":"上分：",
+    "uncharge":"下分：",
+    "result":"结果："
   }
 }

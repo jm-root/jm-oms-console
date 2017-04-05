@@ -127,5 +127,14 @@
     "operationFail": "Operation fail",
     "notAllow":"Not Allow Add Null",
     "tip":"Please select player"
+  },
+  "search":{
+    "selectplayer":"Select player",
+    "all":"Full refund",
+    "player":"Player：",
+    "balence":"Balence：",
+    "charge":"Charge：",
+    "uncharge":"Uncharge：",
+    "result":"Result："
   }
 }

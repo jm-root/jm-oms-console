@@ -10,7 +10,7 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
         player = JSON.parse(player);
         $scope.player = player;
     }
-
+    sessionStorage.removeItem("selectedUser");
     var bank = jm.sdk.bank;
     bank.query({},function(err,result){
         result || (result||{});
@@ -30,15 +30,13 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
             fromUserId = sso.user.id;
             toUserId = player.id;
             sum = player.jb + amount;
-            //info = global.translateByKey('player.info.transferTip.add',{val:account})+amount+ct["jb"];
-            info = '玩家: ' + account + '<br/> 余额: ' + player.jb + '<br/> 上分: ' + amount + '<br>结果: '+sum;
+            info = global.translateByKey('search.player') + account + '<br/> '+global.translateByKey('search.balence') + player.jb + '<br/>'+global.translateByKey('search.charge') + amount + '<br> '+global.translateByKey('search.result')+sum;
         }else if($scope.type == 'uncharge'){
             fromUserId = player.id;
             toUserId = sso.user.id;
             if(allAmount) amount = player.jb;
             sum = player.jb - amount;
-            //info = global.translateByKey('player.info.transferTip.deduct',{val:account})+amount+ct["jb"];
-            info = '玩家: ' + account + '<br/> 余额: ' + player.jb + '<br/> 退分: ' + amount + '<br>结果: '+sum;
+            info = global.translateByKey('search.player')+ account + '<br/> '+global.translateByKey('search.balence') + player.jb + '<br/> '+global.translateByKey('search.uncharge') + amount + '<br> '+global.translateByKey('search.result')+sum;
         }
 
         if(sum<0){

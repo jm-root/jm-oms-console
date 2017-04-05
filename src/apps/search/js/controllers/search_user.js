@@ -20,9 +20,15 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         }
     };
 
-    $scope.search = function(){
-        $scope.moreLoading = true;
-        $http.get(statUri+'/players', {
+    $scope.search = function(_page){
+        if(_page) page = 1;
+        if($scope.keyword){
+            var url = statUri+'/players';
+            $scope.moreLoading = true;
+        }else{
+            var url = "";
+        }
+        $http.get(url, {
             params:{
                 page: page,
                 rows: pageSize,
@@ -46,14 +52,8 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
-    };
 
-    $scope.inputsearch = function () {
-        if($scope.keyword) {
-            page = 1;
-            $scope.search();
-        }
-    }
+    };
 
     $scope.selectUser = function(row){
         var userId = row._id;

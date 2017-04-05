@@ -126,5 +126,14 @@
     "operationFail": "操作失败",
     "notAllow":"不允许添加空值!",
     "tip":"请选择玩家"
+  },
+  "search":{
+    "selectplayer":"选择玩家",
+    "all":"全退",
+    "player":"玩家：",
+    "balence":"余额：",
+    "charge":"上分：",
+    "uncharge":"下分：",
+    "result":"结果："
   }
 }

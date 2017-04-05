@@ -1,8 +1,8 @@
 <div class="bg-light lter b-b wrapper-md">
-    <a ng-click="cancel()"><i class="fa fa-chevron-left m-r-sm"></i></a><strong class="m-n  h3">选择玩家</strong>
+    <h1 class="m-n font-thin h3"><i class="fa fa-chevron-left m-r-sm" ng-click="cancel()"></i>{{'search.selectplayer'|translate}}</h1>
 </div>
 
-<div class="wrapper-md">
+<div class="wrapper-md col-lg-9">
     <div class="row">
         <div class="col-sm-9">
             <div class="list-group">
@@ -11,16 +11,16 @@
                     <div class="input-group p-b-md">
                         <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">
                         <span class="input-group-btn">
-                    <span class="btn btn-default btn-sm btn-rounded" ng-click="inputsearch()"><i class="fa fa-search"></i></span>
+                    <span class="btn btn-default btn-sm btn-rounded" ng-click="search(1)"><i class="fa fa-search"></i></span>
                 </span>
                     </div>
                 </li>
                 <!--loading-->
-                <li ng-if="moreLoading" class="list-group-item">
+                <li class="list-group-item" ng-if="moreLoading">
                     <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
                 </li>
                 <!--表格-->
-                <li ng-if="!moreLoading" class="list-group-item">
+                <li class="list-group-item">
                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -30,7 +30,7 @@
                         </tr>
                         </thead>
                         <tbody class="hand">
-                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single">
+                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single" id="cover">
                             <td>{{row.uid}}</td>
                             <td>{{row.account||row.mobile}}</td>
                             <td>{{row.nick}}</td>
@@ -49,7 +49,7 @@
                 <!--保存-->
                 <li class="list-group-item text-right">
                     <button type="submit" class="btn btn-danger"
-                            ng-click="cancel()">取消
+                            ng-click="cancel()">{{'common.cancel'|translate}}
                     </button>
                 </li>
             </div>
