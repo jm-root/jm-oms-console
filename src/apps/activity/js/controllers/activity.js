@@ -83,9 +83,7 @@ app.controller('ActivityPropCtrl', ['$scope', '$http', '$state','MODULE_CONFIG',
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.activity.prop.edit' , {id: cell.data._id});
             }
         },
@@ -482,9 +480,7 @@ app.controller('ActivityForumListCtrl', ['$scope', '$http', '$state', 'global',f
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.activity.forum.edit' , {id: cell.data._id});
             }
         },
@@ -803,9 +799,7 @@ app.controller('ActivityAtyListCtrl', ['$scope', '$http', '$state', 'global',fun
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.activity.aty.edit' , {id: cell.data._id});
             }
         },
@@ -1254,9 +1248,7 @@ app.controller('ActivityAtyItemListCtrl', ['$scope', '$http', '$state', '$stateP
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.activity.aty.item.edit', {id: cell.data._id, pid:$scope.pid});
             }
         },

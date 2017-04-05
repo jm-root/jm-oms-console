@@ -157,9 +157,7 @@ app.controller('RechargeCardCtrl', ['$scope', '$state', '$http', 'global', funct
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 if(cell.data.status =="2"){
                     $state.go('app.recharge.cardlog',{code:cell.data.code});
                 }

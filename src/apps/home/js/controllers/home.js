@@ -88,9 +88,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
             }
         },
@@ -376,9 +374,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
             }
         },
@@ -741,9 +737,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.activitys.edit' , {id: cell.data._id});
             }
         },

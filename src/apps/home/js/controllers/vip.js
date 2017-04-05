@@ -111,9 +111,7 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.vip.setedit' , {key: cell.data.key});
             }
         },

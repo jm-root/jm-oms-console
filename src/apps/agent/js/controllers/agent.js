@@ -247,9 +247,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             global.agGridOverlay();                 //翻译
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 if($scope.super||$scope.per['详情']||$scope.per['编辑']){
                     $state.go('app.agent.edit' , {id: cell.data._id._id});
                 }

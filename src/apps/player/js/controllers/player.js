@@ -10,9 +10,9 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 
     $scope.dateOptions = global.dateRangeOptions;
 
-    if(plat === 'PC'){
+    if(!$scope.isSmartDevice){
         $scope.hides = true;
-    }else if(plat === 'Mobile'){
+    }else if($scope.isSmartDevice){
         $scope.hides = false;
     }
 
@@ -268,9 +268,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 var field = cell.colDef.field;
                 var coin = ['tb','jb','dbj'];
                 if(coin.indexOf(field)!=-1) return;
@@ -501,9 +499,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         $interval.cancel(t);
     });
 
-    if(plat === 'PC'){
+    if(!$scope.isSmartDevice){
         $scope.hides = true;
-    }else if(plat === 'Mobile'){
+    }else if($scope.isSmartDevice){
         $scope.hides = false;
     }
 
@@ -684,9 +682,9 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
     $scope.search.date = $scope.search.date || {};
     var url = recordUri+'/gameovers';
 
-    if(plat === 'PC'){
+    if(!$scope.isSmartDevice){
         $scope.hides = true;
-    }else if(plat === 'Mobile'){
+    }else if($scope.isSmartDevice){
         $scope.hides = false;
     }
 

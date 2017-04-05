@@ -118,9 +118,7 @@ app.controller('BaoXiangListCtrl', ['$scope', '$state', '$stateParams', '$http',
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.rooms.manage.baoxiang.edit' , {appId: tmpl_id, id: cell.data.boxType});
             }
         },
