@@ -172,55 +172,38 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="clearfix text-center m-t">
-              <div class="inline">
-                <img alt="" src="{{promote}}" style="width: 62%;">
-                <div class="h4 m-t m-b-xs"><a style="color:#0000CC" href="{{url}}" target="_blank">{{url}}</a></div>
-              </div>
-            </div>
-          </div>
-          <footer class="panel-footer bg-black text-center no-padder">
-            <div class="row no-gutter">
-              <div class="col-xs-12">
-                <div class="wrapper" style="cursor:pointer" ng-click="download()">
-                  <h2 class="m-n font-thin" style="color: white" translate="main.packageDownload">包下载</h2>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="panel panel-default">
           <div class="text-center wrapper m-b-sm bg-primary">
             {{ 'main.playerStat.title' | translate }}
           </div>
           <ul class="list-group no-radius">
             <li class="list-group-item">
-              <span class="pull-right">{{stat.user_total||0}}</span>
-              {{ 'main.playerStat.total' | translate }}
-            </li>
-            <li class="list-group-item">
-              <span class="pull-right">{{stat.user_yesterday||0}}</span>
-              {{ 'main.playerStat.yesterday' | translate }}
+              <span class="pull-right">{{stat.login_today||0}}</span>
+              {{ 'main.playerStat.logintoday' | translate }}
             </li>
             <li class="list-group-item">
               <span class="pull-right">{{stat.user_today||0}}</span>
               {{ 'main.playerStat.today' | translate }}
             </li>
+            <li class="list-group-item">
+              <span class="pull-right">{{stat.login_yesterday||0}}</span>
+              {{ 'main.playerStat.loginyesterday' | translate }}
+            </li>
+            <li class="list-group-item">
+              <span class="pull-right">{{stat.user_yesterday||0}}</span>
+              {{ 'main.playerStat.yesterday' | translate }}
+            </li>
             <!--<li class="list-group-item">-->
             <!--<span class="pull-right">{{stat.user_guest||0}}</span>-->
             <!--{{ 'main.playerStat.guest' | translate }}-->
             <!--</li>-->
-            <li class="list-group-item">
-              <span class="pull-right">{{stat.user_mobile||0}}</span>
-              {{ 'main.playerStat.mobile' | translate }}
-            </li>
-            <li class="list-group-item">
-              <span class="pull-right">{{(stat.user_wechat+stat.user_qq)||0}}</span>
-              {{ 'main.playerStat.other' | translate }}
-            </li>
+            <!--<li class="list-group-item">-->
+              <!--<span class="pull-right">{{stat.user_mobile||0}}</span>-->
+              <!--{{ 'main.playerStat.mobile' | translate }}-->
+            <!--</li>-->
+            <!--<li class="list-group-item">-->
+              <!--<span class="pull-right">{{(stat.user_wechat+stat.user_qq)||0}}</span>-->
+              <!--{{ 'main.playerStat.other' | translate }}-->
+            <!--</li>-->
           </ul>
         </div>
       </div>
@@ -256,36 +239,6 @@
             <!--</li>-->
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="row" ng-if="!isSmartDevice">
-      <div style="padding: 15px">
-        <div class="pull-right">
-          <div class="input-group m-r-sm" style="width: 185px;margin-top: 10px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.timePlaceholder' | translate }}" style="position: relative;height: 30px"/>
-            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
-          </div>
-        </div>
-        <uib-tabset class="tab-container">
-          <uib-tab heading="{{ 'main.platformData.title' | translate }}" id="chart1">
-            <div class="row" id="chart1">
-              <div class="col-lg-4 col-md-6 col-xs-12" ng-repeat="item in lineOptions">
-                <div style="width: 100%;height:300px;">
-                  <ng-echarts class="col-md-6 col-xs-12 echarts" ec-config="lineConfig" ec-option="item" style="width: 100%;height:100%;"></ng-echarts>
-                </div>
-              </div>
-            </div>
-          </uib-tab>
-          <uib-tab heading="{{ 'main.gameData.title' | translate }}" id="chart2" ng-if="0">
-            <div class="row" id="chart2">
-              <div class="col-lg-4 col-md-6 col-xs-12" ng-repeat="item in gameOptions">
-                <div style="width: 100%;height:300px;">
-                  <ng-echarts class="col-md-6 col-xs-12 echarts" ec-config="gameConfig" ec-option="item" style="width: 100%;height:100%;"></ng-echarts>
-                </div>
-              </div>
-            </div>
-          </uib-tab>
-        </uib-tabset>
       </div>
     </div>
   </div>

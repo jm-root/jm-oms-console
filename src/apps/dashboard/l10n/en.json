@@ -20,7 +20,7 @@
     },
     "playerStat":{
       "title": "User statistics",
-      "total": "Cumulative total",
+      "total": "Login total",
       "yesterday": "Register yesterday",
       "today": "Register today",
       "guest": "Guest",
@@ -70,7 +70,9 @@
       "today": "Register today",
       "guest": "Guest",
       "mobile": "Mobile",
-      "other": "Other"
+      "other": "Other",
+      "logintoday":"Landing today",
+      "loginyesterday":"Landing yesterday"
     },
     "rechargeStat":{
       "title": "Recharge statistics",
@@ -79,7 +81,8 @@
       "today": "Recharge today",
       "totalSum": "Total pay",
       "validSum": "Valid pay",
-      "invalidSum": "Invalid pay"
+      "invalidSum": "Invalid pay",
+      "week":"Recharge this week"
     },
     "gainStat":{
       "title": "Divided into statistics",
