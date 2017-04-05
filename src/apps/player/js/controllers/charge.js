@@ -30,13 +30,13 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
             fromUserId = sso.user.id;
             toUserId = player.id;
             sum = player.jb + amount;
-            info = global.translateByKey('search.player') + account + '<br/> '+global.translateByKey('search.balence') + player.jb + '<br/>'+global.translateByKey('search.charge') + amount + '<br> '+global.translateByKey('search.result')+sum;
+            info = global.translateByKey('search.player') + account + '<br/> '+global.translateByKey('search.balance') + player.jb + '<br/>'+global.translateByKey('search.charge') + amount + '<br> '+global.translateByKey('search.result')+sum;
         }else if($scope.type == 'uncharge'){
             fromUserId = player.id;
             toUserId = sso.user.id;
             if(allAmount) amount = player.jb;
             sum = player.jb - amount;
-            info = global.translateByKey('search.player')+ account + '<br/> '+global.translateByKey('search.balence') + player.jb + '<br/> '+global.translateByKey('search.uncharge') + amount + '<br> '+global.translateByKey('search.result')+sum;
+            info = global.translateByKey('search.player')+ account + '<br/> '+global.translateByKey('search.balance') + player.jb + '<br/> '+global.translateByKey('search.uncharge') + amount + '<br> '+global.translateByKey('search.result')+sum;
         }
 
         if(sum<0){

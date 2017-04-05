@@ -111,7 +111,7 @@
   },
   "ag-grid": {
     "next": "下一页",
-    "last": "未尾页",
+    "last": "末尾页",
     "first": "首页",
     "previous": "上一页",
     "loading": "加载中...",
@@ -131,7 +131,7 @@
     "selectplayer":"选择玩家",
     "all":"全退",
     "player":"玩家：",
-    "balence":"余额：",
+    "balance":"余额：",
     "charge":"上分：",
     "uncharge":"下分：",
     "result":"结果："

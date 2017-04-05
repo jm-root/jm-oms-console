@@ -179,7 +179,7 @@ angular.module('app')
                 to: '-',
                 of: '/',
                 next: '下一页',
-                last: '未尾页',
+                last: '末尾页',
                 first: '首页',
                 previous: '上一页',
                 loadingOoo: '加载中...',

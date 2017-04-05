@@ -11,6 +11,7 @@ var gConfig = {
     development: {
         apiHost: "http://test.gzleidi.cn:81",
         sdkHost: "http://test.gzleidi.cn:82",
+        // apiHost: "http://192.168.1.10:19990",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
         robotUri: "test.gzleidi.cn:82/robot"
