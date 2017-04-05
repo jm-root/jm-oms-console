@@ -10,11 +10,6 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 
     $scope.dateOptions = global.dateRangeOptions;
 
-    if(!$scope.isSmartDevice){
-        $scope.hides = true;
-    }else if($scope.isSmartDevice){
-        $scope.hides = false;
-    }
 
     var bank = jm.sdk.bank;
 
@@ -499,11 +494,6 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         $interval.cancel(t);
     });
 
-    if(!$scope.isSmartDevice){
-        $scope.hides = true;
-    }else if($scope.isSmartDevice){
-        $scope.hides = false;
-    }
 
     var format_uid = function(params) {
         var obj = params.data.user || {};
@@ -681,12 +671,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
     var url = recordUri+'/gameovers';
-
-    if(!$scope.isSmartDevice){
-        $scope.hides = true;
-    }else if($scope.isSmartDevice){
-        $scope.hides = false;
-    }
+    
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.timePicker = true;
