@@ -2,7 +2,7 @@
     <h1 class="m-n font-thin h3"><i class="fa fa-chevron-left m-r-sm" ng-click="cancel()"></i>{{'search.selectplayer'|translate}}</h1>
 </div>
 
-<div class="wrapper-md col-lg-9">
+<div class="wrapper-md col-lg-offset-2 col-lg-9">
     <div class="row">
         <div class="col-sm-9">
             <div class="list-group">
@@ -15,12 +15,12 @@
                 </span>
                     </div>
                 </li>
-                <!--loading-->
-                <li class="list-group-item" ng-if="moreLoading">
+                <!--loading ng-if="moreLoading"-->
+                <li ng-if="moreLoading" style="position: absolute;z-index: 2;background: none;left: 0;right: 0;bottom: 0;top: 40%;margin:auto; list-style: none">
                     <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
                 </li>
                 <!--表格-->
-                <li class="list-group-item">
+                <li class="list-group-item"  style="z-index:1;">
                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -46,7 +46,7 @@
                         <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%" ng-click="right()"></i>
                     </div>
                 </li>
-                <!--保存-->
+                <!--取消-->
                 <li class="list-group-item text-right">
                     <button type="submit" class="btn btn-danger"
                             ng-click="cancel()">{{'common.cancel'|translate}}

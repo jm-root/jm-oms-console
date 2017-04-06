@@ -7,7 +7,6 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
     var sso = jm.sdk.sso;
     var page = 1;
     var urlget = agentUri+'/backCoinLogs';
-    // var urlget = statUri+'/players';
     var urlpost = agentUri+'/backcoin/confirm';
 
     $scope.left = function () {
@@ -83,7 +82,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
     $scope.search = {};
     var url = agentUri+'/backCoinLogs';
 
-    var format_status = function(params){
+    function status_render(params){
         var obj = params.data|| {};
         if(obj.status == 1){
             return '<span style="color: #ff0000">下分请求中</span>';
@@ -94,7 +93,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
         }else{
             return '<span>未下分</span>';
         }
-    }
+    };
 
     var columnDefs = [
         {headerName: "玩家ID", field: "user.uid", width: 180},
@@ -102,7 +101,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
         {headerName: "昵称", field: "user.nick", width: 120},
         {headerName: "当前金币数", field: "balance", width: 150},
         {headerName: "下分金币数", field: "amount", width: 150},
-        {headerName: "执行状态", field: "", width: 140,cellRenderer: format_status},
+        {headerName: "执行状态", field: "", width: 140,cellRenderer: status_render},
         {headerName: "玩家下分时间", field: "crtime", width: 180, valueGetter: $scope.angGridFormatDateS},
         {headerName: "下分操作人", field: "executor.account", width: 120},
         {headerName: "下分操作时间", field: "entime", width: 180, valueGetter: $scope.angGridFormatDateS},
