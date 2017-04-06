@@ -67,7 +67,8 @@
           },
           "transferTip":{
               "add": "xác nhận nạp cho tài khoản{{val}}",
-              "deduct": "xác nhận khấu trừ tài khoản{{val}}"
+              "deduct": "xác nhận khấu trừ tài khoản{{val}}",
+              "tip":"Hãy chọn người dùng"
           },
           "games":{
               "gameData": "Dữ liệu trò chơi",

@@ -67,7 +67,8 @@
           },
           "transferTip":{
               "add": "是否给账号【{{val}}】充",
-              "deduct": "是否扣除账号【{{val}}】"
+              "deduct": "是否扣除账号【{{val}}】",
+              "tip":"请选择玩家！"
           },
           "games":{
               "gameData": "游戏数据",

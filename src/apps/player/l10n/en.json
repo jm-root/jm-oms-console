@@ -67,7 +67,8 @@
       },
       "transferTip":{
         "add": "Whether to account【{{val}}】charge",
-        "deduct": "Whether deduction account【{{val}}】"
+        "deduct": "Whether deduction account【{{val}}】",
+        "tip":"Please select player"
       },
       "games":{
         "gameData": "Game Data",
