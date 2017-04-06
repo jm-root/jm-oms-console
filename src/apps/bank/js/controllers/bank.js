@@ -58,7 +58,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
     };
 
     var columnDefs = [
-        {headerName: "账户ID", field: "id", width: 200},
+        {headerName: "账户ID", field: "id", width: 100},
         {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
         {headerName: "T币余额", field: "tb", width: 120, valueGetter: format_tb},
         {headerName: "T币额度", field: "tb_a", width: 120, valueGetter: format_tb_a},
@@ -174,6 +174,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
                     } else {
                         $scope.accounts = result.rows;
                         $scope.defAccount = _.find($scope.accounts, { id: $scope.accounts[0].user.accountId });
+                        console.log($scope.defAccount);
                         $scope.bank.fromAccountId = $scope.defAccount.user.accountId;
                     }
                 });
@@ -340,6 +341,8 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
 
+
+
     var bank = jm.sdk.bank;
 
     var format_user = function(params) {
@@ -472,6 +475,17 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
 
 app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$timeout', function ($scope, $state, $http,global, $timeout) {
     $scope.bank = {};
+
+    var bankinfo = sessionStorage.getItem('selectedUser');
+    if(bankinfo){
+        bankinfo = JSON.parse(bankinfo);
+        $scope.bank.userId = bankinfo.id;
+        $scope.uid = bankinfo.uid;
+        $scope.nick = bankinfo.nick;
+        console.log($scope.bank.userId);
+        sessionStorage.removeItem('selectedUser');
+    }
+
     $scope.defAccount = {user:{},holds:{}};
     $scope.lock = '';
 
@@ -536,35 +550,7 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
         $scope.bank.allAmount = null;
         $scope.bank.amount = null;
     };
-    $scope.i = 1;
-    $scope.left = function () {
-        if($scope.i>1){
-            --$scope.i;
-        }
-    };
-    $scope.right = function () {
-        if($scope.i<$scope.pages){
-            ++$scope.i;
-        }
-    };
-    $scope.searchUser = function(keyword){
-        $http.get(ssoUri+'/users', {
-            params:{
-                token: sso.getToken(),
-                keyword: keyword
-            }
-        }).success(function(result){
-            var data = result;
-            if(data.err){
-                $scope.error(data.msg);
-            }else{
-                $scope.usersInfo = data;
-                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);;
-            }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
-        });
-    };
+
     $scope.selectUser = function($event){
         $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.i-1),[10*$scope.i])[$event.currentTarget.rowIndex-1];
         $scope.bank.userId = $scope.selectRow._id;
@@ -574,7 +560,12 @@ app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$time
     $scope.$watch('bank.userId', function () {
         if(!$scope.bank.userId){
             $scope.nick = null;
+        }else{
+            findAccounts();
         }
+    });
+    $scope.$watch('bank.ctCode', function () {
+        $scope.selectCT();
     });
 }]);
 

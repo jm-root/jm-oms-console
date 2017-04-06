@@ -6,26 +6,7 @@
     <form ng-show="$state.is('app.bank.transfer')" name="formValidate" class="form-horizontal form-validation">
         <div class="panel panel-default col-sm-9 col-md-6">
                 <div class="list-group" style="padding:0;">
-                    <li class="list-group-item" style="margin:0;">
-                        <div class="row" ng-if="isSmartDevice">
-                            <div class="col-xs-4">
-                                <span>币种</span>
-                            </div>
-                            <div class="col-xs-3 pull-right text-right">
-                                <span>金币</span>
-                            </div>
-                        </div>
-                        <div class="row" ng-if="!isSmartDevice">
-                            <div class="col-xs-4">
-                                <span>选择币种</span>
-                            </div>
-                            <div class="col-xs-8 text-right">
-                                <span class="p-r-lg v-middle"><input type="radio" name="ctcode" ng-model="bank.ctcode" value="jb"/>{{'bank.bank.transfer.ctOpts.opts2'|translate}}</span>
-                                <span class="p-r-lg v-middle"><input type="radio" name="ctcode" ng-model="bank.ctcode" value="dbj" />{{'bank.bank.transfer.ctOpts.opts3'|translate}}</span>
-                                <span class="v-middle"><input type="radio" name="ctcode" ng-model="bank.ctcode" value="tb" />{{'bank.bank.transfer.ctOpts.opts1'|translate}}</span>
-                            </div>
-                        </div>
-                    </li>
+
                     <li ui-sref="app.search.user" class="list-group-item" style="padding-right: 10px;">
                         <div class="row">
                             <div class="col-xs-4">
@@ -48,6 +29,39 @@
                             <div class="col-xs-2"></div>
                             <div class="col-xs-6 text-right pull-right" style="margin:0;padding:0;">
                                 <input type="number"  ng-class="{'p-r-lg':isSmartDevice}" style="width: 130px;border:none;text-align:right;" min="1" placeholder="{{'bank.bank.transfer.defaultAccount'|translate}}" ng-pattern="/^[0-9]*$/" ng-model="bank.toAccountId">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" style="margin:0;">
+                        <div class="row" ng-if="isSmartDevice" ng-init="bank.ctCode = 'jb'">
+                            <div class="col-xs-4">
+                                <span>币种</span>
+                            </div>
+                            <div class="col-xs-3 pull-right text-right">
+                                <span>金币</span>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="!isSmartDevice" style="height: 23px;">
+                            <div class="col-xs-4" style="padding-bottom:0">
+                                <span>选择币种</span>
+                            </div>
+                            <div class="radio text-right" style="padding-top:0;">
+                                <label class="i-checks i-checks-sm p-r-lg">
+                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="jb" />
+                                    <i></i>
+                                    {{'bank.bank.npreauth.ctOpts.opts2'|translate}}
+                                </label>
+                                <label class="i-checks i-checks-sm p-r-lg">
+                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="dbj" />
+                                    <i></i>
+                                    {{'bank.bank.npreauth.ctOpts.opts3'|translate}}
+                                </label>
+                                <label class="i-checks i-checks-sm p-r-lg">
+                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="tb" />
+                                    <i></i>
+                                    {{'bank.bank.npreauth.ctOpts.opts1'|translate}}
+                                </label>
                             </div>
                         </div>
                     </li>
