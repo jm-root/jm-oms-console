@@ -10,7 +10,7 @@
             </div>
         </form>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-sm headpadd" ng-if="!isSmartDevice">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>

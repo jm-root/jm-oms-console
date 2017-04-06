@@ -1,6 +1,9 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeout', function ($scope, $state, $http, global,$timeout) {
+
+    $scope.loading = true;
+
     var history = global.bankAccountHistory||(global.bankAccountHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -96,9 +99,13 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global', functi
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
-                    var rowsThisPage = data.rows;
-                    var lastRow = data.total;
-                    params.successCallback(rowsThisPage, lastRow);
+                    // $timeout(function () {
+                        $scope.loading = false;
+                        var rowsThisPage = data.rows;
+                        var lastRow = data.total;
+                        params.successCallback(rowsThisPage, lastRow);
+                    // },100);
+
                 }
             });
         }

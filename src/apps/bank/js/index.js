@@ -15,7 +15,7 @@
                     //银行管理
                         .state('app.bank', {
                             url: '/bank',
-                            template: '<div ui-view class="fade-in-down"></div>',
+                            template: '<div ui-view class="fade-in-down" style="position:relative'+'"></div>',
                             controller:'BankCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/bank.js',path + 'js/controllers/index.js'])
                         })
