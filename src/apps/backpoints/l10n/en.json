@@ -1,136 +1,29 @@
 {
-  "bank": {
-    "account": {
-      "dealquery": {
-      },
-      "paylist": {
-        "title": "Payment List",
-        "search": "Search  Order Number/User ID",
-        "currencyType": "Currency Type",
-        "cny": "RMB",
-        "tb": "TB",
-        "jb": "Gold",
-        "dbj": "Ticket",
-        "opts": "Payment Status",
-        "opt0": "Unpaid",
-        "opt1": "Paid",
-        "header":{
-          "_id":"_id",
-          "code":"Order number",
-          "user":"Payment user",
-          "channel":"Channel",
-          "title":"Title",
-          "content":"Content",
-          "currency":"Currency",
-          "amount":"Amount",
-          "status":"Status",
-          "note":"Note",
-          "crtime":"Create time"
-        }
-      },
+  "backpoints":{
+    "list":{
+      "title":"下分处理",
+      "label1":"玩家ID",
+      "label2":"账号",
+      "label3":"下分金币数",
+      "label4":"请求时间",
+      "label5":"Confirm back points"
+    },
+    "log":{
+      "title":"Back points log",
+      "label1":"下分请求中",
+      "label2":"已撤销并未下分",
+      "label3":"已退款并下分",
+      "label4":"未下分",
       "header":{
-        "id": "Account ID",
-        "user": "User name",
-        "tb": "Remainder TB",
-        "tb_a": "Total TB",
-        "jb": "Remainder gold",
-        "jb_a": "Total gold",
-        "dbj": "Remainder ticket",
-        "dbj_a": "Total ticket",
-        "status": "Status",
-        "createdAt": "Create time"
-      }
-    },
-    "bank": {
-      "account": {
-        "title": "Account list",
-        "statusOpts": {
-          "opts1": "Frozen",
-          "opts2": "Normal",
-          "opts3": "Logout"
-        }
-      },
-      "deal": {
-        "title": "Deal flow",
-        "income": "Income",
-        "expenditure": "Expenditure",
-        "header": {
-          "userId": "User ID",
-          "user": "User name",
-          "ctName": "Currency",
-          "flag": "Flag",
-          "amount": "Amount",
-          "createdAt": "Create time"
-        }
-      },
-      "exchange": {
-      },
-      "npreauth": {
-        "title": "Cancel authorization",
-        "label1": "Target user",
-        "label2": "Cancel amount",
-        "label3": "Choose a currency",
-        "label4": "Is all",
-        "label5": "Cancel amount",
-        "cancelAuthorization": "Cancel authorization",
-        "ctOpts": {
-          "opts": "Choose currency",
-          "opts1": "TB",
-          "opts2": "Gold",
-          "opts3": "Ticket"
-        }
-      },
-      "overdraw": {
-        "title":"Set overdraft limit",
-        "label1":"Target User",
-        "label2":"Choose a currency",
-        "label3":"Quota",
-        "label4":"Set Up",
-        "odOpts": {
-          "opts": "Choose currency",
-          "opts1": "TB",
-          "opts2": "Gold",
-          "opts3": "Ticket"
-        }
-      },
-      "preauth": {
-        "title": "Preauthorization list",
-        "cancelSuccess": "Cancel success",
-        "cancelAuthorization": "Cancel authorization",
-        "header": {
-          "user": "Authorized person",
-          "control": "Operator",
-          "ct": "Currency",
-          "amount": "Amount",
-          "createdAt": "Create time"
-        }
-      },
-      "transfer": {
-        "title": "Transfer",
-        "label1": "Choose currency",
-        "label2": "Into user",
-        "label3": "Into account",
-        "label4": "Roll account",
-        "label5": "Transfer sum",
-        "defaultAccount": "Default account",
-        "ctOpts": {
-          "opts": "Choose currency",
-          "opts1": "TB",
-          "opts2": "Gold",
-          "opts3": "Ticket"
-        }
-      }
-    },
-    "currency": {
-      "rate": {
-        "currency":"Currency",
-        "coding":"Coding",
-        "name":"Name",
-        "noData":"No Data",
-        "exchangeRate":"exchangeRate",
-        "moneyExchange":"Money Exchange",
-        "proportion":"Proportion",
-        "saveAdd":"Save&Add"
+        "uid":"Player ID",
+        "account":"Account",
+        "nick":"Nick",
+        "balance":"Balance",
+        "amount":"Amount",
+        "status":"Status",
+        "crtime":"玩家下分时间",
+        "exaccount":"下分操作人",
+        "entime":"下分操作时间"
       }
     }
   }

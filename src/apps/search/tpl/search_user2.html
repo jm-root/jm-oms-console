@@ -1,38 +1,59 @@
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="{{'common.userId'|translate}}" ng-model="bank.userId" ng-required="true" ng-click="searchUser(bank.userId)">
-    <div class="input-group-btn dropdown" drop-down-table>
-        <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div><div type="button" class="btn btn-default">{{'common.search'|translate}} <span class="caret"></span></div>
-        <ul class="dropdown-menu pull-right">
-            <!--<div class="input-group">-->
-                <!--<input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">-->
-                <!--<span class="input-group-btn">-->
-                    <!--<span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>-->
-                <!--</span>-->
-            <!--</div>-->
-            <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
-                <thead>
-                <tr>
-                    <th>{{ 'common.userId' | translate }}</th>
-                    <th>{{ 'common.userAccount' | translate }}</th>
-                    <th>{{ 'common.userName' | translate }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single">
-                    <td>{{row.uid}}</td>
-                    <td>{{row.account||row.mobile}}</td>
-                    <td>{{row.nick}}</td>
-                </tr>
-                </tbody>
-            </table>
-            <div ng-if="total && pages>1" style="text-align: center;">
-                <i class="glyphicon glyphicon-chevron-left color" style="width: 20%" ng-click="left()"></i>
-                <span>
-                    <label>{{page}}</label>/
-                    <label>{{pages}}</label>
-                </span>
-                <i class="glyphicon glyphicon-chevron-right color" style="width: 20%" ng-click="right()"></i>
+<div class="modal fade" id="searchUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{'search.selectplayer'|translate}}</h4>
             </div>
-        </ul>
-    </div><!-- /btn-group -->
-</div>
+            <div class="modal-body ">
+                <div class="list-group">
+                    <!--搜索-->
+                    <li class="list-group-item">
+                        <div class="input-group p-b-md">
+                            <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="publickey">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-sm btn-rounded" ng-click="search(1)"><i class="fa fa-search"></i></span>
+                            </span>
+                        </div>
+                    </li>
+                    <!--loading ng-if="moreLoading"-->
+                    <li ng-if="moreLoading" style="position: absolute;z-index: 2;background: none;left: 0;right: 0;bottom: 0;top: 40%;margin:auto; list-style: none">
+                        <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
+                    </li>
+                    <!--表格-->
+                    <li class="list-group-item" style="z-index:1;">
+                        <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>{{ 'common.userId' | translate }}</th>
+                                <th>{{ 'common.userAccount' | translate }}</th>
+                                <th>{{ 'common.userName' | translate }}</th>
+                            </tr>
+                            </thead>
+                            <tbody class="">
+                            <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single">
+                                <td>{{row.uid}}</td>
+                                <td>{{row.account||row.mobile}}</td>
+                                <td>{{row.nick}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li ng-if="total && pages>1" class="list-group-item">
+                        <div style="text-align: center;">
+                            <i class="glyphicon glyphicon-chevron-left color hand" style="width: 20%" ng-click="left()"></i>
+                            <label>{{page}}</label>/
+                            <label>{{pages}}</label>
+                            <i class="glyphicon glyphicon-chevron-right color hand" style="width: 20%" ng-click="right()"></i>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger" data-dismiss="modal">{{'common.cancel'|translate}}</button>
+                <button type="button" class="btn btn-primary">{{'common.save'|translate}}</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
