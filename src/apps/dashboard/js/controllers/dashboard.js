@@ -62,6 +62,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             token: sso.getToken()
         }
     }).success(function (result) {
+        console.log(result);
         if(result._id){
             $scope.agent = result || {};
             $scope.agent.ratio||($scope.agent.ratio=0);
@@ -133,7 +134,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             $http.get(statUri+'/multiple', {
                 params:{
                     token: sso.getToken(),
-                    fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1,settled:1}
+                    fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1}
                 }
             }).success(function(result){
                 console.log(result);
@@ -151,29 +152,6 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             }).error(function(msg, code){
                 $scope.errorTips(code);
             });
-            // $http.get(statUri+'/multiple', {
-            //     params:{
-            //         token: sso.getToken(),
-            //         fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,
-            //             recharge_total:1,recharge_yesterday:1,recharge_today:1,recharge_order_total:1,recharge_order_valid:1,recharge_order_invalid:1}
-            //     }
-            // }).success(function(result){
-            //     console.log(result);
-            //     var obj = result;
-            //     if(obj.err){
-            //         $scope.error(obj.msg);
-            //     }else{
-            //         $scope.stat = obj||{};
-            //         $scope.stat.recharge_total = reg($scope.stat.recharge_total*0.01||0);
-            //         $scope.stat.recharge_yesterday = reg($scope.stat.recharge_yesterday*0.01||0);
-            //         $scope.stat.recharge_today = reg($scope.stat.recharge_today*0.01||0);
-            //         $scope.stat.recharge_order_total = reg($scope.stat.recharge_order_total||0);
-            //         $scope.stat.recharge_order_valid = reg($scope.stat.recharge_order_valid||0);
-            //         $scope.stat.recharge_order_invalid = reg($scope.stat.recharge_order_invalid||0);
-            //     }
-            // }).error(function(msg, code){
-            //     $scope.errorTips(code);
-            // });
         }
     };
 
