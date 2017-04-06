@@ -32,7 +32,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         startDate: moment().subtract(7, 'days'),
         endDate: moment()
     };
-
+    $scope.agent = {};
     $scope.stat = {};
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
@@ -51,6 +51,27 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         } else {
             result = result || {};
             $scope.android_Path = staticHost + result.androidPath
+        }
+    }).error(function (msg, code) {
+        $scope.errorTips(code);
+    });
+
+    $scope.agent = {ratio:0, settled:0,agent:{ratio:0}};
+    $http.get(agentUri + '/info', {
+        params: {
+            token: sso.getToken()
+        }
+    }).success(function (result) {
+        if(result._id){
+            $scope.agent = result || {};
+            $scope.agent.ratio||($scope.agent.ratio=0);
+            $scope.agent.settled||($scope.agent.settled=0);
+            if($scope.agent.agent){
+                $scope.agent.agent.ratio||($scope.agent.agent.ratio=0);
+            }else{
+                $scope.agent.agent={};
+                $scope.agent.agent.ratio||($scope.agent.agent.ratio=1);
+            }
         }
     }).error(function (msg, code) {
         $scope.errorTips(code);
@@ -82,29 +103,78 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
         });
     });
 
+    $scope.divided = {};
     var reqStat = function(){
-        $http.get(statUri+'/multiple', {
-            params:{
-                token: sso.getToken(),
-                fields:{user_total:1,user_yesterday:1,user_today:1,user_guest:1,user_mobile:1,user_wechat:1,user_qq:1,
-                    recharge_total:1,recharge_yesterday:1,recharge_today:1,recharge_order_total:1,recharge_order_valid:1,recharge_order_invalid:1}
-            }
-        }).success(function(result){
-            var obj = result;
-            if(obj.err){
-                $scope.error(obj.msg);
-            }else{
-                $scope.stat = obj||{};
-                $scope.stat.recharge_total = reg($scope.stat.recharge_total*0.01||0);
-                $scope.stat.recharge_yesterday = reg($scope.stat.recharge_yesterday*0.01||0);
-                $scope.stat.recharge_today = reg($scope.stat.recharge_today*0.01||0);
-                $scope.stat.recharge_order_total = reg($scope.stat.recharge_order_total||0);
-                $scope.stat.recharge_order_valid = reg($scope.stat.recharge_order_valid||0);
-                $scope.stat.recharge_order_invalid = reg($scope.stat.recharge_order_invalid||0);
-            }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
-        });
+        if(omsPlatform === pfm_oms){
+            $http.get(statUri+'/multiple', {
+                params:{
+                    token: sso.getToken(),
+                    fields:{user_total:1,user_yesterday:1,user_today:1,user_guest:1,user_mobile:1,user_wechat:1,user_qq:1,
+                        recharge_total:1,recharge_yesterday:1,recharge_today:1,recharge_order_total:1,recharge_order_valid:1,recharge_order_invalid:1}
+                }
+            }).success(function(result){
+                console.log(result);
+                var obj = result;
+                if(obj.err){
+                    $scope.error(obj.msg);
+                }else{
+                    $scope.stat = obj||{};
+                    $scope.stat.recharge_total = reg($scope.stat.recharge_total*0.01||0);
+                    $scope.stat.recharge_yesterday = reg($scope.stat.recharge_yesterday*0.01||0);
+                    $scope.stat.recharge_today = reg($scope.stat.recharge_today*0.01||0);
+                    $scope.stat.recharge_order_total = reg($scope.stat.recharge_order_total||0);
+                    $scope.stat.recharge_order_valid = reg($scope.stat.recharge_order_valid||0);
+                    $scope.stat.recharge_order_invalid = reg($scope.stat.recharge_order_invalid||0);
+                }
+            }).error(function(msg, code){
+                $scope.errorTips(code);
+            });
+        }else if(omsPlatform === pfm_cy){
+            $http.get(statUri+'/multiple', {
+                params:{
+                    token: sso.getToken(),
+                    fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1,settled:1}
+                }
+            }).success(function(result){
+                console.log(result);
+                var obj = result;
+                if(obj.err){
+                    $scope.error(obj.msg);
+                }else{
+                    $scope.stat = obj||{};
+                    $scope.divided.gain_jb = reg($scope.stat.gain_total.gain_jb || 0);
+                    $scope.divided.notDivided = reg(Math.floor((($scope.divided.gain_jb-$scope.agent.settled)*$scope.agent.agent.ratio)||0));
+                    $scope.divided.amount = reg(Math.floor((($scope.divided.gain_jb-$scope.agent.settled)*$scope.agent.agent.ratio*$scope.agent.ratio)||0));
+
+                    $scope.agent.settled = reg($scope.agent.settled);
+                }
+            }).error(function(msg, code){
+                $scope.errorTips(code);
+            });
+            // $http.get(statUri+'/multiple', {
+            //     params:{
+            //         token: sso.getToken(),
+            //         fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,
+            //             recharge_total:1,recharge_yesterday:1,recharge_today:1,recharge_order_total:1,recharge_order_valid:1,recharge_order_invalid:1}
+            //     }
+            // }).success(function(result){
+            //     console.log(result);
+            //     var obj = result;
+            //     if(obj.err){
+            //         $scope.error(obj.msg);
+            //     }else{
+            //         $scope.stat = obj||{};
+            //         $scope.stat.recharge_total = reg($scope.stat.recharge_total*0.01||0);
+            //         $scope.stat.recharge_yesterday = reg($scope.stat.recharge_yesterday*0.01||0);
+            //         $scope.stat.recharge_today = reg($scope.stat.recharge_today*0.01||0);
+            //         $scope.stat.recharge_order_total = reg($scope.stat.recharge_order_total||0);
+            //         $scope.stat.recharge_order_valid = reg($scope.stat.recharge_order_valid||0);
+            //         $scope.stat.recharge_order_invalid = reg($scope.stat.recharge_order_invalid||0);
+            //     }
+            // }).error(function(msg, code){
+            //     $scope.errorTips(code);
+            // });
+        }
     };
 
     reqStat();

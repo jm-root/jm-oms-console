@@ -1,104 +1,101 @@
-<div>
+<div class="bg-light lter b-b wrapper">
+    <h1 class="m-n font-thin h3">{{'bank.bank.npreauth.title'|translate}}</h1>
+</div>
+
+<div class="wrapper-md">
     <form name="formValidate" class="form-horizontal form-validation">
-        <div class="panel panel-default">
-            <div class="panel-heading titlefixed">
-                <strong>{{'bank.bank.npreauth.title'|translate}}</strong>
-            </div>
-            <div class="panel-body paddingtop">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'bank.bank.npreauth.label1'|translate}}</label>
-                    <div class="col-sm-9">
-                        <div class="input-group" style="max-width: 360px;">
-                            <input type="text" class="form-control" placeholder="{{'common.userId'|translate}}" ng-model="bank.userId" ng-required="true">
-                            <div class="input-group-btn dropdown" drop-down-table>
-                                <div type="button" class="btn btn-default" ng-bind="nick||'???'"></div><div type="button" class="btn btn-default" ng-click="searchUser(bank.userId)">{{'common.search'|translate}} <span class="caret"></span></div>
-                                <ul class="dropdown-menu pull-right">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">
-                                        <span class="input-group-btn">
-                                              <span class="btn btn-default btn-sm btn-rounded" ng-click="searchUser(keyword)"><i class="fa fa-search"></i></span>
-                                            </span>
-                                    </div>
-                                    <table st-table="rowCollectionBasic" class="w-xxl table table-bordered table-striped" style="margin: 0 0 5px 0">
-                                        <thead>
-                                        <tr>
-                                            <th>{{ 'common.userId' | translate }}</th>
-                                            <th>{{ 'common.userAccount' | translate }}</th>
-                                            <th>{{ 'common.userName' | translate }}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="row in usersInfo.rows.slice(10*(i-1),[10*i])" ng-click="selectUser($event)" st-select-mode="single">
-                                            <td>{{row.uid}}</td>
-                                            <td>{{row.account||row.mobile}}</td>
-                                            <td>{{row.nick}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <div ng-if="usersInfo.rows.length > 4" style="text-align: center;">
-                                        <i class="glyphicon glyphicon-chevron-left color" style="width: 20%" ng-click="left()"></i>
-                                        <span>
-                                            <label>{{i}}</label>/
-                                            <label>{{pages}}</label>
-                                        </span>
-                                        <i class="glyphicon glyphicon-chevron-right color" style="width: 20%" ng-click="right()"></i>
-                                    </div>
-                                </ul>
-                            </div><!-- /btn-group -->
+        <div class="panel panel-default col-sm-9 col-md-7">
+            <div class="list-group" style="padding:0;">
+
+                <li ui-sref="app.search.user" class="list-group-item" style="padding-right: 10px;">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {{'bank.bank.npreauth.label1'|translate}}
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <span ng-if="uid"><span ng-if="nick">{{nick}}</span>(ID: {{uid}})</span>
+                        </div>
+                        <div class="col-xs-2 text-right" style="padding-right:20px;">
+                            <i class="fa fa-chevron-right"></i>
                         </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                </li>
 
-                <div class="form-group" ng-if="bank.userId">
-                    <label class="col-sm-2 control-label">{{'bank.bank.npreauth.label2'|translate}}</label>
-                    <div class="col-lg-9 w-auto">
-                        <p class="form-control-static">{{lock||'无'}}</p>
+                <li class="list-group-item" ng-if="bank.userId">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <span>{{'bank.bank.npreauth.label2'|translate}}</span>
+                        </div>
+                        <div class="col-xs-6 pull-right text-right">
+                            <span>{{lock||'无'}}</span>
+                        </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                </li>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'bank.bank.npreauth.label3'|translate}}</label>
-                    <div class="col-sm-9">
-                        <select class="form-control w-sm" ng-model="bank.ctCode" ng-change="selectCT()" ng-required="true">
-                            <option value="">{{'bank.bank.npreauth.ctOpts.opts'|translate}}</option>
-                            <option value="tb">{{'bank.bank.npreauth.ctOpts.opts1'|translate}}</option>
-                            <option value="jb">{{'bank.bank.npreauth.ctOpts.opts2'|translate}}</option>
-                            <option value="dbj">{{'bank.bank.npreauth.ctOpts.opts3'|translate}}</option>
-                        </select>
+
+                <li class="list-group-item" style="margin:0;">
+                    <div class="row" ng-if="isSmartDevice" ng-init="bank.ctCode = 'jb'">
+                        <div class="col-xs-4">
+                            <span>币种</span>
+                        </div>
+                        <div class="col-xs-3 pull-right text-right">
+                            <span>{{'bank.bank.npreauth.ctOpts.opts2'|translate}}</span>
+                        </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'bank.bank.npreauth.label4'|translate}}</label>
-
-                    <div class="col-sm-9">
-                        <label class="i-checks checkbox-inline">
-                            <input type="checkbox" ng-model="bank.allAmount" ng-true-value="1" ng-false-value="0" ng-click="setAll()"><i></i>
-                        </label>
+                    <div class="row" ng-if="!isSmartDevice" style="height: 23px;">
+                        <div class="col-xs-4">
+                            <span>{{'bank.bank.npreauth.label3'|translate}}</span>
+                        </div>
+                        <div class="radio text-right" style="padding-top:0;">
+                            <label class="i-checks i-checks-sm p-r-lg">
+                                <input type="radio" name="ctcode" ng-model="bank.ctCode" value="jb" />
+                                <i></i>
+                                {{'bank.bank.npreauth.ctOpts.opts2'|translate}}
+                            </label>
+                            <label class="i-checks i-checks-sm p-r-lg">
+                                <input type="radio" name="ctcode" ng-model="bank.ctCode" value="dbj" />
+                                <i></i>
+                                {{'bank.bank.npreauth.ctOpts.opts3'|translate}}
+                            </label>
+                            <label class="i-checks i-checks-sm p-r-lg">
+                                <input type="radio" name="ctcode" ng-model="bank.ctCode" value="tb" />
+                                <i></i>
+                                {{'bank.bank.npreauth.ctOpts.opts1'|translate}}
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                </li>
 
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{'bank.bank.npreauth.label5'|translate}}</label>
-
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control input-sm pull-left" style="width: 150px;" ng-model="bank.amount" min="1" placeholder="{{'common.amount'|translate}}" ng-pattern="/^[0-9]*$/" ng-required="true">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4" style="vertical-align: middle">
+                            {{'bank.bank.npreauth.label4'|translate}}
+                        </div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-6 text-right pull-right" style="margin:0;">
+                            <!--<input type="checkbox" />-->
+                            <label class="i-checks" style="margin:0;padding-left: 0;">
+                                <input type="checkbox"  ng-model="bank.allAmount" ng-true-value="1" ng-false-value="0" ng-click="setAll()"><i></i>
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {{'bank.bank.npreauth.label5'|translate}}
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <input type="number" style="width: 130px;border:none;text-align:right;" ng-model="bank.amount" min="1" placeholder="{{'common.amount'|translate}}" ng-pattern="/^[0-9]*$/" ng-required="true">
+                        </div>
+                    </div>
+                </li>
 
             </div>
-            <footer class="panel-footer text-right bg-light lter">
-                <div style="max-width: 700px">
-                    <button type="submit" class="btn btn-success" ng-disabled="formValidate.$invalid" ng-click="npreauth()">{{'bank.bank.npreauth.cancelAuthorization'|translate}}</button>
-                </div>
+            <footer class="panel-footer text-right lter">
+                <button type="submit" class="btn btn-success" ng-disabled="formValidate.$invalid" ng-click="npreauth()">{{'bank.bank.npreauth.cancelAuthorization'|translate}}</button>
             </footer>
         </div>
     </form>
-
 </div>
