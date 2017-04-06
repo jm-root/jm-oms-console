@@ -21,7 +21,7 @@ only screen and (max-width: 760px),
 
     tr {
         border: 1px solid #ccc;
-        margin-bottom: 5px;
+        margin-bottom:3px;
     }
 
     td:before {

@@ -9,9 +9,9 @@ var gConfig = {
         robotUri: "localhost:20760"
     },
     development: {
-        apiHost: "http://test.gzleidi.cn:81",
+        // apiHost: "http://test.gzleidi.cn:81",
+        apiHost: "http://192.168.1.10:19990",
         sdkHost: "http://test.gzleidi.cn:82",
-        // apiHost: "http://192.168.1.10:19990",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
         robotUri: "test.gzleidi.cn:82/robot"
