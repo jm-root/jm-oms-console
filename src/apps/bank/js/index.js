@@ -23,7 +23,8 @@
                         .state('app.bank.currencyrate', {
                             url: '/currencyrate',
                             templateUrl: path  + 'tpl/currency.rate.html',
-                            controller: 'CurrencyCtrl'
+                            controller: 'CurrencyCtrl',
+                            resolve:lazyLoadProvider.load([path + 'js/controllers/currency.js'])
                         })
                         .state('app.bank.pay', {
                             url: '/pay',
@@ -33,7 +34,7 @@
                             url: '/list',
                             templateUrl: path + 'tpl/account.pay.list.html',
                             controller: 'AccountPayListCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker',path+'js/controllers/paylist.js'])
                         })
 
                         .state('app.bank.account', {
@@ -52,7 +53,7 @@
                             url: '/transfer',
                             templateUrl: path  + 'tpl/bank.transfer1.html',
                             controller: 'BankTransferCtrl',
-                            resolve: lazyLoadProvider.load([])
+                            resolve: lazyLoadProvider.load([path+'js/controllers/transfer.js'])
                         })
                         .state('app.bank.transfer.searchUser', {
                             url: '/searchUser',
