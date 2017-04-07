@@ -15,22 +15,21 @@
         </select>
     </div>
 </div>
-<div>
+<div >
     <div class="panel panel-default">
         <div class="line b-b" style="margin: 0"></div>
         <div class="panel-body">
             <div ng-style="{height:app.navHeight-165+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
         </div>
     </div>
-
-    <!--loading-->
-    <div ng-if="loading" style="width:50px;height:50px;margin:auto; position:absolute;top:0;left:0;bottom:0;right:0;">
-        <img width="50" height="50" src="./apps/common/img/loading.gif"/>
-    </div>
-    <div ng-if="loading" style="position:absolute;width:100%;height:100%;top:0;left:0;background:black;opacity:0.2;z-index: 9999;">
-
-    </div>
 </div>
+
+
+<!--loading-->
+<div ng-if="loading" style="width:50px;height:50px;margin:auto; position:absolute;top:0;left:0;bottom:0;right:0;">
+    <img width="50" height="50" src="./apps/common/img/loading.gif"/>
+</div>
+<div ng-if="loading" style="position:absolute;width:100%;height:100%;top:0;left:0;background:black;opacity:0.2;z-index: 9999;"></div>
 
 
 

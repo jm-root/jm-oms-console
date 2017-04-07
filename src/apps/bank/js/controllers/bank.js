@@ -1,153 +1,153 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeout', function ($scope, $state, $http, global,$timeout) {
-
-    $scope.loading = true;
-
-    var history = global.bankAccountHistory||(global.bankAccountHistory={});
-    $scope.pageSize = history.pageSize||$scope.defaultRows;
-    $scope.search = history.search||'';
-
-    var bank = jm.sdk.bank;
-
-    var format_user = function(params) {
-        var user = params.data.user||{};
-        return user.name || user.mobile || user.email || user.userId || '';
-    };
-
-    var format_tb = function(params) {
-        var holds = params.data.holds||{};
-        holds.tb = holds.tb || {};
-        return holds.tb.amount || 0;
-    };
-
-    var format_tb_a = function(params) {
-        var holds = params.data.holds||{};
-        holds.tb = holds.tb || {};
-        return holds.tb.overdraw || 0;
-    };
-
-    var format_jb = function(params) {
-        var holds = params.data.holds||{};
-        holds.jb = holds.jb || {};
-        return holds.jb.amount || 0;
-    };
-
-    var format_jb_a = function(params) {
-        var holds = params.data.holds||{};
-        holds.jb = holds.jb || {};
-        return holds.jb.overdraw || 0;
-    };
-
-    var format_dbj = function(params) {
-        var holds = params.data.holds||{};
-        holds.dbj = holds.dbj || {};
-        return holds.dbj.amount || 0;
-    };
-
-    var format_dbj_a = function(params) {
-        var holds = params.data.holds||{};
-        holds.dbj = holds.dbj || {};
-        return holds.dbj.overdraw || 0;
-    };
-
-    var format_status = function(params) {
-        var status = params.data.status;
-        var info = '';
-        if(status==0) info = '冻结';
-        if(status==1) info = '正常';
-        if(status==2) info = '注销';
-        return info || '';
-    };
-
-    var columnDefs = [
-        {headerName: "账户ID", field: "id", width: 100},
-        {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
-        {headerName: "T币余额", field: "tb", width: 120, valueGetter: format_tb},
-        {headerName: "T币额度", field: "tb_a", width: 120, valueGetter: format_tb_a},
-        {headerName: "金币余额", field: "jb", width: 120, valueGetter: format_jb},
-        {headerName: "金币额度", field: "jb_a", width: 120, valueGetter: format_jb_a},
-        {headerName: "夺宝卷余额", field: "dbj", width: 120, valueGetter: format_dbj},
-        {headerName: "夺宝卷额度", field: "dbj_a", width: 120, valueGetter: format_dbj_a},
-        {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
-        {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
-    ];
-    global.agGridTranslateSync($scope,columnDefs,[
-        'bank.account.header.id',
-        'bank.account.header.user',
-        'bank.account.header.tb',
-        'bank.account.header.tb_a',
-        'bank.account.header.jb',
-        'bank.account.header.jb_a',
-        'bank.account.header.dbj',
-        'bank.account.header.dbj_a',
-        'bank.account.header.status',
-        'bank.account.header.createdAt'
-    ]);
-    var dataSource = {
-        getRows: function (params) {
-            global.agGridOverlay();
-
-            var page = params.startRow / $scope.pageSize + 1;
-            bank.accounts({
-                page: page,
-                rows: $scope.pageSize,
-                search: $scope.search
-            },function(err,result){
-                var data = result;
-                console.info(result);
-                if (data.err) {
-                    $scope.error(data.msg);
-                } else {
-                    // $timeout(function () {
-                        $scope.loading = false;
-                        var rowsThisPage = data.rows;
-                        var lastRow = data.total;
-                        params.successCallback(rowsThisPage, lastRow);
-                    // },100);
-
-                }
-            });
-        }
-    };
-
-    $scope.gridOptions = {
-        paginationPageSize: Number($scope.pageSize),
-        rowModelType:'pagination',
-        enableSorting: true,
-        enableFilter: true,
-        enableColResize: true,
-        angularCompileRows: true,
-        rowSelection: 'multiple',
-        rowHeight: 30,
-        columnDefs: columnDefs,
-        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
-        onGridReady: function(event) {
-            // event.api.sizeColumnsToFit();
-        },
-        onCellDoubleClicked: function(cell){
-        },
-        localeText: global.agGrid.localeText,
-        headerCellRenderer: global.agGridHeaderCellRendererFunc,
-        onRowDataChanged: function (cell) {
-            global.agGridOverlay();
-        },
-        datasource: dataSource
-    };
-
-    $scope.onPageSizeChanged = function() {
-        $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
-        $scope.gridOptions.api.setDatasource(dataSource);
-    };
-
-    $scope.$watch('pageSize', function () {
-        history.pageSize = $scope.pageSize;
-    });
-
-    $scope.$watch('search', function () {
-        history.search = $scope.search;
-    });
-}]);
+// app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeout', function ($scope, $state, $http, global,$timeout) {
+//
+//     // $scope.loading = true;
+//
+//     var history = global.bankAccountHistory||(global.bankAccountHistory={});
+//     $scope.pageSize = history.pageSize||$scope.defaultRows;
+//     $scope.search = history.search||'';
+//
+//     var bank = jm.sdk.bank;
+//
+//     var format_user = function(params) {
+//         var user = params.data.user||{};
+//         return user.name || user.mobile || user.email || user.userId || '';
+//     };
+//
+//     var format_tb = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.tb = holds.tb || {};
+//         return holds.tb.amount || 0;
+//     };
+//
+//     var format_tb_a = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.tb = holds.tb || {};
+//         return holds.tb.overdraw || 0;
+//     };
+//
+//     var format_jb = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.jb = holds.jb || {};
+//         return holds.jb.amount || 0;
+//     };
+//
+//     var format_jb_a = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.jb = holds.jb || {};
+//         return holds.jb.overdraw || 0;
+//     };
+//
+//     var format_dbj = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.dbj = holds.dbj || {};
+//         return holds.dbj.amount || 0;
+//     };
+//
+//     var format_dbj_a = function(params) {
+//         var holds = params.data.holds||{};
+//         holds.dbj = holds.dbj || {};
+//         return holds.dbj.overdraw || 0;
+//     };
+//
+//     var format_status = function(params) {
+//         var status = params.data.status;
+//         var info = '';
+//         if(status==0) info = '冻结';
+//         if(status==1) info = '正常';
+//         if(status==2) info = '注销';
+//         return info || '';
+//     };
+//
+//     var columnDefs = [
+//         {headerName: "账户ID", field: "id", width: 100},
+//         {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+//         {headerName: "T币余额", field: "tb", width: 120, valueGetter: format_tb},
+//         {headerName: "T币额度", field: "tb_a", width: 120, valueGetter: format_tb_a},
+//         {headerName: "金币余额", field: "jb", width: 120, valueGetter: format_jb},
+//         {headerName: "金币额度", field: "jb_a", width: 120, valueGetter: format_jb_a},
+//         {headerName: "夺宝卷余额", field: "dbj", width: 120, valueGetter: format_dbj},
+//         {headerName: "夺宝卷额度", field: "dbj_a", width: 120, valueGetter: format_dbj_a},
+//         {headerName: "状态", field: "status", width: 100, valueGetter: format_status},
+//         {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
+//     ];
+//     global.agGridTranslateSync($scope,columnDefs,[
+//         'bank.account.header.id',
+//         'bank.account.header.user',
+//         'bank.account.header.tb',
+//         'bank.account.header.tb_a',
+//         'bank.account.header.jb',
+//         'bank.account.header.jb_a',
+//         'bank.account.header.dbj',
+//         'bank.account.header.dbj_a',
+//         'bank.account.header.status',
+//         'bank.account.header.createdAt'
+//     ]);
+//     var dataSource = {
+//         getRows: function (params) {
+//             global.agGridOverlay();
+//
+//             var page = params.startRow / $scope.pageSize + 1;
+//             bank.accounts({
+//                 page: page,
+//                 rows: $scope.pageSize,
+//                 search: $scope.search
+//             },function(err,result){
+//                 var data = result;
+//                 console.info(result);
+//                 if (data.err) {
+//                     $scope.error(data.msg);
+//                 } else {
+//                     // $timeout(function () {
+//                         $scope.loading = false;
+//                         var rowsThisPage = data.rows;
+//                         var lastRow = data.total;
+//                         params.successCallback(rowsThisPage, lastRow);
+//                     // },100);
+//
+//                 }
+//             });
+//         }
+//     };
+//
+//     $scope.gridOptions = {
+//         paginationPageSize: Number($scope.pageSize),
+//         rowModelType:'pagination',
+//         enableSorting: true,
+//         enableFilter: true,
+//         enableColResize: true,
+//         angularCompileRows: true,
+//         rowSelection: 'multiple',
+//         rowHeight: 30,
+//         columnDefs: columnDefs,
+//         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
+//         onGridReady: function(event) {
+//             // event.api.sizeColumnsToFit();
+//         },
+//         onCellDoubleClicked: function(cell){
+//         },
+//         localeText: global.agGrid.localeText,
+//         headerCellRenderer: global.agGridHeaderCellRendererFunc,
+//         onRowDataChanged: function (cell) {
+//             global.agGridOverlay();
+//         },
+//         datasource: dataSource
+//     };
+//
+//     $scope.onPageSizeChanged = function() {
+//         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
+//         $scope.gridOptions.api.setDatasource(dataSource);
+//     };
+//
+//     $scope.$watch('pageSize', function () {
+//         history.pageSize = $scope.pageSize;
+//     });
+//
+//     $scope.$watch('search', function () {
+//         history.search = $scope.search;
+//     });
+// }]);
 
 app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$timeout', function ($scope, $state, $http,  global, $timeout) {
 
@@ -224,261 +224,261 @@ app.controller('BankExchangeCtrl', ['$scope', '$state', '$http', 'global', funct
     }
 }]);
 
-app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
-    var history = global.bankDealHistory||(global.bankDealHistory={});
-    $scope.pageSize = history.pageSize||$scope.defaultRows;
-    $scope.search = history.search||{};
-    $scope.search.user = $scope.search.user || '';
+// app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+//     var history = global.bankDealHistory||(global.bankDealHistory={});
+//     $scope.pageSize = history.pageSize||$scope.defaultRows;
+//     $scope.search = history.search||{};
+//     $scope.search.user = $scope.search.user || '';
+//
+//     var bank = jm.sdk.bank;
+//
+//     var format_ctName = function(params) {
+//         var ctName = params.data.ctName;
+//         return ctName || '';
+//     };
+//     var format_flag = function(params) {
+//         var flag = params.data.flag || 0;
+//         var info = '收入';
+//         if(flag!=0){
+//             info='支出';
+//         }
+//         return info;
+//     };
+//
+//     var format_userid = function(params) {
+//         var flag = params.data.flag || 0;
+//         var user;
+//         if(flag){
+//             user = params.data.fromUserId;
+//         }else{
+//             user = params.data.toUserId;
+//         }
+//
+//         return user||'';
+//     };
+//
+//     var format_user = function(params) {
+//         var flag = params.data.flag || 0;
+//         var user;
+//         if(flag){
+//             user = params.data.fromUserName;
+//         }else{
+//             user = params.data.toUserName;
+//         }
+//
+//         return user||'';
+//     };
+//
+//     var columnDefs = [
+//         {headerName: "用户ID", field: "user", width: 200, valueGetter: format_userid},
+//         {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
+//         {headerName: "币种", field: "ctName", width: 120, valueGetter: format_ctName},
+//         {headerName: "交易标记", field: "flag", width: 120, valueGetter: format_flag},
+//         {headerName: "金额", field: "amount", width: 120},
+//         {headerName: "时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
+//     ];
+//
+//     global.agGridTranslateSync($scope, columnDefs, [
+//         'bank.bank.deal.header.userId',
+//         'bank.bank.deal.header.user',
+//         'bank.bank.deal.header.ctName',
+//         'bank.bank.deal.header.flag',
+//         'bank.bank.deal.header.amount',
+//         'bank.bank.deal.header.createdAt'
+//     ]);
+//
+//     var dataSource = {
+//         getRows: function (params) {
+//             global.agGridOverlay();
+//
+//             var page = params.startRow / $scope.pageSize + 1;
+//             bank.history({
+//                 page: page,
+//                 rows: $scope.pageSize
+//             },function(err,result){
+//                 var data = result;
+//                 if (data.err) {
+//                     $scope.error(data.msg);
+//                 } else {
+//                     var rowsThisPage = data.rows;
+//                     var lastRow = data.total;
+//                     params.successCallback(rowsThisPage, lastRow);
+//                 }
+//             });
+//         }
+//     };
+//
+//     $scope.gridOptions = {
+//         paginationPageSize: Number($scope.pageSize),
+//         rowModelType:'pagination',
+//         enableSorting: true,
+//         enableFilter: true,
+//         enableColResize: true,
+//         rowSelection: 'multiple',
+//         columnDefs: columnDefs,
+//         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
+//         onGridReady: function(event) {
+//             // event.api.sizeColumnsToFit();
+//         },
+//         onCellDoubleClicked: function(cell){
+//         },
+//         localeText: global.agGrid.localeText,
+//         headerCellRenderer: global.agGridHeaderCellRendererFunc,
+//         onRowDataChanged: function (cell) {
+//             global.agGridOverlay();
+//         },
+//         datasource: dataSource
+//     };
+//
+//     $scope.onPageSizeChanged = function() {
+//         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
+//         $scope.gridOptions.api.setDatasource(dataSource);
+//     };
+//
+//     $scope.$watch('pageSize', function () {
+//         history.pageSize = $scope.pageSize;
+//     });
+//     $scope.$watch('search', function () {
+//         history.search = $scope.search;
+//     });
+// }]);
 
-    var bank = jm.sdk.bank;
-
-    var format_ctName = function(params) {
-        var ctName = params.data.ctName;
-        return ctName || '';
-    };
-    var format_flag = function(params) {
-        var flag = params.data.flag || 0;
-        var info = '收入';
-        if(flag!=0){
-            info='支出';
-        }
-        return info;
-    };
-
-    var format_userid = function(params) {
-        var flag = params.data.flag || 0;
-        var user;
-        if(flag){
-            user = params.data.fromUserId;
-        }else{
-            user = params.data.toUserId;
-        }
-
-        return user||'';
-    };
-
-    var format_user = function(params) {
-        var flag = params.data.flag || 0;
-        var user;
-        if(flag){
-            user = params.data.fromUserName;
-        }else{
-            user = params.data.toUserName;
-        }
-
-        return user||'';
-    };
-
-    var columnDefs = [
-        {headerName: "用户ID", field: "user", width: 200, valueGetter: format_userid},
-        {headerName: "用户名", field: "user", width: 120, valueGetter: format_user},
-        {headerName: "币种", field: "ctName", width: 120, valueGetter: format_ctName},
-        {headerName: "交易标记", field: "flag", width: 120, valueGetter: format_flag},
-        {headerName: "金额", field: "amount", width: 120},
-        {headerName: "时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
-    ];
-
-    global.agGridTranslateSync($scope, columnDefs, [
-        'bank.bank.deal.header.userId',
-        'bank.bank.deal.header.user',
-        'bank.bank.deal.header.ctName',
-        'bank.bank.deal.header.flag',
-        'bank.bank.deal.header.amount',
-        'bank.bank.deal.header.createdAt'
-    ]);
-
-    var dataSource = {
-        getRows: function (params) {
-            global.agGridOverlay();
-
-            var page = params.startRow / $scope.pageSize + 1;
-            bank.history({
-                page: page,
-                rows: $scope.pageSize
-            },function(err,result){
-                var data = result;
-                if (data.err) {
-                    $scope.error(data.msg);
-                } else {
-                    var rowsThisPage = data.rows;
-                    var lastRow = data.total;
-                    params.successCallback(rowsThisPage, lastRow);
-                }
-            });
-        }
-    };
-
-    $scope.gridOptions = {
-        paginationPageSize: Number($scope.pageSize),
-        rowModelType:'pagination',
-        enableSorting: true,
-        enableFilter: true,
-        enableColResize: true,
-        rowSelection: 'multiple',
-        columnDefs: columnDefs,
-        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
-        onGridReady: function(event) {
-            // event.api.sizeColumnsToFit();
-        },
-        onCellDoubleClicked: function(cell){
-        },
-        localeText: global.agGrid.localeText,
-        headerCellRenderer: global.agGridHeaderCellRendererFunc,
-        onRowDataChanged: function (cell) {
-            global.agGridOverlay();
-        },
-        datasource: dataSource
-    };
-
-    $scope.onPageSizeChanged = function() {
-        $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
-        $scope.gridOptions.api.setDatasource(dataSource);
-    };
-
-    $scope.$watch('pageSize', function () {
-        history.pageSize = $scope.pageSize;
-    });
-    $scope.$watch('search', function () {
-        history.search = $scope.search;
-    });
-}]);
-
-app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'global', function ($scope, $state, $http, $timeout, global) {
-    var history = global.bankPreauthHistory||(global.bankPreauthHistory={});
-    $scope.pageSize = history.pageSize||$scope.defaultRows;
-    $scope.search = history.search||'';
-
-
-
-    var bank = jm.sdk.bank;
-
-    var format_user = function(params) {
-        var hold = params.data.Hold||{};
-        var account = hold.Account||{};
-        var user = account.User||{};
-        return user.name || user.mobile || user.email || user.userId || '';
-    };
-
-    var format_control = function(params) {
-        var user = params.data.User||{};
-        return user.name || user.mobile || user.email || user.userId || '';
-    };
-
-    var format_ct = function(params) {
-        var hold = params.data.Hold||{};
-        var ct = hold.CT||{};
-        return ct.name||'';
-    };
-
-
-    var columnDefs = [
-        {headerName: "授权者", field: "user", width: 120, valueGetter: format_user},
-        {headerName: "操作者", field: "control", width: 120, valueGetter: format_control},
-        {headerName: "币种", field: "ct", width: 100, valueGetter: format_ct},
-        {headerName: "数量", field: "amount", width: 120},
-        {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "#", width: 100, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
-    ];
-
-    global.agGridTranslateSync($scope, columnDefs, [
-        'bank.bank.preauth.header.user',
-        'bank.bank.preauth.header.control',
-        'bank.bank.preauth.header.ct',
-        'bank.bank.preauth.header.amount',
-        'bank.bank.preauth.header.createdAt'
-    ]);
-
-    var ok = true;
-    $scope.npreauth = function(data){
-        if(!ok) return;
-        ok = false;
-        var hold = data.Hold||{};
-        var account = hold.Account||{};
-        var user = account.User||{};
-        var ct = hold.CT||{};
-        var creator = data.User||{};
-        var req = {
-            createId:creator.userId,
-            userId:user.userId,
-            ctCode:ct.code,
-            allAmount:true
-        };
-        bank.preauthCancel(req,function(err,result){
-            ok = true;
-            $timeout(function () {
-                if (err) {
-                    $scope.error(result.msg||err);
-                } else {
-                    $scope.success('取消成功');
-                    $scope.onPageSizeChanged();
-                }
-            });
-        });
-    };
-
-    function opr_render(params){
-        return '<button class="btn btn-xs bg-primary m-r-xs" ng-click="npreauth(data)">取消授权</button>';
-    }
-
-    var dataSource = {
-        getRows: function (params) {
-            global.agGridOverlay();
-
-            var page = params.startRow / $scope.pageSize + 1;
-            bank.preauthList({
-                page: page,
-                rows: $scope.pageSize,
-                search: $scope.search
-            },function(err,result){
-                var data = result;
-                if (data.err) {
-                    $scope.error(data.msg);
-                } else {
-                    var rowsThisPage = data.rows;
-                    var lastRow = data.total;
-                    params.successCallback(rowsThisPage, lastRow);
-                }
-            });
-        }
-    };
-
-    $scope.gridOptions = {
-        paginationPageSize: Number($scope.pageSize),
-        rowModelType:'pagination',
-        enableSorting: true,
-        enableFilter: true,
-        enableColResize: true,
-        angularCompileRows: true,
-        rowSelection: 'multiple',
-        rowHeight: 30,
-        columnDefs: columnDefs,
-        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
-        onGridReady: function(event) {
-            // event.api.sizeColumnsToFit();
-        },
-        onCellDoubleClicked: function(cell){
-        },
-        localeText: global.agGrid.localeText,
-        headerCellRenderer: global.agGridHeaderCellRendererFunc,
-        onRowDataChanged: function (cell) {
-            global.agGridOverlay();
-        },
-        datasource: dataSource
-    };
-
-    $scope.onPageSizeChanged = function() {
-        $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
-        $scope.gridOptions.api.setDatasource(dataSource);
-    };
-
-    $scope.$watch('pageSize', function () {
-        history.pageSize = $scope.pageSize;
-    });
-
-    $scope.$watch('search', function () {
-        history.search = $scope.search;
-    });
-}]);
+// app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'global', function ($scope, $state, $http, $timeout, global) {
+//     var history = global.bankPreauthHistory||(global.bankPreauthHistory={});
+//     $scope.pageSize = history.pageSize||$scope.defaultRows;
+//     $scope.search = history.search||'';
+//
+//
+//
+//     var bank = jm.sdk.bank;
+//
+//     var format_user = function(params) {
+//         var hold = params.data.Hold||{};
+//         var account = hold.Account||{};
+//         var user = account.User||{};
+//         return user.name || user.mobile || user.email || user.userId || '';
+//     };
+//
+//     var format_control = function(params) {
+//         var user = params.data.User||{};
+//         return user.name || user.mobile || user.email || user.userId || '';
+//     };
+//
+//     var format_ct = function(params) {
+//         var hold = params.data.Hold||{};
+//         var ct = hold.CT||{};
+//         return ct.name||'';
+//     };
+//
+//
+//     var columnDefs = [
+//         {headerName: "授权者", field: "user", width: 120, valueGetter: format_user},
+//         {headerName: "操作者", field: "control", width: 120, valueGetter: format_control},
+//         {headerName: "币种", field: "ct", width: 100, valueGetter: format_ct},
+//         {headerName: "数量", field: "amount", width: 120},
+//         {headerName: "创建时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS},
+//         {headerName: "#", width: 100, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+//     ];
+//
+//     global.agGridTranslateSync($scope, columnDefs, [
+//         'bank.bank.preauth.header.user',
+//         'bank.bank.preauth.header.control',
+//         'bank.bank.preauth.header.ct',
+//         'bank.bank.preauth.header.amount',
+//         'bank.bank.preauth.header.createdAt'
+//     ]);
+//
+//     var ok = true;
+//     $scope.npreauth = function(data){
+//         if(!ok) return;
+//         ok = false;
+//         var hold = data.Hold||{};
+//         var account = hold.Account||{};
+//         var user = account.User||{};
+//         var ct = hold.CT||{};
+//         var creator = data.User||{};
+//         var req = {
+//             createId:creator.userId,
+//             userId:user.userId,
+//             ctCode:ct.code,
+//             allAmount:true
+//         };
+//         bank.preauthCancel(req,function(err,result){
+//             ok = true;
+//             $timeout(function () {
+//                 if (err) {
+//                     $scope.error(result.msg||err);
+//                 } else {
+//                     $scope.success('取消成功');
+//                     $scope.onPageSizeChanged();
+//                 }
+//             });
+//         });
+//     };
+//
+//     function opr_render(params){
+//         return '<button class="btn btn-xs bg-primary m-r-xs" ng-click="npreauth(data)">取消授权</button>';
+//     }
+//
+//     var dataSource = {
+//         getRows: function (params) {
+//             global.agGridOverlay();
+//
+//             var page = params.startRow / $scope.pageSize + 1;
+//             bank.preauthList({
+//                 page: page,
+//                 rows: $scope.pageSize,
+//                 search: $scope.search
+//             },function(err,result){
+//                 var data = result;
+//                 if (data.err) {
+//                     $scope.error(data.msg);
+//                 } else {
+//                     var rowsThisPage = data.rows;
+//                     var lastRow = data.total;
+//                     params.successCallback(rowsThisPage, lastRow);
+//                 }
+//             });
+//         }
+//     };
+//
+//     $scope.gridOptions = {
+//         paginationPageSize: Number($scope.pageSize),
+//         rowModelType:'pagination',
+//         enableSorting: true,
+//         enableFilter: true,
+//         enableColResize: true,
+//         angularCompileRows: true,
+//         rowSelection: 'multiple',
+//         rowHeight: 30,
+//         columnDefs: columnDefs,
+//         rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
+//         onGridReady: function(event) {
+//             // event.api.sizeColumnsToFit();
+//         },
+//         onCellDoubleClicked: function(cell){
+//         },
+//         localeText: global.agGrid.localeText,
+//         headerCellRenderer: global.agGridHeaderCellRendererFunc,
+//         onRowDataChanged: function (cell) {
+//             global.agGridOverlay();
+//         },
+//         datasource: dataSource
+//     };
+//
+//     $scope.onPageSizeChanged = function() {
+//         $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
+//         $scope.gridOptions.api.setDatasource(dataSource);
+//     };
+//
+//     $scope.$watch('pageSize', function () {
+//         history.pageSize = $scope.pageSize;
+//     });
+//
+//     $scope.$watch('search', function () {
+//         history.search = $scope.search;
+//     });
+// }]);
 
 app.controller('BankNPreauthCtrl', ['$scope', '$state', '$http','global', '$timeout', function ($scope, $state, $http,global, $timeout) {
     $scope.bank = {};
