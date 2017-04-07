@@ -11,8 +11,8 @@
                     <div class="input-group p-b-md">
                         <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">
                         <span class="input-group-btn">
-                    <span class="btn btn-default btn-sm btn-rounded" ng-click="search(1)"><i class="fa fa-search"></i></span>
-                </span>
+                            <span class="btn btn-default btn-sm btn-rounded" ng-click="search(1)"><i class="fa fa-search"></i></span>
+                        </span>
                     </div>
                 </li>
                 <!--loading ng-if="moreLoading"-->
@@ -30,7 +30,7 @@
                         </tr>
                         </thead>
                         <tbody class="hand">
-                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single" id="cover">
+                        <tr ng-repeat="row in usersInfo.rows" ng-click="selectUser(row)" st-select-mode="single">
                             <td>{{row.uid}}</td>
                             <td>{{row.account||row.mobile}}</td>
                             <td>{{row.nick}}</td>

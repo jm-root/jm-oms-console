@@ -37,6 +37,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 $scope.error(result.msg);
             }else{
                 $scope.moreLoading = false;
+                $('html,body').animate({ scrollTop: 0 }, 100);
                 if(result.total){
                     $scope.nodata = false;
                     $scope.usersInfo = result;
@@ -101,11 +102,22 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
         {headerName: "昵称", field: "user.nick", width: 120},
         {headerName: "当前金币数", field: "balance", width: 150},
         {headerName: "下分金币数", field: "amount", width: 150},
-        {headerName: "执行状态", field: "", width: 140,cellRenderer: status_render},
+        {headerName: "执行状态", field: "status", width: 140,cellRenderer: status_render},
         {headerName: "玩家下分时间", field: "crtime", width: 180, valueGetter: $scope.angGridFormatDateS},
         {headerName: "下分操作人", field: "executor.account", width: 120},
         {headerName: "下分操作时间", field: "entime", width: 180, valueGetter: $scope.angGridFormatDateS},
     ];
+    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+        'backpoints.log.header.uid',
+        'backpoints.log.header.account',
+        'backpoints.log.header.nick',
+        'backpoints.log.header.balance',
+        'backpoints.log.header.amount',
+        'backpoints.log.header.status',
+        'backpoints.log.header.crtime',
+        'backpoints.log.header.exaccount',
+        'backpoints.log.header.entime'
+    ]);
     var dataSource = {
         getRows: function (params) {
             global.agGridOverlay();   //翻译

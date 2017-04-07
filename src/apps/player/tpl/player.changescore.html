@@ -5,6 +5,7 @@
 </div>
 
 <div class="wrapper-md col-lg-offset-2 col-lg-9">
+    <div ng-include="'apps/search/tpl/search_user2.html'"></div>
     <div class="row">
         <div class="col-sm-9">
             <form name="formValidate" class="form-horizontal form-validation">
@@ -12,80 +13,62 @@
                 <!--选择玩家-->
                 <li class="list-group-item" ui-sref="app.search.user">
                     <div class="row">
-                        <div class="col-xs-3">
-                            {{'player.changescore.label3'|translate}}
-                        </div>
+                        <div class="col-xs-3">{{'player.changescore.label3'|translate}}</div>
                         <div class="col-xs-7">
-                            <span ng-if="player"><span ng-if="player.nick">{{player.nick}}</span>(ID: {{player.uid}})</span>
+                            <span ng-if="player">
+                                <span ng-if="player.nick">{{player.nick}}</span>
+                                (ID: {{player.uid}})
+                            </span>
                         </div>
-                        <div class="col-xs-2 text-right">
-                            <i class="fa fa-chevron-right text-muted"></i>
-                        </div>
+                        <div class="col-xs-2 text-right"><i class="fa fa-chevron-right text-muted"></i></div>
                     </div>
                 </li>
+                <!--<li ng-if="!isSmartDevice" class="list-group-item" data-toggle="modal" data-target="#searchUser">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-3">{{'player.changescore.label3'|translate}}</div>-->
+                        <!--<div class="col-xs-7"><span ng-if="player"><span ng-if="player.nick">{{player.nick}}</span>(ID: {{player.uid}})</span></div>-->
+                        <!--<div class="col-xs-2 text-right"><i class="fa fa-chevron-right text-muted"></i></div>-->
+                    <!--</div>-->
+                <!--</li>-->
                 <!--操作金额-->
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-3">
-                            {{'player.changescore.label5'|translate}}
-                        </div>
-                        <div class="col-xs-9">
-                            <input type="number"
-                                   class="form-control" style="text-align: center" ng-model="amount"
-                                   placeholder="{{ 'common.amount' | translate }}" min="1" ng-pattern="/^[0-9]+$/" required>
-                        </div>
+                        <div class="col-xs-3">{{'player.changescore.label5'|translate}}</div>
+                        <div class="col-xs-9"><input type="number" class="form-control" style="text-align: center" ng-model="amount" placeholder="{{ 'common.amount' | translate }}" min="1" ng-pattern="/^[0-9]+$/" required></div>
                     </div>
                     <div class="line"></div>
                     <!--可用数量-->
                     <div class="row">
-                        <div class="col-xs-3">
-                        </div>
+                        <div class="col-xs-3"></div>
                         <div class="col-xs-9">
-                            <label class="pull-left control-label p-b-md">
-                                {{'player.changescore.label1'|translate}}</label>
-                            <div class="pull-right control-label m-r-sm">
-                                <span>{{jb}}</span>
-                            </div>
+                            <label class="pull-left control-label p-b-md">{{'player.changescore.label1'|translate}}</label>
+                            <div class="pull-right control-label m-r-sm"><span>{{jb}}</span></div>
                         </div>
                     </div>
                     <div class="line"></div>
                     <!--玩家余额-->
                     <div class="row">
-                        <div class="col-xs-3">
-                        </div>
+                        <div class="col-xs-3"></div>
                         <div class="col-xs-9">
-                            <label class="control-label">
-                                {{'player.changescore.label4'|translate}}</label>
-                            <div class="pull-right control-label p-b-md m-r-sm">
-                                <span ng-if="player.id">{{player.jb}}</span>
-                            </div>
+                            <label class="control-label">{{'player.changescore.label4'|translate}}</label>
+                            <div class="pull-right control-label p-b-md m-r-sm"><span ng-if="player.id">{{player.jb}}</span></div>
                         </div>
                     </div>
                 </li>
                 <!--备注-->
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-3">
-                            {{ 'common.memo' | translate }}
-                        </div>
+                        <div class="col-xs-3">{{ 'common.memo' | translate }}</div>
                         <div class="col-xs-9">
-                            <textarea class="form-control" style="resize: none;" rows="2"
-                                      placeholder=""
-                                      ng-model="memo"/>
+                            <textarea class="form-control" style="resize: none;" rows="2" placeholder="" ng-model="memo"/>
                         </div>
                     </div>
                 </li>
                 <!--保存-->
                 <li class="list-group-item text-right">
-                    <button ng-if="type == 'charge'" type="submit" class="btn btn-success"
-                            ng-click="!formValidate.$invalid&&updateData('charge')">{{'player.changescore.opts.opt2'|translate}}
-                    </button>
-                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-info"
-                            ng-click="!formValidate.$invalid&&updateData('uncharge')">{{'player.changescore.opts.opt3'|translate}}
-                    </button>
-                    <button ng-if="type == 'uncharge'" type="button" class="btn btn-danger"
-                            ng-click="updateData('uncharge', true)">{{'search.all'|translate}}
-                    </button>
+                    <button ng-if="type == 'charge'" type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&updateData('charge')">{{'player.changescore.opts.opt2'|translate}}</button>
+                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-info" ng-click="!formValidate.$invalid&&updateData('uncharge')">{{'player.changescore.opts.opt3'|translate}}</button>
+                    <button ng-if="type == 'uncharge'" type="button" class="btn btn-danger" ng-click="updateData('uncharge', true)">{{'search.all'|translate}}</button>
                 </li>
             </div>
             </form>

@@ -5,12 +5,15 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
     $scope.enableTypeChoose = true;   //是否允许选择操作类型
     $scope.type = $stateParams.type || null;
 
+
     var player = sessionStorage.getItem('selectedUser');
     if(player) {
         player = JSON.parse(player);
         $scope.player = player;
     }
     sessionStorage.removeItem("selectedUser");
+
+
     var bank = jm.sdk.bank;
     bank.query({},function(err,result){
         result || (result||{});
@@ -19,8 +22,17 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
         $scope.jb = global.reg(jbObj.amountValid||0);
     });
 
+
     $scope.updateData = function(type, allAmount){
 
+        // var player = sessionStorage.getItem('selectedUser');
+        // if(player) {
+        //     player = JSON.parse(player);
+        //     $scope.player = player;
+        // };
+        // sessionStorage.removeItem("selectedUser");
+
+        // console.info(player);
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.amount;
         var memo = $scope.memo||"";
