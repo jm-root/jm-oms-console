@@ -22,37 +22,37 @@
                             url: '/agentdata',
                             templateUrl: path + 'tpl/agent.data.html',
                             controller: 'AgentDataCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                         .state('app.datastatistics.agentstatistics', {
                             url: '/agentstatistics',
                             templateUrl: path + 'tpl/agent.statistics.html',
                             controller: 'AgentStatisticsCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                         .state('app.datastatistics.agentdiary', {
                             url: '/agentdiary',
                             templateUrl: path + 'tpl/agent.diary.html',
                             controller: 'AgentDiaryCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                         .state('app.datastatistics.playerdata', {
                             url: '/playerdata',
                             templateUrl: path + 'tpl/player.data.html',
                             controller: 'PlayerDataCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                         .state('app.datastatistics.playerstatistics', {
                             url: '/playerstatistics',
                             templateUrl: path + 'tpl/player.statistics.html',
                             controller: 'PlayerStatisticsCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                         .state('app.datastatistics.playerdiary', {
                             url: '/playerdiary',
                             templateUrl: path + 'tpl/player.diary.html',
                             controller: 'PlayerDiaryCtrl',
-                            resolve: lazyLoadProvider.load('daterangepicker')
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
                         })
                 }
             ]

@@ -1,0 +1,97 @@
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">玩家流水</h1></div>
+
+<div>
+    <div class="pull-right headpadd ">
+        <form>
+            <div class="input-group  w-lg">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded" placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+        </form>
+    </div>
+    <div class="pull-right headpadd m-r-sm">
+        <div class="input-group" style="width: 250px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" style="width: 115px" ng-model="search.gamename" ng-options="opt._id as opt.name for opt in apps" ng-change="search()">
+            <option value="">所有渠道</option>
+        </select>
+    </div>
+    <div class="pull-right m-r-sm headpadd" ng-if="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="search()">
+        </select>
+    </div>
+</div>
+<div class="line b-b"></div>
+
+<div style="margin: 0 10px 5px;position: relative">
+    <div class="table-responsive " ng-style="tablestyle">
+        <!--loading-->
+        <div ng-if="moreLoading">
+            <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
+            <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
+                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
+            </div>
+            <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
+                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
+            </div>
+        </div>
+        <!--no data-->
+        <div class="text-center" ng-if="nodata&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
+            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+        </div>
+        <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
+            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+        </div>
+        <!--table-->
+        <table class="table table-striped table-bordered ">
+            <thead class="thead bg-white" >
+            <tr class="thr">
+                <th class="thh">所属渠道</th>
+                <th class="thh">玩家ID</th>
+                <th class="thh">账号</th>
+                <th class="thh">昵称</th>
+                <th class="thh">操作类型</th>
+                <th class="thh">操作金额</th>
+                <th class="thh">金币余额</th>
+                <th class="thh">操作时间</th>
+            </tr>
+            </thead>
+            <tbody class="tbody">
+            <tr ng-repeat="row in usersInfo.rows" class="active tbr" ng-if="total">
+                <td class="tbd" data-title="所属渠道" >{{row._id}}</td>
+                <td class="tbd" data-title="玩家ID" >{{row.account||row.nick}}</td>
+                <td class="tbd" data-title="账号" >{{row.account}}</td>
+                <td class="tbd" data-title="昵称" >{{row.nick}}</td>
+                <td class="tbd" data-title="操作类型" >{{crtime}}</td>
+                <td class="tbd" data-title="操作金额" >{{row.nick}}</td>
+                <td class="tbd" data-title="金币余额" >{{crtime}}</td>
+                <td class="tbd" data-title="操作时间" >{{row.nick}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--ng-if="!isSmartDevice"-->
+    <div ng-if="!moreLoading&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 52em;bottom: 0;margin:auto;">
+        <div class="text-center">
+            <button class="btn btn-default btn-sm" ng-click="search('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
+            <span>{{page}}/{{pages}}</span>
+            <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="search('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+        </div>
+    </div>
+    <div class="text-center" ng-if="!moreLoading&&!nodata&&isSmartDevice">
+        <button class="btn btn-default btn-sm" ng-click="search('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
+        <span>{{page}}/{{pages}}</span>
+        <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="search('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+    </div>
+</div>
