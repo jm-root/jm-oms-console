@@ -64,6 +64,15 @@
       "list":"Back points operation",
       "log":"Back points log"
     },
+    "datastatistics":{
+      "manage":"Data Statistics",
+      "playerdata":"Player Data",
+      "agentdata":"Agent Data",
+      "playerstatistics":"Player Statistics",
+      "agentstatistics":"Agent Statistics",
+      "playerdiary":"Player Diary",
+      "agentdiary":"Agent Diary"
+    },
     "system":{
       "manage": "System Manage",
       "admin": "System Admin",
