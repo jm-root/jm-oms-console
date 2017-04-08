@@ -1,4 +1,4 @@
-app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('BankDealCtrl', ['$scope', '$state', '$http','$timeout', 'global', function ($scope, $state, $http,$timeout, global) {
     var history = global.bankDealHistory||(global.bankDealHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search.user = $scope.search.user || '';
@@ -43,17 +43,19 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
             if (data.err) {
                 $scope.error(data.msg);
             }else{
-                $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
-                if(result.total){
-                    $scope.nodata = false;
-                    $scope.deallist = result.rows;
-                    $scope.page = result.page;
-                    $scope.pages = result.pages;
-                    $scope.total = result.total;
-                }else{
-                    $scope.nodata = true;
-                }
+                $timeout(function () {
+                    $scope.moreLoading = false;
+                    $('html,body').animate({ scrollTop: 0 }, 100);
+                    if(result.total){
+                        $scope.nodata = false;
+                        $scope.deallist = result.rows;
+                        $scope.page = result.page;
+                        $scope.pages = result.pages;
+                        $scope.total = result.total;
+                    }else{
+                        $scope.nodata = true;
+                    }
+                })
             }
         });
     }

@@ -112,6 +112,7 @@
         "label3": "Into account",
         "label4": "Roll account",
         "label5": "Transfer sum",
+        "label6": "Currency",
         "defaultAccount": "Default account",
         "ctOpts": {
           "opts": "Choose currency",

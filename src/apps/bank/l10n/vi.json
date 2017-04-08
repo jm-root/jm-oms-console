@@ -112,6 +112,7 @@
           "label3": "chuyển vào tài khoản",
           "label4": "chuyển ra tài khoản",
           "label5": "số tiền chuyển khoản",
+          "label6": "Đơn vị tiền tệ",
           "defaultAccount": "không thể điền khách hàng mặc định",
           "ctOpts": {
             "opts": "mời lựa chọn loại tiền",

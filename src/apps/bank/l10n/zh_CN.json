@@ -112,6 +112,7 @@
           "label3": "转入账户",
           "label4": "转出账户",
           "label5": "转账金额",
+          "label6": "币种",
           "defaultAccount": "不填为默认账户",
           "ctOpts": {
             "opts": "请选币种",

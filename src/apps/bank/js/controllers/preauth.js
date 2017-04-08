@@ -19,6 +19,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
     var ok = true;
     $scope.npreauth = function(data){
         console.log(data);
+        return;
         if(!ok) return;
         ok = false;
         var hold = data.Hold||{};
@@ -65,17 +66,19 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
             if (data.err) {
                 $scope.error(data.msg);
             }else{
-                $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
-                if(result.total){
-                    $scope.nodata = false;
-                    $scope.preauthlist = result.rows;
-                    $scope.page = result.page;
-                    $scope.pages = result.pages;
-                    $scope.total = result.total;
-                }else{
-                    $scope.nodata = true;
-                }
+                $timeout(function () {
+                    $scope.moreLoading = false;
+                    $('html,body').animate({ scrollTop: 0 }, 100);
+                    if(result.total){
+                        $scope.nodata = false;
+                        $scope.preauthlist = result.rows;
+                        $scope.page = result.page;
+                        $scope.pages = result.pages;
+                        $scope.total = result.total;
+                    }else{
+                        $scope.nodata = true;
+                    }
+                })
             }
         });
     }

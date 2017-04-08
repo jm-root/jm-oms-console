@@ -31,12 +31,10 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
         }
     };
     $scope.getdata = function(pagenum) {
-        if(pagenum){
-            page = pagenum;
-        }
+        if(pagenum)  page = pagenum;
         $scope.moreLoading = true;
-        console.log($scope.search);
         bank.accounts({
+            token: sso.getToken(),
             page: page,
             rows: $scope.pageSize,
             search: $scope.search
@@ -46,17 +44,19 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
             if (data.err) {
                 $scope.error(data.msg);
             }else{
-                $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
-                if(result.total){
-                    $scope.nodata = false;
-                    $scope.accountlist = result.rows;
-                    $scope.page = result.page;
-                    $scope.pages = result.pages;
-                    $scope.total = result.total;
-                }else{
-                    $scope.nodata = true;
-                }
+                $timeout(function () {
+                    $scope.moreLoading = false;
+                    $('html,body').animate({ scrollTop: 0 }, 100);
+                    if(result.total){
+                        $scope.nodata = false;
+                        $scope.accountlist = result.rows;
+                        $scope.page = result.page;
+                        $scope.pages = result.pages;
+                        $scope.total = result.total;
+                    }else{
+                        $scope.nodata = true;
+                    }
+                })
             }
         });
     }
