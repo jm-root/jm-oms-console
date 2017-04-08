@@ -10,19 +10,29 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
     var urlget = agentUri+'/backCoinLogs';
     var urlpost = agentUri+'/backcoin/confirm';
 
+    $scope.tablestyle = {};
+    if($scope.isSmartDevice){
+        $scope.tablestyle = {};
+    }else{
+        $scope.tablestyle = {
+            height:$scope.app.navHeight-210+'px',
+            border:'1px solid #cccccc'
+        }
+    }
+
     $scope.left = function () {
         if($scope.page>1){
             --page;
-            $scope.search();
+            $scope.getdata();
         }
     }
     $scope.right = function () {
         if($scope.page<$scope.pages){
             ++page;
-            $scope.search();
+            $scope.getdata();
         }
     };
-    $scope.search = function(keyword,_page) {
+    $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         $http.get(urlget, {
@@ -30,7 +40,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 token: sso.getToken(),
                 search: $scope.search.keyword,
                 page:page,
-                rows:16,
+                rows:20,
                 status:1
             }
         }).success(function(result){
@@ -54,7 +64,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
         });
     }
 
-    $scope.search();
+    $scope.getdata();
 
     $scope.confirm = function (id) {
         $http.post(urlpost, {oid:id},{

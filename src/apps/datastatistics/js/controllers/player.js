@@ -3,24 +3,28 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
 
     var sso = jm.sdk.sso;
     $scope.search = {};
-    $scope.search.date = $scope.search.date || {};
-    var page = 1;
-    var urlget = statUri+'/report/account';
-
     $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
     $scope.endDate = moment(new Date());
+
+    $scope.search.date = $scope.search.date || {
+            startDate:$scope.startDate,
+            endDate:$scope.endDate
+        };
+    var page = 1;
+    var urlget = statUri+'/report/account';
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.startDate = $scope.startDate.format('YYYY/MM/DD');
     $scope.dateOptions.endDate = $scope.endDate.format('YYYY/MM/DD');
     $scope.dateOptions.opens = 'left';
-    $scope.date = $scope.startDate.format('YYYY/MM/DD') + "-" + $scope.endDate.format('YYYY/MM/DD');
+
     $scope.tablestyle = {};
     if($scope.isSmartDevice){
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px'
+            height:$scope.app.navHeight-210+'px',
+            border:'1px solid #cccccc'
         }
     }
 
@@ -83,6 +87,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
@@ -113,7 +118,8 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px'
+            height:$scope.app.navHeight-210+'px',
+            border:'1px solid #cccccc'
         }
     }
 
@@ -147,7 +153,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
             $scope.getdata();
         }
     };
-    $scope.getdata = function(keyword,_page) {
+    $scope.getdata = function(_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
@@ -177,6 +183,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
@@ -219,7 +226,8 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px'
+            height:$scope.app.navHeight-210+'px',
+            border:'1px solid #cccccc'
         }
     }
 
@@ -250,7 +258,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
             $scope.getdata();
         }
     };
-    $scope.getdata = function(keyword,_page) {
+    $scope.getdata = function(_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         $http.get(urlget, {
@@ -273,6 +281,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }

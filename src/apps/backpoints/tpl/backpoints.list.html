@@ -1,28 +1,36 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'backpoints.list.title'|translate}}</h1></div>
 
-<div class="headpadd " ng-if="isSmartDevice">
-    <form style="margin: 0 auto">
-        <div  class="input-group m-l-sm m-r-sm" style="width: 107%">
-            <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
-            <span class="input-group-btn" style="width: auto">
-                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="search(search.keyword,1)"><i class="fa fa-search"></i></button>
+<div>
+    <div class="m-t-xs " ng-if="isSmartDevice">
+        <form style="margin: 0 auto">
+            <div class="input-group m-l-sm m-r-sm" style="width: 107%">
+                <input type="text" ng-model="search.keyword"
+                       class="form-control input-sm bg-white no-border rounded padder"
+                       placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i
+                        class="fa fa-search"></i></button>
             </span>
-        </div>
-    </form><br/>
-</div>
-<div class="headpadd " ng-if="!isSmartDevice">
-    <form style="margin: 0 auto">
-        <div  class="input-group m-l-sm m-r-sm pull-right w-lg" >
-            <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
-            <span class="input-group-btn" style="width: auto">
-                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="search(search.keyword,1)"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="m-t-xs " ng-if="!isSmartDevice">
+        <form style="margin: 0 auto">
+            <div class="input-group m-l-sm m-r-sm pull-right w-lg">
+                <input type="text" ng-model="search.keyword"
+                       class="form-control input-sm bg-white no-border rounded padder"
+                       placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i
+                        class="fa fa-search"></i></button>
             </span>
-        </div>
-    </form><br/><br/>
+            </div><br/><br/>
+        </form>
+    </div>
 </div>
 <!--ng-style="{height:app.navHeight-200+'px'}"-->
 <div style="margin: 0 10px 5px;position: relative">
-    <div class="table-responsive " >
+    <div class="table-responsive " ng-style="tablestyle">
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
@@ -71,19 +79,20 @@
     <!--ng-if="!isSmartDevice"-->
     <div ng-if="!moreLoading&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 52em;bottom: 0;margin:auto;">
         <div class="text-center">
-            <button class="btn btn-default btn-sm" ng-click="search('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+            <div class="pull-left m-l-md">{{(page-1)*(pageSize||20)+1}} - {{(page*(pageSize||20) < total)?page*(pageSize||20):total}} / {{totalnumber}}</div>
+            <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
             <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
             <span>{{page}}/{{pages}}</span>
             <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
-            <button class="btn btn-default btn-sm" ng-click="search('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
         </div>
     </div>
     <div class="text-center" ng-if="!moreLoading&&!nodata&&isSmartDevice">
-        <button class="btn btn-default btn-sm" ng-click="search('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
         <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
         <span>{{page}}/{{pages}}</span>
         <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
-        <button class="btn btn-default btn-sm" ng-click="search('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
     </div>
 </div>
 
