@@ -6,10 +6,12 @@ angular.module('app')
     .controller('AppCtrl', ['$rootScope', '$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global','$http',
         function ($rootScope, $scope, $translate, $localStorage, $window, toaster, $modal, $location, global,$http) {
             // add 'ie' classes to html
+
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             if (isIE) {
                 angular.element($window.document.body).addClass('ie');
             }
+
             if (isSmartDevice($window)) {
                 angular.element($window.document.body).addClass('smart')
                 $scope.isSmartDevice = true;
@@ -92,17 +94,6 @@ angular.module('app')
                 $scope.langKey = langKey;
             };
 
-            judgeBrowser();
-            function judgeBrowser() {
-                //使用navigator.userAgent来判断浏览器类型，需要注意的是chrome浏览器的navigator.userAgent会包含safari字符串（safari则不包含chrome，根据此区分chrome和safafi），所以需要区分时注意
-                console.log(navigator.userAgent);
-                if(navigator.userAgent.indexOf("Firefox")>0 || navigator.userAgent.indexOf("Chrome/")>0 || navigator.userAgent.indexOf("Safari")>0){
-                    return ;
-                }else{
-                    alert('请使用谷歌、火狐或Safari浏览器');
-                }
-
-            }
             function isSmartDevice($window) {
                 // Adapted from http://www.detectmobilebrowsers.com
                 var ua = $window['navigator']['userAgent'] || $window['navigator']['vendor'] || $window['opera'];
