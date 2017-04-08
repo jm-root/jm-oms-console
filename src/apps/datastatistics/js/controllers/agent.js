@@ -107,22 +107,6 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
         history.search.date = $scope.search.date;
         $scope.onPageSizeChanged();
     });
-    // $scope.confirm = function (id) {
-    //     $http.post(urlpost, {oid:id},{
-    //         params:{
-    //             token: sso.getToken()
-    //         }
-    //     }).success(function(result){
-    //         $scope.data = result;
-    //         if($scope.data.err){
-    //             $scope.error($scope.data.msg);
-    //         }else{
-    //             $scope.success($scope.data.msg);
-    //         }
-    //     }).error(function(msg, code){
-    //         $scope.errorTips(code);
-    //     });
-    // }
 
 }]);
 
@@ -248,7 +232,10 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
     console.log($scope.search.date);
-    $scope.search.date = $scope.search.date || {};
+    $scope.search.date = $scope.search.date || {
+            startDate:  moment().subtract(15, 'days'),
+            endDate: moment()
+        };
     $scope.dateOptions=global.dateRangeOptions;
     $scope.dateOptions.opens = 'left';
 

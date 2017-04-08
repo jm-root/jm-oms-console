@@ -1,40 +1,23 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">渠道数据</h1></div>
 
-<div class="headpadd " ng-if="isSmartDevice">
-    <form style="margin: 0 auto">
-        <div  class="input-group m-l-sm m-r-sm pull-right w-sm" >
-            <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-                <option value="">所有渠道</option>
-            </select>
+<div>
+    <div class="pull-right headpadd m-r-sm">
+        <div class="input-group m-r-sm" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
-        <div  class="input-group m-l-sm m-r-sm">
-            <div class="input-group m-r-xs" style="width: 185px;">
-                <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
-                <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
-            </div>
-        </div>
-    </form><br/>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
+            <option value="">所有渠道</option>
+        </select>
+    </div>
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
 </div>
-<div class="headpadd " ng-if="!isSmartDevice">
-    <form style="margin: 0 auto">
-        <div  class="input-group m-l-sm m-r-sm pull-right" >
-            <div class="input-group m-r-sm" style="width: 185px;">
-                <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
-                <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
-            </div>
-        </div>
-        <div  class="input-group m-l-sm m-r-sm pull-right w-sm" >
-            <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-                <option value="">所有渠道</option>
-            </select>
-        </div>
-        <div class="input-group m-l-sm m-r-sm pull-right">
-            <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
-            </select>
-        </div>
-
-    </form><br/><br/>
-</div>
+<div class="line b-b"></div>
 <!--ng-style="{height:app.navHeight-200+'px'}"-->
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
     <div class="table-responsive" ng-style="tablestyle">
