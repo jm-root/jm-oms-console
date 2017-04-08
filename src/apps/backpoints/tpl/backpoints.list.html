@@ -77,9 +77,9 @@
     </div>
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!moreLoading&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 52em;bottom: 0;margin:auto;">
+    <div ng-if="!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 52em;bottom: 0;margin:auto;">
         <div class="text-center">
-            <div class="pull-left m-l-md">{{(page-1)*(pageSize||20)+1}} - {{(page*(pageSize||20) < total)?page*(pageSize||20):total}} / {{totalnumber}}</div>
+            <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
             <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
             <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
             <span>{{page}}/{{pages}}</span>

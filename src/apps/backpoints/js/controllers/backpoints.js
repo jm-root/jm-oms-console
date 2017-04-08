@@ -55,6 +55,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
@@ -83,6 +84,12 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
         });
     }
 
+    if(page==1||page==0){
+        $scope.first = false;
+    }else {
+        $scope.first = true;
+    }
+console.info($scope.first);
 }]);
 
 
