@@ -17,7 +17,7 @@
 </div>
 
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
-    <div class="table-responsive " ng-style="tablestyle">
+    <div class="table-responsive mobiletable" ng-style="tablestyle">
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
@@ -54,7 +54,7 @@
                 <td class="tbd" data-title="{{'bank.bank.preauth.header.ct'|translate}}" style="height: 2.8em">{{row.Hold.CT.name|| ""}}</td>
                 <td class="tbd" data-title="{{'bank.bank.preauth.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
                 <td class="tbd" data-title="{{'bank.bank.preauth.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
-                <td class="thh text-center">
+                <td class="thh text-left">
                     <button class="btn btn-xs btn-info" ng-click="npreauth(row)">{{'bank.bank.preauth.header.createdAt'|translate}}</button>
                 </td>
             </tr>
@@ -63,7 +63,7 @@
     </div>
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!moreLoading&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 52em;bottom: 0;margin:auto;">
+    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:30px;">
         <div class="text-center">
             <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
             <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>

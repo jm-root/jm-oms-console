@@ -1,7 +1,6 @@
 app.controller('BankDealCtrl', ['$scope', '$state', '$http','$timeout', 'global', function ($scope, $state, $http,$timeout, global) {
     var history = global.bankDealHistory||(global.bankDealHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
-    $scope.search.user = $scope.search.user || '';
 
     var page = 1;
     var bank = jm.sdk.bank;
@@ -36,7 +35,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http','$timeout', 'global'
         $scope.moreLoading = true;
         bank.history({
             page: page,
-            rows: $scope.pageSize
+            rows: $scope.pageSize,
         },function(err,result){
             var data = result;
             console.info(result);
