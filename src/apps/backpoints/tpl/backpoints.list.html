@@ -41,24 +41,25 @@
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
         <!--table-->
-        <table class="table table-striped table-bordered ">
-            <thead class="thead bg-white">
-            <tr class="thr">
-                <th class="thh">{{'backpoints.list.label1'|translate}}</th>
-                <th class="thh">{{'backpoints.list.label2'|translate}}</th>
-                <th class="thh">{{'backpoints.list.label3'|translate}}</th>
-                <th class="thh">{{'backpoints.list.label4'|translate}}</th>
-                <th class="thh"></th>
+        <table class="table table-striped table-bordered mobiletable">
+            <thead class="bg-white">
+            <tr>
+                <th>{{'backpoints.list.label1'|translate}}</th>
+                <th>{{'backpoints.list.label2'|translate}}</th>
+                <th>{{'backpoints.list.label3'|translate}}</th>
+                <th>{{'backpoints.list.label4'|translate}}</th>
+                <th></th>
             </tr>
             </thead>
-            <tbody class="tbody">
+            <tbody>
 
-            <tr ng-repeat="row in usersInfo.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'backpoints.list.label1'|translate}}" style="height: 2.8em">{{row.user.uid}}</td>
-                <td class="tbd" data-title="{{'backpoints.list.label2'|translate}}" style="height: 2.8em">{{row.user.account||row.user.nick}}</td>
-                <td class="tbd" data-title="{{'backpoints.list.label3'|translate}}" style="height: 2.8em">{{row.amount}}</td>
-                <td class="tbd" data-title="{{'backpoints.list.label4'|translate}}" style="height: 2.8em">{{crtime}}</td>
-                <td class="tbd" data-title="" style="height: 2.8em">
+            <tr ng-repeat="row in usersInfo.rows" class="active" ng-if="total">
+                <td data-title="{{'backpoints.list.label1'|translate}}" >{{row.user.uid}}</td>
+                <td data-title="{{'backpoints.list.label2'|translate}}" >{{row.user.account||row.user.nick}}</td>
+                <td data-title="{{'backpoints.list.label3'|translate}}" >{{row.amount}}</td>
+                <td data-title="{{'backpoints.list.label4'|translate}}" >{{row.crtime | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+
+                <td data-title="" style="height: 2.8em">
                     <button class="btn btn-xs btn-info" ng-click="confirm(row._id)" style="float: right" ng-disabled="key">{{'backpoints.list.label5'|translate}}</button>
                 </td>
             </tr>

@@ -6,6 +6,7 @@ app.controller('BackpointsCtrl',['$scope','$translatePartialLoader',function ($s
 app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var page = 1;
+    // var urlget = statUri+'/players';
     var urlget = agentUri+'/backCoinLogs';
     var urlpost = agentUri+'/backcoin/confirm';
 
@@ -44,7 +45,6 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
-                    $scope.crtime = moment($scope.usersInfo.crtime).format('YYYY-MM-DD HH:mm:ss');
                 }else{
                     $scope.nodata = true;
                 }
