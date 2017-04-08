@@ -11,11 +11,10 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.endDate = moment(new Date());
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
-    $scope.dateOptions.startDate = $scope.startDate;
-    $scope.dateOptions.endDate = $scope.endDate;
+    $scope.dateOptions.startDate = $scope.startDate.format('YYYY/MM/DD');
+    $scope.dateOptions.endDate = $scope.endDate.format('YYYY/MM/DD');
     $scope.dateOptions.opens = 'left';
     $scope.date = $scope.startDate.format('YYYY/MM/DD') + "-" + $scope.endDate.format('YYYY/MM/DD');
-
     $scope.tablestyle = {};
     if($scope.isSmartDevice){
         $scope.tablestyle = {};
@@ -43,16 +42,17 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.left = function () {
         if($scope.page>1){
             --page;
-            $scope.search();
+            $scope.getdata();
         }
     }
     $scope.right = function () {
         if($scope.page<$scope.pages){
             ++page;
-            $scope.search();
+            $scope.getdata();
         }
     };
-    $scope.search = function(_page) {
+
+    $scope.getdata = function(_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
@@ -60,7 +60,6 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         var startDate = date.startDate || $scope.startDate;
         var endDate = date.endDate|| $scope.endDate;
         var agent = search.agent;
-
         $http.get(urlget, {
             params:{
                 token: sso.getToken(),
@@ -92,11 +91,10 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
             $scope.errorTips(code);
         });
     }
-
-    $scope.search();
+    $scope.getdata();
 
     $scope.$watch('search.date', function () {
-        $scope.search(1);
+        $scope.getdata(1);
     });
 
 }]);
@@ -140,16 +138,16 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.left = function () {
         if($scope.page>1){
             --page;
-            $scope.search();
+            $scope.getdata();
         }
     }
     $scope.right = function () {
         if($scope.page<$scope.pages){
             ++page;
-            $scope.search();
+            $scope.getdata();
         }
     };
-    $scope.search = function(keyword,_page) {
+    $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
@@ -187,14 +185,14 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
             $scope.errorTips(code);
         });
     }
-    $scope.search();
+    $scope.getdata();
 
     $scope.details = function (key) {
 
     }
 
     $scope.$watch('search.date', function () {
-        $scope.search(1);
+        $scope.getdata(1);
     });
 
 }]);
@@ -243,16 +241,16 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
     $scope.left = function () {
         if($scope.page>1){
             --page;
-            $scope.search();
+            $scope.getdata();
         }
     }
     $scope.right = function () {
         if($scope.page<$scope.pages){
             ++page;
-            $scope.search();
+            $scope.getdata();
         }
     };
-    $scope.search = function(keyword,_page) {
+    $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
         $http.get(urlget, {
@@ -284,7 +282,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         });
     }
 
-    $scope.search();
+    $scope.getdata();
 
 }]);
 
