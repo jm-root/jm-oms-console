@@ -1,4 +1,5 @@
-app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+
 
     var sso = jm.sdk.sso;
     $scope.search = {};
@@ -6,12 +7,14 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     var page = 1;
     var urlget = statUri+'/report/account';
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
+    $scope.endDate = moment(new Date());
 
-    // $scope.startDate = moment(new Date()).format('YYYY/MM/01');
-    // $scope.endDate = moment(new Date()).format('YYYY/MM/DD');
-    // $scope.search.date = $scope.startDate + "-" + $scope.endDate;
-    // console.info($scope.search.date);
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.startDate = $scope.startDate;
+    $scope.dateOptions.endDate = $scope.endDate;
+    $scope.dateOptions.opens = 'left';
+    $scope.date = $scope.startDate.format('YYYY/MM/DD') + "-" + $scope.endDate.format('YYYY/MM/DD');
 
     $scope.tablestyle = {};
     if($scope.isSmartDevice){
@@ -52,10 +55,11 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.search = function(_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
-        var date = $scope.search.date||{};
-        var startDate = date.startDate || "";
-        var endDate = date.endDate || "";
-        console.info($scope.pageSize);
+        var search = $scope.search;
+        var date = search.date||{};
+        var startDate = date.startDate || $scope.startDate;
+        var endDate = date.endDate|| $scope.endDate;
+        var agent = search.agent;
 
         $http.get(urlget, {
             params:{
@@ -65,7 +69,8 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 isStat:true,
                 type:0,
                 startDate:startDate.toString(),
-                endDate:endDate.toString()
+                endDate:endDate.toString(),
+                agent:agent
             }
         }).success(function(result){
             if(result.err){
@@ -90,9 +95,13 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
 
     $scope.search();
 
+    $scope.$watch('search.date', function () {
+        $scope.search(1);
+    });
+
 }]);
 
-app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
     var sso = jm.sdk.sso;
     $scope.search = {};
@@ -110,7 +119,9 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         }
     }
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
+
     $http.get(agentUri + '/subAgents', {
         params:{
             token: sso.getToken(),
@@ -141,13 +152,20 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.search = function(keyword,_page) {
         if(_page) page = _page;
         $scope.moreLoading = true;
+        var search = $scope.search;
+        var date = search.date||{};
+        var startDate = date.startDate || $scope.startDate;
+        var endDate = date.endDate|| $scope.endDate;
+        var agent = search.agent;
+
         $http.get(urlget, {
             params:{
                 token: sso.getToken(),
                 search: $scope.search.keyword,
                 page:page,
-                rows:20,
-                status:1
+                rows:$scope.pageSize||20,
+                status:1,
+                agent:agent
             }
         }).success(function(result){
             if(result.err){
@@ -169,8 +187,15 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
             $scope.errorTips(code);
         });
     }
-
     $scope.search();
+
+    $scope.details = function (key) {
+
+    }
+
+    $scope.$watch('search.date', function () {
+        $scope.search(1);
+    });
 
 }]);
 
@@ -182,6 +207,15 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
     var page = 1;
     var urlget = statUri+'/players';
 
+    $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
+    $scope.endDate = moment(new Date());
+
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.startDate = $scope.startDate;
+    $scope.dateOptions.endDate = $scope.endDate;
+    $scope.dateOptions.opens = 'left';
+    $scope.date = $scope.startDate.format('YYYY/MM/DD') + "-" + $scope.endDate.format('YYYY/MM/DD');
+
     $scope.tablestyle = {};
     if($scope.isSmartDevice){
         $scope.tablestyle = {};
@@ -191,7 +225,6 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         }
     }
 
-    $scope.dateOptions = global.dateRangeOptions;
     $http.get(agentUri + '/subAgents', {
         params:{
             token: sso.getToken(),
@@ -227,7 +260,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
                 token: sso.getToken(),
                 search: $scope.search.keyword,
                 page:page,
-                rows:20,
+                rows:$scope.pageSize||20,
                 status:1
             }
         }).success(function(result){

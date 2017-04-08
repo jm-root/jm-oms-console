@@ -6,7 +6,7 @@ app.controller('BackpointsCtrl',['$scope','$translatePartialLoader',function ($s
 app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var page = 1;
-    //var urlget = statUri+'/players';
+    // var urlget = statUri+'/players';
     var urlget = agentUri+'/backCoinLogs';
     var urlpost = agentUri+'/backcoin/confirm';
 
