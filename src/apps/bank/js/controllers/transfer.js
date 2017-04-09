@@ -4,7 +4,7 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
     var transinfo = sessionStorage.getItem('selectedUser');
     if(transinfo){
         transinfo = JSON.parse(transinfo);
-        $scope.bank.toUserId = transinfo.uid;
+        $scope.bank.toUserId = transinfo.id;
         $scope.uid = transinfo.uid;
         $scope.nick = transinfo.nick;
         sessionStorage.removeItem('selectedUser');
