@@ -36,6 +36,9 @@ angular.module('app')
         self.userInfo = {};
         self.roles = [];
 
+        var d = new Date();
+        self.UTC = d.getTimezoneOffset();
+
         self.browser = function(){
             var browser={
                 versions:function(){

@@ -3,6 +3,9 @@
 app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoader',  '$state', '$http', '$interval', 'global', function ( $scope, $translate, $translatePartialLoader,$state, $http, $interval,  global ) {
     $translatePartialLoader.addPart('dashboard');
 
+    var d = new Date();
+    var UTC = d.getTimezoneOffset();
+
     var sso=jm.sdk.sso;
     var bank = jm.sdk.bank;
     var reg = function (data) {
@@ -110,6 +113,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             $http.get(statUri+'/multiple', {
                 params:{
                     token: sso.getToken(),
+                    UTC: UTC,
                     fields:{user_total:1,user_yesterday:1,user_today:1,user_guest:1,user_mobile:1,user_wechat:1,user_qq:1,
                         recharge_total:1,recharge_yesterday:1,recharge_today:1,recharge_order_total:1,recharge_order_valid:1,recharge_order_invalid:1}
                 }
@@ -134,6 +138,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             $http.get(statUri+'/multiple', {
                 params:{
                     token: sso.getToken(),
+                    UTC: UTC,
                     fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1}
                 }
             }).success(function(result){

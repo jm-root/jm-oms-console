@@ -162,7 +162,6 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
             {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
             {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-            {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
             {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
             {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
             {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
@@ -179,7 +178,6 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             'player.info.list.header.nick',
             'player.info.list.header.ip',
             'player.info.list.header.jb',
-            'player.info.list.header.cny',
             'player.info.list.header.win_jb',
             'player.info.list.header.jbamount',
             'player.info.list.header.jbamount_d',
@@ -212,7 +210,9 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
                     active: active,
                     type: type,
                     agent: agent,
+                    UTC: global.UTC,
                     isPlayer: true,
+                    hasAccount: true,
                     startDate: startDate.toString(),
                     endDate: endDate.toString()
                 }
