@@ -84,7 +84,7 @@
                                 {{'common.balance'|translate}}
                             </div>
                             <div class="col-xs-6 pull-right text-right">
-                                {{sum=defAccount.holds[bank.ctCode]&&(defAccount.holds[bank.ctCode].amount||0)||0}}
+                                {{sum=defAccount.holds[bank.ctCode]&&(defAccount.holds[bank.ctCode].amountValid||0)||0}}
                             </div>
                         </div>
                     </li>

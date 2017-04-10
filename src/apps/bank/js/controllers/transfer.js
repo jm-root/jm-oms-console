@@ -43,9 +43,10 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
 
     $scope.transfer = function(){
         $scope.bank.ctCode = $scope.bank.ctCode || "jb";
-        var hold = $scope.defAccount.holds[$scope.bank.ctCode||"jb"]||{amount:0};
+        var hold = $scope.defAccount.holds[$scope.bank.ctCode||"jb"]||{amountValid:0};
+        console.log($scope.bank);
         console.info(hold);
-        if(!$scope.isCP&&hold.amount<$scope.bank.amount){
+        if(!$scope.isCP&&hold.amountValid<$scope.bank.amount){
             return $scope.error('余额不足');
         }
         bank.transfer($scope.bank,function(err,result){
