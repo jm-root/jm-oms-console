@@ -16,7 +16,7 @@
                         <div class="col-xs-3">{{'player.changescore.label3'|translate}}</div>
                         <div class="col-xs-7">
                             <span ng-if="player">
-                                <span ng-if="player.nick">{{player.nick}}</span>
+                                <span ng-if="player.nick">{{player.nick||""}}</span>
                                 (ID: {{player.uid}})
                             </span>
                         </div>

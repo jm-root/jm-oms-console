@@ -25,14 +25,6 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
 
     $scope.updateData = function(type, allAmount){
 
-        // var player = sessionStorage.getItem('selectedUser');
-        // if(player) {
-        //     player = JSON.parse(player);
-        //     $scope.player = player;
-        // };
-        // sessionStorage.removeItem("selectedUser");
-
-        // console.info(player);
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.amount;
         var memo = $scope.memo||"";
@@ -84,9 +76,10 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
                                 $timeout(function () {
                                     $scope.success(global.translateByKey('common.succeed'));
                                 });
-                                $scope.player.jb = $scope.sum;
-                                $scope.amount = null;
+                                $scope.amount = "";
                                 $scope.memo = "";
+                                $scope.player = null;
+                                $scope.amount = null;
                             }
                         });
                     }
