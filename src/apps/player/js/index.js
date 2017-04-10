@@ -57,12 +57,17 @@
                             controller: 'PlayerGiveLogCtrl',
                             resolve: lazyLoadProvider.load('daterangepicker')
                         })
-                        .state('app.player.changescore', {
-                            url: '/changescore/{type}',
-                            templateUrl: path +'tpl/player.changescore.html',
+                        .state('app.uppoints', {
+                            url: '/uppoints',
+                            template: '<div ui-view class="fade-in-down"></div>',
                             controller: 'PlayerChargeCtrl',
                             resolve: lazyLoadProvider.load( [path + 'js/controllers/charge.js'] )
                         })
+                        .state('app.uppoints.manage', {
+                            url: '/manage/{type}',
+                            templateUrl: path +'tpl/player.changescore.html',
+                        })
+
                 }
             ]
         );

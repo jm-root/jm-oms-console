@@ -55,9 +55,10 @@
       "info": "thông tin người chơi",
       "online": "trạng thái online",
       "record": "nhật ký trò chơi",
-      "givelog": "nhật ký tặng",
-      "changescoreup":"Lên điểm",
-      "changescoredown":"Xuống điểm"
+      "givelog": "nhật ký tặng"
+    },
+    "uppoints":{
+      "manage":"Lên điểm"
     },
     "backpoints":{
       "manage":"Xuống điểm",

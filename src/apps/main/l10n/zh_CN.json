@@ -12,7 +12,7 @@
   "footer":{
     "homepage":"首页",
     "increase":"上分",
-    "decrease":"退分",
+    "decrease":"下分",
     "player":"玩家",
     "transfer":"转账"
   },
@@ -55,9 +55,10 @@
       "info": "玩家信息",
       "online": "在线状态",
       "record": "游戏记录",
-      "givelog": "赠送记录",
-      "changescoreup":"上分",
-      "changescoredown":"退分"
+      "givelog": "赠送记录"
+    },
+    "uppoints":{
+      "manage":"上分"
     },
     "backpoints":{
       "manage":"下分",

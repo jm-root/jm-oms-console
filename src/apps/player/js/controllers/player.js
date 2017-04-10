@@ -119,9 +119,9 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
             {headerName: "mac地址", field: "mac", width: 100},
             {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
-            {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-            {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+            {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
             {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
             {headerName: "点卡充值", field: "card", width: 100},
             {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
@@ -162,7 +162,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
             {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
             {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
-            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
+            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
             {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
             {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
             {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
@@ -274,24 +274,24 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         onCellDoubleClicked: function(cell){
             var field = cell.colDef.field;
             var coin = ['tb','jb','dbj'];
-            if(coin.indexOf(field)!=-1) return;
+            // if(coin.indexOf(field)!=-1) return;
             $state.go('app.player.info.games' , {id: cell.data._id,name:cell.data.nick});
-        },
-        onCellValueChanged: function(event) {
-            if(isNaN(event.newValue)){
-                event.data[event.colDef.field] = event.oldValue;
-            }
-        },
-        onCellEditingStarted: function (event) {
-            oldVal = event.value;
-        },
-        onCellEditingStopped: function (event) {
-            console.log(event);
-            newVal = event.value;
-            if(oldVal!=newVal){
-                $scope.updateData(event);
-            }
         }
+        // onCellValueChanged: function(event) {
+        //     if(isNaN(event.newValue)){
+        //         event.data[event.colDef.field] = event.oldValue;
+        //     }
+        // },
+        // onCellEditingStarted: function (event) {
+        //     oldVal = event.value;
+        // },
+        // onCellEditingStopped: function (event) {
+        //     console.log(event);
+        //     newVal = event.value;
+        //     if(oldVal!=newVal){
+        //         $scope.updateData(event);
+        //     }
+        // }
     };
 
     $scope.onPageSizeChanged = function(keyword) {

@@ -55,9 +55,10 @@
       "info": "Info",
       "online": "Online",
       "record": "Record",
-      "givelog": "Give Log",
-      "changescoreup":"Increase",
-      "changescoredown":"Decrease"
+      "givelog": "Give Log"
+    },
+    "uppoints":{
+      "manage":"上分"
     },
     "backpoints":{
       "manage":"Back Points",
