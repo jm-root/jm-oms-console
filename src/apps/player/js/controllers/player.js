@@ -8,7 +8,8 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
     $scope.stat = {};
     var url = statUri+'/players';
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
 
 
     var bank = jm.sdk.bank;

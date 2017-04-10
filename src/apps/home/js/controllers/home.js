@@ -159,7 +159,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
     };
 }]);
 
-app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -464,7 +464,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
     });
 }]);
 
-app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/topics';
     var furl = homeUri+'/bbs/forums';
     var id = $stateParams.id;
@@ -808,7 +808,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
 
 }]);
 
-app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/topics';
     var id = $stateParams.id;
     $scope.id = id;
@@ -1142,7 +1142,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
 
 }]);
 
-app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams,$timeout,global) {
     $scope.user = {};
 
     $scope.save = function(){

@@ -1,6 +1,6 @@
 'use strict';
 var sso = jm.sdk.sso;
-app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', function ($scope, $state, $http, $timeout) {
+app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout','global', function ($scope, $state, $http, $timeout,global) {
     var config = jm.sdk.config;
 
     var hkey = 'VIP_CONDITIONS';
@@ -40,7 +40,7 @@ app.controller('VipCondCtrl', ['$scope', '$state', '$http', '$timeout', function
 
 }]);
 
-app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout',function ($scope, $state, $http, $timeout) {
+app.controller('VipItemCtrl', ['$scope', '$state', '$http', '$timeout','global',function ($scope, $state, $http, $timeout,global) {
     $scope.item = {};
 
     var config = jm.sdk.config;
@@ -172,7 +172,7 @@ app.controller('VipSetCtrl', ['$scope', '$state', '$http', '$timeout', 'global',
     };
 }]);
 
-app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '$timeout',function ($scope, $state, $stateParams, $http, $timeout) {
+app.controller('VipSetEditCtrl', ['$scope', '$state', '$stateParams', '$http', '$timeout','global',function ($scope, $state, $stateParams, $http, $timeout,global) {
     var config = jm.sdk.config;
     $scope.vip = {pattern:0};
     $scope.vals = {};

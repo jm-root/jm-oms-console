@@ -72,12 +72,13 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 token: sso.getToken()
             }
         }).success(function(result){
-            $scope.data = result;
-            if($scope.data.err){
-                $scope.error($scope.data.msg);
+            console.info(result);
+            if(result.err){
+                $scope.error(result.msg);
             }else{
-                $scope.success($scope.data.msg);
-            }
+                $scope.success(global.translateByKey('common.succeed'));
+            };
+            $scope.getdata();
         }).error(function(msg, code){
             $scope.errorTips(code);
         });

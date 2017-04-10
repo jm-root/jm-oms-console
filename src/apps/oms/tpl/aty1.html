@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="row col-sm-12 form-group">
-                <label class="control-label pull-left m-t-xs">可获得金币</label>
+                <label class="control-label pull-left m-t-xs m-r-sm">可得金币</label>
                 <div class="pull-left m-l-md">
                     <input type="number" onkeypress="return event.keyCode>=48&&event.keyCode<=57" class="form-control input-sm w-md" min="0" ng-model="aty.jbamount" ng-disabled="key"/>
                 </div>
@@ -90,7 +90,7 @@
             <option value="">所属渠道</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>

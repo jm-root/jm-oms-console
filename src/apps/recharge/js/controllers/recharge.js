@@ -241,7 +241,8 @@ app.controller('RechargeCardLogCtrl', ['$scope', '$state','$stateParams','$http'
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date||{};
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
     var url = cardUri+'/cards?status=2';
 
     //先全局定义一个变量cardTypesRows
@@ -429,7 +430,8 @@ app.controller('RechargeThirdCtrl', ['$scope', '$state', '$http', 'global', func
     $scope.search.date = $scope.search.date || {};
     $scope.stat = {};
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
 
     var format_suid = function(params) {
         var obj = params.data.pay || {};

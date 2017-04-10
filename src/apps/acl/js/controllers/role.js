@@ -20,6 +20,7 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http','global',function ($s
         visibility: 'hidden'
     };
     $scope.selectRole = function(role){
+        $scope.moreloading = true;
         angular.forEach($scope.roles, function(role) {
             role.selected = false;
         });
@@ -131,6 +132,7 @@ app.controller('AclRoleCtrl', ['$scope', '$state', '$http','global',function ($s
             if(obj.err){
                 $scope.error(obj.msg);
             }else{
+                $scope.moreloading = false;
                 $scope.curPermission= result;
             }
         }).error(function(msg, code){
