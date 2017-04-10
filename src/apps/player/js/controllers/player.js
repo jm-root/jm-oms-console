@@ -314,6 +314,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
     $http.get(statUri+'/multiple', {
         params:{
             token: sso.getToken(),
+            UTC: global.UTC,
             fields:{user_total:1,user_yesterday:1,user_today:1,user_guest:1,user_mobile:1,user_wechat:1,user_qq:1}
         }
     }).success(function(result){
