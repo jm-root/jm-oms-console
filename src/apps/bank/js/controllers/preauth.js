@@ -18,8 +18,6 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
 
     var ok = true;
     $scope.npreauth = function(data){
-        console.log(data);
-        return;
         if(!ok) return;
         ok = false;
         var hold = data.Hold||{};
