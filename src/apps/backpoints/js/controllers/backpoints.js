@@ -6,7 +6,6 @@ app.controller('BackpointsCtrl',['$scope','$translatePartialLoader',function ($s
 app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var page = 1;
-    // var urlget = statUri+'/players';
     var urlget = agentUri+'/backCoinLogs';
     var urlpost = agentUri+'/backcoin/confirm';
 
@@ -40,7 +39,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 token: sso.getToken(),
                 search: $scope.search.keyword,
                 page:page,
-                rows:20,
+                rows:$scope.pageSize||20,
                 status:1
             }
         }).success(function(result){
@@ -53,7 +52,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 $scope.page = result.page;
                 $scope.pages = result.pages;
                 $scope.total = result.total;
-                $scope.totalnumber = global.reg(result.total);
+                $scope.totalnumber = global.reg(result.total||0);
                 if(result.total){
                     $scope.nodata = false;
                 }else{
@@ -93,7 +92,6 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
     var sso = jm.sdk.sso;
     $scope.search = {};
     var url = agentUri+'/backCoinLogs';
-
     function status_render(params){
         var obj = params.data|| {};
         if(obj.status == 1){
@@ -140,7 +138,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
                 params: {
                     token: sso.getToken(),
                     page:1,
-                    rows:10,
+                    rows:$scope.pageSize||20,
                     search:keyword
                 }
             }).success(function (result) {

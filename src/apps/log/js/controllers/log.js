@@ -262,7 +262,7 @@ app.controller('WordFilterCtrl', ['$scope', '$state','$stateParams', '$http', 'g
     $scope.search = history.search||{};
     $scope.wordfilter=history.wordfilter;
     $scope.crtime=history.crtime;
-    var url= wordfilterUri+'/words';
+    var url= wordfilterUri +'/words';
 
     $scope.$state = $state;
     var id = $stateParams.id;
@@ -431,6 +431,7 @@ app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', f
     $scope.$state = $state;
     var url= wordfilterUri+'/words';
     var id = $stateParams.id;
+
     $http.get(url +'/'+ id, {
         params: {
             token: sso.getToken()
@@ -441,6 +442,7 @@ app.controller('wordupdateCtrl', ['$scope', '$http', '$state', '$stateParams', f
             $scope.error(obj.msg);
         } else {
             $scope.log = obj;
+            $scope.log.crtime = moment($scope.log.crtime).format('YYYY-MM-DD HH:mm:ss');
         }
     }).error(function (msg, code) {
         $scope.errorTips(code);

@@ -24,9 +24,14 @@
                 <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i
                         class="fa fa-search"></i></button>
             </span>
-            </div><br/><br/>
+            </div>
         </form>
     </div>
+    <div class="pull-right m-r-sm m-b-xs" ng-show="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)">
+        </select>
+    </div>
+    <div class="line b-b"></div>
 </div>
 <!--ng-style="{height:app.navHeight-200+'px'}"-->
 <div style="margin: 0 10px 5px;position: relative">

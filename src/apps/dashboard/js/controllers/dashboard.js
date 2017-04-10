@@ -142,7 +142,6 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                     fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1}
                 }
             }).success(function(result){
-                console.log(result);
                 var obj = result;
                 if(obj.err){
                     $scope.error(obj.msg);
