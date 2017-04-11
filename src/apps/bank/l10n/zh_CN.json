@@ -63,6 +63,19 @@
             "createdAt": "时间"
           }
         },
+      "owndeal": {
+        "title": "个人流水",
+        "income": "收入",
+        "expenditure": "支出",
+        "header": {
+          "userId": "用户ID",
+          "user": "用户名",
+          "ctName": "币种",
+          "flag": "交易标记",
+          "amount": "金额",
+          "createdAt": "时间"
+        }
+      },
         "exchange": {
         },
         "npreauth": {

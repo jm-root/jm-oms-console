@@ -134,6 +134,7 @@
       "preauth":"Preauth List",
       "transfer":"Transfer",
       "deal":"Deal",
+      "owndeal":"个人流水",
       "npreauth":"Preauth Cancel",
       "overdraw":"Set Overdraw",
       "rate":"Currency Rate",

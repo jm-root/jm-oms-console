@@ -134,6 +134,7 @@
       "preauth":"预授权列表",
       "transfer":"转账",
       "deal":"交易流水",
+      "owndeal":"个人流水",
       "npreauth":"取消授权",
       "overdraw":"设置额度",
       "rate":"货币对率",
