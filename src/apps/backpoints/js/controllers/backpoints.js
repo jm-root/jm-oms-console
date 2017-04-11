@@ -72,7 +72,6 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                 token: sso.getToken()
             }
         }).success(function(result){
-            console.info(result);
             if(result.err){
                 $scope.error(result.msg);
             }else{
@@ -96,13 +95,13 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
     function status_render(params){
         var obj = params.data|| {};
         if(obj.status == 1){
-            return '<span style="color: #ff0000">下分请求中</span>';
+            return "<span style='color: #ff0000'>{{'backpoints.log.label1'|translate}}</span>";
         }else if(obj.status == 4){
-            return '<span style="color: #0000FF">已撤销并未下分</span>';
+            return "<span style='color: #0000FF'>{{'backpoints.log.label2'|translate}}</span>";
         }else if(obj.status == 5){
-            return '<span style="color: #00FF00">已退款并下分</span>';
+            return "<span style='color: #00D900'>{{'backpoints.log.label3'|translate}}</span>";
         }else{
-            return '<span>未下分</span>';
+            return "<span>{{'backpoints.log.label4'|translate}}</span>";
         }
     };
 

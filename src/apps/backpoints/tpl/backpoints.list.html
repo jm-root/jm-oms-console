@@ -70,7 +70,7 @@
                 <td data-title="{{'backpoints.list.label1'|translate}}" >{{row.user.uid}}</td>
                 <td data-title="{{'backpoints.list.label2'|translate}}" >{{row.user.account||row.user.nick}}</td>
                 <td data-title="{{'backpoints.list.label3'|translate}}" >{{row.amount}}</td>
-                <td data-title="{{'backpoints.list.label4'|translate}}" >{{row.crtime}}</td>
+                <td data-title="{{'backpoints.list.label4'|translate}}" >{{row.crtime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
 
                 <td data-title="" style="height: 2.8em">
                     <button class="btn btn-xs btn-info" ng-click="confirm(row._id)" style="float: right" ng-disabled="key">{{'backpoints.list.label5'|translate}}</button>

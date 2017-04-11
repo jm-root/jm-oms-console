@@ -60,12 +60,13 @@
                         .state('app.uppoints', {
                             url: '/uppoints',
                             template: '<div ui-view class="fade-in-down"></div>',
-                            controller: 'PlayerChargeCtrl',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/charge.js'] )
+                            controller: 'PlayerCtrl',
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/charge.js',path + 'js/controllers/index.js'] )
                         })
                         .state('app.uppoints.manage', {
                             url: '/manage/{type}',
                             templateUrl: path +'tpl/player.changescore.html',
+                            controller: 'PlayerChargeCtrl'
                         })
 
                 }
