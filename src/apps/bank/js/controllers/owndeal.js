@@ -58,9 +58,9 @@ app.controller('BankOwnDealCtrl', ['$scope', '$state', '$http','$timeout', 'glob
                 $timeout(function () {
                     $scope.moreLoading = false;
                     $('html,body').animate({ scrollTop: 0 }, 100);
+                    $scope.deallist = result.rows;
                     if(result.total){
                         $scope.nodata = false;
-                        $scope.deallist = result.rows;
                         $scope.page = result.page;
                         $scope.pages = result.pages;
                         $scope.total = result.total;

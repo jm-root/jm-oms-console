@@ -67,9 +67,9 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
                 $timeout(function () {
                     $scope.moreLoading = false;
                     $('html,body').animate({ scrollTop: 0 }, 100);
+                    $scope.preauthlist = result.rows;
                     if(result.total){
                         $scope.nodata = false;
-                        $scope.preauthlist = result.rows;
                         $scope.page = result.page;
                         $scope.pages = result.pages;
                         $scope.total = result.total;

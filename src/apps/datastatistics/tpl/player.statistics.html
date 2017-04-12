@@ -12,7 +12,7 @@
             <option value="">所有渠道</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm headpadd" >
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
         </select>
     </div>

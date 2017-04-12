@@ -47,9 +47,9 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
                 $timeout(function () {
                     $scope.moreLoading = false;
                     $('html,body').animate({ scrollTop: 0 }, 100);
+                    $scope.accountlist = result.rows;
                     if(result.total){
                         $scope.nodata = false;
-                        $scope.accountlist = result.rows;
                         $scope.page = result.page;
                         $scope.pages = result.pages;
                         $scope.total = result.total;

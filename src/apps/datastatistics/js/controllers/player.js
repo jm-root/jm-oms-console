@@ -81,9 +81,9 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 0);
+                $scope.playerdata = result;
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.playerdata = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
@@ -177,9 +177,9 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
+                $scope.usersInfo = result;
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
@@ -275,9 +275,9 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
+                $scope.usersInfo = result;
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
