@@ -50,19 +50,31 @@
           "opts3": "thanh lý"
          }
        },
-        "deal": {
-          "title": "qui trinh giao dịch",
-          "income": "nhận vào",
-          "expenditure": "chi ra",
-          "header": {
-            "userId": "ID người dùng",
-            "user": "tên người dùng",
-            "ctName": "loại tiền",
-            "flag": "ký hiệu giao dịch",
-            "amount": "số tiền",
-            "createdAt": "thời gian"
-          }
+      "deal": {
+        "title": "qui trinh giao dịch",
+        "income": "nhận vào",
+        "expenditure": "chi ra",
+        "typeOpts": {
+          "opts": "交易类型",
+          "opts1": "普通交易",
+          "opts2": "转帐交易",
+          "opts3": "货币发行",
+          "opts4": "货币回收",
+          "opts5": "预授权"
         },
+        "header": {
+          "fromUserId": "转出ID",
+          "fromUser": "转出用户",
+          "toUserId": "转入ID",
+          "toUser": "转入用户",
+          "type": "交易类型",
+          "flag": "交易标记",
+          "ctName": "币种",
+          "amount": "操作数量",
+          "balance": "操作前余额",
+          "createdAt": "时间"
+        }
+      },
       "owndeal": {
         "title": "个人流水",
         "income": "收入",

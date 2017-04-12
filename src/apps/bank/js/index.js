@@ -67,15 +67,15 @@
                         })
                         .state('app.bank.deal', {
                             url: '/deal',
-                            templateUrl: path + 'tpl/bank.owndeal.html',
-                            controller: 'BankOwnDealCtrl',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/owndeal.js'])
+                            templateUrl: path + 'tpl/bank.deal.html',
+                            controller: 'BankDealCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/deal.js'])
                         })
                         .state('app.bank.owndeal', {
                             url: '/owndeal',
-                            templateUrl: path + 'tpl/bank.deal.html',
-                            controller: 'BankDealCtrl',
-                            resolve: lazyLoadProvider.load([path + 'js/controllers/deal.js'])
+                            templateUrl: path + 'tpl/bank.owndeal.html',
+                            controller: 'BankOwnDealCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/owndeal.js'])
                         })
                         .state('app.bank.npreauth', {
                             url: '/npreauth',
