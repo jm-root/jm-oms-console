@@ -57,14 +57,14 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
                 $scope.error(result.msg);
             }else{
                 $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
+                // $('html,body').animate({ scrollTop: 0 }, 100);
                 if(result.total){
                     $scope.nodata = false;
                     $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
-                    $scope.crtime = moment($scope.usersInfo.crtime).format('YYYY-MM-DD');
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
@@ -172,14 +172,14 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
                 $scope.error(result.msg);
             }else{
                 $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
+                // $('html,body').animate({ scrollTop: 0 }, 100);
                 if(result.total){
                     $scope.nodata = false;
                     $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
-                    $scope.crtime = moment($scope.usersInfo.crtime).format('YYYY-MM-DD');
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
@@ -289,14 +289,14 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
                 $scope.error(result.msg);
             }else{
                 $scope.moreLoading = false;
-                $('html,body').animate({ scrollTop: 0 }, 100);
+                // $('html,body').animate({ scrollTop: 0 }, 100);
                 if(result.total){
                     $scope.nodata = false;
                     $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
-                    $scope.crtime = moment($scope.usersInfo.crtime).format('YYYY-MM-DD');
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
                 }
