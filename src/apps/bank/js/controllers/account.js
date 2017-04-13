@@ -53,6 +53,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
                         $scope.page = result.page;
                         $scope.pages = result.pages;
                         $scope.total = result.total;
+                        $scope.totalnumber = global.reg(result.total);
                     }else{
                         $scope.nodata = true;
                     }

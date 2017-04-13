@@ -21,7 +21,7 @@
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
-            <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
+            <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
                 <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
             </div>
             <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <!--no data-->
-        <div class="text-center" ng-if="nodata&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
+        <div class="text-center" ng-if="nodata&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
         <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
@@ -71,6 +71,7 @@
     <!--ng-if="!isSmartDevice"-->
     <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:30px;">
         <div class="text-center">
+            <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
             <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
             <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
             <span>{{page}}/{{pages}}</span>
