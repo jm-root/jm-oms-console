@@ -59,6 +59,7 @@
         "PleaseChooseCooperationMode":"Please choose cooperation mode",
         "cooperation":"Cooperation",
         "buyout":"Buyout",
+        "DividedProportion":"Divided proportion",
         "ApplicantName":"Applicant Name",
         "tel":"Tel",
         "PromotionCap":"Promotion Cap",
@@ -120,7 +121,9 @@
           "cardAmount": "Card recharge",
           "sysAmount": "System reward",
           "totalAmount": "Total revenue",
-          "crtime": "Register time"
+          "crtime": "Register time",
+          "level":"Channel level",
+          "jb":"Gold"
         }
       },
       "recharge":{

@@ -96,6 +96,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">{{ 'agent.agent.create.DividedProportion' | translate }}</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" min="0" max="1" step="0.001" placeholder="{{ 'agent.agent.create.DividedProportion' | translate }}" ng-model="agent.ratio">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 control-label" translate="agent.agent.create.ApplicantName">申请人姓名</label>
 
                     <div class="col-sm-9">
@@ -141,58 +150,58 @@
                     <div class="col-sm-1"></div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.BankAccountName">银行账号名</label>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="agent.agent.create.BankAccountName">银行账号名</label>-->
 
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankAccountName' | translate }}" ng-model="agent.bankInfo.account">
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankAccountName' | translate }}" ng-model="agent.bankInfo.account">-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.bank">银行</label>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="agent.agent.create.bank">银行</label>-->
 
-                    <div class="col-sm-9">
-                        <select class="form-control w-sm" ng-model="agent.bankInfo.bank">
-                            <option value="" translate="agent.agent.create.PleaseChooseTheBank">请选银行</option>
-                            <option value="中国银行">中国银行</option>
-                            <option value="中国工商银行">中国工商银行</option>
-                            <option value="中国建设银行">中国建设银行</option>
-                            <option value="中国农业银行">中国农业银行</option>
-                            <option value="中国交通银行">中国交通银行</option>
-                            <option value="中国邮政银行">中国邮政银行</option>
-                            <option value="中国招商银行">中国招商银行</option>
-                            <option value="中国兴业银行">中国兴业银行</option>
-                            <option value="中国中信银行">中国中信银行</option>
-                            <option value="中国光大银行">中国光大银行</option>
-                            <option value="中国民生银行">中国民生银行</option>
-                            <option value="中国广发银行">中国广发银行</option>
-                            <option value="中国华夏银行">中国华夏银行</option>
-                            <option value="中国浦发银行">中国浦发银行</option>
-                            <option value="深圳发展银行">深圳发展银行</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                    <!--<div class="col-sm-9">-->
+                        <!--<select class="form-control w-sm" ng-model="agent.bankInfo.bank">-->
+                            <!--<option value="" translate="agent.agent.create.PleaseChooseTheBank">请选银行</option>-->
+                            <!--<option value="中国银行">中国银行</option>-->
+                            <!--<option value="中国工商银行">中国工商银行</option>-->
+                            <!--<option value="中国建设银行">中国建设银行</option>-->
+                            <!--<option value="中国农业银行">中国农业银行</option>-->
+                            <!--<option value="中国交通银行">中国交通银行</option>-->
+                            <!--<option value="中国邮政银行">中国邮政银行</option>-->
+                            <!--<option value="中国招商银行">中国招商银行</option>-->
+                            <!--<option value="中国兴业银行">中国兴业银行</option>-->
+                            <!--<option value="中国中信银行">中国中信银行</option>-->
+                            <!--<option value="中国光大银行">中国光大银行</option>-->
+                            <!--<option value="中国民生银行">中国民生银行</option>-->
+                            <!--<option value="中国广发银行">中国广发银行</option>-->
+                            <!--<option value="中国华夏银行">中国华夏银行</option>-->
+                            <!--<option value="中国浦发银行">中国浦发银行</option>-->
+                            <!--<option value="深圳发展银行">深圳发展银行</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.BranchAccount">开户支行</label>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="agent.agent.create.BranchAccount">开户支行</label>-->
 
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BranchAccount' | translate }}" ng-model="agent.bankInfo.subbranch">
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BranchAccount' | translate }}" ng-model="agent.bankInfo.subbranch">-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.BankCardNumber">银行卡号</label>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="agent.agent.create.BankCardNumber">银行卡号</label>-->
 
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankCardNumber' | translate }}" ng-model="agent.bankInfo.card">
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                    <!--<div class="col-sm-9">-->
+                        <!--<input type="text" class="form-control w-sm" placeholder="{{ 'agent.agent.create.BankCardNumber' | translate }}" ng-model="agent.bankInfo.card">-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" translate="agent.agent.create.label">标签</label>

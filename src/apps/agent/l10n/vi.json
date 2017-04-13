@@ -59,6 +59,7 @@
         "PleaseChooseCooperationMode": "mời lựa chọn phương thức hợp tác",
         "cooperation": "hợp tác",
         "buyout": "mua đứt",
+        "DividedProportion":"分成比例",
         "ApplicantName": "họ tên người đăng ký",
         "tel": "手机号",
         "PromotionCap": "giới hạn quảng bá",
@@ -120,7 +121,9 @@
           "cardAmount": "nạp tiền qua thẻ điểm",
           "sysAmount": "phần thưởng hệ thống",
           "totalAmount": "tổng doanh thu",
-          "crtime": "thời gian đăng ký"
+          "crtime": "thời gian đăng ký",
+          "level":"渠道等级",
+          "jb":"金币数"
         }
       },
       "recharge": {

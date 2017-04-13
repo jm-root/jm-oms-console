@@ -14,7 +14,9 @@
         "give_jb": "tặng hoàng kim",
         "give_dbj": "tặng phiếu đoạt bảo",
         "gain_jb": "tổng thắng thua hoàng kim của trò chơi",
-        "gain_dbj": "tổng thắng thua phiếu đoạt bảo của trò chơi"
+        "gain_dbj": "tổng thắng thua phiếu đoạt bảo của trò chơi",
+        "up_jb": "Tổng lên điểm",
+        "down_jb": "Tổng dưới điểm"
       }
     }
   }

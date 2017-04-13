@@ -276,31 +276,70 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
         var amount = chargeAmount+cardAmount+sysAmount;
         return amount||0;
     };
+    var format_jb = function(params) {
+        var obj = params.data || {};
+        var holds = obj.holds || {};
+        var jb = holds.jb || {};
+        return jb.amount||0;
+    };
 
-    var columnDefs = [
-        {headerName: "渠道ID", field: "code",width: 120 },
-        {headerName: "渠道名称", field: "name", width: 120},
-        {headerName: "注册人数", field: "regCount",width: 120 },
-        {headerName: "在线人数", field: "online",width: 120 },
-        {headerName: "充值人数", field: "chargeSum",width: 120 },
-        {headerName: "充值金额", field: "chargeAmount",width: 120},
-        {headerName: "点卡充值", field: "cardAmount" ,width: 120},
-        {headerName: "系统奖励", field: "sysAmount" ,width: 120},
-        {headerName: "总营收", field: "totalAmount" ,width: 120, valueGetter: format_totalAmount},
-        {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
-    ];
-    global.agGridTranslateSync($scope, columnDefs, [
-        'agent.agentdata.analysis.header.code',
-        'agent.agentdata.analysis.header.name',
-        'agent.agentdata.analysis.header.regCount',
-        'agent.agentdata.analysis.header.online',
-        'agent.agentdata.analysis.header.chargeSum',
-        'agent.agentdata.analysis.header.chargeAmount',
-        'agent.agentdata.analysis.header.cardAmount',
-        'agent.agentdata.analysis.header.sysAmount',
-        'agent.agentdata.analysis.header.totalAmount',
-        'agent.agentdata.analysis.header.crtime'
-    ]);
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "渠道ID", field: "code",width: 120 },
+            {headerName: "渠道名称", field: "name", width: 120},
+            {headerName: "注册人数", field: "regCount",width: 120 },
+            {headerName: "在线人数", field: "online",width: 120 },
+            {headerName: "充值人数", field: "chargeSum",width: 120 },
+            {headerName: "充值金额", field: "chargeAmount",width: 120},
+            {headerName: "点卡充值", field: "cardAmount" ,width: 120},
+            {headerName: "系统奖励", field: "sysAmount" ,width: 120},
+            {headerName: "总营收", field: "totalAmount" ,width: 120, valueGetter: format_totalAmount},
+            {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
+        ];
+        global.agGridTranslateSync($scope, columnDefs, [
+            'agent.agentdata.analysis.header.code',
+            'agent.agentdata.analysis.header.name',
+            'agent.agentdata.analysis.header.regCount',
+            'agent.agentdata.analysis.header.online',
+            'agent.agentdata.analysis.header.chargeSum',
+            'agent.agentdata.analysis.header.chargeAmount',
+            'agent.agentdata.analysis.header.cardAmount',
+            'agent.agentdata.analysis.header.sysAmount',
+            'agent.agentdata.analysis.header.totalAmount',
+            'agent.agentdata.analysis.header.crtime'
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "渠道ID", field: "code",width: 200 },
+            {headerName: "渠道名称", field: "name", width: 200},
+            {headerName: "渠道等级", field: "level", width: 100},
+            {headerName: "注册人数", field: "regCount",width: 200 },
+            {headerName: "在线人数", field: "online",width: 200 },
+            // {headerName: "充值人数", field: "chargeSum",width: 100 },
+            // {headerName: "充值金额", field: "chargeAmount",width: 100},
+            // {headerName: "点卡充值", field: "cardAmount" ,width: 100},
+            // {headerName: "系统奖励", field: "sysAmount" ,width: 100},
+            // {headerName: "总营收", field: "totalAmount" ,width: 100, valueGetter: format_totalAmount},
+            {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS},
+            {headerName: "金币数", field: "jb", width:145,valueGetter: format_jb}
+        ];
+
+        global.agGridTranslateSync($scope, columnDefs, [
+            'agent.agentdata.analysis.header.code',
+            'agent.agentdata.analysis.header.name',
+            'agent.agentdata.analysis.header.level',
+            'agent.agentdata.analysis.header.regCount',
+            'agent.agentdata.analysis.header.online',
+            // 'agent.agentdata.analysis.header.chargeSum',
+            // 'agent.agentdata.analysis.header.chargeAmount',
+            // 'agent.agentdata.analysis.header.cardAmount',
+            // 'agent.agentdata.analysis.header.sysAmount',
+            // 'agent.agentdata.analysis.header.totalAmount',
+            'agent.agentdata.analysis.header.crtime',
+            'agent.agentdata.analysis.header.jb'
+        ]);
+    }
+
 
     var dataSource = {
         getRows: function (params) {

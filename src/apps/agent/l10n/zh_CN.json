@@ -59,6 +59,7 @@
         "PleaseChooseCooperationMode": "请选合作方式",
         "cooperation": "合作",
         "buyout": "买断",
+        "DividedProportion":"分成比例",
         "ApplicantName": "申请人姓名",
         "tel": "手机号",
         "PromotionCap": "推广上限",
@@ -120,7 +121,9 @@
           "cardAmount": "点卡充值",
           "sysAmount": "系统奖励",
           "totalAmount": "总营收",
-          "crtime": "注册时间"
+          "crtime": "注册时间",
+          "level":"渠道等级",
+          "jb":"金币数"
         }
       },
       "recharge": {

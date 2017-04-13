@@ -8,13 +8,15 @@
         "opts3": "按年统计"
       },
       "header":{
-        "date":"日期",
-        "recharge_p":"充值人数",
-        "recharge":"充值数(分)",
-        "give_jb":"赠送金币",
-        "give_dbj":"赠送夺宝卷",
-        "gain_jb":"游戏金币总输赢",
-        "gain_dbj":"游戏夺宝卷总输赢"
+        "date": "日期",
+        "recharge_p": "充值人数",
+        "recharge": "充值数(分)",
+        "give_jb": "赠送金币",
+        "give_dbj": "赠送夺宝卷",
+        "gain_jb": "游戏金币总输赢",
+        "gain_dbj": "游戏夺宝卷总输赢",
+        "up_jb": "总上分",
+        "down_jb": "总下分"
       }
     }
   }
