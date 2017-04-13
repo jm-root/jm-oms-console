@@ -78,7 +78,7 @@ angular.module('app')
             var loginExpire = localStorage.getItem('loginExpire');
             if (loginExpire < Date.now()) {
                 $scope.signout();
-                $scope.warning('你的token已过期,请重新登录!');
+                loginExpire&&$scope.warning('你的token已过期,请重新登录!');
             }
         };
         checkToken();
