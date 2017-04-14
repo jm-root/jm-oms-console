@@ -4,7 +4,7 @@
 
 <div class="wrapper-md">
     <form ng-show="$state.is('app.bank.transfer')" name="formValidate" class="form-horizontal form-validation">
-        <div class="panel panel-default col-sm-9 col-md-6">
+        <div class="panel panel-default col-sm-9 col-md-6" style="margin: 0">
                 <div class="list-group" style="padding:0;">
 
                     <li ui-sref="app.search.user" class="list-group-item" style="padding-right: 10px;">
@@ -21,17 +21,17 @@
                         </div>
                     </li>
 
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-4" style="vertical-align: middle">
-                                {{'bank.bank.transfer.label3'|translate}}
-                            </div>
-                            <div class="col-xs-2"></div>
-                            <div class="col-xs-6 text-right pull-right" style="margin:0;padding:0;">
-                                <input type="number"  ng-class="{'p-r-lg':isSmartDevice}" style="width: 130px;border:none;text-align:right;" min="1" placeholder="{{'bank.bank.transfer.defaultAccount'|translate}}" ng-pattern="/^[0-9]*$/" ng-model="bank.toAccountId">
-                            </div>
-                        </div>
-                    </li>
+                    <!--<li class="list-group-item">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-xs-4" style="vertical-align: middle">-->
+                                <!--{{'bank.bank.transfer.label3'|translate}}-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-2"></div>-->
+                            <!--<div class="col-xs-6 text-right pull-right" style="margin:0;padding:0;">-->
+                                <!--<input type="number"  ng-class="{'p-r-lg':isSmartDevice}" style="width: 130px;border:none;text-align:right;" min="1" placeholder="{{'bank.bank.transfer.defaultAccount'|translate}}" ng-pattern="/^[0-9]*$/" ng-model="bank.toAccountId">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
 
                     <li class="list-group-item" style="margin:0;">
                         <div class="row" ng-if="isSmartDevice" ng-init="bank.ctCode = 'jb'">
@@ -66,18 +66,18 @@
                         </div>
                     </li>
 
-                    <li class="list-group-item" ng-if="!isCP">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                {{'bank.bank.transfer.label4'|translate}}
-                            </div>
-                            <div class="col-xs-6 pull-right text-right">
-                                <label style="padding: 0;margin:0;" ng-if="accounts.length<=1">{{bank.fromAccountId||''}}</label>
-                                <select class="form-control w-sm" ng-if="accounts.length>1" ng-model="bank.fromAccountId" ng-options="option.id as option.id for option in accounts" ng-change="changeAcount()" ng-required="true">
-                                </select>
-                            </div>
-                        </div>
-                    </li>
+                    <!--<li class="list-group-item" ng-if="!isCP">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-xs-4">-->
+                                <!--{{'bank.bank.transfer.label4'|translate}}-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-6 pull-right text-right">-->
+                                <!--<label style="padding: 0;margin:0;" ng-if="accounts.length<=1">{{bank.fromAccountId||''}}</label>-->
+                                <!--<select class="form-control w-sm" ng-if="accounts.length>1" ng-model="bank.fromAccountId" ng-options="option.id as option.id for option in accounts" ng-change="changeAcount()" ng-required="true">-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
                     <li class="list-group-item" ng-if="!isCP">
                         <div class="row">
                             <div class="col-xs-4">

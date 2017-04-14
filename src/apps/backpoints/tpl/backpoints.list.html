@@ -1,35 +1,27 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'backpoints.list.title'|translate}}</h1></div>
-
 <div>
     <div class="m-t-xs " ng-if="isSmartDevice">
         <form style="margin: 0 auto">
             <div class="input-group m-l-sm m-r-sm" style="width: 107%">
-                <input type="text" ng-model="search.keyword"
-                       class="form-control input-sm bg-white no-border rounded padder"
-                       placeholder="{{'common.search'|translate}}">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
                 <span class="input-group-btn" style="width: auto">
-                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i
-                        class="fa fa-search"></i></button>
-            </span>
+                    <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i class="fa fa-search"></i></button>
+                </span>
             </div>
         </form>
     </div>
     <div class="m-t-xs " ng-if="!isSmartDevice">
         <form style="margin: 0 auto">
             <div class="input-group m-l-sm m-r-sm pull-right w-lg">
-                <input type="text" ng-model="search.keyword"
-                       class="form-control input-sm bg-white no-border rounded padder"
-                       placeholder="{{'common.search'|translate}}">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
                 <span class="input-group-btn" style="width: auto">
-                <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i
-                        class="fa fa-search"></i></button>
-            </span>
+                    <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i class="fa fa-search"></i></button>
+                </span>
             </div>
         </form>
     </div>
     <div class="pull-right m-r-sm m-b-xs" ng-show="!isSmartDevice">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)">
-        </select>
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)"></select>
     </div>
     <div class="line b-b"></div>
 </div>
@@ -42,7 +34,7 @@
             <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
                 <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
             </div>
-            <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 48%;top: 50%;">
+            <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 47%;top: 22em;">
                 <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
             </div>
         </div>
@@ -50,7 +42,7 @@
         <div class="text-center" ng-if="nodata&&!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
-        <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 46%;top: 50%;">
+        <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 46%;top: 22em;">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
         <!--table-->

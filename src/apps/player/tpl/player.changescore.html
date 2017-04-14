@@ -15,13 +15,13 @@
                 <li class="list-group-item" ui-sref="app.search.user">
                     <div class="row">
                         <div class="pull-left m-l-md">{{'player.changescore.label3'|translate}}</div>
-                        <div class="pull-right">
+                        <div class="pull-right m-r-md"><i class="fa fa-chevron-right text-muted"></i></div>
+                        <div class="pull-right m-r-md">
                             <span ng-if="player">
                                 <span ng-if="player.nick">{{player.nick||""}}</span>
                                 (ID: {{player.uid}})
                             </span>
                         </div>
-                        <div class="pull-right m-r-md"><i class="fa fa-chevron-right text-muted"></i></div>
                     </div>
                 </li>
                 <!--<li ng-if="!isSmartDevice" class="list-group-item" data-toggle="modal" data-target="#searchUser">-->
@@ -61,9 +61,9 @@
                 </li>
                 <!--保存-->
                 <li class="list-group-item text-right">
-                    <button ng-if="type == 'charge'" type="submit" class="btn btn-success" ng-click="!formValidate.$invalid&&updateData('charge')">{{'player.changescore.opts.opt2'|translate}}</button>
-                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-info" ng-click="!formValidate.$invalid&&updateData('uncharge')">{{'player.changescore.opts.opt3'|translate}}</button>
-                    <button ng-if="type == 'uncharge'" type="button" class="btn btn-danger" ng-click="updateData('uncharge', true)">{{'search.all'|translate}}</button>
+                    <button ng-if="type == 'charge'" type="submit" class="btn btn-success m-r-sm" ng-click="!formValidate.$invalid&&updateData('charge')">{{'player.changescore.opts.opt2'|translate}}</button>
+                    <button ng-if="type == 'uncharge'" type="submit" class="btn btn-info m-r-sm" ng-click="!formValidate.$invalid&&updateData('uncharge')">{{'player.changescore.opts.opt3'|translate}}</button>
+                    <button ng-if="type == 'uncharge'" type="button" class="btn btn-danger m-r-sm" ng-click="updateData('uncharge', true)">{{'search.all'|translate}}</button>
                 </li>
             </div>
             </form>

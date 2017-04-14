@@ -1,5 +1,5 @@
 <div class="bg-light lter b-b wrapper-md">
-    <h1 class="m-n font-thin h3"><i class="fa fa-chevron-left m-r-sm" ui-sref="app.uppoints.manage({type: 'charge'})"></i>{{'search.selectplayer'|translate}}</h1>
+    <h1 class="m-n font-thin h3"><i class="fa fa-chevron-left m-r-sm" ng-click="cancel()"></i>{{'search.selectplayer'|translate}}</h1>
 </div>
 
 <div class="wrapper-md col-lg-offset-2 col-lg-9">
@@ -49,7 +49,7 @@
                 <!--取消-->
                 <li class="list-group-item text-right">
                     <button type="submit" class="btn btn-danger"
-                            ui-sref="app.uppoints.manage({type: 'charge'})">{{'common.cancel'|translate}}
+                            ng-click="cancel()">{{'common.cancel'|translate}}
                     </button>
                 </li>
             </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('MainCtrl', ['$scope', '$state', '$translatePartialLoader', '$http', '$interval', 'global', function ($scope, $state, $translatePartialLoader, $http, $interval, global) {
+    .controller('MainCtrl', ['$scope', '$state', '$translatePartialLoader', '$http', '$interval', 'global','$rootScope', function ($scope, $state, $translatePartialLoader, $http, $interval, global,$rootScope) {
         $translatePartialLoader.addPart('common');
         $translatePartialLoader.addPart('main');
 
@@ -74,11 +74,21 @@ angular.module('app')
             }
         );
 
+        $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
+            $rootScope.previousState = from; //from为前一个页面的路由信息：url,cache,views,name
+            $rootScope.previousParams = fromParams||{a:1}; //fromParams为前一个页面的ID信息
+            var url = JSON.stringify($rootScope.previousState);
+            var param = JSON.stringify($rootScope.previousParams);
+            localStorage.setItem('url',url);
+            localStorage.setItem('param',param);
+        });
+
         var checkToken = function () {
             var loginExpire = localStorage.getItem('loginExpire');
             if (loginExpire < Date.now()) {
                 $scope.signout();
                 loginExpire&&$scope.warning('你的token已过期,请重新登录!');
+
             }
         };
         checkToken();
