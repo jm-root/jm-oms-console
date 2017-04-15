@@ -43,10 +43,10 @@
                 <th class="thh">{{'bank.account.header.user'|translate}}</th>
                 <th class="thh">{{'bank.account.header.jb'|translate}}</th>
                 <th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.jb_a'|translate}}</th>
-                <th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.dbj'|translate}}</th>
-                <th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.dbj_a'|translate}}</th>
-                <th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.tb'|translate}}</th>
-                <th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.tb_a'|translate}}</th>
+                <!--<th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.dbj'|translate}}</th>-->
+                <!--<th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.dbj_a'|translate}}</th>-->
+                <!--<th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.tb'|translate}}</th>-->
+                <!--<th class="thh" ng-if="!isSmartDevice">{{'bank.account.header.tb_a'|translate}}</th>-->
                 <th class="thh">{{'bank.account.header.status'|translate}}</th>
                 <th class="thh">{{'bank.account.header.createdAt'|translate}}</th>
             </tr>
@@ -57,10 +57,10 @@
                 <td class="tbd" data-title="{{'bank.account.header.user'|translate}}" style="height: 2.8em">{{row.user.name}}</td>
                 <td class="tbd" data-title="{{'bank.account.header.jb'|translate}}" style="height: 2.8em">{{row.holds.jb.amount || 0}}</td>
                 <td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.jb_a'|translate}}" style="height: 2.8em">{{row.holds.jb.overdraw || 0}}</td>
-                <td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.dbj'|translate}}" style="height: 2.8em">{{row.holds.dbj.amount || 0}}</td>
-                <td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.dbj_a'|translate}}" style="height: 2.8em">{{row.holds.dbj.overdraw || 0}}</td>
-                <td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb'|translate}}" style="height: 2.8em">{{row.holds.tb.amount || 0}}</td>
-                <td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb_a'|translate}}" style="height: 2.8em">{{row.holds.tb.overdraw || 0}}</td>
+                <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.dbj'|translate}}" style="height: 2.8em">{{row.holds.dbj.amount || 0}}</td>-->
+                <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.dbj_a'|translate}}" style="height: 2.8em">{{row.holds.dbj.overdraw || 0}}</td>-->
+                <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb'|translate}}" style="height: 2.8em">{{row.holds.tb.amount || 0}}</td>-->
+                <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb_a'|translate}}" style="height: 2.8em">{{row.holds.tb.overdraw || 0}}</td>-->
                 <td class="tbd" data-title="{{'bank.account.header.status'|translate}}" style="height: 2.8em">{{row.status == 0 ?('bank.bank.account.statusOpts.opts1'|translate):( row.status == 1 ?('bank.bank.account.statusOpts.opts2'|translate):('bank.bank.account.statusOpts.opts3'|translate))}}</td>
                 <td class="tbd" data-title="{{'bank.account.header.createdAt'|translate}}" style="height: 2.8em">{{row.user.createdAt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
             </tr>

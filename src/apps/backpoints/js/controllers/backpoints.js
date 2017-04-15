@@ -66,20 +66,37 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
 
     $scope.getdata();
 
-    $scope.confirm = function (id) {
-        $http.post(urlpost, {oid:id},{
-            params:{
-                token: sso.getToken()
+
+    var htmlFun = function(row){
+       var info = global.translateByKey('search.player')+ row.account + '<br/> '+'<br/> '+global.translateByKey('search.uncharge') + row.amount + '<br> ';
+       return info;
+    };
+
+    $scope.confirm = function (row) {
+        var id = row._id;
+        var account = row.account||row.uid||row.nick;
+        $scope.openTips({
+            title: global.translateByKey('backpoints.list.label5'),
+            content: htmlFun(row),
+            okTitle: global.translateByKey('common.confirm'),
+            cancelTitle: global.translateByKey('common.cancel'),
+            okCallback: function ($s) {
+                $http.post(urlpost, {oid: id}, {
+                    params: {
+                        token: sso.getToken()
+                    }
+                }).success(function (result) {
+                    if (result.err) {
+                        $scope.error(result.msg);
+                    } else {
+                        $scope.success(global.translateByKey('common.succeed'));
+                    }
+                    ;
+                    $scope.getdata();
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                });
             }
-        }).success(function(result){
-            if(result.err){
-                $scope.error(result.msg);
-            }else{
-                $scope.success(global.translateByKey('common.succeed'));
-            };
-            $scope.getdata();
-        }).error(function(msg, code){
-            $scope.errorTips(code);
         });
     }
 
