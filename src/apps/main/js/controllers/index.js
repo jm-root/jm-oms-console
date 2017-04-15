@@ -72,8 +72,8 @@ angular.module('app')
                     name: fromState.name,
                     params: fromParams
                 };
-                $scope.previousState = from; //from为前一个页面的路由信息：url,cache,views,name
-                $scope.previousParams = fromParams||{a:1}; //fromParams为前一个页面的ID信息
+                $scope.previousState = fromState; //from为前一个页面的路由信息：url,cache,views,name
+                $scope.previousParams = fromParams||{}; //fromParams为前一个页面的ID信息
                 var url = JSON.stringify($scope.previousState);
                 var param = JSON.stringify($scope.previousParams);
                 localStorage.setItem('url',url);
