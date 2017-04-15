@@ -25,7 +25,8 @@ angular.module('app')
             $http.get(url, {
                 params: {
                     token: sso.getToken(),
-                    acl_user: $scope.userInfo.id
+                    acl_user: $scope.userInfo.id,
+                    key:omsnav
                 }
             }).success(function (result) {
                 // console.log(result);
