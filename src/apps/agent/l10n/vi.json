@@ -164,6 +164,18 @@
           "pname": "tên đường dẫn cấp trên",
           "count": "số người đăng ký"
         }
+      },
+      "divided":{
+        "title": "分成流水",
+        "TheChannel": "所属渠道",
+        "header":{
+          "code": "渠道ID",
+          "name": "渠道名称",
+          "total": "总收益",
+          "amount": "分成数量",
+          "ramount": "按比例分成数",
+          "crtime": "操作时间"
+        }
       }
     },
     "coin": {

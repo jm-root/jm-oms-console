@@ -84,6 +84,12 @@
                             controller: 'AgentDataAnalysisCtrl',
                             resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
+                        .state('app.agentdata.divided', {
+                            url: '/divided',
+                            templateUrl: path + 'tpl/agentdata.divided.html',
+                            controller: 'AgentDataDividedCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                        })
                     //推广地址
                         .state('app.promote', {
                             url: '/promote',

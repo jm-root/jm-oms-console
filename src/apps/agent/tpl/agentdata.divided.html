@@ -1,0 +1,26 @@
+<div class="bg-light lter b-b panel-heading"><h1 class="m-n font-thin h3">{{ 'agent.agentdata.divided.title' | translate }}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
+        <div class="input-group m-r-sm" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.timePlaceholder' | translate }}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:9999;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
+            <option value="">{{ 'agent.agentdata.divided.TheChannel' | translate }}</option>
+        </select>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <div ng-style="{height:app.navHeight-145+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>

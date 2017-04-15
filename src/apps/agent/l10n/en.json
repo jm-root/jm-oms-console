@@ -164,6 +164,18 @@
           "pname": "Superior channel name",
           "count": "Register amount"
         }
+      },
+      "divided":{
+        "title": "分成流水",
+        "TheChannel": "所属渠道",
+        "header":{
+          "code": "Channel ID",
+          "name": "Channel name",
+          "total": "总收益",
+          "amount": "分成数量",
+          "ramount": "按比例分成数",
+          "crtime": "操作时间"
+        }
       }
     },
     "coin":{
