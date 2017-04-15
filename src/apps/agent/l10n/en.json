@@ -46,6 +46,15 @@
             "audit": "Audit status",
             "ctrl": "Operation",
             "addr": "Address"
+          },
+          "gainStat":{
+            "title": "Divided into statistics",
+            "total": "Total surplus",
+            "ratio": "Ratio",
+            "divided": "Divided",
+            "notDivided": "Not divided",
+            "proportional": "Proportional share",
+            "trueNum":"Actual quantity"
           }
         },
         "AgentCreate":"Agent Create",

@@ -46,6 +46,15 @@
             "audit": "审核状态",
             "ctrl": "操作",
             "addr": "推广地址"
+          },
+          "gainStat":{
+            "title": "分成统计",
+            "total": "总营收",
+            "ratio": "分成比例",
+            "divided": "已分成营收",
+            "notDivided": "可分成数",
+            "proportional": "按比例分成数",
+            "trueNum":"实际数量"
           }
         },
         "AgentCreate": "渠道创建",

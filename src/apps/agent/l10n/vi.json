@@ -46,6 +46,15 @@
             "audit": "trạng thái xét duyệt",
             "ctrl": "thao tác",
             "addr": "địa chỉ quảng bá"
+          },
+          "gainStat":{
+            "title": "Chia stat",
+            "total": "Tổng doanh thu",
+            "ratio": "Tỷ lệ chia",
+            "divided": "Đã chia thành số",
+            "notDivided": "Có thể chia thành số",
+            "proportional": "Chia theo tỷ lệ số",
+            "trueNum":"实际数量"
           }
         },
         "AgentCreate": "kiến tạo đường dẫn",
