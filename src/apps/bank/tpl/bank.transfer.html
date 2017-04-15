@@ -2,9 +2,9 @@
     <h1 class="m-n font-thin h3">{{'bank.bank.transfer.title'|translate}}</h1>
 </div>
 
-<div class="wrapper-md">
+<div class="wrapper-md col-lg-offset-2">
     <form ng-show="$state.is('app.bank.transfer')" name="formValidate" class="form-horizontal form-validation">
-        <div class="panel panel-default col-sm-9 col-md-6" style="margin: 0">
+        <div class="panel panel-default col-lg-7" style="margin: 0">
                 <div class="list-group" style="padding:0;">
 
                     <li ui-sref="app.search.user" class="list-group-item" style="padding-right: 10px;">
@@ -34,7 +34,7 @@
                     <!--</li>-->
 
                     <li class="list-group-item" style="margin:0;">
-                        <div class="row" ng-if="isSmartDevice" ng-init="bank.ctCode = 'jb'">
+                        <div class="row" ng-init="bank.ctCode = 'jb'">
                             <div class="col-xs-4">
                                 <span>{{'bank.bank.transfer.label6'|translate}}</span>
                             </div>
@@ -42,28 +42,28 @@
                                 <span>{{'bank.bank.transfer.ctOpts.opts2'|translate}}</span>
                             </div>
                         </div>
-                        <div class="row" ng-if="!isSmartDevice" style="height: 23px;">
-                            <div class="col-xs-4" style="padding-bottom:0">
-                                <span>{{'bank.bank.transfer.label1'|translate}}</span>
-                            </div>
-                            <div class="radio text-right" style="padding-top:0;">
-                                <label class="i-checks i-checks-sm p-r-lg">
-                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="jb" />
-                                    <i></i>
-                                    {{'bank.bank.npreauth.ctOpts.opts2'|translate}}
-                                </label>
-                                <label class="i-checks i-checks-sm p-r-lg">
-                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="dbj" />
-                                    <i></i>
-                                    {{'bank.bank.npreauth.ctOpts.opts3'|translate}}
-                                </label>
-                                <label class="i-checks i-checks-sm p-r-lg">
-                                    <input type="radio" name="ctcode" ng-model="bank.ctCode" value="tb" />
-                                    <i></i>
-                                    {{'bank.bank.npreauth.ctOpts.opts1'|translate}}
-                                </label>
-                            </div>
-                        </div>
+                        <!--<div class="row" ng-if="!isSmartDevice" style="height: 23px;">-->
+                            <!--<div class="col-xs-4" style="padding-bottom:0">-->
+                                <!--<span>{{'bank.bank.transfer.label1'|translate}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="radio text-right" style="padding-top:0;">-->
+                                <!--<label class="i-checks i-checks-sm p-r-lg">-->
+                                    <!--<input type="radio" name="ctcode" ng-model="bank.ctCode" value="jb" />-->
+                                    <!--<i></i>-->
+                                    <!--{{'bank.bank.npreauth.ctOpts.opts2'|translate}}-->
+                                <!--</label>-->
+                                <!--<label class="i-checks i-checks-sm p-r-lg">-->
+                                    <!--<input type="radio" name="ctcode" ng-model="bank.ctCode" value="dbj" />-->
+                                    <!--<i></i>-->
+                                    <!--{{'bank.bank.npreauth.ctOpts.opts3'|translate}}-->
+                                <!--</label>-->
+                                <!--<label class="i-checks i-checks-sm p-r-lg">-->
+                                    <!--<input type="radio" name="ctcode" ng-model="bank.ctCode" value="tb" />-->
+                                    <!--<i></i>-->
+                                    <!--{{'bank.bank.npreauth.ctOpts.opts1'|translate}}-->
+                                <!--</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </li>
 
                     <!--<li class="list-group-item" ng-if="!isCP">-->
