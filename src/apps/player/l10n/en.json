@@ -108,6 +108,7 @@
         "areaType": "Room type",
         "prejb": "Start gold",
         "bkjb": "End gold",
+        "upjb":"Increase gold",
         "changejb": "Win gold",
         "device": "Device",
         "channel": "Channel",

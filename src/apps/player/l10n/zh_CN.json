@@ -108,6 +108,7 @@
               "areaType": "房间类型",
               "prejb": "开始前金币",
               "bkjb": "结束后金币",
+              "upjb":"上分",
               "changejb": "输赢金币",
               "device": "设备",
               "channel": "渠道",
