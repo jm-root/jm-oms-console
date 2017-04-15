@@ -69,6 +69,8 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
+var omsnav = "nav";
+
 const pfm_cy = 'static';
 const pfm_oms = 'oms';
 var omsPlatform = pfm_cy;
