@@ -410,16 +410,16 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         {headerName: "游戏名称", field: "name", width: 120},
         {headerName: "游戏局数", field: "count", width: 100},
         {headerName: "游戏总输赢", field: "gain_jb", width: 120},
-        {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
-        {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
+        {headerName: "今日总输赢", field: "gain_day_jb", width: 120}
+        // {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
         'player.info.games.header.name',
         'player.info.games.header.count',
         'player.info.games.header.gain_jb',
-        'player.info.games.header.gain_day_jb',
-        'player.info.games.header.gain_dbj'
+        'player.info.games.header.gain_day_jb'
+        // 'player.info.games.header.gain_dbj'
     ]);
     var dataSource = {
         getRows: function (params) {
@@ -896,6 +896,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
     var url = recordUri+'/giveLogs';
 
     $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions.opens = 'left';
 
     var format_fromUserId = function(params) {
         var obj = params.data.fromUser || {};

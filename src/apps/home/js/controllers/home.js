@@ -167,7 +167,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
 
     var getLogoUri = function(id, bTimestamp){
         if (id){
-            var uri = '/upload/home/bbs/forum/' + id +'/image/logo.png';
+            var uri = '/upload/home/bbs/forum/' + id +'/img/logo.png';
             if(bTimestamp){
                 uri += '?t=' + new Date();
             }
@@ -474,7 +474,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
 
     var getLogoUri = function(id, bTimestamp){
         if (id){
-            var uri = '/upload/home/bbs/topic/' + id +'/image/logo.png';
+            var uri = '/upload/home/bbs/topic/' + id +'/img/logo.png';
             if(bTimestamp){
                 uri += '?t=' + new Date();
             }

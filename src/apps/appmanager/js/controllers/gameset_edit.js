@@ -20,7 +20,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 4,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,
@@ -40,7 +40,8 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         fireSpeed: 5,
         maxfireSpeed: 8,
         bulletSpeed: 1200,
-        autoAim: 0
+        autoAim: 0,
+        taskScore: 5
     };
 
     $scope.room = angular.copy(roomDefault);
@@ -122,19 +123,19 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.intervalChangeScene *= 1000;
     }
 
-    $scope.checkRates = function (rates) {
-        var ratesArr = rates;
-        if(typeof rates == "string"){
-            ratesArr = rates.split(",");
-        }
-        for(var i=0; i<ratesArr.length; i++){
-            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
-                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
-                return false;
-            }
-        }
-        return true;
-    };
+    // $scope.checkRates = function (rates) {
+    //     var ratesArr = rates;
+    //     if(typeof rates == "string"){
+    //         ratesArr = rates.split(",");
+    //     }
+    //     for(var i=0; i<ratesArr.length; i++){
+    //         if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+    //             $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // };
 
     $scope.save = function(){
         saveConfig(true);
@@ -242,7 +243,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             oddsCredit: 0,
             ctCodeTicket: 'dbj',
             maxPlayers: 4,
-            areaRate: 100,
+            areaRate: 1,
             free: 1,
             status: 1,
             visible: 1,
@@ -258,7 +259,8 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             fireSpeed: 5,
             maxfireSpeed: 8,
             bulletSpeed: 1200,
-            autoAim: 0
+            autoAim: 0,
+            taskScore: 5
         };
 
         for(var key in tableDefault){
@@ -531,7 +533,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 8,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,
@@ -626,19 +628,19 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $scope.room.betTime *= 1000;
     }
 
-    $scope.checkRates = function (rates) {
-        var ratesArr = rates;
-        if(typeof rates == "string"){
-            ratesArr = rates.split(",");
-        }
-        for(var i=0; i<ratesArr.length; i++){
-            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
-                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
-                return false;
-            }
-        }
-        return true;
-    };
+    // $scope.checkRates = function (rates) {
+    //     var ratesArr = rates;
+    //     if(typeof rates == "string"){
+    //         ratesArr = rates.split(",");
+    //     }
+    //     for(var i=0; i<ratesArr.length; i++){
+    //         if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+    //             $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // };
 
     $scope.save = function(){
         saveConfig(true);
@@ -744,7 +746,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             oddsCredit: 0,
             ctCodeTicket: 'dbj',
             maxPlayers: 8,
-            areaRate: 100,
+            areaRate: 1,
             free: 1,
             status: 1,
             visible: 1,
@@ -752,6 +754,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             virtualOnlineCount: 0,
             rates: [1,2,3,4,5,6,7,8,9,10],
             //---------------
+            betTime: 15000,
             betLimit: 1000,
             betLowLimit: 50,
             betLowLimitRed: 50,
@@ -1033,7 +1036,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 8,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,
@@ -1128,19 +1131,19 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.betTime *= 1000;
     }
 
-    $scope.checkRates = function (rates) {
-        var ratesArr = rates;
-        if(typeof rates == "string"){
-            ratesArr = rates.split(",");
-        }
-        for(var i=0; i<ratesArr.length; i++){
-            if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
-                $scope.error(global.translateByKey("appmgr.ratesFormatError"));
-                return false;
-            }
-        }
-        return true;
-    };
+    // $scope.checkRates = function (rates) {
+    //     var ratesArr = rates;
+    //     if(typeof rates == "string"){
+    //         ratesArr = rates.split(",");
+    //     }
+    //     for(var i=0; i<ratesArr.length; i++){
+    //         if(ratesArr[i] < 0 || isNaN(ratesArr[i])){
+    //             $scope.error(global.translateByKey("appmgr.ratesFormatError"));
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // };
 
     $scope.save = function(){
         saveConfig(true);
@@ -1246,7 +1249,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             oddsCredit: 0,
             ctCodeTicket: 'dbj',
             maxPlayers: 8,
-            areaRate: 100,
+            areaRate: 1,
             free: 1,
             status: 1,
             visible: 1,
@@ -1254,6 +1257,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             virtualOnlineCount: 0,
             rates: [1,2,3,4,5,6,7,8,9,10],
             //---------------
+            betTime: 15000,
             betLimit: 1000,
             betLowLimit: 50,
             betLowLimitZhuang: 50,
