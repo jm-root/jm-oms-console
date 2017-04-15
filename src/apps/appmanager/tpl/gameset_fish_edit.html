@@ -39,102 +39,102 @@
                         ({{ 'appmgr.room.tableNumRemark' | translate }})
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomDiff' | translate }}</label>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.roomDiff' | translate }}</label>-->
+                    <!--&lt;!&ndash;<div class="col-sm-2">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<select class="form-control m-b" ng-model="room.diff">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="0">炒场</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="1">最容易</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="2">容易</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="3">难</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="4">最难</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="5">死难</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
                     <!--<div class="col-sm-2">-->
-                    <!--<select class="form-control m-b" ng-model="room.diff">-->
-                    <!--<option value="0">炒场</option>-->
-                    <!--<option value="1">最容易</option>-->
-                    <!--<option value="2">容易</option>-->
-                    <!--<option value="3">难</option>-->
-                    <!--<option value="4">最难</option>-->
-                    <!--<option value="5">死难</option>-->
-                    <!--</select>-->
+                        <!--<input type="text" class="form-control" placeholder="{{ 'appmgr.room.roomDiff' | translate }}" ng-model="room.diff" required>-->
                     <!--</div>-->
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.roomDiff' | translate }}" ng-model="room.diff" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomRate' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.roomRate' | translate }}" ng-model="room.areaRate" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.tablePlayerLimit' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.tablePlayerLimit' | translate }}" ng-model="room.maxPlayers" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.maxCarry' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.maxCarry' | translate }}" ng-model="room.maxAmount" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.minCarry' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.minCarry' | translate }" ng-model="room.minAmount" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.setup' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.setup' | translate }}" ng-model="room.exchangeAmount" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.currencyScore' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.currencyScore' | translate }}" ng-model="room.exchangeRate" min="0" step="0.01" required>
-                    </div>
-                </div>
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.roomRate' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.roomRate' | translate }}" ng-model="room.areaRate" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.tablePlayerLimit' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.tablePlayerLimit' | translate }}" ng-model="room.maxPlayers" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.maxCarry' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.maxCarry' | translate }}" ng-model="room.maxAmount" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.minCarry' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.minCarry' | translate }" ng-model="room.minAmount" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.setup' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.setup' | translate }}" ng-model="room.exchangeAmount" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.currencyScore' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.currencyScore' | translate }}" ng-model="room.exchangeRate" min="0" step="0.01" required>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.onlineNum' | translate }}</label>
                     <div class="col-sm-2">
                         <input type="number" class="form-control" placeholder="{{ 'appmgr.room.onlineNum' | translate }}" ng-model="room.virtualOnlineCount" min="0" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.rateShift' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" placeholder="{{ 'appmgr.room.rateShift' | translate }}" ng-model="room.rates" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomMode' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.mode">
-                            <option value="0">{{ 'appmgr.room.modeGold' | translate }}</option>
-                            <option value="1">{{ 'appmgr.room.modeGoldLottery' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" ng-if="room.mode == 1">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}" ng-model="room.oddsCredit" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group" ng-if="room.mode == 1">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeCurrency' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.ctCodeTicket">
-                            <option value="dbj">{{ 'common.dbj' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.roomCurrency' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.ctCode">
-                            <option value="jb">{{ 'common.jb' | translate }}</option>
-                            <option value="tb">{{ 'common.tb' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.rateShift' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="text" class="form-control" placeholder="{{ 'appmgr.room.rateShift' | translate }}" ng-model="room.rates" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.roomMode' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.mode">-->
+                            <!--<option value="0">{{ 'appmgr.room.modeGold' | translate }}</option>-->
+                            <!--<option value="1">{{ 'appmgr.room.modeGoldLottery' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group" ng-if="room.mode == 1">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.lotteryModeGoldOdds' | translate }}" ng-model="room.oddsCredit" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group" ng-if="room.mode == 1">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.lotteryModeCurrency' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.ctCodeTicket">-->
+                            <!--<option value="dbj">{{ 'common.dbj' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.roomCurrency' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.ctCode">-->
+                            <!--<option value="jb">{{ 'common.jb' | translate }}</option>-->
+                            <!--<option value="tb">{{ 'common.tb' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ 'appmgr.room.channelIsolation' | translate }}</label>
                     <div class="col-sm-2">
@@ -144,108 +144,108 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.autoSeat' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.autoSeat">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.freeField' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.free">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'common.enable' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.status">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'common.visible' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.visible">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.autoSeat' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.autoSeat">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.freeField' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.free">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'common.enable' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.status">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'common.visible' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.visible">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="line line-dashed b-b line-lg pull-in" id="gameConfigs"></div>
+                <!--<div class="line line-dashed b-b line-lg pull-in" id="gameConfigs"></div>-->
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.tableFishNum' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.tableFishNum' | translate }}" ng-model="room.minFishes" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.toggleSceneTime' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.toggleSceneTime' | translate }}" ng-model="room.intervalChangeScene" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.critScore' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.critScore' | translate }}" ng-model="room.baoji" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.shootPerSec' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.shootPerSec' | translate }}" ng-model="room.fireSpeed" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.rapidShootPerSec' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.rapidShootPerSec' | translate }}" ng-model="room.maxfireSpeed" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.bulletSpeed' | translate }}</label>
-                    <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="{{ 'appmgr.room.bulletSpeed' | translate }}" ng-model="room.bulletSpeed" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.autoAim' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.autoAim">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.doubleGun' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.doubleFire">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'appmgr.room.fixedGunValue' | translate }}</label>
-                    <div class="col-sm-2">
-                        <select class="form-control m-b" ng-model="room.fixedRate">
-                            <option value="1">{{ 'common.yes' | translate }}</option>
-                            <option value="0">{{ 'common.no' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.tableFishNum' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.tableFishNum' | translate }}" ng-model="room.minFishes" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.toggleSceneTime' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.toggleSceneTime' | translate }}" ng-model="room.intervalChangeScene" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.critScore' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.critScore' | translate }}" ng-model="room.baoji" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.shootPerSec' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.shootPerSec' | translate }}" ng-model="room.fireSpeed" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.rapidShootPerSec' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.rapidShootPerSec' | translate }}" ng-model="room.maxfireSpeed" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.bulletSpeed' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<input type="number" class="form-control" placeholder="{{ 'appmgr.room.bulletSpeed' | translate }}" ng-model="room.bulletSpeed" min="0" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.autoAim' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.autoAim">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.doubleGun' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.doubleFire">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'appmgr.room.fixedGunValue' | translate }}</label>-->
+                    <!--<div class="col-sm-2">-->
+                        <!--<select class="form-control m-b" ng-model="room.fixedRate">-->
+                            <!--<option value="1">{{ 'common.yes' | translate }}</option>-->
+                            <!--<option value="0">{{ 'common.no' | translate }}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
             <!-- 加载编辑器的容器 -->
             <footer class="panel-footer bg-light lter">
