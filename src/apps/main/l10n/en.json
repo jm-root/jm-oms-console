@@ -90,6 +90,7 @@
       "manage":"Agent Manage",
       "create":"Agent Create",
       "list":"Agent List",
+      "set":"渠道游戏管理",
       "data":"Agent Data",
       "message":"Promotion information"
     },
