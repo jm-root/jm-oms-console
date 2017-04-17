@@ -2,7 +2,7 @@
 
 var gConfig = {
     localhost: {
-        apiHost: "http://localhost:19990",
+        apiHost: "http://localhost:19900",
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://localhost:20300",
         staticHost:"http://localhost:20400",
