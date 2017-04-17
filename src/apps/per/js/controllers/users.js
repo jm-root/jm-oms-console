@@ -1,4 +1,4 @@
-
+﻿
 app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout', 'global', function($scope, $http, $state, $stateParams, $timeout, global) {
     var sso = jm.sdk.sso;
 
@@ -18,9 +18,10 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     };
 
     function active_render(params){
-        return '<label class="i-checks i-checks-sm">'+
-            '<input type="checkbox" ng-model="data.active" ng-change="activeChange(data)"><i></i>'+
-            '</label>';
+        // return '<label class="i-checks i-checks-sm">'+
+        //     '<input type="checkbox" ng-model="data.active" ng-change="activeChange(data)"><i></i>'+
+        //     '</label>';
+        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">{{data.active?"封号":"解封"}}</span>';
     }
 
     function resetpwd_render(params){
@@ -28,6 +29,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
     }
 
     $scope.activeChange = function(data){
+        data.active = !data.active;
         $http.post(ssoUri+'/users/'+data._id, {active:data.active}, {
             params:{
                 token: sso.getToken()
@@ -129,6 +131,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                 }
             }).success(function (result) {
                 var data = result;
+                // console.log(data);
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {

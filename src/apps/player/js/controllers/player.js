@@ -531,6 +531,14 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     //     return obj.channel;
     // };
 
+    var format_close = function (params) {
+        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">封号</span>';
+    }
+
+    var format_kick = function (params) {
+        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">踢出房间</span>';;
+    }
+
     if(omsPlatform === pfm_oms){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
@@ -565,7 +573,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             {headerName: "房间号", field: "areaId", width: 80},
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
-            {headerName: "渠道", field: "channel", width: 100}
+            {headerName: "渠道", field: "channel", width: 100},
+            {headerName:"封号",field:"close",width:100,valueGetter:format_close},
+            {headerName:"踢出",field:"kick",width:100,valueGetter:format_kick}
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
