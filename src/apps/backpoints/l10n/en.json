@@ -6,12 +6,14 @@
       "label2":"账号",
       "label3":"下分金币数",
       "label4":"请求时间",
-      "label5":"Confirm back points"
+      "label5":"Confirm back points",
+      "nick":"昵称",
+      "agent":"所属渠道"
     },
     "log":{
       "title":"Back points log",
       "label1":"下分请求中",
-      "label2":"已撤销并未下分",
+      "label2":"已超时并未下分",
       "label3":"已退款并下分",
       "label4":"未下分",
       "header":{

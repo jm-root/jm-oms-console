@@ -3,7 +3,9 @@
 app.controller('BackpointsCtrl',['$scope','$translatePartialLoader',function ($scope,$translatePartialLoader) {
     $translatePartialLoader.addPart('backpoints');
 }])
-app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global', function ($scope, $state, $http,$interval, global) {
+    var history = global.agentListHistory||(global.agentListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
     var sso = jm.sdk.sso;
     var page = 1;
     var urlget = agentUri+'/backCoinLogs';
@@ -48,6 +50,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
+                console.info(result);
                 $scope.usersInfo = result;
                 $scope.page = result.page;
                 $scope.pages = result.pages;
@@ -63,12 +66,18 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
             $scope.errorTips(code);
         });
     }
-
     $scope.getdata();
 
+    var t = $interval(function(){
+        $scope.getdata();
+    }, 5000);
+    $scope.$on("$destroy", function(){
+        $interval.cancel(t);
+    });
 
     var htmlFun = function(row){
-       var info = global.translateByKey('search.player')+ row.account + '<br/> '+'<br/> '+global.translateByKey('search.uncharge') + row.amount + '<br> ';
+        var account = row.user.account||row.user.nick;
+       var info = global.translateByKey('search.player')+ account + '<br/> '+'<br/> '+global.translateByKey('search.uncharge') + row.amount + '<br> ';
        return info;
     };
 
@@ -90,8 +99,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
                         $scope.error(result.msg);
                     } else {
                         $scope.success(global.translateByKey('common.succeed'));
-                    }
-                    ;
+                    };
                     $scope.getdata();
                 }).error(function (msg, code) {
                     $scope.errorTips(code);
@@ -106,6 +114,8 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
 
 app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
+    var history = global.agentListHistory||(global.agentListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
     var sso = jm.sdk.sso;
     $scope.search = {};
     var url = agentUri+'/backCoinLogs';
@@ -122,9 +132,14 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
         }
     };
 
+    var format_account = function(params) {
+        var account = params.data.user.account || params.data.user.mobile;
+        return account;
+    };
+
     var columnDefs = [
         {headerName: "玩家ID", field: "user.uid", width: 180},
-        {headerName: "账号", field: "user.account", width: 120},
+        {headerName: "账号", field: "user.account", width: 120,valueGetter:format_account},
         {headerName: "昵称", field: "user.nick", width: 120},
         {headerName: "当前金币数", field: "balance", width: 150},
         {headerName: "下分金币数", field: "amount", width: 150},

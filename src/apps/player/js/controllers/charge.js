@@ -15,12 +15,15 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
 
 
     var bank = jm.sdk.bank;
-    bank.query({},function(err,result){
-        result || (result||{});
-        var holds = result.holds||{};
-        var jbObj = holds.jb || {};
-        $scope.jb = global.reg(jbObj.amountValid||0);
-    });
+    $scope.querybank = function () {
+        bank.query({},function(err,result){
+            result || (result||{});
+            var holds = result.holds||{};
+            var jbObj = holds.jb || {};
+            $scope.jb = global.reg(jbObj.amountValid||0);
+        });
+    }
+    $scope.querybank();
 
 
     $scope.updateData = function(type, allAmount){
@@ -80,6 +83,7 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
                                 $scope.memo = "";
                                 $scope.player = null;
                                 $scope.amount = null;
+                                $scope.querybank();
                             }
                         });
                     }

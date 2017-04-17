@@ -40,7 +40,6 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
             search: $scope.search
         },function(err,result){
             var data = result;
-            console.info(result);
             if (data.err) {
                 $scope.error(data.msg);
             }else{

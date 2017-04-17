@@ -250,6 +250,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
                         agent: data.pcode
                     }
                 }).success(function (result) {
+                    console.log(result);
                     if(result._id){
                         var o = result || {};
                         o.ratio || (o.ratio=0);

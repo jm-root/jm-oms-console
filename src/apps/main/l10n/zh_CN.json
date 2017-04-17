@@ -18,7 +18,7 @@
   },
   "nav": {
     "HEADER": "导航",
-    "MAIN": "概况"
+    "MAIN": "首页"
   },
   "app": {
     "per": {
@@ -71,6 +71,7 @@
       "agentdata":"渠道数据",
       "playerstatistics":"玩家统计",
       "agentstatistics":"渠道统计",
+      "table":"桌子统计",
       "playerdiary":"玩家流水",
       "agentdiary":"渠道流水"
     },

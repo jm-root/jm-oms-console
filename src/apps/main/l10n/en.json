@@ -71,6 +71,7 @@
       "agentdata":"Agent Data",
       "playerstatistics":"Player Statistics",
       "agentstatistics":"Agent Statistics",
+      "table":"Table Statistics",
       "playerdiary":"Player Diary",
       "agentdiary":"Agent Diary"
     },
