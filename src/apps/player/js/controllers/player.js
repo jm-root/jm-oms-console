@@ -531,13 +531,22 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     //     return obj.channel;
     // };
 
+    $scope.kickedOut = function(params){
+
+    }
+
+    $scope.takeAway = function(params){
+
+    }
+
     var format_close = function (params) {
-        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">封号</span>';
+        return '<span class="btn btn-xs bg-primary" ng-click="kickedOut(data)">封号</span>';
     }
 
     var format_kick = function (params) {
-        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">踢出房间</span>';;
+        return '<span class="btn btn-xs bg-primary" ng-click="takeAway(data)">踢出房间</span>';;
     }
+
 
     if(omsPlatform === pfm_oms){
         var columnDefs = [
