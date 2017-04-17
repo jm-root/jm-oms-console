@@ -16,7 +16,7 @@
                             url: '/agent',
                             template: '<div ui-view class="fade-in-down"></div>',
                             controller:'AgentCtrl',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js' ,path + 'js/controllers/agent.js'] )
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js' ,path + 'js/controllers/agent.js',path + 'js/controllers/package.js'] )
                         })
                         .state('app.agent.list', {
                             url: '/list',
@@ -40,6 +40,12 @@
                             templateUrl: path +'tpl/agent.message.html',
                             controller: 'AgentMessageCtrl'
                             // resolve: lazyLoadProvider.load(['smart-table','ngTagsInput'])
+                        })
+                        .state('app.agent.set', {
+                            url: '/agentset',
+                            templateUrl: path + 'tpl/package.set.html',
+                            controller: 'PackageSetCtrl',
+                            resolve: lazyLoadProvider.load( ['chosen','localytics.directives'])
                         })
                     //包
                         .state('app.package', {
