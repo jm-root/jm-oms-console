@@ -14,27 +14,27 @@
           "gainForm": {
             "title": "更新分成数据"
           },
-          "auditOpts":{
+          "auditOpts": {
             "opts1": "审核状态",
             "opts2": "未审核",
             "opts3": "审核通过",
             "opts4": "审核不通过"
           },
-          "accountOpts":{
+          "accountOpts": {
             "opts1": "账号状态",
             "opts2": "暂停",
             "opts3": "正常"
           },
-          "cooperateOpts":{
+          "cooperateOpts": {
             "other": "其它",
             "cooperate": "合作",
             "buyout": "买断"
           },
-          "statusOpts":{
+          "statusOpts": {
             "enable": "启用",
             "suspend": "暂停"
           },
-          "header":{
+          "header": {
             "pcode": "上级渠道号",
             "code": "渠道号",
             "name": "渠道名",
@@ -47,14 +47,14 @@
             "ctrl": "操作",
             "addr": "推广地址"
           },
-          "gainStat":{
+          "gainStat": {
             "title": "分成统计",
             "total": "总营收",
             "ratio": "分成比例",
             "divided": "已分成营收",
             "notDivided": "可分成数",
             "proportional": "按比例分成数",
-            "trueNum":"实际数量"
+            "trueNum": "实际数量"
           }
         },
         "AgentCreate": "渠道创建",
@@ -68,7 +68,7 @@
         "PleaseChooseCooperationMode": "请选合作方式",
         "cooperation": "合作",
         "buyout": "买断",
-        "DividedProportion":"分成比例",
+        "DividedProportion": "分成比例",
         "ApplicantName": "申请人姓名",
         "tel": "手机号",
         "PromotionCap": "推广上限",
@@ -80,7 +80,10 @@
         "BranchAccount": "开户支行",
         "BankCardNumber": "银行卡号",
         "label": "标签",
-        "addLabel":"添加标签",
+        "addLabel": "添加标签",
+        "backpointsacl": "下分权限",
+        "agentacl": "推广权限",
+        "agentmsg":"推广信息",
         "remarks": "备注",
         "SubmitAudit": "提交审核",
         "number":"数量"
