@@ -276,31 +276,70 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
         var amount = chargeAmount+cardAmount+sysAmount;
         return amount||0;
     };
+    var format_jb = function(params) {
+        var obj = params.data || {};
+        var holds = obj.holds || {};
+        var jb = holds.jb || {};
+        return jb.amount||0;
+    };
 
-    var columnDefs = [
-        {headerName: "渠道ID", field: "code",width: 120 },
-        {headerName: "渠道名称", field: "name", width: 120},
-        {headerName: "注册人数", field: "regCount",width: 120 },
-        {headerName: "在线人数", field: "online",width: 120 },
-        {headerName: "充值人数", field: "chargeSum",width: 120 },
-        {headerName: "充值金额", field: "chargeAmount",width: 120},
-        {headerName: "点卡充值", field: "cardAmount" ,width: 120},
-        {headerName: "系统奖励", field: "sysAmount" ,width: 120},
-        {headerName: "总营收", field: "totalAmount" ,width: 120, valueGetter: format_totalAmount},
-        {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
-    ];
-    global.agGridTranslateSync($scope, columnDefs, [
-        'agent.agentdata.analysis.header.code',
-        'agent.agentdata.analysis.header.name',
-        'agent.agentdata.analysis.header.regCount',
-        'agent.agentdata.analysis.header.online',
-        'agent.agentdata.analysis.header.chargeSum',
-        'agent.agentdata.analysis.header.chargeAmount',
-        'agent.agentdata.analysis.header.cardAmount',
-        'agent.agentdata.analysis.header.sysAmount',
-        'agent.agentdata.analysis.header.totalAmount',
-        'agent.agentdata.analysis.header.crtime'
-    ]);
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "渠道ID", field: "code",width: 120 },
+            {headerName: "渠道名称", field: "name", width: 120},
+            {headerName: "注册人数", field: "regCount",width: 120 },
+            {headerName: "在线人数", field: "online",width: 120 },
+            {headerName: "充值人数", field: "chargeSum",width: 120 },
+            {headerName: "充值金额", field: "chargeAmount",width: 120},
+            {headerName: "点卡充值", field: "cardAmount" ,width: 120},
+            {headerName: "系统奖励", field: "sysAmount" ,width: 120},
+            {headerName: "总营收", field: "totalAmount" ,width: 120, valueGetter: format_totalAmount},
+            {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
+        ];
+        global.agGridTranslateSync($scope, columnDefs, [
+            'agent.agentdata.analysis.header.code',
+            'agent.agentdata.analysis.header.name',
+            'agent.agentdata.analysis.header.regCount',
+            'agent.agentdata.analysis.header.online',
+            'agent.agentdata.analysis.header.chargeSum',
+            'agent.agentdata.analysis.header.chargeAmount',
+            'agent.agentdata.analysis.header.cardAmount',
+            'agent.agentdata.analysis.header.sysAmount',
+            'agent.agentdata.analysis.header.totalAmount',
+            'agent.agentdata.analysis.header.crtime'
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "渠道ID", field: "code",width: 200 },
+            {headerName: "渠道名称", field: "name", width: 200},
+            {headerName: "渠道等级", field: "level", width: 100},
+            {headerName: "注册人数", field: "regCount",width: 200 },
+            {headerName: "在线人数", field: "online",width: 200 },
+            // {headerName: "充值人数", field: "chargeSum",width: 100 },
+            // {headerName: "充值金额", field: "chargeAmount",width: 100},
+            // {headerName: "点卡充值", field: "cardAmount" ,width: 100},
+            // {headerName: "系统奖励", field: "sysAmount" ,width: 100},
+            // {headerName: "总营收", field: "totalAmount" ,width: 100, valueGetter: format_totalAmount},
+            {headerName: "注册时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS},
+            {headerName: "金币数", field: "jb", width:145,valueGetter: format_jb}
+        ];
+
+        global.agGridTranslateSync($scope, columnDefs, [
+            'agent.agentdata.analysis.header.code',
+            'agent.agentdata.analysis.header.name',
+            'agent.agentdata.analysis.header.level',
+            'agent.agentdata.analysis.header.regCount',
+            'agent.agentdata.analysis.header.online',
+            // 'agent.agentdata.analysis.header.chargeSum',
+            // 'agent.agentdata.analysis.header.chargeAmount',
+            // 'agent.agentdata.analysis.header.cardAmount',
+            // 'agent.agentdata.analysis.header.sysAmount',
+            // 'agent.agentdata.analysis.header.totalAmount',
+            'agent.agentdata.analysis.header.crtime',
+            'agent.agentdata.analysis.header.jb'
+        ]);
+    }
+
 
     var dataSource = {
         getRows: function (params) {
@@ -377,5 +416,135 @@ app.controller('AgentDataAnalysisCtrl', ['$scope', '$state', '$http', 'global', 
 
     $scope.$watch('search.date', function () {
         $scope.onPageSizeChanged();
+    });
+}]);
+app.controller('AgentDataDividedCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+    global.agentDataDividedHistory || (global.agentDataDividedHistory = {});
+    var history = global.agentDataDividedHistory;
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
+    $scope.search = history.search||{};
+    $scope.search.date = $scope.search.date || {};
+    var url = agentUri+'/dividedLogs';
+
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
+
+    var format_code = function(params) {
+        var agent = params.data.agent || {};
+        return agent.code || '';
+    };
+    var format_name = function(params) {
+        var agent = params.data.agent || {};
+        return agent.name || '';
+    };
+    var format_ramount = function(params) {
+        var obj = params.data || {};
+        return obj.amount*obj.ratio_t || 0;
+    };
+
+    var columnDefs = [
+        {headerName: "渠道ID", field: "code", width: 200, valueGetter: format_code},
+        {headerName: "渠道名", field: "name", width: 200, valueGetter: format_name},
+        {headerName: "总收益", field: "total", width: 200},
+        {headerName: "分成数量", field: "amount", width: 200},
+        {headerName: "按比例分成数", field: "ramount", width: 200, valueGetter: format_ramount},
+        {headerName: "操作时间", field: "crtime", width:145,valueGetter: $scope.angGridFormatDateS}
+    ];
+
+    global.agGridTranslateSync($scope, columnDefs, [
+        'agent.agentdata.divided.header.code',
+        'agent.agentdata.divided.header.name',
+        'agent.agentdata.divided.header.total',
+        'agent.agentdata.divided.header.amount',
+        'agent.agentdata.divided.header.ramount',
+        'agent.agentdata.divided.header.crtime'
+    ]);
+
+    var dataSource = {
+        getRows: function (params) {
+            global.agGridOverlay();
+
+            var search = $scope.search;
+            var date = search.date;
+            var startDate = date.startDate || "";
+            var endDate = date.endDate || "";
+            var agent = search.agent;
+
+            var page = params.startRow / $scope.pageSize + 1;
+            $http.get(url, {
+                params: {
+                    token: sso.getToken(),
+                    page: page,
+                    rows: $scope.pageSize,
+                    agent: agent,
+                    startDate: startDate.toString(),
+                    endDate: endDate.toString()
+                }
+            }).success(function (result) {
+                var data = result;
+                if (data.err) {
+                    $scope.error(data.msg);
+                } else {
+                    data.rows = data.rows || [];
+                    var rowsThisPage = data.rows;
+                    var lastRow = data.total;
+                    params.successCallback(rowsThisPage, lastRow);
+                }
+            }).error(function(msg, code){
+                $scope.errorTips(code);
+            });
+        }
+    };
+
+    $scope.gridOptions = {
+        paginationPageSize: Number($scope.pageSize),
+        rowModelType:'pagination',
+        enableSorting: true,
+        enableFilter: true,
+        enableColResize: true,
+        angularCompileRows: true,
+        rowSelection: 'multiple',
+        rowHeight: 30,
+        columnDefs: columnDefs,
+        rowStyle:{'-webkit-user-select':'text','-moz-user-select':'text','-o-user-select':'text','user-select': 'text'},
+        localeText: global.agGrid.localeText,
+        headerCellRenderer: global.agGridHeaderCellRendererFunc,
+        onGridReady: function(event) {
+            // event.api.sizeColumnsToFit();
+        },
+        onCellDoubleClicked: function(cell){
+        },
+        datasource: dataSource
+    };
+
+    $scope.onPageSizeChanged = function() {
+        $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
+        $scope.gridOptions.api.setDatasource(dataSource);
+    };
+
+    $scope.$watch('pageSize', function () {
+        history.pageSize = $scope.pageSize;
+    });
+
+    $scope.$watch('search', function () {
+        history.search = $scope.search;
+    });
+
+    $scope.$watch('search.date', function () {
+        $scope.onPageSizeChanged();
+    });
+
+    $http.get(agentUri + '/subAgents', {
+        params: {
+            token: sso.getToken()
+        }
+    }).success(function (result) {
+        if (result.err) {
+            $scope.error(result.msg);
+        } else {
+            $scope.agents = result.rows;
+        }
+    }).error(function (msg, code) {
+        $scope.errorTips(code);
     });
 }]);

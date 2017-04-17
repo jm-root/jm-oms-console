@@ -19,6 +19,18 @@
   <link rel="stylesheet" href="css/app.css" type="text/css" />
   <link rel="stylesheet" href="css/main.css" type="text/css" />
   <!-- endbuild -->
+
+  <script>
+      (function(){
+          //使用navigator.userAgent来判断浏览器类型，需要注意的是chrome浏览器的navigator.userAgent会包含safari字符串（safari则不包含chrome，根据此区分chrome和safafi），所以需要区分时注意
+          console.log(navigator.userAgent);
+          if(navigator.userAgent.indexOf("Firefox")>0 || navigator.userAgent.indexOf("Chrome/")>0 || navigator.userAgent.indexOf("Safari")>0){
+              return ;
+          }else{
+              alert('请使用谷歌、火狐或Safari浏览器');
+          }
+      }());
+  </script>
 </head>
 <body ng-controller="AppCtrl">
   <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
@@ -99,6 +111,7 @@
   <script src="apps/common/js/index.js"></script>
   <script src="apps/test/js/index.js"></script>
   <script src="apps/main/js/index.js"></script>
+  <script src="apps/search/js/index.js"></script>
   <script src="apps/dashboard/js/index.js"></script>
   <script src="apps/activity/js/index.js"></script>
   <script src="apps/agent/js/index.js"></script>
@@ -110,6 +123,8 @@
   <script src="apps/log/js/index.js"></script>
   <script src="apps/oms/js/index.js"></script>
   <script src="apps/player/js/index.js"></script>
+  <script src="apps/backpoints/js/index.js"></script>
+  <script src="apps/datastatistics/js/index.js"></script>
   <script src="apps/recharge/js/index.js"></script>
   <script src="apps/report/js/index.js"></script>
   <script src="apps/shop/js/index.js"></script>

@@ -139,9 +139,7 @@ app.controller('AppsListCtrl', ['$scope', '$state', '$http', 'global', "$statePa
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.apps.manage.edit' , {id: cell.data._id});
             }
         },

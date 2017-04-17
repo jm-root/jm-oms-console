@@ -10,6 +10,10 @@
           "title": "渠道列表",
           "search": "搜索 代理ID/名称",
           "level": "级",
+          "gainRefresh": "刷新分成",
+          "gainForm": {
+            "title": "更新分成数据"
+          },
           "auditOpts":{
             "opts1": "审核状态",
             "opts2": "未审核",
@@ -42,6 +46,15 @@
             "audit": "审核状态",
             "ctrl": "操作",
             "addr": "推广地址"
+          },
+          "gainStat":{
+            "title": "分成统计",
+            "total": "总营收",
+            "ratio": "分成比例",
+            "divided": "已分成营收",
+            "notDivided": "可分成数",
+            "proportional": "按比例分成数",
+            "trueNum":"实际数量"
           }
         },
         "AgentCreate": "渠道创建",
@@ -55,6 +68,7 @@
         "PleaseChooseCooperationMode": "请选合作方式",
         "cooperation": "合作",
         "buyout": "买断",
+        "DividedProportion":"分成比例",
         "ApplicantName": "申请人姓名",
         "tel": "手机号",
         "PromotionCap": "推广上限",
@@ -116,7 +130,9 @@
           "cardAmount": "点卡充值",
           "sysAmount": "系统奖励",
           "totalAmount": "总营收",
-          "crtime": "注册时间"
+          "crtime": "注册时间",
+          "level":"渠道等级",
+          "jb":"金币数"
         }
       },
       "recharge": {
@@ -131,6 +147,7 @@
         },
         "header": {
           "date": "日期",
+          "code": "渠道ID",
           "name": "渠道名",
           "level": "渠道层级",
           "pcode": "上级渠道ID",
@@ -155,6 +172,18 @@
           "pcode": "上级渠道ID",
           "pname": "上级渠道名",
           "count": "注册人数"
+        }
+      },
+      "divided":{
+        "title": "分成流水",
+        "TheChannel": "所属渠道",
+        "header":{
+          "code": "渠道ID",
+          "name": "渠道名称",
+          "total": "总收益",
+          "amount": "分成数量",
+          "ramount": "按比例分成数",
+          "crtime": "操作时间"
         }
       }
     },

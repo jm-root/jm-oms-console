@@ -36,6 +36,9 @@ angular.module('app')
         self.userInfo = {};
         self.roles = [];
 
+        var d = new Date();
+        self.UTC = d.getTimezoneOffset();
+
         self.browser = function(){
             var browser={
                 versions:function(){
@@ -54,6 +57,11 @@ angular.module('app')
                     };
                 }(),
                 language:(navigator.browserLanguage || navigator.language).toLowerCase()//检测浏览器语言
+            }
+            if(browser.versions.android || browser.versions.mobile || browser.versions.ios){
+                plat = 'Mobile';
+            }else{
+                plat = 'PC'
             }
             return browser;
         };
@@ -174,7 +182,7 @@ angular.module('app')
                 to: '-',
                 of: '/',
                 next: '下一页',
-                last: '未尾页',
+                last: '末尾页',
                 first: '首页',
                 previous: '上一页',
                 loadingOoo: '加载中...',
@@ -336,5 +344,10 @@ angular.module('app')
                 return;
             }
         };
+
+        self.reg = function (data) {
+            return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        };
+
     }])
 ;

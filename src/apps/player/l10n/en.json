@@ -67,7 +67,8 @@
       },
       "transferTip":{
         "add": "Whether to account【{{val}}】charge",
-        "deduct": "Whether deduction account【{{val}}】"
+        "deduct": "Whether deduction account【{{val}}】",
+        "tip":"Please select player"
       },
       "games":{
         "gameData": "Game Data",
@@ -107,6 +108,7 @@
         "areaType": "Room type",
         "prejb": "Start gold",
         "bkjb": "End gold",
+        "upjb":"Increase gold",
         "changejb": "Win gold",
         "device": "Device",
         "channel": "Channel",
@@ -116,8 +118,10 @@
       }
     },
     "changescore":{
-      "title":"Change Score",
-      "label1":"Operable remainder amount",
+      "title":"Increase/Decrease",
+      "title1":"Increase",
+      "title2":"Decrease",
+      "label1":"Account balance",
       "label2":"Operation type",
       "opts":{
         "opt1":"Please select the type of operation",
@@ -127,8 +131,8 @@
       "label3":"Select player",
       "label4":"Player surplus",
       "label5":"Operation amount",
-      "before":"Before operation",
-      "after":"After operation",
+      "before":"Before",
+      "after":"After",
       "balence":"Not sufficient funds"
     }
   }

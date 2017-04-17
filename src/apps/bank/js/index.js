@@ -15,7 +15,7 @@
                     //银行管理
                         .state('app.bank', {
                             url: '/bank',
-                            template: '<div ui-view class="fade-in-down"></div>',
+                            template: '<div ui-view class="fade-in-down" style="position:relative'+'"></div>',
                             controller:'BankCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/bank.js',path + 'js/controllers/index.js'])
                         })
@@ -23,7 +23,8 @@
                         .state('app.bank.currencyrate', {
                             url: '/currencyrate',
                             templateUrl: path  + 'tpl/currency.rate.html',
-                            controller: 'CurrencyCtrl'
+                            controller: 'CurrencyCtrl',
+                            resolve:lazyLoadProvider.load([path + 'js/controllers/currency.js'])
                         })
                         .state('app.bank.pay', {
                             url: '/pay',
@@ -33,26 +34,30 @@
                             url: '/list',
                             templateUrl: path + 'tpl/account.pay.list.html',
                             controller: 'AccountPayListCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker'])
+                            resolve: lazyLoadProvider.load(['daterangepicker',path+'js/controllers/paylist.js'])
                         })
 
                         .state('app.bank.account', {
                             url: '/account',
                             templateUrl: path + 'tpl/bank.account.html',
                             controller: 'BankAccountCtrl',
-                            resolve: lazyLoadProvider.load([])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/account.js'])
                         })
                         .state('app.bank.preauth', {
                             url: '/preauth',
                             templateUrl: path + 'tpl/bank.preauth.html',
                             controller: 'BankPreauthCtrl',
-                            resolve: lazyLoadProvider.load([])
+                            resolve: lazyLoadProvider.load([path + 'js/controllers/preauth.js'])
                         })
                         .state('app.bank.transfer', {
                             url: '/transfer',
                             templateUrl: path  + 'tpl/bank.transfer.html',
                             controller: 'BankTransferCtrl',
-                            resolve: lazyLoadProvider.load([])
+                            resolve: lazyLoadProvider.load([path+'js/controllers/transfer.js'])
+                        })
+                        .state('app.bank.transfer.searchUser', {
+                            url: '/searchUser',
+                            templateUrl: path  + 'tpl/bank.searchUser.html'
                         })
                         .state('app.bank.exchange', {
                             url: '/exchange',
@@ -64,7 +69,13 @@
                             url: '/deal',
                             templateUrl: path + 'tpl/bank.deal.html',
                             controller: 'BankDealCtrl',
-                            resolve: lazyLoadProvider.load([])
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/deal.js'])
+                        })
+                        .state('app.bank.owndeal', {
+                            url: '/owndeal',
+                            templateUrl: path + 'tpl/bank.owndeal.html',
+                            controller: 'BankOwnDealCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/owndeal.js'])
                         })
                         .state('app.bank.npreauth', {
                             url: '/npreauth',

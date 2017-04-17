@@ -9,6 +9,13 @@
     "PASSWORD": "Password",
     "VERIFICATION": "Verification code"
   },
+  "footer":{
+    "homepage":"Home",
+    "increase":"Increase",
+    "decrease":"Decrease",
+    "player":"Player",
+    "transfer":"transfer"
+  },
   "nav": {
     "HEADER": "Navigation",
     "MAIN": "Home"
@@ -48,8 +55,24 @@
       "info": "Info",
       "online": "Online",
       "record": "Record",
-      "givelog": "Give Log",
-      "changescore":"Change Score"
+      "givelog": "Give Log"
+    },
+    "uppoints":{
+      "manage":"上分"
+    },
+    "backpoints":{
+      "manage":"Back Points",
+      "list":"Back points operation",
+      "log":"Back points log"
+    },
+    "datastatistics":{
+      "manage":"Data Statistics",
+      "playerdata":"Player Data",
+      "agentdata":"Agent Data",
+      "playerstatistics":"Player Statistics",
+      "agentstatistics":"Agent Statistics",
+      "playerdiary":"Player Diary",
+      "agentdiary":"Agent Diary"
     },
     "system":{
       "manage": "System Manage",
@@ -67,13 +90,15 @@
       "manage":"Agent Manage",
       "create":"Agent Create",
       "list":"Agent List",
+      "set":"渠道游戏管理",
       "data":"Agent Data",
       "message":"Promotion information"
     },
     "agentdata":{
       "register":"Register",
       "recharge":"Recharge",
-      "analysis":"Analysis"
+      "analysis":"Analysis",
+      "divided":"Divided Log"
     },
     "coin":{
       "sys":"Coin System",
@@ -110,6 +135,7 @@
       "preauth":"Preauth List",
       "transfer":"Transfer",
       "deal":"Deal",
+      "owndeal":"个人流水",
       "npreauth":"Preauth Cancel",
       "overdraw":"Set Overdraw",
       "rate":"Currency Rate",

@@ -67,7 +67,8 @@
           },
           "transferTip":{
               "add": "是否给账号【{{val}}】充",
-              "deduct": "是否扣除账号【{{val}}】"
+              "deduct": "是否扣除账号【{{val}}】",
+              "tip":"请选择玩家！"
           },
           "games":{
               "gameData": "游戏数据",
@@ -107,6 +108,7 @@
               "areaType": "房间类型",
               "prejb": "开始前金币",
               "bkjb": "结束后金币",
+              "upjb":"上分",
               "changejb": "输赢金币",
               "device": "设备",
               "channel": "渠道",
@@ -116,8 +118,10 @@
           }
       },
       "changescore":{
-          "title":"上/退分",
-          "label1":"可操作余额",
+          "title":"上/下分",
+          "title1":"上分",
+          "title2":"退分",
+          "label1":"账户余额",
           "label2":"操作类型",
           "opts":{
               "opt1":"请选操作类型",

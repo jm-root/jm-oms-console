@@ -1,0 +1,138 @@
+{
+  "player":{
+      "givelog":{
+          "search": "tìm kiếm tài khoản/nick/số điện thoại",
+          "type":"loại hình",
+          "system":"hệ thống",
+          "player":"người chơi",
+          "chooseProps":"lựa chọn loại hình đường dẫn",
+          "giveLog":"nhật ký tặng đi",
+          "header":{
+              "_id": "ID",
+              "fromUserId": "ID tặng đi",
+              "fromUser": "người tặng",
+              "toUserId": "ID người nhận",
+              "toUser": "người nhận",
+              "type": "loại công cụ",
+              "amount": "số lượng công cụ",
+              "origin": "nhận được phương pháp",
+              "fee": "phí thủ tục",
+              "crtime": "thời gian tặng"
+          }
+      },
+      "info":{
+          "list":{
+              "search": "tìm kiếm tài khoản/nick/số điện thoại",
+              "info": "thông tin người chơi",
+              "type":"phân loại",
+              "tourist":"khách",
+              "phone":"điện thoại",
+              "wechat":"wechat",
+              "qq":"QQ",
+              "state":"trạng thái",
+              "stop":"phong tỏa",
+              "normal":"bình thường",
+              "agents":"trang chính thức",
+              "playerTotal": "tống số người chơi",
+              "mobileTotal": "số người chơi bản điện thoại",
+              "registeredYesterday": "số người đăng ký hôm qua",
+              "registerToday": "số người đăng ký hôm nay",
+              "header":{
+                  "agent": "đường dẫn sở thuộc",
+                  "uid": "ID người chơi",
+                  "account": "tài khoản",
+                  "mobile": "điện thoại",
+                  "nick": "nick",
+                  "level": "cấp VIP",
+                  "mac": "địa chỉ mac",
+                  "ip": "IP",
+                  "tb": "nguyên bảo",
+                  "jb": "hoàng kim",
+                  "dbj": "phiếu đoạt bảo",
+                  "cny": "nạp tiền",
+                  "card": "nạp bằng thẻ điểm",
+                  "win_jb": "hoàng kim cao nhất trong lịch sử",
+                  "jbamount": "tổng hợp hoàng kim tiêu hao",
+                  "jbamount_d": "tổng thắng thua trò chơi trong ngày",
+                  "crtime": "xóa thời gian",
+                  "active": "khóa tạm/mở khóa",
+                  "ctrl": "tổng cộng thắng thua của các trò chơi"
+              }
+          },
+          "TipInfo":{
+              "title": "làm mới bảng điểm",
+              "okTitle": "xác nhận",
+              "cancelTitle": "hủy",
+              "balance":"Số dư thiếu!"
+          },
+          "transferTip":{
+              "add": "xác nhận nạp cho tài khoản{{val}}",
+              "deduct": "xác nhận khấu trừ tài khoản{{val}}",
+              "tip":"Hãy chọn người dùng"
+          },
+          "games":{
+              "gameData": "Dữ liệu trò chơi",
+              "header":{
+                  "name": "tên trò chơi",
+                  "count": "số ván trò chơi",
+                  "gain_jb": "tổng thắng thua trò chơi",
+                  "gain_day_jb": "tổng thắng thua trong ngày",
+                  "gain_dbj": "tổng phiếu đoạt bảo nhận được"
+              }
+          },
+          "online":{
+              "title": "trạng thái online của người chơi",
+              "search": "tìm kiếm ID người chơi/nick",
+              "header":{
+                  "uid": "ID người chơi",
+                  "nick": "nick",
+                  "appname": "tên gọi trò chơi",
+                  "areaId": "số phòng",
+                  "areaType": "loại phòng",
+                  "tb": "nguyên bảo",
+                  "jb": "hoàng kim",
+                  "dbj": "phiếu đoạt bảo",
+                  "device": "thiệt bị",
+                  "channel": "đường dẫn"
+              }
+          }
+      },
+      "record":{
+          "title": "nhật ký trò chơi",
+          "search": "tim kiếm tài khoản/nick/số điện thoại",
+          "header":{
+              "uid": "ID người chơi",
+              "nick": "nick",
+              "appname": "tên gọi trò chơi",
+              "areaId": "số phòng",
+              "areaType": "loại phòng",
+              "prejb": "số hoàng kim trước khi bắt đầu",
+              "bkjb": "số hoàng kim sau khi kết thúc",
+              "upjb":"Lên điểm",
+              "changejb": "hoàng kim thắng thua",
+              "device": "thiết bị",
+              "channel": "đường dẫn",
+              "time": "thời gian chơi",
+              "onTime": "thời gian bắt đầu",
+              "offTime": "thời gian kết thúc"
+          }
+      },
+      "changescore":{
+          "title1":"Lên điểm",
+          "title2":"Xuống điểm",
+          "label1":"Số dư tài khoản có thể hoạt động",
+          "label2":"Kiểu hoạt động",
+          "opts":{
+              "opt1":"Hãy chọn kiểu hoạt động",
+              "opt2":"Lên điểm",
+              "opt3":"Xuống điểm "
+          },
+          "label3":"Người chơi lựa chọn",
+          "label4":"Số dư tài khoản game thủ",
+          "label5":"Số lượng hoạt động ",
+          "before":"Chiến dịch trước",
+          "after":"Sau hành động",
+          "balence":"Số dư thiếu "
+      }
+  }
+}

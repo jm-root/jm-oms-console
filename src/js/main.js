@@ -3,15 +3,18 @@
 /* Controllers */
 
 angular.module('app')
-    .controller('AppCtrl', ['$rootScope', '$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global',
-        function ($rootScope, $scope, $translate, $localStorage, $window, toaster, $modal, $location, global) {
+    .controller('AppCtrl', ['$rootScope', '$scope', '$translate', '$localStorage', '$window', 'toaster', '$modal', '$location', 'global','$http',
+        function ($rootScope, $scope, $translate, $localStorage, $window, toaster, $modal, $location, global,$http) {
             // add 'ie' classes to html
+
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             if (isIE) {
                 angular.element($window.document.body).addClass('ie');
             }
+
             if (isSmartDevice($window)) {
                 angular.element($window.document.body).addClass('smart')
+                $scope.isSmartDevice = true;
             };
 
             var host = $location.host();
@@ -51,13 +54,14 @@ angular.module('app')
                 },
                 navHeight: window.innerHeight - 50
             };
-
+            //检测浏览器
+            global.browser();
             // save settings to local storage
-            if (angular.isDefined($localStorage.settings)) {
-                $scope.app.settings = $localStorage.settings;
-            } else {
-                $localStorage.settings = $scope.app.settings;
-            }
+            // if (angular.isDefined($localStorage.settings)) {
+            //     $scope.app.settings = $localStorage.settings;
+            // } else {
+            //     $localStorage.settings = $scope.app.settings;
+            // }
             $scope.$watch('app.settings', function () {
                 if ($scope.app.settings.asideDock && $scope.app.settings.asideFixed) {
                     // aside dock and fixed must set the header fixed.
@@ -75,7 +79,8 @@ angular.module('app')
             };
             $scope.langs = {
                 zh_CN: '中文',
-                en: 'English'
+                en: 'English',
+                vi: 'Tiếng Việt'
             };
             $scope.langKey = "zh_CN";
             $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || '中文';
@@ -197,8 +202,80 @@ angular.module('app')
                     opts.cancelCallback();
                 });
             };
+            var sso = jm.sdk.sso;
+            var bank = jm.sdk.bank;
+            var page = 1;
+            var pageSize = 10;
+            var pages = 1;
+            var total = 0;
+            $scope.left = function (publickey) {
+                if (page > 1) {
+                    --page;
+                    $scope.search(publickey);
+                }
+            }
+            $scope.right = function (publickey) {
+                if (page < pages) {
+                    ++page;
+                    $scope.search(publickey);
+                }
+            };
+            $scope.search = function (publickey,_page) {
+                if (_page) page = 1;
+                if (publickey) {
+                    var urll = statUri + '/players';
+                    $scope.moreLoading = true;
+                } else {
+                    var urll = "";
+                }
+                $http.get(urll, {
+                    params: {
+                        page: page,
+                        rows: pageSize,
+                        token: sso.getToken(),
+                        search: publickey
+                    }
+                }).success(function (result) {
+                    $scope.moreLoading = false;
+                    if (result.err) {
+                        $scope.error(result.msg);
+                    } else {
+                        page = result.page;
+                        pages = result.pages || 1;
+                        total = result.total || 0;
+                        $scope.page = page;
+                        $scope.pages = pages;
+                        $scope.total = total;
+                        $scope.usersInfo = result;
+                    }
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                });
+            };
 
-
+            $scope.selectUser = function (row) {
+                var userId = row._id;
+                var uid = row.uid;
+                var nick = row.nick;
+                bank.query({userId: userId}, function (err, result) {
+                    result || (result || {});
+                    // console.info(result);
+                    var holds = result.holds || {};
+                    var jbObj = holds.jb || {};
+                    var jb = jbObj.amount || 0;
+                    var obj = {
+                        id: userId,
+                        uid: uid,
+                        nick: nick,
+                        jb: jb
+                    };
+                    sessionStorage.setItem('selectedUser', JSON.stringify(obj));//缓存到本地
+                    $scope.player = row;
+                    $scope.player.id = result.id;
+                    $scope.player.jb = jb;
+                    $('#searchUser').modal('hide');
+                });
+            };
         }
     ])
     .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {

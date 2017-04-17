@@ -20,7 +20,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 4,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,
@@ -36,7 +36,8 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         fireSpeed: 5,
         maxfireSpeed: 8,
         bulletSpeed: 1200,
-        autoAim: 0
+        autoAim: 0,
+        taskScore: 5
     };
 
     $scope.table = angular.copy(tableDefault);
@@ -361,7 +362,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 4,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,
@@ -373,6 +374,9 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         absenceNum: 10,
         betLimit: 1000,
         betLowLimit: 50,
+        betLowLimitRed: 50,
+        betLowLimitGreen: 50,
+        betLowLimitDragon: 50,
         perLimit: [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
     };
 
@@ -743,7 +747,7 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         oddsCredit: 0,
         ctCodeTicket: 'dbj',
         maxPlayers: 4,
-        areaRate: 100,
+        areaRate: 1,
         free: 1,
         status: 1,
         visible: 1,

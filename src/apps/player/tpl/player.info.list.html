@@ -1,8 +1,8 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'player.info.list.info'|translate}}</h1></div>
 <div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-xs headpadd">
         <form>
-            <div class="input-group w-lg">
+            <div class="input-group w-md">
                 <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'player.info.list.search'|translate}}">
                 <span class="input-group-btn" style="width: auto">
                     <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
@@ -11,12 +11,12 @@
         </form>
     </div>
     <div class="pull-right headpadd">
-        <div class="input-group m-r-sm" style="width: 185px;">
+        <div class="input-group m-r-xs" style="width: 185px;">
             <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
-    <div class="pull-right m-r-sm headpadd" >
+    <div class="pull-right m-r-xs headpadd" ng-if="!isSmartDevice">
         <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
             <option value="" >{{'player.info.list.type'|translate}}</option>
             <option value="0">{{'player.info.list.tourist'|translate}}</option>
@@ -25,19 +25,19 @@
             <option value="3">{{'player.info.list.qq'|translate}}</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm headpadd" >
+    <div class="pull-right m-r-xs headpadd" >
         <select class="input-sm form-control" ng-model="search.active" ng-change="onPageSizeChanged()">
             <option value="">{{'player.info.list.state'|translate}}</option>
             <option value="0">{{'player.info.list.stop'|translate}}</option>
             <option value="1">{{'player.info.list.normal'|translate}}</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-xs headpadd">
         <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
             <option value="">{{'player.info.list.agents'|translate}}</option>
         </select>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-xs headpadd" ng-show="!isSmartDevice">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>

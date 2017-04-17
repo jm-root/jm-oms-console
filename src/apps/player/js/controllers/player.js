@@ -1,14 +1,16 @@
 'use strict';
-var sso = jm.sdk.sso;
 app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
     var history = global.playerListHistory||(global.playerListHistory={});
+    var sso = jm.sdk.sso;
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
     $scope.stat = {};
     var url = statUri+'/players';
 
-    $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.opens = 'left';
+
 
     var bank = jm.sdk.bank;
 
@@ -107,49 +109,83 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         });
     };
 
-    var columnDefs = [
-        {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
-        {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
-        {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
-        {headerName: "手机", field: "mobile", width: 100},
-        {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
-        {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
-        {headerName: "mac地址", field: "mac", width: 100},
-        {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
-        {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-        {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-        {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'},editable: true},
-        {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
-        {headerName: "点卡充值", field: "card", width: 100},
-        {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
-        {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
-        {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
-        {headerName: "注册时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
-        {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
-    ];
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
+            {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
+            {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
+            {headerName: "手机", field: "mobile", width: 100},
+            {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
+            {headerName: "VIP等级", field: "level", width: 80, valueGetter: format_level},
+            {headerName: "mac地址", field: "mac", width: 100},
+            {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
+            {headerName: "元宝", field: "tb", width: 100, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "夺宝卷", field: "dbj", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "充值", field: "cny", width: 80, valueGetter: format_cny},
+            {headerName: "点卡充值", field: "card", width: 100},
+            {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
+            {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
+            {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
+            {headerName: "注册时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS},
+            {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
+            {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}}
+        ];
 
-    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
-        'player.info.list.header.agent',
-        'player.info.list.header.uid',
-        'player.info.list.header.account',
-        'player.info.list.header.mobile',
-        'player.info.list.header.nick',
-        'player.info.list.header.level',
-        'player.info.list.header.mac',
-        'player.info.list.header.ip',
-        'player.info.list.header.tb',
-        'player.info.list.header.jb',
-        'player.info.list.header.dbj',
-        'player.info.list.header.cny',
-        'player.info.list.header.card',
-        'player.info.list.header.win_jb',
-        'player.info.list.header.jbamount',
-        'player.info.list.header.jbamount_d',
-        'player.info.list.header.crtime',
-        'player.info.list.header.active',
-        'player.info.list.header.ctrl'
-    ]);
+        global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+            'player.info.list.header.agent',
+            'player.info.list.header.uid',
+            'player.info.list.header.account',
+            'player.info.list.header.mobile',
+            'player.info.list.header.nick',
+            'player.info.list.header.level',
+            'player.info.list.header.mac',
+            'player.info.list.header.ip',
+            'player.info.list.header.tb',
+            'player.info.list.header.jb',
+            'player.info.list.header.dbj',
+            'player.info.list.header.cny',
+            'player.info.list.header.card',
+            'player.info.list.header.win_jb',
+            'player.info.list.header.jbamount',
+            'player.info.list.header.jbamount_d',
+            'player.info.list.header.crtime',
+            'player.info.list.header.active',
+            'player.info.list.header.ctrl'
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "封停/解封", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
+            {headerName: "各游戏累计输赢", width: 150, cellRenderer: opr_render, cellStyle:{'text-align':'center'}},
+            {headerName: "玩家ID", field: "uid", width: 100, cellRenderer: uid_render},
+            {headerName: "账号", field: "account", width: 100, cellRenderer: account_render},
+            {headerName: "所属渠道", field: "agent", width: 100, valueGetter: format_agent},
+            {headerName: "昵称", field: "nick", width: 100, cellRenderer: nick_render},
+            {headerName: "IP", field: "ip", width: 100, cellRenderer: ip_render},
+            {headerName: "金币", field: "jb", width: 80, cellStyle:{'color':'#0000CC','cursor':'pointer'}},
+            {headerName: "历史最高金币", field: "win_jb", width: 115, valueGetter: format_winjb},
+            {headerName: "累计消耗金币", field: "jbamount", width: 115, valueGetter: format_jbamount},
+            {headerName: "当天游戏总输赢", field: "jbamount_d", width: 135, valueGetter: format_jbamount_d},
+            {headerName: "注册时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
+
+        ];
+
+        global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+            'player.info.list.header.active',
+            'player.info.list.header.ctrl',
+            'player.info.list.header.uid',
+            'player.info.list.header.account',
+            'player.info.list.header.agent',
+            'player.info.list.header.nick',
+            'player.info.list.header.ip',
+            'player.info.list.header.jb',
+            'player.info.list.header.win_jb',
+            'player.info.list.header.jbamount',
+            'player.info.list.header.jbamount_d',
+            'player.info.list.header.crtime'
+
+        ]);
+    }
 
     var dataSource = {
         //pageSize: Number($scope.pageSize),
@@ -175,7 +211,9 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
                     active: active,
                     type: type,
                     agent: agent,
+                    UTC: global.UTC,
                     isPlayer: true,
+                    hasAccount: true,
                     startDate: startDate.toString(),
                     endDate: endDate.toString()
                 }
@@ -226,9 +264,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 var field = cell.colDef.field;
                 var coin = ['tb','jb','dbj'];
                 if(coin.indexOf(field)!=-1) return;
@@ -238,24 +274,24 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
         onCellDoubleClicked: function(cell){
             var field = cell.colDef.field;
             var coin = ['tb','jb','dbj'];
-            if(coin.indexOf(field)!=-1) return;
+            // if(coin.indexOf(field)!=-1) return;
             $state.go('app.player.info.games' , {id: cell.data._id,name:cell.data.nick});
-        },
-        onCellValueChanged: function(event) {
-            if(isNaN(event.newValue)){
-                event.data[event.colDef.field] = event.oldValue;
-            }
-        },
-        onCellEditingStarted: function (event) {
-            oldVal = event.value;
-        },
-        onCellEditingStopped: function (event) {
-            console.log(event);
-            newVal = event.value;
-            if(oldVal!=newVal){
-                $scope.updateData(event);
-            }
         }
+        // onCellValueChanged: function(event) {
+        //     if(isNaN(event.newValue)){
+        //         event.data[event.colDef.field] = event.oldValue;
+        //     }
+        // },
+        // onCellEditingStarted: function (event) {
+        //     oldVal = event.value;
+        // },
+        // onCellEditingStopped: function (event) {
+        //     console.log(event);
+        //     newVal = event.value;
+        //     if(oldVal!=newVal){
+        //         $scope.updateData(event);
+        //     }
+        // }
     };
 
     $scope.onPageSizeChanged = function(keyword) {
@@ -279,6 +315,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
     $http.get(statUri+'/multiple', {
         params:{
             token: sso.getToken(),
+            UTC: global.UTC,
             fields:{user_total:1,user_yesterday:1,user_today:1,user_guest:1,user_mobile:1,user_wechat:1,user_qq:1}
         }
     }).success(function(result){
@@ -361,6 +398,7 @@ app.controller('PlayerListCtrl', ['$scope', '$state', '$http', 'global', '$timeo
 }]);
 
 app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerGamesListHistory||(global.playerGamesListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var id = $stateParams.id;
@@ -372,16 +410,16 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
         {headerName: "游戏名称", field: "name", width: 120},
         {headerName: "游戏局数", field: "count", width: 100},
         {headerName: "游戏总输赢", field: "gain_jb", width: 120},
-        {headerName: "今日总输赢", field: "gain_day_jb", width: 120},
-        {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
+        {headerName: "今日总输赢", field: "gain_day_jb", width: 120}
+        // {headerName: "总获取夺宝卷", field: "gain_dbj", width: 120}
     ];
 
     global.agGridTranslateSync($scope,columnDefs,[
         'player.info.games.header.name',
         'player.info.games.header.count',
         'player.info.games.header.gain_jb',
-        'player.info.games.header.gain_day_jb',
-        'player.info.games.header.gain_dbj'
+        'player.info.games.header.gain_day_jb'
+        // 'player.info.games.header.gain_dbj'
     ]);
     var dataSource = {
         getRows: function (params) {
@@ -445,6 +483,7 @@ app.controller('PlayerGamesListCtrl', ['$scope', '$state', '$stateParams', '$htt
 }]);
 
 app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'global', function ($scope, $state, $http, $interval, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerOnlineHistory||(global.playerOnlineHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -456,6 +495,7 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     $scope.$on("$destroy", function(){
         $interval.cancel(t);
     });
+
 
     var format_uid = function(params) {
         var obj = params.data.user || {};
@@ -486,47 +526,79 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         var obj = params.data.hold || {};
         return obj.dbj||0;
     };
+    // var format_channel = function(params) {
+    //     var obj = params.data || {};
+    //     return obj.channel;
+    // };
 
-    var columnDefs = [
-        {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
-        {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
-        {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
-        {headerName: "房间号", field: "areaId", width: 80},
-        {headerName: "房间类型", field: "areaType", width: 150},
-        {headerName: "元宝", field: "tb", width: 100, valueGetter: format_tb},
-        {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
-        {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
-        {headerName: "设备", field: "device", width: 100},
-        {headerName: "渠道", field: "channel", width: 100}
-    ];
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+            {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+            {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+            {headerName: "房间号", field: "areaId", width: 80},
+            {headerName: "房间类型", field: "areaType", width: 150},
+            {headerName: "元宝", field: "tb", width: 100, valueGetter: format_tb},
+            {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
+            {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
+            {headerName: "设备", field: "device", width: 100},
+            {headerName: "渠道", field: "channel", width: 100}
+        ];
 
-    global.agGridTranslateSync($scope, columnDefs, [
-        'player.info.online.header.uid',
-        'player.info.online.header.nick',
-        'player.info.online.header.appname',
-        'player.info.online.header.areaId',
-        'player.info.online.header.areaType',
-        'player.info.online.header.tb',
-        'player.info.online.header.jb',
-        'player.info.online.header.dbj',
-        'player.info.online.header.device',
-        'player.info.online.header.channel'
-    ]);
+        global.agGridTranslateSync($scope, columnDefs, [
+            'player.info.online.header.uid',
+            'player.info.online.header.nick',
+            'player.info.online.header.appname',
+            'player.info.online.header.areaId',
+            'player.info.online.header.areaType',
+            'player.info.online.header.tb',
+            'player.info.online.header.jb',
+            'player.info.online.header.dbj',
+            'player.info.online.header.device',
+            'player.info.online.header.channel'
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+            {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+            {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+            {headerName: "房间号", field: "areaId", width: 80},
+            {headerName: "房间类型", field: "areaType", width: 150},
+            {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
+            {headerName: "渠道", field: "channel", width: 100}
+        ];
+
+        global.agGridTranslateSync($scope, columnDefs, [
+            'player.info.online.header.uid',
+            'player.info.online.header.nick',
+            'player.info.online.header.appname',
+            'player.info.online.header.areaId',
+            'player.info.online.header.areaType',
+            'player.info.online.header.jb',
+            'player.info.online.header.channel'
+        ]);
+    }
 
     var dataSource = {
         getRows: function (params) {
             global.agGridOverlay();
 
+
+            var search = $scope.search;
+            var agent = search.agent;
             var page = params.startRow / $scope.pageSize + 1;
+
             $http.get(url, {
                 params: {
                     token: sso.getToken(),
                     page: page,
+                    agent: agent,
                     rows: $scope.pageSize,
-                    search: $scope.search
+                    search: $scope.search.content
                 }
             }).success(function (result) {
                 var data = result;
+                console.log(result);
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
@@ -577,6 +649,20 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     $scope.$watch('search', function () {
         history.search = $scope.search;
     });
+    // $http.get(agentUri + '/subAgents', {
+    //     params: {
+    //         token: sso.getToken()
+    //     }
+    // }).success(function (result) {
+    //     console.log(result);
+    //     if (result.err) {
+    //         $scope.error(result.msg);
+    //     } else {
+    //         $scope.agents = result.rows;
+    //     }
+    // }).error(function (msg, code) {
+    //     $scope.errorTips(code);
+    // });
 }]);
 
 app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
@@ -587,6 +673,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
     var url = recordUri+'/gameovers';
+    
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.timePicker = true;
@@ -619,10 +706,16 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         return obj.jb||0;
     };
 
+    var format_upjb = function(params) {
+        var prejb = params.data.onHold || {};
+        var bkjb = params.data.offHold || {};
+        var gainjb = params.data.gainHold || {};
+        return (bkjb.jb - prejb.jb - gainjb.jb)||0;
+    };
+
     var format_changejb = function(params) {
-        var onHold = params.data.onHold || {};
-        var offHold = params.data.offHold || {};
-        return offHold.jb - onHold.jb||0;
+        var obj = params.data.gainHold || {};
+        return obj.jb||0;
     };
 
     var format_time = function(params) {
@@ -632,38 +725,73 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         return Math.round((end-start)*0.001)+'秒';
     };
 
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+            {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+            {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+            {headerName: "房间号", field: "areaId", width: 80},
+            {headerName: "房间类型", field: "areaType", width: 150},
+            {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
+            {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
+            {headerName: "上分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
+            {headerName: "设备", field: "device", width: 100},
+            {headerName: "渠道", field: "channel", width: 100},
+            {headerName: "游戏时长", field: "time", width: 100, valueGetter: format_time},
+            {headerName: "开始时间", field: "onTime", width: 145, valueGetter: $scope.angGridFormatDateS},
+            {headerName: "结束时间", field: "offTime", width: 145, valueGetter: $scope.angGridFormatDateS}
+        ];
 
-    var columnDefs = [
-        {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
-        {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
-        {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
-        {headerName: "房间号", field: "areaId", width: 80},
-        {headerName: "房间类型", field: "areaType", width: 150},
-        {headerName: "开始前金币", field: "prejb", width: 100, valueGetter: format_prejb},
-        {headerName: "结束后金币", field: "bkjb", width: 100, valueGetter: format_bkjb},
-        {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
-        {headerName: "设备", field: "device", width: 100},
-        {headerName: "渠道", field: "channel", width: 100},
-        {headerName: "游戏时长", field: "time", width: 100, valueGetter: format_time},
-        {headerName: "开始时间", field: "onTime", width: 145, valueGetter: $scope.angGridFormatDateS},
-        {headerName: "结束时间", field: "offTime", width: 145, valueGetter: $scope.angGridFormatDateS}
-    ];
+        global.agGridTranslateSync($scope, columnDefs, [
+            'player.record.header.uid',
+            'player.record.header.nick',
+            'player.record.header.appname',
+            'player.record.header.areaId',
+            'player.record.header.areaType',
+            'player.record.header.prejb',
+            'player.record.header.bkjb',
+            'player.record.header.upjb',
+            'player.record.header.changejb',
+            'player.record.header.device',
+            'player.record.header.channel',
+            'player.record.header.time',
+            'player.record.header.onTime',
+            'player.record.header.offTime'
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
+            {headerName: "昵称", field: "nick", width: 150, valueGetter: format_nick},
+            {headerName: "游戏名称", field: "appname", width: 200, valueGetter: format_appname},
+            {headerName: "房间号", field: "areaId", width: 80},
+            {headerName: "房间类型", field: "areaType", width: 150},
+            {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
+            {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
+            {headerName: "上分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
+            {headerName: "渠道", field: "channel", width: 100},
+            {headerName: "游戏时长", field: "time", width: 100, valueGetter: format_time},
+            {headerName: "开始时间", field: "onTime", width: 145, valueGetter: $scope.angGridFormatDateS},
+            {headerName: "结束时间", field: "offTime", width: 145, valueGetter: $scope.angGridFormatDateS}
+        ];
 
-    global.agGridTranslateSync($scope, columnDefs, [
-        'player.record.header.uid',
-        'player.record.header.nick',
-        'player.record.header.appname',
-        'player.record.header.areaId',
-        'player.record.header.areaType',
-        'player.record.header.prejb',
-        'player.record.header.bkjb',
-        'player.record.header.changejb',
-        'player.record.header.device',
-        'player.record.header.channel',
-        'player.record.header.time',
-        'player.record.header.onTime',
-        'player.record.header.offTime'
-    ]);
+        global.agGridTranslateSync($scope, columnDefs, [
+            'player.record.header.uid',
+            'player.record.header.nick',
+            'player.record.header.appname',
+            'player.record.header.areaId',
+            'player.record.header.areaType',
+            'player.record.header.prejb',
+            'player.record.header.bkjb',
+            'player.record.header.upjb',
+            'player.record.header.changejb',
+            'player.record.header.channel',
+            'player.record.header.time',
+            'player.record.header.onTime',
+            'player.record.header.offTime'
+        ]);
+    }
 
     var dataSource = {
         getRows: function (params) {
@@ -760,6 +888,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
 }]);
 
 app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+    var sso = jm.sdk.sso;
     var history = global.playerGiveLogHistory||(global.playerGiveLogHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
@@ -767,6 +896,7 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
     var url = recordUri+'/giveLogs';
 
     $scope.dateOptions = global.dateRangeOptions;
+    $scope.dateOptions.opens = 'left';
 
     var format_fromUserId = function(params) {
         var obj = params.data.fromUser || {};
@@ -927,10 +1057,14 @@ app.controller('PlayerGiveLogCtrl', ['$scope', '$state', '$http', 'global', func
 }]);
 
 app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', '$timeout', function ($scope, $state, $http, global, $timeout) {
+    var sso = jm.sdk.sso;
     $scope.player = {};
     $scope.bank = {};
     $scope.data = {};
+    // $scope.device = "mobile";
+    $scope.device = "PC";
 
+    $scope.url="";
     var reg = function (data) {
         return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     };
@@ -943,25 +1077,26 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         $scope.jb = reg(jbObj.amountValid||0);
     });
 
-    $scope.operate = function () {
-        $scope.type = Number($scope.operate.type);
-        if($scope.type == 1){
+    $scope.operate = function (type) {
+        if(type == 1){
             $scope.sum = $scope.player.jb + $scope.bank.amount;
-        }else if($scope.type == 2){
+        }else if(type == 2){
             $scope.sum = $scope.player.jb - $scope.bank.amount;
         }else {
             $scope.sum = $scope.player.jb;
         };
     };
     $scope.page = 1;
-    $scope.left = function () {
+    $scope.left = function (keyword) {
         if($scope.page>1){
-            --$scope.page;
+            $scope.page = $scope.page - 1;
+            $scope.searchUser(keyword);
         }
     }
-    $scope.right = function () {
+    $scope.right = function (keyword) {
         if($scope.page<$scope.pages){
-            ++$scope.page;
+            $scope.page = $scope.page + 1;
+            $scope.searchUser(keyword);
         }
     };
 
@@ -969,7 +1104,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
         $http.get(statUri+'/players', {
             params:{
                 token: sso.getToken(),
-                search: keyword
+                search: keyword,
+                page:$scope.page
             }
         }).success(function(result){
             $scope.data = result;
@@ -977,7 +1113,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
                 $scope.error($scope.data.msg);
             }else{
                 $scope.usersInfo = $scope.data;
-                $scope.pages = Math.ceil($scope.usersInfo.rows.length/10);
+                $scope.pages = $scope.data.pages;
+                $scope.total = $scope.data.total;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -985,8 +1122,8 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
     };
 
     $scope.selectUser = function($event){
-        $scope.selectRow = $scope.usersInfo.rows.slice(10*($scope.page-1),[10*$scope.page])[$event.currentTarget.rowIndex-1];
-        $scope.player.toUserId = $scope.selectRow._id;
+        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.player.toUserId = $scope.selectRow.uid;
         $scope.nick = $scope.selectRow.nick;
         bank.query({userId:$scope.player.toUserId},function(err,result){
             result || (result||{});
@@ -1000,20 +1137,49 @@ app.controller('PlayerChangeScoreCtrl', ['$scope', '$state', '$http', 'global', 
             $scope.nick = null;
         }
     });
+    $scope.inputsearch = function () {
+        if($scope.player.toUserId) {
+            $scope.page = 1;
+            $scope.searchUser($scope.player.toUserId);
+        }else {
+            $scope.searchUser($scope.player);
+        }
+    }
+    $scope.moselectUser = function($event){
+        $scope.selectRow = $scope.usersInfo.rows[$event.currentTarget.rowIndex-1];
+        $scope.uid = $scope.selectRow.uid;
+        $scope.nick = $scope.selectRow.nick;
+        $scope.player.toUserId = $scope.selectRow._id;
+        bank.query({userId:$scope.player.toUserId},function(err,result){
+            result || (result||{});
+            var holds = result.holds||{};
+            var jbObj = holds.jb || {};
+            $scope.player.jb = jbObj.amount||0;
+        });
+        $state.go('^');
+    };
 
-    $scope.updateData = function(event){
+    $scope.mobilesearch = function (keyword) {
+        if(keyword) {
+            $scope.page = 1;
+            $scope.searchUser(keyword);
+        }else {
+            $scope.searchUser();
+        }
+    }
+
+    $scope.updateData = function(event,type){
         var data = $scope.selectRow;
         var account = data.nick||data.account||data.uid;
         var ct = {'jb':global.translateByKey('common.jb')};
         var amount = $scope.bank.amount;
         var fromUserId,toUserId,info;
         var memo = $scope.bank.memo||"";
-        console.info(memo);
-        if($scope.type == 1){
+        if(type == 1){
             info = global.translateByKey('player.info.transferTip.add',{val:account})+amount+ct["jb"];
             fromUserId = sso.user.id;
             toUserId = data._id;
-        }else if($scope.type == 2){
+        }else if(type == 2){
             info = global.translateByKey('player.info.transferTip.deduct',{val:account})+amount+ct["jb"];
             fromUserId = data._id;
             toUserId = sso.user.id;

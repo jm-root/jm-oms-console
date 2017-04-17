@@ -12,13 +12,13 @@
             </tab-heading>
             <div ng-include="gameset_config_tmpl"></div>
         </tab>
-        <tab index="1">
-            <tab-heading>
-                {{ 'appmgr.roomDiff' | translate }}
-            </tab-heading>
-            <div ng-include="gameset_config_diffcult_tmpl"></div>
-        </tab>
-        <tab index="1">
+        <!--<tab index="1">-->
+            <!--<tab-heading>-->
+                <!--{{ 'appmgr.roomDiff' | translate }}-->
+            <!--</tab-heading>-->
+            <!--<div ng-include="gameset_config_diffcult_tmpl"></div>-->
+        <!--</tab>-->
+        <tab index="1" ng-show="isFromAppManager">
             <tab-heading>
                 {{ 'appmgr.tableAdjust' | translate }}
             </tab-heading>

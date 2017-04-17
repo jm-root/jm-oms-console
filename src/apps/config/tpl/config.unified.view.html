@@ -1,6 +1,6 @@
 <div class="hbox hbox-auto-xs hbox-auto-sm bg-light">
 <div class="col lter b-r" >
-    <div class="vbox" style="min-height: 900px;">
+    <div class="vbox" style="min-height: 600px;">
         <div class="wrapper-sm b-b">
             <div class="pull-right">
                 <a href class="btn btn-sm btn-primary m-t-n-xs" ng-click="saveall()" translate="config.view.saveall">整体保存</a>
@@ -17,7 +17,7 @@
             <div class="cell">
                 <div class="cell-inner">
                     <div class="panel-body bg-white-only">
-                        <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="myStyle" placeholder="{{ 'config.menus.enter' | translate }}" ng-model="allVal.val"></textarea>
+                        <textarea style="border:1px solid #ccc; width:100%; display:block; resize:none;padding: 6px;" ng-style="{height:app.navHeight-123+'px'}" placeholder="{{ 'config.menus.enter' | translate }}" ng-model="allVal.val"></textarea>
                     </div>
                 </div>
             </div>

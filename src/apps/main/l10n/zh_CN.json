@@ -9,6 +9,13 @@
     "PASSWORD": "密码",
     "VERIFICATION": "验证码"
   },
+  "footer":{
+    "homepage":"首页",
+    "increase":"上分",
+    "decrease":"下分",
+    "player":"玩家",
+    "transfer":"转账"
+  },
   "nav": {
     "HEADER": "导航",
     "MAIN": "概况"
@@ -48,8 +55,24 @@
       "info": "玩家信息",
       "online": "在线状态",
       "record": "游戏记录",
-      "givelog": "赠送记录",
-      "changescore":"上/退分"
+      "givelog": "赠送记录"
+    },
+    "uppoints":{
+      "manage":"上分"
+    },
+    "backpoints":{
+      "manage":"下分",
+      "list":"下分处理",
+      "log":"下分记录"
+    },
+    "datastatistics":{
+      "manage":"数据统计",
+      "playerdata":"玩家数据",
+      "agentdata":"渠道数据",
+      "playerstatistics":"玩家统计",
+      "agentstatistics":"渠道统计",
+      "playerdiary":"玩家流水",
+      "agentdiary":"渠道流水"
     },
     "system":{
       "manage": "系统管理",
@@ -67,13 +90,15 @@
       "manage":"渠道管理",
       "create":"下级渠道创建",
       "list":"渠道列表",
+      "set":"渠道游戏管理",
       "data":"渠道数据",
       "message":"推广信息"
     },
     "agentdata":{
       "register":"注册",
       "recharge":"充值",
-      "analysis":"数据分析"
+      "analysis":"数据分析",
+      "divided":"分成流水"
     },
     "coin":{
       "sys":"T币系统",
@@ -110,6 +135,7 @@
       "preauth":"预授权列表",
       "transfer":"转账",
       "deal":"交易流水",
+      "owndeal":"个人流水",
       "npreauth":"取消授权",
       "overdraw":"设置额度",
       "rate":"货币对率",

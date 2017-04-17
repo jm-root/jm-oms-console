@@ -227,9 +227,7 @@ app.controller('LotteryListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 var index = cell.data.lotteryIds.length - 1;
                 $state.go('app.shop.lottery.edit' , {id: cell.data.lotteryIds[index]});
             }
@@ -674,9 +672,7 @@ app.controller('LotteryWinListCtrl', ['$scope', '$state', '$stateParams', '$http
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.shop.lotteryWin.edit' , {id: cell.data._id});
             }
         },

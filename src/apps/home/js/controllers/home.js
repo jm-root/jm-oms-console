@@ -88,9 +88,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.bbs.forum.edit' , {id: cell.data._id});
             }
         },
@@ -161,7 +159,7 @@ app.controller('HomeBBSForumListCtrl', ['$scope', '$http', '$state', 'global',fu
     };
 }]);
 
-app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/forums';
     var id = $stateParams.id;
     $scope.id = id;
@@ -169,7 +167,7 @@ app.controller('HomeBBSForumEditCtrl', ['$scope', '$http', '$state', '$statePara
 
     var getLogoUri = function(id, bTimestamp){
         if (id){
-            var uri = '/upload/home/bbs/forum/' + id +'/image/logo.png';
+            var uri = '/upload/home/bbs/forum/' + id +'/img/logo.png';
             if(bTimestamp){
                 uri += '?t=' + new Date();
             }
@@ -376,9 +374,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.bbs.topic.edit' , {id: cell.data._id});
             }
         },
@@ -468,7 +464,7 @@ app.controller('HomeBBSTopicListCtrl', ['$scope', '$http', '$state', 'global',fu
     });
 }]);
 
-app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/topics';
     var furl = homeUri+'/bbs/forums';
     var id = $stateParams.id;
@@ -478,7 +474,7 @@ app.controller('HomeBBSTopicEditCtrl', ['$scope', '$http', '$state', '$statePara
 
     var getLogoUri = function(id, bTimestamp){
         if (id){
-            var uri = '/upload/home/bbs/topic/' + id +'/image/logo.png';
+            var uri = '/upload/home/bbs/topic/' + id +'/img/logo.png';
             if(bTimestamp){
                 uri += '?t=' + new Date();
             }
@@ -741,9 +737,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.activitys.edit' , {id: cell.data._id});
             }
         },
@@ -814,7 +808,7 @@ app.controller('HomeActivityListCtrl', ['$scope', '$http', '$state', 'global',fu
 
 }]);
 
-app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout',function($scope, $http, $state, $stateParams, $timeout) {
+app.controller('HomeActivityEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$timeout','global',function($scope, $http, $state, $stateParams, $timeout,global) {
     var url = homeUri+'/bbs/topics';
     var id = $stateParams.id;
     $scope.id = id;
@@ -1148,7 +1142,7 @@ app.controller('HomeDakSendCtrl', ['$scope', '$http', '$state', '$stateParams', 
 
 }]);
 
-app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout',function($scope, $http, $state, $stateParams,$timeout) {
+app.controller('HomeRankSetCtrl', ['$scope', '$http', '$state', '$stateParams','$timeout','global',function($scope, $http, $state, $stateParams,$timeout,global) {
     $scope.user = {};
 
     $scope.save = function(){

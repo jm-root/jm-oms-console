@@ -54,13 +54,38 @@
         "title": "Deal flow",
         "income": "Income",
         "expenditure": "Expenditure",
+        "typeOpts": {
+          "opts": "交易类型",
+          "opts1": "普通交易",
+          "opts2": "转帐交易",
+          "opts3": "货币发行",
+          "opts4": "货币回收",
+          "opts5": "预授权"
+        },
         "header": {
-          "userId": "User ID",
-          "user": "User name",
-          "ctName": "Currency",
-          "flag": "Flag",
-          "amount": "Amount",
-          "createdAt": "Create time"
+          "fromUserId": "转出ID",
+          "fromUser": "转出用户",
+          "toUserId": "转入ID",
+          "toUser": "转入用户",
+          "type": "交易类型",
+          "flag": "交易标记",
+          "ctName": "币种",
+          "amount": "操作数量",
+          "balance": "操作前余额",
+          "createdAt": "时间"
+        }
+      },
+      "owndeal": {
+        "title": "个人流水",
+        "income": "收入",
+        "expenditure": "支出",
+        "header": {
+          "userId": "用户ID",
+          "user": "用户名",
+          "ctName": "币种",
+          "flag": "交易标记",
+          "amount": "金额",
+          "createdAt": "时间"
         }
       },
       "exchange": {
@@ -112,6 +137,7 @@
         "label3": "Into account",
         "label4": "Roll account",
         "label5": "Transfer sum",
+        "label6": "Currency",
         "defaultAccount": "Default account",
         "ctOpts": {
           "opts": "Choose currency",

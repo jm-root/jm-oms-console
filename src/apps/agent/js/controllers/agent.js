@@ -123,7 +123,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             '</div>' +
             '</div>' +
             '<div class="form-group">' +
-            '<label class="col-sm-2 control-label" translate="common.password>密码</label>' +
+            '<label class="col-sm-2 control-label" translate="common.password">密码</label>' +
             '<div class="col-sm-9">' +
             '<input type="number" class="form-control" placeholder="密码" ng-model="passwd" ng-required="true">' +
             '</div>' +
@@ -163,13 +163,141 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         });
     };
 
+    var reg = function (data) {
+        return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
+    $scope.gainData = {};
+    var htmlFunGain = function(data){
+        var account = data._id.account||data._id.mobile;
+        var notDivided = Math.floor((data.gain_jb-data.settled)*data.pratio||0);
+        var amount = Math.floor((data.gain_jb-data.settled)*data.pratio*data.ratio);
+
+        return '<form name="formValidate" class="form-horizontal form-validation">' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="common.account">账号</label>' +
+            '<div class="col-sm-8 w-auto">' +
+            '<p class="form-control-static">'+account+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.total">总营收</label>' +
+            '<div class="col-sm-8">' +
+            '<p class="form-control-static">'+reg(data.gain_jb)+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.divided">已分成营收</label>' +
+            '<div class="col-sm-8">' +
+            '<p class="form-control-static">'+reg(data.settled)+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.notDivided">可分成数</label>' +
+            '<div class="col-sm-8">' +
+            '<p class="form-control-static">'+reg(notDivided)+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.ratio">分成比例</label>' +
+            '<div class="col-sm-8">' +
+            '<p class="form-control-static">'+data.ratio+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.proportional">按比例分成数</label>' +
+            '<div class="col-sm-8">' +
+            '<p class="form-control-static">'+reg(amount)+'</p>' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '<div class="form-group" style="margin-bottom:0px">' +
+            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.trueNum">实际数量</label>' +
+            '<div class="col-sm-8">' +
+            '<input type="number" min="0" step="1" class="form-control" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-model="amount" ng-init="amount='+amount+'">' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '</form>';
+    };
+
+    $scope.gainRefresh = function (data) {
+        var agentId = data._id._id;
+
+        $http.get(statUri+'/multiple', {
+            params:{
+                token: sso.getToken(),
+                agent: agentId,
+                fields:{gain_total:1}
+            }
+        }).success(function(result){
+            var obj = result;
+            if(obj.err){
+                $scope.error(obj.msg);
+            }else{
+                obj = obj||{};
+                data.gain_jb = obj.gain_total.gain_jb||0;
+                data.settled || (data.settled=0);
+                data.ratio || (data.ratio=0);
+                data.pratio = 1;
+                $http.get(agentUri + '/info', {
+                    params: {
+                        token: sso.getToken(),
+                        agent: data.pcode
+                    }
+                }).success(function (result) {
+                    if(result._id){
+                        var o = result || {};
+                        o.ratio || (o.ratio=0);
+                        data.pratio = o.ratio;
+                    }
+                    $scope.openTips({
+                        title:global.translateByKey('agent.agent.create.list.gainForm.title'),
+                        content: htmlFunGain(data),
+                        okTitle:global.translateByKey('common.confirm'),
+                        cancelTitle:global.translateByKey('common.cancel'),
+                        okCallback: function($s){
+                            $http.post(agentUri+'/settledRefresh', {
+                                agent:agentId,
+                                amount:$s.amount
+                            }, {
+                                params:{
+                                    token: sso.getToken()
+                                }
+                            }).success(function(result){
+                                var obj = result;
+                                if(obj.err){
+                                    $scope.error(obj.msg);
+                                }else{
+                                    $scope.onPageSizeChanged();
+                                    $scope.success(global.translateByKey('common.succeed'));
+                                }
+                            }).error(function(msg, code){
+                                $scope.errorTips(code);
+                            });
+                        }
+                    });
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                });
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    };
+
     function ctrl_render(params){
         $scope.suspend = global.translateByKey('common.suspend');
         $scope.normal = global.translateByKey('common.normal');
         return '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,true)" ng-if="(data.audit==0||data.audit==2)&&(super||per[\'通过\'])" translate="common.pass">通过</span>'+
             '<span class="btn btn-xs bg-primary m-r-xs" ng-click="auditFun(data,false)" ng-if="data.audit==0&&(super||per[\'不通过\'])" translate="common.notPass">不通过</span>'+
             '<span class="btn btn-xs bg-primary m-r-xs" ng-click="onoff(data)" ng-if="super||per[\'onoff\']">{{data.status?suspend:normal}}</span>'+
-            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="resetPasswd(data)" translate="common.resetPassword">重置密码</span>';
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="resetPasswd(data)" translate="common.resetPassword">重置密码</span>'+
+            '<span class="btn btn-xs bg-primary m-r-xs" ng-click="gainRefresh(data)" ng-if="(super&&(data.level==1))||per[\'刷新分成\']" translate="agent.agent.create.list.gainRefresh">刷新分成</span>';
     }
 
     var columnDefs = [
@@ -247,9 +375,7 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             global.agGridOverlay();                 //翻译
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 if($scope.super||$scope.per['详情']||$scope.per['编辑']){
                     $state.go('app.agent.edit' , {id: cell.data._id._id});
                 }

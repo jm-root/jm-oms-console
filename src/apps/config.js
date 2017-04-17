@@ -9,6 +9,7 @@ var gConfig = {
         robotUri: "localhost:20760"
     },
     development: {
+        // apiHost: "http://192.168.1.10:19990",
         apiHost: "http://test.gzleidi.cn:81",
         sdkHost: "http://test.gzleidi.cn:82",
         opensdkHost: "http://test.gzleidi.cn:20300",
@@ -68,3 +69,10 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
+var omsnav = "nav";
+
+const pfm_cy = 'static';
+const pfm_oms = 'oms';
+var omsPlatform = pfm_cy;
+
+var plat;

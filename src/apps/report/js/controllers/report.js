@@ -22,29 +22,46 @@ app.controller('ReportAccountCtrl', ['$scope', '$state', '$http', 'global', func
         return info||'';
     };
 
-    var columnDefs = [
-        {headerName: "日期", field: "date", width: 150, valueGetter: format_date},
-        // {headerName: "元宝", field: "tb", width: 150},
-        // {headerName: "金币", field: "jb", width: 100},
-        // {headerName: "夺宝卷", field: "dbj", width: 150},
-        // {headerName: "登录人数", field: "login", width: 100},
-        // {headerName: "签到人数", field: "checkin", width: 100},
-        {headerName: "充值人数", field: "recharge_p", width: 120},
-        {headerName: "充值数(分)", field: "recharge", width: 120},
-        {headerName: "赠送金币", field: "give_jb", width: 150},
-        {headerName: "赠送夺宝卷", field: "give_dbj", width: 120},
-        {headerName: "游戏金币总输赢", field: "gain_jb", width: 120},
-        {headerName: "游戏夺宝卷总输赢", field: "gain_dbj", width: 120}
-    ];
-    global.agGridTranslateSync($scope, columnDefs, [                 //翻译
-        'report.account.header.date',
-        'report.account.header.recharge_p',
-        'report.account.header.recharge',
-        'report.account.header.give_jb',
-        'report.account.header.give_dbj',
-        'report.account.header.gain_jb',
-        'report.account.header.gain_dbj',
-    ]);
+    if(omsPlatform === pfm_oms){
+        var columnDefs = [
+            {headerName: "日期", field: "date", width: 150, valueGetter: format_date},
+            // {headerName: "元宝", field: "tb", width: 150},
+            // {headerName: "金币", field: "jb", width: 100},
+            // {headerName: "夺宝卷", field: "dbj", width: 150},
+            // {headerName: "登录人数", field: "login", width: 100},
+            // {headerName: "签到人数", field: "checkin", width: 100},
+            {headerName: "充值人数", field: "recharge_p", width: 120},
+            {headerName: "充值数(分)", field: "recharge", width: 120},
+            {headerName: "赠送金币", field: "give_jb", width: 150},
+            {headerName: "赠送夺宝卷", field: "give_dbj", width: 120},
+            {headerName: "游戏金币总输赢", field: "gain_jb", width: 200},
+            {headerName: "游戏夺宝卷总输赢", field: "gain_dbj", width: 200}
+        ];
+        global.agGridTranslateSync($scope, columnDefs, [                 //翻译
+            'report.account.header.date',
+            'report.account.header.recharge_p',
+            'report.account.header.recharge',
+            'report.account.header.give_jb',
+            'report.account.header.give_dbj',
+            'report.account.header.gain_jb',
+            'report.account.header.gain_dbj',
+        ]);
+    }else if(omsPlatform === pfm_cy){
+        var columnDefs = [
+            {headerName: "日期", field: "date", width: 150, valueGetter: format_date},
+            {headerName: "总上分", field: "up_jb", width: 100},
+            {headerName: "总下分", field: "down_jb", width: 100},
+            {headerName: "游戏金币总输赢", field: "gain_jb", width: 200}
+        ];
+
+        global.agGridTranslateSync($scope, columnDefs, [
+            'report.account.header.date',
+            'report.account.header.up_jb',
+            'report.account.header.down_jb',
+            'report.account.header.gain_jb'
+        ]);
+    }
+
 
     var dataSource = {
         getRows: function (params) {

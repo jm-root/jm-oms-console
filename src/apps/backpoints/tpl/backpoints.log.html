@@ -1,0 +1,26 @@
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'backpoints.log.title'|translate}}</h1></div>
+<div>
+    <div class="pull-right m-r-sm headpadd">
+        <form>
+            <div class="input-group w-lg">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+                  </span>
+            </div>
+        </form>
+    </div>
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+</div>
+
+<div>
+    <div class="panel panel-default">
+        <div class="line b-b" style="margin: 0"></div>
+        <div class="panel-body">
+            <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,13 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoa
                 localStorage.setItem('id',result.id);
                 localStorage.setItem('visImgCode', false);
                 $scope.visImgCode = false;
-                $state.go('app.dashboard');
+                var url= JSON.parse(localStorage.getItem('url'));
+                var param = JSON.parse(localStorage.getItem('param'));
+                if(!url||url.name == 'access.signin'){
+                    $state.go('app.dashboard');
+                }else {
+                    $state.go(url.name,param);
+                }
             }else{
                 $scope.authError = '账号或密码错误';
                 if(result.err===2006||result.err===2007){

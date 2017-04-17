@@ -1,0 +1,99 @@
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'backpoints.list.title'|translate}}</h1></div>
+<div>
+    <div class="m-t-xs " ng-if="isSmartDevice">
+        <form style="margin: 0 auto">
+            <div class="input-group m-l-sm m-r-sm" style="width: 107%">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                    <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="m-t-xs " ng-if="!isSmartDevice">
+        <form style="margin: 0 auto">
+            <div class="input-group m-l-sm m-r-sm pull-right w-lg">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
+                <span class="input-group-btn" style="width: auto">
+                    <button type="submit" class="btn btn-sm bg-white rounded" ng-click="getdata(search.keyword,1)"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="pull-right m-r-sm m-b-xs" ng-show="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)"></select>
+    </div>
+    <div class="line b-b"></div>
+</div>
+<!--ng-style="{height:app.navHeight-200+'px'}"-->
+<div style="margin: 0 10px 5px;position: relative">
+    <div class="table-responsive " ng-style="tablestyle">
+        <!--loading-->
+        <div ng-if="moreLoading">
+            <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
+            <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
+                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
+            </div>
+            <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 47%;top: 22em;">
+                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
+            </div>
+        </div>
+        <!--no data   -->
+        <div class="text-center" ng-if="nodata&&!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
+            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+        </div>
+        <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 46%;top: 22em;">
+            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+        </div>
+        <!--table-->
+        <table class="table table-striped table-bordered mobiletable">
+            <thead class="bg-white">
+            <tr>
+                <!--<th>序号</th>-->
+                <th>{{'backpoints.list.label1'|translate}}</th>
+                <th>{{'backpoints.list.label2'|translate}}</th>
+                <th>{{'backpoints.list.label3'|translate}}</th>
+                <th>{{'backpoints.list.label4'|translate}}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="row in usersInfo.rows" class="active" ng-if="total">
+                <!--<td data-title="序号" >{{row.user.uid}}</td>-->
+
+                <td data-title="{{'backpoints.list.label1'|translate}}" >{{row.user.uid}}</td>
+                <td data-title="{{'backpoints.list.label2'|translate}}" >{{row.user.account||row.user.nick}}</td>
+                <td data-title="{{'backpoints.list.label3'|translate}}" >{{row.amount}}</td>
+                <td data-title="{{'backpoints.list.label4'|translate}}" >{{row.crtime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                <td data-title="" style="height: 2.8em;">
+                    <button class="btn btn-xs btn-info" ng-click="confirm(row)" style="float: right" ng-disabled="key">{{'backpoints.list.label5'|translate}}</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!--ng-if="!isSmartDevice"-->
+    <div ng-if="!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 101%;bottom: 0;margin:auto;">
+        <div class="text-center">
+            <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
+            <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
+            <span>{{page}}/{{pages}}</span>
+            <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+        </div>
+    </div>
+    <div class="text-center" ng-if="!moreLoading&&!nodata&&isSmartDevice">
+        <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
+        <span>{{page}}/{{pages}}</span>
+        <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+    </div>
+</div>
+
+

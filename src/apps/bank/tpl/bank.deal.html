@@ -1,14 +1,33 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'bank.bank.deal.title'|translate}}</h1></div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{ 'bank.bank.deal.title' | translate }}</h1></div>
 <div>
-    <!--<div class="pull-right">-->
-    <!--<div class="input-group m-r-sm">-->
-    <!--<input type="text" ng-model="search.agent" class="form-control input-sm bg-light no-border rounded padder" placeholder="搜索 代理ID/名称">-->
-    <!--<span class="input-group-btn" style="width: auto">-->
-    <!--<button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>-->
-    <!--</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <div class="pull-right m-r-xxl headpadd">
+    <div class="pull-right headpadd">
+        <form>
+            <div class="input-group m-r-sm w-lg">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
+                <span class="input-group-btn" style="width: auto">
+                <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+        </form>
+    </div>
+    <div class="pull-right m-r-md headpadd">
+        <div class="input-group m-r-xs" style="width: 185px;">
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate }}" style="position: relative;height: 30px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+        </div>
+    </div>
+    <div class="pull-right m-r-sm headpadd">
+        <select class="input-sm form-control" ng-model="search.type" ng-change="onPageSizeChanged()">
+            <option value="">{{'bank.bank.deal.typeOpts.opts'|translate}}</option>
+            <option value="0">{{'bank.bank.deal.typeOpts.opts1'|translate}}</option>
+            <option value="1">{{'bank.bank.deal.typeOpts.opts2'|translate}}</option>
+            <option value="2">{{'bank.bank.deal.typeOpts.opts3'|translate}}</option>
+            <option value="3">{{'bank.bank.deal.typeOpts.opts4'|translate}}</option>
+            <option value="4">{{'bank.bank.deal.typeOpts.opts5'|translate}}</option>
+        </select>
+    </div>
+
+    <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
@@ -17,6 +36,6 @@
 <div class="panel panel-default">
     <div class="line b-b" style="margin: 0"></div>
     <div class="panel-body">
-        <div ng-style="{height:app.navHeight-165+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
+        <div ng-style="{height:app.navHeight-200+'px'}" ag-grid="gridOptions" class="ag-fresh"></div>
     </div>
 </div>

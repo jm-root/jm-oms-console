@@ -10,6 +10,10 @@
           "title": "Channel list",
           "search": "Search channel ID/name",
           "level": " Level",
+          "gainRefresh": "Divided",
+          "gainForm": {
+            "title": "Update divided data"
+          },
           "auditOpts":{
             "opts1": "Audit status",
             "opts2": "Unaudited",
@@ -42,6 +46,15 @@
             "audit": "Audit status",
             "ctrl": "Operation",
             "addr": "Address"
+          },
+          "gainStat":{
+            "title": "Divided into statistics",
+            "total": "Total surplus",
+            "ratio": "Ratio",
+            "divided": "Divided",
+            "notDivided": "Not divided",
+            "proportional": "Proportional share",
+            "trueNum":"Actual quantity"
           }
         },
         "AgentCreate":"Agent Create",
@@ -55,6 +68,7 @@
         "PleaseChooseCooperationMode":"Please choose cooperation mode",
         "cooperation":"Cooperation",
         "buyout":"Buyout",
+        "DividedProportion":"Divided proportion",
         "ApplicantName":"Applicant Name",
         "tel":"Tel",
         "PromotionCap":"Promotion Cap",
@@ -116,7 +130,9 @@
           "cardAmount": "Card recharge",
           "sysAmount": "System reward",
           "totalAmount": "Total revenue",
-          "crtime": "Register time"
+          "crtime": "Register time",
+          "level":"Channel level",
+          "jb":"Gold"
         }
       },
       "recharge":{
@@ -131,6 +147,7 @@
         },
         "header":{
           "date": "Date",
+          "code": "Channel ID",
           "name": "Channel name",
           "level": "Channel level",
           "pcode": "Superior channel ID",
@@ -155,6 +172,18 @@
           "pcode": "Superior channel ID",
           "pname": "Superior channel name",
           "count": "Register amount"
+        }
+      },
+      "divided":{
+        "title": "分成流水",
+        "TheChannel": "所属渠道",
+        "header":{
+          "code": "Channel ID",
+          "name": "Channel name",
+          "total": "总收益",
+          "amount": "分成数量",
+          "ramount": "按比例分成数",
+          "crtime": "操作时间"
         }
       }
     },

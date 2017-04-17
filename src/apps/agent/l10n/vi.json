@@ -1,0 +1,448 @@
+{
+  "agent": {
+    "id":"渠道ID/名称",
+    "message":{
+      "title":"推广信息"
+    },
+    "agent": {
+      "create": {
+        "list": {
+          "title": "danh sách đường dẫn",
+          "search": "tìm kiếm ID/tên đại lý",
+          "level": "cấp",
+          "gainRefresh": "Cập nhật lại chia thành",
+          "gainForm": {
+            "title": "Cập nhật dữ liệu chia"
+          },
+          "auditOpts":{
+            "opts1": "trạng thái xét duyệt",
+            "opts2": "chưa xét duyệt",
+            "opts3": "xét duyệt thông qua",
+            "opts4": "xét duyệt không thông qua"
+          },
+          "accountOpts":{
+            "opts1": "trạng thái tài khoản",
+            "opts2": "tạm dừng",
+            "opts3": "bình thường"
+          },
+          "cooperateOpts":{
+            "other": "khác",
+            "cooperate": "hợp tác",
+            "buyout": "mua đứt"
+          },
+          "statusOpts":{
+            "enable": "bắt đầu sử dụng",
+            "suspend": "tạm dừng"
+          },
+          "header":{
+            "pcode": "số hiệu đường dẫn cấp trên",
+            "code": "số hiệu đường dẫn",
+            "name": "tên gọi đường dẫn",
+            "account": "tài khoản",
+            "level": "cấp bậc đại lý",
+            "type": "phương thức hợp tác",
+            "crtime": "thời gian kiến tạo",
+            "status": "trạng thái",
+            "audit": "trạng thái xét duyệt",
+            "ctrl": "thao tác",
+            "addr": "địa chỉ quảng bá"
+          },
+          "gainStat":{
+            "title": "Chia stat",
+            "total": "Tổng doanh thu",
+            "ratio": "Tỷ lệ chia",
+            "divided": "Đã chia thành số",
+            "notDivided": "Có thể chia thành số",
+            "proportional": "Chia theo tỷ lệ số",
+            "trueNum":"实际数量"
+          }
+        },
+        "AgentCreate": "kiến tạo đường dẫn",
+        "RemainingCreationQuantity": "số lượng kiến tạo còn lại",
+        "AgentLevel": "cấp bậc đường dẫn",
+        "AccountNumber": "账号",
+        "AccountAlreadyExists": "tài khoản đã tồn tại",
+        "password": "密码",
+        "AgentName": "tên gọi đường dẫn",
+        "CooperationMode": "phương thức hợp tác",
+        "PleaseChooseCooperationMode": "mời lựa chọn phương thức hợp tác",
+        "cooperation": "hợp tác",
+        "buyout": "mua đứt",
+        "DividedProportion":"分成比例",
+        "ApplicantName": "họ tên người đăng ký",
+        "tel": "手机号",
+        "PromotionCap": "giới hạn quảng bá",
+        "QQ": "số QQ",
+        "mail": "邮箱",
+        "BankAccountName": "tên tài khoản ngân hàng",
+        "bank": "银行",
+        "PleaseChooseTheBank": "请选银行",
+        "BranchAccount": "@",
+        "BankCardNumber": "số thẻ ngân hàng",
+        "label": "标签",
+        "addLabel":"添加标签",
+        "remarks": "备注",
+        "SubmitAudit": "提交审核",
+        "number":"数量"
+      },
+      "edit": {
+        "AgentEdit": "chỉnh lý đường dẫn",
+        "AgentLevel": "cấp bậc đường dẫn",
+        "AccountNumber": "账号",
+        "AgentName": "tên gọi đường dẫn",
+        "CooperationMode": "phương thức hợp tác",
+        "tel": "手机号",
+        "PromotionCap": "giới hạn quảng bá",
+        "QQ": "số QQ",
+        "mail": "邮箱",
+        "BankAccountName": "tên tài khoản ngân hàng",
+        "bank": "银行",
+        "PleaseChooseTheBank": "请选择银行",
+        "BranchAccount": "@",
+        "BankCardNumber": "số thẻ ngân hàng",
+        "label": "标签",
+        "remarks": "备注",
+        "update": "更新"
+      },
+      "list": {
+        "AgentList": "danh sách đường dẫn",
+        "create": "创建",
+        "delete": "删除",
+        "AuditStatus": "trạng thái xét duyệt",
+        "unaudited": "chưa xét duyệt",
+        "AuditThrough": "xét duyệt thông qua",
+        "AuditNotApproved": "xét duyệt không thông qua",
+        "AccountStatus": "trạng thái tài khoản",
+        "pause": "tạm dừng",
+        "normal": "bình thường"
+      }
+    },
+    "agentdata": {
+      "analysis": {
+        "title": "số đăng ký",
+        "header": {
+          "code": "ID đường dẫn",
+          "name": "tên đường dẫn",
+          "regCount": "số người đăng ký",
+          "online": "số người online",
+          "chargeSum": "số người nạp tiền",
+          "chargeAmount": "số tiền nạp",
+          "cardAmount": "nạp tiền qua thẻ điểm",
+          "sysAmount": "phần thưởng hệ thống",
+          "totalAmount": "tổng doanh thu",
+          "crtime": "thời gian đăng ký",
+          "level":"渠道等级",
+          "jb":"金币数"
+        }
+      },
+      "recharge": {
+        "title": "số nạp",
+        "search": "搜索",
+        "time": "时间段",
+        "code": "渠道ID",
+        "levelOpts": {
+          "opts1":"chưa biết",
+          "opts2":"cấp 1",
+          "opts3":"cấp 2"
+        },
+        "header": {
+          "date": "ngày tháng",
+          "code": "ID đường dẫn",
+          "name": "tên đường dẫn",
+          "level": "cấp bậc đường dẫn",
+          "pcode": "ID đường dẫn cấp trên",
+          "pname": "tên đường dẫn cấp trên",
+          "amount": "số nạp"
+        }
+      },
+      "register": {
+        "title": "số đăng ký",
+        "code": "渠道ID",
+        "search": "搜索",
+        "time": "时间段",
+        "levelOpts": {
+          "opts1": "未知",
+          "opts2": "一级",
+          "opts3": "二级"
+        },
+        "header": {
+          "date": "ngày tháng",
+          "name": "tên đường dẫn",
+          "level": "cấp bậc đường dẫn",
+          "pcode": "ID đường dẫn cấp trên",
+          "pname": "tên đường dẫn cấp trên",
+          "count": "số người đăng ký"
+        }
+      },
+      "divided":{
+        "title": "分成流水",
+        "TheChannel": "所属渠道",
+        "header":{
+          "code": "渠道ID",
+          "name": "渠道名称",
+          "total": "总收益",
+          "amount": "分成数量",
+          "ramount": "按比例分成数",
+          "crtime": "操作时间"
+        }
+      }
+    },
+    "coin": {
+      "account": {
+        "list": {
+          "accountList":"账户列表",
+          "unfreeze":"解冻",
+          "frozen":"冻结",
+          "normal":"正常",
+          "cancellation":"注销",
+          "determine":"是否确定",
+          "account":"用户账户?",
+          "inputPaymentPassword":"请输入支付密码!",
+          "uid":"用户ID",
+          "user":"用户名",
+          "agentCode":"所属渠道",
+          "agentName":"所属渠道名",
+          "mobile":"手机",
+          "tb":"T币余额",
+          "jb":"金币余额",
+          "dbj":"夺宝卷余额",
+          "accountStatus":"账户状态",
+          "operation":"操作"
+        }
+      },
+      "distribute": {
+        "batch": {
+          "balance":"T币余额",
+          "userName":"用户名称",
+          "distributeCoin":"分发金币",
+          "determineRecharge":"确定充值",
+          "check":"多选",
+          "user":"用户名",
+          "crtime":"创建时间",
+          "selectUser":"请选择充值用户",
+          "enterAmount":"请输入充值金额",
+          "insufficient":"你当前余额不足",
+          "recharge":"确定对下列用户充值吗?",
+          "paymentPassword":"支付密码",
+          "enter":"请输入支付密码!"
+        },
+        "make": {
+          "balance":"T币余额",
+          "createTime":"选择创建时间段",
+          "search":"搜索",
+          "create":"生成",
+          "code":"批次号",
+          "count":"数量",
+          "amount":"金币数",
+          "rebate":"折扣",
+          "sAmount":"消耗T币",
+          "agent":"渠道ID",
+          "crtime":"创建日期",
+          "operation":"操作",
+          "charge":"首充号明细.xls",
+          "generateA":"生成账号数量",
+          "generateG":"生成金币数量"
+        },
+        "makeinfo": {
+          "information":"账号信息",
+          "account":"账号",
+          "password":"初始密码",
+          "state":"激活状态"
+        }
+      },
+      "record": {
+        "agentStat": {
+          "type":"统计类型",
+          "day":"按天统计",
+          "month":"按月统计",
+          "year":"按年统计",
+          "time":"操作时间",
+          "code": "渠道ID",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "statistics":"渠道账号统计.xls",
+          "name":"渠道名",
+          "pAgent":"分发渠道",
+          "amount":"分发金额",
+          "date":"统计时间"
+        },
+        "logs": {
+          "playerlog":"玩家日志",
+          "agentlog":"渠道日志",
+          "orderlog":"订单日志",
+          "account":"账户日志",
+          "type":"操作类型",
+          "time":"操作时间",
+          "player": "玩家",
+          "code": "渠道ID",
+          "orderNumber":"单号",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "unpaid":"未付款",
+          "paid":"已付款",
+          "arrivalAccount":"已到账",
+          "alreadyShipped":"已发货",
+          "applyRefund":"申请退款",
+          "agreeRefund":"同意退款",
+          "refunded":"已退款",
+          "canceled":"已取消下单",
+          "obsolete":"已作废",
+          "unfreeze":"解冻",
+          "frozen":"冻结",
+          "batch":"批量分发",
+          "generation":"生成分发",
+          "add":"增加",
+          "deduction":"扣减",
+          "discount":"折",
+          "system":"系统",
+          "header":{
+            "account":"玩家账号",
+            "agentCode":"所属渠道",
+            "amount":"分发金额",
+            "rebate":"折扣",
+            "valueT":"价值T币",
+            "crtime":"操作时间",
+            "memo":"备注",
+            "type":"操作类型",
+            "channel":"渠道ID",
+            "agentName":"渠道名",
+            "pagentCode":"分发渠道",
+            "amountT":"分发T币数",
+            "code":"单号",
+            "time":"下单时间",
+            "purchaseChannel":"申购渠道",
+            "buyT":"购买T币数",
+            "cash":"支付金额",
+            "creator":"操作者",
+            "user":"用户"
+          }
+        },
+        "playerStat": {
+          "type":"统计类型",
+          "day":"按天统计",
+          "month":"按月统计",
+          "year":"按年统计",
+          "time":"操作时间",
+          "player": "玩家",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "discount":"折",
+          "statistics":"玩家账号统计.xls",
+          "header":{
+            "account":"账号",
+            "mobile":"手机",
+            "agentCode":"分发渠道",
+            "amount":"分发金币",
+            "rebate":"折扣",
+            "sAmount":"价值T币",
+            "date":"统计时间"
+          }
+        }
+      },
+      "stock": {
+        "select":"请选择订单",
+        "orderList":"订单列表.xls",
+        "inventoryList":"库存列表.xls",
+        "list": {
+          "balance":"T币余额",
+          "code": "渠道ID",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "disable":"停用",
+          "activation":"激活",
+          "unfreeze":"解冻",
+          "frozen":"冻结",
+          "normal":"正常",
+          "cancellation":"注销",
+          "inputAmount":"输入金额",
+          "tb":"T币",
+          "owner":"拥有者",
+          "paymentPassword":"支付密码",
+          "setPaymentPassword":"设置支付密码",
+          "inputPaymentPassword":"请输入支付密码!",
+          "add":"增加",
+          "deduction":"扣减",
+          "levelOpts": {
+            "opts1": "未知",
+            "opts2": "一级",
+            "opts3": "二级"
+          },
+          "header":{
+            "code":"渠道ID",
+            "name":"渠道名",
+            "level":"代理级别",
+            "user":"拥有者",
+            "buyAmount":"总金额",
+            "sellAmount":"发放金额",
+            "amount":"未发金额",
+            "status":"状态",
+            "accountStatus":"账户状态",
+            "crtime":"创建时间",
+            "ctrl":"操作"
+          }
+        },
+        "header":{
+          "check":"多选",
+          "code":"单号",
+          "crtime":"订单时间",
+          "agent":"申购渠道",
+          "agentId":"渠道ID",
+          "user":"操作人",
+          "tAmount":"买T币数",
+          "amount":"支付金额",
+          "status":"状态"
+        },
+        "order": {
+          "code": "渠道ID",
+          "time":"时间段",
+          "orderNumber":"单号",
+          "status":"状态",
+          "selectStatus":"请选状态",
+          "unpaid":"未付款",
+          "paid":"已付款",
+          "arrivalAccount":"已到账",
+          "alreadyShipped":"已发货",
+          "applyRefund":"申请退款",
+          "agreeRefund":"同意退款",
+          "refunded":"已退款",
+          "canceled":"已取消",
+          "obsolete":"已作废",
+          "search":"搜索",
+          "reset":"重置",
+          "export":"导出excel",
+          "refund":"退款",
+          "approvedPayment":"批准发放",
+          "approvedRefund":"批准退款"
+        },
+        "recharge": {
+          "recharge":"充值",
+          "balance":"T币余额",
+          "rechargeTb":"充值T币",
+          "amountRequired":"所需金额"
+        }
+      }
+    },
+    "package": {
+      "set": {
+        "title": "bao cài đặt",
+        "cooperationType": "loại hình hợp tác",
+        "authApp": "ứng dụng chuyển quyền",
+        "select": "mời lựa chọn",
+        "code": "渠道ID",
+        "agent":"渠道",
+        "save":"保存"
+      },
+      "take": {
+        "title": "@",
+        "tip1": "Bạn phải trờ thành đại lý trước",
+        "tip2": "Đang đóng gói, xin chờ",
+        "tip3": "Đã đóng gói xong, mời tải về"
+      }
+    }
+    }
+
+}

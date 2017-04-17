@@ -79,37 +79,37 @@
                     <div class="col-sm-1"></div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">{{ 'home.sendDak.attachProp' | translate }}</label>
-                    <div class="col-sm-9">
-                        <table class="table table-bordered table-hover table-condensed bg-white-only">
-                            <span class="btn btn-default" ng-click="addItem()">{{ 'home.sendDak.addProp' | translate }}</span>
-                            <tr style="font-weight: bold">
-                                <td style="width:40%">{{ 'home.sendDak.prop' | translate }}</td>
-                                <td style="width:30%">{{ 'home.sendDak.number' | translate }}</td>
-                                <td style="width:30%">{{ 'home.sendDak.dueTime' | translate }}</td>
-                                <td style="width:40px">{{ 'home.sendDak.edit' | translate }}</td>
-                            </tr>
-                            <tr ng-repeat="item in dak.attach">
-                                <td class="v-middle">
-                                    <select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">
-                                        <option value="">{{ 'home.sendDak.noProp' | translate }}</option>
-                                    </select>
-                                </td>
-                                <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="{{ 'home.sendDak.number' | translate }}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">
-                                </td>
-                                <td class="v-middle">
-                                    <input type="number" class="form-control" placeholder="{{ 'home.sendDak.dueTime' | translate }}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">
-                                </td>
-                                <td style="white-space: nowrap">
-                                    <a class="btn btn-sm btn-danger" ng-click="removeItem($index)">{{ 'home.delete' | translate }}</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col-sm-1"></div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">{{ 'home.sendDak.attachProp' | translate }}</label>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<table class="table table-bordered table-hover table-condensed bg-white-only">-->
+                            <!--<span class="btn btn-default" ng-click="addItem()">{{ 'home.sendDak.addProp' | translate }}</span>-->
+                            <!--<tr style="font-weight: bold">-->
+                                <!--<td style="width:40%">{{ 'home.sendDak.prop' | translate }}</td>-->
+                                <!--<td style="width:30%">{{ 'home.sendDak.number' | translate }}</td>-->
+                                <!--<td style="width:30%">{{ 'home.sendDak.dueTime' | translate }}</td>-->
+                                <!--<td style="width:40px">{{ 'home.sendDak.edit' | translate }}</td>-->
+                            <!--</tr>-->
+                            <!--<tr ng-repeat="item in dak.attach">-->
+                                <!--<td class="v-middle">-->
+                                    <!--<select class="form-control" style="min-width: 150px; width: auto" ng-model="item.prop" ng-options="option._id as option.name for option in props" ng-required="true">-->
+                                        <!--<option value="">{{ 'home.sendDak.noProp' | translate }}</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td class="v-middle">-->
+                                    <!--<input type="number" class="form-control" placeholder="{{ 'home.sendDak.number' | translate }}" min="1" ng-pattern="/^[0-9]*$/" ng-model="item.amount">-->
+                                <!--</td>-->
+                                <!--<td class="v-middle">-->
+                                    <!--<input type="number" class="form-control" placeholder="{{ 'home.sendDak.dueTime' | translate }}" min="0" ng-pattern="/^[0-9]*$/" ng-model="item.expire">-->
+                                <!--</td>-->
+                                <!--<td style="white-space: nowrap">-->
+                                    <!--<a class="btn btn-sm btn-danger" ng-click="removeItem($index)">{{ 'home.delete' | translate }}</a>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
 
             </div>
 

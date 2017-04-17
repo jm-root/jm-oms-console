@@ -23,6 +23,10 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             '</label>';
     }
 
+    function resetpwd_render(params){
+        return '<button class="btn btn-xs btn-primary" translate="common.resetPassword" ng-click="resetPasswd(data)">重置密码</button>';
+    }
+
     $scope.activeChange = function(data){
         $http.post(ssoUri+'/users/'+data._id, {active:data.active}, {
             params:{
@@ -39,6 +43,51 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         });
     };
 
+    var htmlFun = function(account){
+        return '<form name="formValidate" class="form-horizontal form-validation">' +
+            '<div class="form-group">' +
+            '<label class="col-sm-2 control-label" translate="common.account">账号</label>' +
+            '<div class="col-lg-10 w-auto">' +
+            '<p class="form-control-static">'+account+'</p>' +
+            '</div>' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label class="col-sm-2 control-label" translate="common.password">密码</label>' +
+            '<div class="col-sm-9">' +
+            '<input type="number" class="form-control" placeholder="{{common.password|translate}}" ng-model="passwd" ng-required="true">' +
+            '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '</form>';
+    };
+
+    $scope.resetPasswd = function(data){
+        var account = data.account||data.uid||data.nick;
+        var user = data._id;
+        $scope.openTips({
+            title:global.translateByKey('common.resetPassword'),
+            content: htmlFun(account),
+            okTitle:global.translateByKey('common.confirm'),
+            cancelTitle:global.translateByKey('common.cancel'),
+            okCallback: function($s){
+                $http.post(ssoUri+'/users/'+user,{passwd:$s.passwd}, {
+                    params:{
+                        token: sso.getToken()
+                    }
+                }).success(function(result){
+                    var obj = result;
+                    if(obj.err){
+                        $scope.error(obj.msg);
+                    }else{
+                        $scope.success(global.translateByKey('common.succeed'));
+                    }
+                }).error(function(msg, code){
+                    $scope.errorTips(code);
+                });
+            }
+        });
+    };
+
     var columnDefs = [
         {headerName: "_id", field: "_id", width: 70, hide: true},
         {headerName: "id", field: "uid", width: 200},
@@ -49,6 +98,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         // {headerName: "微信OpenID", field: "mp_openid", width: 255},
         {headerName: "昵称", field: "nick", width: 100},
         {headerName: "性别", field: "gender", width: 100, valueGetter: format_gender},
+        {headerName: "操作",  width: 80, cellRenderer: resetpwd_render},
         {headerName: "激活状态", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];

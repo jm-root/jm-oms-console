@@ -38,3 +38,53 @@
 .buttonpadd{
     padding-right: 1em;
 }
+.p-b-sm{
+    padding-bottom: 5px
+}
+.p-b-md{
+    padding-bottom: 10px
+}
+.p-b-lg{
+    padding-bottom: 15px
+}
+.p-r-sm{
+    padding-right:5px;
+}
+.p-r-md{
+    padding-right:10px;
+}
+.p-r-lg{
+    padding-right:20px;
+}
+
+/*用于新表格移动端适应*/
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    .mobiletable, .mobiletable thead, .mobiletable tbody, .mobiletable th, .mobiletable td, .mobiletable tr{
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .mobiletable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .mobiletable tbody tr, .mobiletable thead tr {
+        border: 1px solid #ccc;
+        margin-bottom:3px;
+    }
+    .mobiletable td{
+        height: 2.7em;
+    }
+    .mobiletable td:before {
+        width: 50%;
+        white-space: nowrap;
+        float: left;
+    }
+
+    .mobiletable td:before { content: attr(data-title); }
+}

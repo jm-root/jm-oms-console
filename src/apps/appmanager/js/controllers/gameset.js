@@ -21,19 +21,19 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "简介", field: "intro", width: 120},
             // {headerName: "游戏难度", field: "hardLevel", width: 120},
             // {headerName: "桌子数", field: "tableNumber", width: 100},
-            {headerName: "房间倍率", field: "areaRate", width: 120},
+            // {headerName: "房间倍率", field: "areaRate", width: 120},
             // {headerName: "固定炮值", field: "fixedRate", width: 120, valueGetter: angGridFormatFixedRate},
-            {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
+            // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
             // {headerName: "玩家上限", field: "maxPlayers", width: 120},
-            {headerName: "最少鱼数", field: "minFishes", width: 120},
+            // {headerName: "最少鱼数", field: "minFishes", width: 120},
             {headerName: "桌子数", field: "maxAreas", width: 120},
-            {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
-            {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
-            {headerName: "一币分值", field: "exchangeRate", width: 120},
+            // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
+            // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            // {headerName: "一币分值", field: "exchangeRate", width: 120},
             // {headerName: "发炮速度限制", field: "gunSpeedLimit", width: 180},
-            {headerName: "最大携带", field: "maxAmount", width: 120},
-            {headerName: "最小携带", field: "minAmount", width: 120},
-            {headerName: "上分设置", field: "exchangeAmount", width: 120},
+            // {headerName: "最大携带", field: "maxAmount", width: 120},
+            // {headerName: "最小携带", field: "minAmount", width: 120},
+            // {headerName: "上分设置", field: "exchangeAmount", width: 120},
             // {headerName: "最小炮值", field: "minGunValue", width: 120},
             // {headerName: "加炮幅度", field: "addGunValue", width: 120},
             // {headerName: "上分上限", field: "maxUpScore", width: 120},
@@ -48,16 +48,16 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             {headerName: "名字", field: "name", width: 100},
             // {headerName: "简介", field: "intro", width: 120},
             // {headerName: "最大玩家数", field: "maxPlayers", width: 100},
-            {headerName: "房间倍率", field: "areaRate", width: 120},
-            {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
-            {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
-            {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            // {headerName: "房间倍率", field: "areaRate", width: 120},
+            // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
+            // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
+            // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             // {headerName: "游戏难度", field: "hardLevel", width: 120},
-            {headerName: "最大携带", field: "maxAmount", width: 120},
-            {headerName: "最小携带", field: "minAmount", width: 120},
-            {headerName: "上分设置", field: "exchangeAmount", width: 120},
-            {headerName: "一币分值", field: "exchangeRate", width: 120},
+            // {headerName: "最大携带", field: "maxAmount", width: 120},
+            // {headerName: "最小携带", field: "minAmount", width: 120},
+            // {headerName: "上分设置", field: "exchangeAmount", width: 120},
+            // {headerName: "一币分值", field: "exchangeRate", width: 120},
             // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
             {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
             {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
@@ -67,16 +67,16 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             {headerName: "名字", field: "name", width: 100},
             // {headerName: "简介", field: "intro", width: 120},
             // {headerName: "最大玩家数", field: "maxPlayers", width: 100},
-            {headerName: "房间倍率", field: "areaRate", width: 120},
-            {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
-            {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
-            {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            // {headerName: "房间倍率", field: "areaRate", width: 120},
+            // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
+            // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
+            // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             // {headerName: "游戏难度", field: "hardLevel", width: 120},
-            {headerName: "最大携带", field: "maxAmount", width: 120},
-            {headerName: "最小携带", field: "minAmount", width: 120},
-            {headerName: "上分设置", field: "exchangeAmount", width: 120},
-            {headerName: "一币分值", field: "exchangeRate", width: 120},
+            // {headerName: "最大携带", field: "maxAmount", width: 120},
+            // {headerName: "最小携带", field: "minAmount", width: 120},
+            // {headerName: "上分设置", field: "exchangeAmount", width: 120},
+            // {headerName: "一币分值", field: "exchangeRate", width: 120},
             // {headerName: "是否可见", field: "visible", width: 120, valueGetter: angGridFormatVisible},
             {headerName: "#", width: 70, cellRenderer: angGridFormatRoomBtn, cellStyle:{'text-align':'center'}},
             {headerName: "#", width: 70, cellRenderer: angGridFormatTableBtn, cellStyle:{'text-align':'center'}}
@@ -86,44 +86,44 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     global.agGridTranslateSync($scope, columnDefs.fish, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
-        'appmgr.room.roomRate',
-        'appmgr.room.freeField',
-        'appmgr.room.tableFishNum',
+        // 'appmgr.room.roomRate',
+        // 'appmgr.room.freeField',
+        // 'appmgr.room.tableFishNum',
         'appmgr.room.tableNum',
-        'appmgr.room.roomMode',
-        'appmgr.room.roomCurrency',
-        'appmgr.room.currencyScore',
-        'appmgr.room.maxCarry',
-        'appmgr.room.minCarry',
-        'appmgr.room.setup'
+        // 'appmgr.room.roomMode',
+        // 'appmgr.room.roomCurrency',
+        // 'appmgr.room.currencyScore',
+        // 'appmgr.room.maxCarry',
+        // 'appmgr.room.minCarry',
+        // 'appmgr.room.setup'
     ]);
 
     global.agGridTranslateSync($scope, columnDefs.gamble, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
         'appmgr.room.roomRate',
-        'appmgr.room.freeField',
-        'appmgr.room.roomMode',
-        'appmgr.room.roomCurrency',
+        // 'appmgr.room.freeField',
+        // 'appmgr.room.roomMode',
+        // 'appmgr.room.roomCurrency',
         'appmgr.room.tableNum',
-        'appmgr.room.maxCarry',
-        'appmgr.room.minCarry',
-        'appmgr.room.setup',
-        'appmgr.room.currencyScore'
+        // 'appmgr.room.maxCarry',
+        // 'appmgr.room.minCarry',
+        // 'appmgr.room.setup',
+        // 'appmgr.room.currencyScore'
     ]);
 
     global.agGridTranslateSync($scope, columnDefs.hulu, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
         'appmgr.room.roomRate',
-        'appmgr.room.freeField',
-        'appmgr.room.roomMode',
-        'appmgr.room.roomCurrency',
+        // 'appmgr.room.freeField',
+        // 'appmgr.room.roomMode',
+        // 'appmgr.room.roomCurrency',
         'appmgr.room.tableNum',
-        'appmgr.room.maxCarry',
-        'appmgr.room.minCarry',
-        'appmgr.room.setup',
-        'appmgr.room.currencyScore'
+        // 'appmgr.room.maxCarry',
+        // 'appmgr.room.minCarry',
+        // 'appmgr.room.setup',
+        // 'appmgr.room.currencyScore'
     ]);
 
     function angGridFormatVisible(params) {
@@ -211,9 +211,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.rooms.manage.gameset.edit' , {appId: tmpl_id, type: tmpl_type, id: cell.data.roomType});
             }
         },
@@ -321,7 +319,19 @@ app.controller('GameSetEditCtrl', ['$scope', '$http', '$state', '$stateParams', 
         $location.hash(anchor);
 
         $anchorScroll();
-    }
+    };
+    $scope.isFromAppManager = false;
+    var viewPath = 'view.appmanager.gameset.config';
+    $scope.per = {};
+    global.getUserPermission(viewPath).then(function(obj){
+        $scope.per = obj[viewPath]||{};
+        $scope.super = !!$scope.per['*'];
+        if($scope.super || ($scope.per.get && $scope.per.post)){
+            $scope.isFromAppManager = true;
+        }
+    }).catch(function(err){
+        console.log(err);
+    });
 }]);
 
 app.controller('GameSetAlgEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$interval', '$q', '$filter', function($scope, $http, $state, $stateParams, $interval, $q, $filter) {

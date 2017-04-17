@@ -1,0 +1,30 @@
+{
+  "backpoints":{
+    "list":{
+      "title":"下分处理",
+      "label1":"玩家ID",
+      "label2":"账号",
+      "label3":"下分金币数",
+      "label4":"请求时间",
+      "label5":"下分确认"
+    },
+    "log":{
+      "title":"下分记录",
+      "label1":"下分请求中",
+      "label2":"已撤销并未下分",
+      "label3":"已退款并下分",
+      "label4":"未下分",
+      "header":{
+        "uid":"玩家ID",
+        "account":"账号",
+        "nick":"昵称",
+        "balance":"当前金币数",
+        "amount":"下分金币数",
+        "status":"执行状态",
+        "crtime":"玩家下分时间",
+        "exaccount":"下分操作人",
+        "entime":"下分操作时间"
+      }
+    }
+  }
+}

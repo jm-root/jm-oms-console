@@ -107,9 +107,7 @@ app.controller('BBSForumListCtrl', ['$scope', '$http', '$state', 'global',functi
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.bbs.forum.edit' , {id: cell.data._id});
             }
         },
@@ -430,9 +428,7 @@ app.controller('BBSTopicListCtrl', ['$scope', '$http', '$state', 'global',functi
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.bbs.topic.edit' , {id: cell.data._id});
             }
         },

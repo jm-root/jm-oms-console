@@ -1,6 +1,6 @@
 <div class="bg-light lter wrapper"><h1 class="m-n font-thin h3">{{ 'app.home.activitys' | translate }}</h1></div>
 <div>
-    <div class="pull-right m-r-xxl headpadd">
+    <div class="pull-right m-r-sm headpadd">
         <button ui-sref="app.home.activitys.edit" type="button" class="btn btn-sm btn-primary btn-addon">
             <i class="fa fa-plus"></i>{{ 'home.create' | translate }}
         </button>
@@ -12,7 +12,7 @@
         <form>
             <div class="input-group m-r-sm">
                 <input type="text" ng-model="search"
-                       class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.searchUser' | translate }}">
+                       class="form-control input-sm bg-light no-border rounded padder" placeholder="{{ 'common.search' | translate }}">
                 <span class="input-group-btn" style="width: auto">
                 <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
               </span>

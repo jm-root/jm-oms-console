@@ -8,13 +8,15 @@
         "opts3": "Statistics by year"
       },
       "header":{
-        "date":"Date",
-        "recharge_p":"Recharge Number",
-        "recharge":"Recharge Amount",
-        "give_jb":"Give Gold",
-        "give_dbj":"Give Ticket",
-        "gain_jb":"Gold Total Wins",
-        "gain_dbj":"Ticket Total Wins"
+        "date": "Date",
+        "recharge_p": "Recharge count",
+        "recharge": "Recharge amount(fen)",
+        "give_jb": "Give gold",
+        "give_dbj": "Give Treasure",
+        "gain_jb": "The game winning gold",
+        "gain_dbj": "The game winning treasure",
+        "up_jb": "Total score",
+        "down_jb": "Total lower"
       }
     }
   }

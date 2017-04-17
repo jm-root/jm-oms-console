@@ -111,7 +111,7 @@
   },
   "ag-grid": {
     "next": "下一页",
-    "last": "未尾页",
+    "last": "末尾页",
     "first": "首页",
     "previous": "上一页",
     "loading": "加载中...",
@@ -124,6 +124,16 @@
     "cancelDelContent": "确定",
     "operationSuccess": "操作成功",
     "operationFail": "操作失败",
-    "notAllow":"不允许添加空值!"
+    "notAllow":"不允许添加空值!",
+    "tip":"请选择玩家"
+  },
+  "search":{
+    "selectplayer":"选择玩家",
+    "all":"全退",
+    "player":"玩家：",
+    "balance":"余额：",
+    "charge":"上分：",
+    "uncharge":"下分：",
+    "result":"结果："
   }
 }

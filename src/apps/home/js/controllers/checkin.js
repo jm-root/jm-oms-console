@@ -4,7 +4,6 @@
 'use strict'
 var sso = jm.sdk.sso;
 app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
-    console.log("CheckinCtrl");
     var history = global.appsListHistory||(global.appsListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||'';
@@ -62,9 +61,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
             // event.api.sizeColumnsToFit();
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.home.checkin.edit' , {id: cell.data._id});
             }
         },
@@ -135,7 +132,7 @@ app.controller('CheckinCtrl', ['$scope', '$state', '$http', 'global', function (
 
 }]);
 
-app.controller('CheckinEditCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+app.controller('CheckinEditCtrl', ['$scope', '$http', '$state', '$stateParams','global', function($scope, $http, $state, $stateParams,global) {
 
     $scope.$state = $state;
 

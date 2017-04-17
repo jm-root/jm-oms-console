@@ -1019,9 +1019,7 @@ app.controller('CoinDistributeMakeCtrl', ['$scope', '$http', '$state', '$statePa
             global.agGridOverlay();                 //翻译
         },
         onCellClicked: function(cell){
-            var browser = global.browser();
-            //判断是否移动端
-            if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
+            if($scope.isSmartDevice){
                 $state.go('app.coin.distribute.makeinfo' , {id: cell.data._id});
             }
         },

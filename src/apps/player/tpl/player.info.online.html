@@ -1,16 +1,16 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'player.info.online.title'|translate}}</h1></div>
 <div>
-    <div class="pull-right m-r-xl headpadd">
+    <div class="pull-right m-r-md headpadd">
         <form>
             <div class="input-group">
-                <input type="text" ng-model="search" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'player.info.online.search'|translate}}">
+                <input type="text" ng-model="search.content" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'player.info.online.search'|translate}}">
                 <span class="input-group-btn" style="width: auto">
                     <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
                   </span>
             </div>
         </form>
     </div>
-    <div class="pull-right m-r-sm headpadd">
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
         <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
         </select>
     </div>
