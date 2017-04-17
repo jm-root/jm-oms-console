@@ -112,6 +112,7 @@
       "shootPerSec": "số lượng bắn ra mỗi giây",
       "rapidShootPerSec": "số lượng bắn nhanh mỗi giây",
       "bulletSpeed": "tốc độ di động của đạn (pixels/giây)",
+      "taskScore":"任务宝箱随机倍率(1-999)",
       "autoAim": "xác nhận ngắm bắn tự động?",
       "doubleGun": "xác nhận khỏi động nòng đôi",
       "fixedGunValue": "xác nhận cố định điểm đạn?",

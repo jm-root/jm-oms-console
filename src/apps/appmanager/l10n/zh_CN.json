@@ -112,6 +112,7 @@
       "shootPerSec": "每秒发射数量",
       "rapidShootPerSec": "每秒速射发射数量",
       "bulletSpeed": "子弹移动速度(像素/秒)",
+      "taskScore":"任务宝箱随机倍率(1-999)",
       "autoAim": "是否自动瞄准",
       "doubleGun": "是否开启双炮",
       "fixedGunValue": "是否固定炮值",

@@ -16,7 +16,7 @@
                             url: '/datastatistics',
                             template: '<div ui-view class="fade-in-down"></div>',
                             controller:'DataStatisticsCtrl',
-                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js',path + 'js/controllers/agent.js',path + 'js/controllers/player.js'] )
+                            resolve: lazyLoadProvider.load( [path + 'js/controllers/index.js',path + 'js/controllers/agent.js',path + 'js/controllers/player.js',path + 'js/controllers/table.js'] )
                         })
                         .state('app.datastatistics.agentdata', {
                             url: '/agentdata',
@@ -53,6 +53,12 @@
                             templateUrl: path + 'tpl/player.diary.html',
                             controller: 'PlayerDiaryCtrl',
                             resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                        })
+                        .state('app.datastatistics.table', {
+                            url: '/table',
+                            templateUrl: path + 'tpl/table.html',
+                            controller: 'TableCtrl',
+                            resolve: lazyLoadProvider.load([path + 'css/self.css'])
                         })
                 }
             ]

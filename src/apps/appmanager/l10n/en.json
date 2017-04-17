@@ -112,6 +112,7 @@
       "shootPerSec": "The number of shoots per second",
       "rapidShootPerSec": "The number of rapid shoots per second",
       "bulletSpeed": "Bullet movement speed (pixels per second)",
+      "taskScore":"Task chest random magnification(1-999)",
       "autoAim": "Automatic aiming",
       "doubleGun": "Double gun",
       "fixedGunValue": "Fixed gun value",

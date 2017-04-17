@@ -102,7 +102,8 @@
         "BankCardNumber": "银行卡号",
         "label": "标签",
         "remarks": "备注",
-        "update": "更新"
+        "update": "更新",
+        "DividedProportion":"分成比例"
       },
       "list": {
         "AgentList": "渠道列表",

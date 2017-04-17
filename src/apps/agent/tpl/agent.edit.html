@@ -37,6 +37,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">{{ 'agent.agent.edit.DividedProportion' | translate }}</label>
+
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control w-sm" min="0" max="1" step="0.001" placeholder="{{ 'agent.agent.edit.DividedProportion' | translate }}" ng-model="agent.ratio">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 control-label" translate="agent.agent.edit.tel">手机号</label>
 
                     <div class="col-sm-9">
