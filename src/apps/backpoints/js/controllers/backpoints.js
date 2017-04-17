@@ -3,7 +3,7 @@
 app.controller('BackpointsCtrl',['$scope','$translatePartialLoader',function ($scope,$translatePartialLoader) {
     $translatePartialLoader.addPart('backpoints');
 }])
-app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global', function ($scope, $state, $http,$interval, global) {
     var history = global.agentListHistory||(global.agentListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     var sso = jm.sdk.sso;
@@ -50,6 +50,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
+                console.info(result);
                 $scope.usersInfo = result;
                 $scope.page = result.page;
                 $scope.pages = result.pages;
@@ -65,9 +66,14 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http', 'global', function 
             $scope.errorTips(code);
         });
     }
-
     $scope.getdata();
 
+    var t = $interval(function(){
+        $scope.getdata();
+    }, 5000);
+    $scope.$on("$destroy", function(){
+        $interval.cancel(t);
+    });
 
     var htmlFun = function(row){
         var account = row.user.account||row.user.nick;
