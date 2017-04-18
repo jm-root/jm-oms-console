@@ -93,7 +93,9 @@
           "jb": "Gold",
           "dbj": "Ticket",
           "device": "Device",
-          "channel": "Channel"
+          "channel": "Channel",
+          "kickedOut":"KickOut",
+          "takeAway":"TakeAway"
         }
       }
     },

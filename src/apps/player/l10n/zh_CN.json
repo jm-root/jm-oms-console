@@ -93,7 +93,9 @@
                   "jb": "金币",
                   "dbj": "夺宝卷",
                   "device": "设备",
-                  "channel": "渠道"
+                  "channel": "渠道",
+                  "kickedOut":"封号",
+                  "takeAway":"踢出房间"
               }
           }
       },

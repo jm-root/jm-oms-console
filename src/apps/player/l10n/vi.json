@@ -93,7 +93,9 @@
                   "jb": "hoàng kim",
                   "dbj": "phiếu đoạt bảo",
                   "device": "thiệt bị",
-                  "channel": "đường dẫn"
+                  "channel": "đường dẫn",
+                  "kickedOut":"封号",
+                  "takeAway":"踢出房间"
               }
           }
       },
