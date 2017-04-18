@@ -530,8 +530,20 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     //     return obj.channel;
     // };
 
-    $scope.kickedOut = function(params){
-
+    $scope.kickedOut = function(data){
+        $http.post(ssoUri+'/users/'+data.user.id, {active:false}, {
+            params:{
+                token: sso.getToken()
+            }
+        }).success(function(result){
+            if(result.err){
+                $scope.error(result.msg);
+            }else{
+                $scope.success('操作成功');
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
     }
 
     $scope.takeAway = function(params){
