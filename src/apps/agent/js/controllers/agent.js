@@ -561,6 +561,7 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
                 result = result || {};
                 $scope.agentLevel = result.level ? result.level+1 : 1;
                 $scope.limit = result.limit;
+                $scope.showInfo = result.isSetInfo||false;
                 if($scope.agentLevel == 2){
                     $scope.agent.isDownCoin = true;
                     $scope.agent.isSetInfo = true;
