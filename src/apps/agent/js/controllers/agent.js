@@ -174,50 +174,50 @@ app.controller('AgentListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
 
         return '<form name="formValidate" class="form-horizontal form-validation">' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="common.account">账号</label>' +
+            '<label class="col-sm-4 control-label" translate="common.account">账号</label>' +
             '<div class="col-sm-8 w-auto">' +
             '<p class="form-control-static">'+account+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.total">总营收</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.total">总营收（金币总输赢）</label>' +
+            '<div class="col-sm-7">' +
             '<p class="form-control-static">'+reg(data.gain_jb)+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.divided">已分成营收</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.divided">已分成营收（已结算）</label>' +
+            '<div class="col-sm-7">' +
             '<p class="form-control-static">'+reg(data.settled)+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.notDivided">可分成数</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.notDivided">可分成营收（未结算）</label>' +
+            '<div class="col-sm-7">' +
             '<p class="form-control-static">'+reg(notDivided)+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.ratio">分成比例</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.ratio">归属己方的分成比例</label>' +
+            '<div class="col-sm-7">' +
             '<p class="form-control-static">'+data.ratio+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.proportional">按比例分成数</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.proportional">分成后归属己方的营收</label>' +
+            '<div class="col-sm-7">' +
             '<p class="form-control-static">'+reg(amount)+'</p>' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '<div class="form-group" style="margin-bottom:0px">' +
-            '<label class="col-sm-3 control-label" translate="agent.agent.create.list.gainStat.trueNum">实际数量</label>' +
-            '<div class="col-sm-8">' +
+            '<label class="col-sm-4 control-label" translate="agent.agent.create.list.gainStat.trueNum">实际数量</label>' +
+            '<div class="col-sm-7">' +
             '<input type="number" min="0" step="1" class="form-control" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-model="amount" ng-init="amount='+amount+'">' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
