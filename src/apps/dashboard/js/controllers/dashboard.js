@@ -97,6 +97,8 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 result = result || {};
                 var code = result.code;
                 var level = result.level;
+                $scope.level = level;
+                $scope.code = code;
                 if(code&&level==2){
                     $scope.url = 'http://'+$scope.host+'/agent.html?agent='+code;
                     $scope.promote = uploadUri+'/qrcode?info='+$scope.url;

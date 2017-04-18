@@ -28,7 +28,8 @@
                         .state('app.backpoints.log', {
                             url: '/log',
                             controller: 'BacklogCtrl',
-                            templateUrl: path  + 'tpl/backpoints.log.html'
+                            templateUrl: path  + 'tpl/backpoints.log.html',
+                            resolve: lazyLoadProvider.load('daterangepicker')
                         })
                 }
             ]

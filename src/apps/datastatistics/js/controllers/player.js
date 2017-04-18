@@ -109,7 +109,6 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.search = {};
     $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
     $scope.endDate = moment(new Date());
-    // $scope.cascadeagent = global.cascadeagent;
 
     $scope.search.date = $scope.search.date || {
             startDate:$scope.startDate,

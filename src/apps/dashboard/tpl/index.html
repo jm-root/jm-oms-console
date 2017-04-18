@@ -159,6 +159,13 @@
           <div>{{jb}}</div>
         </div>
       </div>
+
+      <div class="pull-right" ng-if="level==2">
+        <div class="inline m-r text-left" style="text-align: center;color: #E2425C">
+          <div class="m-b-xs" translate="main.promotenum">推广号</div>
+          <div>{{code}}</div>
+        </div>
+      </div>
       <!--<div class="pull-right">-->
       <!--<div class="inline m-r text-left" style="text-align: center">-->
       <!--<div class="m-b-xs" translate="main.tbBalance">元宝余额</div>-->
@@ -171,6 +178,19 @@
   <!--ui-jq="slimScroll" ui-refresh="app.navHeight" ui-options="{height:{{app.navHeight-140}}+'px', size:'8px'}"-->
   <div class="wrapper-md" >
     <div class="row">
+      <div ng-if="level==2" class="col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="clearfix text-center m-t">
+              <div class="inline">
+                <img alt="" src="{{promote}}" style="width: 62%;">
+                <div class="h4 m-t m-b-xs"><a style="color:#0000CC" href="{{url}}" target="_blank">{{url}}</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <div class="col-lg-4">
         <div class="panel panel-default">
           <div class="text-center wrapper m-b-sm bg-primary">

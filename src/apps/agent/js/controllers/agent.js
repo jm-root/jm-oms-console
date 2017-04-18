@@ -561,12 +561,18 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
                 result = result || {};
                 $scope.agentLevel = result.level ? result.level+1 : 1;
                 $scope.limit = result.limit;
+                if($scope.agentLevel == 2){
+                    $scope.agent.isDownCoin = true;
+                    $scope.agent.isSetInfo = true;
+                }else {
+                    $scope.agent.isDownCoin = false;
+                    $scope.agent.isSetInfo = false;
+                }
             }
         }).error(function (msg, code) {
             $scope.errorTips(code);
         });
     });
-
 
     function formatTags(tags){
         tags = tags || [];

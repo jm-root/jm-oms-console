@@ -114,10 +114,13 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global
 
 app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
+    var sso = jm.sdk.sso;
     var history = global.agentListHistory||(global.agentListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
-    var sso = jm.sdk.sso;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.search = {};
+    $scope.search.date = $scope.search.date || {};
+
     var url = agentUri+'/backCoinLogs';
     function status_render(params){
         var obj = params.data|| {};
@@ -165,13 +168,19 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
             var search = $scope.search;
             var keyword = search.keyword;
 
+            var date = search.date||{};
+            var startDate = date.startDate || "";
+            var endDate = date.endDate|| "";
+
             var page = params.startRow / $scope.pageSize + 1;
             $http.get(url, {
                 params: {
                     token: sso.getToken(),
                     page:page,
                     rows:$scope.pageSize||20,
-                    search:keyword
+                    search:keyword,
+                    startDate:startDate.toString(),
+                    endDate:endDate.toString()
                 }
             }).success(function (result) {
                 var data = result;
@@ -210,4 +219,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
         $scope.gridOptions.api.setDatasource(dataSource);
     };
 
+    $scope.$watch('search.date', function () {
+        $scope.onPageSizeChanged();
+    });
 }]);
