@@ -126,10 +126,11 @@
   "search":{
     "selectplayer":"Người chơi lựa chọn",
     "all":"Hoàn trả đầy đủ",
-    "player":"玩家：",
-    "balance":"余额：",
+    "player":"玩家昵称：",
+    "account":"账号",
+    "balance":"当前账户余额：",
     "charge":"上分：",
     "uncharge":"下分：",
-    "result":"结果："
+    "result":"操作后账户余额："
   }
 }
