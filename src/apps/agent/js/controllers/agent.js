@@ -485,6 +485,7 @@ app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'g
                 $scope.agent.type = ''+$scope.agent.type;
                 var user = result._id || {};
                 $scope.agent.userInfo = {
+                    account: user.account,
                     name: user.realName,
                     mobile: Number(user.mobile),
                     qq: Number(user.qq),
@@ -672,6 +673,21 @@ app.controller('AgentCreateCtrl', ['$scope', '$http', '$state', '$stateParams', 
 app.controller('AgentMessageCtrl', ['$scope', '$http', '$state', '$stateParams', 'global', function($scope, $http, $state, $stateParams, global) {
     $scope.agent={};
     var sso = jm.sdk.sso;
+
+    $http.get(agentUri+'/agents/'+localStorage.getItem('id'), {
+        params:{
+            token: sso.getToken()
+        }
+    }).success(function(result){
+        var obj = result;
+        if(obj.err){
+            $scope.error(obj.msg);
+        }else{
+            $scope.agent.memo = obj.info||'';
+        }
+    }).error(function(msg, code){
+        $scope.errorTips(code);
+    });
 
     $scope.save = function () {
         var id = localStorage.getItem('id');
