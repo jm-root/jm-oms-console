@@ -53,6 +53,12 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         });
 
     };
+    $scope.myKeyup = function(e){
+        var keycode = window.event?e.keyCode:e.which;
+        if(keycode==13){
+            $scope.search(1);
+        }
+    };
 
     $scope.selectUser = function(row){
         var userId = row._id;

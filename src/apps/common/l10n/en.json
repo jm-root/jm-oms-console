@@ -131,7 +131,8 @@
   "search":{
     "selectplayer":"Select player",
     "all":"Full refund",
-    "player":"Player：",
+    "player":"Player nick：",
+    "account":"account",
     "balance":"Balance：",
     "charge":"Charge：",
     "uncharge":"Uncharge：",

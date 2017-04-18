@@ -9,7 +9,7 @@
                 <!--搜索-->
                 <li class="list-group-item">
                     <div class="input-group p-b-md">
-                        <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword">
+                        <input type="text" class="form-control input-sm btn-rounded" placeholder="{{'common.searchUser'|translate}}" ng-model="keyword" ng-keyup="myKeyup($event)">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-sm btn-rounded" ng-click="search(1)"><i class="fa fa-search"></i></span>
                         </span>

@@ -169,7 +169,7 @@ app.controller('BacklogCtrl', ['$scope', '$state', '$http', 'global', function (
             $http.get(url, {
                 params: {
                     token: sso.getToken(),
-                    page:1,
+                    page:page,
                     rows:$scope.pageSize||20,
                     search:keyword
                 }
