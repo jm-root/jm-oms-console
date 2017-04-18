@@ -472,6 +472,24 @@ app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'g
     $scope.id = id;
     $scope.agent = {type:'1',userInfo:{bankInfo:{}}};
 
+    global.getLocalUser().then(function(user){
+        $http.get(agentUri + '/agents/'+user.id, {
+            params: {
+                token: sso.getToken()
+            }
+        }).success(function (result) {
+            if (result.err) {
+                $scope.error(result.msg);
+            } else {
+                result = result || {};
+                $scope.showInfo = result.isSetInfo||false;
+
+            }
+        }).error(function (msg, code) {
+            $scope.errorTips(code);
+        });
+    });
+
     if(id){
         $http.get(agentUri+'/agents/' + id, {
             params:{
