@@ -66,6 +66,7 @@
     "playerStat":{
       "title": "thông kê người dùng",
       "total": "tổng số",
+      "playertotal":"玩家总数",
       "yesterday": "tăng thêm vào hôm qua",
       "today": "tăng thêm vào hôm nay",
       "guest": "khách chơi",
@@ -81,16 +82,16 @@
       "today": "nạp tiền hôm nay",
       "totalSum": "Tổng số tiền",
       "validSum": "Hiệu quả số tiền",
-      "invalidSum": "Số tiền không hợp lệ"
+      "invalidSum": "Số tiền không hợp lệ",
       "week":"Tuần này tăng lên"
     },
     "gainStat":{
       "title": "Chia stat",
-      "total": "Tổng doanh thu",
-      "ratio": "Tỷ lệ chia",
-      "divided": "Đã chia thành số",
-      "notDivided": "Có thể chia thành số",
-      "proportional": "Chia theo tỷ lệ số"
+      "total": "总营收（金币总输赢）",
+      "ratio": "归属己方的分成比例",
+      "divided": "已分成营收（已结算）",
+      "notDivided": "未分成营收（未结算）",
+      "proportional": "分成后将归属己方的营收"
     }
   }
 }

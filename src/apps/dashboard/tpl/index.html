@@ -178,6 +178,10 @@
           </div>
           <ul class="list-group no-radius">
             <li class="list-group-item">
+              <span class="pull-right">{{stat.user_total||0}}</span>
+              {{ 'main.playerStat.playertotal' | translate }}
+            </li>
+            <li class="list-group-item">
               <span class="pull-right">{{stat.login_today||0}}</span>
               {{ 'main.playerStat.logintoday' | translate }}
             </li>
@@ -219,7 +223,7 @@
               {{ 'main.gainStat.total' | translate }}
             </li>
             <li class="list-group-item">
-              <span class="pull-right">{{agent.settled||0}}</span>
+              <span class="pull-right">{{divided.settled||0}}</span>
               {{ 'main.gainStat.divided' | translate }}
             </li>
             <li class="list-group-item">

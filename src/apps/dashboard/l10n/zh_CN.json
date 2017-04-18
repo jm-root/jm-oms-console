@@ -58,8 +58,9 @@
     "playerStat":{
       "title": "用户统计",
       "total": "累计登陆",
-      "yesterday": "昨日新增",
-      "today": "今日新增",
+      "playertotal":"玩家总数",
+      "yesterday": "昨日新增注册",
+      "today": "今日新增注册",
       "guest": "游客",
       "mobile": "手机",
       "other": "其它",
@@ -78,11 +79,11 @@
     },
     "gainStat":{
       "title": "分成统计",
-      "total": "总营收",
-      "ratio": "分成比例",
-      "divided": "已分成营收",
-      "notDivided": "可分成数",
-      "proportional": "按比例分成数"
+      "total": "总营收（金币总输赢）",
+      "ratio": "归属己方的分成比例",
+      "divided": "已分成营收（已结算）",
+      "notDivided": "未分成营收（未结算）",
+      "proportional": "分成后将归属己方的营收"
     }
   }
 }
