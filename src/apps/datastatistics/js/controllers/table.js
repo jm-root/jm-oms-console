@@ -3,6 +3,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$stateParams', '$http', 'globa
     var page = 1;
     var history = global.TableHistory||(global.TableHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
+    $scope.search = history.search;
+    $scope.games = [];
+    $scope.page = 1;
 
     //判断是否移动端设置表格样式
     $scope.tablestyle = {};
@@ -27,223 +30,192 @@ app.controller('TableCtrl', ['$scope', '$state', '$stateParams', '$http', 'globa
         }
     };
 
-    var aa = [];
-    var result = {"page":0, "pages":0, "total": 0, rows: 0};
+    function sum(array) {
+        var sum = 0;
+        for (var i=0; i < array.length; i++)
+            sum += array[i];
+        return sum ;
+    }
 
+    var httpRequests = 0;
+    var httpRequests2 = 0;
 
+    var reqApps = false;
+    var reqRooms = 0;
+    var reqTables = 0;
 
-    $scope.getdata = function(keyword,_page) {
+    $scope.getdata = function(_page) {
+        $scope.page = page;
+
+        if(reqApps){
+            return;
+        }
+        reqApps = true;
+
+        var allData = [];
+
         if(_page) page = _page;
         $scope.moreLoading = true;
-        //获取游戏
         $http.get(appMgrUri+'/apps', {
             params:{
                 token: sso.getToken(),
-                page:page,
-                rows:$scope.pageSize,
-                status:1
             }
         }).success(function(result){
-
             var game = new Array();
             for(var k = 0; k< result.rows.length; k++){
-                // console.log(result.rows[k]);
                 if(result.rows[k].category != 3){
                     game.push(result.rows[k]);
                 }
             }
+            reqApps = false;
 
-            // console.log(a);
-            for(var gameid = 0; gameid< game.length; gameid++) {
-                var id = game[gameid]._id;
-                // console.log(id);
+            $scope.games = [];
+            game.forEach(function (e, i, arr) {
+                var id = e._id;
+                $scope.tmpl = e.tmpl;
+                var gamename = e.name;
+                $scope.games.push(gamename);
 
-                //获取房间
-                var hkey = 'app:' + id + ":config";
-
+                //桌子
+                reqTables++;
+                var hkey1 = 'app:' + id + ":config:area";
                 $http.get(appMgrUri + "/appConfig", {
                     params: {
                         token: sso.getToken(),
-                        root: hkey,
+                        root: hkey1,
                         list: 1,
                         all: 1
                     }
                 }).success(function (result) {
-                    // console.log(result);
+                    var tableresult = result;
+                    reqTables--;
 
-                    var rooms = new Array();
-                    for(var key in result){
-                        if(result[key].roomType != 1){
-                            rooms.push(result[key]);
-                        }
-                    }
-                    console.log(rooms);
-
-                    //获取桌子
-                    $http.get(algUri + '/' + $stateParams.type + '/getAlgData', {
-                        params:{
+                    reqRooms++;
+                    //房间
+                    var hkey = 'app:' + id + ":config";
+                    $http.get(appMgrUri + "/appConfig", {
+                        params: {
                             token: sso.getToken(),
-                            room: parseInt(rooms)
+                            root: hkey,
+                            list: 1,
+                            all: 1
                         }
                     }).success(function (result) {
-                        console.log(result);
-                    });
-                    // var promise = getAlgData();
-
-                    // var tableArr = [];
-                    // tableArr.forEach(function (e) {
-                    //     getAlgData(e).then(function (data) {
-                    //     //     if(data.coin_rate != coin_rate){
-                    //     //         initTable(e, $scope.room.diff, coin_rate).then(function (data) {
-                    //     //             if(data.ret != "ok"){
-                    //     //                 // $scope.error("设置桌子"+e+"投币比例失败");
-                    //     //                 $scope.error(global.translateByKey("appmgr.setTableXCoinRateFail", {value: e}));
-                    //     //             }
-                    //     //         });
-                    //     //     }
-                    //     // }, function () {
-                    //     //     // $scope.error("获取桌子"+e+"投币比例失败");
-                    //     //     $scope.error(global.translateByKey("appmgr.setTableXCoinRateFail", {value: e}));
-                    //     });
-                    // });
-
-                    if (result.err) {
-                        $scope.error(result.msg);
-                    } else {
-                        $scope.moreLoading = false;
-                        // $('html,body').animate({ scrollTop: 0 }, 100);
-
-                        $scope.gameName = game;
-                        // console.log($scope.gameName);
-
-                        if (result.total) {
-                            $scope.nodata = false;
-                            // $scope.table = a;
-                            // $scope.page = result.page;
-                            // $scope.pages = result.pages;
-                            // $scope.total = result.total;
-                            // $scope.totalnumber = global.reg(result.total);
-                            // var row1 = [];
-
-                        } else {
-                            $scope.nodata = true;
+                        var rooms = [];
+                        for (var key in result) {
+                            if (result[key].roomType != 1) {
+                                rooms.push(result[key]);
+                            }
                         }
-                    }
-                }).error(function (msg, code) {
-                    $scope.errorTips(code);
+                        reqRooms--;
+
+                        for(var roomtype=0;roomtype <rooms.length;roomtype++){
+                            for(var tabletype=rooms[roomtype].startAreaId;tabletype<rooms[roomtype].startAreaId+rooms[roomtype].maxAreas;tabletype++){
+                                var dataname = gamename;
+                                var tablenum = tabletype;
+                                var dataroom = rooms[roomtype].name;
+                                var tmpl = e.tmpl;
+                                var tablename = tableresult[tabletype].name;
+
+                                var rowdata = {
+                                    gamename:dataname,
+                                    gameroom:dataroom,
+                                    tablenum:tablenum,
+                                    tablename:tablename,
+                                    tmpl: tmpl
+                                };
+
+                                allData.push(rowdata);
+
+                                if(!reqApps && reqRooms == 0 && reqTables == 0){
+                                        allData = _.sortBy(allData, ['gamename', 'tablenum']);
+                                        allData.forEach(function (e, i) {
+
+                                            $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
+                                                params:{
+                                                    token: sso.getToken(),
+                                                    room: parseInt(e.tablenum)
+                                                }
+                                            }).success(function (result) {
+                                                var gin = result.gIn;
+                                                var gout = result.gOut;
+                                                var gcoin = result.coin_rate;
+                                                var rate;
+                                                var profit;
+                                                if (Object.prototype.toString.call(gin) == '[object Array]') {
+                                                    var sumin = sum(gin);
+                                                } else {
+                                                    var sumin = gin;
+                                                }
+
+                                                if (Object.prototype.toString.call(gout) == '[object Array]') {
+                                                    var sumout = sum(gout);
+                                                } else {
+                                                    var sumout = gout;
+                                                }
+
+                                                var gain = sumin - sumout;
+                                                if (sumin <= 0) {
+                                                    rate = 0;
+                                                } else {
+                                                    rate = gain / sumin;
+                                                    rate = rate.toFixed(4);
+                                                }
+
+                                                if (gcoin <= 0) {
+                                                    profit = 0;
+                                                } else {
+                                                    profit = gain / gcoin;
+                                                }
+
+                                                e.in = sumin;
+                                                e.out = sumout;
+                                                e.gain = gain;
+                                                e.rate = rate;
+                                                e.profit = profit;
+                                                // e.result = result;
+                                            });
+                                        });
+
+                                        if($scope.search){
+                                            allData = _.filter(allData, {gamename: $scope.search});
+                                        }
+
+                                        var begin = ($scope.page - 1) * $scope.pageSize;
+                                        var end = begin + $scope.pageSize;
+                                        $scope.allData = [];
+                                        for(var i= begin; i< end; i++){
+                                            if($scope.allData[i] == undefined){
+                                                $scope.allData[i] = allData[i];
+                                            }
+                                        }
+
+                                        $scope.moreLoading = false;
+                                        // $('html,body').animate({ scrollTop: 0 }, 100);
+                                        if(allData.length){
+                                            $scope.nodata = false;
+                                            $scope.page = page;
+                                            $scope.pages = Math.ceil(allData.length/$scope.pageSize);
+                                            $scope.total = allData.length;
+                                            $scope.totalnumber = global.reg(allData.length);
+                                        }else{
+                                            $scope.nodata = true;
+                                        }
+
+
+                                }
+
+                            }
+                        }
+                    });
                 });
-            }
+            });
 
+        }).error(function(msg, code){
+            $scope.errorTips(code);
         });
-
-
     }
-
-
-
-    // function getAlgData(room) {
-    //
-    //     var deferred = $q.defer();
-    //
-    //     $http.get(algUri + '/' + $stateParams.type + '/getAlgData', {
-    //         params:{
-    //             token: sso.getToken(),
-    //             room: parseInt(room)
-    //         }
-    //     }).error(function (msg, code) {
-    //         deferred.reject(code);
-    //     }).success(function (result) {
-    //         console.log(result);
-    //         var data = result;
-    //         if(data.err){
-    //             deferred.reject(data);
-    //         }else{
-    //             deferred.resolve(data);
-    //         }
-    //     });
-    //
-    //     return deferred.promise;
-    // };
-
-    // var id = gameid._id;
-
-            // console.log(id);
-            //
-            // var hkey = 'app:' + id + ":config";
-            //
-            // $http.get(appMgrUri + "/appConfig", {
-            //     params: {
-            //         token: sso.getToken(),
-            //         root: hkey,
-            //         list: 1,
-            //         all: 1
-            //     }
-            // }).success(function (result) {
-            //     console.log(result);
-
-
-                // var data = result;
-                //
-                // var hkey1 = 'app:' + id + ":config:area";
-                //
-                //
-                // var url = algUri + '/' + $stateParams.type + '/getAlgData';
-                // $http.get(url, {
-                //     params:{
-                //         token: sso.getToken(),
-                //         room: parseInt(room)
-                //     }
-                // }).error(function (msg, code) {
-                //     deferred.reject(code);
-                // }).success(function (result) {
-                //     var data = result;
-                //     if(data.err){
-                //         deferred.reject(data);
-                //     }else{
-                //         deferred.resolve(data);
-                //     }
-                // });
-
-
-
-
-
-
-
-                // console.log(a);
-        //         if(result.err){
-        //             $scope.error(result.msg);
-        //         }else{
-        //             $scope.moreLoading = false;
-        //             // $('html,body').animate({ scrollTop: 0 }, 100);
-        //
-        //             $scope.gameName = a;
-        //             console.log($scope.gameName);
-        //
-        //             if(result.total){
-        //                 $scope.nodata = false;
-        //                 // $scope.table = a;
-        //                 // $scope.page = result.page;
-        //                 // $scope.pages = result.pages;
-        //                 // $scope.total = result.total;
-        //                 // $scope.totalnumber = global.reg(result.total);
-        //                 // var row1 = [];
-        //
-        //             }else{
-        //                 $scope.nodata = true;
-        //             }
-        //         }
-        //     }).error(function(msg, code){
-        //         $scope.errorTips(code);
-        //     });
-        //
-        // });
-
-
-
-
-
-    $scope.getdata();
+    // $scope.getdata();
 
 
     $scope.onPageSizeChanged = function() {
@@ -253,6 +225,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$stateParams', '$http', 'globa
     $scope.$watch('pageSize', function () {
         history.pageSize = $scope.pageSize;
         $scope.onPageSizeChanged();
+    });
+    $scope.$watch('search', function () {
+        history.search = $scope.search;
     });
 
 }]);

@@ -1,5 +1,15 @@
 <div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">桌子统计</h1></div>
-
+<div>
+    <div class="pull-right m-r-xs headpadd">
+        <select class="input-sm form-control" style="width: 115px" ng-model="search" ng-options="opt for opt in games" ng-change="onPageSizeChanged()">
+            <option value="">游戏名称</option>
+        </select>
+    </div>
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="onPageSizeChanged()">
+        </select>
+    </div>
+</div>
 <div class="line b-b"></div>
 <!--ng-style="{height:app.navHeight-200+'px'}"-->
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
@@ -38,16 +48,16 @@
             </thead>
             <tbody class="tbody">
 
-            <tr ng-repeat="row in gameName" class="active tbr">
-                <td class="tbd" data-title="游戏名称" style="height: 2.8em">{{row.name}}</td>
-                <td class="tbd" data-title="房间名称" style="height: 2.8em">{{row.room}}</td>
-                <td class="tbd" data-title="桌子编号" style="height: 2.8em">{{row.areaId}}</td>
-                <td class="tbd" data-title="桌子名称" style="height: 2.8em">{{row.table}}</td>
-                <td class="tbd" data-title="总压" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="总得" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="盈利（游戏分）" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="盈利率" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="盈利（金币）" style="height: 2.8em">{{row.uid}}</td>
+            <tr ng-repeat="row in allData | filter:{gamename:''}" class="active tbr">
+                <td class="tbd" data-title="游戏名称" style="height: 2.8em">{{row.gamename}}</td>
+                <td class="tbd" data-title="房间名称" style="height: 2.8em">{{row.gameroom}}</td>
+                <td class="tbd" data-title="桌子编号" style="height: 2.8em">{{row.tablenum}}</td>
+                <td class="tbd" data-title="桌子名称" style="height: 2.8em">{{row.tablename}}</td>
+                <td class="tbd" data-title="总压" style="height: 2.8em">{{row.in}}</td>
+                <td class="tbd" data-title="总得" style="height: 2.8em">{{row.out}}</td>
+                <td class="tbd" data-title="盈利（游戏分）" style="height: 2.8em">{{row.gain}}</td>
+                <td class="tbd" data-title="盈利率" style="height: 2.8em">{{row.rate}}</td>
+                <td class="tbd" data-title="盈利（金币）" style="height: 2.8em">{{row.profit}}</td>
             </tr>
 
             </tbody>
