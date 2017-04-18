@@ -769,7 +769,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
             {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
-            {headerName: "上分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "上/下分", field: "upjb", width: 100, valueGetter: format_upjb},
             {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
             {headerName: "设备", field: "device", width: 100},
             {headerName: "渠道", field: "channel", width: 100},

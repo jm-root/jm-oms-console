@@ -110,7 +110,7 @@
               "areaType": "loại phòng",
               "prejb": "số hoàng kim trước khi bắt đầu",
               "bkjb": "số hoàng kim sau khi kết thúc",
-              "upjb":"Lên điểm",
+              "upjb":"上/下分",
               "changejb": "hoàng kim thắng thua",
               "device": "thiết bị",
               "channel": "đường dẫn",
