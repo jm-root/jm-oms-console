@@ -1,6 +1,8 @@
 app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
     var sso = jm.sdk.sso;
+    var history = global.agentListHistory||(global.agentListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = {};
     $scope.search.date = $scope.search.date || {};
     var page = 1;
@@ -102,11 +104,12 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
 app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
     var sso = jm.sdk.sso;
+    var history = global.agentListHistory||(global.agentListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = {};
     $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
     $scope.endDate = moment(new Date());
     // $scope.cascadeagent = global.cascadeagent;
-    console.info(global.cascadeagent);
 
     $scope.search.date = $scope.search.date || {
             startDate:$scope.startDate,
@@ -212,6 +215,8 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
 app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
 
     var sso = jm.sdk.sso;
+    var history = global.agentListHistory||(global.agentListHistory={});
+    $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = {};
     $scope.search.date = $scope.search.date || {};
     var page = 1;
