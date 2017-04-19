@@ -5,7 +5,11 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
     console.log($scope.search.date);
-    $scope.search.date = $scope.search.date || {};
+    $scope.search.date = $scope.search.date || {
+            startDate:moment().subtract(15,"days"),
+            endDate:moment()
+        };
+
     $scope.dateOptions=global.dateRangeOptions;
     $scope.dateOptions.opens = 'left';
 

@@ -40,25 +40,37 @@
                             url: '/playerdata',
                             templateUrl: path + 'tpl/player.data.html',
                             controller: 'PlayerDataCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.playerstatistics', {
                             url: '/playerstatistics',
                             templateUrl: path + 'tpl/player.statistics.html',
                             controller: 'PlayerStatisticsCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.playerdiary', {
                             url: '/playerdiary',
                             templateUrl: path + 'tpl/player.diary.html',
                             controller: 'PlayerDiaryCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.table', {
                             url: '/table',
                             templateUrl: path + 'tpl/table.html',
                             controller: 'TableCtrl',
                             resolve: lazyLoadProvider.load([path + 'css/self.css'])
+                        })
+                        .state('app.datastatistics.logreg', {
+                            url: '/logreg',
+                            templateUrl: path + 'tpl/logreg.html',
+                            controller: 'LogregCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker',,path + 'js/controllers/logreg.js'])
+                        })
+                        .state('app.datastatistics.profit', {
+                            url: '/profit',
+                            templateUrl: path + 'tpl/profit.html',
+                            controller: 'ProfitCtrl',
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/profit.js'])
                         })
                 }
             ]

@@ -30,6 +30,7 @@ app.controller('SigninCtrl', ['$scope', '$http', '$state', '$translatePartialLoa
             }else{
                 $scope.authError = '账号或密码错误';
                 if(result.err===2006||result.err===2007){
+                    $state.go('access.signin');
                     localStorage.setItem('visImgCode', true);
                     $scope.visImgCode = true;
                 }
