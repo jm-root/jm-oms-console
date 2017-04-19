@@ -41,25 +41,25 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.opens = 'left';
 
-    $scope.url = 'http://'+$scope.host+'/index.html';
-    $scope.promote = uploadUri+'/qrcode?info='+$scope.url;
+    // $scope.url = 'http://'+$scope.host+'/index.html';
+    // $scope.promote = uploadUri+'/qrcode?info='+$scope.url;
+    //
+    // $http.get(packUri + "/client", {
+    //     params: {
+    //         token: sso.getToken()
+    //     }
+    // }).success(function (result) {
+    //     if (result.err) {
+    //         $scope.error(result.msg);
+    //     } else {
+    //         result = result || {};
+    //         $scope.android_Path = staticHost + result.androidPath
+    //     }
+    // }).error(function (msg, code) {
+    //     $scope.errorTips(code);
+    // });
 
-    $http.get(packUri + "/client", {
-        params: {
-            token: sso.getToken()
-        }
-    }).success(function (result) {
-        if (result.err) {
-            $scope.error(result.msg);
-        } else {
-            result = result || {};
-            $scope.android_Path = staticHost + result.androidPath
-        }
-    }).error(function (msg, code) {
-        $scope.errorTips(code);
-    });
-
-    $scope.agent = {ratio:0, settled:0,agent:{ratio:0}};
+    $scope.agent = {ratio:0, settled:0};
     $http.get(agentUri + '/info', {
         params: {
             token: sso.getToken()
@@ -70,12 +70,12 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
             $scope.agent = result || {};
             $scope.agent.ratio||($scope.agent.ratio=0);
             $scope.agent.settled||($scope.agent.settled=0);
-            if($scope.agent.agent){
-                $scope.agent.agent.ratio||($scope.agent.agent.ratio=0);
-            }else{
-                $scope.agent.agent={};
-                $scope.agent.agent.ratio||($scope.agent.agent.ratio=1);
-            }
+            // if($scope.agent.agent){
+            //     $scope.agent.agent.ratio||($scope.agent.agent.ratio=0);
+            // }else{
+            //     $scope.agent.agent={};
+            //     $scope.agent.agent.ratio||($scope.agent.agent.ratio=1);
+            // }
         }
     }).error(function (msg, code) {
         $scope.errorTips(code);
@@ -97,6 +97,8 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 result = result || {};
                 var code = result.code;
                 var level = result.level;
+                $scope.level = level;
+                $scope.code = code;
                 if(code&&level==2){
                     $scope.url = 'http://'+$scope.host+'/agent.html?agent='+code;
                     $scope.promote = uploadUri+'/qrcode?info='+$scope.url;
@@ -139,7 +141,7 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                 params:{
                     token: sso.getToken(),
                     UTC: UTC,
-                    fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1}
+                    fields:{user_yesterday:1,user_today:1,login_today:1,login_yesterday:1,gain_total:1,user_total:1}
                 }
             }).success(function(result){
                 var obj = result;
@@ -147,11 +149,11 @@ app.controller('DashboardCtrl', ['$scope', '$translate', '$translatePartialLoade
                     $scope.error(obj.msg);
                 }else{
                     $scope.stat = obj||{};
-                    $scope.divided.gain_jb = reg($scope.stat.gain_total.gain_jb || 0);
-                    $scope.divided.notDivided = reg(Math.floor((($scope.divided.gain_jb-$scope.agent.settled)*$scope.agent.agent.ratio)||0));
-                    $scope.divided.amount = reg(Math.floor((($scope.divided.gain_jb-$scope.agent.settled)*$scope.agent.agent.ratio*$scope.agent.ratio)||0));
-
-                    $scope.agent.settled = reg($scope.agent.settled);
+                    var gain_jb = $scope.stat.gain_total.gain_jb;
+                    $scope.divided.gain_jb = reg(gain_jb || 0);
+                    $scope.divided.notDivided = reg(Math.floor((gain_jb-$scope.agent.settled)||0));
+                    $scope.divided.amount = reg(Math.floor(((gain_jb-$scope.agent.settled) *$scope.agent.ratio)||0));
+                    $scope.divided.settled = reg($scope.agent.settled);
                 }
             }).error(function(msg, code){
                 $scope.errorTips(code);

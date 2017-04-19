@@ -1,19 +1,24 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">玩家数据</h1></div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">玩家数据日报表</h1></div>
+
 
 <div>
     <div class="pull-right headpadd m-r-sm">
         <div class="input-group" style="width: 250px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 30px"/>
-            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 34px"/>
+            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();" ></i>
         </div>
     </div>
-    <div class="pull-right m-r-sm headpadd">
-        <select class="input-sm form-control" style="width: 115px" ng-model="search.agent" ng-options="opt._id as opt.name for opt in apps" ng-change="getdata(1)">
-            <option value="">所有渠道</option>
-        </select>
+
+    <div class="input-group w-sm pull-right headpadd m-r-sm ">
+        <div class="">
+            <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="getdata(1)">
+                <option value="">所有渠道</option>
+            </select>
+        </div>
     </div>
-    <div class="pull-right m-r-sm headpadd">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
+
+    <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
+        <select class=" form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
         </select>
     </div>
 </div>
@@ -42,26 +47,23 @@
         <table class="table table-striped table-bordered mobiletable">
             <thead class="bg-white">
             <tr>
-                <th>所属渠道</th>
-                <th>账号</th>
-                <th>总上分</th>
-                <th>总下分</th>
-                <th>金币余额</th>
-                <th>详细信息</th>
+                <th>日期</th>
+                <th>总上</th>
+                <th>总下</th>
+                <th>总玩</th>
+                <th>总得</th>
+                <th>总输赢(总玩—总得)</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in usersInfo.rows" class="active" ng-if="total">
-                <td data-title="所属渠道" >{{row._id}}</td>
-                <td data-title="账号" >{{row.nick}}</td>
-                <td data-title="总上分" >{{row.nick}}</td>
-                <td data-title="总下分" >{{crtime}}</td>
-                <td data-title="金币余额" >{{row.nick}}</td>
-                <td data-title="详细信息" >
-                    <button class="btn btn-xs btn-info" ng-click="details(row._id)" style="float: right" ng-disabled="key">详细信息</button>
-                </td>
+            <tr ng-repeat="row in playerdata.rows" class="active" ng-if="total">
+                <td data-title="日期" >{{row.date | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                <td data-title="总上" >{{row.register}}</td>
+                <td data-title="总下" >{{row.login}}</td>
+                <td data-title="总玩" >{{row.up_jb}}</td>
+                <td data-title="总得" >{{row.down_jb}}</td>
+                <td data-title="总输赢(总玩-总得)" >{{row.gain_jb}}</td>
             </tr>
-
             </tbody>
         </table>
     </div>

@@ -50,6 +50,7 @@
     "tbBalance": "Ingot balance",
     "jbBalance": "Gold balance",
     "dbjBalance": "Treasure balance",
+    "promotenum":"推广号",
     "packageDownload": "Package download",
     "platformData": {
       "title": "Platform data",
@@ -66,6 +67,7 @@
     "playerStat":{
       "title": "User statistics",
       "total": "Cumulative total",
+      "playertotal":"Player total",
       "yesterday": "Register yesterday",
       "today": "Register today",
       "guest": "Guest",
@@ -86,11 +88,11 @@
     },
     "gainStat":{
       "title": "Divided into statistics",
-      "total": "Total surplus",
-      "ratio": "Ratio",
-      "divided": "Divided",
-      "notDivided": "Not divided",
-      "proportional": "Proportional share"
+      "total": "总营收（金币总输赢）",
+      "ratio": "归属己方的分成比例",
+      "divided": "已分成营收（已结算）",
+      "notDivided": "未分成营收（未结算）",
+      "proportional": "分成后将归属己方的营收"
     }
   }
 }

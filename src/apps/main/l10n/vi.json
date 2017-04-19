@@ -71,7 +71,8 @@
       "agentdata":"渠道数据",
       "playerstatistics":"玩家统计",
       "agentstatistics":"渠道统计",
-      "playerdiary":"玩家流水",
+      "table":"桌子统计",
+      "playerdiary":"交易流水",
       "agentdiary":"渠道流水"
     },
     "system":{

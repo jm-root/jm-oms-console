@@ -203,22 +203,39 @@
                     <!--<div class="col-sm-1"></div>-->
                 <!--</div>-->
 
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label" translate="agent.agent.create.label">标签</label>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<tags-input class="bootstrap" ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="{{ 'common.addTag' | translate }}" min-length="1"></tags-input>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-1"></div>-->
+                <!--</div>-->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.label">标签</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.backpointsacl">下分权限</label>
                     <div class="col-sm-4">
-                        <tags-input class="bootstrap" ng-model="agent.tags" add-on-space="true" add-on-paste="true" placeholder="{{ 'common.addTag' | translate }}" min-length="1"></tags-input>
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="agent.isDownCoin"><i></i>
+                        </label>
                     </div>
-                    <div class="col-sm-1"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" translate="agent.agent.create.remarks">备注</label>
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.agentacl">推广权限</label>
+                    <div class="col-sm-4">
+                        <label class="i-checks checkbox-inline">
+                            <input type="checkbox" ng-model="agent.isSetInfo"><i></i>
+                        </label>
+                    </div>
+                </div>
 
-                    <div class="col-sm-5">
-                        <textarea class="form-control" rows="4" style="resize: none;" placeholder="" ng-model="agent.memo"></textarea>
+                <div class="form-group" ng-if="super||showInfo">
+                    <label class="col-sm-2 control-label" translate="agent.agent.create.agentmsg">推广信息</label>
+                    <div class="col-sm-4">
+                        <textarea class="form-control w-xl" rows="4" style="resize: none;" placeholder="推广信息" ng-model="agent.info"></textarea>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
+
             </div>
             <footer class="panel-footer text-right bg-light lter" style="height: 100px">
                 <div style="max-width: 750px">

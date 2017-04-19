@@ -496,7 +496,6 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         $interval.cancel(t);
     });
 
-
     var format_uid = function(params) {
         var obj = params.data.user || {};
         return obj.uid||'';
@@ -531,6 +530,35 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
     //     return obj.channel;
     // };
 
+    $scope.kickedOut = function(data){
+        $http.post(ssoUri+'/users/'+data.user.id, {active:false}, {
+            params:{
+                token: sso.getToken()
+            }
+        }).success(function(result){
+            if(result.err){
+                $scope.error(result.msg);
+            }else{
+                $scope.success('操作成功');
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    }
+
+    $scope.takeAway = function(params){
+
+    }
+
+    var format_kickedOut = function (params) {
+        return '<button class="btn btn-xs bg-primary" translate="player.info.online.header.kickedOut" ng-click="kickedOut(data)">封号</button>';
+    }
+
+    var format_takeAway = function (params) {
+        return '<span class="btn btn-xs bg-primary" translate="player.info.online.header.takeAway" ng-click="takeAway(data)">踢出房间</span>';
+    }
+
+
     if(omsPlatform === pfm_oms){
         var columnDefs = [
             {headerName: "玩家ID", field: "uid", width: 100, valueGetter: format_uid},
@@ -542,7 +570,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
             {headerName: "夺宝卷", field: "dbj", width: 100, valueGetter: format_dbj},
             {headerName: "设备", field: "device", width: 100},
-            {headerName: "渠道", field: "channel", width: 100}
+            {headerName: "渠道", field: "channel", width: 100},
+            {headerName: "封号",field:"kickedOut",width:100,cellRenderer:format_kickedOut,cellStyle:{'text-align':'center'}},
+            {headerName: "踢出",field:"takeAway",width:100,cellRenderer:format_takeAway,cellStyle:{'text-align':'center'}}
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
@@ -555,7 +585,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             'player.info.online.header.jb',
             'player.info.online.header.dbj',
             'player.info.online.header.device',
-            'player.info.online.header.channel'
+            'player.info.online.header.channel',
+            'player.info.online.header.kickedOut',
+            'player.info.online.header.takeAway'
         ]);
     }else if(omsPlatform === pfm_cy){
         var columnDefs = [
@@ -565,7 +597,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             {headerName: "房间号", field: "areaId", width: 80},
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "金币", field: "jb", width: 100, valueGetter: format_jb},
-            {headerName: "渠道", field: "channel", width: 100}
+            {headerName: "渠道", field: "channel", width: 100},
+            {headerName: "封号",field:"kickedOut",width:100,cellRenderer:format_kickedOut,cellStyle:{'text-align':'center'}},
+            {headerName: "踢出",field:"takeAway",width:100,cellRenderer:format_takeAway,cellStyle:{'text-align':'center'}}
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
@@ -575,7 +609,9 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
             'player.info.online.header.areaId',
             'player.info.online.header.areaType',
             'player.info.online.header.jb',
-            'player.info.online.header.channel'
+            'player.info.online.header.channel',
+            'player.info.online.header.kickedOut',
+            'player.info.online.header.takeAway'
         ]);
     }
 
@@ -598,7 +634,6 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
                 }
             }).success(function (result) {
                 var data = result;
-                console.log(result);
                 if (data.err) {
                     $scope.error(data.msg);
                 } else {
@@ -734,7 +769,7 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
             {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
-            {headerName: "上分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "上/下分", field: "upjb", width: 100, valueGetter: format_upjb},
             {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
             {headerName: "设备", field: "device", width: 100},
             {headerName: "渠道", field: "channel", width: 100},

@@ -10,17 +10,22 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
     if(player) {
         player = JSON.parse(player);
         $scope.player = player;
+        $scope.playerjb = global.reg(player.jb);
     }
     sessionStorage.removeItem("selectedUser");
 
 
     var bank = jm.sdk.bank;
-    bank.query({},function(err,result){
-        result || (result||{});
-        var holds = result.holds||{};
-        var jbObj = holds.jb || {};
-        $scope.jb = global.reg(jbObj.amountValid||0);
-    });
+    $scope.querybank = function () {
+        bank.query({},function(err,result){
+            result || (result||{});
+            var holds = result.holds||{};
+            var jbObj = holds.jb || {};
+            $scope.balence = jbObj.amountValid||0;
+            $scope.jb = global.reg(jbObj.amountValid||0);
+        });
+    }
+    $scope.querybank();
 
 
     $scope.updateData = function(type, allAmount){
@@ -31,22 +36,22 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
         var fromUserId,toUserId,info,sum;
 
         if(player != null){
-            var account = player.nick||player.account;
-            account += '(ID: ' + player.uid + ')';
+            var account = player.nick||"";
+            account += '('+ global.translateByKey('search.account') + (player.account||player.uid) + ')';
             if($scope.type == 'charge'){
                 fromUserId = sso.user.id;
                 toUserId = player.id;
                 sum = player.jb + amount;
-                info = global.translateByKey('search.player') + account + '<br/> '+global.translateByKey('search.balance') + player.jb + '<br/>'+global.translateByKey('search.charge') + amount + '<br> '+global.translateByKey('search.result')+sum;
+                info = global.translateByKey('search.player') + account + '<br/> '+global.translateByKey('search.balance') + global.reg(player.jb) + '<br/>'+global.translateByKey('search.charge') + amount + '<br> '+global.translateByKey('search.result')+global.reg(sum);
             }else if($scope.type == 'uncharge'){
                 fromUserId = player.id;
                 toUserId = sso.user.id;
                 if(allAmount) amount = player.jb;
                 sum = player.jb - amount;
-                info = global.translateByKey('search.player')+ account + '<br/> '+global.translateByKey('search.balance') + player.jb + '<br/> '+global.translateByKey('search.uncharge') + amount + '<br> '+global.translateByKey('search.result')+sum;
+                info = global.translateByKey('search.player')+ account + '<br/> '+global.translateByKey('search.balance') + global.reg(player.jb) + '<br/> '+global.translateByKey('search.uncharge') + amount + '<br> '+global.translateByKey('search.result')+global.reg(sum);
             }
 
-            if(sum<0){
+            if(sum<0||amount>$scope.balence){
                 $scope.openTips({
                     title: global.translateByKey('openTips.title'),
                     content: global.translateByKey('player.info.TipInfo.balance'),
@@ -80,6 +85,7 @@ app.controller('PlayerChargeCtrl', ['$scope', '$state', '$stateParams', '$http',
                                 $scope.memo = "";
                                 $scope.player = null;
                                 $scope.amount = null;
+                                $scope.querybank();
                             }
                         });
                     }

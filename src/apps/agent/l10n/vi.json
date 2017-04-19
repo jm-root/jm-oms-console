@@ -81,6 +81,9 @@
         "BankCardNumber": "số thẻ ngân hàng",
         "label": "标签",
         "addLabel":"添加标签",
+        "backpointsacl": "下分权限",
+        "agentacl": "推广权限",
+        "agentmsg":"推广信息",
         "remarks": "备注",
         "SubmitAudit": "提交审核",
         "number":"数量"
@@ -102,7 +105,8 @@
         "BankCardNumber": "số thẻ ngân hàng",
         "label": "标签",
         "remarks": "备注",
-        "update": "更新"
+        "update": "更新",
+        "DividedProportion":"分成比例"
       },
       "list": {
         "AgentList": "danh sách đường dẫn",

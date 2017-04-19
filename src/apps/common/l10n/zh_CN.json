@@ -130,10 +130,11 @@
   "search":{
     "selectplayer":"选择玩家",
     "all":"全退",
-    "player":"玩家：",
-    "balance":"余额：",
+    "player":"玩家昵称：",
+    "account":"账号：",
+    "balance":"当前玩家余额：",
     "charge":"上分：",
     "uncharge":"下分：",
-    "result":"结果："
+    "result":"操作后玩家余额："
   }
 }

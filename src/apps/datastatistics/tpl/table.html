@@ -1,15 +1,8 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'datastatistics.agentdata.title'|translate}}</h1></div>
-
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">桌子统计</h1></div>
 <div>
-    <div class="pull-right headpadd m-r-sm">
-        <div class="input-group m-r-sm" style="width: 185px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{ 'common.times' | translate }}" style="position: relative;height: 30px"/>
-            <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
-        </div>
-    </div>
-    <div class="pull-right m-r-sm headpadd">
-        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="">{{'datastatistics.agentdata.typeOpts.opts'|translate}}</option>
+    <div class="pull-right m-r-xs headpadd">
+        <select class="input-sm form-control" style="width: 115px" ng-model="search" ng-options="opt for opt in games" ng-change="onPageSizeChanged()">
+            <option value="">游戏名称</option>
         </select>
     </div>
     <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
@@ -42,23 +35,29 @@
         <table class="table table-striped table-bordered mobiletable">
             <thead class="thead bg-white">
             <tr class="thr">
-                <th class="thh">{{'datastatistics.agentdata.header.date'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.rollIn'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.rollOut'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.increase'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.decrease'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.summary'|translate}}</th>
+                <th class="thh">游戏名称</th>
+                <th class="thh">房间名称</th>
+                <th class="thh">桌子编号</th>
+                <th class="thh">桌子名称</th>
+                <th class="thh">总压</th>
+                <th class="thh">总得</th>
+                <th class="thh">盈利（游戏分）</th>
+                <th class="thh">盈利率</th>
+                <th class="thh">盈利（金币）</th>
             </tr>
             </thead>
             <tbody class="tbody">
 
-            <tr ng-repeat="row in usersInfo.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.date'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" style="height: 2.8em">{{row.crtime}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.increase'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.summary'|translate}}" style="height: 2.8em">{{row.uid}}</td>
+            <tr ng-repeat="row in allData | filter:{gamename:''}" class="active tbr">
+                <td class="tbd" data-title="游戏名称" style="height: 2.8em">{{row.gamename}}</td>
+                <td class="tbd" data-title="房间名称" style="height: 2.8em">{{row.gameroom}}</td>
+                <td class="tbd" data-title="桌子编号" style="height: 2.8em">{{row.tablenum}}</td>
+                <td class="tbd" data-title="桌子名称" style="height: 2.8em">{{row.tablename}}</td>
+                <td class="tbd" data-title="总压" style="height: 2.8em">{{row.in}}</td>
+                <td class="tbd" data-title="总得" style="height: 2.8em">{{row.out}}</td>
+                <td class="tbd" data-title="盈利（游戏分）" style="height: 2.8em">{{row.gain}}</td>
+                <td class="tbd" data-title="盈利率" style="height: 2.8em">{{row.rate}}</td>
+                <td class="tbd" data-title="盈利（金币）" style="height: 2.8em">{{row.profit}}</td>
             </tr>
 
             </tbody>

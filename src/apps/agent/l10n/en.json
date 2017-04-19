@@ -81,6 +81,9 @@
         "BankCardNumber":"Bank Card Number",
         "label":"Label",
         "addLabel":"Add Label",
+        "backpointsacl": "下分权限",
+        "agentacl": "推广权限",
+        "agentmsg":"推广信息",
         "remarks":"Remarks",
         "SubmitAudit":"Submit Audit",
         "number":"Number"
@@ -102,7 +105,8 @@
         "BankCardNumber":"Bank Card Number",
         "label":"Label",
         "remarks":"Remarks",
-        "update":"Update"
+        "update":"Update",
+        "DividedProportion":"Divided Proportion"
       },
       "list":{
         "AgentList":"Agent List",

@@ -21,7 +21,8 @@
         </form>
     </div>
     <div class="pull-right m-r-sm m-b-xs" ng-show="!isSmartDevice">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)"></select>
+        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata('',1)">
+        </select>
     </div>
     <div class="line b-b"></div>
 </div>
@@ -52,6 +53,8 @@
                 <!--<th>序号</th>-->
                 <th>{{'backpoints.list.label1'|translate}}</th>
                 <th>{{'backpoints.list.label2'|translate}}</th>
+                <th>{{'backpoints.list.nick'|translate}}</th>
+                <th>{{'backpoints.list.agent'|translate}}</th>
                 <th>{{'backpoints.list.label3'|translate}}</th>
                 <th>{{'backpoints.list.label4'|translate}}</th>
                 <th></th>
@@ -63,7 +66,9 @@
                 <!--<td data-title="序号" >{{row.user.uid}}</td>-->
 
                 <td data-title="{{'backpoints.list.label1'|translate}}" >{{row.user.uid}}</td>
-                <td data-title="{{'backpoints.list.label2'|translate}}" >{{row.user.account||row.user.nick}}</td>
+                <td data-title="{{'backpoints.list.label2'|translate}}" >{{row.user.account||row.user.mobile}}</td>
+                <td data-title="{{'backpoints.list.nick'|translate}}" >{{row.user.nick}}</td>
+                <td data-title="{{'backpoints.list.agent'|translate}}" >{{row.agent.name}}</td>
                 <td data-title="{{'backpoints.list.label3'|translate}}" >{{row.amount}}</td>
                 <td data-title="{{'backpoints.list.label4'|translate}}" >{{row.crtime|date:'yyyy-MM-dd HH:mm:ss'}}</td>
 
