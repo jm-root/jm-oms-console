@@ -31,7 +31,8 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         if(obj.err){
             $scope.error(obj.msg);
         }else{
-            $scope.apps =obj.rows||[];
+            $scope.channels =obj.rows||[];
+            $scope.select = true;
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -90,7 +91,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.getdata();
 
     $scope.details = function (key) {
-
+        $state.go("app.datastatistics.playerdiary");
     }
 
     $scope.$watch('search.date', function () {

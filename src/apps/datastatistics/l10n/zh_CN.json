@@ -14,7 +14,17 @@
       }
     },
     "playerstatistics":{
-      "title":"玩家统计"
+      "title":"玩家统计",
+      "label1":"所有渠道",
+      "header":{
+        "account":"玩家账号",
+        "nick":"昵称",
+        "agent":"所属渠道",
+        "up":"上分",
+        "down":"下分",
+        "jbbalance":"金币余额",
+        "detail":"详细信息"
+      }
     },
     "logreg":{
       "title":"登录注册日报表",
