@@ -483,7 +483,6 @@ app.controller('AgentEditCtrl', ['$scope', '$http', '$state', '$stateParams', 'g
             } else {
                 result = result || {};
                 $scope.showInfo = result.isSetInfo||false;
-
             }
         }).error(function (msg, code) {
             $scope.errorTips(code);

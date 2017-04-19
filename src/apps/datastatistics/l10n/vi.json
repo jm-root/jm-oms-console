@@ -1,0 +1,29 @@
+{
+  "datastatistics":{
+    "diary":{
+      "title":"交易流水",
+      "typeOpts": {
+        "opts": "交易类型",
+        "opts1": "普通交易",
+        "opts2": "转帐交易",
+        "opts3": "货币发行",
+        "opts4": "货币回收",
+        "opts5": "预授权"
+      },
+      "header":{
+        "fromUserId": "发起方ID",
+        "fromUser": "发起方名称",
+        "fromLevel":"发起方等级",
+        "fromJb":"发起方操作前金币",
+        "type": "操作类型",
+        "amount": "操作金额",
+        "toUserId": "交易对象ID",
+        "toUser": "交易对象名称",
+        "toLevel":"交易对象等级",
+        "toJb":"交易对象交易前金币",
+        "balance": "操作前余额",
+        "createdAt": "操作时间"
+      }
+    }
+  }
+}
