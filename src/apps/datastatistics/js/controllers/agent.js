@@ -4,12 +4,12 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
     var history = global.AgentDataHistory||(global.AgentDataHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    console.log($scope.search.date);
     $scope.search.date = $scope.search.date || {
             startDate:moment().subtract(15,"days"),
             endDate:moment()
         };
 
+    $scope.channels = [];
     $scope.dateOptions=global.dateRangeOptions;
     $scope.dateOptions.opens = 'left';
 
@@ -36,8 +36,32 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
         }
     };
 
+
+    $scope.getOption = function () {
+        $http.get(agentUri + '/subAgents', {
+            params: {
+                token: sso.getToken(),
+                search:$scope.search.agent
+            }
+        }).success(function (result) {
+            if (result.err) {
+                $scope.channe = [];
+                $scope.error(result.msg);
+            } else {
+                $scope.channels = result.rows;
+                $scope.isok = true;
+            }
+
+
+        }).error(function (msg, code) {
+            $scope.errorTips(code);
+        });
+    }
+
+
+    $scope.getOption();
+
     $scope.getdata = function(keyword,_page) {
-        console.log($scope.pageSize);
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
@@ -56,15 +80,14 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
                 status:1
             }
         }).success(function(result){
-            console.log(result);
+            $scope.moreLoading = false;
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.moreLoading = false;
-                // $('html,body').animate({ scrollTop: 0 }, 100);
+                $('html,body').animate({ scrollTop: 0 }, 100);
+                $scope.usersInfo = result;
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
@@ -80,21 +103,6 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
 
     $scope.getdata();
 
-    $http.get(agentUri + '/subAgents', {
-        params: {
-            token: sso.getToken()
-        }
-    }).success(function (result) {
-        if (result.err) {
-            $scope.error(result.msg);
-        } else {
-            $scope.agents = result.rows;
-        }
-    }).error(function (msg, code) {
-        $scope.errorTips(code);
-    });
-
-
     $scope.onPageSizeChanged = function() {
         page = 1;
         $scope.getdata();
@@ -106,6 +114,9 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
 
     $scope.$watch('search', function () {
         history.search = $scope.search;
+    });
+    $scope.$watch('channels', function () {
+        // $scope.channels = $scope.channels || [];
     });
     $scope.$watch('search.date', function () {
         history.search.date = $scope.search.date;
@@ -120,7 +131,6 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
     var history = global.AgentStatisticsHistory||(global.AgentStatisticsHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    console.log($scope.search.date);
     $scope.search.date = $scope.search.date || {
             startDate:  moment().subtract(15, 'days'),
             endDate: moment()
@@ -152,14 +162,13 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
     };
 
     $scope.getdata = function(keyword,_page) {
-        console.log($scope.pageSize);
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date;
         var startDate = date.startDate || "";
         var endDate = date.endDate || "";
-        var agent = search.agent;
+        var agent = search.agent || "";
         $http.get(statUri+'/players', {
             params:{
                 token: sso.getToken(),
@@ -171,15 +180,14 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
                 status:1
             }
         }).success(function(result){
-            console.log(result);
+            $scope.moreLoading = false;
             if(result.err){
                 $scope.error(result.msg);
             }else{
-                $scope.moreLoading = false;
-                // $('html,body').animate({ scrollTop: 0 }, 100);
+                $('html,body').animate({ scrollTop: 0 }, 100);
+                $scope.usersInfo = result;
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
@@ -195,19 +203,25 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
 
     $scope.getdata();
 
-    $http.get(agentUri + '/subAgents', {
-        params: {
-            token: sso.getToken()
-        }
-    }).success(function (result) {
-        if (result.err) {
-            $scope.error(result.msg);
-        } else {
-            $scope.agents = result.rows;
-        }
-    }).error(function (msg, code) {
-        $scope.errorTips(code);
-    });
+    $scope.getOption = function () {
+        $http.get(agentUri + '/subAgents', {
+            params: {
+                token: sso.getToken(),
+                search:$scope.search.agent
+            }
+        }).success(function (result) {
+            if (result.err) {
+                $scope.error(result.msg);
+            } else {
+                $scope.channels = result.rows;
+                $scope.isok = true;
+            }
+        }).error(function (msg, code) {
+            $scope.errorTips(code);
+        });
+    }
+
+    $scope.getOption();
 
 
     $scope.onPageSizeChanged = function() {
@@ -235,7 +249,6 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
     var history = global.AgentDiaryHistory||(global.AgentDiaryHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    console.log($scope.search.date);
     $scope.search.date = $scope.search.date || {
             startDate:  moment().subtract(15, 'days'),
             endDate: moment()
@@ -267,7 +280,6 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
     };
 
     $scope.getdata = function(keyword,_page) {
-        console.log($scope.pageSize);
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
@@ -288,7 +300,6 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
                 status:1
             }
         }).success(function(result){
-            console.log(result);
             if(result.err){
                 $scope.error(result.msg);
             }else{
