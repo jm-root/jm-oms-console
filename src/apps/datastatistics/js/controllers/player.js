@@ -32,6 +32,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
             $scope.error(obj.msg);
         }else{
             $scope.apps =obj.rows||[];
+            console.info($scope.apps);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -108,6 +109,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = {};
     $scope.search.date = $scope.search.date||{};
+
     // $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
     // $scope.endDate = moment(new Date());
 
@@ -153,7 +155,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         var date = search.date||{};
         var startDate = date.startDate || "";
         var endDate = date.endDate|| "";
-        var agent = $scope.searchagent;
+        var agent =search.agent||"";
         $http.get(urlget, {
             params:{
                 token: sso.getToken(),
@@ -188,18 +190,11 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     }
     $scope.getdata();
 
-    $scope.$watch('search.date', function () {
-        $scope.getdata(1);
-    });
-    $scope.$watch('searchagent', function () {
-        $scope.getdata(1);
-    });
-
     $scope.getoption = function () {
-        $http.get(agentUri + '/subAgents', {
+        $http.get(agentUri+'/agents', {
             params:{
                 token: sso.getToken(),
-                keyword:$scope.searchagent
+                search:$scope.search.agent
             }
         }).success(function(result){
             var obj = result;
@@ -207,6 +202,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 $scope.error(obj.msg);
             }else{
                 $scope.channels = obj.rows||[];
+                console.info($scope.channels);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -216,7 +212,9 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.selectagent = function(row){
         $scope.searchagent = row.name;
     };
-
+    $scope.$watch('search.date', function () {
+        $scope.getdata(1);
+    });
 
 }]);
 
@@ -275,7 +273,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
             {headerName: "发起方名称", field: "fromUser", width: 100, valueGetter: format_fromUser},
             {headerName: "发起方等级", field: "type",width: 100},        //field: "fromUserGrade"
             {headerName: "发起方操作前金币", field: "type", width: 100},    //fromUserBalance
-            {headerName: "操作类型", field: "type", width: 100},
+            {headerName: "操作类型", field: "flag", width: 100},
             {headerName: "操作金额", field: "amount", width: 100},
             {headerName: "交易对象ID", field: "toUserId", width: 70, valueGetter: format_toUserId},
             {headerName: "交易对象名称", field: "toUser", width: 90,valueGetter: format_toUser},

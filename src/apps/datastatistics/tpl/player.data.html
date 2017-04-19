@@ -4,40 +4,21 @@
 <div>
     <div class="pull-right headpadd m-r-sm">
         <div class="input-group" style="width: 250px;">
-            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 30px"/>
+            <input date-range-picker type="text" class="form-control" ng-model="search.date" options="dateOptions" placeholder="{{'common.times'|translate}}" style="position: relative;height: 34px"/>
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();" ></i>
         </div>
     </div>
-    <!--<div class="pull-right m-r-sm headpadd">-->
-        <!--<select class="input-sm form-control"  ng-show="ihg.nat" ng-model="nat" ng-options="nat.text for nat in ihg.nat">-->
-            <!--<option value="">&#45;&#45; 二级渠道 &#45;&#45;</option>-->
-        <!--</select>-->
-    <!--</div>-->
 
-    <!--<div class="pull-right m-r-sm headpadd">-->
-        <!--<select class="pull-left input-sm form-control" style="width: 115px" ng-model="search.agent" ng-options="opt._id as opt.name for opt in channels" ng-change="getdata(1)">-->
-            <!--<option value="">所有渠道</option>-->
-        <!--</select>-->
-        <!--<select class="input-sm form-control"  ng-model="ihg" ng-options="ihg.text for ihg in cascadeagent">-->
-            <!--<option value="">&#45;&#45; 一级渠道 &#45;&#45;</option>-->
-        <!--</select>-->
-    <!--</div>-->
-    <!--<div class="pull-right headpadd">-->
-        <!--<input type="text" class="pull-left form-control input-sm" placeholder="{{'common.searchUser'|translate}}" ng-model="keyagent" ng-keyup="myKeyup($event)">-->
-    <!--</div>-->
     <div class="input-group w-sm pull-right headpadd m-r-sm ">
-        <input type="text" class="form-control input-sm" placeholder="搜索渠道" ng-model="searchagent" style="width: 128px" ng-change="getdata(1)">
-        <div class="input-group-btn dropdown" drop-down-table>
-            <div type="button" class="btn btn-default btn-sm" ng-click="getoption()"><i class="fa fa-search"></i></div>
-            <div class="dropdown-menu pull-right" style="margin: 0;padding: 0;">
-                <div ng-repeat="x in channels" class="p-l-lg option" ng-click="selectagent(x)">{{x.name}}</div>
-            </div>
-        </div><!-- /btn-group -->
+        <div class="">
+            <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="getdata(1)">
+                <option value="">所有渠道</option>
+            </select>
+        </div>
     </div>
 
-
     <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
-        <select class="input-sm form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
+        <select class=" form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
         </select>
     </div>
 </div>
