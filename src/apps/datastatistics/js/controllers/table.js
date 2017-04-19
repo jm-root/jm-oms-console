@@ -1,4 +1,4 @@
-app.controller('TableCtrl', ['$scope', '$state', '$stateParams', '$http', 'global', function ($scope, $state, $stateParams, $http, global) {
+app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
     var sso = jm.sdk.sso;
     var page = 1;
     var history = global.TableHistory||(global.TableHistory={});
@@ -103,9 +103,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$stateParams', '$http', 'globa
                     }).success(function (result) {
                         var rooms = [];
                         for (var key in result) {
-                            if (result[key].roomType != 1) {
+                            // if (result[key].roomType != 1) {
                                 rooms.push(result[key]);
-                            }
+                            // }
                         }
                         reqRooms--;
 

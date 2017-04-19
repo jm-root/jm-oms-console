@@ -69,6 +69,8 @@
       "manage":"Data Statistics",
       "playerdata":"Player Data",
       "agentdata":"Agent Data",
+      "logreg":"登录注册日报表",
+      "profit":"盈利日报表",
       "playerstatistics":"Player Statistics",
       "agentstatistics":"Agent Statistics",
       "table":"Table Statistics",

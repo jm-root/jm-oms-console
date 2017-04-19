@@ -32,7 +32,6 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
             $scope.error(obj.msg);
         }else{
             $scope.apps =obj.rows||[];
-            console.info($scope.apps);
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -58,7 +57,6 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         var startDate = date.startDate || $scope.startDate;
         var endDate = date.endDate|| $scope.endDate;
         var agent = search.agent;
-
         $http.get(urlget, {
             params:{
                 token: sso.getToken(),
@@ -155,7 +153,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         var date = search.date||{};
         var startDate = date.startDate || "";
         var endDate = date.endDate|| "";
-        var agent =search.agent||"";
+        var agent =search.agent;
         $http.get(urlget, {
             params:{
                 token: sso.getToken(),
@@ -191,7 +189,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.getdata();
 
     $scope.getoption = function () {
-        $http.get(agentUri+'/agents', {
+        $http.get(agentUri + '/subAgents', {
             params:{
                 token: sso.getToken(),
                 search:$scope.search.agent
@@ -202,7 +200,6 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 $scope.error(obj.msg);
             }else{
                 $scope.channels = obj.rows||[];
-                console.info($scope.channels);
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
@@ -283,17 +280,17 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         ];
 
         global.agGridTranslateSync($scope, columnDefs, [
-            'datastatistics.diary.header.fromUserId',
-            'datastatistics.diary.header.fromUser',
-            'datastatistics.diary.header.fromLevel',
-            'datastatistics.diary.header.fromJb',
-            'datastatistics.diary.header.type',
-            'datastatistics.diary.header.amount',
-            'datastatistics.diary.header.toUserId',
-            'datastatistics.diary.header.toUser',
-            'datastatistics.diary.header.toLevel',
-            'datastatistics.diary.header.toJb',
-            'datastatistics.diary.header.createdAt'
+            'datastatistics.playerdiary.header.fromUserId',
+            'datastatistics.playerdiary.header.fromUser',
+            'datastatistics.playerdiary.header.fromLevel',
+            'datastatistics.playerdiary.header.fromJb',
+            'datastatistics.playerdiary.header.type',
+            'datastatistics.playerdiary.header.amount',
+            'datastatistics.playerdiary.header.toUserId',
+            'datastatistics.playerdiary.header.toUser',
+            'datastatistics.playerdiary.header.toLevel',
+            'datastatistics.playerdiary.header.toJb',
+            'datastatistics.playerdiary.header.createdAt'
         ]);
 
         var dataSource = {
