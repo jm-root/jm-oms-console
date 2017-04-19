@@ -90,7 +90,12 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     }
     $scope.getdata();
 
-    $scope.details = function (key) {
+    $scope.details = function (key1,key2) {
+        var obj = {
+            account:key1,
+            date:key2
+        }
+        sessionStorage.setItem('playermsg', JSON.stringify(obj));//缓存到本地
         $state.go("app.datastatistics.playerdiary");
     }
 
@@ -293,11 +298,19 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         var dataSource = {
             getRows: function (params) {
                 global.agGridOverlay();
-
                 var search = $scope.search;
+
+                var player = sessionStorage.getItem('playermsg');//缓存到本地
+                if(player) {
+                    player = JSON.parse(player);
+                    $scope.search.keyword = player.account;
+                //     search.date = player.date;
+                }
                 var date = search.date;
                 var startDate = date.startDate || "";
                 var endDate = date.endDate || "";
+
+                sessionStorage.removeItem("selectedUser");
 
                 var page = params.startRow / $scope.pageSize + 1;
                 bank.history({
