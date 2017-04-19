@@ -133,6 +133,23 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         }
     }
 
+    $http.get(agentUri + '/subAgents', {
+        params:{
+            token: sso.getToken(),
+            search:$scope.search.agent
+        }
+    }).success(function(result){
+        var obj = result;
+        if(obj.err){
+            $scope.error(obj.msg);
+        }else{
+            $scope.channels = obj.rows||[];
+            $scope.select = true;
+        }
+    }).error(function(msg, code){
+        $scope.errorTips(code);
+    });
+
     $scope.left = function () {
         if($scope.page>1){
             --page;
@@ -188,27 +205,6 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     }
     $scope.getdata();
 
-    $scope.getoption = function () {
-        $http.get(agentUri + '/subAgents', {
-            params:{
-                token: sso.getToken(),
-                search:$scope.search.agent
-            }
-        }).success(function(result){
-            var obj = result;
-            if(obj.err){
-                $scope.error(obj.msg);
-            }else{
-                $scope.channels = obj.rows||[];
-            }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
-        });
-    }
-    $scope.getoption();
-    $scope.selectagent = function(row){
-        $scope.searchagent = row.name;
-    };
     $scope.$watch('search.date', function () {
         $scope.getdata(1);
     });

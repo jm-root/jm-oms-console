@@ -64,7 +64,7 @@
                             url: '/logreg',
                             templateUrl: path + 'tpl/logreg.html',
                             controller: 'LogregCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',,path + 'js/controllers/logreg.js'])
+                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/logreg.js'])
                         })
                         .state('app.datastatistics.profit', {
                             url: '/profit',

@@ -71,7 +71,7 @@
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
     /* Force table to not be like tables anymore */
-    .mobiletable, .mobiletable thead, .mobiletable tbody, .mobiletable th, .mobiletable td, .mobiletable tr{
+    .mobiletable, .mobiletable thead, .mobiletable tbody,.mobiletable tfoot, .mobiletable th, .mobiletable td, .mobiletable tr{
         display: block;
     }
 
@@ -82,7 +82,7 @@
         left: -9999px;
     }
 
-    .mobiletable tbody tr, .mobiletable thead tr {
+    .mobiletable tbody tr, .mobiletable thead tr, .mobiletable tfoot tr {
         border: 1px solid #ccc;
         margin-bottom:3px;
     }
@@ -94,8 +94,8 @@
         white-space: nowrap;
         float: left;
     }
-
     .mobiletable td:before { content: attr(data-title); }
+
 }
 
 .option:hover{
