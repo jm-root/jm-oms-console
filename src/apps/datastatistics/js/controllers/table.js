@@ -37,8 +37,18 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
         return sum ;
     }
 
-    var httpRequests = 0;
-    var httpRequests2 = 0;
+    $scope.isShowExperience = false;
+    var viewPath = 'view.appmanager.table.showexperience';
+    $scope.per = {};
+    global.getUserPermission(viewPath).then(function(obj){
+        $scope.per = obj[viewPath]||{};
+        $scope.super = !!$scope.per['*'];
+        if($scope.super || ($scope.per.get && $scope.per.post)){
+            $scope.isShowExperience = true;
+        }
+    }).catch(function(err){
+        console.log(err);
+    });
 
     var reqApps = false;
     var reqRooms = 0;
@@ -102,11 +112,18 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                         }
                     }).success(function (result) {
                         var rooms = [];
-                        for (var key in result) {
-                            // if (result[key].roomType != 1) {
+                        if(!$scope.isShowExperience){
+                            for (var key in result) {
+                                if (result[key].roomType != 1) {
+                                    rooms.push(result[key]);
+                                }
+                            }
+                        }else {
+                            for (var key in result) {
                                 rooms.push(result[key]);
-                            // }
+                            }
                         }
+
                         reqRooms--;
 
                         for(var roomtype=0;roomtype <rooms.length;roomtype++){
