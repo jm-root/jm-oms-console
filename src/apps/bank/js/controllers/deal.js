@@ -4,6 +4,7 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search||{};
     $scope.search.date = $scope.search.date || {};
+    $scope.search.isMerge = $scope.search.isMerge || false;
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.opens = 'left';
@@ -86,12 +87,14 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
             var date = search.date;
             var startDate = date.startDate || "";
             var endDate = date.endDate || "";
+            var isMerge = search.isMerge;
 
             var page = params.startRow / $scope.pageSize + 1;
             bank.history({
                 page: page,
                 rows: $scope.pageSize,
                 type: search.type,
+                isMerge: isMerge,
                 search: search.keyword,
                 startDate: startDate.toString(),
                 endDate: endDate.toString()
@@ -142,6 +145,9 @@ app.controller('BankDealCtrl', ['$scope', '$state', '$http', 'global', function 
         history.search = $scope.search;
     });
     $scope.$watch('search.date', function () {
+        $scope.onPageSizeChanged();
+    });
+    $scope.$watch('search.isMerge', function () {
         $scope.onPageSizeChanged();
     });
 }]);
