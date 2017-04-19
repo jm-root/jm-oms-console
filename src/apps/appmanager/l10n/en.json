@@ -106,6 +106,7 @@
       "channelIsolation": "Channel isolation",
       "autoSeat": "Automatic seat selection",
       "freeField": "Free field",
+      "stopServer": "Stop Server",
       "tableFishNum": "Table number of fish",
       "toggleSceneTime": "Toggle scene time (SEC)",
       "critScore": "Crit score",

@@ -106,6 +106,7 @@
       "channelIsolation": "Xác nhận dùng đường đẫn cấp 1 cách li người chơi? Khôống chế người chơi không cùng một đường dẫn không thể chơi chung một bàn",
       "autoSeat": "xác nhận tự động chọn chỗ ngồi?",
       "freeField": "xác nhận màn miễn phí?",
+      "stopServer": "停服",
       "tableFishNum": "số cá ít nhất của bàn",
       "toggleSceneTime": "thời gian đổi cảnh (giây)",
       "critScore": "số điểm bạo kích",

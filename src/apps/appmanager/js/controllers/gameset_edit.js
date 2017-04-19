@@ -31,6 +31,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         maxAreas: 5,
         agentIsolate: 0,
         agentAreas : {},
+        serverStatus: 1,
         //---------------
         baoji: 0,
         intervalChangeScene: 0,
@@ -97,6 +98,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.doubleFire = $scope.room.doubleFire + "";
         $scope.room.fixedRate = $scope.room.fixedRate + "";
         $scope.room.autoAim = $scope.room.autoAim + "";
+        $scope.room.serverStatus = $scope.room.serverStatus + "";
 
         $scope.room.intervalChangeScene /= 1000;
     }
@@ -112,6 +114,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.doubleFire = parseInt($scope.room.doubleFire);
         $scope.room.fixedRate = parseInt($scope.room.fixedRate);
         $scope.room.autoAim = parseInt($scope.room.autoAim);
+        $scope.room.serverStatus = parseInt($scope.room.serverStatus);
         if(typeof $scope.room.rates == "string"){
             var rates = $scope.room.rates.split(",");
             for(var i=0; i<rates.length; ++i){
@@ -250,6 +253,7 @@ app.controller('FishEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             autoSeat: 0,
             virtualOnlineCount: 0,
             rates: [1,2,3,4,5,6,7,8,9,10],
+            serverStatus: 1,
             //---------------
             baoji: 0,
             intervalChangeScene: 0,
@@ -544,6 +548,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         maxAreas: 5,
         agentIsolate: 0,
         agentAreas : {},
+        serverStatus: 1,
         //---------------
         betTime: 15000,
         betLimit: 1000,
@@ -605,6 +610,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $scope.room.free = $scope.room.free + "";
         $scope.room.status = $scope.room.status + "";
         $scope.room.visible = $scope.room.visible + "";
+        $scope.room.serverStatus = $scope.room.serverStatus + "";
 
         $scope.room.betTime /= 1000;
     }
@@ -617,6 +623,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
         $scope.room.free = parseInt($scope.room.free);
         $scope.room.status = parseInt($scope.room.status);
         $scope.room.visible = parseInt($scope.room.visible);
+        $scope.room.statusStatus = parseInt($scope.room.statusStatus);
         if(typeof $scope.room.rates == "string"){
             var rates = $scope.room.rates.split(",");
             for(var i=0; i<rates.length; ++i){
@@ -753,6 +760,7 @@ app.controller('GambleEditCtrl', ['$scope', '$http', '$state', '$stateParams', '
             autoSeat: 0,
             virtualOnlineCount: 0,
             rates: [1,2,3,4,5,6,7,8,9,10],
+            serverStatus: 1,
             //---------------
             betTime: 15000,
             betLimit: 1000,
@@ -1047,6 +1055,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         maxAreas: 5,
         agentIsolate: 0,
         agentAreas : {},
+        serverStatus: 1,
         //---------------
         betTime: 15000,
         betLimit: 1000,
@@ -1108,6 +1117,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.free = $scope.room.free + "";
         $scope.room.status = $scope.room.status + "";
         $scope.room.visible = $scope.room.visible + "";
+        $scope.room.serverStatus = $scope.room.serverStatus + "";
 
         $scope.room.betTime /= 1000;
     }
@@ -1120,6 +1130,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
         $scope.room.free = parseInt($scope.room.free);
         $scope.room.status = parseInt($scope.room.status);
         $scope.room.visible = parseInt($scope.room.visible);
+        $scope.room.serverStatus = parseInt($scope.room.serverStatus);
         if(typeof $scope.room.rates == "string"){
             var rates = $scope.room.rates.split(",");
             for(var i=0; i<rates.length; ++i){
@@ -1256,6 +1267,7 @@ app.controller('HuluEditCtrl', ['$scope', '$http', '$state', '$stateParams', '$q
             autoSeat: 0,
             virtualOnlineCount: 0,
             rates: [1,2,3,4,5,6,7,8,9,10],
+            serverStatus: 1,
             //---------------
             betTime: 15000,
             betLimit: 1000,

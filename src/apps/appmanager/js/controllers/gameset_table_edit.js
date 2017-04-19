@@ -27,6 +27,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         autoSeat: 0,
         virtualOnlineCount: 0,
         rates: [1,2,3,4,5,6,7,8,9,10],
+        serverStatus: 1,
         //---------------
         baoji: 0,
         intervalChangeScene: 0,
@@ -142,6 +143,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.table.doubleFire = $scope.table.doubleFire + "";
         $scope.table.fixedRate = $scope.table.fixedRate + "";
         $scope.table.autoAim = $scope.table.autoAim + "";
+        $scope.table.serverStatus = $scope.table.serverStatus + "";
 
         $scope.table.intervalChangeScene /= 1000;
     }
@@ -156,6 +158,7 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.table.doubleFire = parseInt($scope.table.doubleFire);
         $scope.table.fixedRate = parseInt($scope.table.fixedRate);
         $scope.table.autoAim = parseInt($scope.table.autoAim);
+        $scope.table.serverStatus = parseInt($scope.table.serverStatus);
         if(typeof $scope.table.rates == "string"){
             var rates = $scope.table.rates.split(",");
             for(var i=0; i<rates.length; ++i){
@@ -369,6 +372,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         autoSeat: 0,
         virtualOnlineCount: 0,
         rates: [1,2,3,4,5,6,7,8,9,10],
+        serverStatus: 1,
         //---------------
         betTime: 15000,
         absenceNum: 10,
@@ -480,6 +484,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         $scope.table.free = $scope.table.free + "";
         $scope.table.status = $scope.table.status + "";
         $scope.table.visible = $scope.table.visible + "";
+        $scope.table.serverStatus = $scope.table.serverStatus + "";
 
         $scope.table.betTime /= 1000;
     }
@@ -491,6 +496,7 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         $scope.table.free = parseInt($scope.table.free);
         $scope.table.status = parseInt($scope.table.status);
         $scope.table.visible = parseInt($scope.table.visible);
+        $scope.table.serverStatus = parseInt($scope.table.serverStatus);
         if(typeof $scope.table.rates == "string"){
             var rates = $scope.table.rates.split(",");
             for(var i=0; i<rates.length; ++i){
@@ -754,6 +760,7 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         autoSeat: 0,
         virtualOnlineCount: 0,
         rates: [1,2,3,4,5,6,7,8,9,10],
+        serverStatus: 1,
         //---------------
         betTime: 15000,
         betLimit: 1000,
@@ -864,6 +871,7 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.table.free = $scope.table.free + "";
         $scope.table.status = $scope.table.status + "";
         $scope.table.visible = $scope.table.visible + "";
+        $scope.table.serverStatus = $scope.table.serverStatus + "";
 
         $scope.table.betTime /= 1000;
     }
@@ -875,6 +883,7 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.table.free = parseInt($scope.table.free);
         $scope.table.status = parseInt($scope.table.status);
         $scope.table.visible = parseInt($scope.table.visible);
+        $scope.table.serverStatus = parseInt($scope.table.serverStatus);
         if(typeof $scope.table.rates == "string"){
             var rates = $scope.table.rates.split(",");
             for(var i=0; i<rates.length; ++i){

@@ -106,6 +106,7 @@
       "channelIsolation": "是否按一级渠道隔离玩家，限制不同渠道的玩家不能在一张桌子上玩",
       "autoSeat": "是否自动选座",
       "freeField": "是否免费场",
+      "stopServer": "停服",
       "tableFishNum": "桌子最少鱼数",
       "toggleSceneTime": "切换场景时间(秒)",
       "critScore": "暴击分数",
