@@ -31,7 +31,8 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         if(obj.err){
             $scope.error(obj.msg);
         }else{
-            $scope.apps =obj.rows||[];
+            $scope.channels =obj.rows||[];
+            $scope.select = true;
         }
     }).error(function(msg, code){
         $scope.errorTips(code);
@@ -90,7 +91,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.getdata();
 
     $scope.details = function (key) {
-
+        $state.go("app.datastatistics.playerdiary");
     }
 
     $scope.$watch('search.date', function () {
@@ -132,6 +133,23 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
             border:'1px solid #cccccc'
         }
     }
+
+    $http.get(agentUri + '/subAgents', {
+        params:{
+            token: sso.getToken(),
+            search:$scope.search.agent
+        }
+    }).success(function(result){
+        var obj = result;
+        if(obj.err){
+            $scope.error(obj.msg);
+        }else{
+            $scope.channels = obj.rows||[];
+            $scope.select = true;
+        }
+    }).error(function(msg, code){
+        $scope.errorTips(code);
+    });
 
     $scope.left = function () {
         if($scope.page>1){
@@ -188,27 +206,6 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     }
     $scope.getdata();
 
-    $scope.getoption = function () {
-        $http.get(agentUri + '/subAgents', {
-            params:{
-                token: sso.getToken(),
-                search:$scope.search.agent
-            }
-        }).success(function(result){
-            var obj = result;
-            if(obj.err){
-                $scope.error(obj.msg);
-            }else{
-                $scope.channels = obj.rows||[];
-            }
-        }).error(function(msg, code){
-            $scope.errorTips(code);
-        });
-    }
-    $scope.getoption();
-    $scope.selectagent = function(row){
-        $scope.searchagent = row.name;
-    };
     $scope.$watch('search.date', function () {
         $scope.getdata(1);
     });
