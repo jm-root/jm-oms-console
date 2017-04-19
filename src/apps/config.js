@@ -2,25 +2,25 @@
 
 var gConfig = {
     localhost: {
-        apiHost: "http://localhost:19990",
+        apiHost: "http://localhost:20200",
         sdkHost: "http://localhost:20200",
         opensdkHost: "http://localhost:20300",
         staticHost:"http://localhost:20400",
         robotUri: "localhost:20760"
     },
     development: {
-        // apiHost: "http://192.168.1.10:19990",
         apiHost: "http://test.gzleidi.cn:81",
-        sdkHost: "http://test.gzleidi.cn:82",
+        sdkHost: "http://test.gzleidi.cn:81",
         opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
-        robotUri: "test.gzleidi.cn:82/robot"
+        robotUri: "test.gzleidi.cn/robot"
     },
     production: {
-        sdkHost: "http://api.gzleidi.com",
-        opensdkHost: "http://openapi.gzleidi.com",
-        staticHost:"http://www.gzleidi.com",
-        robotUri: "api.gzleidi.com/robot"
+        apiHost: "http://cn1.gzleidi.cn:81",
+        sdkHost: "http://cn1.gzleidi.cn:81",
+        opensdkHost: "http://cn1.gzleidi.cn:81:20300",
+        staticHost:"http://cn1.gzleidi.cn",
+        robotUri: "cn1.gzleidi.cn:81/robot"
     }
 };
 
@@ -69,7 +69,7 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
-var omsnav = "nav";
+var omsnav = "nav_new";
 
 const pfm_cy = 'static';
 const pfm_oms = 'oms';

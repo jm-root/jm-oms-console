@@ -8,7 +8,7 @@ angular.module('app')
         $scope.defaultRows = '20';
         $scope.listRowsOptions = [{val: '20'}, {val: '50'}, {val: '100'}, {val: '200'}, {val: '500'}, {val: '1000'}];
 
-        var url = omsUri + '/nav';
+        var url = adminUri + '/nav';
         $scope.times = 0;
         var sso = jm.sdk.sso;
         global.getUser().then(function (user) {
