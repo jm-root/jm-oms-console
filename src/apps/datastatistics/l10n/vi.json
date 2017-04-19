@@ -24,6 +24,36 @@
         "balance": "操作前余额",
         "createdAt": "操作时间"
       }
+    },
+    "agentstatistics":{
+      "title":"渠道统计",
+      "typeOpts": {
+        "opts": "所有渠道"
+      },
+      "header":{
+        "channelId": "渠道ID",
+        "channelName": "渠道名",
+        "rollIn":"转入",
+        "rollOut":"转出",
+        "increase": "上分",
+        "decrease": "下分",
+        "balance": "金币余额",
+        "details": "详细信息"
+      }
+    },
+    "agentdata":{
+      "title":"渠道数据",
+      "typeOpts": {
+        "opts": "所有渠道"
+      },
+      "header":{
+        "date": "日期",
+        "rollIn":"转入",
+        "rollOut":"转出",
+        "increase": "上分",
+        "decrease": "下分",
+        "summary": "汇总"
+      }
     }
   }
 }
