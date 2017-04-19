@@ -1,6 +1,6 @@
 {
   "datastatistics":{
-    "diary":{
+    "playerdiary":{
       "title":"交易流水",
       "typeOpts": {
         "opts": "交易类型",
