@@ -127,7 +127,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                 }
                             }
 
-                            // $scope.allData.forEach(function (e, i) {
+                            $scope.allData.forEach(function (e, i) {
 
                                 $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
                                     params:{
@@ -172,7 +172,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                     e.rate = rate;
                                     e.profit = profit;
                                 });
-                            // });
+                            });
 
                             $scope.moreLoading = false;
                             // $('html,body').animate({ scrollTop: 0 }, 100);
