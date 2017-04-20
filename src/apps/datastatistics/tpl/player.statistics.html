@@ -58,7 +58,7 @@
                 <td data-title="{{'datastatistics.playerstatistics.header.agent'|translate}}" >{{row.agent.name}}</td>
                 <td data-title="{{'datastatistics.playerstatistics.header.up'|translate}}" >{{row.up_jb}}</td>
                 <td data-title="{{'datastatistics.playerstatistics.header.down'|translate}}" >{{row.down_jb}}</td>
-                <td data-title="{{'datastatistics.playerstatistics.header.jbbalance'|translate}}" >{{row.pin_jb}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.jbbalance'|translate}}" >{{row.hold.jb.amount||0}}</td>
                 <td data-title="{{'datastatistics.playerstatistics.header.detail'|translate}}" >
                     <button class="btn btn-xs btn-info" ng-click="details(row.user.account||row.user.nick,search.date)" >{{'datastatistics.playerstatistics.header.detail'|translate}}</button>
                 </td>

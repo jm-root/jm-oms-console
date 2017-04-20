@@ -63,6 +63,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
                 page:page,
                 rows:$scope.pageSize||20,
                 agent:agent,
+                hasAccount:true,
                 rtype:1
             }
         }).success(function(result){
