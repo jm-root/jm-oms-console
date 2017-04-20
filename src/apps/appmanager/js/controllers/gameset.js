@@ -26,6 +26,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
             // {headerName: "玩家上限", field: "maxPlayers", width: 120},
             // {headerName: "最少鱼数", field: "minFishes", width: 120},
+            {headerName: "操作", field: "name", width: 120,cellRenderer:format_operate, cellStyle:{'text-align':'center'}},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
             // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
@@ -52,6 +53,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
             // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
             // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            {headerName: "操作", field: "name", width: 120,cellRenderer:format_operate, cellStyle:{'text-align':'center'}},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             // {headerName: "游戏难度", field: "hardLevel", width: 120},
             // {headerName: "最大携带", field: "maxAmount", width: 120},
@@ -71,6 +73,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
             // {headerName: "免费场", field: "free", width: 100, valueGetter: angGridFormatFree},
             // {headerName: "桌子模式", field: "mode", width: 120, valueGetter: angGridFormatMode},
             // {headerName: "货币种类", field: "ctCode", width: 120, valueGetter: angGridFormatCtCode},
+            {headerName: "操作", field: "name", width: 120,cellRenderer:format_operate, cellStyle:{'text-align':'center'}},
             {headerName: "桌子数", field: "maxAreas", width: 120},
             // {headerName: "游戏难度", field: "hardLevel", width: 120},
             // {headerName: "最大携带", field: "maxAmount", width: 120},
@@ -86,6 +89,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     global.agGridTranslateSync($scope, columnDefs.fish, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
+        'appmgr.room.operate',
         // 'appmgr.room.roomRate',
         // 'appmgr.room.freeField',
         // 'appmgr.room.tableFishNum',
@@ -101,7 +105,8 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     global.agGridTranslateSync($scope, columnDefs.gamble, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
-        'appmgr.room.roomRate',
+        'appmgr.room.operate',
+        // 'appmgr.room.roomRate',
         // 'appmgr.room.freeField',
         // 'appmgr.room.roomMode',
         // 'appmgr.room.roomCurrency',
@@ -115,7 +120,8 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
     global.agGridTranslateSync($scope, columnDefs.hulu, [
         'appmgr.room.roomType',
         'appmgr.room.roomName',
-        'appmgr.room.roomRate',
+        'appmgr.room.operate',
+        // 'appmgr.room.roomRate',
         // 'appmgr.room.freeField',
         // 'appmgr.room.roomMode',
         // 'appmgr.room.roomCurrency',
@@ -125,6 +131,63 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         // 'appmgr.room.setup',
         // 'appmgr.room.currencyScore'
     ]);
+
+     $scope.handleclose = function (isopen,data) {
+        data.isopen = !data.isopen;
+        var url = appMgrUri + "/appConfig";
+        var gamekey = 'app:' + tmpl_id + ":config:area";
+
+         if(isopen){
+             $http.post(homeUri+"/kick",{ apps:[tmpl_id],rooms:[data.roomType] },{
+                 params:{
+                     token:sso.getToken()
+                 }
+             }).success(function (result) {
+                 if(result.err){
+                     $scope.error(result.msg);
+                 }else{
+                     $scope.success('操作成功');
+                 }
+             })
+         }
+        var updateTable = function (i) {
+            $http.get(url, {
+                params: {
+                    token: sso.getToken(),
+                    root:gamekey,
+                    key:i
+                }
+            }).success(function (result) {
+                result.serverStatus = isopen ? 0 :1;
+                $http.post(url, {root: gamekey, key: i, value: result}, {
+                    params:{
+                        token: sso.getToken()
+                    }
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                }).success(function (result) {
+                    if(result.err){
+                        $scope.error(result.msg);
+                    }
+                    if(i == data.startAreaId + data.maxAreas - 1){
+                        return;
+                    }else{
+                        return updateTable(i+1);
+                    }
+                })
+
+            }).error(function (msg,code) {
+                $scope.errorTips(code);
+            })
+        }
+        updateTable(data.startAreaId);
+
+    }
+
+    function format_operate(params) {
+        return "<button class='btn btn-xs btn-danger' ng-click='handleclose(data.isopen,data)'>{{data.isopen ? ('common.stopservice'|translate) :('common.startservice'|translate)}}</button>";
+    }
+
 
     function angGridFormatVisible(params) {
         return params.data.visible == 1 ? $filter('translate')('common.yes') : $filter('translate')('common.no');
@@ -158,6 +221,7 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
         $state.go("app.rooms.manage.gameset.table.list", {appId: id, type: type, roomId: roomId});
     };
 
+    $scope.allTable = [];
 
     var dataSource = {
         getRows: function (params) {
@@ -166,34 +230,83 @@ app.controller('GameSetListCtrl', ['$scope', '$state', '$stateParams', '$http', 
 
             var page = params.startRow / $scope.pageSize + 1;
             var url = appMgrUri + "/appConfig";
-            $http.get(url, {
-                params: {
-                    token: sso.getToken(),
-                    root: hkey,
-                    list: 1,
-                    all: 1
+            $http.get(url,{
+                params:{
+                    token:sso.getToken(),
+                    root:hkey+":area",
+                    list:1,
+                    all:1
                 }
-            }).error(function (msg, code) {
+            }).error(function (msg,code) {
                 $scope.errorTips(code);
-            }).success(function (result) {
-                var data = result;
-                if(data.err){
-                    $scope.error(data.msg);
-                }else{
-                    if(data.err == 404){
-                        data = {};
+            }).success(function (result) {                   //                     所有桌子
+                $scope.allTable = result;
+                $http.get(url, {
+                    params: {
+                        token: sso.getToken(),
+                        root: hkey,
+                        list: 1,
+                        all: 1
                     }
-                    var rowsThisPage = [];
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                }).success(function (allroom) {                               //所有房间
+                    var data = allroom;
+                    if(data.err){
+                        $scope.error(data.msg);
+                    }else{
+                        if(data.err == 404){
+                            data = {};
+                        }
+                        var rowsThisPage = [];
+                        var roomtype = [];
+                        for(var key in allroom){
+                            roomtype.push(key);
+                        }
+                        var getsource = function (i,tabletype) {
+                            var isopen = false;
+                            if($scope.allTable[String(tabletype)]){
+                                if( $scope.allTable[String(tabletype)].serverStatus != 0 ){
+                                    isopen = true;
+                                }
+                            }
+                            if(isopen){
+                                allroom[roomtype[i]].isopen = true;                                    //为房间添加一个属性isopen用于判断房间是否停服
+                                if( i == roomtype.length-1){
+                                    var rowsThisPage = [];
+                                    var lastRow = roomtype.length;
+                                    for(var key in allroom){
+                                        rowsThisPage.push(allroom[key]);
+                                    }
+                                    params.successCallback(rowsThisPage, lastRow);
+                                    return;
+                                }
+                                return getsource(i+1,allroom[roomtype[i+1]].startAreaId );
+                            }
+                            if( parseInt(tabletype) == allroom[roomtype[i]].startAreaId+allroom[roomtype[i]].maxAreas-1){
+                                allroom[roomtype[i]].isopen = false;
+                                if(i == roomtype.length-1){
+                                    var rowsThisPage = [];
+                                    var lastRow = roomtype.length;
+                                    for(var key in allroom){
+                                        rowsThisPage.push(allroom[key]);
+                                    }
+                                    params.successCallback(rowsThisPage, lastRow);
+                                    return;
+                                }
+                                return getsource(i+1,allroom[roomtype[i+1]].startAreaId);
+                            }
 
-                    for(var key in data){
-                        data[key].roomType = key;
-                        rowsThisPage.push(data[key]);
+                            return getsource(i,tabletype+1);
+                        }
+
+                        getsource(0,allroom[roomtype[0]].startAreaId);
+
                     }
+                });
 
-                    var lastRow = rowsThisPage.length;
-                    params.successCallback(rowsThisPage, lastRow);
-                }
-            });
+            })
+
         }
     };
 

@@ -21,7 +21,8 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         // return '<label class="i-checks i-checks-sm">'+
         //     '<input type="checkbox" ng-model="data.active" ng-change="activeChange(data)"><i></i>'+
         //     '</label>';
-        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">{{data.active?"封号":"解封"}}</span>';
+
+        return '<span class="btn btn-xs bg-primary" ng-click="activeChange(data)">{{data.active? ("common.kickOut"|translate) : ("common.unblocking"|translate) }}</span>';
     }
 
     function resetpwd_render(params){
@@ -100,7 +101,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
         // {headerName: "微信OpenID", field: "mp_openid", width: 255},
         {headerName: "昵称", field: "nick", width: 100},
         {headerName: "性别", field: "gender", width: 100, valueGetter: format_gender},
-        {headerName: "操作",  width: 80, cellRenderer: resetpwd_render},
+        {headerName: "操作",  width: 120, cellRenderer: resetpwd_render,cellStyle:{'text-align':'center'}},
         {headerName: "激活状态", field: "active", width: 100, cellRenderer: active_render, cellStyle:{'text-align':'center'}},
         {headerName: "创建时间", field: "crtime", width: 145, valueGetter: $scope.angGridFormatDateS}
     ];

@@ -4,7 +4,7 @@
 "use strict";
 
 var sso =jm.sdk.sso;
-app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'global', "$stateParams", "$translatePartialLoader", "$filter", function ($rootScope, $scope, $state, $http, global, $stateParams, $translatePartialLoader, $filter) {
+app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', '$q','global', "$stateParams", "$translatePartialLoader", "$filter", function ($rootScope, $scope, $state, $http,$q, global, $stateParams, $translatePartialLoader, $filter) {
     $translatePartialLoader.addPart('appManager');
 
     var history = global.appsListHistory || (global.appsListHistory = {});
@@ -17,6 +17,7 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
         // {headerName: "_id", field: "_id", width: 70, hide: true},
         // {headerName: "userId", field: "userId", width: 200, hide: true},
         {headerName: "名称", field: "name", width: 120},
+        {headerName:"操作",field:"name",width:130,cellRenderer:format_kick,cellStyle:{'text-align':'center'}},
         // {headerName: "密码", field: "password", width: 70, hide: true},
         {headerName: "排序", field: "sort", width: 100},
         {headerName: "分类", field: "category", width: 120},
@@ -29,6 +30,7 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
 
     global.agGridTranslateSync($scope, columnDefs, [
         'common.name',
+        'common.operate',
         'common.sort',
         'common.cate',
         'common.ctime',
@@ -37,6 +39,60 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
         'common.status',
         'common.visible'
     ]);
+
+
+    function format_kick(params) {
+        if(params.data.category === 999999 || params.data.category === 3) return "";
+        return "<button class='btn btn-xs btn-danger' ng-click='handleServer(data.isopen,data)'>{{data.isopen ? ('common.stopservice'|translate) :('common.startservice'|translate)}}</button>";
+    }
+
+    $scope.handleServer = function (isopen,data) {
+        data.isopen = !data.isopen;
+        var hkey = 'app:' + data._id + ":config:area";
+        var url = appMgrUri + "/appConfig";
+        if(isopen){
+            console.log(1);
+            $http.post(homeUri+"/kick",{ apps:[data._id]},{
+                params:{
+                    token:sso.getToken()
+                }
+            }).success(function (result) {
+                if(result.err){
+                    $scope.error(result.msg);
+                }else{
+                    $scope.success('操作成功');
+                }
+            })
+        }
+        $http.get(url, {
+            params: {
+                token: sso.getToken(),
+                root: hkey,
+                list: 1,
+                all: 1
+            }
+        }).success(function (result) {
+            for(var key in result){
+                result[key].serverStatus = isopen ? 0 : 1;
+            }
+            for(var key in result){
+                $http.post(url, {root: hkey, key: key, value: result[key]}, {
+                    params:{
+                        token: sso.getToken()
+                    }
+                }).error(function (msg, code) {
+                    $scope.errorTips(code);
+                }).success(function (result) {
+                })
+            }
+        }).error(function (msg,code) {
+            $scope.errorTips(code);
+        })
+
+
+
+
+    }
 
 
     function goRoomConfig(params){
@@ -98,14 +154,55 @@ app.controller('RoomsListCtrl', ['$rootScope', '$scope', '$state', '$http', 'glo
                 }
             }).success(function(result){
                 var data = result;
+                console.log(result)
                 if(data.err){
                     $scope.error(data.msg);
                 }else{
-                    var rowsThisPage = data.rows || [];
-                    // var rowsThisPage =  [];
-                    var lastRow = data.total||rowsThisPage.length||0;
-                    params.successCallback(rowsThisPage, lastRow);
+                    var judge = [];
+                    var getsource = function (i) {
+                        var hkey = 'app:' + data.rows[i]._id + ":config:area";
+                        var url = appMgrUri + "/appConfig";
+                        $http.get(url, {
+                            params: {
+                                token: sso.getToken(),
+                                root: hkey,
+                                list: 1,
+                                all: 1
+                            }
+                        }).error(function (msg, code) {
+                            $scope.errorTips(code);
+                        }).success(function (result) {
+                            // console.log(i);
+                            var isopen = false;
+                            var num = 0;
+                            for(var key in result){
+                                num = 1;
+                                if(result[key].serverStatus != 0){
+                                    isopen = true;
+                                    break;
+                                }
+                            }
+                            if(!num){                        //如果游戏桌子列表是空的，直接设置为true;
+                                isopen = true;
+                            }
+                            judge.push(isopen);
+                            if(judge.length === data.rows.length){
+                                for(var j=0;j<data.rows.length;j++){
+                                    data.rows[j].isopen = judge[j];
+                                }
+                                var rowsThisPage = data.rows || [];
+                                var lastRow = data.total||rowsThisPage.length||0;
+                                params.successCallback(rowsThisPage, lastRow);
+                            }else{
+                                getsource(++i);
+                            }
+                        })
+                    }
+
+                    getsource(0);
+
                 }
+
             }).error(function(msg, code){
                 $scope.errorTips(code);
             });

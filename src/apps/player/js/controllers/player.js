@@ -544,10 +544,32 @@ app.controller('PlayerOnlineCtrl', ['$scope', '$state', '$http', '$interval', 'g
         }).error(function(msg, code){
             $scope.errorTips(code);
         });
+
+        $http.post(homeUri+"/kick",{ players:[data.user.id]},{
+            params:{
+                token:sso.getToken()
+            }
+        }).success(function (result) {
+            if(result.err){
+                $scope.error(result.msg);
+            }else{
+                $scope.success('操作成功');
+            }
+        })
     }
 
-    $scope.takeAway = function(params){
-
+    $scope.takeAway = function(data){
+        $http.post(homeUri+"/kick",{ players:[data.user.id]},{
+            params:{
+                token:sso.getToken()
+            }
+        }).success(function (result) {
+            if(result.err){
+                $scope.error(result.msg);
+            }else{
+                $scope.success('操作成功');
+            }
+        })
     }
 
     var format_kickedOut = function (params) {
