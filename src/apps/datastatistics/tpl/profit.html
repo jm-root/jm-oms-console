@@ -45,19 +45,24 @@
             <thead class="bg-white">
             <tr>
                 <th>日期</th>
-                <th>海王</th>
-                <th>牛魔王</th>
+                <th ng-repeat="x in games">{{x.name}}</th>
                 <th>所有游戏汇总</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in playerdata.rows" class="active" ng-if="total">
-                <td data-title="日期" >{{row.date | date:'yyyy-MM-dd'}}</td>
-                <td data-title="海王" >{{row.register}}</td>
-                <td data-title="牛魔王" >{{row.login}}</td>
-                <td data-title="所有游戏汇总" >{{row.up_jb}}</td>
+            <tr ng-repeat="row in gameProfit.rows" class="active" ng-if="total">
+                <td>{{row.date | date:'yyyy-MM-dd'}}</td>
+                <td ng-repeat="x in games">{{row[x._id].gain_jb||0}}</td>
+                <td>{{row.total}}</td>
             </tr>
             </tbody>
+            <tfoot>
+            <tr style="color: #000000">
+                <td >汇总</td>
+                <td ng-repeat="x in games">{{gameProfit.stat[x._id].gain_jb||0}}</td>
+                <td>{{gameProfit.stat.total}}</td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 

@@ -99,7 +99,6 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                             all: 1
                         }
                     }).success(function (result) {
-                        // console.log(result)
 
                         var rooms = [];
                         for (var key in result) {
@@ -172,7 +171,6 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                     e.gain = gain;
                                     e.rate = rate;
                                     e.profit = profit;
-                                    // e.result = result;
                                 });
                             // });
 
