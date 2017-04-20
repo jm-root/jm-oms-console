@@ -53,8 +53,8 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date||{};
-        var startDate = date.startDate || $scope.startDate;
-        var endDate = date.endDate|| $scope.endDate;
+        var startDate = date.startDate || "";
+        var endDate = date.endDate|| "";
         var agent = search.agent;
         $http.get(statUri+'/statlist', {
             params:{
@@ -62,6 +62,8 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
                 search: $scope.search.keyword,
                 page:page,
                 rows:$scope.pageSize||20,
+                startDate:startDate.toString(),
+                endDate:endDate.toString(),
                 agent:agent,
                 hasAccount:true,
                 rtype:1
@@ -182,7 +184,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 $('html,body').animate({ scrollTop: 0 }, 0);
                 $scope.playerdata = result;
 
-                $scope.playerdata.stat.allget = global.reg($scope.playerdata.stat.pout_jb||0 - $scope.playerdata.stat.pin_jb||0);
+                $scope.playerdata.stat.allget = global.reg(($scope.playerdata.stat.pout_jb - $scope.playerdata.stat.pin_jb)||0);
                 $scope.playerdata.stat.up_jb = global.reg($scope.playerdata.stat.up_jb||0);
                 $scope.playerdata.stat.down_jb = global.reg($scope.playerdata.stat.down_jb||0);
                 $scope.playerdata.stat.pout_jb = global.reg($scope.playerdata.stat.pout_jb||0);
