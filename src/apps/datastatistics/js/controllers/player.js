@@ -56,14 +56,14 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         var startDate = date.startDate || $scope.startDate;
         var endDate = date.endDate|| $scope.endDate;
         var agent = search.agent;
-        $http.get(statUri+'/players', {
+        $http.get(statUri+'/statlist', {
             params:{
                 token: sso.getToken(),
                 search: $scope.search.keyword,
                 page:page,
                 rows:$scope.pageSize||20,
-                status:1,
-                agent:agent
+                agent:agent,
+                rtype:1
             }
         }).success(function(result){
             if(result.err){
@@ -215,10 +215,18 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
         var history = global.bankDealHistory||(global.bankDealHistory={});
         $scope.pageSize = history.pageSize||$scope.defaultRows;
         $scope.search = history.search||{};
-        $scope.search.date = $scope.search.date || {
-                startDate:  moment().subtract(15, 'days'),
-                endDate: moment()
-            };
+        if($stateParams.account){            //给时间框赋值
+            $scope.search.keyword = $stateParams.account;
+            var datestr = $stateParams.date||"";
+            var dateobj = JSON.parse(datestr);
+            $scope.search.date = dateobj;
+        }else {
+            $scope.search.keyword = "";
+            $scope.search.date = {
+                    startDate:  moment().subtract(15, 'days'),
+                    endDate: moment()
+                };
+        }
 
         $scope.dateOptions = angular.copy(global.dateRangeOptions);
         $scope.dateOptions.opens = 'left';
@@ -291,18 +299,12 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
             getRows: function (params) {
                 global.agGridOverlay();
                 var search = $scope.search;
-                if($stateParams.account){
-                    var account = $stateParams.account;
+                if($stateParams.account){                    //获取开始和结束时间
                     var datestr = $stateParams.date||"";
                     var dateobj = JSON.parse(datestr);
-                    search.keyword = account;
                     var startDate = dateobj.startDate||"";
                     var endDate = dateobj.endDate||"";
-                    console.info(account);
-                    console.info(dateobj.startDate);
-                    console.info(dateobj.endDate);
                 }else {
-                    search.keyword = "";
                     var date = search.date;
                     var startDate = date.startDate || "";
                     var endDate = date.endDate || "";
