@@ -53,11 +53,11 @@
                 <td class="tbd" data-title="房间名称" style="height: 2.8em">{{row.gameroom}}</td>
                 <td class="tbd" data-title="桌子编号" style="height: 2.8em">{{row.tablenum}}</td>
                 <td class="tbd" data-title="桌子名称" style="height: 2.8em">{{row.tablename}}</td>
-                <td class="tbd" data-title="总压" style="height: 2.8em">{{row.in}}</td>
-                <td class="tbd" data-title="总得" style="height: 2.8em">{{row.out}}</td>
-                <td class="tbd" data-title="盈利（游戏分）" style="height: 2.8em">{{row.gain}}</td>
-                <td class="tbd" data-title="盈利率" style="height: 2.8em">{{row.rate}}</td>
-                <td class="tbd" data-title="盈利（金币）" style="height: 2.8em">{{row.profit}}</td>
+                <td class="tbd" data-title="总压" style="height: 2.8em">{{row.in | number}}</td>
+                <td class="tbd" data-title="总得" style="height: 2.8em">{{row.out | number}}</td>
+                <td class="tbd" data-title="盈利（游戏分）" style="height: 2.8em">{{row.gain | number}}</td>
+                <td class="tbd" data-title="盈利率" style="height: 2.8em">{{row.rate | number}}</td>
+                <td class="tbd" data-title="盈利（金币）" style="height: 2.8em">{{row.profit | number}}</td>
             </tr>
 
             </tbody>

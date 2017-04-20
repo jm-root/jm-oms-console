@@ -97,8 +97,3 @@
     .mobiletable td:before { content: attr(data-title); }
 
 }
-
-.option:hover{
-    background: #4B78EF;
-    color: #ffffff;
-}

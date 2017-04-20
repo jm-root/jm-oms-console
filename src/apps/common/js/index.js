@@ -28,6 +28,7 @@ angular.module('app')
             ],
         });
     }])
+
     .service('global', ['$document', '$q', '$http', '$state', '$translate', '$filter', function ($document, $q, $http, $state, $translate, $filter) {
         var self = this;
         jm.enableEvent(self);

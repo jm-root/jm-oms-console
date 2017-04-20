@@ -39,7 +39,7 @@
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
         <!--table-->
-        <table class="table table-striped table-bordered mobiletable">
+        <table class="table table-striped table-bordered mobiletable table-hover">
             <thead class="bg-white">
             <tr>
                 <th>{{'datastatistics.playerstatistics.header.account'|translate}}</th>
@@ -53,14 +53,14 @@
             </thead>
             <tbody>
             <tr ng-repeat="row in usersInfo.rows" class="active" ng-if="total">
-                <td data-title="{{'datastatistics.playerstatistics.header.account'|translate}}" >{{row.account||row.mobile}}</td>
-                <td data-title="{{'datastatistics.playerstatistics.header.nick'|translate}}" >{{row.nick}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.account'|translate}}" >{{row.user.account||row.user.mobile}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.nick'|translate}}" >{{row.user.nick}}</td>
                 <td data-title="{{'datastatistics.playerstatistics.header.agent'|translate}}" >{{row.agent.name}}</td>
-                <td data-title="{{'datastatistics.playerstatistics.header.up'|translate}}" >{{row.up_jb}}</td>
-                <td data-title="{{'datastatistics.playerstatistics.header.down'|translate}}" >{{row.down_jb}}</td>
-                <td data-title="{{'datastatistics.playerstatistics.header.jbbalance'|translate}}" >{{row.nick}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.up'|translate}}" >{{row.up_jb | number}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.down'|translate}}" >{{row.down_jb | number}}</td>
+                <td data-title="{{'datastatistics.playerstatistics.header.jbbalance'|translate}}" >{{(row.hold.jb.amount||0) | number}}</td>
                 <td data-title="{{'datastatistics.playerstatistics.header.detail'|translate}}" >
-                    <button class="btn btn-xs btn-info" ng-click="details(row.account||row.nick,search.date)"  ng-disabled="key">{{'datastatistics.playerstatistics.header.detail'|translate}}</button>
+                    <button class="btn btn-xs btn-info" ng-click="details(row.user.account||row.user.nick,search.date)" >{{'datastatistics.playerstatistics.header.detail'|translate}}</button>
                 </td>
             </tr>
             </tbody>

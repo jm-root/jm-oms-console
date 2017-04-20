@@ -37,24 +37,12 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
         return sum ;
     }
 
-    $scope.isShowExperience = false;
-    var viewPath = 'view.appmanager.table.showexperience';
-    $scope.per = {};
-    global.getUserPermission(viewPath).then(function(obj){
-        $scope.per = obj[viewPath]||{};
-        $scope.super = !!$scope.per['*'];
-        if($scope.super || ($scope.per.get && $scope.per.post)){
-            $scope.isShowExperience = true;
-        }
-    }).catch(function(err){
-        console.log(err);
-    });
-
     var reqApps = false;
     var reqRooms = 0;
     var reqTables = 0;
 
-    $scope.getdata = function(_page) {
+
+    $scope.getdata = function(keyword,_page) {
         $scope.page = page;
 
         if(reqApps){
@@ -111,20 +99,96 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                             all: 1
                         }
                     }).success(function (result) {
+
                         var rooms = [];
-                        if(!$scope.isShowExperience){
-                            for (var key in result) {
-                                if (result[key].roomType != 1) {
-                                    rooms.push(result[key]);
-                                }
-                            }
-                        }else {
-                            for (var key in result) {
+                        for (var key in result) {
+                            if (result[key].roomType != '1') {
                                 rooms.push(result[key]);
                             }
                         }
 
+
                         reqRooms--;
+
+                        var roomEmp = _.isEmpty(result);
+                        if(roomEmp){
+                            allData = _.sortBy(allData, ['gamename', 'tablenum']);
+
+                            if($scope.search){
+                                allData = _.filter(allData, {gamename: $scope.search});
+                            }
+
+                            var begin = ($scope.page - 1) * Number($scope.pageSize);
+                            var end = begin + Number($scope.pageSize);
+                            $scope.allData = [];
+                            for(var i= begin; i< end; i++){
+                                if($scope.allData[i] == undefined){
+                                    $scope.allData[i] = allData[i];
+                                }
+                            }
+
+                            // $scope.allData.forEach(function (e, i) {
+
+                                $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
+                                    params:{
+                                        token: sso.getToken(),
+                                        room: parseInt(e.tablenum)
+                                    }
+                                }).success(function (result) {
+                                    var gin = result.gIn;
+                                    var gout = result.gOut;
+                                    var gcoin = result.coin_rate;
+                                    var rate;
+                                    var profit;
+                                    if (Object.prototype.toString.call(gin) == '[object Array]') {
+                                        var sumin = sum(gin);
+                                    } else {
+                                        var sumin = gin;
+                                    }
+
+                                    if (Object.prototype.toString.call(gout) == '[object Array]') {
+                                        var sumout = sum(gout);
+                                    } else {
+                                        var sumout = gout;
+                                    }
+
+                                    var gain = sumin - sumout;
+                                    if (sumin <= 0) {
+                                        rate = 0;
+                                    } else {
+                                        rate = gain / sumin;
+                                        rate = rate.toFixed(4);
+                                    }
+
+                                    if (gcoin <= 0) {
+                                        profit = 0;
+                                    } else {
+                                        profit = gain / gcoin;
+                                    }
+
+                                    e.in = sumin;
+                                    e.out = sumout;
+                                    e.gain = gain;
+                                    e.rate = rate;
+                                    e.profit = profit;
+                                });
+                            // });
+
+                            $scope.moreLoading = false;
+                            // $('html,body').animate({ scrollTop: 0 }, 100);
+                            if(allData.length){
+                                $scope.nodata = false;
+                                $scope.page = page;
+                                $scope.pages = Math.ceil(allData.length/$scope.pageSize);
+                                $scope.total = allData.length;
+                                $scope.totalnumber = global.reg(allData.length);
+                            }else{
+                                $scope.nodata = true;
+                            }
+                            return;
+                        }
+
+
 
                         for(var roomtype=0;roomtype <rooms.length;roomtype++){
                             for(var tabletype=rooms[roomtype].startAreaId;tabletype<rooms[roomtype].startAreaId+rooms[roomtype].maxAreas;tabletype++){
@@ -132,7 +196,14 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                 var tablenum = tabletype;
                                 var dataroom = rooms[roomtype].name;
                                 var tmpl = e.tmpl;
-                                var tablename = tableresult[tabletype].name;
+                                if(!tablename){
+                                    var a = tableresult[tabletype];
+                                }
+                                var tablename ="";
+                                var a = tableresult[tabletype];
+                                if(a && a.name){
+                                    tablename = tableresult[tabletype].name;
+                                }
 
                                 var rowdata = {
                                     gamename:dataname,
@@ -146,7 +217,21 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
 
                                 if(!reqApps && reqRooms == 0 && reqTables == 0){
                                         allData = _.sortBy(allData, ['gamename', 'tablenum']);
-                                        allData.forEach(function (e, i) {
+
+                                        if($scope.search){
+                                            allData = _.filter(allData, {gamename: $scope.search});
+                                        }
+
+                                        var begin = ($scope.page - 1) * Number($scope.pageSize);
+                                        var end = begin + Number($scope.pageSize);
+                                        $scope.allData = [];
+                                        for(var i= begin; i< end; i++){
+                                            if($scope.allData[i] == undefined){
+                                                $scope.allData[i] = allData[i];
+                                            }
+                                        }
+
+                                    $scope.allData.forEach(function (e, i) {
 
                                             $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
                                                 params:{
@@ -194,19 +279,6 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                             });
                                         });
 
-                                        if($scope.search){
-                                            allData = _.filter(allData, {gamename: $scope.search});
-                                        }
-
-                                        var begin = ($scope.page - 1) * $scope.pageSize;
-                                        var end = begin + $scope.pageSize;
-                                        $scope.allData = [];
-                                        for(var i= begin; i< end; i++){
-                                            if($scope.allData[i] == undefined){
-                                                $scope.allData[i] = allData[i];
-                                            }
-                                        }
-
                                         $scope.moreLoading = false;
                                         // $('html,body').animate({ scrollTop: 0 }, 100);
                                         if(allData.length){
@@ -236,7 +308,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
 
 
     $scope.onPageSizeChanged = function() {
-        page = 1;
+        // page = 1;
         $scope.getdata();
     };
     $scope.$watch('pageSize', function () {
