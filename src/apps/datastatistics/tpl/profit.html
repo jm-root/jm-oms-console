@@ -51,16 +51,16 @@
             </thead>
             <tbody>
             <tr ng-repeat="row in gameProfit.rows" class="active" ng-if="total">
-                <td>{{row.date | date:'yyyy-MM-dd'}}</td>
-                <td ng-repeat="x in games">{{row[x._id].gain_jb||0}}</td>
-                <td>{{row.total}}</td>
+                <td data-title="日期">{{row.date | date:'yyyy-MM-dd'}}</td>
+                <td ng-repeat="x in games">{{row[x._id].gain_jb||0  | number}}</td>
+                <td data-title="所有游戏汇总">{{row.total | number}}</td>
             </tr>
             </tbody>
             <tfoot>
             <tr style="color: #000000">
-                <td >汇总</td>
-                <td ng-repeat="x in games">{{gameProfit.stat[x._id].gain_jb||0}}</td>
-                <td>{{gameProfit.stat.total}}</td>
+                <td>汇总</td>
+                <td ng-repeat="x in games">{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
+                <td data-title="所有游戏汇总">{{gameProfit.stat.total}}</td>
             </tr>
             </tfoot>
         </table>
