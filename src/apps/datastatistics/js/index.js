@@ -22,19 +22,19 @@
                             url: '/agentdata',
                             templateUrl: path + 'tpl/agent.data.html',
                             controller: 'AgentDataCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.agentstatistics', {
                             url: '/agentstatistics',
                             templateUrl: path + 'tpl/agent.statistics.html',
                             controller: 'AgentStatisticsCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.agentdiary', {
                             url: '/agentdiary',
                             templateUrl: path + 'tpl/agent.diary.html',
                             controller: 'AgentDiaryCtrl',
-                            resolve: lazyLoadProvider.load(['daterangepicker',path + 'css/self.css'])
+                            resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.playerdata', {
                             url: '/playerdata',

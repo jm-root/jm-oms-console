@@ -41,7 +41,7 @@
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
         <!--table-->
-        <table class="table table-striped table-bordered mobiletable">
+        <table class="table table-striped table-bordered mobiletable table-hover ">
             <thead class="bg-white">
             <tr>
                 <th>{{'datastatistics.playerdata.header.date'|translate}}</th>
@@ -58,7 +58,7 @@
                 <td data-title="{{'datastatistics.playerdata.header.up'|translate}}" >{{row.up_jb | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.down'|translate}}" >{{row.down_jb | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{row.pout_jb | number}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{row.pin_jb}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{row.pin_jb | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{(row.pout_jb-row.pin_jb) | number}}</td>
             </tr>
             </tbody>
