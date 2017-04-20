@@ -6,8 +6,6 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.search = {};
     $scope.search.date = $scope.search.date || {};
     var page = 1;
-    var urlget = statUri+'/players';
-
 
     $scope.tablestyle = {};
     if($scope.isSmartDevice){
@@ -58,7 +56,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         var startDate = date.startDate || $scope.startDate;
         var endDate = date.endDate|| $scope.endDate;
         var agent = search.agent;
-        $http.get(urlget, {
+        $http.get(statUri+'/players', {
             params:{
                 token: sso.getToken(),
                 search: $scope.search.keyword,
@@ -91,12 +89,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.getdata();
 
     $scope.details = function (key1,key2) {
-        var obj = {
-            account:key1,
-            date:key2
-        }
-        sessionStorage.setItem('playermsg', JSON.stringify(obj));//缓存到本地
-        $state.go("app.datastatistics.playerdiary");
+        $state.go("app.datastatistics.playerdiary",{account:key1,date:JSON.stringify(key2)});
     }
 
     $scope.$watch('search.date', function () {
@@ -106,16 +99,14 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
 
 }]);
 
-app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global,Excel,$timeout) {
 
     var sso = jm.sdk.sso;
     var history = global.agentListHistory||(global.agentListHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = {};
     $scope.search.date = $scope.search.date||{};
-
     var page = 1;
-    var urlget = statUri+'/statlist';
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.startDate = moment().subtract(1, 'months');
@@ -170,7 +161,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         var startDate = date.startDate || "";
         var endDate = date.endDate|| "";
         var agent =search.agent;
-        $http.get(urlget, {
+        $http.get(statUri+'/statlist', {
             params:{
                 token: sso.getToken(),
                 page:page,
@@ -179,7 +170,8 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 type:1,
                 startDate:startDate.toString(),
                 endDate:endDate.toString(),
-                agent:agent
+                agent:agent,
+                rtype:1
             }
         }).success(function(result){
             if(result.err){
@@ -217,7 +209,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
 
 }]);
 
-app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateParams', function ($scope, $state, $http, global,$stateParams) {
 
         var sso = jm.sdk.sso;
         var history = global.bankDealHistory||(global.bankDealHistory={});
@@ -298,19 +290,23 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         var dataSource = {
             getRows: function (params) {
                 global.agGridOverlay();
-                var playermsg = sessionStorage.getItem('playermsg');//缓存到本地
-                if(playermsg) {
-                    playermsg = JSON.parse(playermsg);
-                    $scope.search.keyword = playermsg.account;
-                    // $scope.search.date = playermsg.date;
-                //     search.date = player.date;
-                }
                 var search = $scope.search;
-                var date = search.date;
-                var startDate = date.startDate || "";
-                var endDate = date.endDate || "";
-
-                sessionStorage.removeItem("selectedUser");
+                if($stateParams.account){
+                    var account = $stateParams.account;
+                    var datestr = $stateParams.date||"";
+                    var dateobj = JSON.parse(datestr);
+                    search.keyword = account;
+                    var startDate = dateobj.startDate||"";
+                    var endDate = dateobj.endDate||"";
+                    console.info(account);
+                    console.info(dateobj.startDate);
+                    console.info(dateobj.endDate);
+                }else {
+                    search.keyword = "";
+                    var date = search.date;
+                    var startDate = date.startDate || "";
+                    var endDate = date.endDate || "";
+                }
 
                 var page = params.startRow / $scope.pageSize + 1;
                 bank.history({
