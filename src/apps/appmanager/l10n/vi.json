@@ -1,5 +1,7 @@
 {
   "appmgr": {
+    "kickPlayerFail": "发送踢人请求失败",
+    "kickPlayerSuccess": "发送踢人请求成功",
     "searchPlaceholder": "tìm kiếm tên gọi ứng dụng",
     "search": "tìm kiếm",
     "appList": "danh sách ứng dụng",

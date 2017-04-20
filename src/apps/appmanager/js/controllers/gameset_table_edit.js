@@ -199,6 +199,10 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
                 $scope.error(data.msg);
             }else{
 
+                if($scope.table.serverStatus == "0"){
+                    kicksPlayer();
+                }
+
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
@@ -344,6 +348,24 @@ app.controller('FishTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         });
 
         return deferred.promise;
+    }
+
+    function kicksPlayer() {
+        var url = homeUri + "/kick";
+        var data = {apps:[appId], rooms:[$stateParams.roomId], tables:[id]};
+        $http.post(url, data, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+        }).success(function (result) {
+            if(result.err){
+                $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+            }else{
+                $scope.success(global.translateByKey("appmgr.kickPlayerSuccess"));
+            }
+        });
     }
 
 }]);
@@ -537,6 +559,10 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
                 $scope.error(data.msg);
             }else{
 
+                if($scope.table.serverStatus == "0"){
+                    kicksPlayer();
+                }
+
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
@@ -732,6 +758,24 @@ app.controller('GambleTableEditCtrl', ['$scope', '$http', '$state', '$stateParam
         });
 
         return deferred.promise;
+    }
+
+    function kicksPlayer() {
+        var url = homeUri + "/kick";
+        var data = {apps:[appId], rooms:[$stateParams.roomId], tables:[id]};
+        $http.post(url, data, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+        }).success(function (result) {
+            if(result.err){
+                $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+            }else{
+                $scope.success(global.translateByKey("appmgr.kickPlayerSuccess"));
+            }
+        });
     }
 
 }]);
@@ -924,6 +968,10 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
                 $scope.error(data.msg);
             }else{
 
+                if($scope.table.serverStatus == "0"){
+                    kicksPlayer();
+                }
+
                 getConfigCoinRate().then(function (data) {
                     var coinRate = data.ret;
 
@@ -1119,6 +1167,24 @@ app.controller('HuluTableEditCtrl', ['$scope', '$http', '$state', '$stateParams'
         });
 
         return deferred.promise;
+    }
+
+    function kicksPlayer() {
+        var url = homeUri + "/kick";
+        var data = {apps:[appId], rooms:[$stateParams.roomId], tables:[id]};
+        $http.post(url, data, {
+            params:{
+                token: sso.getToken()
+            }
+        }).error(function (msg, code) {
+            $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+        }).success(function (result) {
+            if(result.err){
+                $scope.error(global.translateByKey("appmgr.kickPlayerFail"));
+            }else{
+                $scope.success(global.translateByKey("appmgr.kickPlayerSuccess"));
+            }
+        });
     }
 
 }]);

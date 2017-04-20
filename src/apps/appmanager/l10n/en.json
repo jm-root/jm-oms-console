@@ -1,5 +1,7 @@
 {
   "appmgr":{
+    "kickPlayerFail": "Send kick players request failed",
+    "kickPlayerSuccess": "Send kick players request success",
     "searchPlaceholder": "Search app name",
     "search": "Search",
     "appList": "App list",
