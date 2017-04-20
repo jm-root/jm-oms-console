@@ -69,7 +69,7 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
-var omsnav = "nav";
+var omsnav = "nav_new";
 
 const pfm_cy = 'static';
 const pfm_oms = 'oms';
