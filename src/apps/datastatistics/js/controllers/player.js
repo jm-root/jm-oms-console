@@ -114,19 +114,12 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
     $scope.search = {};
     $scope.search.date = $scope.search.date||{};
 
-    // $scope.startDate = moment(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 15));
-    // $scope.endDate = moment(new Date());
-
-    // $scope.search.date = $scope.search.date || {
-    //         startDate:$scope.startDate,
-    //         endDate:$scope.endDate
-    //     };
     var page = 1;
-    var urlget = statUri+'/report/account';
+    var urlget = statUri+'/statlist';
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
-    // $scope.dateOptions.startDate = $scope.startDate.format('YYYY/MM/DD');
-    // $scope.dateOptions.endDate = $scope.endDate.format('YYYY/MM/DD');
+    $scope.dateOptions.startDate = moment().subtract(1, 'months');
+    $scope.dateOptions.endDate = moment();
     $scope.dateOptions.opens = 'left';
 
     $scope.tablestyle = {};
@@ -183,7 +176,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 page:page,
                 rows:$scope.pageSize||20,
                 isStat:true,
-                type:0,
+                type:1,
                 startDate:startDate.toString(),
                 endDate:endDate.toString(),
                 agent:agent
@@ -195,6 +188,13 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 0);
                 $scope.playerdata = result;
+
+                $scope.playerdata.stat.allget = global.reg($scope.playerdata.stat.pout_jb||0 - $scope.playerdata.stat.pin_jb||0);
+                $scope.playerdata.stat.up_jb = global.reg($scope.playerdata.stat.up_jb||0);
+                $scope.playerdata.stat.down_jb = global.reg($scope.playerdata.stat.down_jb||0);
+                $scope.playerdata.stat.pout_jb = global.reg($scope.playerdata.stat.pout_jb||0);
+                $scope.playerdata.stat.pin_jb = global.reg($scope.playerdata.stat.pin_jb||0);
+
                 if(result.total){
                     $scope.nodata = false;
                     $scope.page = result.page;
@@ -298,14 +298,14 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global', functi
         var dataSource = {
             getRows: function (params) {
                 global.agGridOverlay();
-                var search = $scope.search;
-
-                var player = sessionStorage.getItem('playermsg');//缓存到本地
-                if(player) {
-                    player = JSON.parse(player);
-                    $scope.search.keyword = player.account;
+                var playermsg = sessionStorage.getItem('playermsg');//缓存到本地
+                if(playermsg) {
+                    playermsg = JSON.parse(playermsg);
+                    $scope.search.keyword = playermsg.account;
+                    // $scope.search.date = playermsg.date;
                 //     search.date = player.date;
                 }
+                var search = $scope.search;
                 var date = search.date;
                 var startDate = date.startDate || "";
                 var endDate = date.endDate || "";

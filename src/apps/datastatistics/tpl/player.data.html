@@ -55,11 +55,11 @@
             <tbody>
             <tr ng-repeat="row in playerdata.rows" class="active" ng-if="total">
                 <td data-title="{{'datastatistics.playerdata.header.date'|translate}}" >{{row.date | date:'yyyy-MM-dd'}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.up'|translate}}" >{{row.up_jb}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.down'|translate}}" >{{row.down_jb}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{row.give_jb}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{row.gain_jb}}</td>
-                <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{row.give_jb-row.gain_jb}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.up'|translate}}" >{{row.up_jb | number}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.down'|translate}}" >{{row.down_jb | number}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{row.pout_jb | number}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{row.pin_jb}}</td>
+                <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{(row.pout_jb-row.pin_jb) | number}}</td>
             </tr>
             </tbody>
             <tfoot >
@@ -67,9 +67,9 @@
                     <td >{{'datastatistics.playerdata.header.add'|translate}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.up'|translate}}" >{{playerdata.stat.up_jb}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.down'|translate}}" >{{playerdata.stat.down_jb}}</td>
-                    <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{playerdata.stat.give_jb}}</td>
-                    <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{playerdata.stat.gain_jb}}</td>
-                    <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{playerdata.stat.give_jb - playerdata.gain_jb}}</td>
+                    <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{playerdata.stat.pout_jb}}</td>
+                    <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{playerdata.stat.pin_jb}}</td>
+                    <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{playerdata.stat.allget}}</td>
                 </tr>
             </tfoot>
         </table>
