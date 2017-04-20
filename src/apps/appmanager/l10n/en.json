@@ -85,6 +85,7 @@
       "roomConfig": "Room Configuration",
       "roomType": "Room type",
       "roomName": "Room name",
+      "operate":"Operate",
       "roomIntro": "Room introduce",
       "algStartTableNum": "Algorithm start table number",
       "tableNum": "Table Number",

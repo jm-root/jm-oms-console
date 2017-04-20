@@ -85,6 +85,7 @@
       "roomConfig": "bố trí phòng",
       "roomType": "loại phòng",
       "roomName": "tên phòng",
+      "operate":"操作",
       "roomIntro": "giới thiệu phòng",
       "algStartTableNum": "khởi chạy phép tính số hiệu bàn",
       "tableNum": "số lượng bàn",

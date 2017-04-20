@@ -85,6 +85,7 @@
       "roomConfig": "房间配置",
       "roomType": "房间类型",
       "roomName": "房间名字",
+      "operate":"操作",
       "roomIntro": "房间简介",
       "algStartTableNum": "算法起始桌子编号",
       "tableNum": "桌子数量",
