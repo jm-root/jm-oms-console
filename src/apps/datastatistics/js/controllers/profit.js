@@ -23,23 +23,6 @@ app.controller('ProfitCtrl', ['$scope', '$state', '$http', 'global', function ($
         }
     }
 
-    $http.get(agentUri + '/subAgents', {
-        params:{
-            token: sso.getToken(),
-            search:$scope.search.agent
-        }
-    }).success(function(result){
-        var obj = result;
-        if(obj.err){
-            $scope.error(obj.msg);
-        }else{
-            $scope.channels = obj.rows||[];
-            $scope.select = true;
-        }
-    }).error(function(msg, code){
-        $scope.errorTips(code);
-    });
-
     $http.get(appMgrUri + '/appList', {
         params:{
             token: sso.getToken()
