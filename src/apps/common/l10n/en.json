@@ -132,7 +132,11 @@
     "operationSuccess": "Operation success",
     "operationFail": "Operation fail",
     "notAllow":"Not Allow Add Null",
-    "tip":"Please select player"
+    "tip":"Please select player",
+    "selectPlayer":"请选择用户！",
+    "updateAccount": "更新账目",
+    "cancelTitle": "取消",
+    "balance":"余额不足!"
   },
   "search":{
     "selectplayer":"Select player",
@@ -142,6 +146,8 @@
     "balance":"Balance：",
     "charge":"Charge：",
     "uncharge":"Uncharge：",
-    "result":"Result："
+    "result":"Result：",
+    "user":"转入用户：",
+    "transfer":"转账金额："
   }
 }

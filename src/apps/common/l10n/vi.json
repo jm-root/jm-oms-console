@@ -127,7 +127,11 @@
     "operationSuccess": "thao tác thành công",
     "operationFail": "thao tác thất bại",
     "notAllow":"不允许添加空值!",
-    "tip":"Hãy chọn người dùng"
+    "tip":"Hãy chọn người dùng",
+    "selectPlayer":"请选择用户！",
+    "updateAccount": "更新账目",
+    "cancelTitle": "取消",
+    "balance":"余额不足!"
   },
   "search":{
     "selectplayer":"Người chơi lựa chọn",
@@ -137,6 +141,8 @@
     "balance":"当前账户余额：",
     "charge":"上分：",
     "uncharge":"下分：",
-    "result":"操作后账户余额："
+    "result":"操作后账户余额：",
+    "user":"转入用户：",
+    "transfer":"转账金额："
   }
 }

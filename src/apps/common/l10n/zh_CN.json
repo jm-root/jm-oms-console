@@ -131,7 +131,11 @@
     "operationSuccess": "操作成功",
     "operationFail": "操作失败",
     "notAllow":"不允许添加空值!",
-    "tip":"请选择玩家"
+    "tip":"请选择玩家",
+    "selectPlayer":"请选择用户！",
+    "updateAccount": "更新账目",
+    "cancelTitle": "取消",
+    "balance":"余额不足!"
   },
   "search":{
     "selectplayer":"选择玩家",
@@ -141,6 +145,8 @@
     "balance":"当前玩家余额：",
     "charge":"上分：",
     "uncharge":"下分：",
-    "result":"操作后玩家余额："
+    "result":"操作后玩家余额：",
+    "user":"转入用户：",
+    "transfer":"转账金额："
   }
 }
