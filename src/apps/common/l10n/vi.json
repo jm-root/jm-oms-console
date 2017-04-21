@@ -102,7 +102,8 @@
     "setRechargePwd":"Đặt mật khẩu thanh toán",
     "confirmRechargePwd":"Xác nhận mật khẩu thanh toán",
     "code":"mã xác nhận",
-    "getCode":"Nhận mã xác minh miễn phí"
+    "getCode":"Nhận mã xác minh miễn phí",
+    "passwdNull":"密码不能为空"
   },
   "imgcrop":{
     "title":"编辑图片",

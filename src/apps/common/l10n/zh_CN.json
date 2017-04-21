@@ -106,7 +106,8 @@
     "setRechargePwd":"设置支付密码",
     "confirmRechargePwd":"确认支付密码",
     "code":"验证码",
-    "getCode":"免费获取验证码"
+    "getCode":"免费获取验证码",
+    "passwdNull":"密码不能为空"
   },
   "imgcrop":{
     "title":"编辑图片",

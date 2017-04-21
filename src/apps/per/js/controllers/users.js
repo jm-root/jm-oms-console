@@ -57,7 +57,7 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             '<div class="form-group">' +
             '<label class="col-sm-2 control-label" translate="common.password">密码</label>' +
             '<div class="col-sm-9">' +
-            '<input type="number" class="form-control" placeholder="{{common.password|translate}}" ng-model="passwd" ng-required="true">' +
+            '<input type="password" class="form-control" placeholder="{{common.password|translate}}" ng-model="passwd" ng-required="true">' +
             '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
@@ -73,6 +73,10 @@ app.controller('UsersListCtrl', ['$scope', '$http', '$state', '$stateParams', '$
             okTitle:global.translateByKey('common.confirm'),
             cancelTitle:global.translateByKey('common.cancel'),
             okCallback: function($s){
+                if(!$s.passwd){
+                    $scope.warning(global.translateByKey('common.passwdNull'));
+                    return;
+                }
                 $http.post(ssoUri+'/users/'+user,{passwd:$s.passwd}, {
                     params:{
                         token: sso.getToken()

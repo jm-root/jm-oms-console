@@ -107,7 +107,8 @@
     "setRechargePwd":"Set Payment  Password",
     "confirmRechargePwd":"Confirm Payment  Password",
     "code":"Verification Code",
-    "getCode":"Get Verification Code"
+    "getCode":"Get Verification Code",
+    "passwdNull":"Password cannot be empty"
   },
   "imgcrop":{
     "title":"Edit Picture",
