@@ -48,7 +48,7 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
                 $scope.page = page;
                 $scope.pages = pages;
                 $scope.total = total;
-                $scope.usersInfo = true;
+                $scope.usersInfo = result;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);
