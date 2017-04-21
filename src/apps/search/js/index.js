@@ -19,7 +19,7 @@
                             resolve: lazyLoadProvider.load([path + 'js/controllers/index.js'])
                         })
                         .state('app.search.user', {
-                            url: '/user',
+                            url: '/user?isSuperAgent',
                             templateUrl: path  + 'tpl/search_user.html',
                             controller: 'SearchUserCtrl',
                             resolve: lazyLoadProvider.load([path + 'js/controllers/search_user.js'])

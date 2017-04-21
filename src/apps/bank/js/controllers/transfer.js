@@ -30,7 +30,6 @@ app.controller('BankTransferCtrl', ['$scope', '$state', '$http',  'global', '$ti
                     } else {
                         $scope.accounts = result.rows;
                         $scope.defAccount = _.find($scope.accounts, { id: $scope.accounts[0].user.accountId });
-                        console.log($scope.defAccount);
                         $scope.bank.fromAccountId = $scope.defAccount.user.accountId;
                     }
                 });

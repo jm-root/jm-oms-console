@@ -28,12 +28,14 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         }else{
             var url = "";
         }
+        var sagent = $stateParams.isSuperAgent;
         $http.get(url, {
             params:{
                 page: page,
                 rows: pageSize,
                 token: sso.getToken(),
-                search:$scope.keyword
+                search:$scope.keyword,
+                isSuperAgent: sagent
             }
         }).success(function(result){
             $scope.moreLoading = false;
@@ -46,7 +48,7 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
                 $scope.page = page;
                 $scope.pages = pages;
                 $scope.total = total;
-                $scope.usersInfo = result;
+                $scope.usersInfo = true;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

@@ -16,14 +16,10 @@
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
-    <div class="pull-right m-r-sm headpadd">
-        <select class="input-sm form-control" ng-model="search.channel2" ng-change="onPageSizeChanged()">
-            <option value="">{{'datastatistics.playerdiary.typeOpts.opts'|translate}}</option>
-            <option value="0">{{'datastatistics.playerdiary.typeOpts.opts1'|translate}}</option>
-            <option value="1">{{'datastatistics.playerdiary.typeOpts.opts2'|translate}}</option>
-            <option value="2">{{'datastatistics.playerdiary.typeOpts.opts3'|translate}}</option>
-            <option value="3">{{'datastatistics.playerdiary.typeOpts.opts4'|translate}}</option>
-            <option value="4">{{'datastatistics.playerdiary.typeOpts.opts5'|translate}}</option>
+
+    <div class="input-group w-sm pull-right headpadd m-r-sm " ng-if="select">
+        <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="onPageSizeChanged()">
+            <option value="">{{'datastatistics.logreg.label1'|translate}}</option>
         </select>
     </div>
 
