@@ -133,11 +133,10 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
     var history = global.AgentStatisticsHistory||(global.AgentStatisticsHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    $scope.search.date = $scope.search.date || {
-            startDate:  moment().subtract(15, 'days'),
-            endDate: moment()
-        };
-    $scope.dateOptions=global.dateRangeOptions;
+    $scope.search.date = $scope.search.date || {};
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.startDate = moment().subtract(1, 'months');
+    $scope.dateOptions.endDate = moment();
     $scope.dateOptions.opens = 'left';
 
     //判断是否移动端设置表格样式
@@ -171,15 +170,16 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
         var startDate = date.startDate || "";
         var endDate = date.endDate || "";
         var agent = search.agent || "";
-        $http.get(statUri+'/players', {
+        $http.get(statUri+'/statlist', {
             params:{
                 token: sso.getToken(),
-                agent:agent,
-                startDate: startDate.toString(),
-                endDate: endDate.toString(),
                 page:page,
                 rows:$scope.pageSize,
-                status:1
+                startDate: startDate.toString(),
+                endDate: endDate.toString(),
+                agent:agent,
+                hasAccount:true,
+                rtype:2
             }
         }).success(function(result){
             $scope.moreLoading = false;
@@ -187,7 +187,7 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
                 $scope.error(result.msg);
             }else{
                 $('html,body').animate({ scrollTop: 0 }, 100);
-                $scope.usersInfo = result;
+                $scope.agentdata = result;
                 if(result.total){
                     $scope.nodata = false;
                     $scope.page = result.page;
@@ -204,6 +204,10 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
     }
 
     $scope.getdata();
+
+    $scope.details = function (key1,key2) {
+        $state.go("app.datastatistics.agentdiary",{agent:key1,date:JSON.stringify(key2)});
+    }
 
     $scope.getOption = function () {
         $http.get(agentUri + '/subAgents', {
@@ -245,16 +249,24 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
 
 }]);
 
-app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', function ($scope, $state, $http, global) {
+app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateParams', function ($scope, $state, $http, global,$stateParams) {
     var sso = jm.sdk.sso;
     var page = 1;
     var history = global.AgentDiaryHistory||(global.AgentDiaryHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    $scope.search.date = $scope.search.date || {
-            startDate:  moment().subtract(15, 'days'),
+    if ($stateParams.agent) {            //给时间框赋值
+        $scope.search.agent = $stateParams.agent;
+        var datestr = $stateParams.date || "";
+        var dateobj = JSON.parse(datestr);
+        $scope.search.date = dateobj;
+    } else {
+        $scope.search.agent = "";
+        $scope.search.date = {
+            startDate: moment().subtract(15, 'days'),
             endDate: moment()
         };
+    }
     $scope.dateOptions=global.dateRangeOptions;
     $scope.dateOptions.opens = 'left';
 
@@ -286,30 +298,62 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date;
-        var startDate = date.startDate || "";
-        var endDate = date.endDate || "";
-        var agent = search.agent;
         var keyword = search.keyword;
-        $http.get(statUri+'/players', {
+
+        if ($stateParams.account) {                    //获取开始和结束时间
+            var datestr = $stateParams.date || "";
+            var dateobj = JSON.parse(datestr);
+            var startDate = dateobj.startDate || "";
+            var endDate = dateobj.endDate || "";
+        } else {
+            var date = search.date;
+            var startDate = date.startDate || "";
+            var endDate = date.endDate || "";
+        }
+        $http.get(statUri+'/deals', {
             params:{
                 token: sso.getToken(),
-                agent:agent,
+                page:page,
+                rows:$scope.pageSize,
+                agent:$scope.search.agent,
                 search: keyword,
                 startDate: startDate.toString(),
                 endDate: endDate.toString(),
-                page:page,
-                rows:$scope.pageSize,
-                status:1
+                onlyAgent:true
             }
         }).success(function(result){
             if(result.err){
                 $scope.error(result.msg);
             }else{
                 $scope.moreLoading = false;
-                // $('html,body').animate({ scrollTop: 0 }, 100);
+                $('html,body').animate({ scrollTop: 0 }, 100);
+                $scope.agentdata = result;
+                result.rows.forEach(function (item) {
+                    var type = item.type;
+                    if(item.type == 0){
+                         item.type = "收入"
+                    }else if(item.type == 1){
+                         item.type = "支出";
+                    }else if(item.type == 2){
+                        item.type =  "转入";
+                    }else if(item.type == 3){
+                        item.type =  "转出";
+                    }else if(item.type == 4){
+                        item.type =  "上分";
+                    }else if(item.type == 5) {
+                        item.type =  "下分";
+                    }else if(item.type == 6) {
+                        item.type =  "输";
+                    }else if(item.type == 7) {
+                        item.type =  "赢";
+                    }else if(item.type == 8) {
+                        item.type =  "货币发行";
+                    }else if(item.type == 9) {
+                        item.type =  "货币回收";
+                    }
+                });
                 if(result.total){
                     $scope.nodata = false;
-                    $scope.usersInfo = result;
                     $scope.page = result.page;
                     $scope.pages = result.pages;
                     $scope.total = result.total;
@@ -333,7 +377,8 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global', functio
         if (result.err) {
             $scope.error(result.msg);
         } else {
-            $scope.agents = result.rows;
+            $scope.channels = result.rows;
+            $scope.select = true;
         }
     }).error(function (msg, code) {
         $scope.errorTips(code);

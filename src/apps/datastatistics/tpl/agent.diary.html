@@ -1,12 +1,12 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">渠道流水</h1></div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'datastatistics.agentdiary.title'|translate}}</h1></div>
 
 <div>
     <div class="pull-right headpadd ">
         <form>
-            <div class="input-group  w-md">
-                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-light no-border rounded padder" placeholder="{{'common.search'|translate}}">
+            <div class="input-group  w-md ">
+                <input type="text" ng-model="search.keyword" class="form-control input-sm bg-white no-border rounded padder" placeholder="{{'common.search'|translate}}">
                 <span class="input-group-btn" style="width: auto">
-                    <button type="submit" class="btn btn-sm bg-light rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
+                    <button type="submit" class="btn btn-sm bg-white rounded" ng-click="onPageSizeChanged()"><i class="fa fa-search"></i></button>
                 </span>
             </div>
         </form>
@@ -17,9 +17,9 @@
             <i class="glyphicon glyphicon-calendar fa fa-calendar" style="position: absolute;right: 8px;top:8px;z-index:1000;cursor: pointer;" onclick="$(this).parent().find('input').click();"></i>
         </div>
     </div>
-    <div class="pull-right m-r-sm headpadd">
-        <select class="input-sm form-control" ng-model="search.agent" ng-options="option._id as option.name for option in agents" ng-change="onPageSizeChanged()">
-            <option value="">所有渠道</option>
+    <div class="input-group w-sm pull-right headpadd m-r-sm" ng-if="select">
+        <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt in channels" ng-change="getdata(1)">
+            <option value="">{{'datastatistics.agentdiary.label1'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
@@ -52,27 +52,26 @@
         <table class="table table-striped table-bordered mobiletable">
             <thead class="bg-white" >
             <tr>
-                <th>渠道名</th>
-                <th>操作类型</th>
-                <th>操作金额</th>
-                <th ng-if="!isSmartDevice">金币余额</th>
-                <th>对方渠道ID</th>
-                <th>对方渠道名</th>
-                <th ng-if="!isSmartDevice">对方等级</th>
-                <th>操作时间</th>
+                <th>{{'datastatistics.agentdiary.header.agentid'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.agentname'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.type'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.amount'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.jbbalance'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.toagentid'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.toagentname'|translate}}</th>
+                <th>{{'datastatistics.agentdiary.header.time'|translate}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in usersInfo.rows" class="active" ng-if="total">
-                <td data-title="渠道名" >{{row.account||row.nick}}</td>
-                <td ng-if="isSmartDevice" data-title="操作" >{{row.nick}}</td>
-                <td ng-if="!isSmartDevice" data-title="操作类型" >{{row.nick}}</td>
-                <td ng-if="!isSmartDevice" data-title="操作金额" >{{crtime}}</td>
-                <td ng-if="!isSmartDevice" data-title="金币余额" >{{crtime}}</td>
-                <td data-title="对方渠道ID" >{{crtime}}</td>
-                <td data-title="对方渠道名" >{{crtime}}</td>
-                <td ng-if="!isSmartDevice" data-title="对方等级" >{{row._id}}</td>
-                <td data-title="操作时间" >{{row.nick}}</td>
+            <tr ng-repeat="row in agentdata.rows" class="active" ng-if="total">
+                <td data-title="{{'datastatistics.agentdiary.header.agentid'|translate}}" >{{row.fromUid||row.fromUserId}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.agentname'|translate}}" >{{row.fromUserName}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.type'|translate}}" >{{row.type}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.amount'|translate}}" >{{row.amount | number}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.jbbalance'|translate}}" >{{row.balance | number}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.toagentid'|translate}}" >{{row.toUid||row.toUserId}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.toagentname'|translate}}" >{{row.toUserName}}</td>
+                <td data-title="{{'datastatistics.agentdiary.header.time'|translate}}" >{{row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             </tr>
             </tbody>
         </table>

@@ -56,16 +56,16 @@
             </thead>
             <tbody class="tbody">
 
-            <tr ng-repeat="row in usersInfo.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelId'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelName'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollIn'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollOut'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.increase'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.decrease'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.balance'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd text-left" data-title="{{'datastatistics.agentstatistics.header.details'|translate}}" style="height: 2.8em">
-                    <button class="btn btn-xs btn-info"  ng-click="show()">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
+            <tr ng-repeat="row in agentdata.rows" class="active tbr" ng-if="total">
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelId'|translate}}" style="height: 2.8em">{{row.agent.code}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelName'|translate}}" style="height: 2.8em">{{row.agent.name}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollIn'|translate}}" style="height: 2.8em">{{row.agent_in_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollOut'|translate}}" style="height: 2.8em">{{row.agent_out_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.increase'|translate}}" style="height: 2.8em">{{row.up_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.decrease'|translate}}" style="height: 2.8em">{{row.down_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.balance'|translate}}" style="height: 2.8em">{{(row.hold.jb.amount||0) | number}}</td>
+                <td class="tbd text-left" data-title="{{'datastatistics.agentstatistics.header.details'|translate}}">
+                    <button class="btn btn-xs btn-info"  ng-click="details(row.agent.code,search.date)">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
                 </td>
             </tr>
             </tbody>

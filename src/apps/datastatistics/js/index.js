@@ -31,7 +31,7 @@
                             resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.agentdiary', {
-                            url: '/agentdiary',
+                            url: '/agentdiary/{agent}?{date}',
                             templateUrl: path + 'tpl/agent.diary.html',
                             controller: 'AgentDiaryCtrl',
                             resolve: lazyLoadProvider.load(['daterangepicker'])

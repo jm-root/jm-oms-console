@@ -29,11 +29,12 @@
     "logreg":{
       "title":"登录注册日报表",
       "label1":"所有渠道",
-      "header":{
-        "date":"日期",
-        "log":"登陆",
-        "reg":"注册",
-        "jbbalance":"玩家金币余额"
+      "header": {
+        "date": "日期",
+        "log": "登陆",
+        "reg": "注册",
+        "jbbalance": "玩家金币余额"
+      }
     },
     "playerdiary":{
       "title":"交易流水",
@@ -89,6 +90,20 @@
         "decrease": "下分",
         "summary": "汇总"
       }
-    }
+    },
+      "agentdiary": {
+        "title": "渠道流水",
+        "label1": "所有渠道",
+        "header": {
+          "agentid": "渠道ID",
+          "agentname": "渠道名",
+          "type": "操作类型",
+          "amount": "操作金额",
+          "jbbalance": "金币余额",
+          "toagentid": "对方渠道ID",
+          "toagentname": "对方渠道名",
+          "time": "操作时间"
+        }
+      }
   }
 }

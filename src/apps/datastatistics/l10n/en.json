@@ -26,69 +26,84 @@
         "detail":"详细信息"
       }
     },
-    "logreg":{
-      "title":"登录注册日报表",
-      "label1":"所有渠道",
-      "header":{
-        "date":"日期",
-        "log":"登陆",
-        "reg":"注册",
-        "jbbalance":"玩家金币余额"
-    },
-    "playerdiary":{
-      "title":"交易流水",
-      "typeOpts": {
-        "opts": "交易类型",
-        "opts1": "普通交易",
-        "opts2": "转帐交易",
-        "opts3": "货币发行",
-        "opts4": "货币回收",
-        "opts5": "预授权"
-      },
-      "header":{
-        "fromUserId": "发起方ID",
-        "fromUser": "发起方名称",
-        "fromLevel":"发起方等级",
-        "fromJb":"发起方操作前金币",
-        "type": "操作类型",
-        "amount": "操作金额",
-        "toUserId": "交易对象ID",
-        "toUser": "交易对象名称",
-        "toLevel":"交易对象等级",
-        "toJb":"交易对象交易前金币",
-        "balance": "操作前余额",
-        "createdAt": "操作时间"
-      }
-    },
-    "agentstatistics":{
-      "title":"渠道统计",
-      "typeOpts": {
-        "opts": "所有渠道"
-      },
-      "header":{
-        "channelId": "渠道ID",
-        "channelName": "渠道名",
-        "rollIn":"转入",
-        "rollOut":"转出",
-        "increase": "上分",
-        "decrease": "下分",
-        "balance": "金币余额",
-        "details": "详细信息"
-      }
-    },
-    "agentdata":{
-      "title":"渠道数据日报表",
-      "typeOpts": {
-        "opts": "所有渠道"
-      },
-      "header":{
+    "logreg": {
+      "title": "登录注册日报表",
+      "label1": "所有渠道",
+      "header": {
         "date": "日期",
-        "rollIn":"转入",
-        "rollOut":"转出",
-        "increase": "上分",
-        "decrease": "下分",
-        "summary": "汇总"
+        "log": "登陆",
+        "reg": "注册",
+        "jbbalance": "玩家金币余额"
       }
-    }
+    },
+      "playerdiary": {
+        "title": "交易流水",
+        "typeOpts": {
+          "opts": "交易类型",
+          "opts1": "普通交易",
+          "opts2": "转帐交易",
+          "opts3": "货币发行",
+          "opts4": "货币回收",
+          "opts5": "预授权"
+        },
+        "header": {
+          "fromUserId": "发起方ID",
+          "fromUser": "发起方名称",
+          "fromLevel": "发起方等级",
+          "fromJb": "发起方操作前金币",
+          "type": "操作类型",
+          "amount": "操作金额",
+          "toUserId": "交易对象ID",
+          "toUser": "交易对象名称",
+          "toLevel": "交易对象等级",
+          "toJb": "交易对象交易前金币",
+          "balance": "操作前余额",
+          "createdAt": "操作时间"
+        }
+      },
+      "agentstatistics": {
+        "title": "渠道统计",
+        "typeOpts": {
+          "opts": "所有渠道"
+        },
+        "header": {
+          "channelId": "渠道ID",
+          "channelName": "渠道名",
+          "rollIn": "转入",
+          "rollOut": "转出",
+          "increase": "上分",
+          "decrease": "下分",
+          "balance": "金币余额",
+          "details": "详细信息"
+        }
+      },
+      "agentdata": {
+        "title": "渠道数据日报表",
+        "typeOpts": {
+          "opts": "所有渠道"
+        },
+        "header": {
+          "date": "日期",
+          "rollIn": "转入",
+          "rollOut": "转出",
+          "increase": "上分",
+          "decrease": "下分",
+          "summary": "汇总"
+        }
+      },
+      "agentdiary": {
+        "title": "渠道流水",
+        "label1": "所有渠道",
+        "header": {
+          "agentid": "渠道ID",
+          "agentname": "渠道名",
+          "type": "操作类型",
+          "amount": "操作金额",
+          "jbbalance": "金币余额",
+          "toagentid": "对方渠道ID",
+          "toagentname": "对方渠道名",
+          "time": "操作时间"
+        }
+      }
   }
 }

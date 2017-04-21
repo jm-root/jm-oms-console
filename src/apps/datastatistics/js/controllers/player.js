@@ -59,7 +59,6 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         $http.get(statUri+'/statlist', {
             params:{
                 token: sso.getToken(),
-                search: $scope.search.keyword,
                 page:page,
                 rows:$scope.pageSize||20,
                 startDate:startDate.toString(),
@@ -260,15 +259,15 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     };
 
     var format_fromUserId = function (params) {
-        return params.data.fromUserId || '';
+        return params.data.fromUid || params.data.fromUserId;
     };
 
     var format_fromUser = function (params) {
         return params.data.fromUserName || '';
     };
 
-    var format_toUserId = function (params) {
-        return params.data.toUserId || '';
+    var format_toUid = function (params) {
+        return params.data.toUid || '';
     };
 
     var format_toUser = function (params) {
@@ -287,31 +286,48 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
         return info;
     };
 
+    function type_render(params){
+        var obj = params.data|| {};
+        if(obj.type == 0){
+            return "收入"
+        }else if(obj.type == 1){
+            return "支出";
+        }else if(obj.type == 2){
+            return "转入";
+        }else if(obj.type == 3){
+            return "转出";
+        }else if(obj.type == 4){
+            return "上分";
+        }else if(obj.type == 5) {
+            return "下分";
+        }else if(obj.type == 6) {
+            return "输";
+        }else if(obj.type == 7) {
+            return "赢";
+        }else if(obj.type == 8) {
+            return "货币发行";
+        }else if(obj.type == 9) {
+            return "货币回收";
+        }
+    };
+
     var columnDefs = [
         {headerName: "发起方ID", field: "fromUserId", width: 210, valueGetter: format_fromUserId},
-        {headerName: "发起方名称", field: "fromUser", width: 100, valueGetter: format_fromUser},
-        {headerName: "发起方等级", field: "type", width: 100},        //field: "fromUserGrade"
-        {headerName: "发起方操作前金币", field: "type", width: 100},    //fromUserBalance
-        {headerName: "操作类型", field: "flag", width: 100},
-        {headerName: "操作金额", field: "amount", width: 100},
-        {headerName: "交易对象ID", field: "toUserId", width: 70, valueGetter: format_toUserId},
-        {headerName: "交易对象名称", field: "toUser", width: 90, valueGetter: format_toUser},
-        {headerName: "交易对象等级", field: "type", width: 110},        //toUserGrade
-        {headerName: "交易对象交易前金币", field: "type", width: 145},         //toUserBalance
-        {headerName: "操作时间", field: "createdAt", width: 145, valueGetter: $scope.angGridFormatDateS}
+        {headerName: "发起方名称", field: "fromUser", width: 120, valueGetter: format_fromUser},
+        {headerName: "操作类型", field: "flag", width: 120,cellRenderer: type_render},
+        {headerName: "操作金额", field: "amount", width: 120},
+        {headerName: "交易对象ID", field: "toUid", width: 200,valueGetter:format_toUid},
+        {headerName: "交易对象名称", field: "toUserName", width: 150},
+        {headerName: "操作时间", field: "createdAt", width: 250, valueGetter: $scope.angGridFormatDateS}
     ];
 
     global.agGridTranslateSync($scope, columnDefs, [
         'datastatistics.playerdiary.header.fromUserId',
         'datastatistics.playerdiary.header.fromUser',
-        'datastatistics.playerdiary.header.fromLevel',
-        'datastatistics.playerdiary.header.fromJb',
         'datastatistics.playerdiary.header.type',
         'datastatistics.playerdiary.header.amount',
         'datastatistics.playerdiary.header.toUserId',
         'datastatistics.playerdiary.header.toUser',
-        'datastatistics.playerdiary.header.toLevel',
-        'datastatistics.playerdiary.header.toJb',
         'datastatistics.playerdiary.header.createdAt'
     ]);
 
@@ -332,23 +348,28 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
             var agent = search.agent;
 
             var page = params.startRow / $scope.pageSize + 1;
-            bank.history({
-                page: page,
-                rows: $scope.pageSize,
-                type: search.type,
-                search: search.keyword,
-                startDate: startDate.toString(),
-                endDate: endDate.toString(),
-                agent : agent
-            }, function (err, result) {
-                var data = result;
-                if (data.err) {
-                    $scope.error(data.msg);
-                } else {
+            $http.get(statUri+'/deals',{
+                params:{
+                    token: sso.getToken(),
+                    page:page,
+                    rows:$scope.pageSize,
+                    agent:agent,
+                    search: $scope.search.keyword,
+                    startDate: startDate.toString(),
+                    endDate: endDate.toString(),
+                    onlyAgent:true
+                }
+            }).success(function(result){
+                if(result.err){
+                    $scope.error(result.msg);
+                }else{
+                    var data = result;
                     var rowsThisPage = data.rows;
                     var lastRow = data.total;
                     params.successCallback(rowsThisPage, lastRow);
                 }
+            }).error(function(msg, code){
+                $scope.errorTips(code);
             });
         }
     };
