@@ -9,7 +9,7 @@
     </div>
     <div class="input-group w-sm pull-right headpadd m-r-sm ">
         <div >
-            <select ui-jq="chosen" class="w-full" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels"  ng-change="getdata(1)" ng-if="isok">
+            <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels"  ng-change="getdata(1)" ng-if="isok">
                 <option value="">{{'datastatistics.agentstatistics.typeOpts.opts'|translate}}</option>
             </select>
         </div>
@@ -56,16 +56,26 @@
             </thead>
             <tbody class="tbody">
 
-            <tr ng-repeat="row in usersInfo.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.date'|translate}}" style="height: 2.8em">{{row.crtime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" style="height: 2.8em">{{row.crtime}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.increase'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" style="height: 2.8em">{{row.uid}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.summary'|translate}}" style="height: 2.8em">{{row.uid}}</td>
+            <tr ng-repeat="row in agentdata.rows" class="active tbr" ng-if="total">
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.date'|translate}}" >{{row.date | date:'yyyy-MM-dd'}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" >{{row.agent_in_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" >{{row.agent_out_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.increase'|translate}}" >{{row.up_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" >{{row.down_jb | number}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentdata.header.summary'|translate}}" >{{(row.agent_in_jb+row.up_jb-row.agent_out_jb-row.down_jb) | number}}</td>
             </tr>
 
             </tbody>
+            <tfoot >
+            <tr style="color: #000000">
+                <td >{{'datastatistics.agentdata.header.summary'|translate}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.up'|translate}}" >{{agentdata.stat.agent_in_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.down'|translate}}" >{{agentdata.stat.agent_out_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.lose'|translate}}" >{{agentdata.stat.up_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.win'|translate}}" >{{agentdata.stat.down_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.allget'|translate}}" >{{(agentdata.stat.agent_in_jb+agentdata.stat.up_jb-agentdata.stat.agent_out_jb-agentdata.stat.down_jb) | number}}</td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 

@@ -4,13 +4,12 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
     var history = global.AgentDataHistory||(global.AgentDataHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    $scope.search.date = $scope.search.date || {
-            startDate:moment().subtract(15,"days"),
-            endDate:moment()
-        };
+    $scope.search.date = $scope.search.date || {};
 
     $scope.channels = [];
-    $scope.dateOptions=global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.startDate = moment().subtract(1, 'months');
+    $scope.dateOptions.endDate = moment();
     $scope.dateOptions.opens = 'left';
 
     //判断是否移动端设置表格样式
@@ -69,15 +68,17 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
         var startDate = date.startDate || "";
         var endDate = date.endDate || "";
         var agent = search.agent;
-        $http.get(statUri+'/players', {
+        $http.get(statUri+'/statlist', {
             params:{
                 token: sso.getToken(),
-                agent:agent,
-                startDate: startDate.toString(),
-                endDate: endDate.toString(),
                 page:page,
                 rows:$scope.pageSize,
-                status:1
+                isStat:true,
+                type:1,
+                startDate: startDate.toString(),
+                endDate: endDate.toString(),
+                agent:agent,
+                rtype:2
             }
         }).success(function(result){
             $scope.moreLoading = false;
@@ -85,7 +86,8 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
                 $scope.error(result.msg);
             }else{
                 $('html,body').animate({ scrollTop: 0 }, 100);
-                $scope.usersInfo = result;
+                $scope.agentdata = result;
+
                 if(result.total){
                     $scope.nodata = false;
                     $scope.page = result.page;

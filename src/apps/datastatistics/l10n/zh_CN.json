@@ -78,7 +78,7 @@
       }
     },
     "agentdata":{
-      "title":"渠道数据",
+      "title":"渠道数据日报表",
       "typeOpts": {
         "opts": "所有渠道"
       },
