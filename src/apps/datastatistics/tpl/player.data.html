@@ -50,7 +50,7 @@
                 <th>{{'datastatistics.playerdata.header.lose'|translate}}</th>
                 <th>{{'datastatistics.playerdata.header.win'|translate}}</th>
                 <th>{{'datastatistics.playerdata.header.allget'|translate}}</th>
-                <th style="width: 17px" ng-if="!(playerdata.rows.length<pageSize)"></th>
+                <th style="width: 17px" ng-if="playerdata.rows.length>17"></th>
             </tr>
         </table>
         <!--【fixed-thead表头】-->
@@ -58,7 +58,7 @@
         <div class="scroll-box" ng-style="tablestyle">
             <table class="form-table table table-striped table-bordered mobiletable table-hover ">
                 <tr ng-if="isSmartDevice">
-                    <td>{{'datastatistics.playerdata.header.add'|translate}}</td>
+                    <td style="color: #1006F1">{{'datastatistics.playerdata.header.add'|translate}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.up'|translate}}">{{(playerdata.stat.up_jb||0) | number}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.down'|translate}}">{{(playerdata.stat.down_jb||0) | number}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}">{{(playerdata.stat.pout_jb||0) | number}}</td>
@@ -76,20 +76,18 @@
                 </tr>
             </table>
         </div>
-        <!--【表身】-->
         <!--【fixed-tfoot表尾】-->
         <table class="form-table fixed-tfoot" cellpadding="0" cellspacing="0" ng-if="!isSmartDevice">
             <tr>
-                <td >{{'datastatistics.playerdata.header.add'|translate}}</td>
+                <td>{{'datastatistics.playerdata.header.add'|translate}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.up'|translate}}" >{{(playerdata.stat.up_jb||0) | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.down'|translate}}" >{{(playerdata.stat.down_jb||0) | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.lose'|translate}}" >{{(playerdata.stat.pout_jb||0) | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.win'|translate}}" >{{(playerdata.stat.pin_jb||0) | number}}</td>
                 <td data-title="{{'datastatistics.playerdata.header.allget'|translate}}" >{{((playerdata.stat.pout_jb - playerdata.stat.pin_jb)||0) | number}}</td>
-                <td style="width: 17px" ng-if="!(playerdata.rows.length<pageSize)"></td>
+                <td style="width: 17px" ng-if="playerdata.rows.length>17"></td>
             </tr>
         </table>
-        <!--【fixed-tfoot表尾】-->
     </div>
 
     <!--ng-if="!isSmartDevice"-->

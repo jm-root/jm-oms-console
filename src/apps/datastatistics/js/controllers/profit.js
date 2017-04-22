@@ -18,7 +18,7 @@ app.controller('ProfitCtrl', ['$scope', '$state', '$http', 'global', function ($
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px',
+            height:$scope.app.navHeight-255+'px',
             border:'1px solid #cccccc'
         }
     }

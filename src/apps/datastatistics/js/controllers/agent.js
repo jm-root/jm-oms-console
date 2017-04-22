@@ -145,7 +145,7 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-255+'px'
+            height:$scope.app.navHeight-235+'px'
         }
     }
 
@@ -276,7 +276,7 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-255+'px'
+            height:$scope.app.navHeight-235+'px'
         }
     }
 

@@ -24,63 +24,77 @@
 <div class="line b-b"></div>
 <!--ng-style="{height:app.navHeight-200+'px'}"-->
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
-    <div class="table-responsive" ng-style="tablestyle">
-        <!--loading-->
-        <div ng-if="moreLoading">
-            <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
-            <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
-                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
-            </div>
-            <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
-                <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
-            </div>
+    <!--loading-->
+    <div ng-if="moreLoading">
+        <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
+        <div ng-if="!isSmartDevice"  style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
+            <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
         </div>
-        <!--no data-->
-        <div class="text-center" ng-if="nodata&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 22em;bottom: 0;margin:auto;">
-            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+        <div ng-if="isSmartDevice"  style="position:fixed;z-index: 2;left: 50%;top: 22em;margin-left: -8px">
+            <div class="text-center"><img width="30px" src="./apps/common/img/loading.gif"></div>
         </div>
-        <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
-            <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
-        </div>
-        <!--table-->
-        <table class="table table-striped table-bordered mobiletable">
-            <thead class="thead bg-white">
+    </div>
+    <!--no data-->
+    <div class="text-center" ng-if="nodata&&!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 49%;bottom: 0;margin:auto;">
+        <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+    </div>
+    <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 22em;margin-left: -20px">
+        <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
+    </div>
+
+    <div class="cttable">
+        <!--【fixed-thead表头】-->
+        <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
             <tr class="thr">
-                <th class="thh">{{'datastatistics.agentdata.header.date'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.rollIn'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.rollOut'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.increase'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.decrease'|translate}}</th>
-                <th class="thh">{{'datastatistics.agentdata.header.summary'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.date'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.rollIn'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.rollOut'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.increase'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.decrease'|translate}}</th>
+                <th>{{'datastatistics.agentdata.header.summary'|translate}}</th>
+                <th style="width: 17px" ng-if="agentdata.rows.length>17"></th>
             </tr>
-            </thead>
-            <tbody class="tbody">
-
-            <tr ng-repeat="row in agentdata.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.date'|translate}}" >{{row.date | date:'yyyy-MM-dd'}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" >{{row.agent_in_jb | number}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" >{{row.agent_out_jb | number}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.increase'|translate}}" >{{row.up_jb | number}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" >{{row.down_jb | number}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentdata.header.summary'|translate}}" >{{(row.agent_in_jb+row.up_jb-row.agent_out_jb-row.down_jb) | number}}</td>
-            </tr>
-
-            </tbody>
-            <tfoot >
-            <tr style="color: #000000">
-                <td >{{'datastatistics.agentdata.header.summary'|translate}}</td>
-                <td data-title="{{'datastatistics.agentdata.header.up'|translate}}" >{{agentdata.stat.agent_in_jb | number}}</td>
-                <td data-title="{{'datastatistics.agentdata.header.down'|translate}}" >{{agentdata.stat.agent_out_jb | number}}</td>
-                <td data-title="{{'datastatistics.agentdata.header.lose'|translate}}" >{{agentdata.stat.up_jb | number}}</td>
-                <td data-title="{{'datastatistics.agentdata.header.win'|translate}}" >{{agentdata.stat.down_jb | number}}</td>
-                <td data-title="{{'datastatistics.agentdata.header.allget'|translate}}" >{{(agentdata.stat.agent_in_jb+agentdata.stat.up_jb-agentdata.stat.agent_out_jb-agentdata.stat.down_jb) | number}}</td>
-            </tr>
-            </tfoot>
         </table>
+        <!--【fixed-thead表头】-->
+        <!--【表身】-->
+        <div class="scroll-box" ng-style="tablestyle">
+            <table class="form-table table table-striped table-bordered mobiletable table-hover">
+                <tr ng-if="isSmartDevice">
+                    <td style="color: #1006F1">{{'datastatistics.agentdata.header.summary'|translate}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" >{{agentdata.stat.agent_in_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" >{{agentdata.stat.agent_out_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.increase'|translate}}" >{{agentdata.stat.up_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" >{{agentdata.stat.down_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.summary'|translate}}" >{{(agentdata.stat.agent_in_jb+agentdata.stat.up_jb-agentdata.stat.agent_out_jb-agentdata.stat.down_jb) | number}}</td>
+                </tr>
+                <tr ng-repeat="row in agentdata.rows" class="active" ng-if="total">
+                    <td data-title="{{'datastatistics.agentdata.header.date'|translate}}">{{row.date | date:'yyyy-MM-dd'}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}">{{row.agent_in_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}">{{row.agent_out_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.increase'|translate}}">{{row.up_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.decrease'|translate}}">{{row.down_jb | number}}</td>
+                    <td data-title="{{'datastatistics.agentdata.header.summary'|translate}}">{{(row.agent_in_jb+row.up_jb-row.agent_out_jb-row.down_jb) | number}}</td>
+                </tr>
+            </table>
+        </div>
+        <!--【表身】-->
+        <!--【fixed-tfoot表尾】-->
+        <table class="form-table fixed-tfoot" cellpadding="0" cellspacing="0" ng-if="!isSmartDevice">
+            <tr>
+                <td >{{'datastatistics.agentdata.header.summary'|translate}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" >{{agentdata.stat.agent_in_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" >{{agentdata.stat.agent_out_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.increase'|translate}}" >{{agentdata.stat.up_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.decrease'|translate}}" >{{agentdata.stat.down_jb | number}}</td>
+                <td data-title="{{'datastatistics.agentdata.header.summary'|translate}}" >{{(agentdata.stat.agent_in_jb+agentdata.stat.up_jb-agentdata.stat.agent_out_jb-agentdata.stat.down_jb) | number}}</td>
+                <td style="width: 17px" ng-if="agentdata.rows.length>17"></td>
+            </tr>
+        </table>
+        <!--【fixed-tfoot表尾】-->
     </div>
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:auto; margin-top: 30px">
+    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:auto; margin-top: 10px">
         <div class="text-center">
             <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
             <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>

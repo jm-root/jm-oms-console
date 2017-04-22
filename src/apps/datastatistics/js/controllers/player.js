@@ -12,7 +12,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-255+'px',
+            height:$scope.app.navHeight-235+'px',
             border:'1px solid #cccccc'
         }
     }

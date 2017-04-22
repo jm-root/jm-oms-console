@@ -16,7 +16,6 @@
 <div class="line b-b"></div>
 
 <div style="margin: 0 10px 5px;position: relative">
-    <div class="table-responsive " ng-style="tablestyle">
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
@@ -34,31 +33,46 @@
         <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
-        <!--table-->
-        <table class="table table-striped table-bordered mobiletable">
-            <thead class="bg-white">
+
+    <div class="cttable">
+        <!--【fixed-thead表头】-->
+        <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
             <tr>
                 <th>日期</th>
                 <th ng-repeat="x in games">{{x.name}}</th>
                 <th>所有游戏汇总</th>
+                <th style="width: 17px" ng-if="gameProfit.rows.length>=pageSize"></th>
             </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="row in gameProfit.rows" class="active" ng-if="total">
-                <td data-title="日期">{{row.date | date:'yyyy-MM-dd'}}</td>
-                <td ng-repeat="x in games">{{row[x._id].gain_jb||0  | number}}</td>
-                <td data-title="所有游戏汇总">{{row.total | number}}</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr style="color: #000000">
-                <td>汇总</td>
-                <td ng-repeat="x in games">{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
+        </table>
+        <!--【fixed-thead表头】-->
+        <!--【表身】-->
+        <div class="scroll-box" ng-style="tablestyle">
+        <table class="form-table table table-striped table-bordered mobiletable">
+            <tr ng-if="isSmartDevice">
+                <td style="color: #1006F1">汇总</td>
+                <td ng-repeat="x in games"data-title={{x.name}}>{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
                 <td data-title="所有游戏汇总">{{gameProfit.stat.total}}</td>
             </tr>
-            </tfoot>
+            <tr ng-repeat="row in gameProfit.rows" class="active" ng-if="total">
+                <td data-title="日期">{{row.date | date:'yyyy-MM-dd'}}</td>
+                <td ng-repeat="x in games" data-title={{x.name}}>{{row[x._id].gain_jb||0  | number}}</td>
+                <td data-title="所有游戏汇总">{{row.total | number}}</td>
+            </tr>
         </table>
+        </div>
+        <!--【表身】-->
+        <!--【fixed-tfoot表尾】-->
+        <table class="form-table fixed-tfoot" cellpadding="0" cellspacing="0" ng-if="!isSmartDevice">
+            <tr>
+                <td>汇总</td>
+                <td ng-repeat="x in games" data-title={{x.name}}>{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
+                <td data-title="所有游戏汇总">{{gameProfit.stat.total}}</td>
+                <td style="width: 17px" ng-if="gameProfit.rows.length>=pageSize"></td>
+            </tr>
+        </table>
+        <!--【fixed-tfoot表尾】-->
     </div>
+
 
     <!--ng-if="!isSmartDevice"-->
     <div ng-if="!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 101%;bottom: 0;margin:auto;">
@@ -80,4 +94,4 @@
     </div>
 </div>
 
-
+</div>
