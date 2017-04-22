@@ -267,7 +267,9 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
             endDate: moment()
         };
     }
-    $scope.dateOptions=global.dateRangeOptions;
+    $scope.dateOptions = angular.copy(global.dateRangeOptions);
+    $scope.dateOptions.startDate = moment().subtract(1, 'months');
+    $scope.dateOptions.endDate = moment();
     $scope.dateOptions.opens = 'left';
 
     //判断是否移动端设置表格样式
