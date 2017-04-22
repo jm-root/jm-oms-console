@@ -12,7 +12,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px',
+            height:$scope.app.navHeight-255+'px',
             border:'1px solid #cccccc'
         }
     }
@@ -122,7 +122,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-250+'px',
+            height:$scope.app.navHeight-255+'px',
             border:'1px solid #cccccc'
         }
     }
@@ -184,13 +184,6 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 0);
                 $scope.playerdata = result;
-
-                $scope.playerdata.stat.allget = global.reg(($scope.playerdata.stat.pout_jb - $scope.playerdata.stat.pin_jb)||0);
-                $scope.playerdata.stat.up_jb = global.reg($scope.playerdata.stat.up_jb||0);
-                $scope.playerdata.stat.down_jb = global.reg($scope.playerdata.stat.down_jb||0);
-                $scope.playerdata.stat.pout_jb = global.reg($scope.playerdata.stat.pout_jb||0);
-                $scope.playerdata.stat.pin_jb = global.reg($scope.playerdata.stat.pin_jb||0);
-
                 if(result.total){
                     $scope.nodata = false;
                     $scope.page = result.page;

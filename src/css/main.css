@@ -98,7 +98,7 @@
 
 }
 /*固定表头*/
-.container {
+.cttable {
     border: 1px #ccc solid;
     width: 100%;
     margin: 0;
@@ -110,7 +110,7 @@
     table-layout: fixed;
 }
 .form-table th{
-    background: #FFFFFF;
+    background: #ffffff;
 }
 .fixed-thead tr th {
     border-right: 1px #ddd solid;
