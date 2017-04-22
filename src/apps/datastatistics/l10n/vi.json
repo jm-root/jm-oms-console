@@ -1,7 +1,7 @@
 {
   "datastatistics":{
     "playerdata":{
-      "title":"玩家数据日报表",
+      "title":"玩家日报表",
       "label1":"所有渠道",
       "header":{
         "date":"日期",
@@ -78,7 +78,7 @@
       }
     },
     "agentdata":{
-      "title":"渠道数据日报表",
+      "title":"渠道日报表",
       "typeOpts": {
         "opts": "所有渠道"
       },

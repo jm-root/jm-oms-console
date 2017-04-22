@@ -97,3 +97,10 @@
     .mobiletable td:before { content: attr(data-title); }
 
 }
+.tablehead{
+    position: fixed;
+    margin-top: -22px;
+    background: #ffffff;
+    padding: 5px 0 0 0 ;
+    opacity: 1;
+}
