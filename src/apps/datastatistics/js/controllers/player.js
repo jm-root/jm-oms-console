@@ -216,13 +216,11 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
 app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateParams', function ($scope, $state, $http, global,$stateParams) {
 
     var sso = jm.sdk.sso;
-    var history = global.bankDealHistory || (global.bankDealHistory = {});
+    var history = global.playerDiaryHistory || (global.playerDiaryHistory = {});
     $scope.pageSize = history.pageSize || $scope.defaultRows;
     $scope.search = history.search || {};
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
-    $scope.dateOptions.startDate = moment().subtract(1, 'months');
-    $scope.dateOptions.endDate = moment();
     $scope.dateOptions.opens = 'left';
 
     if ($stateParams.account) {            //给时间框赋值
@@ -232,7 +230,10 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
         $scope.search.date = dateobj;
     } else {
         $scope.search.keyword = "";
-        $scope.search.date = $scope.search.date||{};
+        $scope.search.date = {
+            startDate: moment().subtract(15, 'days'),
+            endDate: moment()
+        };
     }
 
     $http.get(agentUri + '/subAgents', {
@@ -251,9 +252,6 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     }).error(function (msg, code) {
         $scope.errorTips(code);
     });
-
-    jm.sdk.init({uri: gConfig.sdkHost});
-    var bank = jm.sdk.bank;
 
     var format_ctName = function (params) {
         var ctName = params.data.ctName;
