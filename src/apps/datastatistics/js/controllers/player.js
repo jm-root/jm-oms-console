@@ -122,7 +122,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px',
+            height:$scope.app.navHeight-250+'px',
             border:'1px solid #cccccc'
         }
     }
@@ -267,7 +267,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     };
 
     var format_toUid = function (params) {
-        return params.data.toUid || '';
+        return params.data.toUid ||params.data.toUserId;
     };
 
     var format_toUser = function (params) {
@@ -317,7 +317,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
         {headerName: "操作类型", field: "flag", width: 120,cellRenderer: type_render},
         {headerName: "操作金额", field: "amount", width: 120},
         {headerName: "交易对象ID", field: "toUid", width: 200,valueGetter:format_toUid},
-        {headerName: "交易对象名称", field: "toUserName", width: 150},
+        {headerName: "交易对象名称", field: "toUserName", width: 150,valueGetter:format_toUser},
         {headerName: "操作时间", field: "createdAt", width: 250, valueGetter: $scope.angGridFormatDateS}
     ];
 

@@ -57,8 +57,8 @@
                         .state('app.datastatistics.table', {
                             url: '/table',
                             templateUrl: path + 'tpl/table.html',
-                            controller: 'TableCtrl',
-                            resolve: lazyLoadProvider.load([path + 'css/self.css'])
+                            controller: 'TableCtrl'
+                            // resolve: lazyLoadProvider.load([path + 'css/self.css'])
                         })
                         .state('app.datastatistics.logreg', {
                             url: '/logreg',
@@ -66,6 +66,7 @@
                             controller: 'LogregCtrl',
                             resolve: lazyLoadProvider.load(['daterangepicker',path + 'js/controllers/logreg.js'])
                         })
+                        
                         .state('app.datastatistics.profit', {
                             url: '/profit',
                             templateUrl: path + 'tpl/profit.html',
