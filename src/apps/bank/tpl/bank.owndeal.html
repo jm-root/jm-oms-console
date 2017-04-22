@@ -50,7 +50,7 @@
                 <td class="tbd" data-title="{{'bank.bank.owndeal.header.ctName'|translate}}" style="height: 2.8em">{{row.ctCode == 'jb' ? ('bank.account.paylist.jb'|translate) : (row.ctCode == 'tb' ? ('bank.account.paylist.tb'|translate) : ('bank.account.paylist.dbj'|translate) ) || ""}}</td>
                 <td class="tbd" data-title="{{'bank.bank.owndeal.header.flag'|translate}}" style="height: 2.8em">{{row.flag == 0 ? ('bank.bank.deal.income'|translate):('bank.bank.deal.expenditure'|translate) }}</td>
                 <td class="tbd" data-title="{{'bank.bank.owndeal.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                <td class="tbd" data-title="{{'bank.bank.owndeal.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             </tr>
             </tbody>
         </table>

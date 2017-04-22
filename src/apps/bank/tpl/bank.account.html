@@ -62,7 +62,7 @@
                 <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb'|translate}}" style="height: 2.8em">{{row.holds.tb.amount || 0}}</td>-->
                 <!--<td class="tbd" ng-if="!isSmartDevice" data-title="{{'bank.account.header.tb_a'|translate}}" style="height: 2.8em">{{row.holds.tb.overdraw || 0}}</td>-->
                 <td class="tbd" data-title="{{'bank.account.header.status'|translate}}" style="height: 2.8em">{{row.status == 0 ?('bank.bank.account.statusOpts.opts1'|translate):( row.status == 1 ?('bank.bank.account.statusOpts.opts2'|translate):('bank.bank.account.statusOpts.opts3'|translate))}}</td>
-                <td class="tbd" data-title="{{'bank.account.header.createdAt'|translate}}" style="height: 2.8em">{{row.user.createdAt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                <td class="tbd" data-title="{{'bank.account.header.createdAt'|translate}}" style="height: 2.8em">{{row.user.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             </tr>
             </tbody>
         </table>
