@@ -357,7 +357,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
                     search: $scope.search.keyword,
                     startDate: startDate.toString(),
                     endDate: endDate.toString(),
-                    onlyAgent:true
+                    onlyAgent:false
                 }
             }).success(function(result){
                 if(result.err){
