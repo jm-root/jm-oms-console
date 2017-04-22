@@ -37,24 +37,24 @@
         </div>
         <!--table-->
         <table class="table table-striped table-bordered"  >
-            <thead class="thead bg-white">
-            <tr class="thr">
-                <th class="thh">{{'bank.bank.preauth.header.user'|translate}}</th>
-                <th class="thh">{{'bank.bank.preauth.header.control'|translate}}</th>
-                <th class="thh">{{'bank.bank.preauth.header.ct'|translate}}</th>
-                <th class="thh">{{'bank.bank.preauth.header.amount'|translate}}</th>
-                <th class="thh">{{'bank.bank.preauth.header.createdAt'|translate}}</th>
-                <th class="thh"></th>
+            <thead class=" bg-white">
+            <tr>
+                <th >{{'bank.bank.preauth.header.user'|translate}}</th>
+                <th>{{'bank.bank.preauth.header.control'|translate}}</th>
+                <th>{{'bank.bank.preauth.header.ct'|translate}}</th>
+                <th>{{'bank.bank.preauth.header.amount'|translate}}</th>
+                <th>{{'bank.bank.preauth.header.createdAt'|translate}}</th>
+                <th></th>
             </tr>
             </thead>
-            <tbody class="tbody" >
-            <tr ng-repeat="row in preauthlist" class="active tbr">
-                <td class="tbd" data-title="{{'bank.bank.preauth.header.user'|translate}}" style="height: 2.8em">{{row.Hold.Account.User.name || row.Hold.Account.User.mobile || row.Hold.Account.User.email || row.Hold.Account.User.userId || ''}}</td>
-                <td class="tbd" data-title="{{'bank.bank.preauth.header.control'|translate}}" style="height: 2.8em">{{row.User.name || row.User.mobile || row.User.email || row.User.userId || ''}}</td>
-                <td class="tbd" data-title="{{'bank.bank.preauth.header.ct'|translate}}" style="height: 2.8em">{{row.Hold.CT.name|| ""}}</td>
-                <td class="tbd" data-title="{{'bank.bank.preauth.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
-                <td class="tbd" data-title="{{'bank.bank.preauth.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd hh:mm:ss'}}</td>
-                <td class="thh text-left">
+            <tbody>
+            <tr ng-repeat="row in preauthlist" class="active">
+                <td data-title="{{'bank.bank.preauth.header.user'|translate}}" style="height: 2.8em">{{row.Hold.Account.User.name || row.Hold.Account.User.mobile || row.Hold.Account.User.email || row.Hold.Account.User.userId || ''}}</td>
+                <td data-title="{{'bank.bank.preauth.header.control'|translate}}" style="height: 2.8em">{{row.User.name || row.User.mobile || row.User.email || row.User.userId || ''}}</td>
+                <td data-title="{{'bank.bank.preauth.header.ct'|translate}}" style="height: 2.8em">{{row.Hold.CT.name|| ""}}</td>
+                <td data-title="{{'bank.bank.preauth.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
+                <td data-title="{{'bank.bank.preauth.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td class="text-left">
                     <button class="btn btn-xs btn-info" ng-click="npreauth(row)">{{'bank.bank.preauth.cancelAuthorization'|translate}}</button>
                 </td>
             </tr>

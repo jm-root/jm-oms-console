@@ -127,7 +127,7 @@
             "control": "người thao tác",
             "ct": "loại tiền",
             "amount": "số lượng",
-            "createdAt": "thời gian kiến tạo"
+            "createdAt": "预授时间"
           }
         },
         "transfer": {

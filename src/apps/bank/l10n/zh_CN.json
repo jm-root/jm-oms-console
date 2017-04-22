@@ -127,7 +127,7 @@
             "control": "操作者",
             "ct": "币种",
             "amount": "数量",
-            "createdAt": "创建时间"
+            "createdAt": "预授时间"
           }
         },
         "transfer": {

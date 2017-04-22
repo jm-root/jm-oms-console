@@ -57,7 +57,7 @@
         <!--【表身】-->
         <div class="scroll-box" ng-style="tablestyle">
             <table class="form-table table table-striped table-bordered mobiletable table-hover ">
-                <tr ng-if="isSmartDevice">
+                <tr ng-if="!nodata&&isSmartDevice">
                     <td style="color: #1006F1">{{'datastatistics.playerdata.header.add'|translate}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.up'|translate}}">{{(playerdata.stat.up_jb||0) | number}}</td>
                     <td data-title="{{'datastatistics.playerdata.header.down'|translate}}">{{(playerdata.stat.down_jb||0) | number}}</td>

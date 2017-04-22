@@ -127,7 +127,7 @@
           "control": "Operator",
           "ct": "Currency",
           "amount": "Amount",
-          "createdAt": "Create time"
+          "createdAt": "预授时间"
         }
       },
       "transfer": {

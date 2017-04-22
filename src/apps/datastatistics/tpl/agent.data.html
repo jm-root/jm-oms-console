@@ -59,7 +59,7 @@
         <!--【表身】-->
         <div class="scroll-box" ng-style="tablestyle">
             <table class="form-table table table-striped table-bordered mobiletable table-hover">
-                <tr ng-if="isSmartDevice">
+                <tr ng-if="!nodata&&isSmartDevice">
                     <td style="color: #1006F1">{{'datastatistics.agentdata.header.summary'|translate}}</td>
                     <td data-title="{{'datastatistics.agentdata.header.rollIn'|translate}}" >{{agentdata.stat.agent_in_jb | number}}</td>
                     <td data-title="{{'datastatistics.agentdata.header.rollOut'|translate}}" >{{agentdata.stat.agent_out_jb | number}}</td>
