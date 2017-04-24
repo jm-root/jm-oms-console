@@ -70,11 +70,8 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
             $scope.games = [];
             game.forEach(function (e, i, arr) {
                 var id = e._id;
-                console.log(e);
                 var tmpl = e.tmpl;
-                console.log(tmpl);
                 var gamename = e.name;
-                console.log(gamename)
                 $scope.games.push(gamename);
 
                 //桌子
@@ -102,11 +99,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                             all: 1
                         }
                     }).success(function (result) {
-                        console.log(result)
 
                         var rooms = [];
                         for (var key in result) {
-                            console.log(result[key].roomType)
                             if (result[key].roomType != '1') {
                                 rooms.push(result[key]);
                             }
@@ -197,13 +192,11 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                         for(var roomtype=0;roomtype <rooms.length;roomtype++){
                             for(var tabletype1=rooms[roomtype].startAreaId;tabletype1<rooms[roomtype].startAreaId+rooms[roomtype].maxAreas;tabletype1++){
                                 var dataname = gamename;
-                                console.log(dataname)
                                 var tablenum = tabletype1;
                                 var dataroom = rooms[roomtype].name;
                                 var tmpl = e.tmpl;
                                 if(!tablename){
                                     var a = tableresult[tabletype1];
-                                    console.log(a)
                                 }
                                 var tablename ="";
                                 var a = tableresult[tabletype1];
