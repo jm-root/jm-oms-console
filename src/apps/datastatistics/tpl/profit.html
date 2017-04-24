@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="input-group w-sm pull-right headpadd m-r-sm ">
+    <div class="input-group w-sm pull-right headpadd m-r-sm " ng-if="select">
         <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="getdata(1)">
             <option value="">所有渠道</option>
         </select>
