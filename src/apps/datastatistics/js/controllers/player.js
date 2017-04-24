@@ -93,7 +93,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     $scope.getdata();
 
     $scope.details = function (key1,key2) {
-        $state.go("app.datastatistics.playerdiary",{account:key1,date:JSON.stringify(key2)});
+        $state.go("app.datastatistics.playerdiary",{userid:key1,date:JSON.stringify(key2)});
     }
 
     $scope.$watch('search.date', function () {
@@ -212,12 +212,27 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     var history = global.playerDiaryHistory || (global.playerDiaryHistory = {});
     $scope.pageSize = history.pageSize || $scope.defaultRows;
     $scope.search = history.search || {};
+    var page = 1;
 
     $scope.dateOptions = angular.copy(global.dateRangeOptions);
     $scope.dateOptions.opens = 'left';
 
-    if ($stateParams.account) {            //给时间框赋值
-        $scope.search.keyword = $stateParams.account;
+    $scope.tablestyle = {};
+    $scope.tdstyle = {};
+    if($scope.isSmartDevice){
+        $scope.tablestyle = {};
+        $scope.tdstyle = {};
+    }else{
+        $scope.tablestyle = {
+            height:$scope.app.navHeight-255+'px',
+            border:'1px solid #cccccc'
+        }
+        $scope.tdstyle = {
+            width:"200px"
+        }
+    }
+    if ($stateParams.userid) {            //给时间框赋值
+        $scope.search.keyword = $stateParams.userid;
         var datestr = $stateParams.date || "";
         var dateobj = JSON.parse(datestr);
         $scope.search.date = dateobj;
@@ -246,167 +261,88 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
         $scope.errorTips(code);
     });
 
-    var format_ctName = function (params) {
-        var ctName = params.data.ctName;
-        return ctName || '';
+    $scope.left = function () {
+        if($scope.page>1){
+            --page;
+            $scope.getdata();
+        }
+    }
+    $scope.right = function () {
+        if($scope.page<$scope.pages){
+            ++page;
+            $scope.getdata();
+        }
     };
 
-    var format_fromUserId = function (params) {
-        return params.data.fromUid || params.data.fromUserId;
-    };
-
-    var format_fromUser = function (params) {
-        return params.data.fromUserName || '';
-    };
-
-    var format_toUid = function (params) {
-        return params.data.toUid ||params.data.toUserId;
-    };
-
-    var format_toUser = function (params) {
-        return params.data.toUserName || '';
-    };
-
-    var format_type = function (params) {
-        var type = params.data.type;
-        var info = '未知';
-        if (type == 0) info = '普通交易';
-        if (type == 1) info = '转帐交易';
-        if (type == 2) info = '货币发行';
-        if (type == 3) info = '货币回收';
-        if (type == 4) info = '预授权';
-
-        return info;
-    };
-
-    function type_render(params){
-        var obj = params.data|| {};
+    $scope.type_render = function (obj){
         if(obj.type == 0){
-            return "收入"
+            return global.translateByKey('datastatistics.playerdiary.type.income');
         }else if(obj.type == 1){
-            return "支出";
+            return global.translateByKey('datastatistics.playerdiary.type.expenditure');
         }else if(obj.type == 2){
-            return "转入";
+            return global.translateByKey('datastatistics.playerdiary.type.turnin');
         }else if(obj.type == 3){
-            return "转出";
+            return global.translateByKey('datastatistics.playerdiary.type.turnout');
         }else if(obj.type == 4){
-            return "上分";
+            return global.translateByKey('datastatistics.playerdiary.type.up');
         }else if(obj.type == 5) {
-            return "下分";
+            return global.translateByKey('datastatistics.playerdiary.type.down');
         }else if(obj.type == 6) {
-            return "输";
+            return global.translateByKey('datastatistics.playerdiary.type.lose');
         }else if(obj.type == 7) {
-            return "赢";
+            return global.translateByKey('datastatistics.playerdiary.type.win');
         }else if(obj.type == 8) {
-            return "货币发行";
+            return global.translateByKey('datastatistics.playerdiary.type.currencyissue');
         }else if(obj.type == 9) {
-            return "货币回收";
+            return global.translateByKey('datastatistics.playerdiary.type.currencyrecovery');
         }
     };
 
-    var columnDefs = [
-        {headerName: "发起方ID", field: "fromUserId", width: 210, valueGetter: format_fromUserId},
-        {headerName: "发起方名称", field: "fromUser", width: 120, valueGetter: format_fromUser},
-        {headerName: "操作类型", field: "flag", width: 120,cellRenderer: type_render},
-        {headerName: "操作金额", field: "amount", width: 120},
-        {headerName: "交易对象ID", field: "toUid", width: 200,valueGetter:format_toUid},
-        {headerName: "交易对象名称", field: "toUserName", width: 150,valueGetter:format_toUser},
-        {headerName: "操作时间", field: "createdAt", width: 250, valueGetter: $scope.angGridFormatDateS}
-    ];
+    $scope.getdata = function(_page) {
 
-    global.agGridTranslateSync($scope, columnDefs, [
-        'datastatistics.playerdiary.header.fromUserId',
-        'datastatistics.playerdiary.header.fromUser',
-        'datastatistics.playerdiary.header.type',
-        'datastatistics.playerdiary.header.amount',
-        'datastatistics.playerdiary.header.toUserId',
-        'datastatistics.playerdiary.header.toUser',
-        'datastatistics.playerdiary.header.createdAt'
-    ]);
-
-    var dataSource = {
-        getRows: function (params) {
-            global.agGridOverlay();
-            var search = $scope.search;
-            if ($stateParams.account) {                    //获取开始和结束时间
-                var datestr = $stateParams.date || "";
-                var dateobj = JSON.parse(datestr);
-                var startDate = dateobj.startDate || "";
-                var endDate = dateobj.endDate || "";
-            } else {
-                var date = search.date;
-                var startDate = date.startDate || "";
-                var endDate = date.endDate || "";
+        if(_page) page = _page;
+        $scope.moreLoading = true;
+        var search = $scope.search;
+        var date = search.date||{};
+        var startDate = date.startDate || "";
+        var endDate = date.endDate|| "";
+        var agent =search.agent;
+        $http.get(statUri+'/deals', {
+            params:{
+                token: sso.getToken(),
+                page:page,
+                rows:$scope.pageSize,
+                agent:agent,
+                search: $scope.search.keyword,
+                startDate: startDate.toString(),
+                endDate: endDate.toString(),
+                onlyAgent:false
             }
-            var agent = search.agent;
-
-            var page = params.startRow / $scope.pageSize + 1;
-            $http.get(statUri+'/deals',{
-                params:{
-                    token: sso.getToken(),
-                    page:page,
-                    rows:$scope.pageSize,
-                    agent:agent,
-                    search: $scope.search.keyword,
-                    startDate: startDate.toString(),
-                    endDate: endDate.toString(),
-                    onlyAgent:false
-                }
-            }).success(function(result){
-                if(result.err){
-                    $scope.error(result.msg);
+        }).success(function(result){
+            if(result.err){
+                $scope.error(result.msg);
+            }else{
+                $scope.moreLoading = false;
+                $('html,body').animate({ scrollTop: 0 }, 0);
+                $scope.deals = result;
+                if(result.total){
+                    $scope.nodata = false;
+                    $scope.page = result.page;
+                    $scope.pages = result.pages;
+                    $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total);
                 }else{
-                    var data = result;
-                    var rowsThisPage = data.rows;
-                    var lastRow = data.total;
-                    params.successCallback(rowsThisPage, lastRow);
+                    $scope.nodata = true;
                 }
-            }).error(function(msg, code){
-                $scope.errorTips(code);
-            });
-        }
-    };
+            }
+        }).error(function(msg, code){
+            $scope.errorTips(code);
+        });
+    }
+    $scope.getdata();
 
-    $scope.gridOptions = {
-        paginationPageSize: Number($scope.pageSize),
-        rowModelType: 'pagination',
-        enableSorting: true,
-        enableFilter: true,
-        enableColResize: true,
-        rowSelection: 'multiple',
-        columnDefs: columnDefs,
-        rowStyle: {
-            '-webkit-user-select': 'text',
-            '-moz-user-select': 'text',
-            '-o-user-select': 'text',
-            'user-select': 'text'
-        },
-        localeText: global.agGrid.localeText,
-        headerCellRenderer: global.agGridHeaderCellRendererFunc,
-        onGridReady: function (event) {
-            // event.api.sizeColumnsToFit();
-        },
-        onRowDataChanged: function (cell) {
-            global.agGridOverlay();
-        },
-        onCellDoubleClicked: function (cell) {
-        },
-        datasource: dataSource
-    };
-
-    $scope.onPageSizeChanged = function () {
-        $scope.gridOptions.paginationPageSize = Number($scope.pageSize);//需重新负值,不然会以之前的值处理
-        $scope.gridOptions.api.setDatasource(dataSource);
-    };
-
-    $scope.$watch('pageSize', function () {
-        history.pageSize = $scope.pageSize;
-    });
-    $scope.$watch('search', function () {
-        history.search = $scope.search;
-    });
     $scope.$watch('search.date', function () {
-        $scope.onPageSizeChanged();
+        $scope.getdata(1);
     });
 
 }]);

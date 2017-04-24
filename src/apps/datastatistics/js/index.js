@@ -49,7 +49,7 @@
                             resolve: lazyLoadProvider.load(['daterangepicker'])
                         })
                         .state('app.datastatistics.playerdiary', {
-                            url: '/playerdiary/{account}?{date}',
+                            url: '/playerdiary/{userid}?{date}',
                             templateUrl: path + 'tpl/player.diary.html',
                             controller: 'PlayerDiaryCtrl',
                             resolve: lazyLoadProvider.load(['daterangepicker'])

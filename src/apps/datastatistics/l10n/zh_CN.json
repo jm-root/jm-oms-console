@@ -59,6 +59,18 @@
         "toJb":"交易对象交易前金币",
         "balance": "操作前余额",
         "createdAt": "操作时间"
+      },
+      "type":{
+        "up":"上分",
+        "down":"下分",
+        "income":"收入",
+        "expenditure":"支出",
+        "turnin":"转入",
+        "turnout":"转出",
+        "win":"赢",
+        "lose":"输",
+        "currencyissue":"货币发行",
+        "currencyrecovery":"货币回收"
       }
     },
     "agentstatistics":{
@@ -105,6 +117,28 @@
         "time":"操作时间"
       }
 
+    },
+    "table":{
+      "title":"桌子统计",
+      "gameName":"游戏名称",
+      "header":{
+        "gameName":"游戏名称",
+        "roomName":"房间名称",
+        "tableNum":"桌子编号",
+        "tableName":"桌子名称",
+        "in":"总压",
+        "out":"总得",
+        "gain":"盈利（游戏分）",
+        "rate":"盈利率",
+        "profit":"盈利（金币）"
+      }
+    },
+    "profit":{
+      "title":"盈利日报表",
+      "label1":"所有渠道",
+      "date":"日期",
+      "allSummary":"所有游戏汇总",
+      "summary":"汇总"
     }
   }
 }

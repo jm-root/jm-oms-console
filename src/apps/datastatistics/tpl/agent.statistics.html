@@ -59,7 +59,7 @@
         <!--【fixed-thead表头】-->
         <!--【表身】-->
         <div class="scroll-box" ng-style="tablestyle">
-        <table class="form-table table table-striped table-bordered mobiletable" >
+        <table class="form-table table table-striped table-bordered mobiletable table-hover" >
             <tr ng-repeat="row in agentdata.rows" class="active tbr" ng-if="total">
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelId'|translate}}" style="height: 2.8em">{{row.agent.code}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelName'|translate}}" style="height: 2.8em">{{row.agent.name}}</td>

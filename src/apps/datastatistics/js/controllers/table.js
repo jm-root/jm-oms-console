@@ -13,7 +13,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-240+'px'
+            height:$scope.app.navHeight-250+'px'
         }
     }
 
@@ -70,7 +70,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
             $scope.games = [];
             game.forEach(function (e, i, arr) {
                 var id = e._id;
-                $scope.tmpl = e.tmpl;
+                var tmpl = e.tmpl;
                 var gamename = e.name;
                 $scope.games.push(gamename);
 
@@ -127,52 +127,53 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                 }
                             }
 
-                            $scope.allData.forEach(function (e, i) {
-
-                                $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
-                                    params:{
-                                        token: sso.getToken(),
-                                        room: parseInt(e.tablenum)
-                                    }
-                                }).success(function (result) {
-                                    var gin = result.gIn;
-                                    var gout = result.gOut;
-                                    var gcoin = result.coin_rate;
-                                    var rate;
-                                    var profit;
-                                    if (Object.prototype.toString.call(gin) == '[object Array]') {
-                                        var sumin = sum(gin);
-                                    } else {
-                                        var sumin = gin;
-                                    }
-
-                                    if (Object.prototype.toString.call(gout) == '[object Array]') {
-                                        var sumout = sum(gout);
-                                    } else {
-                                        var sumout = gout;
-                                    }
-
-                                    var gain = sumin - sumout;
-                                    if (sumin <= 0) {
-                                        rate = 0;
-                                    } else {
-                                        rate = gain / sumin;
-                                        rate = rate.toFixed(4);
-                                    }
-
-                                    if (gcoin <= 0) {
-                                        profit = 0;
-                                    } else {
-                                        profit = gain / gcoin;
-                                    }
-
-                                    e.in = sumin;
-                                    e.out = sumout;
-                                    e.gain = gain;
-                                    e.rate = rate;
-                                    e.profit = profit;
-                                });
-                            });
+                            // $scope.allData.forEach(function (e, i) {
+                            //
+                            //
+                            //     $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
+                            //         params:{
+                            //             token: sso.getToken(),
+                            //             room: parseInt(e.tablenum)
+                            //         }
+                            //     }).success(function (result) {
+                            //         var gin = result.gIn;
+                            //         var gout = result.gOut;
+                            //         var gcoin = result.coin_rate;
+                            //         var rate;
+                            //         var profit;
+                            //         if (Object.prototype.toString.call(gin) == '[object Array]') {
+                            //             var sumin = sum(gin);
+                            //         } else {
+                            //             var sumin = gin;
+                            //         }
+                            //
+                            //         if (Object.prototype.toString.call(gout) == '[object Array]') {
+                            //             var sumout = sum(gout);
+                            //         } else {
+                            //             var sumout = gout;
+                            //         }
+                            //
+                            //         var gain = sumin - sumout;
+                            //         if (sumin <= 0) {
+                            //             rate = 0;
+                            //         } else {
+                            //             rate = gain / sumin;
+                            //             rate = rate.toFixed(4);
+                            //         }
+                            //
+                            //         if (gcoin <= 0) {
+                            //             profit = 0;
+                            //         } else {
+                            //             profit = gain / gcoin;
+                            //         }
+                            //
+                            //         e.in = sumin;
+                            //         e.out = sumout;
+                            //         e.gain = gain;
+                            //         e.rate = rate;
+                            //         e.profit = profit;
+                            //     });
+                            // });
 
                             $scope.moreLoading = false;
                             // $('html,body').animate({ scrollTop: 0 }, 100);
@@ -185,24 +186,22 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                             }else{
                                 $scope.nodata = true;
                             }
-                            return;
                         }
 
 
-
                         for(var roomtype=0;roomtype <rooms.length;roomtype++){
-                            for(var tabletype=rooms[roomtype].startAreaId;tabletype<rooms[roomtype].startAreaId+rooms[roomtype].maxAreas;tabletype++){
+                            for(var tabletype1=rooms[roomtype].startAreaId;tabletype1<rooms[roomtype].startAreaId+rooms[roomtype].maxAreas;tabletype1++){
                                 var dataname = gamename;
-                                var tablenum = tabletype;
+                                var tablenum = tabletype1;
                                 var dataroom = rooms[roomtype].name;
                                 var tmpl = e.tmpl;
                                 if(!tablename){
-                                    var a = tableresult[tabletype];
+                                    var a = tableresult[tabletype1];
                                 }
                                 var tablename ="";
-                                var a = tableresult[tabletype];
+                                var a = tableresult[tabletype1];
                                 if(a && a.name){
-                                    tablename = tableresult[tabletype].name;
+                                    tablename = tableresult[tabletype1].name;
                                 }
 
                                 var rowdata = {
@@ -232,11 +231,16 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                         }
 
                                     $scope.allData.forEach(function (e, i) {
+                                        if(e == undefined){
+                                            return;
+                                        }
 
                                             $http.get(algUri + '/' + e.tmpl + '/getAlgData', {
                                                 params:{
                                                     token: sso.getToken(),
-                                                    room: parseInt(e.tablenum)
+                                                    room: parseInt(e.tablenum),
+                                                    // async:false
+
                                                 }
                                             }).success(function (result) {
                                                 var gin = result.gIn;
