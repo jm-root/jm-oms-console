@@ -69,7 +69,7 @@
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.decrease'|translate}}" style="height: 2.8em">{{row.down_jb | number}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.balance'|translate}}" style="height: 2.8em">{{(row.hold.jb.amount||0) | number}}</td>
                 <td class="tbd text-left" data-title="{{'datastatistics.agentstatistics.header.details'|translate}}">
-                    <button class="btn btn-xs btn-info"  ng-click="details(row.agent.code,search.date)">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
+                    <button class="btn btn-xs btn-info"  ng-click="details(row.agent.id,search.date)">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
                 </td>
             </tr>
         </table>

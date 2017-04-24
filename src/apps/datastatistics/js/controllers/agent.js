@@ -206,7 +206,7 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
     $scope.getdata();
 
     $scope.details = function (key1,key2) {
-        $state.go("app.datastatistics.agentdiary",{agent:key1,date:JSON.stringify(key2)});
+      $state.go("app.datastatistics.agentdiary",{agentid:key1,date:JSON.stringify(key2)});
     }
 
     $scope.getOption = function () {
@@ -255,8 +255,9 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
     var history = global.AgentDiaryHistory||(global.AgentDiaryHistory={});
     $scope.pageSize = history.pageSize||$scope.defaultRows;
     $scope.search = history.search|| {};
-    if ($stateParams.agent) {            //给时间框赋值
-        $scope.search.agent = $stateParams.agent;
+
+    if ($stateParams.agentid) {            //给时间框赋值
+        $scope.search.agent = $stateParams.agentid;
         var datestr = $stateParams.date || "";
         var dateobj = JSON.parse(datestr);
         $scope.search.date = dateobj;
@@ -272,11 +273,17 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
 
     //判断是否移动端设置表格样式
     $scope.tablestyle = {};
+    $scope.tdstyle = {};
     if($scope.isSmartDevice){
         $scope.tablestyle = {};
+        $scope.tdstyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-235+'px'
+            height:$scope.app.navHeight-255+'px',
+            border:'1px solid #cccccc'
+        }
+        $scope.tdstyle = {
+            width:"200px"
         }
     }
 
@@ -294,6 +301,7 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
     };
 
     $scope.getdata = function(keyword,_page) {
+
         if(_page) page = _page;
         $scope.moreLoading = true;
         var search = $scope.search;
