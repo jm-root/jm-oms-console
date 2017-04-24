@@ -16,7 +16,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-210+'px',
+            height:$scope.app.navHeight-230+'px',
             border:'1px solid #cccccc'
         }
     }
@@ -50,7 +50,6 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global
             }else{
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
-                console.info(result);
                 $scope.usersInfo = result;
                 $scope.page = result.page;
                 $scope.pages = result.pages;

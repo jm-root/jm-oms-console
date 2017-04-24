@@ -13,7 +13,6 @@
 </div>
 
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
-    <div class="table-responsive mobiletable" ng-style="tablestyle">
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
@@ -31,33 +30,38 @@
         <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
-        <!--table-->
-        <table class="table table-striped table-bordered"  >
-            <thead class="thead bg-white">
-            <tr class="thr">
-                <th class="thh">{{'bank.bank.owndeal.header.userId'|translate}}</th>
-                <th class="thh">{{'bank.bank.owndeal.header.user'|translate}}</th>
-                <th class="thh">{{'bank.bank.owndeal.header.ctName'|translate}}</th>
-                <th class="thh">{{'bank.bank.owndeal.header.flag'|translate}}</th>
-                <th class="thh">{{'bank.bank.owndeal.header.amount'|translate}}</th>
-                <th class="thh">{{'bank.bank.owndeal.header.createdAt'|translate}}</th>
+
+    <div class="cttable">
+        <!--【fixed-thead表头】-->
+        <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
+            <tr>
+                <th>{{'bank.bank.owndeal.header.userId'|translate}}</th>
+                <th>{{'bank.bank.owndeal.header.user'|translate}}</th>
+                <th>{{'bank.bank.owndeal.header.ctName'|translate}}</th>
+                <th>{{'bank.bank.owndeal.header.flag'|translate}}</th>
+                <th>{{'bank.bank.owndeal.header.amount'|translate}}</th>
+                <th>{{'bank.bank.owndeal.header.createdAt'|translate}}</th>
+                <th style="width: 17px" ng-if="deallist.length>17"></th>
             </tr>
-            </thead>
-            <tbody class="tbody" >
-            <tr ng-repeat="row in deallist" class="active tbr">
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.userId'|translate}}" style="height: 2.8em">{{row.fromAccountId || row.toAccountId || ""}}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.user'|translate}}" style="height: 2.8em">{{row.fromUserName || row.toUserName || ""}}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.ctName'|translate}}" style="height: 2.8em">{{row.ctCode == 'jb' ? ('bank.account.paylist.jb'|translate) : (row.ctCode == 'tb' ? ('bank.account.paylist.tb'|translate) : ('bank.account.paylist.dbj'|translate) ) || ""}}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.flag'|translate}}" style="height: 2.8em">{{row.flag == 0 ? ('bank.bank.deal.income'|translate):('bank.bank.deal.expenditure'|translate) }}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
-                <td class="tbd" data-title="{{'bank.bank.owndeal.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            </tr>
-            </tbody>
         </table>
+        <!--【fixed-thead表头】-->
+        <!--【表身】-->
+        <div class="scroll-box" ng-style="tablestyle">
+        <table class="table form-table table-striped table-bordered mobiletable"  >
+            <tr ng-repeat="row in deallist" class="active tbr">
+                <td data-title="{{'bank.bank.owndeal.header.userId'|translate}}" style="height: 2.8em">{{row.fromAccountId || row.toAccountId || ""}}</td>
+                <td data-title="{{'bank.bank.owndeal.header.user'|translate}}" style="height: 2.8em">{{row.fromUserName || row.toUserName || ""}}</td>
+                <td data-title="{{'bank.bank.owndeal.header.ctName'|translate}}" style="height: 2.8em">{{row.ctCode == 'jb' ? ('bank.account.paylist.jb'|translate) : (row.ctCode == 'tb' ? ('bank.account.paylist.tb'|translate) : ('bank.account.paylist.dbj'|translate) ) || ""}}</td>
+                <td data-title="{{'bank.bank.owndeal.header.flag'|translate}}" style="height: 2.8em">{{row.flag == 0 ? ('bank.bank.deal.income'|translate):('bank.bank.deal.expenditure'|translate) }}</td>
+                <td data-title="{{'bank.bank.owndeal.header.amount'|translate}}" style="height: 2.8em">{{row.amount}}</td>
+                <td data-title="{{'bank.bank.owndeal.header.createdAt'|translate}}" style="height: 2.8em">{{row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+        </table>
+        </div>
     </div>
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:30px;">
+    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:10px;">
         <div class="text-center">
             <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
             <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>

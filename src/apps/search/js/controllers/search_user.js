@@ -39,6 +39,7 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
             }
         }).success(function(result){
             $scope.moreLoading = false;
+            $scope.usersInfo = result;
             if(result.err){
                 $scope.error(result.msg);
             }else{
@@ -48,7 +49,6 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
                 $scope.page = page;
                 $scope.pages = pages;
                 $scope.total = total;
-                $scope.usersInfo = result;
             }
         }).error(function(msg, code){
             $scope.errorTips(code);

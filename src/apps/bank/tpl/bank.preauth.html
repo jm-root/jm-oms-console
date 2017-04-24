@@ -17,7 +17,6 @@
 </div>
 
 <div style="margin: 0 10px 5px;position: relative;clear:both;">
-    <div class="table-responsive mobiletable" ng-style="tablestyle">
         <!--loading-->
         <div ng-if="moreLoading">
             <div style="position:fixed;z-index:1;width:100%;height:100%; background:#eeeeee;opacity: 0.5;"></div>
@@ -35,9 +34,10 @@
         <div class="text-center" ng-if="nodata&&isSmartDevice" style="position:fixed;z-index: 2;left: 50%;top: 50%;transform: translate(-50%, -50%)">
             <span style="border: 1px solid  #aaaaaa;padding: 5px;border-radius: 10px;">{{'ag-grid.noRowsToShow'|translate}}</span>
         </div>
-        <!--table-->
-        <table class="table table-striped table-bordered"  >
-            <thead class=" bg-white">
+
+    <div class="cttable">
+        <!--【fixed-thead表头】-->
+        <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
             <tr>
                 <th >{{'bank.bank.preauth.header.user'|translate}}</th>
                 <th>{{'bank.bank.preauth.header.control'|translate}}</th>
@@ -45,9 +45,13 @@
                 <th>{{'bank.bank.preauth.header.amount'|translate}}</th>
                 <th>{{'bank.bank.preauth.header.createdAt'|translate}}</th>
                 <th></th>
+                <th style="width: 17px" ng-if="preauthlist.length>17"></th>
             </tr>
-            </thead>
-            <tbody>
+        </table>
+        <!--【fixed-thead表头】-->
+        <!--【表身】-->
+        <div class="scroll-box" ng-style="tablestyle">
+        <table class="table form-table table-striped table-bordered"  >
             <tr ng-repeat="row in preauthlist" class="active">
                 <td data-title="{{'bank.bank.preauth.header.user'|translate}}" style="height: 2.8em">{{row.Hold.Account.User.name || row.Hold.Account.User.mobile || row.Hold.Account.User.email || row.Hold.Account.User.userId || ''}}</td>
                 <td data-title="{{'bank.bank.preauth.header.control'|translate}}" style="height: 2.8em">{{row.User.name || row.User.mobile || row.User.email || row.User.userId || ''}}</td>
@@ -58,12 +62,12 @@
                     <button class="btn btn-xs btn-info" ng-click="npreauth(row)">{{'bank.bank.preauth.cancelAuthorization'|translate}}</button>
                 </td>
             </tr>
-            </tbody>
         </table>
+        </div>
     </div>
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:30px;">
+    <div ng-if="!moreLoading&&!isSmartDevice" style="margin:0 auto;margin-top:10px;">
         <div class="text-center">
             <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
             <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>

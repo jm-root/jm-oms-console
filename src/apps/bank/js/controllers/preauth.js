@@ -12,7 +12,7 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-240+'px'
+            height:$scope.app.navHeight-220+'px'
         }
     }
 

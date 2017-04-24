@@ -14,7 +14,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
         $scope.tablestyle = {};
     }else{
         $scope.tablestyle = {
-            height:$scope.app.navHeight-240+'px'
+            height:$scope.app.navHeight-220+'px'
         }
     }
 
