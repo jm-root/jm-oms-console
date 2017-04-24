@@ -8,6 +8,12 @@
         </div>
     </div>
 
+    <div class="input-group w-sm pull-right headpadd m-r-sm ">
+        <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="getdata(1)">
+            <option value="">所有渠道</option>
+        </select>
+    </div>
+
     <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
         <select class=" form-control" ng-model="pageSize" ng-options="o.val as o.val for o in listRowsOptions" ng-change="getdata(1)">
         </select>
@@ -47,7 +53,7 @@
         <!--【fixed-thead表头】-->
         <!--【表身】-->
         <div class="scroll-box" ng-style="tablestyle">
-        <table class="form-table table table-striped table-bordered mobiletable">
+        <table class="form-table table table-striped table-bordered mobiletable table-hover">
             <tr ng-if="!nodata&&isSmartDevice">
                 <td style="color: #1006F1">汇总</td>
                 <td ng-repeat="x in games"data-title={{x.name}}>{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
