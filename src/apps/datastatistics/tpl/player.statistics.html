@@ -65,7 +65,7 @@
                     <td data-title="{{'datastatistics.playerstatistics.header.down'|translate}}">{{row.down_jb | number}}</td>
                     <td data-title="{{'datastatistics.playerstatistics.header.jbbalance'|translate}}">{{(row.hold.jb.amount||0) | number}}</td>
                     <td data-title="{{'datastatistics.playerstatistics.header.detail'|translate}}">
-                        <button class="btn btn-xs btn-info" ng-click="details(row.user.account||row.user.nick,search.date)">{{'datastatistics.playerstatistics.header.detail'|translate}}</button>
+                        <button class="btn btn-xs btn-info" ng-click="details(row.user._id,search.date)">{{'datastatistics.playerstatistics.header.detail'|translate}}</button>
                     </td>
                 </tr>
             </table>

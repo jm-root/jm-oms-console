@@ -51,7 +51,7 @@
         <!--【fixed-thead表头】-->
         <!--【表身】-->
         <div class="scroll-box" ng-style="tablestyle">
-        <table class="table form-table table-striped table-bordered"  >
+        <table class="table form-table table-striped table-bordered table-hover"  >
             <tr ng-repeat="row in preauthlist" class="active">
                 <td data-title="{{'bank.bank.preauth.header.user'|translate}}" style="height: 2.8em">{{row.Hold.Account.User.name || row.Hold.Account.User.mobile || row.Hold.Account.User.email || row.Hold.Account.User.userId || ''}}</td>
                 <td data-title="{{'bank.bank.preauth.header.control'|translate}}" style="height: 2.8em">{{row.User.name || row.User.mobile || row.User.email || row.User.userId || ''}}</td>
