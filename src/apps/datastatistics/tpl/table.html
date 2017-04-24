@@ -1,8 +1,8 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">桌子统计</h1></div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'datastatistics.table.title'|translate}}</h1></div>
 <div>
     <div class="pull-right m-r-sm headpadd">
         <select class="input-sm form-control w-sm" ng-model="search" ng-options="opt for opt in games" ng-change="onPageSizeChanged()">
-            <option value="">游戏名称</option>
+            <option value="">{{'datastatistics.table.gameName'|translate}}</option>
         </select>
     </div>
     <div class="pull-right m-r-sm headpadd" ng-show="!isSmartDevice">
@@ -36,15 +36,15 @@
             <!--【fixed-thead表头】-->
             <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
                 <tr>
-                    <th>游戏名称</th>
-                    <th>房间名称</th>
-                    <th>桌子编号</th>
-                    <th>桌子名称</th>
-                    <th>总压</th>
-                    <th>总得</th>
-                    <th>盈利（游戏分）</th>
-                    <th>盈利率</th>
-                    <th>盈利（金币）</th>
+                    <th>{{'datastatistics.table.header.gameName'|translate}}</th>
+                    <th>{{'datastatistics.table.header.roomName'|translate}}</th>
+                    <th>{{'datastatistics.table.header.tableNum'|translate}}</th>
+                    <th>{{'datastatistics.table.header.tableName'|translate}}</th>
+                    <th>{{'datastatistics.table.header.in'|translate}}</th>
+                    <th>{{'datastatistics.table.header.out'|translate}}</th>
+                    <th>{{'datastatistics.table.header.gain'|translate}}</th>
+                    <th>{{'datastatistics.table.header.rate'|translate}}</th>
+                    <th>{{'datastatistics.table.header.profit'|translate}}</th>
                 </tr>
             </table>
             <!--【fixed-thead表头】-->
@@ -52,15 +52,15 @@
             <div class="scroll-box" ng-style="tablestyle">
                 <table class="form-table table table-striped table-bordered mobiletable table-hover">
                     <tr ng-repeat="row in allData | filter:{gamename:''}" class="active tbr">
-                        <td data-title="游戏名称" style="height: 2.8em">{{row.gamename}}</td>
-                        <td data-title="房间名称" style="height: 2.8em">{{row.gameroom}}</td>
-                        <td data-title="桌子编号" style="height: 2.8em">{{row.tablenum}}</td>
-                        <td data-title="桌子名称" style="height: 2.8em">{{row.tablename}}</td>
-                        <td data-title="总压" style="height: 2.8em">{{row.in | number}}</td>
-                        <td data-title="总得" style="height: 2.8em">{{row.out | number}}</td>
-                        <td data-title="盈利（游戏分）" style="height: 2.8em">{{row.gain | number}}</td>
-                        <td data-title="盈利率" style="height: 2.8em">{{row.rate | number}}</td>
-                        <td data-title="盈利（金币）" style="height: 2.8em">{{row.profit | number}}</td>
+                        <td data-title="{{'datastatistics.table.header.gameName'|translate}}" style="height: 2.8em">{{row.gamename}}</td>
+                        <td data-title="{{'datastatistics.table.header.roomName'|translate}}" style="height: 2.8em">{{row.gameroom}}</td>
+                        <td data-title="{{'datastatistics.table.header.tableNum'|translate}}" style="height: 2.8em">{{row.tablenum}}</td>
+                        <td data-title="{{'datastatistics.table.header.tableName'|translate}}" style="height: 2.8em">{{row.tablename}}</td>
+                        <td data-title="{{'datastatistics.table.header.in'|translate}}" style="height: 2.8em">{{row.in | number}}</td>
+                        <td data-title="{{'datastatistics.table.header.out'|translate}}" style="height: 2.8em">{{row.out | number}}</td>
+                        <td data-title="{{'datastatistics.table.header.gain'|translate}}" style="height: 2.8em">{{row.gain | number}}</td>
+                        <td data-title="{{'datastatistics.table.header.rate'|translate}}" style="height: 2.8em">{{row.rate | number}}</td>
+                        <td data-title="{{'datastatistics.table.header.profit'|translate}}" style="height: 2.8em">{{row.profit | number}}</td>
                     </tr>
                 </table>
             </div><!--【表身】-->

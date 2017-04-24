@@ -1,4 +1,4 @@
-<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">盈利日报表</h1></div>
+<div class="bg-light lter b-b wrapper"><h1 class="m-n font-thin h3">{{'datastatistics.profit.title'|translate}}</h1></div>
 
 <div>
     <div class="pull-right headpadd m-r-sm">
@@ -10,7 +10,7 @@
 
     <div class="input-group w-sm pull-right headpadd m-r-sm " ng-if="select">
         <select ui-jq="chosen" class="w-full input-sm" ng-model="search.agent" ng-options="opt._id as opt.name for opt  in channels" ng-change="getdata(1)">
-            <option value="">所有渠道</option>
+            <option value="">{{'datastatistics.profit.label1'|translate}}</option>
         </select>
     </div>
 
@@ -44,9 +44,9 @@
         <!--【fixed-thead表头】-->
         <table ng-if="!isSmartDevice" class="form-table fixed-thead " cellpadding="0" cellspacing="0" >
             <tr>
-                <th>日期</th>
+                <th>{{'datastatistics.profit.date'|translate}}</th>
                 <th ng-repeat="x in games">{{x.name}}</th>
-                <th>所有游戏汇总</th>
+                <th>{{'datastatistics.profit.allSummary'|translate}}</th>
                 <th style="width: 17px" ng-if="gameProfit.rows.length>=pageSize"></th>
             </tr>
         </table>
@@ -55,14 +55,14 @@
         <div class="scroll-box" ng-style="tablestyle">
         <table class="form-table table table-striped table-bordered mobiletable table-hover">
             <tr ng-if="!nodata&&isSmartDevice">
-                <td style="color: #1006F1">汇总</td>
+                <td style="color: #1006F1">{{'datastatistics.profit.summary'|translate}}</td>
                 <td ng-repeat="x in games"data-title={{x.name}}>{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
-                <td data-title="所有游戏汇总">{{gameProfit.stat.total}}</td>
+                <td data-title="{{'datastatistics.profit.allSummary'|translate}}">{{gameProfit.stat.total}}</td>
             </tr>
             <tr ng-repeat="row in gameProfit.rows" class="active" ng-if="total">
-                <td data-title="日期">{{row.date | date:'yyyy-MM-dd'}}</td>
+                <td data-title="{{'datastatistics.profit.date'|translate}}">{{row.date | date:'yyyy-MM-dd'}}</td>
                 <td ng-repeat="x in games" data-title={{x.name}}>{{row[x._id].gain_jb||0  | number}}</td>
-                <td data-title="所有游戏汇总">{{row.total | number}}</td>
+                <td data-title="{{'datastatistics.profit.allSummary'|translate}}">{{row.total | number}}</td>
             </tr>
         </table>
         </div>
@@ -72,7 +72,7 @@
             <tr>
                 <td>汇总</td>
                 <td ng-repeat="x in games" data-title={{x.name}}>{{gameProfit.stat[x._id].gain_jb||0  | number}}</td>
-                <td data-title="所有游戏汇总">{{gameProfit.stat.total}}</td>
+                <td data-title="{{'datastatistics.profit.allSummary'|translate}}">{{gameProfit.stat.total}}</td>
                 <td style="width: 17px" ng-if="gameProfit.rows.length>=pageSize"></td>
             </tr>
         </table>
