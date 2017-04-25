@@ -26,7 +26,7 @@ S=""
 for app in $APPS
 do
     echo $app
-    S=$S"<script src=\"apps\/$app\/js\/index.js\"><\/script>"
+    S="$S<script src=\"apps\/$app\/js\/index.js\"><\/script>"
 done
 
 if [ -n "$S" ]
