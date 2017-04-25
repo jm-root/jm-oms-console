@@ -139,7 +139,7 @@
     "balance":"余额不足!"
   },
   "search":{
-    "selectplayer":"Select player",
+    "selectplayer":"Select User",
     "all":"Full refund",
     "player":"Player nick：",
     "account":"account",

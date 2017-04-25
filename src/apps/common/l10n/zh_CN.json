@@ -138,7 +138,7 @@
     "balance":"余额不足!"
   },
   "search":{
-    "selectplayer":"选择玩家",
+    "selectplayer":"选择用户",
     "all":"全退",
     "player":"玩家昵称：",
     "account":"账号：",

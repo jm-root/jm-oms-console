@@ -28,15 +28,22 @@ app.controller('SearchUserCtrl', ['$scope', '$state', '$stateParams', '$http', '
         }else{
             var url = "";
         }
-        var sagent = $stateParams.isSuperAgent;
+
+        var type = $stateParams.type;
+        var param = {
+            token: sso.getToken(),
+            page: page,
+            rows: pageSize,
+            search:$scope.keyword
+        }
+        if(type==1){
+            param.isSuperAgent = true;
+        }
+        if(type==2){
+            param.isPlayer = true;
+        }
         $http.get(url, {
-            params:{
-                page: page,
-                rows: pageSize,
-                token: sso.getToken(),
-                search:$scope.keyword,
-                isSuperAgent: sagent
-            }
+            params:param
         }).success(function(result){
             $scope.moreLoading = false;
             $scope.usersInfo = result;
