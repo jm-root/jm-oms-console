@@ -1,4 +1,9 @@
 // config
+// 下面四行不要修改，部署到容器时会被环境变量替换
+var StaticHost;
+var StaticPort;
+var ApiHost;
+var ApiPort;
 
 var gConfig = {
     localhost: {
@@ -26,11 +31,24 @@ var gConfig = {
 
 gConfig = gConfig['development'];
 
-var apiHost = gConfig.apiHost;
-var sdkHost = gConfig.sdkHost;
-var opensdkHost = gConfig.opensdkHost;
-var staticHost = gConfig.staticHost;
-var robotUri = gConfig.robotUri;
+var staticHost;
+var apiHost;
+var sdkHost;
+var opensdkHost;
+var robotUri;
+
+StaticHost && (staticHost = 'http://' + StaticHost);
+StaticPort && (staticHost += ':' + StaticPort);
+ApiHost && (apiHost = 'http://' + ApiHost);
+ApiPort && (apiHost += ':' + ApiPort);
+ApiHost && (robotUri = ApiHost);
+ApiPort && (robotUri += ':' + ApiPort);
+
+staticHost || (staticHost = gConfig.staticHost);
+apiHost || (apiHost = gConfig.apiHost);
+sdkHost || (sdkHost = gConfig.sdkHost || apiHost);
+opensdkHost || (opensdkHost = gConfig.opensdkHost || apiHost);
+robotUri || (robotUri = gConfig.robotUri);
 
 var perUri = sdkHost+"/acl";
 var ssoUri = apiHost+"/sso";
