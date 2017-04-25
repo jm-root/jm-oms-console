@@ -61,15 +61,15 @@
         <div class="scroll-box" ng-style="tablestyle">
         <table class="form-table table table-striped table-bordered mobiletable table-hover" >
             <tr ng-repeat="row in agentdata.rows" class="active tbr" ng-if="total">
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelId'|translate}}" style="height: 2.8em">{{row.agent.code}}</td>
-                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelName'|translate}}" style="height: 2.8em">{{row.agent.name}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelId'|translate}}" style="height: 2.8em">{{row.agentRole.code}}</td>
+                <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.channelName'|translate}}" style="height: 2.8em">{{row.agentRole.name}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollIn'|translate}}" style="height: 2.8em">{{row.agent_in_jb | number}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.rollOut'|translate}}" style="height: 2.8em">{{row.agent_out_jb | number}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.increase'|translate}}" style="height: 2.8em">{{row.up_jb | number}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.decrease'|translate}}" style="height: 2.8em">{{row.down_jb | number}}</td>
                 <td class="tbd" data-title="{{'datastatistics.agentstatistics.header.balance'|translate}}" style="height: 2.8em">{{(row.hold.jb.amount||0) | number}}</td>
                 <td class="tbd text-left" data-title="{{'datastatistics.agentstatistics.header.details'|translate}}">
-                    <button class="btn btn-xs btn-info"  ng-click="details(row.agent.id,search.date)">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
+                    <button class="btn btn-xs btn-info"  ng-click="details(row.agentRole.id,search.date)">{{'datastatistics.agentstatistics.header.details'|translate}}</button>
                 </td>
             </tr>
         </table>
