@@ -8,6 +8,7 @@ StaticHost  静态网址Host
 StaticPort  静态网址端口
 ApiHost     api网址Host
 ApiPort     api网址端口
+APPS        项目，以空格间隔，不要包含common main dashboard
 
 ## 项目简介：
 jm-oms-console是基于angularJS的适用于制作管理系统的前端框架，用户使用此框架只需要在src/apps文件夹下增加自己特有的功能模

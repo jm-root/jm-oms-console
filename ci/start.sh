@@ -21,4 +21,18 @@ setEnv "StaticPort" $StaticPort
 setEnv "ApiHost" "$ApiHost"
 setEnv "ApiPort" $ApiPort
 
+## 为App添加<script>
+S=""
+for app in $APPS
+do
+    echo $app
+    S=$S"<script src=\"apps\/$app\/js\/index.js\"><\/script>"
+done
+
+if [ -n "$S" ]
+then
+   echo $S
+   sed -i "s/<!-- endApps -->/${S}/g" /usr/share/nginx/html/dist/index.html
+fi
+
 nginx -g "daemon off;"
