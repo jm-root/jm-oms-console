@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function setEnv () {
+setEnv () {
     local NAME=$1;
     local VALUE=$2;
     if [ -n "$VALUE" ]
