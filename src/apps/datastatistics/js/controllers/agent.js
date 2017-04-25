@@ -62,6 +62,7 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
 
     $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date;
@@ -166,6 +167,7 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
 
     $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date;
@@ -308,6 +310,7 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
     $scope.getdata = function(keyword,_page) {
 
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date;

@@ -71,6 +71,7 @@ app.controller('ProfitCtrl', ['$scope', '$state', '$http', 'global', function ($
 
     $scope.getdata = function(_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date||{};
@@ -90,7 +91,6 @@ app.controller('ProfitCtrl', ['$scope', '$state', '$http', 'global', function ($
                 agent:agent
             }
         }).success(function(result){
-            console.log(result);
             if(result.err){
                 $scope.error(result.msg);
             }else{

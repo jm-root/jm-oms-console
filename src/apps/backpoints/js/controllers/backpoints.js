@@ -35,6 +35,7 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global
     };
     $scope.getdata = function(keyword,_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         $http.get(urlget, {
             params:{

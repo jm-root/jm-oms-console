@@ -53,6 +53,7 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
         var allData = [];
 
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         $http.get(appMgrUri+'/apps', {
             params:{

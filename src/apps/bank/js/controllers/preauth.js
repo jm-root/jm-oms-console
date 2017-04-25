@@ -52,15 +52,14 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
         if(pagenum){
             page = pagenum;
         }
+        $scope.nodata = false;
         $scope.moreLoading = true;
-        console.log($scope.search);
         bank.preauthList({
             page: page,
             rows: $scope.pageSize,
             search: $scope.search
         },function(err,result){
             var data = result;
-            console.info(result);
             if (data.err) {
                 $scope.error(data.msg);
             }else{
@@ -75,7 +74,6 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
                         $scope.total = result.total;
                         $scope.totalnumber = global.reg(result.total);
                     }else{
-                        console.log(12)
                         $scope.nodata = true;
                         $scope.pages = 0;
                         $scope.total = 0;

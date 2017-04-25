@@ -32,6 +32,7 @@ app.controller('BankAccountCtrl', ['$scope', '$state', '$http', 'global','$timeo
     };
     $scope.getdata = function(pagenum) {
         if(pagenum)  page = pagenum;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         bank.accounts({
             token: sso.getToken(),

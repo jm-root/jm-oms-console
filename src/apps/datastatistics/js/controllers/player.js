@@ -52,6 +52,7 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
     };
     $scope.getdata = function(_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date||{};
@@ -162,6 +163,7 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
 
     $scope.getdata = function(_page) {
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date||{};
@@ -302,6 +304,7 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     $scope.getdata = function(_page) {
 
         if(_page) page = _page;
+        $scope.nodata = false;
         $scope.moreLoading = true;
         var search = $scope.search;
         var date = search.date||{};
