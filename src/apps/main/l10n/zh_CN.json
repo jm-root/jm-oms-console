@@ -1,0 +1,208 @@
+{
+  "COPYRIGHT": "有限公司<br>&copy; 2015",
+  "HEADNAME": "总后台",
+  "login": {
+    "LOGIN": "登录",
+    "FORGOT_PASSWORD": "忘记密码?",
+    "ENTER_LOGIN_INFO": "请输入登录信息",
+    "ACCOUNT": "账号",
+    "PASSWORD": "密码",
+    "VERIFICATION": "验证码"
+  },
+  "footer":{
+    "homepage":"首页",
+    "increase":"上分",
+    "decrease":"下分",
+    "player":"玩家",
+    "transfer":"转账"
+  },
+  "nav": {
+    "HEADER": "导航",
+    "MAIN": "首页"
+  },
+  "app": {
+    "per": {
+      "manage":"权限管理",
+      "org": "组织管理",
+      "users": "用户管理",
+      "role": "角色管理",
+      "resource": "资源管理",
+      "roleUser": "角色用户"
+    },
+    "acl": {
+      "manage":"权限管理(新)",
+      "user": "用户管理",
+      "role": "角色管理",
+      "resource": "资源管理"
+    },
+    "config":{
+      "manage": "配置管理",
+      "list": "管理配置信息",
+      "menus": "菜单配置",
+      "systeminit": "系统初始化",
+      "systemconfig": "系统配置",
+      "unified": "统一配置"
+    },
+    "recharge":{
+      "manage": "充值管理",
+      "cardtype": "点卡类型",
+      "card": "官方点卡",
+      "third": "第三方充值",
+      "cardlog": "点卡充值记录"
+    },
+    "player":{
+      "manage": "玩家管理",
+      "info": "玩家信息",
+      "online": "在线状态",
+      "record": "游戏记录",
+      "givelog": "赠送记录"
+    },
+    "uppoints":{
+      "manage":"上分"
+    },
+    "backpoints":{
+      "manage":"下分",
+      "list":"下分处理",
+      "log":"下分记录"
+    },
+    "datastatistics":{
+      "manage":"数据统计",
+      "playerdata":"玩家日报表",
+      "agentdata":"渠道日报表",
+      "logreg":"登录注册日报表",
+      "profit":"盈利日报表",
+      "playerstatistics":"玩家统计",
+      "agentstatistics":"渠道统计",
+      "table":"桌子统计",
+      "playerdiary":"交易流水",
+      "agentdiary":"渠道流水"
+    },
+    "system":{
+      "manage": "系统管理",
+      "admin": "管理员列表",
+      "log": "系统日志"
+    },
+    "activity":{
+      "manage":"活动管理",
+      "prop":"道具列表",
+      "gaveprop":"分配道具",
+      "forum":"活动版块",
+      "list":"活动列表"
+    },
+    "agent":{
+      "manage":"渠道管理",
+      "create":"下级渠道创建",
+      "list":"渠道列表",
+      "set":"渠道游戏管理",
+      "data":"渠道数据",
+      "message":"推广信息"
+    },
+    "agentdata":{
+      "register":"注册",
+      "recharge":"充值",
+      "analysis":"数据分析",
+      "divided":"分成流水"
+    },
+    "coin":{
+      "sys":"T币系统",
+      "stock":{
+        "manage":"T币库存",
+        "recharge":"T币充值",
+        "list":"库存列表",
+        "order":"订单管理"
+      },
+      "distribute":{
+        "manage":"T币分发",
+        "make":"生成首充号",
+        "batch":"批量分发"
+      },
+      "account":{
+        "manage":"账号管理",
+        "list":"账号列表"
+      },
+      "record":{
+        "manage":"使用记录",
+        "playerStat":"玩家账号统计",
+        "agentStat":"渠道账号统计",
+        "logs":"日志查询"
+      }
+    },
+    "package":{
+      "manage":"包管理",
+      "take":"领包",
+      "set":"包设置"
+    },
+    "bank":{
+      "manage":"银行管理",
+      "account":"账户列表",
+      "preauth":"预授权列表",
+      "transfer":"转账",
+      "deal":"交易流水",
+      "owndeal":"个人流水",
+      "npreauth":"取消授权",
+      "overdraw":"设置额度",
+      "rate":"货币对率",
+      "pay":{"list":"支付列表"}
+    },
+    "bbs":{
+      "manage":"论坛管理",
+      "forum":"版块列表",
+      "topic":"帖子列表"
+    },
+    "oms":{
+      "manage":"运营活动",
+      "aty1":"免费送金币活动"
+    },
+    "app":{
+      "manage":"应用管理",
+      "create":"应用列表",
+      "upload":"应用上传"
+    },
+    "shop":{
+      "manage":"商城管理",
+      "product":"商品管理",
+      "lottery":"夺宝管理",
+      "lotteryWin":"中奖管理"
+    },
+    "home":{
+      "manage":"大厅管理",
+      "vip":{
+        "config":"VIP配置",
+        "cond":"VIP条件",
+        "item":"优惠种类",
+        "set":"分配优惠"
+      },
+      "bbs":{
+        "manage":"论坛管理",
+        "forum":"版块列表",
+        "topic":"帖子列表"
+      },
+      "activitys":"活动列表",
+      "checkin":"签到设置",
+      "turntable":"转盘配置",
+      "sendnotice":"发送公告",
+      "senddak":"发送邮件",
+      "rank":"排行榜设置"
+    },
+    "room":{
+      "manage":"房间管理"
+    },
+    "robot": {
+      "manage":"机器人管理"
+    },
+    "wordfilter":{
+      "manage":"敏感词管理",
+      "list":"敏感词列表",
+      "log":"拦截日志"
+    },
+    "guestbook":{
+      "manage":"留言板管理",
+      "list":"留言板列表"
+    },
+    "report":{
+      "manage":"统计报表",
+      "account":"账目统计"
+    },
+    "promote":"推广地址"
+  }
+}
