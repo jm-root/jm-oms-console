@@ -31,7 +31,6 @@ done
 
 if [ -n "$S" ]
 then
-   echo $S
    sed -i "s/<!-- endApps -->/${S}/g" /usr/share/nginx/html/dist/index.html
 fi
 
