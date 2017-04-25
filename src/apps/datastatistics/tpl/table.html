@@ -69,22 +69,22 @@
 
 
     <!--ng-if="!isSmartDevice"-->
-    <div ng-if="!isSmartDevice" style="margin:auto; margin-top: 30px">
+    <div ng-if="!isSmartDevice" style="position:absolute;z-index: 2;left: 0;right: 0;top: 101%;bottom: 0;margin:auto;">
         <div class="text-center">
-            <div class="pull-left m-l-md">{{((page>0?(page-1):page)*(pageSize||20)+1)||0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
-            <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
-            <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
-            <span>{{page}}/{{pages}}</span>
-            <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
-            <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+            <div class="pull-left m-l-md">{{ pages!=0 ? (((page>0?(page-1):page)*(pageSize||20)+1)||0) : 0}} - {{(page*(pageSize||20) < total)?(page*(pageSize||20)):total||0}} / {{totalnumber||0}}</div>
+            <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="pages ==0 || page==1">{{'ag-grid.first'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="pages ==0 || page==1">{{'ag-grid.previous'|translate}}</button>
+            <span>{{ pages==0 ? 0 : page}}/{{pages}}</span>
+            <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="pages==0 || page==pages">{{'ag-grid.next'|translate}}</button>
+            <button class="btn btn-default btn-sm" ng-click="getdata(pages)" ng-disabled="pages==0 || page==pages">{{'ag-grid.last'|translate}}</button>
         </div>
     </div>
     <div class="text-center" ng-if="!moreLoading&&!nodata&&isSmartDevice">
-        <button class="btn btn-default btn-sm" ng-click="getdata('',1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="getdata(1)" ng-disabled="page==1">{{'ag-grid.first'|translate}}</button>
         <button class="btn btn-default btn-sm" ng-click="left()" ng-disabled="page==1">{{'ag-grid.previous'|translate}}</button>
-        <span>{{page}}/{{pages}}</span>
-        <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="page==pages">{{'ag-grid.next'|translate}}</button>
-        <button class="btn btn-default btn-sm" ng-click="getdata('',pages)" ng-disabled="page==pages">{{'ag-grid.last'|translate}}</button>
+        <span>{{ pages==0 ? 0:page }}/{{ pages }}</span>
+        <button class="btn btn-default btn-sm" ng-click="right()" ng-disabled="pages==0 || page==pages">{{'ag-grid.next'|translate}}</button>
+        <button class="btn btn-default btn-sm" ng-click="getdata(pages)" ng-disabled="pages==0 || page==pages">{{'ag-grid.last'|translate}}</button>
     </div>
 </div>
 

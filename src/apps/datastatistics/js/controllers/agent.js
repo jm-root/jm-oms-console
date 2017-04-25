@@ -95,7 +95,9 @@ app.controller('AgentDataCtrl', ['$scope', '$state', '$http', 'global', function
                     $scope.total = result.total;
                     $scope.totalnumber = global.reg(result.total);
                 }else{
-                    $scope.nodata = true;
+                    $scope.nodata = true;$scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){
@@ -196,6 +198,9 @@ app.controller('AgentStatisticsCtrl', ['$scope', '$state', '$http', 'global', fu
                     $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){
@@ -368,6 +373,9 @@ app.controller('AgentDiaryCtrl', ['$scope', '$state', '$http', 'global','$stateP
                     $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){

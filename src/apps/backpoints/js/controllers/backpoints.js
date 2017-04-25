@@ -51,14 +51,17 @@ app.controller('BacklistCtrl', ['$scope', '$state', '$http','$interval', 'global
                 $scope.moreLoading = false;
                 $('html,body').animate({ scrollTop: 0 }, 100);
                 $scope.usersInfo = result;
-                $scope.page = result.page;
-                $scope.pages = result.pages;
-                $scope.total = result.total;
-                $scope.totalnumber = global.reg(result.total||0);
                 if(result.total){
                     $scope.nodata = false;
+                    $scope.page = result.page;
+                    $scope.pages = result.pages;
+                    $scope.total = result.total;
+                    $scope.totalnumber = global.reg(result.total||0);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){

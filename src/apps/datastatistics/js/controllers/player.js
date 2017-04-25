@@ -84,6 +84,9 @@ app.controller('PlayerStatisticsCtrl', ['$scope', '$state', '$http', 'global', f
                     $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){
@@ -192,6 +195,9 @@ app.controller('PlayerDataCtrl', ['$scope', '$state', '$http', 'global', functio
                     $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){
@@ -218,17 +224,12 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
     $scope.dateOptions.opens = 'left';
 
     $scope.tablestyle = {};
-    $scope.tdstyle = {};
     if($scope.isSmartDevice){
         $scope.tablestyle = {};
-        $scope.tdstyle = {};
     }else{
         $scope.tablestyle = {
             height:$scope.app.navHeight-255+'px',
             border:'1px solid #cccccc'
-        }
-        $scope.tdstyle = {
-            width:"200px"
         }
     }
     if ($stateParams.userid) {            //给时间框赋值
@@ -333,6 +334,9 @@ app.controller('PlayerDiaryCtrl', ['$scope', '$state', '$http', 'global','$state
                     $scope.totalnumber = global.reg(result.total);
                 }else{
                     $scope.nodata = true;
+                    $scope.pages = 0;
+                    $scope.total = 0;
+                    $scope.totalnumber = 0;
                 }
             }
         }).error(function(msg, code){

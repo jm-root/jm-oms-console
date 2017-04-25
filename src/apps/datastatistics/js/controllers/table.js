@@ -185,6 +185,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                 $scope.totalnumber = global.reg(allData.length);
                             }else{
                                 $scope.nodata = true;
+                                $scope.pages = 0;
+                                $scope.total = 0;
+                                $scope.totalnumber = 0;
                             }
                         }
 
@@ -293,6 +296,9 @@ app.controller('TableCtrl', ['$scope', '$state', '$http', 'global', function ($s
                                             $scope.totalnumber = global.reg(allData.length);
                                         }else{
                                             $scope.nodata = true;
+                                            $scope.pages = 0;
+                                            $scope.total = 0;
+                                            $scope.totalnumber = 0;
                                         }
 
 

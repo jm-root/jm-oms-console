@@ -75,7 +75,11 @@ app.controller('BankPreauthCtrl', ['$scope', '$state', '$http','$timeout', 'glob
                         $scope.total = result.total;
                         $scope.totalnumber = global.reg(result.total);
                     }else{
+                        console.log(12)
                         $scope.nodata = true;
+                        $scope.pages = 0;
+                        $scope.total = 0;
+                        $scope.totalnumber = 0;
                     }
                 })
             }
