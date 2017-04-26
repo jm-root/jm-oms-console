@@ -34,4 +34,12 @@ then
    sed -i "s/<!-- endApps -->/${S}/g" /usr/share/nginx/html/dist/index.html
 fi
 
+if [ -d "./dist" ]
+then
+    echo "copy to dist"
+    cp -R -f /usr/share/nginx/html/index.html ./dist/
+    cp -R -f /usr/share/nginx/html/dist ./dist/
+    cp -R -f /usr/share/nginx/html/libs ./dist/
+fi
+
 nginx -g "daemon off;"

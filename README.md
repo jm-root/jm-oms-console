@@ -10,6 +10,11 @@ ApiHost     api网址Host
 ApiPort     api网址端口
 APPS        项目，以空格间隔，不要包含common main dashboard
 
+映射目录
+支持自动复制所有项目文件到指定映射目录
+如果映射了目录 /app/dist
+容器启动后会自动把项目文件复制到/app/dist目录
+
 ## 项目简介：
 jm-oms-console是基于angularJS的适用于制作管理系统的前端框架，用户使用此框架只需要在src/apps文件夹下增加自己特有的功能模
 块，就可以轻松完成管理系统的制作。项目维护只需要管理用户自己增加的那部分功能模块，因为我们将功能和框架进行了很好的分离。
