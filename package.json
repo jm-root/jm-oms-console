@@ -1,6 +1,6 @@
 {
   "name": "jm-oms-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "general admin console",
   "scripts": {
     "start": "node node_modules/http-server/bin/http-server -o"
