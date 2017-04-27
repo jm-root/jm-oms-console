@@ -196,4 +196,22 @@ angular.module('app')
                 }), 0);
             }
         };
+    }])
+    .directive("judgeRoll", [function() {
+        return {
+            link: function(scope,element,attr){
+                if(scope.$last == true){
+                    var parentdiv = element.parent().parent().parent()[0];
+                    if(parentdiv){
+                        var tableHeight = parentdiv.scrollHeight-19;
+                        var parentDivHeidth = parentdiv.offsetHeight;
+                    }
+                    if(tableHeight >= parentDivHeidth){
+                        scope.$emit('roll');
+                    }else{
+                        scope.$emit('noroll');
+                    }
+                }
+            }
+        }
     }]);
