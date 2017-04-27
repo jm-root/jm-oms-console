@@ -50,7 +50,7 @@ sdkHost || (sdkHost = gConfig.sdkHost || apiHost);
 opensdkHost || (opensdkHost = gConfig.opensdkHost || apiHost);
 robotUri || (robotUri = gConfig.robotUri);
 
-var perUri = sdkHost+"/acl";
+var perUri = apiHost+"/acl";
 var ssoUri = apiHost+"/sso";
 var aclUri = apiHost+"/acl";
 var adminUri = apiHost+"/admin";
@@ -76,7 +76,7 @@ var shopUri = apiHost + "/shop";
 var logUri = apiHost + "/log";
 var baoxiangUri = apiHost + "/baoxiang";
 var bankUri = apiHost + "/bank";
-var algUri = sdkHost + "/alg";
+var algUri = apiHost + "/alg";
 
 
 jm.sdk.init({uri: apiHost});
