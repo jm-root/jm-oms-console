@@ -770,6 +770,16 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
         return (bkjb.jb - prejb.jb - gainjb.jb)||0;
     };
 
+    var format_betjb = function(params) {
+        var obj = params.data.algHold || {};
+        return obj.bet||0;
+    };
+
+    var format_winjb = function(params) {
+        var obj = params.data.algHold || {};
+        return obj.win||0;
+    };
+
     var format_changejb = function(params) {
         var obj = params.data.gainHold || {};
         return obj.jb||0;
@@ -792,6 +802,8 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
             {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
             {headerName: "上/下分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "总玩", field: "betjb", width: 100, valueGetter: format_betjb},
+            {headerName: "总得", field: "winjb", width: 100, valueGetter: format_winjb},
             {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
             {headerName: "设备", field: "device", width: 100},
             {headerName: "渠道", field: "channel", width: 100},
@@ -809,6 +821,8 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             'player.record.header.prejb',
             'player.record.header.bkjb',
             'player.record.header.upjb',
+            'player.record.header.betjb',
+            'player.record.header.winjb',
             'player.record.header.changejb',
             'player.record.header.device',
             'player.record.header.channel',
@@ -825,7 +839,9 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             {headerName: "房间类型", field: "areaType", width: 150},
             {headerName: "开始前金币", field: "prejb", width: 120, valueGetter: format_prejb},
             {headerName: "结束后金币", field: "bkjb", width: 120, valueGetter: format_bkjb},
-            {headerName: "上分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "上/下分", field: "upjb", width: 100, valueGetter: format_upjb},
+            {headerName: "总玩", field: "betjb", width: 100, valueGetter: format_betjb},
+            {headerName: "总得", field: "winjb", width: 100, valueGetter: format_winjb},
             {headerName: "输赢金币", field: "changejb", width: 100, valueGetter: format_changejb},
             {headerName: "渠道", field: "channel", width: 100},
             {headerName: "游戏时长", field: "time", width: 100, valueGetter: format_time},
@@ -842,6 +858,8 @@ app.controller('PlayerRecordCtrl', ['$scope', '$state', '$http', 'global', funct
             'player.record.header.prejb',
             'player.record.header.bkjb',
             'player.record.header.upjb',
+            'player.record.header.betjb',
+            'player.record.header.winjb',
             'player.record.header.changejb',
             'player.record.header.channel',
             'player.record.header.time',

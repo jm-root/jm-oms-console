@@ -111,6 +111,8 @@
               "prejb": "số hoàng kim trước khi bắt đầu",
               "bkjb": "số hoàng kim sau khi kết thúc",
               "upjb":"上/下分",
+              "betjb":"总玩",
+              "winjb":"总得",
               "changejb": "hoàng kim thắng thua",
               "device": "thiết bị",
               "channel": "đường dẫn",

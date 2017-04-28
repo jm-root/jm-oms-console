@@ -111,6 +111,8 @@
               "prejb": "开始前金币",
               "bkjb": "结束后金币",
               "upjb":"上/下分",
+              "betjb":"总玩",
+              "winjb":"总得",
               "changejb": "输赢金币",
               "device": "设备",
               "channel": "渠道",

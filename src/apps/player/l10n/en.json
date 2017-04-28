@@ -111,6 +111,8 @@
         "prejb": "Start gold",
         "bkjb": "End gold",
         "upjb":"Increase/Decrease gold",
+        "betjb":"总玩",
+        "winjb":"总得",
         "changejb": "Win gold",
         "device": "Device",
         "channel": "Channel",
