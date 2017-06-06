@@ -82,7 +82,7 @@ angular.module('app')
                 en: 'English',
                 vi: 'Tiếng Việt'
             };
-            $scope.langKey = "zh_CN";
+            $scope.langKey = localStorage.getItem('langKey')||"zh_CN";
             $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || '中文';
             $scope.setLang = function (langKey, $event) {
                 // set the current lang
