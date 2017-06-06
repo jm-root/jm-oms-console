@@ -90,6 +90,7 @@ angular.module('app')
                 // You can change the language during runtime
                 $translate.use(langKey);
                 $scope.lang.isopen = !$scope.lang.isopen;
+                localStorage.setItem('langKey',langKey);
 
                 $scope.langKey = langKey;
             };
