@@ -1,29 +1,29 @@
 // config
-// 下面四行不要修改，部署到容器时会被环境变量替换
+// 下面七行不要修改，部署到容器时会被环境变量替换
 var StaticHost;
 var StaticPort;
 var ApiHost;
 var ApiPort;
+var RobotPort;
+var OmsNav;
+var PlatformTpl;
 
 var gConfig = {
     localhost: {
         apiHost: "http://localhost:20200",
         sdkHost: "http://localhost:20200",
-        opensdkHost: "http://localhost:20300",
         staticHost:"http://localhost:20400",
-        robotUri: "localhost:20760"
+        robotUri: "localhost:20760/robot"
     },
     development: {
         apiHost: "http://test.gzleidi.cn:81",
         sdkHost: "http://test.gzleidi.cn:81",
-        opensdkHost: "http://test.gzleidi.cn:20300",
         staticHost:"http://test.gzleidi.cn",
         robotUri: "test.gzleidi.cn/robot"
     },
     production: {
         apiHost: "http://cn1.gzleidi.cn:81",
         sdkHost: "http://cn1.gzleidi.cn:81",
-        opensdkHost: "http://cn1.gzleidi.cn:81:20300",
         staticHost:"http://cn1.gzleidi.cn",
         robotUri: "cn1.gzleidi.cn:81/robot"
     }
@@ -34,7 +34,6 @@ gConfig = gConfig['development'];
 var staticHost;
 var apiHost;
 var sdkHost;
-var opensdkHost;
 var robotUri;
 
 StaticHost && (staticHost = 'http://' + StaticHost);
@@ -42,12 +41,11 @@ StaticPort && (staticHost += ':' + StaticPort);
 ApiHost && (apiHost = 'http://' + ApiHost);
 ApiPort && (apiHost += ':' + ApiPort);
 ApiHost && (robotUri = ApiHost);
-ApiPort && (robotUri += ':' + ApiPort);
+RobotPort && (robotUri += ':' + RobotPort + '/robot');
 
 staticHost || (staticHost = gConfig.staticHost);
 apiHost || (apiHost = gConfig.apiHost);
 sdkHost || (sdkHost = gConfig.sdkHost || apiHost);
-opensdkHost || (opensdkHost = gConfig.opensdkHost || apiHost);
 robotUri || (robotUri = gConfig.robotUri);
 
 var perUri = apiHost+"/acl";
@@ -87,10 +85,10 @@ if(domain&&host.indexOf(domain)>=0){
     document.domain = domain;
 }
 
-var omsnav = "nav_new";
+var omsnav = OmsNav||"nav";
 
-const pfm_cy = 'static';
-const pfm_oms = 'oms';
-var omsPlatform = pfm_cy;
+const pfm_cy = 'tpl0';
+const pfm_oms = 'tpl1';
+var omsPlatform = PlatformTpl||pfm_cy;
 
 var plat;

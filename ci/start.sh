@@ -20,6 +20,9 @@ setEnv "StaticHost" "$StaticHost"
 setEnv "StaticPort" $StaticPort
 setEnv "ApiHost" "$ApiHost"
 setEnv "ApiPort" $ApiPort
+setEnv "RobotPort" $RobotPort
+setEnv "OmsNav" $OmsNav
+setEnv "PlatformTpl" $PlatformTpl
 
 ## 为App添加<script>
 S=""
